@@ -5,6 +5,7 @@ window.ui = {
 	jqBody: $( "body" ),
 
 	jqVisual: $( "#visual" ),
+	jqVisualCanvas: $( "#visual canvas" ),
 	jqClockMin: $( "#visual .clock .min" ),
 	jqClockSec: $( "#visual .clock .sec" ),
 	jqClockMs: $( "#visual .clock .ms" ),
@@ -35,3 +36,4 @@ ui.files = [];
 ui.tracks = [];
 ui.nbTracksOn = 0;
 ui.gridColsY = ui.jqGridCols.offset().top;
+ui.jqVisualCanvas[ 0 ].height = ui.jqVisualCanvas.height();

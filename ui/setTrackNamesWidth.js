@@ -10,6 +10,7 @@ ui.setTrackNamesWidth = function( wpx ) {
 	ui.jqGridColB.css( "left", wpx );
 	ui.jqTimeline.css( "left", wpx );
 	ui.jqVisual.css( "width", ui.filesWidth + wpx );
+	ui.jqVisualCanvas[ 0 ].width = ui.jqVisualCanvas.width();
 	ui.jqMenu.css( "left", ui.filesWidth + wpx );
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );

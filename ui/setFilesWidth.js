@@ -7,4 +7,5 @@ ui.setFilesWidth = function( wpx ) {
 	ui.jqGrid.css( "left", wpx );
 	ui.jqVisual.css( "width", wpx + ui.trackNamesWidth );
 	ui.jqMenu.css( "left", wpx + ui.trackNamesWidth );
+	ui.jqVisualCanvas[ 0 ].width = ui.jqVisualCanvas.width();
 };
