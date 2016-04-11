@@ -1,0 +1,65 @@
+@font-face {
+	font-family: "LCDBOLD";
+	src: url("../fonts/LCDBOLD.eot");
+	src: local("LCDBOLD"),
+		url("../fonts/LCDBOLD.woff") format("woff"),
+		url("../fonts/LCDBOLD.ttf") format("truetype");
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	cursor: default;
+	font: 14px sans-serif;
+	@include strip-background( -45deg, 20px, #131313, #111 );
+
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+
+a {
+	// For Firefox.
+	outline: 0;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+input {
+	outline: 0;
+}
+
+.cursor-move {
+	cursor: move;
+}
+
+.cursor-ewResize {
+	cursor: ew-resize;
+}
+
+.no-transition {
+	transition: none !important;
+}
+
+.text-overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	background: #888;
+
+	&-thumb {
+		background: #888;
+	}
+	&-track {
+		background: #222;
+	}
+}

@@ -1,0 +1,54 @@
+#files {
+	box-sizing: border-box;
+	position: absolute;
+	z-index: 2;
+	min-width: 150px;
+	max-width: 400px;
+	left: 0;
+	top: 59px;
+	bottom: 0;
+
+	.title {
+		padding: 4px 5px;
+		font-size: 11px;
+		font-weight: bold;
+		color: #666;
+		background: #000;
+	}
+
+	.filelist {
+		overflow: auto;
+		height: 100%;
+		background: rgba( #000, .25 );
+
+		.file {
+			display: block;
+			position: relative;
+			height: 32px;
+			color: #aaa;
+			border-bottom: 1px solid #000;
+			background: rgba( #000, .5 );
+
+			&:hover {
+				color: #fff;
+				background: none;
+			}
+			div {
+				display: block;
+				width: 25%;
+				height: 100%;
+				background: #000;
+			}
+			span {
+				position: absolute;
+				top: 0;
+				left: 25%;
+				right: 0;
+				padding: 0 5px;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 32px;
+			}
+		}
+	}
+}

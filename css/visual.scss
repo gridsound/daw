@@ -1,0 +1,31 @@
+#visual {
+	box-sizing: border-box;
+	position: absolute;
+	width: 275px;
+	left: 0;
+	top: 0;
+	height: 60px;
+	border: solid #000;
+	border-width: 0 1px 1px 0;
+	background: rgba( 30, 30, 53, .15 );
+
+	.clock {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+
+		font-family: "LCDBOLD";
+		font-size: 38px;
+		margin-top: -.5em;
+		color: #ccc;
+
+		.sec:before,
+		.sec:after {
+			content: ":";
+			padding: 0 .15em;
+		}
+		.ms {
+			font-size: .5em;
+		}
+	}
+}

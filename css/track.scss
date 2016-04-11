@@ -1,0 +1,78 @@
+.track {
+	position: relative;
+	box-sizing: border-box;
+	height: 1em;
+	line-height: 1em;
+
+	&.off {
+		background: rgba( 0, 0, 0, .2 );
+	}
+	.trackLines .track + & { border-top: 1px solid #090909; }
+	.trackNames .track + & { border-top: 1px solid #151515; }
+
+	.trackNames & {
+		overflow: hidden;
+		padding: 5px 0 5px 14px;
+
+		* {
+			vertical-align: top;
+		}
+	}
+
+	.toggle {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 14px;
+		height: 100%;
+		color: #111;
+
+		&.on {
+			color: #4cb849;
+		}
+		&:after {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			content: "\f111";
+			$w: 6px;
+			font: $w "FontAwesome";
+			margin: $w / -2;
+		}
+	}
+
+	.name {
+		display: block;
+		font-size: 14px;
+		margin-top: -6px;
+		padding-right: 5px;
+		color: #fff;
+
+		&.empty {
+			opacity: .2;
+			font-weight: normal;
+			font-style: italic;
+		}
+	}
+
+	input {
+		display: none;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		border: 0;
+		padding: 0;
+		color: #fff;
+		text-overflow: ellipsis;
+		background: transparent;
+	}
+
+	&.editing {
+		.name {
+			display: none;
+		}
+		input {
+			display: block;
+		}
+	}
+}

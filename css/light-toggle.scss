@@ -1,0 +1,8 @@
+.light-toggle {
+	border-radius: 999px;
+	background: #111;
+
+	&.on {
+		background: #4cb849;
+	}
+}

@@ -1,0 +1,107 @@
+#grid {
+	position: absolute;
+	top: 40px;
+	left: 150px;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+	font-size: 30px;
+
+	.header {
+		position: relative;
+		z-index: 2;
+		height: 19px;
+		border-bottom: 1px solid #000;
+	}
+
+	.timeline {
+		box-sizing: border-box;
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		right: -3em;
+		height: 100%;
+		border-top: 1px solid #000;
+		background: #0d0d0d;
+		counter-reset: section;
+
+		div {
+			display: inline-block;
+			width: 1em;
+			height: 100%;
+			color: #888;
+
+			&:first-child {
+				visibility: hidden;
+			}
+			span {
+				display: inline-block;
+				vertical-align: top;
+				width: 100%;
+				margin-left: -50%;
+				text-align: center;
+				font-family: monospace;
+				margin-top: 2px;
+				font-size: 12px;
+				opacity: .5;
+
+				&:after {
+					counter-increment: section;
+					content: counter( section );
+				}
+			}
+			&:nth-child( 4n+1 ) span {
+				margin-top: 0;
+				font-size: 14px;
+				font-weight: bold;
+				opacity: 1;
+			}
+		}
+	}
+
+	.trackList {
+		position: absolute;
+		overflow: hidden;
+		width: 100%;
+		top: 20px;
+		bottom: 0;
+	}
+
+	.cols, .trackLines {
+		transition: 0s ease-out;
+	}
+
+	.cols {
+		position: absolute;
+		width: 100%;
+		top: 0;
+		transition-property: top, font-size;
+
+		> * {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	.trackNames {
+		box-sizing: border-box;
+		z-index: 1;
+		min-width: 16px;
+		max-width: 300px;
+		border: solid #000;
+		border-width: 0 1px;
+		background: #272727;
+	}
+
+	.colB {
+		right: 0;
+	}
+
+	.trackLines {
+		position: absolute;
+		right: 0;
+		transition-property: left;
+		@include strip-background( 90deg, 4em, #151421, #1C1C2B );
+	}
+}

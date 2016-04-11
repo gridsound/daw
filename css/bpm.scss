@@ -1,0 +1,66 @@
+#menu .bpm {
+	display: inline-block;
+	position: relative;
+	height: 100%;
+	border: solid #333;
+	border-width: 0 1px;
+	background: #222;
+
+	.text {
+		padding: 0 .5em;
+		color: #ccc;
+		font-family: "LCDBOLD";
+		font-size: 16px;
+	}
+
+	.int {
+		font-size: 30px;
+	}
+	.dec:before {
+		content: ".";
+	}
+	.fa, .unit {
+		color: #666;
+	}
+	.fa {
+		vertical-align: top;
+		line-height: 40px;
+		margin-right: 4px;
+		font-size: 14px;
+	}
+	.a-bpm         .fa:before { content: "\f0d7"; } // fa-caret-down
+	.a-bpm.clicked .fa:before { content: "\f0d8"; } // fa-caret-up
+
+	.bpm-list {
+		position: absolute;
+		z-index: 3;
+		left: -1px;
+		top: 95%;
+		width: 95px;
+		overflow: hidden;
+		box-sizing: border-box;
+		border: solid #333;
+		border-width: 0 1px 1px;
+		text-align: right;
+		background: rgba( #222, .5 );
+		transition: all .25s;
+		height: 0;
+		opacity: 0;
+
+		a {
+			display: block;
+			padding: 5px 10px;
+			font-size: 20px;
+			line-height: 1em;
+
+			&:hover {
+				background: #111;
+			}
+		}
+	}
+
+	.a-bpm.clicked + .bpm-list {
+		height: 270px;
+		opacity: 1;
+	}
+}

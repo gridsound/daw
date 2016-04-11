@@ -1,0 +1,37 @@
+#menu {
+	box-sizing: border-box;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 40px;
+	line-height: 40px;
+
+	> * {
+		vertical-align: top;
+	}
+
+	.btn {
+		display: inline-block;
+		width: 40px;
+		line-height: 40px;
+		margin-right: 5px;
+		border: solid #000;
+		border-width: 0 1px;
+		text-align: center;
+		color: #fff;
+		font-size: 14px;
+
+		&:first-child {
+			margin-left: -1px;
+		}
+
+		@mixin lighten( $c ) {
+			background: $c;
+			&:hover {
+				background: lighten( $c, 5% );
+			}
+		}
+		&.play { @include lighten( #142B3C ); }
+		&.stop { @include lighten( #333 ); }
+	}
+}
