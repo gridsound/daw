@@ -49,6 +49,38 @@
 				font-weight: bold;
 				line-height: 32px;
 			}
+
+			&.to-load {
+				div {
+					width: 0;
+				}
+				span {
+					left: 0;
+				}
+				.to-load {
+					margin-right: .5em;
+					opacity: .5;
+				}
+			}
 		}
 	}
+
+	.placeholder {
+		display: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 25%;
+		text-align: center;
+		color: #333;
+
+		.fa {
+			font-size: 80px;
+			margin-bottom: .2em;
+		}
+	}
+	.filelist:empty + .placeholder {
+		display: block;
+	}
 }
+

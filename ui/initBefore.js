@@ -16,8 +16,7 @@ window.ui = {
 	jqBpmList: $( "#menu .bpm-list" ),
 
 	jqFiles: $( "#files" ),
-	jqUsedFiles: $( "#files .used-files" ),
-	jqNbUsedFiles: $( "#files .used-files .title b" ),
+	jqFilelist: $( "#files .filelist" ),
 
 	jqGrid: $( "#grid" ),
 	jqGridEm: $( "#grid .emWrapper" ),
@@ -32,6 +31,7 @@ window.ui = {
 };
 
 ui.em = parseFloat( ui.jqGrid.css( "fontSize" ) );
+ui.files = [];
 ui.tracks = [];
 ui.nbTracksOn = 0;
 ui.gridColsY = ui.jqGridCols.offset().top;

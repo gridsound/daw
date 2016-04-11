@@ -1,7 +1,18 @@
 // This is a temporary debug file.
 
+/** /
+ui.newFile( { name: "Drum_p54" } );
+ui.newFile( { name: "Drum_p54a" } );
+ui.newFile( { name: "Drum_p54b" } );
+ui.newFile( { name: "Drum_p55" } );
+ui.newFile( { name: "Kick" } );
+ui.newFile( { name: "Snare_02" } );
+ui.files[ 0 ].jqFile.click();
+ui.files[ 1 ].jqFile.click();
+/**/
+
 for ( var i = 0; i < 43; ++i ) {
-	ui.newTracks();
+	ui.newTrack();
 }
 ui.tracks[ 1 ].editName( "This" );
 ui.tracks[ 2 ].toggle( false ).editName( "project" );

@@ -37,12 +37,10 @@
 
 <div id="files">
 	<div class="extend cursor-ewResize" data-mousemove-fn="files"></div>
-	<div class="filelist">
-		<a class="file"><div></div><span class="text-overflow">Drum_135bpm LOUD</span></a>
-		<a class="file"><div></div><span class="text-overflow">Drum-2_135bpm</span></a>
-		<a class="file"><div></div><span class="text-overflow">Drum-3_135bpm</span></a>
-		<a class="file"><div></div><span class="text-overflow">Snare-low</span></a>
-		<a class="file"><div></div><span class="text-overflow">Kick</span></a>
+	<div class="filelist"></div>
+	<div class="placeholder">
+		<i class="fa fa-file-audio-o"></i><br/>
+		<b>Drop audio files here</b>
 	</div>
 </div>
 
@@ -80,8 +78,12 @@
 <script src="ui/updateTimeline.js"></script>
 <script src="ui/updateGridBoxShadow.js"></script>
 <script src="ui/resize.js"></script>
-<script src="ui/newTracks.js"></script>
 <script src="ui/toggleTracks.js"></script>
+<script src="ui/newFile.js"></script>
+<script src="ui/newTrack.js"></script>
+	<!-- File -->
+	<script src="ui/File/constructor.js"></script>
+	<script src="ui/File/loaded.js"></script>
 	<!-- Track -->
 	<script src="ui/Track/constructor.js"></script>
 	<script src="ui/Track/editName.js"></script>
@@ -89,6 +91,7 @@
 	<!-- Events -->
 	<script src="ui/events/bpm.js"></script>
 	<script src="ui/events/divExtend.js"></script>
+	<script src="ui/events/dropFiles.js"></script>
 	<script src="ui/events/trackLines.js"></script>
 	<script src="ui/events/resize.js"></script>
 <script src="ui/initAfter.js"></script>
