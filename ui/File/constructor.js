@@ -10,17 +10,24 @@ ui.File = function( file ) {
 	this.name = file.name.replace( /\.[^.]+$/, "" );
 
 	this.jqFile = $( "<a class='file to-load'>" );
-	this.jqImgWaveform = $( "<div>" ).appendTo( this.jqFile );
 	this.jqName = $( "<span class='text-overflow'>" )
 		.appendTo( this.jqFile )
 		.text( this.name );
-	this.jqToLoad = $( "<i class='to-load fa fa-download'>" ).prependTo( this.jqName );
+	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-download'>" ).prependTo( this.jqName );
 
-	this.jqFile.click( function() {
-		if ( that.isLoaded ) {
-			// webaudio.play( that.file );
-		} else if ( !that.isLoading ) {
-			that.loaded();
+	this.jqFile.on( {
+		contextmenu: false,
+		mousedown: function( e ) {
+			if ( e.button !== 0 ) {
+				ui.stopFile();
+			}
+		},
+		click: function() {
+			if ( that.isLoaded ) {
+				ui.playFile( that );
+			} else if ( !that.isLoading ) {
+				that.loaded();
+			}
 		}
 	});
 };

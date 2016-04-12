@@ -7,14 +7,6 @@
 	top: 59px;
 	bottom: 0;
 
-	.title {
-		padding: 4px 5px;
-		font-size: 11px;
-		font-weight: bold;
-		color: #666;
-		background: #000;
-	}
-
 	.filelist {
 		overflow: auto;
 		height: 100%;
@@ -26,39 +18,41 @@
 			height: 32px;
 			color: #aaa;
 			border-bottom: 1px solid #000;
+			transition: background .2s;
 			background: rgba( #000, .5 );
 
-			&:hover {
-				color: #fff;
-				background: none;
-			}
-			div {
+			.waveform {
 				display: block;
-				width: 25%;
+				width: 100%;
 				height: 100%;
-				background: #000;
+				transition: opacity .2s;
+				opacity: .5;
+			}
+			.to-load {
+				margin-right: .5em;
+				opacity: .5;
 			}
 			span {
 				position: absolute;
 				top: 0;
-				left: 25%;
+				left: 0;
 				right: 0;
-				padding: 0 5px;
 				font-size: 12px;
 				font-weight: bold;
 				line-height: 32px;
+				transition: padding .2s;
+				padding: 0 .5em;
+				@include text-stroke( #000 );
 			}
+			&:hover {
+				color: #fff;
+				background: #000;
 
-			&.to-load {
-				div {
-					width: 0;
+				.waveform {
+					opacity: 1;
 				}
 				span {
-					left: 0;
-				}
-				.to-load {
-					margin-right: .5em;
-					opacity: .5;
+					padding-left: 1em;
 				}
 			}
 		}
