@@ -16,6 +16,7 @@
 		.file {
 			display: block;
 			position: relative;
+			overflow: hidden;
 			height: 32px;
 			color: #aaa;
 			border-bottom: 1px solid #000;
@@ -28,6 +29,16 @@
 				height: 100%;
 				transition: opacity .2s;
 				opacity: .5;
+			}
+			.cursor {
+				position: absolute;
+				height: 100%;
+				top: 0;
+				width: 1px;
+				box-shadow: 0 0 5px rgba( #cc3, .5 );
+				background: #cc3;
+				transition: left linear;
+				left: 0;
 			}
 			.to-load {
 				margin-right: .5em;
