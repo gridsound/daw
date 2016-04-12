@@ -4,3 +4,12 @@
 		$cB $w * 2, $cB $w * 3
 	);
 }
+
+@mixin text-stroke( $col ) {
+	text-shadow:
+		-1px -1px 0 $col,
+		 1px -1px 0 $col,
+		 1px  1px 0 $col,
+		-1px  1px 0 $col
+	;
+}

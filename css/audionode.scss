@@ -20,12 +20,7 @@
 		font-size: 14px;
 		padding: 0 .3em;
 		color: #000;
-		text-shadow:
-			-1px -1px 0 #fff,
-			 1px -1px 0 #fff,
-			 1px  1px 0 #fff,
-			-1px  1px 0 #fff
-		;
 		background: rgba( #66b, .3 );
+		@include text-stroke( #fff );
 	}
 }
