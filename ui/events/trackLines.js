@@ -3,23 +3,21 @@
 (function() {
 
 var
-	spaceIsDown = false,
+	keyIsDown = false,
 	mouseIsDown = false
 ;
 
 ui.jqTrackLines.mousedown( function( e ) {
-	if ( e.button === 0 && spaceIsDown ) {
-		if ( !mouseIsDown ) {
-			mouseIsDown = true;
-			ui.jqBody.addClass( "cursor-move" );
-			ui.jqGridCols.add( ui.jqTrackLines ).addClass( "no-transition" );
-		}
+	if ( e.button === 0 && keyIsDown && !mouseIsDown ) {
+		mouseIsDown = true;
+		ui.jqBody.addClass( "cursor-move" );
+		ui.jqGridCols.add( ui.jqTrackLines ).addClass( "no-transition" );
 	}
 });
 
 ui.jqGrid.on( "wheel", function( e ) {
 	e = e.originalEvent;
-	if ( spaceIsDown || e.ctrlKey ) {
+	if ( keyIsDown ) {
 		ui.setGridZoom(
 			ui.gridZoom * ( e.deltaY < 0 ? 1.1 : 0.9 ),
 			e.pageX - ui.filesWidth - ui.trackNamesWidth,
@@ -38,14 +36,15 @@ ui.jqBody.on( {
 		}
 	},
 	keydown: function( e ) {
-		if ( e.keyCode === 32 ) {
-			spaceIsDown = true;
+		// 32:space, 17:ctrl
+		if ( e.keyCode === 32 || e.keyCode === 17 ) {
+			keyIsDown = true;
 			ui.jqTrackLines.addClass( "cursor-move" );
 		}
 	},
 	keyup: function( e ) {
-		if ( e.keyCode === 32 ) {
-			spaceIsDown = false;
+		if ( e.keyCode === 32 || e.keyCode === 17 ) {
+			keyIsDown = false;
 			if ( !mouseIsDown ) {
 				ui.jqTrackLines.removeClass( "cursor-move" );
 			}
@@ -54,7 +53,7 @@ ui.jqBody.on( {
 	mouseup: function( e ) {
 		if ( e.button === 0 && mouseIsDown ) {
 			mouseIsDown = false;
-			if ( !spaceIsDown ) {
+			if ( !keyIsDown ) {
 				ui.jqTrackLines.removeClass( "cursor-move" );
 			}
 			ui.jqBody.removeClass( "cursor-move" );
