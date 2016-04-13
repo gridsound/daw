@@ -11,6 +11,7 @@ window.ui = {
 	jqClockMs: $( "#visual .clock .ms" ),
 
 	jqMenu: $( "#menu" ),
+	jqStop: $( "#menu .btn.stop" ),
 	jqBpmA: $( "#menu .bpm .a-bpm" ),
 	jqBpmInt: $( "#menu .bpm .int" ),
 	jqBpmDec: $( "#menu .bpm .dec" ),
