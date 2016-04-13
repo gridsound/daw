@@ -23,8 +23,10 @@ ui.playFile = function( uifile ) {
 };
 
 ui.stopFile = function() {
-	wsample.stop();
-	jqCursor.detach();
+	if ( wsample ) {
+		wsample.stop();
+		jqCursor.detach();
+	}
 };
 
 })();
