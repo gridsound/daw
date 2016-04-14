@@ -5,37 +5,66 @@
 	top: 0;
 	height: 40px;
 	line-height: 40px;
+	color: #ccc;
 
 	> * {
-		vertical-align: top;
-	}
-
-	.btn {
 		display: inline-block;
-		width: 40px;
+		vertical-align: top;
 		line-height: 40px;
+		height: 100%;
 		margin-right: 5px;
 		border: solid #000;
 		border-width: 0 1px;
-		text-align: center;
-		color: #fff;
-		font-size: 14px;
-		transition: all .1s;
 
 		&:first-child {
 			margin-left: -1px;
 		}
-		&:active {
-			padding-top: 2px;
-			box-shadow: inset 0 2px 3px rgba( #000, .7 );
-		}
-		@mixin lighten( $c ) {
-			background: $c;
-			&:hover {
-				background: lighten( $c, 5% );
+		&.btn {
+			width: 40px;
+			font-size: 14px;
+
+			&:active {
+				box-shadow: inset 0 2px 3px rgba( #000, .7 );
+				padding-top: .2em;
 			}
 		}
-		&.play { @include lighten( #142B3C ); }
-		&.stop { @include lighten( #333 ); }
+	}
+
+	@mixin lighten( $c, $lum: 5% ) {
+		background: $c;
+		&:hover {
+			background: lighten( $c, $lum );
+		}
+	}
+
+	.btn {
+		box-sizing: border-box;
+		text-align: center;
+		transition: all 50ms;
+
+		&.play  { @include lighten( #142B3C ); }
+		&.stop  { @include lighten( #333 ); }
+	}
+
+	.tools {
+		border-top-width: 1px;
+		vertical-align: bottom;
+		font-size: 24px;
+		line-height: 1em;
+		height: auto;
+		background: #666;
+
+		.btn {
+			line-height: 1em;
+			width: 1em;
+			@include lighten( #142B3C );
+
+			&:before {
+				font-size: 14px;
+			}
+			& + * {
+				border-left: 1px solid #1C1C27;
+			}
+		}
 	}
 }
