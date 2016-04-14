@@ -22,7 +22,7 @@
 		font-size: 38px;
 		margin-top: -.5em;
 		color: #ccc;
-		text-shadow: 0 0 5px #000;
+		@include text-stroke( #000 );
 
 		.sec:before,
 		.sec:after {

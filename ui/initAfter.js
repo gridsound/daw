@@ -7,3 +7,4 @@ ui.setFilesWidth( 200 );
 ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
+ui.analyserToggle( true );
