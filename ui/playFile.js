@@ -14,7 +14,7 @@ ui.playFile = function( uifile ) {
 	if ( uifile.isLoaded ) {
 		jqCursor.css( "transitionDuration", 0 ).css( "left", 0 );
 		uifile.jqCanvasWaveform.after( jqCursor );
-		wsample = uifile.wbuff.createSample( wa.analyser ).load().start();
+		wsample = uifile.wbuff.createSample().load().start();
 		setTimeout( function() {
 			jqCursor.css( "transitionDuration", uifile.wbuff.buffer.duration + "s" )
 				.css( "left", "100%" );
