@@ -35,12 +35,12 @@
 		</span>
 	</div>
 	<div class="tools">
-		<a class="btn paint fa fa-fw fa-paint-brush"></a>
-		<a class="btn hand  fa fa-fw fa-arrows"></a>
-		<a class="btn erase fa fa-fw fa-eraser"></a>
-		<a class="btn mute  fa fa-fw fa-volume-off"></a>
-		<a class="btn slip  fa fa-fw fa-arrows-h"></a>
-		<a class="btn cut   fa fa-fw fa-scissors"></a>
+		<a data-tool="paint"  class="btn fa fa-fw fa-paint-brush" title="Paint (B)"></a>
+		<a data-tool="hand"   class="btn fa fa-fw fa-hand-paper-o" title="Hand (H)"></a>
+		<a data-tool="delete" class="btn fa fa-fw fa-eraser" title="Delete (D)"></a>
+		<a data-tool="mute"   class="btn fa fa-fw fa-volume-off" title="Mute (M)"></a>
+		<a data-tool="slip"   class="btn fa fa-fw fa-exchange" title="Slip (S)"></a>
+		<a data-tool="cut"    class="btn fa fa-fw fa-scissors" title="Cut (C)"></a>
 	</div>
 </div>
 
@@ -86,6 +86,7 @@
 <script src="ui/initBefore.js"></script>
 <script src="ui/analyserToggle.js"></script>
 <script src="ui/playFile.js"></script>
+<script src="ui/selectTool.js"></script>
 <script src="ui/setBPM.js"></script>
 <script src="ui/setClockTime.js"></script>
 <script src="ui/setGridTop.js"></script>
@@ -108,7 +109,8 @@
 	<script src="ui/Track/toggle.js"></script>
 	<!-- Events -->
 	<script src="ui/events/bpm.js"></script>
-	<script src="ui/events/controls.js"></script>
+	<script src="ui/events/playStop.js"></script>
+	<script src="ui/events/tools.js"></script>
 	<script src="ui/events/divExtend.js"></script>
 	<script src="ui/events/dropFiles.js"></script>
 	<script src="ui/events/trackLines.js"></script>

@@ -3,12 +3,13 @@
 (function() {
 
 var
+	oldTool,
 	keyIsDown = false,
 	mouseIsDown = false
 ;
 
 ui.jqTrackLines.mousedown( function( e ) {
-	if ( e.button === 0 && keyIsDown && !mouseIsDown ) {
+	if ( e.button === 0 && ( keyIsDown || ui.currentTool === "hand" ) ) {
 		mouseIsDown = true;
 		ui.jqBody.addClass( "cursor-move" );
 		ui.jqGridCols.add( ui.jqTrackLines ).addClass( "no-transition" );
@@ -36,26 +37,22 @@ ui.jqBody.on( {
 		}
 	},
 	keydown: function( e ) {
-		// 32:space, 17:ctrl
-		if ( e.keyCode === 32 || e.keyCode === 17 ) {
+		// 32 -> space key
+		if ( e.keyCode === 32 && !keyIsDown ) {
 			keyIsDown = true;
-			ui.jqTrackLines.addClass( "cursor-move" );
+			oldTool = ui.currentTool;
+			ui.selectTool( "hand" );
 		}
 	},
 	keyup: function( e ) {
-		if ( e.keyCode === 32 || e.keyCode === 17 ) {
+		if ( e.keyCode === 32 && keyIsDown ) {
 			keyIsDown = false;
-			if ( !mouseIsDown ) {
-				ui.jqTrackLines.removeClass( "cursor-move" );
-			}
+			ui.selectTool( oldTool );
 		}
 	},
 	mouseup: function( e ) {
 		if ( e.button === 0 && mouseIsDown ) {
 			mouseIsDown = false;
-			if ( !keyIsDown ) {
-				ui.jqTrackLines.removeClass( "cursor-move" );
-			}
 			ui.jqBody.removeClass( "cursor-move" );
 			ui.jqGridCols.add( ui.jqTrackLines ).addClass( "no-transition" );
 		}

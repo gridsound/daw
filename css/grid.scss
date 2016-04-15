@@ -104,4 +104,7 @@
 		transition-property: left;
 		@include strip-background( 90deg, 4em, #151421, #1C1C2B );
 	}
+	&[data-tool="hand"] .trackLines {
+		cursor: move;
+	}
 }

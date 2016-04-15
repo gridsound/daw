@@ -30,7 +30,7 @@
 		}
 	}
 
-	@mixin lighten( $c, $lum: 5% ) {
+	@mixin lighten( $c, $lum: 10% ) {
 		background: $c;
 		&:hover {
 			background: lighten( $c, $lum );
@@ -57,13 +57,17 @@
 		.btn {
 			line-height: 1em;
 			width: 1em;
-			@include lighten( #142B3C );
+			$c: #142B3C;
+			@include lighten( $c );
 
-			&:before {
-				font-size: 14px;
+			&.active {
+				background: lighten( $c, 20% );
 			}
 			& + * {
 				border-left: 1px solid #1C1C27;
+			}
+			&:before {
+				font-size: 14px;
 			}
 		}
 	}

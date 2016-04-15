@@ -8,3 +8,5 @@ ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
+
+ui.jqBtnTools.filter( "[data-tool='paint']" ).click();
