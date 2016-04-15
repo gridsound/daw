@@ -9,7 +9,7 @@ ui.File = function( file ) {
 	this.fullname = file.name;
 	this.name = file.name.replace( /\.[^.]+$/, "" );
 
-	this.jqFile = $( "<a class='sample to-load'>" );
+	this.jqFile = $( "<a class='sample to-load' draggable='true'>" );
 	this.jqName = $( "<span class='text-overflow'>" )
 		.appendTo( this.jqFile )
 		.text( this.name );
@@ -17,6 +17,7 @@ ui.File = function( file ) {
 
 	this.jqFile.on( {
 		contextmenu: false,
+		dragstart: this.dragstart.bind( this ),
 		mousedown: function( e ) {
 			if ( e.button !== 0 ) {
 				ui.stopFile();

@@ -1,3 +1,17 @@
+.waveform.dragging {
+	position: absolute;
+	box-sizing: border-box;
+	z-index: 999;
+	$w: 150px;
+	$h: 50px;
+	width: $w;
+	height: $h;
+	margin-left: -$w / 2;
+	margin-top: 20px;
+	border: 2px solid rgba( #000, .8 );
+	background: rgba( #000, .5 );
+}
+
 .sample {
 	display: block;
 	position: relative;
