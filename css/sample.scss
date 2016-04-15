@@ -2,11 +2,29 @@
 	display: block;
 	position: relative;
 	overflow: hidden;
-	height: 32px;
 	color: #aaa;
-	border-bottom: 1px solid #000;
 	transition: background .2s;
 	background: rgba( #000, .5 );
+
+	.filelist & {
+		height: 32px;
+		border-bottom: 1px solid #000;
+
+		&:hover {
+			color: #fff;
+			background: #000;
+
+			.waveform {
+				opacity: 1;
+			}
+			span {
+				padding-left: 1em;
+			}
+		}
+	}
+	.track & {
+		height: 1em;
+	}
 
 	.waveform {
 		display: block;
@@ -31,25 +49,15 @@
 	}
 	span {
 		position: absolute;
-		top: 0;
 		left: 0;
 		right: 0;
-		font-size: 12px;
+		top: 50%;
 		font-weight: bold;
-		line-height: 32px;
+		font-size: 12px;
+		margin-top: -6px;
+		line-height: 1em;
 		transition: padding .2s;
 		padding: 0 .5em;
 		@include text-stroke( #000 );
-	}
-	&:hover {
-		color: #fff;
-		background: #000;
-
-		.waveform {
-			opacity: 1;
-		}
-		span {
-			padding-left: 1em;
-		}
 	}
 }

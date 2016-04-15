@@ -22,8 +22,8 @@ ui.tracks[ 7 ].editName( "github.com/GridSound/gridsound.github.io" );
 ui.tracks[ 9 ].toggle( false );
 
 ui.jqTrackLines.children().eq(1).append(
-	"<div class='audionode' style='left:2em; width:4em;'>" +
-		"<div class='waveform'></div>" +
-		"<div class='title text-overflow'>Drum_p55</div>" +
+	"<div class='sample' style='left:2em; width:4em;'>" +
+		"<canvas class='waveform'></canvas>" +
+		"<span class='text-overflow'>Drum_p55</span>" +
 	"</div>"
 );
