@@ -12,62 +12,6 @@
 		overflow: auto;
 		height: 100%;
 		background: rgba( #000, .25 );
-
-		.file {
-			display: block;
-			position: relative;
-			overflow: hidden;
-			height: 32px;
-			color: #aaa;
-			border-bottom: 1px solid #000;
-			transition: background .2s;
-			background: rgba( #000, .5 );
-
-			.waveform {
-				display: block;
-				width: 100%;
-				height: 100%;
-				transition: opacity .2s;
-				opacity: .5;
-			}
-			.cursor {
-				position: absolute;
-				height: 100%;
-				top: 0;
-				width: 1px;
-				box-shadow: 0 0 5px rgba( #cc3, .5 );
-				background: #cc3;
-				transition: left linear;
-				left: 0;
-			}
-			.to-load {
-				margin-right: .5em;
-				opacity: .5;
-			}
-			span {
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				font-size: 12px;
-				font-weight: bold;
-				line-height: 32px;
-				transition: padding .2s;
-				padding: 0 .5em;
-				@include text-stroke( #000 );
-			}
-			&:hover {
-				color: #fff;
-				background: #000;
-
-				.waveform {
-					opacity: 1;
-				}
-				span {
-					padding-left: 1em;
-				}
-			}
-		}
 	}
 
 	.placeholder {

@@ -9,7 +9,7 @@ ui.File = function( file ) {
 	this.fullname = file.name;
 	this.name = file.name.replace( /\.[^.]+$/, "" );
 
-	this.jqFile = $( "<a class='file to-load'>" );
+	this.jqFile = $( "<a class='sample to-load'>" );
 	this.jqName = $( "<span class='text-overflow'>" )
 		.appendTo( this.jqFile )
 		.text( this.name );
