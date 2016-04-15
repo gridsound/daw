@@ -1,8 +1,7 @@
 "use strict";
 
 ui.newSample = function( uifile, trackId, xem ) {
-	lg( "newSample" );
-	lg( "trackId: " + trackId );
-	lg( "xem: " + xem );
-	var sample = new ui.Sample( uifile );
+	var sample = new ui.Sample( uifile )
+		.inTrack( trackId ).moveX( xem );
+	sample.setWidth( sample.wbuff.buffer.duration );
 };

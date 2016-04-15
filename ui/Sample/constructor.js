@@ -1,12 +1,11 @@
 "use strict";
 
 ui.Sample = function( uifile ) {
-
-	// ui.jqTrackLines.children().eq(  ).append(
-	// 	"<div class='sample' style='left:2em; width:4em;'>" +
-	// 		"<canvas class='waveform'></canvas>" +
-	// 		"<span class='text-overflow'>Drum_p55</span>" +
-	// 	"</div>"
-	// );
-
+	this.uifile = uifile;
+	this.wbuff = uifile.wbuff;
+	this.jqSample = $( "<div class='sample'>" );
+	this.jqWaveform = $( cloneCanvas( uifile.jqCanvasWaveform[ 0 ] ) )
+		.addClass( "waveform" ).appendTo( this.jqSample );
+	this.jqName = $( "<span class='text-overflow'>" )
+		.text( uifile.name ).appendTo( this.jqSample );
 };

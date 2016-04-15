@@ -8,11 +8,11 @@ ui.File.prototype.loaded = function() {
 		.addClass( "fa-refresh fa-spin" );
 
 	wa.wctx.createBuffer( this.file, function( wbuff ) {
+		that.wbuff = wbuff;
 		that.isLoaded = true;
 		that.isLoading = false;
-		that.jqToLoad.remove();
 		that.jqFile.removeClass( "to-load" );
-		that.wbuff = wbuff;
+		that.jqToLoad.remove();
 		that.jqCanvasWaveform = $( wbuff.getWaveForm( 400, 50, "#39395A" ) )
 			.addClass( "waveform" );
 		that.jqFile.prepend( that.jqCanvasWaveform );
