@@ -25,7 +25,7 @@ ui.jqGrid.on( "wheel", function( e ) {
 			e.pageY - ui.gridColsY
 		);
 	} else {
-		ui.setGridTop( ui.gridTop + ( e.deltaY < 0 ? .9 : -.9 ) * ui.em );
+		ui.setGridTop( ui.gridTop + ( e.deltaY < 0 ? .9 : -.9 ) * ui.gridEm );
 	}
 	ui.updateGridBoxShadow();
 });

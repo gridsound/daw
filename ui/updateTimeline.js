@@ -24,8 +24,8 @@ function createNb( nb ) {
 
 ui.updateTimeline = function() {
 	var
-		leftEm = ui.trackLinesLeft / ui.em,
-		widthEm = ui.trackLinesWidth / ui.em
+		leftEm = ui.trackLinesLeft / ui.gridEm,
+		widthEm = ui.trackLinesWidth / ui.gridEm
 	;
 	createNb( Math.ceil( -leftEm + widthEm ) );
 	if ( jqFirstNum ) {

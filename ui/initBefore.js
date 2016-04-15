@@ -33,7 +33,7 @@ window.ui = {
 	jqTrackNamesExtend: $( "#grid .trackNames .extend" )
 };
 
-ui.em = parseFloat( ui.jqGrid.css( "fontSize" ) );
+ui.gridEm = parseFloat( ui.jqGrid.css( "fontSize" ) );
 ui.files = [];
 ui.tracks = [];
 ui.nbTracksOn = 0;

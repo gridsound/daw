@@ -16,9 +16,10 @@ ui.jqBody
 	.mouseup( function( e ) {
 		if ( uifileDragging ) {
 			var
-				trackId = Math.floor( ( e.pageY - ui.gridColsY - ui.gridTop ) / ui.em ),
-				xem = ( e.pageX - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft ) / ui.em
+				trackId = Math.floor( ( e.pageY - ui.gridColsY - ui.gridTop ) / ui.gridEm ),
+				xem = e.pageX - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft
 			;
+			xem /= ui.gridEm;
 			jqWaveformTmp.remove();
 			if ( trackId >= 0 && xem >= 0 ) {
 				ui.newSample( uifileDragging, trackId, xem );
