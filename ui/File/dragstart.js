@@ -2,23 +2,35 @@
 
 (function() {
 
-var jqWaveformTmp;
+var
+	uifileDragging,
+	jqWaveformTmp
+;
 
 ui.jqBody
 	.mousemove( function( e ) {
-		if ( jqWaveformTmp ) {
+		if ( uifileDragging ) {
 			jqWaveformTmp.css( { left: e.pageX, top: e.pageY } );
 		}
 	})
 	.mouseup( function( e ) {
-		if ( jqWaveformTmp ) {
-			jqWaveformTmp = null;
+		if ( uifileDragging ) {
+			var
+				trackId = Math.floor( ( e.pageY - ui.gridColsY - ui.gridTop ) / ui.em ),
+				xem = ( e.pageX - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft ) / ui.em
+			;
+			jqWaveformTmp.remove();
+			if ( trackId >= 0 && xem >= 0 ) {
+				ui.newSample( uifileDragging, trackId, xem );
+			}
+			uifileDragging = null;
 		}
 	})
 ;
 
 ui.File.prototype.dragstart = function( e ) {
-	if ( this.isLoaded && !jqWaveformTmp ) {
+	if ( this.isLoaded && !uifileDragging ) {
+		uifileDragging = this;
 		jqWaveformTmp = this.jqCanvasWaveform.clone();
 		var canvas = jqWaveformTmp[ 0 ];
 		canvas.getContext( "2d" ).drawImage(
