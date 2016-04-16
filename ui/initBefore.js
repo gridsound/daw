@@ -36,6 +36,7 @@ window.ui = {
 ui.gridEm = parseFloat( ui.jqGrid.css( "fontSize" ) );
 ui.files = [];
 ui.tracks = [];
+ui.samples = [];
 ui.nbTracksOn = 0;
 ui.gridColsY = ui.jqGridCols.offset().top;
 ui.jqVisualCanvas[ 0 ].height = ui.jqVisualCanvas.height();
