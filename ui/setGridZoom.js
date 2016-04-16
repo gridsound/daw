@@ -8,6 +8,9 @@ ui.setGridZoom = function( zm, xpx, ypx ) {
 	ui.gridZoom = zm;
 	ui.gridEm *= zmMul;
 	ui.jqGridEm.css( "fontSize", zm + "em" );
+	ui.jqGrid.attr( "data-sample-size",
+		ui.gridEm < 40 ? "small" :
+		ui.gridEm < 80 ? "medium" : "big" );
 	ui.setGridTop( ypx - ( -ui.gridTop + ypx ) * zmMul );
 	ui.setTrackLinesLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
 	ui.updateTimeline();
