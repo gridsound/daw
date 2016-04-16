@@ -2,14 +2,10 @@
 
 (function() {
 
-var
-	oldTool,
-	keyIsDown = false,
-	mouseIsDown = false
-;
+var mouseIsDown = false;
 
 ui.jqTrackLines.mousedown( function( e ) {
-	if ( e.button === 0 && ( keyIsDown || ui.currentTool === "hand" ) ) {
+	if ( e.button === 0 && ui.currentTool === "hand" ) {
 		mouseIsDown = true;
 		ui.jqBody.addClass( "cursor-move" );
 		ui.jqGridCols.add( ui.jqTrackLines ).addClass( "no-transition" );
@@ -18,14 +14,16 @@ ui.jqTrackLines.mousedown( function( e ) {
 
 ui.jqGrid.on( "wheel", function( e ) {
 	e = e.originalEvent;
-	if ( keyIsDown ) {
+	if ( ui.currentTool !== "hand" ) {
+		// Vertical scroll:
+		ui.setGridTop( ui.gridTop + ( e.deltaY < 0 ? .9 : -.9 ) * ui.gridEm );
+	} else {
+		// Zoom:
 		ui.setGridZoom(
 			ui.gridZoom * ( e.deltaY < 0 ? 1.1 : 0.9 ),
 			e.pageX - ui.filesWidth - ui.trackNamesWidth,
 			e.pageY - ui.gridColsY
 		);
-	} else {
-		ui.setGridTop( ui.gridTop + ( e.deltaY < 0 ? .9 : -.9 ) * ui.gridEm );
 	}
 	ui.updateGridBoxShadow();
 });
@@ -34,20 +32,6 @@ ui.jqBody.on( {
 	wheel: function( e ) {
 		if ( e.ctrlKey ) {
 			return false;
-		}
-	},
-	keydown: function( e ) {
-		// 32 -> space key
-		if ( e.keyCode === 32 && !keyIsDown ) {
-			keyIsDown = true;
-			oldTool = ui.currentTool;
-			ui.selectTool( "hand" );
-		}
-	},
-	keyup: function( e ) {
-		if ( e.keyCode === 32 && keyIsDown ) {
-			keyIsDown = false;
-			ui.selectTool( oldTool );
 		}
 	},
 	mouseup: function( e ) {

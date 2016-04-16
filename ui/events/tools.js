@@ -8,5 +8,5 @@ ui.jqBtnTools
 	})
 	.click( function() {
 		ui.selectTool( this.dataset.tool );
-	});
+	})
 ;
