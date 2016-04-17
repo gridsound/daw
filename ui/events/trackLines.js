@@ -2,11 +2,16 @@
 
 (function() {
 
-var mouseIsDown = false;
+var
+	px, py,
+	mouseIsDown = false
+;
 
 ui.jqTrackLines.mousedown( function( e ) {
 	if ( e.button === 0 && ui.currentTool === "hand" ) {
 		mouseIsDown = true;
+		px = e.pageX;
+		py = e.pageY;
 		ui.jqBody.addClass( "cursor-move" );
 		ui.jqGridCols.add( ui.jqTrackLines ).addClass( "no-transition" );
 	}
@@ -44,10 +49,12 @@ ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
 			e = e.originalEvent;
-			ui.setTrackLinesLeft( ui.trackLinesLeft + e.movementX );
-			ui.setGridTop( ui.gridTop + e.movementY );
+			ui.setTrackLinesLeft( ui.trackLinesLeft + ( e.pageX - px ) );
+			ui.setGridTop( ui.gridTop + ( e.pageY - py ) );
 			ui.updateTimeline();
 			ui.updateGridBoxShadow();
+			px = e.pageX;
+			py = e.pageY;
 		}
 	}
 });
