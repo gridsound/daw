@@ -9,9 +9,15 @@ var
 
 function mousemove( e ) {
 	if ( mouseIsDown ) {
+		var uisample = e.target.uisample;
 		switch ( ui.currentTool ) {
 			case "delete":
-				ui.deleteSample( e.target.uisample );
+				ui.deleteSample( uisample );
+			break;
+			case "mute":
+				if ( uisample ) {
+					uisample.mute();
+				}
 			break;
 		}
 	}
