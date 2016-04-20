@@ -13,9 +13,11 @@ ui.File.prototype.loaded = function() {
 		that.isLoading = false;
 		that.jqFile.removeClass( "to-load" );
 		that.jqToLoad.remove();
-		that.jqCanvasWaveform = $( wbuff.getWaveForm( 400, 50, "#39395A" ) )
-			.addClass( "waveform" );
-		that.jqFile.prepend( that.jqCanvasWaveform );
+		that.jqCanvasWaveform = $( "<canvas class='waveform'>" );
+		var canvas = that.jqCanvasWaveform[ 0 ];
+		canvas.width = 400;
+		canvas.height = 50;
+		that.jqFile.prepend( wbuff.drawWaveform( canvas, "#39395A" ) );
 		ui.playFile( that );
 	});
 };
