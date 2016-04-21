@@ -4,6 +4,8 @@ ui.Sample = function( uifile ) {
 	this.uifile = uifile;
 	this.wbuff = uifile.wbuff;
 
+	this.offsetEm = 0;
+
 	this.jqSample = $( "<div class='sample'>" );
 	this.jqWaveformWrapper = $( "<div class='waveformWrapper'>" )
 		.appendTo( this.jqSample );
@@ -16,5 +18,6 @@ ui.Sample = function( uifile ) {
 		.text( uifile.name ).appendTo( this.jqSample );
 
 	this.jqName[ 0 ].uisample =
+	this.jqWaveformWrapper[ 0 ].uisample =
 	this.jqWaveform[ 0 ].uisample = this;
 };

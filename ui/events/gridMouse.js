@@ -10,15 +10,20 @@ var
 
 function mousemove( e ) {
 	if ( mouseIsDown ) {
-		var uisample = e.target.uisample;
+		var
+			uisample = e.target.uisample,
+			mx = e.pageX - px,
+			my = e.pageY - py
+		;
+		px = e.pageX;
+		py = e.pageY;
+
 		switch ( ui.currentTool ) {
 			case "hand":
-				ui.setTrackLinesLeft( ui.trackLinesLeft + ( e.pageX - px ) );
-				ui.setGridTop( ui.gridTop + ( e.pageY - py ) );
+				ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
+				ui.setGridTop( ui.gridTop + my );
 				ui.updateTimeline();
 				ui.updateGridBoxShadow();
-				px = e.pageX;
-				py = e.pageY;
 			break;
 			case "delete":
 				ui.deleteSample( uisample );
@@ -26,6 +31,11 @@ function mousemove( e ) {
 			case "mute":
 				if ( uisample ) {
 					uisample.mute();
+				}
+			break;
+			case "slip":
+				if ( uisample ) {
+					uisample.slip( mx / ui.gridEm );
 				}
 			break;
 		}

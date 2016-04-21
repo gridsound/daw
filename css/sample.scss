@@ -88,6 +88,9 @@
 		}
 	}
 
+	#grid[data-tool="slip"] & {
+		cursor: ew-resize;
+	}
 	#grid[data-sample-size="small"] & {
 		.waveform {
 			opacity: .15;
