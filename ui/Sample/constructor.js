@@ -13,7 +13,7 @@ ui.Sample = function( uifile ) {
 	var canvas = this.jqWaveform[ 0 ];
 	canvas.width = ~~( this.wbuff.buffer.duration * 300 );
 	canvas.height = 50;
-	this.wbuff.drawWaveform( canvas, "#ddf" );
+	this.wbuff.drawWaveform( canvas, [ 0xDD, 0xDD, 0xFF, 0xFF ] );
 	this.jqName = $( "<span class='text-overflow'>" )
 		.text( uifile.name ).appendTo( this.jqSample );
 

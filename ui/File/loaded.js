@@ -17,7 +17,7 @@ ui.File.prototype.loaded = function() {
 		var canvas = that.jqCanvasWaveform[ 0 ];
 		canvas.width = 400;
 		canvas.height = 50;
-		that.jqFile.prepend( wbuff.drawWaveform( canvas, "#39395A" ) );
+		that.jqFile.prepend( wbuff.drawWaveform( canvas, [ 0x39, 0x39, 0x5A, 0xFF ] ) );
 		ui.playFile( that );
 	});
 };
