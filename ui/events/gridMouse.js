@@ -59,6 +59,11 @@ ui.jqTrackLines.on( {
 			}
 			mousemove( e );
 		}
+	},
+	mouseup: function( e ) {
+		if ( e.button === 0 && !e.ctrlKey ) {
+			ui.unselectSamples();
+		}
 	}
 });
 

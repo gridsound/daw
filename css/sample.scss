@@ -126,4 +126,10 @@
 			padding: .5em;
 		}
 	}
+
+	#grid &.selected {
+		span {
+			background: #b51818;
+		}
+	}
 }
