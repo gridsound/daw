@@ -2,7 +2,7 @@
 	display: inline-block;
 	position: relative;
 	height: 100%;
-	border: solid #333;
+	border: solid #000;
 	border-width: 0 1px;
 	background: #222;
 
@@ -34,11 +34,11 @@
 		position: absolute;
 		z-index: 3;
 		left: -1px;
-		top: 95%;
+		top: 100%;
 		width: 95px;
 		overflow: hidden;
 		box-sizing: border-box;
-		border: solid #333;
+		border: solid #000;
 		border-width: 0 1px 1px;
 		text-align: right;
 		background: rgba( #222, .5 );

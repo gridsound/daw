@@ -102,7 +102,11 @@
 		position: absolute;
 		right: 0;
 		transition-property: left;
-		@include strip-background( 90deg, 4em, #151421, #1C1C2B );
+		$c: #151525;
+		@include strip-background( 90deg, 4em,
+			lighten( $c, 8 ),
+			lighten( $c, 13 )
+		);
 	}
 	&[data-tool="hand"] .trackLines {
 		cursor: move;

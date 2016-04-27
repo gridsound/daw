@@ -5,7 +5,7 @@
 	line-height: 1em;
 
 	&.off {
-		background: rgba( 0, 0, 0, .2 );
+		background: rgba( #000, .2 );
 	}
 	.trackLines .track + & { border-top: 1px solid #090909; }
 	.trackNames .track + & { border-top: 1px solid #151515; }
