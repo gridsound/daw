@@ -20,4 +20,6 @@ ui.Sample = function( uifile ) {
 	this.jqName[ 0 ].uisample =
 	this.jqWaveformWrapper[ 0 ].uisample =
 	this.jqWaveform[ 0 ].uisample = this;
+
+	this.select( false );
 };

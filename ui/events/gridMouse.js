@@ -11,13 +11,14 @@ var
 function mousemove( e ) {
 	if ( mouseIsDown ) {
 		var
-			uisample = e.target.uisample,
+			sample = e.target.uisample,
 			mx = e.pageX - px,
 			my = e.pageY - py
 		;
 		px = e.pageX;
 		py = e.pageY;
 
+		// Tools:
 		switch ( ui.currentTool ) {
 			case "hand":
 				ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
@@ -26,16 +27,16 @@ function mousemove( e ) {
 				ui.updateGridBoxShadow();
 			break;
 			case "delete":
-				ui.deleteSample( uisample );
+				ui.deleteSample( sample );
 			break;
 			case "mute":
-				if ( uisample ) {
-					uisample.mute();
+				if ( sample ) {
+					sample.mute();
 				}
 			break;
 			case "slip":
-				if ( uisample ) {
-					uisample.slip( mx / ui.gridEm );
+				if ( sample ) {
+					sample.slip( mx / ui.gridEm );
 				}
 			break;
 		}
@@ -57,12 +58,19 @@ ui.jqTrackLines.on( {
 				oldTool = ui.currentTool;
 				ui.selectTool( "delete" );
 			}
+
+			// Sample selection:
+			if ( e.button === 0 ) {
+				if ( !e.ctrlKey ) {
+					ui.unselectSamples();
+				}
+				var sample = e.target.uisample;
+				if ( sample ) {
+					ui.selectSample( sample, !sample.selected );
+				}
+			}
+
 			mousemove( e );
-		}
-	},
-	mouseup: function( e ) {
-		if ( e.button === 0 && !e.ctrlKey ) {
-			ui.unselectSamples();
 		}
 	}
 });
