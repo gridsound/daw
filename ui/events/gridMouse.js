@@ -35,9 +35,7 @@ function mousemove( e ) {
 				}
 			break;
 			case "slip":
-				if ( sample ) {
-					sample.slip( mx / ui.gridEm );
-				}
+				ui.slipSamples( mx / ui.gridEm );
 			break;
 		}
 	}
