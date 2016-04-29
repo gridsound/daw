@@ -2,8 +2,7 @@
 
 ui.jqStop.click( function() {
 	ui.stopFile();
+	ui.playComposition( false );
 });
 
-ui.jqPlay.click( function() {
-	ui.playComposition();
-});
+ui.jqPlay.click( ui.playComposition.bind( null, true ) );

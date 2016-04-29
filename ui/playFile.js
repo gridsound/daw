@@ -7,15 +7,15 @@ var
 	jqCursor = $( "<div class='cursor'>" )
 ;
 
-ui.playComposition = function() {
-	var wsampleArr = [];
+ui.playComposition = function( b ) {
+	var wsampleArr = ui.samples.map( function( s ) { return s.wsample; } );
 
-	$.each( ui.samples, function() {
-		wsampleArr.push( this.wsample );
-	});
-
-	wa.wctx.loadSamples( wsampleArr );
-	wa.wctx.playSamples( wsampleArr );
+	if ( b ) {
+		wa.wctx.loadSamples( wsampleArr );
+		wa.wctx.playSamples( wsampleArr );
+	} else {
+		wa.wctx.stopSamples( wsampleArr );
+	}
 };
 
 ui.playFile = function( uifile ) {
@@ -34,17 +34,10 @@ ui.playFile = function( uifile ) {
 };
 
 ui.stopFile = function() {
-	var wsampleArr = [];
-	
 	if ( wsample ) {
 		wsample.stop();
 		jqCursor.detach();
 	}
-
-	$.each( ui.samples, function() {
-		wsampleArr.push( this.wsample );
-	});
-	wa.wctx.stopSamples( wsampleArr );
 };
 
 })();
