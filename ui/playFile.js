@@ -7,6 +7,17 @@ var
 	jqCursor = $( "<div class='cursor'>" )
 ;
 
+ui.playComposition = function() {
+	var wsampleArr = [];
+
+	$.each( ui.samples, function() {
+		wsampleArr.push( this.wsample );
+	});
+
+	wa.wctx.loadSamples( wsampleArr );
+	wa.wctx.playSamples( wsampleArr );
+};
+
 ui.playFile = function( uifile ) {
 	if ( wsample ) {
 		wsample.stop();
@@ -23,10 +34,17 @@ ui.playFile = function( uifile ) {
 };
 
 ui.stopFile = function() {
+	var wsampleArr = [];
+	
 	if ( wsample ) {
 		wsample.stop();
 		jqCursor.detach();
 	}
+
+	$.each( ui.samples, function() {
+		wsampleArr.push( this.wsample );
+	});
+	wa.wctx.stopSamples( wsampleArr );
 };
 
 })();
