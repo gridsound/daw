@@ -7,12 +7,17 @@ var
 	jqCursor = $( "<div class='cursor'>" )
 ;
 
-ui.playComposition = function( b ) {
-	var wsampleArr = ui.samples.map( function( s ) { return s.wsample; } );
+ui.playComposition = function( b, when ) {
+	var wsampleArr = [];
 
+	ui.samples.map( function( s ) {
+		if ( !b || !when || s.wsample.when + s.wsample.duration > when ) {
+			wsampleArr.push( s.wsample );
+		}
+	});
 	if ( b ) {
 		wa.wctx.loadSamples( wsampleArr );
-		wa.wctx.playSamples( wsampleArr );
+		wa.wctx.playSamples( wsampleArr, when );
 	} else {
 		wa.wctx.stopSamples( wsampleArr );
 	}

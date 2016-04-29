@@ -5,4 +5,6 @@ ui.jqStop.click( function() {
 	ui.playComposition( false );
 });
 
-ui.jqPlay.click( ui.playComposition.bind( null, true ) );
+ui.jqPlay.click( function() {
+	ui.playComposition( true );
+});
