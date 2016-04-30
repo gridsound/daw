@@ -5,6 +5,9 @@ window.wa = {};
 wa.wctx = new walContext();
 wa.ctx = wa.wctx.ctx;
 
+wa.startedTime = 0;
+wa.pausedOffset = 0;
+wa.isPlaying = false;
 wa.analyser = wa.ctx.createAnalyser();
 wa.analyser.fftSize = 1024;
 wa.wctx.filters.pushBack( wa.analyser );

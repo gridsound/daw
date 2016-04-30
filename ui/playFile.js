@@ -4,22 +4,53 @@
 
 var
 	wsample,
-	jqCursor = $( "<div class='cursor'>" )
+	jqCursor = $( "<div class='cursor'>" ),
+	lastSample
 ;
 
-ui.playComposition = function( b, when ) {
+function getActiveSamples( b, when ) {
 	var wsampleArr = [];
 
-	ui.samples.map( function( s ) {
-		if ( !b || !when || s.wsample.when + s.wsample.duration > when ) {
-			wsampleArr.push( s.wsample );
+	$.each( ui.samples, function() {
+		if ( !when || this.wsample.when + this.wsample.duration > when ) {
+			wsampleArr.push( this.wsample );
 		}
 	});
-	if ( b ) {
+	return wsampleArr;
+}
+
+ui.playComposition = function( when ) {
+	if ( !wa.isPlaying ) {
+		var	wsampleArr = getActiveSamples( when );
+
+		lastSample = wa.wctx.getLastSample( wsampleArr );
+		lastSample.onended( function() {
+			wa.startedTime = 0;
+			wa.pausedOffset = 0;
+			wa.isPlaying = false;
+		});
 		wa.wctx.loadSamples( wsampleArr );
+		wa.startedTime = wa.wctx.ctx.currentTime;
 		wa.wctx.playSamples( wsampleArr, when );
-	} else {
+		wa.isPlaying = true;
+	}
+};
+
+ui.stopComposition = function() {
+	var wsampleArr = getActiveSamples( wa.wctx.ctx.currentTime );
+	wa.wctx.stopSamples( wsampleArr );
+	wa.startedTime = 0;
+	wa.pausedOffset = 0;
+	wa.isPlaying = false;
+};
+
+ui.pauseComposition = function() {
+	if ( wa.isPlaying ) {
+		var wsampleArr = getActiveSamples( wa.pausedOffset );
+		wa.pausedOffset += wa.wctx.ctx.currentTime - wa.startedTime;
+		lastSample.onended( function() {} );
 		wa.wctx.stopSamples( wsampleArr );
+		wa.isPlaying = false;
 	}
 };
 

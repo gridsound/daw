@@ -2,9 +2,9 @@
 
 ui.jqStop.click( function() {
 	ui.stopFile();
-	ui.playComposition( false );
+	ui.stopComposition();
 });
 
-ui.jqPlay.click( function() {
-	ui.playComposition( true );
+ui.jqPlay.click( function( b ) {
+	ui.playComposition( wa.pausedOffset );
 });
