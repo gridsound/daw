@@ -77,7 +77,7 @@ ui.jqTrackLines.on( {
 			}
 
 			// Sample selection:
-			if ( ui.currentTool === "paint" ) {
+			if ( ui.currentTool === "select" ) {
 				var sample = e.target.uisample;
 				if ( !e.shiftKey ) {
 					ui.samplesUnselect();

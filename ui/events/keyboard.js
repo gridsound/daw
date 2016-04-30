@@ -5,7 +5,8 @@
 var
 	oldTool,
 	shortcuts = {
-		16: "paint",  // Shift
+		16: "select", // Shift
+		86: "select", // V
 		66: "paint",  // B
 		32: "hand",   // Space
 		72: "hand",   // H
