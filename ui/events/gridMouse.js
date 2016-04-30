@@ -48,6 +48,16 @@ function mousemove( e ) {
 	}
 }
 
+function setBackOldTool() {
+	if ( oldTool ) {
+		ui.selectTool( oldTool );
+		oldTool = null;
+	}
+	mouseIsDown = false;
+}
+
+ui.jqWindow.blur( setBackOldTool );
+
 ui.jqTrackLines.on( {
 	contextmenu: false,
 	mousedown: function( e ) {
@@ -85,11 +95,8 @@ ui.jqTrackLines.on( {
 ui.jqBody.on( {
 	mousemove: mousemove,
 	mouseup: function( e ) {
-		if ( e.button === 2 && oldTool ) {
-			ui.selectTool( oldTool );
-		}
+		setBackOldTool();
 		ui.jqBody.removeClass( "cursor-move" );
-		mouseIsDown = false;
 	}
 });
 

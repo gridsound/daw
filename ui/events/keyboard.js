@@ -16,6 +16,15 @@ var
 	}
 ;
 
+function setBackOldTool() {
+	if ( oldTool ) {
+		ui.selectTool( oldTool );
+		oldTool = null;
+	}
+}
+
+ui.jqWindow.blur( setBackOldTool );
+
 ui.jqBody
 	.keydown( function( e ) {
 		// lg( "keyCode: " + e.keyCode );
@@ -28,10 +37,8 @@ ui.jqBody
 		}
 	})
 	.keyup( function( e ) {
-		e = e.keyCode;
-		if ( oldTool && ( e === 16 || e === 32 ) ) {
-			ui.selectTool( oldTool );
-			oldTool = null;
+		if ( e.keyCode === 16 || e.keyCode === 32 ) {
+			setBackOldTool();
 		}
 	})
 ;
