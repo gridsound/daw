@@ -27,7 +27,7 @@ function mousemove( e ) {
 				ui.updateGridBoxShadow();
 			break;
 			case "delete":
-				ui.deleteSample( sample );
+				ui.sampleDelete( sample );
 			break;
 			case "mute":
 				if ( sample ) {
@@ -36,7 +36,7 @@ function mousemove( e ) {
 			break;
 			case "slip":
 				if ( sample ) {
-					ui.slipSamples( sample, mx / ui.gridEm );
+					ui.samplesSlip( sample, mx / ui.gridEm );
 				}
 			break;
 		}
@@ -65,10 +65,10 @@ ui.jqTrackLines.on( {
 			if ( ui.currentTool === "paint" ) {
 				var sample = e.target.uisample;
 				if ( !e.shiftKey ) {
-					ui.unselectSamples();
+					ui.samplesUnselect();
 				}
 				if ( sample ) {
-					ui.selectSample( sample, !sample.selected );
+					ui.sampleSelect( sample, !sample.selected );
 				}
 			}
 

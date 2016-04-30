@@ -1,6 +1,6 @@
 "use strict";
 
-ui.slipSamples = function( sample, mx ) {
+ui.samplesSlip = function( sample, mx ) {
 	if ( sample.selected ) {
 		ui.selectedSamples.forEach( function( s ) {
 			s.slip( mx );

@@ -1,8 +1,8 @@
 "use strict";
 
-ui.deleteSample = function( sample ) {
+ui.sampleDelete = function( sample ) {
 	if ( sample ) {
-		ui.selectSample( sample, false );
+		ui.sampleSelect( sample, false );
 		ui.samples.splice( ui.samples.indexOf( sample ), 1 );
 		sample.delete();
 	}

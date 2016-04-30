@@ -1,6 +1,6 @@
 "use strict";
 
-ui.selectSample = function( sample, b ) {
+ui.sampleSelect = function( sample, b ) {
 	if ( sample && sample.selected !== b ) {
 		sample.select( b );
 		if ( b ) {
@@ -9,11 +9,4 @@ ui.selectSample = function( sample, b ) {
 			ui.selectedSamples.splice( ui.selectedSamples.indexOf( sample ), 1 );
 		}
 	}
-};
-
-ui.unselectSamples = function() {
-	ui.selectedSamples.forEach( function( sample ) {
-		sample.select( false );
-	});
-	ui.selectedSamples = [];
 };
