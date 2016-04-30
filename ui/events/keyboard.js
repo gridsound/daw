@@ -5,6 +5,7 @@
 var
 	oldTool,
 	shortcuts = {
+		16: "paint",  // Shift
 		66: "paint",  // B
 		32: "hand",   // Space
 		72: "hand",   // H
@@ -20,14 +21,15 @@ ui.jqBody
 		// lg( "keyCode: " + e.keyCode );
 		var tool = shortcuts[ e.keyCode ];
 		if ( tool && tool !== ui.currentTool ) {
-			if ( e.keyCode === 32 ) {
+			if ( e.keyCode === 16 || e.keyCode === 32 ) {
 				oldTool = ui.currentTool;
 			}
 			ui.selectTool( tool );
 		}
 	})
 	.keyup( function( e ) {
-		if ( oldTool && e.keyCode === 32 ) {
+		e = e.keyCode;
+		if ( oldTool && ( e === 16 || e === 32 ) ) {
 			ui.selectTool( oldTool );
 			oldTool = null;
 		}

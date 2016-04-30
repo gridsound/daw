@@ -35,7 +35,9 @@ function mousemove( e ) {
 				}
 			break;
 			case "slip":
-				ui.slipSamples( mx / ui.gridEm );
+				if ( sample ) {
+					ui.slipSamples( sample, mx / ui.gridEm );
+				}
 			break;
 		}
 	}
@@ -48,6 +50,8 @@ ui.jqTrackLines.on( {
 			mouseIsDown = true;
 			px = e.pageX;
 			py = e.pageY;
+
+			// Special cases:
 			if ( e.button === 0 ) {
 				if ( ui.currentTool === "hand" ) {
 					ui.jqBody.addClass( "cursor-move" );
@@ -58,11 +62,11 @@ ui.jqTrackLines.on( {
 			}
 
 			// Sample selection:
-			if ( e.button === 0 ) {
-				if ( !e.ctrlKey ) {
+			if ( ui.currentTool === "paint" ) {
+				var sample = e.target.uisample;
+				if ( !e.shiftKey ) {
 					ui.unselectSamples();
 				}
-				var sample = e.target.uisample;
 				if ( sample ) {
 					ui.selectSample( sample, !sample.selected );
 				}

@@ -1,7 +1,11 @@
 "use strict";
 
-ui.slipSamples = function( mx ) {
-	ui.selectedSamples.forEach( function( sample ) {
+ui.slipSamples = function( sample, mx ) {
+	if ( sample.selected ) {
+		ui.selectedSamples.forEach( function( s ) {
+			s.slip( mx );
+		});
+	} else {
 		sample.slip( mx );
-	});
+	}
 };

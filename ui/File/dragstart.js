@@ -22,8 +22,7 @@ ui.jqBody
 			xem /= ui.gridEm;
 			jqWaveformTmp.remove();
 			if ( trackId >= 0 && xem >= 0 ) {
-				ui.unselectSamples();
-				ui.selectSample( ui.newSample( uifileDragging, trackId, xem ), true );
+				ui.newSample( uifileDragging, trackId, xem );
 			}
 			uifileDragging = null;
 		}
