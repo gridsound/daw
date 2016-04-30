@@ -20,6 +20,11 @@ function mousemove( e ) {
 
 		// Tools:
 		switch ( ui.currentTool ) {
+			case "paint":
+				if ( sample ) {
+					ui.samplesMoveX( sample, mx / ui.gridEm );
+				}
+			break;
 			case "hand":
 				ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
 				ui.setGridTop( ui.gridTop + my );
