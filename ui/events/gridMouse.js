@@ -4,49 +4,8 @@
 
 var
 	mouseIsDown,
-	oldTool,
-	px = 0, py = 0
+	oldTool
 ;
-
-function mousemove( e ) {
-	if ( mouseIsDown ) {
-		var
-			sample = e.target.uisample,
-			mx = e.pageX - px,
-			my = e.pageY - py
-		;
-		px = e.pageX;
-		py = e.pageY;
-
-		// Tools:
-		switch ( ui.currentTool ) {
-			case "paint":
-				if ( sample ) {
-					ui.samplesMoveX( sample, mx / ui.gridEm );
-				}
-			break;
-			case "hand":
-				ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
-				ui.setGridTop( ui.gridTop + my );
-				ui.updateTimeline();
-				ui.updateGridBoxShadow();
-			break;
-			case "delete":
-				ui.sampleDelete( sample );
-			break;
-			case "mute":
-				if ( sample ) {
-					sample.mute();
-				}
-			break;
-			case "slip":
-				if ( sample ) {
-					ui.samplesSlip( sample, mx / ui.gridEm );
-				}
-			break;
-		}
-	}
-}
 
 function setBackOldTool() {
 	if ( oldTool ) {
@@ -58,15 +17,25 @@ function setBackOldTool() {
 
 ui.jqWindow.blur( setBackOldTool );
 
+ui.jqBody.on( {
+	mousemove: function( e ) {
+		if ( mouseIsDown ) {
+			ui.tool[ ui.currentTool ].mousemove( e );
+		}
+	},
+	mouseup: function( e ) {
+		if ( mouseIsDown ) {
+			ui.tool[ ui.currentTool ].mouseup( e );
+			setBackOldTool();
+		}
+	}
+});
+
 ui.jqTrackLines.on( {
 	contextmenu: false,
 	mousedown: function( e ) {
 		if ( !mouseIsDown ) {
 			mouseIsDown = true;
-			px = e.pageX;
-			py = e.pageY;
-
-			// Special cases:
 			if ( e.button === 0 ) {
 				if ( ui.currentTool === "hand" ) {
 					ui.jqBody.addClass( "cursor-move" );
@@ -75,28 +44,8 @@ ui.jqTrackLines.on( {
 				oldTool = ui.currentTool;
 				ui.selectTool( "delete" );
 			}
-
-			// Sample selection:
-			if ( ui.currentTool === "select" ) {
-				var sample = e.target.uisample;
-				if ( !e.shiftKey ) {
-					ui.samplesUnselect();
-				}
-				if ( sample ) {
-					ui.sampleSelect( sample, !sample.selected );
-				}
-			}
-
-			mousemove( e );
+			ui.tool[ ui.currentTool ].mousedown( e );
 		}
-	}
-});
-
-ui.jqBody.on( {
-	mousemove: mousemove,
-	mouseup: function( e ) {
-		setBackOldTool();
-		ui.jqBody.removeClass( "cursor-move" );
 	}
 });
 

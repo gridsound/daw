@@ -35,6 +35,7 @@ window.ui = {
 };
 
 ui.gridEm = parseFloat( ui.jqGrid.css( "fontSize" ) );
+ui.tool = {};
 ui.files = [];
 ui.tracks = [];
 ui.samples = [];
