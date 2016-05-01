@@ -2,21 +2,18 @@
 
 (function() {
 
-var sampleSave,
-	px = 0;
+var sampleSave;
 
 ui.tool.slip = {
 	mousedown: function( e, sample ) {
 		sampleSave = sample;
-		px = e.pageX;
 	},
 	mouseup: function() {
 		sampleSave = null;
 	},
-	mousemove: function( e ) {
+	mousemove: function( e, sample, mx ) {
 		if ( sampleSave ) {
-			ui.samplesSlip( sampleSave, ( e.pageX - px ) / ui.gridEm );
-			px = e.pageX;
+			ui.samplesSlip( sampleSave, mx / ui.gridEm );
 		}
 	}
 };

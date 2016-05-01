@@ -4,7 +4,8 @@
 
 var
 	mouseIsDown,
-	oldTool
+	oldTool,
+	px = 0, py = 0
 ;
 
 function setBackOldTool() {
@@ -20,7 +21,13 @@ ui.jqWindow.blur( setBackOldTool );
 ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
-			ui.tool[ ui.currentTool ].mousemove( e, e.target.uisample );
+			ui.tool[ ui.currentTool ].mousemove(
+				e, e.target.uisample,
+				e.pageX - px,
+				e.pageY - py
+			);
+			px = e.pageX;
+			py = e.pageY;
 		}
 	},
 	mouseup: function( e ) {
@@ -36,6 +43,8 @@ ui.jqTrackLines.on( {
 	mousedown: function( e ) {
 		if ( !mouseIsDown ) {
 			mouseIsDown = true;
+			px = e.pageX;
+			py = e.pageY;
 			if ( e.button === 0 ) {
 				if ( ui.currentTool === "hand" ) {
 					ui.jqBody.addClass( "cursor-move" );
