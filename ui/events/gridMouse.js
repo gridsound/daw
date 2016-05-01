@@ -21,18 +21,20 @@ ui.jqWindow.blur( setBackOldTool );
 ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
-			ui.tool[ ui.currentTool ].mousemove(
-				e, e.target.uisample,
-				e.pageX - px,
-				e.pageY - py
-			);
+			var fn = ui.tool[ ui.currentTool ].mousemove;
+			if ( fn ) {
+				fn( e, e.target.uisample, e.pageX - px, e.pageY - py );
+			}
 			px = e.pageX;
 			py = e.pageY;
 		}
 	},
 	mouseup: function( e ) {
 		if ( mouseIsDown ) {
-			ui.tool[ ui.currentTool ].mouseup( e, e.target.uisample );
+			var fn = ui.tool[ ui.currentTool ].mouseup;
+			if ( fn ) {
+				fn( e, e.target.uisample );
+			}
 			setBackOldTool();
 		}
 	}
@@ -53,7 +55,10 @@ ui.jqTrackLines.on( {
 				oldTool = ui.currentTool;
 				ui.selectTool( "delete" );
 			}
-			ui.tool[ ui.currentTool ].mousedown( e, e.target.uisample );
+			var fn = ui.tool[ ui.currentTool ].mousedown;
+			if ( fn ) {
+				fn( e, e.target.uisample );
+			}
 		}
 	}
 });
