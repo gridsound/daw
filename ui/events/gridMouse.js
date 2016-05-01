@@ -18,6 +18,25 @@ function setBackOldTool() {
 
 ui.jqWindow.blur( setBackOldTool );
 
+ui.jqTrackLines.on( {
+	contextmenu: false,
+	mousedown: function( e ) {
+		if ( !mouseIsDown ) {
+			mouseIsDown = true;
+			px = e.pageX;
+			py = e.pageY;
+			if ( e.button === 2 ) {
+				oldTool = ui.currentTool;
+				ui.selectTool( "delete" );
+			}
+			var fn = ui.tool[ ui.currentTool ].mousedown;
+			if ( fn ) {
+				fn( e, e.target.uisample );
+			}
+		}
+	}
+});
+
 ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
@@ -36,29 +55,6 @@ ui.jqBody.on( {
 				fn( e, e.target.uisample );
 			}
 			setBackOldTool();
-		}
-	}
-});
-
-ui.jqTrackLines.on( {
-	contextmenu: false,
-	mousedown: function( e ) {
-		if ( !mouseIsDown ) {
-			mouseIsDown = true;
-			px = e.pageX;
-			py = e.pageY;
-			if ( e.button === 0 ) {
-				if ( ui.currentTool === "hand" ) {
-					ui.jqBody.addClass( "cursor-move" );
-				}
-			} else if ( e.button === 2 ) {
-				oldTool = ui.currentTool;
-				ui.selectTool( "delete" );
-			}
-			var fn = ui.tool[ ui.currentTool ].mousedown;
-			if ( fn ) {
-				fn( e, e.target.uisample );
-			}
 		}
 	}
 });

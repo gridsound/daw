@@ -1,6 +1,9 @@
 "use strict";
 
 ui.tool.hand = {
+	mousedown: function() {
+		ui.jqBody.addClass( "cursor-move" );
+	},
 	mouseup: function() {
 		ui.jqBody.removeClass( "cursor-move" );
 	},
