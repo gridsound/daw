@@ -20,12 +20,12 @@ ui.jqWindow.blur( setBackOldTool );
 ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
-			ui.tool[ ui.currentTool ].mousemove( e );
+			ui.tool[ ui.currentTool ].mousemove( e, e.target.uisample );
 		}
 	},
 	mouseup: function( e ) {
 		if ( mouseIsDown ) {
-			ui.tool[ ui.currentTool ].mouseup( e );
+			ui.tool[ ui.currentTool ].mouseup( e, e.target.uisample );
 			setBackOldTool();
 		}
 	}
@@ -44,7 +44,7 @@ ui.jqTrackLines.on( {
 				oldTool = ui.currentTool;
 				ui.selectTool( "delete" );
 			}
-			ui.tool[ ui.currentTool ].mousedown( e );
+			ui.tool[ ui.currentTool ].mousedown( e, e.target.uisample );
 		}
 	}
 });

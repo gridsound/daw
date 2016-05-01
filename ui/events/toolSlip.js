@@ -2,16 +2,20 @@
 
 (function() {
 
-var px = 0;
+var sampleSave,
+	px = 0;
 
 ui.tool.slip = {
-	mouseup: function() {},
-	mousedown: function( e ) {
+	mousedown: function( e, sample ) {
+		sampleSave = sample;
 		px = e.pageX;
 	},
+	mouseup: function() {
+		sampleSave = null;
+	},
 	mousemove: function( e ) {
-		if ( e.target.uisample ) {
-			ui.samplesSlip( e.target.uisample, ( e.pageX - px ) / ui.gridEm );
+		if ( sampleSave ) {
+			ui.samplesSlip( sampleSave, ( e.pageX - px ) / ui.gridEm );
 			px = e.pageX;
 		}
 	}

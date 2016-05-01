@@ -3,8 +3,7 @@
 ui.tool.select = {
 	mouseup: function() {},
 	mousemove: function() {},
-	mousedown: function( e ) {
-		var sample = e.target.uisample;
+	mousedown: function( e, sample ) {
 		if ( !e.shiftKey ) {
 			ui.samplesUnselect();
 		}

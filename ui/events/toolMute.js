@@ -2,14 +2,14 @@
 
 ui.tool.mute = {
 	mouseup: function() {},
-	mousedown: function( e ) {
-		if ( e.target.uisample ) {
-			e.target.uisample.mute();
+	mousedown: function( e, sample ) {
+		if ( sample ) {
+			sample.mute();
 		}
 	},
-	mousemove: function( e ) {
-		if ( e.target.uisample ) {
-			e.target.uisample.mute();
+	mousemove: function( e, sample ) {
+		if ( sample ) {
+			sample.mute();
 		}
 	}
 };

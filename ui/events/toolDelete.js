@@ -2,10 +2,10 @@
 
 ui.tool.delete = {
 	mouseup: function() {},
-	mousedown: function( e ) {
-		ui.sampleDelete( e.target.uisample );
+	mousedown: function( e, sample ) {
+		ui.sampleDelete( sample );
 	},
-	mousemove: function( e ) {
-		ui.sampleDelete( e.target.uisample );
+	mousemove: function( e, sample ) {
+		ui.sampleDelete( sample );
 	}
 };

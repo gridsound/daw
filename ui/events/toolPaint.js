@@ -2,16 +2,20 @@
 
 (function() {
 
-var px = 0;
+var sampleSave,
+	px = 0;
 
 ui.tool.paint = {
-	mouseup: function() {},
-	mousedown: function( e ) {
+	mousedown: function( e, sample ) {
+		sampleSave = sample;
 		px = e.pageX;
 	},
+	mouseup: function() {
+		sampleSave = null;
+	},
 	mousemove: function( e ) {
-		if ( e.target.uisample ) {
-			ui.samplesMoveX( e.target.uisample, ( e.pageX - px ) / ui.gridEm );
+		if ( sampleSave ) {
+			ui.samplesMoveX( sampleSave, ( e.pageX - px ) / ui.gridEm );
 			px = e.pageX;
 		}
 	}
