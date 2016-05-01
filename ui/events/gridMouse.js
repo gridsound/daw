@@ -37,6 +37,17 @@ ui.jqTrackLines.on( {
 	}
 });
 
+ui.jqGrid.on( "wheel", function( e ) {
+	e = e.originalEvent;
+	if ( ui.currentTool === "zoom" ) {
+		ui.tool.zoom.wheel( e );
+	} else {
+		// Vertical scroll:
+		ui.setGridTop( ui.gridTop + ( e.deltaY < 0 ? .9 : -.9 ) * ui.gridEm );
+	}
+	ui.updateGridBoxShadow();
+});
+
 ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
@@ -55,6 +66,11 @@ ui.jqBody.on( {
 				fn( e, e.target.uisample );
 			}
 			setBackOldTool();
+		}
+	},
+	wheel: function( e ) {
+		if ( e.ctrlKey ) {
+			return false;
 		}
 	}
 });
