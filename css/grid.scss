@@ -98,15 +98,44 @@
 		right: 0;
 	}
 
+	.trackLinesBg {
+		position: absolute;
+		width: 200%;
+		top: 0;
+		height: 99999px;
+		$c: #252540;
+		background: $c;
+
+		* {
+			display: inline-block;
+			box-sizing: border-box;
+			height: 100%;
+			& + * {
+				border-left: 1px solid;
+			}
+		}
+		> * {
+			width: 4em;
+			border-color: #0a0a0a;
+			&:nth-child( odd ) {
+				background: lighten( $c, 5 );
+			}
+
+			* {
+				width: 25%;
+			}
+			> * {
+				border-color: rgba( #000, .5 );
+				* {
+					border-color: rgba( #000, .2 );
+				}
+			}
+		}
+	}
 	.trackLines {
 		position: absolute;
 		right: 0;
 		transition-property: left;
-		$c: #151525;
-		@include strip-background( 90deg, 4em,
-			lighten( $c, 8 ),
-			lighten( $c, 13 )
-		);
 	}
 	&[data-tool="hand"] .trackLines {
 		cursor: move;

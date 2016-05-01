@@ -31,6 +31,7 @@ window.ui = {
 	jqGridColB: $( "#grid .colB" ),
 	jqTrackNames: $( "#grid .trackNames" ),
 	jqTrackLines: $( "#grid .trackLines" ),
+	jqTrackLinesBg: $( "#grid .trackLinesBg" ),
 	jqTrackNamesExtend: $( "#grid .trackNames .extend" )
 };
 

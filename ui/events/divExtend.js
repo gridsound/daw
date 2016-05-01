@@ -9,13 +9,10 @@ var
 		files: function( e ) {
 			var w = e.pageX;
 			ui.setFilesWidth( w < 35 ? 0 : w );
-			ui.updateTimeline();
 		},
 		trackNames: function( e ) {
 			var w = e.pageX - ui.jqGrid.offset().left;
 			ui.setTrackNamesWidth( w < 35 ? 0 : w );
-			ui.updateTimeline();
-			ui.updateGridBoxShadow();
 		}
 	}
 ;

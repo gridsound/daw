@@ -9,4 +9,6 @@ ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
 
+ui.updateTrackLinesBg();
+
 ui.jqBtnTools.filter( "[data-tool='paint']" ).click();

@@ -11,6 +11,7 @@ ui.tool.hand = {
 		ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
 		ui.setGridTop( ui.gridTop + my );
 		ui.updateTimeline();
+		ui.updateTrackLinesBg();
 		ui.updateGridBoxShadow();
 	}
 };
