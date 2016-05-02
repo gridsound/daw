@@ -9,7 +9,7 @@ var
 ;
 
 ui.playComposition = function( fromTime ) {
-	if ( !wa.isPlaying ) {
+	if ( wa.composition.wSamples.length && !wa.isPlaying ) {
 		lastSample = wa.composition.getLastSample();
 		lastSample.onended( function() {
 			wa.startedTime = 0;
@@ -24,14 +24,16 @@ ui.playComposition = function( fromTime ) {
 };
 
 ui.stopComposition = function() {
-	wa.composition.stopSamples();
-	wa.startedTime = 0;
-	wa.pausedOffset = 0;
-	wa.isPlaying = false;
+	if ( wa.composition.wSamples.length ) {
+		wa.composition.stopSamples();
+		wa.startedTime = 0;
+		wa.pausedOffset = 0;
+		wa.isPlaying = false;
+	}
 };
 
 ui.pauseComposition = function() {
-	if ( wa.isPlaying ) {
+	if ( wa.composition.wSamples.length && wa.isPlaying ) {
 		wa.pausedOffset += wa.wctx.ctx.currentTime - wa.startedTime;
 		lastSample = wa.composition.getLastSample();
 		lastSample.onended( function() {} );
