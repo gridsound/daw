@@ -13,10 +13,10 @@ ui.tool.paint = {
 			if ( ui.isMagnetized ) {
 				if ( sampleSave.selected ) {
 					ui.selectedSamples.forEach( function( s ) {
-						s.xem = s.xemMagnet;
+						s.xemMouse = s.xemMagnet;
 					});
 				} else {
-					sampleSave.xem = sampleSave.xemMagnet;
+					sampleSave.xemMouse = sampleSave.xemMagnet;
 				}
 			}
 			sampleSave = null;

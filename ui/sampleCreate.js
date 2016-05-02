@@ -6,7 +6,7 @@ ui.sampleCreate = function( uifile, trackId, xem ) {
 		.moveX( xem )
 		.updateWidth();
 	if ( ui.isMagnetized ) {
-		sample.xem = sample.xemMagnet;
+		sample.xemMouse = sample.xemMagnet;
 	}
 	ui.samples.push( sample );
 	return sample;
