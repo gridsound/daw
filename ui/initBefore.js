@@ -17,7 +17,8 @@ window.ui = {
 	jqBpmInt: $( "#menu .bpm .int" ),
 	jqBpmDec: $( "#menu .bpm .dec" ),
 	jqBpmList: $( "#menu .bpm-list" ),
-	jqBtnTools: $( "#menu .tools .btn" ),
+	jqBtnTools: $( "#menu .tools [data-tool]" ),
+	jqBtnMagnet: $( "#menu .tools .magnet" ),
 
 	jqFiles: $( "#files" ),
 	jqFilelist: $( "#files .filelist" ),

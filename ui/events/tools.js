@@ -1,5 +1,7 @@
 "use strict";
 
+ui.jqBtnMagnet.click( ui.toggleMagnetism );
+
 ui.jqBtnTools.tool = {};
 
 ui.jqBtnTools

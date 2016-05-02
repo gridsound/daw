@@ -32,12 +32,17 @@ ui.jqBody
 	.keydown( function( e ) {
 		// lg( "keyCode: " + e.keyCode );
 		e = e.keyCode;
-		var tool = shortcuts[ e ];
-		if ( tool && tool !== ui.currentTool ) {
-			if ( e === 16 || e === 17 || e === 32 ) {
-				oldTool = ui.currentTool;
+		if ( e === 8 ) {
+			ui.toggleMagnetism();
+			return false;
+		} else {
+			var tool = shortcuts[ e ];
+			if ( tool && tool !== ui.currentTool ) {
+				if ( e === 16 || e === 17 || e === 32 ) {
+					oldTool = ui.currentTool;
+				}
+				ui.selectTool( tool );
 			}
-			ui.selectTool( tool );
 		}
 	})
 	.keyup( function( e ) {

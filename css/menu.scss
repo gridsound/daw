@@ -52,11 +52,11 @@
 		font-size: 24px;
 		line-height: 1em;
 		height: auto;
-		background: #666;
 
 		.btn {
 			line-height: 1em;
 			width: 1em;
+			border: 0 solid #1C1C27;
 			$c: #142B3C;
 			@include lighten( $c );
 
@@ -64,11 +64,16 @@
 				background: lighten( $c, 20% );
 			}
 			& + * {
-				border-left: 1px solid #1C1C27;
+				border-left-width: 1px;
 			}
 			&:before {
 				font-size: 14px;
 			}
+		}
+
+		.magnet {
+			margin-right: 3px;
+			border-right-width: 1px;
 		}
 	}
 }
