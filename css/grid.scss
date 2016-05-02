@@ -108,10 +108,10 @@
 
 		* {
 			display: inline-block;
-			box-sizing: border-box;
 			height: 100%;
 			& + * {
 				border-left: 1px solid;
+				margin-left: -1px;
 			}
 		}
 		> * {
