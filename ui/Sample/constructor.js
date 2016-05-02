@@ -3,6 +3,7 @@
 ui.Sample = function( uifile ) {
 	var canvas, ctx, img;
 
+	this.xemMagnet = 0;
 	this.uifile = uifile;
 	this.wbuff = uifile.wbuff;
 	this.offsetEm = 0;
