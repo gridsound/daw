@@ -9,7 +9,16 @@ ui.tool.paint = {
 		sampleSave = sample;
 	},
 	mouseup: function() {
-		sampleSave = null;
+		if ( sampleSave ) {
+			if ( sampleSave.selected ) {
+				ui.selectedSamples.forEach( function( s ) {
+					s.xem = s.xemMagnet;
+				});
+			} else {
+				sampleSave.xem = sampleSave.xemMagnet;
+			}
+			sampleSave = null;
+		}
 	},
 	mousemove: function( e, sample, mx, my ) {
 		if ( sampleSave ) {
