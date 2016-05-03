@@ -4,6 +4,7 @@ window.wa = {};
 
 wa.wctx = new walContext();
 wa.ctx = wa.wctx.ctx;
+wa.composition = wa.wctx.createComposition();
 
 wa.startedTime = 0;
 wa.pausedOffset = 0;
