@@ -10,15 +10,7 @@ ui.tool.paint = {
 	},
 	mouseup: function() {
 		if ( sampleSave ) {
-			if ( ui.isMagnetized ) {
-				if ( sampleSave.selected ) {
-					ui.selectedSamples.forEach( function( s ) {
-						s.xemMouse = s.xemMagnet;
-					});
-				} else {
-					sampleSave.xemMouse = sampleSave.xemMagnet;
-				}
-			}
+			ui.samplesFixPosition( sampleSave );
 			sampleSave = null;
 		}
 	},
