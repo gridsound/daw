@@ -8,7 +8,7 @@ var
 	lastSample
 ;
 
-ui.playComposition = function( fromTime ) {
+ui.playComposition = function( compoOffset ) {
 	if ( wa.composition.wSamples.length && !wa.isPlaying ) {
 		lastSample = wa.composition.getLastSample();
 		lastSample.onended( function() {
@@ -16,9 +16,9 @@ ui.playComposition = function( fromTime ) {
 			wa.pausedOffset = 0;
 			wa.isPlaying = false;
 		});
-		wa.composition.loadSamples( fromTime );
+		wa.composition.loadSamples( compoOffset );
 		wa.startedTime = wa.wctx.ctx.currentTime;
-		wa.composition.playSamples( fromTime );
+		wa.composition.playSamples( compoOffset );
 		wa.isPlaying = true;
 	}
 };
