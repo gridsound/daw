@@ -9,7 +9,7 @@ ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
 ui.toggleMagnetism( true );
-ui.setTimeCursor( 1 );
+ui.setTimeCursor( 0 );
 
 ui.updateTrackLinesBg();
 
