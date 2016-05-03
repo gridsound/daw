@@ -98,6 +98,21 @@
 		right: 0;
 	}
 
+	.timeCursor {
+		position: absolute;
+		height: 100%;
+		width: 1px;
+		margin-left: -1px;
+		background: rgba( #ffa, .4 );
+		box-shadow: -2px 0 10px #50ff00;
+		opacity: 0;
+		transition: opacity .2s;
+
+		&.visible {
+			opacity: 1;
+		}
+	}
+
 	.trackLinesBg {
 		position: absolute;
 		width: 200%;

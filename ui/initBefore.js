@@ -27,6 +27,7 @@ window.ui = {
 	jqGridEm: $( "#grid .emWrapper" ),
 	jqGridHeader: $( "#grid .header" ),
 	jqTimeline: $( "#grid .timeline" ),
+	jqTimeCursor: $( "#grid .timeCursor" ),
 	jqTrackList: $( "#grid .trackList" ),
 	jqGridCols: $( "#grid .cols" ),
 	jqGridColB: $( "#grid .colB" ),

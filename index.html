@@ -36,7 +36,6 @@
 	</div>
 	<div class="tools">
 		<a data-option="magnet" class="btn fa fa-fw fa-magnet magnet" title="Toggle magnetism (Backspace)"></a>
-
 		<a data-tool="select" class="btn fa fa-fw fa-mouse-pointer" title="Select (V)"></a>
 		<a data-tool="paint"  class="btn fa fa-fw fa-paint-brush" title="Paint (B)"></a>
 		<a data-tool="delete" class="btn fa fa-fw fa-eraser" title="Delete (D)"></a>
@@ -69,7 +68,9 @@
 				</div>
 				<div class="colB">
 					<div class="trackLinesBg"></div>
-					<div class="trackLines"></div>
+					<div class="trackLines">
+						<div class="timeCursor"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -103,6 +104,7 @@
 <script src="ui/setGridTop.js"></script>
 <script src="ui/setGridZoom.js"></script>
 <script src="ui/setFilesWidth.js"></script>
+<script src="ui/setTimeCursor.js"></script>
 <script src="ui/setTrackLinesLeft.js"></script>
 <script src="ui/setTrackNamesWidth.js"></script>
 <script src="ui/updateTimeline.js"></script>
