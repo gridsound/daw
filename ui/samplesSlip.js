@@ -1,11 +1,14 @@
 "use strict";
 
-ui.samplesSlip = function( sample, mx ) {
+ui.samplesSlip = function( sample, mxem ) {
+	mxem /= ui.BPMem;
+	function slip( s ) {
+		s.slip( s.offset + mxem );
+	}
+
 	if ( sample.selected ) {
-		ui.selectedSamples.forEach( function( s ) {
-			s.slip( mx );
-		});
+		ui.selectedSamples.forEach( slip );
 	} else {
-		sample.slip( mx );
+		slip( sample );
 	}
 };

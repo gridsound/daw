@@ -6,7 +6,7 @@ ui.Sample = function( uifile ) {
 	this.xemMagnet = 0;
 	this.uifile = uifile;
 	this.wbuff = uifile.wbuff;
-	this.offsetEm = 0;
+	this.offset = 0;
 	this.wsample = this.wbuff.createSample();
 	wa.composition.addSamples( [this.wsample] );
 

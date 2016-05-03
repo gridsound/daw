@@ -15,6 +15,6 @@ ui.Sample.prototype.moveX = function( xem ) {
 
 	this.xem = xem;
 	this.jqSample.css( "left", xem + "em" );
-	this.updateWhen();
+	this.wsample.when = this.xem / ui.BPMem;
 	return this;
 };

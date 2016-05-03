@@ -10,7 +10,6 @@ ui.setBPM = function( bpm ) {
 	ui.jqBpmInt.text( bInt < 100 ? "0" + bInt : bInt );
 	ui.jqBpmDec.text( bCent < 10 ? "0" + bCent : bCent );
 	ui.samples.forEach( function( s ) {
-		s.updateWidth();
-		s.updateWhen();
+		s.updateBPMem();
 	});
 };
