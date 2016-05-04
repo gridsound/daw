@@ -2,6 +2,9 @@
 
 ui.Sample.prototype.inTrack = function( trackId ) {
 	var track = ui.tracks[ trackId ];
-	track.jqColLinesTrack.append( this.jqSample );
+	if ( track !== this.track ) {
+		this.track = track;
+		this.track.jqColLinesTrack.append( this.jqSample );
+	}
 	return this;
 };

@@ -8,10 +8,11 @@ ui.Track = function( grid, obj ) {
 	this.jqColNamesTrack = $( "<div class='track'>" ).appendTo( ui.jqTrackNames );
 	this.jqColLinesTrack = $( "<div class='track'>" ).appendTo( ui.jqTrackLines );
 
-	this
-		.initToggle()
+	this.jqColNamesTrack[ 0 ].uitrack
+	this.jqColLinesTrack[ 0 ].uitrack = this;
+
+	this.initToggle()
 		.initEditName()
 		.toggle( obj.toggle !== false )
-		.editName( obj.name || "" )
-	;
+		.editName( obj.name || "" );
 };
