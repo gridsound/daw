@@ -2,13 +2,7 @@
 
 ui.samplesSlip = function( sample, mxem ) {
 	mxem /= ui.BPMem;
-	function slip( s ) {
+	ui.samplesForEach( sample, function( s ) {
 		s.slip( s.offset + mxem );
-	}
-
-	if ( sample.selected ) {
-		ui.selectedSamples.forEach( slip );
-	} else {
-		slip( sample );
-	}
+	});
 };
