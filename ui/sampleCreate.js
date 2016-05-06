@@ -1,9 +1,9 @@
 "use strict";
 
-ui.sampleCreate = function( uifile, trackId, xem ) {
+ui.sampleCreate = function( uifile, gridPos ) {
 	var sample = new ui.Sample( uifile )
-		.inTrack( trackId )
-		.moveX( xem )
+		.inTrack( gridPos.trackId )
+		.moveX( gridPos.xem )
 		.updateBPMem();
 	ui.samplesFixPosition( sample );
 	ui.samples.push( sample );

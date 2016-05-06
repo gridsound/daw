@@ -15,14 +15,10 @@ ui.jqBody
 	})
 	.mouseup( function( e ) {
 		if ( uifileDragging ) {
-			var
-				trackId = Math.floor( ( e.pageY - ui.gridColsY - ui.gridTop ) / ui.gridEm ),
-				xem = e.pageX - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft
-			;
-			xem /= ui.gridEm;
+			var gridPos = ui.getGridPosition( e );
 			jqWaveformTmp.remove();
-			if ( trackId >= 0 && xem >= 0 ) {
-				ui.sampleCreate( uifileDragging, trackId, xem );
+			if ( gridPos.trackId >= 0 && gridPos.xem >= 0 ) {
+				ui.sampleCreate( uifileDragging, gridPos );
 			}
 			uifileDragging = null;
 		}
