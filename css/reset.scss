@@ -14,7 +14,7 @@ body {
 	margin: 0;
 	cursor: default;
 	font: 14px sans-serif;
-	@include strip-background( -45deg, 42px, #333, #2b2b2b );
+	@include strip-background( 45deg, 42px, #333, #2b2b2b );
 
 	-webkit-user-select: none;
 	   -moz-user-select: none;
