@@ -6,9 +6,12 @@ wa.wctx = new walContext();
 wa.ctx = wa.wctx.ctx;
 wa.composition = wa.wctx.createComposition();
 
-wa.startedTime = 0;
-wa.pausedOffset = 0;
-wa.isPlaying = false;
+setInterval( function() {
+	var s = wa.composition.getOffset();
+	ui.setClockTime( s );
+	ui.setTimeCursor( s * ui.BPMem );
+}, 1 );
+
 wa.analyser = wa.ctx.createAnalyser();
 wa.analyser.fftSize = 1024;
 wa.wctx.filters.pushBack( wa.analyser );
