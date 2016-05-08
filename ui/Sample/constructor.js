@@ -28,5 +28,6 @@ ui.Sample = function( uifile ) {
 	this.jqWaveformWrapper[ 0 ].uisample =
 	this.jqWaveform[ 0 ].uisample = this;
 
+	this.updateCSS_width();
 	this.select( false );
 };
