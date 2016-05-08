@@ -5,6 +5,6 @@ ui.jqStop.click( function() {
 	ui.stopComposition();
 });
 
-ui.jqPlay.click( function( b ) {
-	ui.playComposition( wa.composition.pausedOffset );
+ui.jqPlay.click( function() {
+	ui.playComposition();
 });
