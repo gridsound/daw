@@ -6,5 +6,5 @@ ui.jqStop.click( function() {
 });
 
 ui.jqPlay.click( function( b ) {
-	ui.playComposition( wa.pausedOffset );
+	ui.playComposition( wa.composition.pausedOffset );
 });

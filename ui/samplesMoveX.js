@@ -11,5 +11,6 @@ ui.samplesMoveX = function( sample, mxem ) {
 
 	ui.samplesForEach( sample, function( s ) {
 		s.moveX( Math.max( 0, s.xemMouse + mxem ) );
+		wa.composition.updateSamples( s.wsample );
 	});
 };

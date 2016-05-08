@@ -8,7 +8,6 @@ ui.Sample = function( uifile ) {
 	this.wbuff = uifile.wbuff;
 	this.offset = 0;
 	this.wsample = this.wbuff.createSample();
-	wa.composition.addSamples( [this.wsample] );
 
 	this.jqSample = $( "<div class='sample'>" );
 	this.jqWaveformWrapper = $( "<div class='waveformWrapper'>" )

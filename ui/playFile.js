@@ -4,41 +4,23 @@
 
 var
 	wsample,
-	jqCursor = $( "<div class='cursor'>" ),
-	lastSample
+	jqCursor = $( "<div class='cursor'>" )
 ;
 
 ui.playComposition = function( compoOffset ) {
-	if ( wa.composition.wSamples.length && !wa.isPlaying ) {
-		lastSample = wa.composition.getLastSample();
-		lastSample.onended( function() {
-			wa.startedTime = 0;
-			wa.pausedOffset = 0;
-			wa.isPlaying = false;
-		});
+	if ( !wa.composition.isPlaying ) {
 		wa.composition.loadSamples( compoOffset );
-		wa.startedTime = wa.wctx.ctx.currentTime;
 		wa.composition.playSamples( compoOffset );
-		wa.isPlaying = true;
 	}
 };
 
 ui.stopComposition = function() {
-	if ( wa.composition.wSamples.length ) {
-		wa.composition.stopSamples();
-		wa.startedTime = 0;
-		wa.pausedOffset = 0;
-		wa.isPlaying = false;
-	}
+	wa.composition.stopSamples();
 };
 
 ui.pauseComposition = function() {
-	if ( wa.composition.wSamples.length && wa.isPlaying ) {
-		wa.pausedOffset += wa.wctx.ctx.currentTime - wa.startedTime;
-		lastSample = wa.composition.getLastSample();
-		lastSample.onended( function() {} );
-		wa.composition.stopSamples();
-		wa.isPlaying = false;
+	if ( wa.composition.isPlaying ) {
+		wa.composition.pauseSamples();
 	}
 };
 

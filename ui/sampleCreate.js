@@ -6,5 +6,6 @@ ui.sampleCreate = function( uifile, gridPos ) {
 		.moveX( gridPos.xem );
 	ui.samplesFixPosition( sample );
 	ui.samples.push( sample );
+	wa.composition.addSamples( [ sample.wsample ] );
 	return sample;
 };
