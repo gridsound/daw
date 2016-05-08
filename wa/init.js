@@ -7,10 +7,10 @@ wa.ctx = wa.wctx.ctx;
 wa.composition = wa.wctx.createComposition();
 
 setInterval( function() {
-	var s = wa.composition.getOffset();
-	ui.setClockTime( s );
-	ui.setTimeCursor( s * ui.BPMem );
-}, 1 );
+	var sec = wa.composition.getOffset();
+	ui.setClockTime( sec );
+	ui.setCursorTime( sec );
+}, 25 );
 
 wa.analyser = wa.ctx.createAnalyser();
 wa.analyser.fftSize = 1024;
