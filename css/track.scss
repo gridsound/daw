@@ -5,10 +5,22 @@
 	line-height: 1em;
 
 	&.off {
-		background: $color_trackBgOff;
+		background: $color_trackOffBg;
 	}
 	.trackNames .track + & { border-top: 1px solid $color_tracknamesBorder; }
 	.trackLines .track + & { border-top: 1px solid $color_tracklinesBorder; }
+
+	:not(.track) + &:not(.off),
+	.track.off   + &:not(.off) {
+		background: $color_trackFirstBg;
+	}
+	:not(.track)     + &.off,
+	.track:not(.off) + &.off {
+		background: $color_trackFirstOffBg;
+	}
+	.track.off + &.off {
+		background: $color_trackOffBg;
+	}
 
 	.trackNames & {
 		overflow: hidden;

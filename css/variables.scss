@@ -33,7 +33,9 @@ $color_tracklinesBg: #2e2e50;
 $color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
 $color_tracklinesBorder: #090909;
 
-$color_trackBgOff: rgba( #000, .2 );
+$color_trackOffBg: rgba( #000, .2 );
+$color_trackFirstBg: linear-gradient( to bottom, rgba( #fff, .09 ), transparent 3px );
+$color_trackFirstOffBg: linear-gradient( to bottom, rgba( #000, .35 ), $color_trackOffBg 3px );
 $color_trackName: #fff;
 $opacity_trackNameEmpty: .2;
 $color_trackToggleOff: #111;
