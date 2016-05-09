@@ -25,6 +25,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		                          \
 		wa/init.js                \
 		wa/oscilloscope.js        \
+		wa/compositionLoop.js     \
 		                          \
 		ui/removeWhitespaces.js   \
 		ui/initBefore.js          \
