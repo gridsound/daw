@@ -5,10 +5,10 @@
 	line-height: 1em;
 
 	&.off {
-		background: rgba( #000, .2 );
+		background: $color_trackBgOff;
 	}
-	.trackLines .track + & { border-top: 1px solid #090909; }
-	.trackNames .track + & { border-top: 1px solid #151515; }
+	.trackNames .track + & { border-top: 1px solid $color_tracknamesBorder; }
+	.trackLines .track + & { border-top: 1px solid $color_tracklinesBorder; }
 
 	.trackNames & {
 		overflow: hidden;
@@ -25,10 +25,10 @@
 		left: 0;
 		width: 14px;
 		height: 100%;
-		color: #111;
+		color: $color_trackToggleOff;
 
 		&.on {
-			color: #4cb849;
+			color: $color_trackToggleOn;
 		}
 		&:after {
 			position: absolute;
@@ -46,10 +46,10 @@
 		font-size: 14px;
 		margin-top: -6px;
 		padding-right: 5px;
-		color: #fff;
+		color: $color_trackName;
 
 		&.empty {
-			opacity: .2;
+			opacity: $opacity_trackNameEmpty;
 			font-weight: normal;
 			font-style: italic;
 		}
@@ -62,7 +62,7 @@
 		margin: 0;
 		border: 0;
 		padding: 0;
-		color: #fff;
+		color: $color_trackName;
 		text-overflow: ellipsis;
 		background: transparent;
 	}

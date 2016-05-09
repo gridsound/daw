@@ -16,7 +16,7 @@
 	display: block;
 	position: relative;
 	overflow: hidden;
-	color: #aaa;
+	color: $color_sampleName;
 	transition: background .2s;
 	background: rgba( #000, .5 );
 
@@ -31,8 +31,8 @@
 		height: 100%;
 		top: 0;
 		width: 1px;
-		box-shadow: 0 0 5px rgba( #cc3, .5 );
-		background: #cc3;
+		background: $color_cursorTimeBg;
+		box-shadow: -1px 0 3px rgba( $color_cursorTimeShadow, .7 );
 		transition: left linear;
 		left: 0;
 	}
@@ -53,6 +53,10 @@
 		@include text-stroke( #000 );
 	}
 
+	&:hover {
+		color: $color_sampleNameHighlight;
+	}
+
 	.filelist & {
 		height: 32px;
 		border-bottom: 1px solid #000;
@@ -64,7 +68,6 @@
 			transition: padding .2s;
 		}
 		&:hover {
-			color: #fff;
 			background: #000;
 
 			.waveform {
@@ -106,7 +109,7 @@
 			padding: 2px;
 			font-size: 11px;
 			margin: 0;
-			background: rgba( #76c4ff, .3);
+			background: $color_sampleSpanBg;
 		}
 	}
 	#grid[data-sample-size="medium"] & {
@@ -129,7 +132,7 @@
 
 	#grid &.selected {
 		span {
-			background: #b51818;
+			background: $color_sampleSelectedSpanBg;
 		}
 	}
 }

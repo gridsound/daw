@@ -14,7 +14,12 @@ body {
 	margin: 0;
 	cursor: default;
 	font: 14px sans-serif;
-	@include strip-background( 45deg, 42px, #333, #2b2b2b );
+	background: $color_bodyStripA;
+	@include strip-background( 45deg,
+		$width_bodyStrip,
+		$color_bodyStripA,
+		$color_bodyStripB
+	);
 
 	-webkit-user-select: none;
 	   -moz-user-select: none;
@@ -52,14 +57,13 @@ input {
 }
 
 ::-webkit-scrollbar {
-	width: 5px;
-	height: 5px;
-	background: #888;
+	width: $width_scrollbarSize;
+	height: $width_scrollbarSize;
 
 	&-thumb {
-		background: #888;
+		background: $color_scrollbarThumb;
 	}
 	&-track {
-		background: #222;
+		background: $color_scrollbarBg;
 	}
 }

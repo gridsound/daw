@@ -5,7 +5,7 @@
 	top: 0;
 	height: 40px;
 	line-height: 40px;
-	color: #ccc;
+	color: $color_menuText;
 
 	> * {
 		display: inline-block;
@@ -30,7 +30,7 @@
 		}
 	}
 
-	@mixin lighten( $c, $lum: 10% ) {
+	@mixin writeBg( $c, $lum: 10% ) {
 		background: $c;
 		&:hover {
 			background: lighten( $c, $lum );
@@ -42,8 +42,8 @@
 		text-align: center;
 		transition: all 50ms;
 
-		&.play  { @include lighten( #142B3C ); }
-		&.stop  { @include lighten( #333 ); }
+		&.play  { @include writeBg( $color_playBtn ); }
+		&.stop  { @include writeBg( $color_stopBtn ); }
 	}
 
 	.tools {
@@ -56,12 +56,11 @@
 		.btn {
 			line-height: 1em;
 			width: 1em;
-			border: 0 solid #1C1C27;
-			$c: #142B3C;
-			@include lighten( $c );
+			border: 0 solid $color_toolBorder;
+			@include writeBg( $color_toolBg );
 
 			&.active {
-				background: lighten( $c, 20% );
+				background: $color_toolSelectedBg;
 			}
 			& + * {
 				border-left-width: 1px;

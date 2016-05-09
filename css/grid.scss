@@ -22,14 +22,14 @@
 		right: -3em;
 		height: 100%;
 		border-top: 1px solid #000;
-		background: #0d0d0d;
+		background: $color_timelineBg;
 		counter-reset: section;
 
 		div {
 			display: inline-block;
 			width: 1em;
 			height: 100%;
-			color: #888;
+			color: $color_timelineText;
 
 			&:first-child {
 				visibility: hidden;
@@ -91,7 +91,7 @@
 		max-width: 300px;
 		border: solid #000;
 		border-width: 0 1px;
-		background: #272727;
+		background: $color_tracknamesBg;
 	}
 
 	.colB {
@@ -104,8 +104,8 @@
 		height: 100%;
 		width: 1px;
 		margin-left: -1px;
-		background: rgba( #ffa, .4 );
-		box-shadow: -2px 0 10px #50ff00;
+		background: $color_cursorTimeBg;
+		box-shadow: -2px 0 10px $color_cursorTimeShadow;
 		opacity: 0;
 		transition: opacity .2s;
 
@@ -119,8 +119,7 @@
 		width: 200%;
 		top: 0;
 		height: 99999px;
-		$c: #252540;
-		background: $c;
+		background: $color_tracklinesBg;
 
 		* {
 			display: inline-block;
@@ -132,9 +131,9 @@
 		}
 		> * {
 			width: 4em;
-			border-color: #0a0a0a;
-			&:nth-child( odd ) {
-				background: lighten( $c, 5 );
+			border-color: $color_tracklinesBorder;
+			&:nth-child( even ) {
+				background: $color_tracklinesBgEven;
 			}
 
 			* {

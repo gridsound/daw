@@ -7,7 +7,7 @@
 	height: 60px;
 	border: solid #000;
 	border-width: 0 1px 1px 0;
-	background: rgba( 30, 30, 53, .15 );
+	background: $color_visualBg;
 
 	canvas {
 		width: 100%;
@@ -21,8 +21,8 @@
 		font-family: "LCDBOLD";
 		font-size: 38px;
 		margin-top: -.5em;
-		color: #ccc;
-		@include text-stroke( #000 );
+		color: $color_clock;
+		@include text-stroke( $color_clockStroke );
 
 		.sec:before,
 		.sec:after {

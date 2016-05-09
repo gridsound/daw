@@ -11,7 +11,7 @@
 	.filelist {
 		overflow: auto;
 		height: 100%;
-		background: rgba( #000, .5 );
+		background: $color_filesBg;
 	}
 
 	.placeholder {
@@ -21,7 +21,7 @@
 		right: 0;
 		top: 25%;
 		text-align: center;
-		color: #555;
+		color: $color_filesPlaceholder;
 
 		.fa {
 			font-size: 80px;

@@ -4,7 +4,7 @@
 	height: 100%;
 	border: solid #000;
 	border-width: 0 1px;
-	background: #222;
+	background: $color_bpmBg;
 
 	.text {
 		padding: 0 .5em;
@@ -18,8 +18,9 @@
 	.dec:before {
 		content: ".";
 	}
-	.fa, .unit {
-		color: #666;
+	.fa,
+	.unit {
+		color: $color_bpmUnit;
 	}
 	.fa {
 		vertical-align: top;
@@ -32,16 +33,16 @@
 
 	.bpm-list {
 		position: absolute;
+		box-sizing: border-box;
+		overflow: hidden;
 		z-index: 3;
 		left: -1px;
 		top: 100%;
 		width: 95px;
-		overflow: hidden;
-		box-sizing: border-box;
 		border: solid #000;
 		border-width: 0 1px 1px;
 		text-align: right;
-		background: rgba( #222, .5 );
+		background: $color_bpmListBg;
 		transition: all .25s;
 		height: 0;
 		opacity: 0;
@@ -53,7 +54,7 @@
 			line-height: 1em;
 
 			&:hover {
-				background: #111;
+				background: $color_bpmListHover;
 			}
 		}
 	}

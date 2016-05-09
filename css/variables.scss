@@ -1,0 +1,48 @@
+$color_bodyStripA: #333;
+$color_bodyStripB: darken( $color_bodyStripA, 2 );
+$width_bodyStrip: 42px;
+$width_scrollbarSize: 5px;
+$color_scrollbarBg: #222;
+$color_scrollbarThumb: #888;
+
+$color_visualBg: rgba( #1e1e35, .15 );
+$color_clock: #ccc;
+$color_clockStroke: #000;
+
+$color_menuText: $color_clock;
+$color_playBtn: #142b3c;
+$color_stopBtn: #333;
+$color_toolBg: $color_playBtn;
+$color_toolSelectedBg: lighten( $color_toolBg, 20 );
+$color_toolBorder: #1c1c27;
+
+$color_bpmBg: #222;
+$color_bpmUnit: #666;
+$color_bpmListBg: rgba( $color_bpmBg, .5 );
+$color_bpmListHover: #111;
+
+$color_filesBg: rgba( #000, .5 );
+$color_filesPlaceholder: #555;
+
+$color_timelineBg: #0d0d0d;
+$color_timelineText: #888;
+
+$color_tracknamesBg: #272727;
+$color_tracknamesBorder: #151515;
+$color_tracklinesBg: #2e2e50;
+$color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
+$color_tracklinesBorder: #090909;
+
+$color_trackBgOff: rgba( #000, .2 );
+$color_trackName: #fff;
+$opacity_trackNameEmpty: .2;
+$color_trackToggleOff: #111;
+$color_trackToggleOn: #4cb849;
+
+$color_cursorTimeBg: rgba( #ffa, .4 );
+$color_cursorTimeShadow: #50ff00;
+
+$color_sampleName: #aaa;
+$color_sampleNameHighlight: #fff;
+$color_sampleSpanBg: rgba( #76c4ff, .3 );
+$color_sampleSelectedSpanBg: #b51818;
