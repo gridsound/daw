@@ -29,6 +29,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		                          \
 		ui/removeWhitespaces.js   \
 		ui/initBefore.js          \
+		ui/getGridXem.js          \
 		ui/analyserToggle.js      \
 		ui/playFile.js            \
 		ui/playComposition.js     \
