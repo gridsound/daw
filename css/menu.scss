@@ -30,17 +30,19 @@
 		}
 	}
 
-	@mixin writeBg( $c, $lum: 10% ) {
+	@mixin writeBg( $c ) {
 		background: $c;
 		&:hover {
-			background: lighten( $c, $lum );
+			background: lighten( $c, $lighten_toolHover );
 		}
 	}
 
 	.btn {
 		box-sizing: border-box;
 		text-align: center;
-		transition: all 50ms;
+		transition:
+			box-shadow .05s,
+			background .2s;
 
 		&.play  { @include writeBg( $color_playBtn ); }
 		&.stop  { @include writeBg( $color_stopBtn ); }
@@ -57,10 +59,10 @@
 			line-height: 1em;
 			width: 1em;
 			border: 0 solid $color_toolBorder;
-			@include writeBg( $color_toolBg );
+			@include writeBg( $color_tool );
 
 			&.active {
-				background: $color_toolSelectedBg;
+				background: lighten( $color_tool, $lighten_toolSelected );
 			}
 			& + * {
 				border-left-width: 1px;
