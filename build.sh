@@ -32,7 +32,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/analyserToggle.js      \
 		ui/playFile.js            \
 		ui/playComposition.js     \
-		ui/getGridPosition.js     \
 		ui/selectTool.js          \
 		ui/setBPM.js              \
 		ui/setClockTime.js        \

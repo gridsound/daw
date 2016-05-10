@@ -15,10 +15,11 @@ ui.jqBody
 	})
 	.mouseup( function( e ) {
 		if ( uifileDragging ) {
-			var gridPos = ui.getGridPosition( e );
+			var trackId = Math.floor( ( e.pageY - ui.gridColsY - ui.gridTop ) / ui.gridEm ),
+				xem = ui.getGridXem( e.pageX );
 			jqWaveformTmp.remove();
-			if ( gridPos.trackId >= 0 && gridPos.xem >= 0 ) {
-				ui.sampleCreate( uifileDragging, gridPos );
+			if ( trackId >= 0 && xem >= 0 ) {
+				ui.sampleCreate( uifileDragging, trackId, xem );
 			}
 			uifileDragging = null;
 		}

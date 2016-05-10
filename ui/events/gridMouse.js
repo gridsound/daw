@@ -5,6 +5,7 @@
 var
 	mouseIsDown,
 	oldTool,
+	xemSave,
 	px = 0, py = 0
 ;
 
@@ -23,6 +24,7 @@ ui.jqTrackLines.on( {
 	mousedown: function( e ) {
 		if ( !mouseIsDown ) {
 			mouseIsDown = true;
+			xemSave = ui.getGridXem( e.pageX );
 			px = e.pageX;
 			py = e.pageY;
 			if ( e.button === 2 ) {
@@ -51,10 +53,17 @@ ui.jqGrid.on( "wheel", function( e ) {
 ui.jqBody.on( {
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
-			var fn = ui.tool[ ui.currentTool ].mousemove;
+			var fn = ui.tool[ ui.currentTool ].mousemove,
+				newXem = ui.getGridXem( e.pageX );
 			if ( fn ) {
-				fn( e, e.target.uisample, e.pageX - px, e.pageY - py );
+				fn( e, e.target.uisample,
+					ui.currentTool !== "hand"
+						? ( newXem - xemSave ) * ui.gridEm
+						: e.pageX - px,
+					e.pageY - py
+				);
 			}
+			xemSave = newXem;
 			px = e.pageX;
 			py = e.pageY;
 		}

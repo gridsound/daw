@@ -1,9 +1,9 @@
 "use strict";
 
-ui.sampleCreate = function( uifile, gridPos ) {
+ui.sampleCreate = function( uifile, trackId, xem ) {
 	var sample = new ui.Sample( uifile )
-		.inTrack( gridPos.trackId )
-		.moveX( gridPos.xem );
+		.inTrack( trackId )
+		.moveX( xem );
 	ui.samplesFixPosition( sample );
 	ui.samples.push( sample );
 	wa.composition.addSamples( [ sample.wsample ] );
