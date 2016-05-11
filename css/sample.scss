@@ -83,12 +83,19 @@
 		position: absolute;
 		height: 1em;
 
+		span {
+			background: $color_sampleTitleBg;
+		}
 		.waveformWrapper {
 			position: absolute;
 			width: 100%;
 			top: 0;
 			bottom: 0;
 		}
+	}
+
+	.track.off & {
+		opacity: $opacity_sampleOff;
 	}
 
 	#grid[data-tool="slip"] & {
@@ -100,6 +107,7 @@
 		}
 		span {
 			font-size: 11px;
+			background: transparent;
 		}
 	}
 	#grid[data-sample-size="medium"] &,
@@ -109,7 +117,6 @@
 			padding: 2px;
 			font-size: 11px;
 			margin: 0;
-			background: $color_sampleSpanBg;
 		}
 	}
 	#grid[data-sample-size="medium"] & {
@@ -130,9 +137,15 @@
 		}
 	}
 
-	#grid &.selected {
-		span {
-			background: $color_sampleSelectedSpanBg;
+	&.selected {
+		#grid[data-sample-size="small"] & {
+			background: $color_sampleSelectedBg;
+		}
+		#grid[data-sample-size="medium"] &,
+		#grid[data-sample-size="big"] & {
+			span {
+				background: $color_sampleSelectedSpanBg;
+			}
 		}
 	}
 }
