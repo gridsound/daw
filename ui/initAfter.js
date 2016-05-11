@@ -2,8 +2,7 @@
 
 ui.resize();
 ui.setBPM( 120 );
-ui.setClockTime( 0 );
-ui.setCursorTime( 0 );
+ui.setCurrentTime( 0 );
 ui.setFilesWidth( 200 );
 ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );

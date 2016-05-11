@@ -23,10 +23,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		../webaudio-library/src/filters.js     \
 		../webaudio-library/src/sample.js      \
 		                          \
-		wa/init.js                \
-		wa/oscilloscope.js        \
-		wa/compositionLoop.js     \
-		                          \
 		ui/removeWhitespaces.js   \
 		ui/initBefore.js          \
 		ui/getGridXem.js          \
@@ -35,8 +31,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/playComposition.js     \
 		ui/selectTool.js          \
 		ui/setBPM.js              \
-		ui/setClockTime.js        \
-		ui/setCursorTime.js       \
+		ui/setCurrentTime.js      \
 		ui/setGridTop.js          \
 		ui/setGridZoom.js         \
 		ui/setFilesWidth.js       \
@@ -93,6 +88,10 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/events/toolSelect.js   \
 		ui/events/toolSlip.js     \
 		ui/events/toolZoom.js     \
+		                          \
+		wa/init.js                \
+		wa/oscilloscope.js        \
+		wa/compositionLoop.js     \
 		                          \
 		ui/initAfter.js           \
 		                          \
