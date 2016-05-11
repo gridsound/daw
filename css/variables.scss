@@ -38,10 +38,10 @@ $color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
 $color_tracklinesBorder: #090909;
 
 $color_trackOffBg: rgba( #000, .2 );
-$color_trackFirstBg: linear-gradient( to bottom, rgba( #fff, .05 ), transparent 3px );
-$color_trackFirstOffBg: linear-gradient( to bottom, rgba( #000, .35 ), $color_trackOffBg 3px );
+$border_trackFirst: rgba( #fff, .05 );
+$border_trackOffFirst: rgba( #000, .2 );
 $color_trackName: #fff;
-$opacity_trackNameEmpty: .2;
+$color_trackOffName: rgba( #fff, .2 );
 $color_trackToggleOff: #111;
 $color_trackToggleOn: #4cb849;
 

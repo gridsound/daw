@@ -3,23 +3,19 @@
 	box-sizing: border-box;
 	height: 1em;
 	line-height: 1em;
+	transition: .25s;
+	transition-property: background, box-shadow;
 
-	&.off {
-		background: $color_trackOffBg;
-	}
 	.trackNames .track + & { border-top: 1px solid $color_tracknamesBorder; }
 	.trackLines .track + & { border-top: 1px solid $color_tracklinesBorder; }
 
 	:not(.track) + &:not(.off),
 	.track.off   + &:not(.off) {
-		background: $color_trackFirstBg;
+		box-shadow: inset 0 3px 0 $border_trackFirst;
 	}
 	:not(.track)     + &.off,
 	.track:not(.off) + &.off {
-		background: $color_trackFirstOffBg;
-	}
-	.track.off + &.off {
-		background: $color_trackOffBg;
+		box-shadow: inset 0 2px 0 $border_trackOffFirst;
 	}
 
 	.trackNames & {
@@ -61,7 +57,7 @@
 		color: $color_trackName;
 
 		&.empty {
-			opacity: $opacity_trackNameEmpty;
+			color: $color_trackOffName;
 			font-weight: normal;
 			font-style: italic;
 		}
@@ -77,6 +73,14 @@
 		color: $color_trackName;
 		text-overflow: ellipsis;
 		background: transparent;
+	}
+
+	&.off {
+		background: $color_trackOffBg;
+
+		.name {
+			color: $color_trackOffName;
+		}
 	}
 
 	&.editing {
