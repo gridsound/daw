@@ -5,11 +5,9 @@ ui.playComposition = function( b ) {
 		b = !wa.composition.isPlaying;
 	}
 	if ( b ) {
-		var sec = wa.composition.pausedOffset;
-		wa.composition.loadSamples( sec );
-		wa.composition.playSamples( sec );
+		wa.composition.playFrom();
 	} else {
-		wa.composition.pauseSamples();
+		wa.composition.pause();
 	}
 	ui.jqPlay[ 0 ].classList.toggle( "fa-pause", b );
 	ui.jqPlay[ 0 ].classList.toggle( "fa-play", !b );
@@ -17,9 +15,7 @@ ui.playComposition = function( b ) {
 };
 
 ui.stopComposition = function() {
-	if ( wa.composition.isPlaying ) { // TODO: prevent the infinite loop with .stopSamples
-		wa.composition.stopSamples();
-	}
+	wa.composition.stop();
 	wa.compositionLoop( false );
 	ui.setCurrentTime( 0 );
 	ui.jqPlay[ 0 ].classList.remove( "fa-pause" );

@@ -11,6 +11,9 @@ ui.tool.paint = {
 	mouseup: function() {
 		if ( sampleSave ) {
 			ui.samplesFixPosition( sampleSave );
+			ui.samplesForEach( sampleSave, function( s ) {
+				wa.composition.update( s.wsample, "mv" );
+			});
 			sampleSave = null;
 		}
 	},
