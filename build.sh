@@ -54,7 +54,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/sampleSelect.js        \
 		ui/sampleDelete.js        \
 		ui/samplesForEach.js      \
-		ui/samplesFixPosition.js  \
 		ui/samplesMoveX.js        \
 		ui/samplesSlip.js         \
 		ui/samplesUnselect.js     \
