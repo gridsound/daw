@@ -3,6 +3,6 @@
 ui.samplesSlip = function( sample, mxem ) {
 	mxem /= ui.BPMem;
 	ui.samplesForEach( sample, function( s ) {
-		s.slip( s.offset + mxem );
+		s.slip( s.wsample.offset - mxem );
 	});
 };

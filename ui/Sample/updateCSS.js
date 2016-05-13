@@ -6,7 +6,7 @@ ui.Sample.prototype.updateCSS_when = function() {
 };
 
 ui.Sample.prototype.updateCSS_offset = function() {
-	this.jqWaveform.css( "marginLeft", this.offset * ui.BPMem + "em" );
+	this.jqWaveform.css( "marginLeft", -this.wsample.offset * ui.BPMem + "em" );
 	return this;
 };
 

@@ -9,6 +9,11 @@ ui.tool.slip = {
 		sampleSave = sample;
 	},
 	mouseup: function() {
+		if ( sampleSave ) {
+			ui.samplesForEach( sampleSave, function( s ) {
+				wa.composition.update( s.wsample, "mv" );
+			});
+		}
 		sampleSave = null;
 	},
 	mousemove: function( e, sample, mx ) {
