@@ -23,11 +23,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		../webaudio-library/src/filters.js     \
 		../webaudio-library/src/sample.js      \
 		                          \
-		gs/_init.js               \
-		gs/bpm.js                 \
-		gs/currentTime.js         \
-		gs/playPauseStop.js       \
-		                          \
 		ui/removeWhitespaces.js   \
 		ui/initBefore.js          \
 		ui/getGridXem.js          \
@@ -76,25 +71,30 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/Sample/moveX.js        \
 		ui/Sample/updateCSS.js    \
 		                          \
-		ui/events/bpm.js          \
-		ui/events/divExtend.js    \
-		ui/events/dropFiles.js    \
-		ui/events/gridMouse.js    \
-		ui/events/keyboard.js     \
-		ui/events/playStop.js     \
-		ui/events/resize.js       \
-		ui/events/tools.js        \
-		ui/events/toolDelete.js   \
-		ui/events/toolHand.js     \
-		ui/events/toolMute.js     \
-		ui/events/toolPaint.js    \
-		ui/events/toolSelect.js   \
-		ui/events/toolSlip.js     \
-		ui/events/toolZoom.js     \
-		                          \
 		wa/init.js                \
 		wa/oscilloscope.js        \
 		wa/compositionLoop.js     \
+		                          \
+		gs/_init.js               \
+		gs/bpm.js                 \
+		gs/currentTime.js         \
+		gs/playPauseStop.js       \
+		                          \
+		gs/events/bpm.js          \
+		gs/events/divExtend.js    \
+		gs/events/dropFiles.js    \
+		gs/events/gridMouse.js    \
+		gs/events/keyboard.js     \
+		gs/events/playPauseStop.js\
+		gs/events/resize.js       \
+		gs/events/tools.js        \
+		gs/events/toolDelete.js   \
+		gs/events/toolHand.js     \
+		gs/events/toolMute.js     \
+		gs/events/toolPaint.js    \
+		gs/events/toolSelect.js   \
+		gs/events/toolSlip.js     \
+		gs/events/toolZoom.js     \
 		                          \
 		ui/initAfter.js           \
 		                          \

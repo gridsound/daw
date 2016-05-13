@@ -1,5 +1,7 @@
 "use strict";
 
+( function() {
+
 ui.jqBpmA.mousedown( function() {
 	ui.jqBpmA.toggleClass( "clicked" );
 	return false;
@@ -13,12 +15,12 @@ ui.jqBody.mousedown( function() {
 	ui.jqBpmA.removeClass( "clicked" );
 });
 
-ui.jqBpmInt.on( "wheel", function( e ) {
+function wheel( inc, e ) {
 	e = e.originalEvent.deltaY;
-	gs.bpm( gs._bpm + ( e > 0 ? -1 : e ? 1 : 0 ) );
-});
+	gs.bpm( gs._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );
+}
 
-ui.jqBpmDec.on( "wheel", function( e ) {
-	e = e.originalEvent.deltaY;
-	gs.bpm( gs._bpm + ( e > 0 ? -.01 : e ? .01 : 0 ) );
-});
+ui.jqBpmInt.on( "wheel", wheel.bind( null, 1 ) );
+ui.jqBpmDec.on( "wheel", wheel.bind( null, .01 ) );
+
+} )();
