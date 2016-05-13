@@ -23,15 +23,20 @@ if [[ -z $1 || $1 == "js" ]]; then
 		../webaudio-library/src/filters.js     \
 		../webaudio-library/src/sample.js      \
 		                          \
+		gs/_init.js               \
+		gs/bpm.js                 \
+		gs/currentTime.js         \
+		gs/playPauseStop.js       \
+		                          \
 		ui/removeWhitespaces.js   \
 		ui/initBefore.js          \
 		ui/getGridXem.js          \
 		ui/analyserToggle.js      \
 		ui/playFile.js            \
-		ui/playComposition.js     \
+		ui/playPauseStop.js       \
 		ui/selectTool.js          \
-		ui/setBPM.js              \
-		ui/setCurrentTime.js      \
+		ui/bpm.js                 \
+		ui/currentTime.js         \
 		ui/setGridTop.js          \
 		ui/setGridZoom.js         \
 		ui/setFilesWidth.js       \
@@ -70,7 +75,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/Sample/delete.js       \
 		ui/Sample/inTrack.js      \
 		ui/Sample/moveX.js        \
-		ui/Sample/updateBPMem.js  \
 		ui/Sample/updateCSS.js    \
 		                          \
 		ui/events/bpm.js          \

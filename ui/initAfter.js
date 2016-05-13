@@ -1,15 +1,15 @@
 "use strict";
 
 ui.resize();
-ui.setBPM( 120 );
-ui.setCurrentTime( 0 );
 ui.setFilesWidth( 200 );
 ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
 ui.toggleMagnetism( true );
-
 ui.updateTrackLinesBg();
+
+gs.bpm( 120 );
+gs.currentTime( 0 );
 
 ui.jqBtnTools.filter( "[data-tool='paint']" ).click();

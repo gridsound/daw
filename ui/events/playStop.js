@@ -1,8 +1,8 @@
 "use strict";
 
-ui.jqPlay.click( ui.playComposition );
+ui.jqPlay.click( gs.playToggle );
 
 ui.jqStop.click( function() {
 	ui.stopFile();
-	ui.stopComposition();
+	gs.stop();
 });
