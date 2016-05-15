@@ -9,9 +9,9 @@ gs.playToggle = function( b ) {
 
 gs.play = function() {
 	if ( !gs.isPlaying && ui.samples.length ) {
+		wa.composition.play();
 		gs.isPaused = gs.isStopped = false;
 		gs.isPlaying = true;
-		wa.composition.playFrom();
 		wa.compositionLoop( true );
 		ui.play();
 	}

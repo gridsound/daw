@@ -5,7 +5,7 @@
 var reqFrameId;
 
 function frame() {
-	ui.currentTime( wa.composition.getOffset() );
+	ui.currentTime( wa.composition.currentTime() );
 	reqFrameId = requestAnimationFrame( frame );
 }
 
