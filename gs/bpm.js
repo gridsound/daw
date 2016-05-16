@@ -7,12 +7,11 @@ gs.bpm = function( bpm ) {
 	var xem = gs.currentTime() * ui.BPMem;
 	gs._bpm = Math.max( 20, Math.min( bpm, 999 ) );
 	ui.bpm( gs._bpm );
-	gs.currentTime( xem / ui.BPMem );
-
 	ui.samples.forEach( function( s ) {
 		// We don't have to call .updateCSS_when, the samples doesn't move when the BPM changes.
 		s.wsample.when = s.xem / ui.BPMem;
 		s.updateCSS_width();
 		s.updateCSS_offset();
 	});
+	gs.currentTime( xem / ui.BPMem );
 };
