@@ -1,5 +1,7 @@
 "use strict";
 
+ui.BPMem = 1;
+
 ui.bpm = function( bpm ) {
 	var bInt = ~~bpm,
 		bCent = Math.min( Math.round( ( bpm - bInt ) * 100 ), 99 );
