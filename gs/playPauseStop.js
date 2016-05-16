@@ -22,8 +22,7 @@ gs.pause = function() {
 };
 
 gs.stop = function() {
-	if ( wa.composition.isPlaying || wa.composition.isPaused ) {
-		wa.composition.stop();
-		ui.stop();
-	}
+	wa.composition.stop();
+	gs.currentTime( 0 );
+	ui.stop();
 };
