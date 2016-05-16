@@ -2,37 +2,28 @@
 
 gs.playToggle = function( b ) {
 	if ( typeof b !== "boolean" ) {
-		b = !gs.isPlaying;
+		b = !wa.composition.isPlaying;
 	}
 	b ? gs.play() : gs.pause();
 };
 
 gs.play = function() {
-	if ( !gs.isPlaying && ui.samples.length ) {
+	if ( !wa.composition.isPlaying && ui.samples.length ) {
 		wa.composition.play();
-		gs.isPaused = gs.isStopped = false;
-		gs.isPlaying = true;
-		wa.compositionLoop( true );
 		ui.play();
 	}
 };
 
 gs.pause = function() {
-	if ( gs.isPlaying ) {
-		gs.isPlaying = false;
-		gs.isPaused = true;
+	if ( wa.composition.isPlaying ) {
 		wa.composition.pause();
-		wa.compositionLoop( false );
 		ui.pause();
 	}
 };
 
 gs.stop = function() {
-	if ( !gs.isStopped ) {
-		gs.isPlaying = gs.isPaused = false;
-		gs.isStopped = true;
+	if ( wa.composition.isPlaying || wa.composition.isPaused ) {
 		wa.composition.stop();
-		wa.compositionLoop( false );
 		ui.stop();
 	}
 };
