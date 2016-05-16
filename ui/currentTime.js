@@ -4,9 +4,11 @@
 
 function cursorTime( s ) {
 	if ( s > 0 ) {
-		ui.jqTimeCursor.css( "left", s * ui.BPMem + "em" );
+		ui.jqTimeCursor.add( ui.jqTimeArrow )
+			.css( "left", s * ui.BPMem + "em" );
 	}
 	ui.jqTimeCursor[ 0 ].classList.toggle( "visible", s > 0 );
+	ui.jqTimeArrow[ 0 ].classList.toggle( "visible", s > 0 );
 }
 
 function clockTime( s ) {

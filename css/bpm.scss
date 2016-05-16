@@ -28,8 +28,8 @@
 		margin-right: 4px;
 		font-size: 14px;
 	}
-	.a-bpm         .fa:before { content: "\f0d7"; } // fa-caret-down
-	.a-bpm.clicked .fa:before { content: "\f0d8"; } // fa-caret-up
+	.a-bpm         .fa:before { content: $fa-caret-down; }
+	.a-bpm.clicked .fa:before { content: $fa-caret-up; }
 
 	.bpm-list {
 		position: absolute;

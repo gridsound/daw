@@ -39,10 +39,10 @@
 			color: $color_trackToggleOn;
 		}
 		&:after {
+			content: $fa-circle;
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			content: "\f111";
 			$w: 6px;
 			font: $w "FontAwesome";
 			margin: $w / -2;

@@ -59,6 +59,42 @@
 		}
 	}
 
+	.timeArrow,
+	.timeCursor {
+		opacity: 0;
+		transition: opacity .2s;
+		&.visible {
+			opacity: 1;
+		}
+	}
+
+	.timeArrow {
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		line-height: 19px;
+
+		&:after {
+			content: $fa-caret-down;
+			color: $color_timearrow;
+			display: block;
+			font-family: "FontAwesome";
+			font-size: 28px;
+			margin-left: -8px;
+			text-shadow: $shadow_timearrow;
+		}
+	}
+
+	.timeCursor {
+		position: absolute;
+		z-index: 1;
+		height: 100%;
+		width: 1px;
+		margin-left: -1px;
+		background: $color_cursorTimeBg;
+		box-shadow: -2px 0 10px $color_cursorTimeShadow;
+	}
+
 	.trackList {
 		position: absolute;
 		overflow: hidden;
@@ -96,22 +132,6 @@
 
 	.colB {
 		right: 0;
-	}
-
-	.timeCursor {
-		position: absolute;
-		z-index: 1;
-		height: 100%;
-		width: 1px;
-		margin-left: -1px;
-		background: $color_cursorTimeBg;
-		box-shadow: -2px 0 10px $color_cursorTimeShadow;
-		opacity: 0;
-		transition: opacity .2s;
-
-		&.visible {
-			opacity: 1;
-		}
 	}
 
 	.trackLinesBg {
