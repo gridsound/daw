@@ -23,6 +23,7 @@ ui.Track.prototype.toggle = function( b ) {
 		b = !this.isOn;
 	}
 	if ( this.isOn !== b ) {
+		this.wfilters.gain( +b );
 		this.isOn = b;
 		this.grid.nbTracksOn += b ? 1 : -1;
 		this.jqToggle.toggleClass( "on", b );

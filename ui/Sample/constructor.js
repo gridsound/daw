@@ -5,7 +5,6 @@ ui.Sample = function( uifile ) {
 
 	this.uifile = uifile;
 	this.wbuff = uifile.wbuff;
-	this.offset = 0;
 	this.wsample = this.wbuff.createSample();
 
 	this.jqSample = $( "<div class='sample'>" );

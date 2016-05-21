@@ -11,6 +11,8 @@ ui.Track = function( grid, obj ) {
 	this.jqColNamesTrack[ 0 ].uitrack
 	this.jqColLinesTrack[ 0 ].uitrack = this;
 
+	this.wfilters = wa.wctx.createFilters();
+
 	this.initToggle()
 		.initEditName()
 		.toggle( obj.toggle !== false )
