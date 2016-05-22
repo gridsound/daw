@@ -1,36 +1,34 @@
 "use strict";
 
-(function() {
+( function() {
 
-var
-	jqFirstNum,
-	nbNums = 0
-;
+var nbNums = 0,
+	jqContent = $( ui.jqTimeArrow );
 
 function createNb( nb ) {
 	if ( nb > nbNums ) {
-		var
-			html = "",
-			i = nbNums
-		;
+		var html = "",
+			i = nbNums,
+			jqNums;
+
 		nbNums = nb;
 		while ( i++ < nb ) {
 			html += "<div><span></span></div>";
 		}
-		ui.jqTimeline.append( html );
-		jqFirstNum = jqFirstNum || ui.jqTimeline.children().eq( 0 );
+		jqNums = $( html );
+		ui.jqTimeline.append( jqNums );
+		if ( jqContent.length < 2 ) {
+			jqContent = jqContent.add( jqNums.eq( 0 ) );
+		}
 	}
 }
 
 ui.updateTimeline = function() {
-	var
-		leftEm = ui.trackLinesLeft / ui.gridEm,
-		widthEm = ui.trackLinesWidth / ui.gridEm
-	;
+	var leftEm = ui.trackLinesLeft / ui.gridEm,
+		widthEm = ui.trackLinesWidth / ui.gridEm;
+
 	createNb( Math.ceil( -leftEm + widthEm ) );
-	if ( jqFirstNum ) {
-		jqFirstNum.css( "marginLeft", leftEm + "em" );
-	}
+	jqContent.css( "marginLeft", leftEm + "em" );
 };
 
-})();
+} )();
