@@ -84,17 +84,19 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/sampleSelect.js        \
 		gs/samples/sampleDelete.js        \
 		gs/samples/samplesForEach.js      \
+		gs/samples/samplesDuration.js     \
 		gs/samples/samplesMoveX.js        \
 		gs/samples/samplesSlip.js         \
 		gs/samples/samplesUnselect.js     \
 		gs/samples/Sample/constructor.js  \
-		gs/samples/Sample/when.js         \
-		gs/samples/Sample/slip.js         \
-		gs/samples/Sample/mute.js         \
-		gs/samples/Sample/select.js       \
 		gs/samples/Sample/delete.js       \
+		gs/samples/Sample/duration.js     \
 		gs/samples/Sample/inTrack.js      \
 		gs/samples/Sample/moveX.js        \
+		gs/samples/Sample/mute.js         \
+		gs/samples/Sample/select.js       \
+		gs/samples/Sample/slip.js         \
+		gs/samples/Sample/when.js         \
 		                                  \
 		ui/initAfter.js                   \
 		                                  \

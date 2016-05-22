@@ -21,7 +21,8 @@ ui.CSS_sampleOffset = function( s ) {
 };
 
 ui.CSS_sampleDuration = function( s ) {
-	s.jqSample.css( "width", s.wsample.bufferDuration * ui.BPMem + "em" );
+	s.jqSample.css( "width", s.wsample.duration * ui.BPMem + "em" );
+	s.jqWaveform.css( "width", s.wsample.bufferDuration * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleWaveform = function( s ) {

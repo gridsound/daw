@@ -15,11 +15,21 @@
 .sample {
 	display: block;
 	position: relative;
-	overflow: hidden;
 	color: $color_sampleName;
 	transition: background .2s;
 	background: rgba( #000, .5 );
 
+	&:hover {
+		color: $color_sampleNameHighlight;
+	}
+
+	.waveformWrapper {
+		position: absolute;
+		overflow: hidden;
+		width: 100%;
+		top: 0;
+		bottom: 0;
+	}
 	.waveform {
 		display: block;
 		width: 100%;
@@ -52,9 +62,20 @@
 		padding: 0 .5em;
 		@include text-stroke( #000 );
 	}
-
-	&:hover {
-		color: $color_sampleNameHighlight;
+	.crop {
+		$w: .125em;
+		display: none;
+		position: absolute;
+		height: 100%;
+		width: $w;
+		margin: 0 $w/-2;
+		cursor: ew-resize;
+		&:hover, &.hover {
+			background: rgba( #fff, .25 );
+		}
+		&.end {
+			right: 0;
+		}
 	}
 
 	.filelist & {
@@ -86,11 +107,8 @@
 		span {
 			background: $color_sampleTitleBg;
 		}
-		.waveformWrapper {
-			position: absolute;
-			width: 100%;
-			top: 0;
-			bottom: 0;
+		.crop {
+			display: block;
 		}
 	}
 
