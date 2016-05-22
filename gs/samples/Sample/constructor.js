@@ -1,6 +1,6 @@
 "use strict";
 
-ui.Sample = function( uifile ) {
+gs.Sample = function( uifile ) {
 	var canvas, ctx, img;
 
 	this.uifile = uifile;
@@ -21,10 +21,10 @@ ui.Sample = function( uifile ) {
 	this.jqName = $( "<span class='text-overflow'>" )
 		.text( uifile.name ).appendTo( this.jqSample );
 
-	this.jqName[ 0 ].uisample =
-	this.jqWaveformWrapper[ 0 ].uisample =
-	this.jqWaveform[ 0 ].uisample = this;
+	this.jqName[ 0 ].gsSample =
+	this.jqWaveformWrapper[ 0 ].gsSample =
+	this.jqWaveform[ 0 ].gsSample = this;
 
-	this.updateCSS_width();
 	this.select( false );
+	ui.CSS_sampleWidth( this );
 };

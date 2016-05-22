@@ -3,10 +3,10 @@
 ui.tool.select = {
 	mousedown: function( e, sample ) {
 		if ( !e.shiftKey ) {
-			ui.samplesUnselect();
+			gs.samplesUnselect();
 		}
 		if ( sample ) {
-			ui.sampleSelect( sample, !sample.selected );
+			gs.sampleSelect( sample, !sample.selected );
 		}
 	}
 };

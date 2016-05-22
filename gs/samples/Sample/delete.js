@@ -1,8 +1,7 @@
 "use strict";
 
-ui.Sample.prototype.delete = function() {
-	this.jqSample.remove();
+gs.Sample.prototype.delete = function() {
 	this.wsample.stop();
 	wa.composition.removeSamples( [ this.wsample ], "rm" );
-	return this;
+	ui.CSS_sampleDelete( this );
 };

@@ -10,7 +10,7 @@ ui.tool.slip = {
 	},
 	mouseup: function() {
 		if ( sampleSave ) {
-			ui.samplesForEach( sampleSave, function( s ) {
+			gs.samplesForEach( sampleSave, function( s ) {
 				wa.composition.update( s.wsample, "mv" );
 			});
 		}
@@ -18,7 +18,7 @@ ui.tool.slip = {
 	},
 	mousemove: function( e, sample, mx ) {
 		if ( sampleSave ) {
-			ui.samplesSlip( sampleSave, mx / ui.gridEm );
+			gs.samplesSlip( sampleSave, mx / ui.gridEm );
 		}
 	}
 };

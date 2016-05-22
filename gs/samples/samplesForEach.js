@@ -1,9 +1,9 @@
 "use strict";
 
-ui.samplesForEach = function( sample, fn ) {
+gs.samplesForEach = function( sample, fn ) {
 	if ( sample ) {
 		if ( sample.selected ) {
-			ui.selectedSamples.forEach( fn );
+			gs.selectedSamples.forEach( fn );
 		} else {
 			fn( sample );
 		}

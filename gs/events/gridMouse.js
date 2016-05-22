@@ -33,7 +33,7 @@ ui.jqTrackLines.on( {
 			}
 			var fn = ui.tool[ ui.currentTool ].mousedown;
 			if ( fn ) {
-				fn( e, e.target.uisample );
+				fn( e, e.target.gsSample );
 			}
 		}
 	}
@@ -56,7 +56,7 @@ ui.jqBody.on( {
 			var fn = ui.tool[ ui.currentTool ].mousemove,
 				newXem = ui.getGridXem( e.pageX );
 			if ( fn ) {
-				fn( e, e.target.uisample,
+				fn( e, e.target.gsSample,
 					ui.currentTool !== "hand"
 						? ( newXem - xemSave ) * ui.gridEm
 						: e.pageX - px,
@@ -72,7 +72,7 @@ ui.jqBody.on( {
 		if ( mouseIsDown ) {
 			var fn = ui.tool[ ui.currentTool ].mouseup;
 			if ( fn ) {
-				fn( e, e.target.uisample );
+				fn( e, e.target.gsSample );
 			}
 			setBackOldTool();
 		}

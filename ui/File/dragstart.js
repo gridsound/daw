@@ -19,7 +19,7 @@ ui.jqBody
 				xem = ui.getGridXem( e.pageX );
 			jqWaveformTmp.remove();
 			if ( trackId >= 0 && xem >= 0 ) {
-				ui.sampleCreate( uifileDragging, trackId, xem );
+				gs.sampleCreate( uifileDragging, trackId, xem );
 			}
 			uifileDragging = null;
 		}

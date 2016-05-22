@@ -1,3 +1,6 @@
 "use strict";
 
-window.gs = {};
+window.gs = {
+	samples: [],
+	selectedSamples: []
+};
