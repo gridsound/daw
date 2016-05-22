@@ -20,14 +20,14 @@ ui.CSS_sampleOffset = function( s ) {
 	s.jqWaveform.css( "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
 };
 
-ui.CSS_sampleWidth = function( s ) {
-	s.jqSample.css( "width", s.wbuff.buffer.duration * ui.BPMem + "em" );
+ui.CSS_sampleDuration = function( s ) {
+	s.jqSample.css( "width", s.wsample.bufferDuration * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleWaveform = function( s ) {
-	var w = s.canvas.width = ~~( s.wbuff.buffer.duration * 300 ),
+	var w = s.canvas.width = ~~( s.wsample.bufferDuration * 300 ),
 		h = s.canvas.height = 50,
 		img = s.canvasCtx.createImageData( w, h );
-	s.wbuff.drawWaveform( img, [ 0xDD, 0xDD, 0xFF, 0xFF ] );
+	s.wsample.wBuffer.drawWaveform( img, [ 0xDD, 0xDD, 0xFF, 0xFF ] );
 	s.canvasCtx.putImageData( img, 0, 0 );
 };

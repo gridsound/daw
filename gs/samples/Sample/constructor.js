@@ -2,8 +2,7 @@
 
 gs.Sample = function( uifile ) {
 	this.uifile = uifile;
-	this.wbuff = uifile.wbuff;
-	this.wsample = this.wbuff.createSample();
+	this.wsample = uifile.wbuff.createSample();
 
 	this.jqSample = $( "<div class='sample'>" );
 	this.jqWaveformWrapper = $( "<div class='waveformWrapper'>" )
@@ -20,6 +19,6 @@ gs.Sample = function( uifile ) {
 	this.jqWaveform[ 0 ].gsSample = this;
 
 	this.select( false );
-	ui.CSS_sampleWidth( this );
+	ui.CSS_sampleDuration( this );
 	ui.CSS_sampleWaveform( this );
 };
