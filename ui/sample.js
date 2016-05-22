@@ -23,3 +23,11 @@ ui.CSS_sampleOffset = function( s ) {
 ui.CSS_sampleWidth = function( s ) {
 	s.jqSample.css( "width", s.wbuff.buffer.duration * ui.BPMem + "em" );
 };
+
+ui.CSS_sampleWaveform = function( s ) {
+	var w = s.canvas.width = ~~( s.wbuff.buffer.duration * 300 ),
+		h = s.canvas.height = 50,
+		img = s.canvasCtx.createImageData( w, h );
+	s.wbuff.drawWaveform( img, [ 0xDD, 0xDD, 0xFF, 0xFF ] );
+	s.canvasCtx.putImageData( img, 0, 0 );
+};
