@@ -22,9 +22,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		../webaudio-library/src/filters.js     \
 		../webaudio-library/src/sample.js      \
 		                                  \
-		ui/removeWhitespaces.js           \
-		ui/initBefore.js                  \
-		                                  \
+		ui/_init.js                       \
 		ui/analyserToggle.js              \
 		ui/bpm.js                         \
 		ui/currentTime.js                 \
@@ -46,23 +44,20 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/updateGridBoxShadow.js         \
 		ui/updateTimeline.js              \
 		ui/updateTrackLinesBg.js          \
-		                                  \
 		ui/File/constructor.js            \
 		ui/File/dragstart.js              \
 		ui/File/loaded.js                 \
-		                                  \
 		ui/Track/constructor.js           \
 		ui/Track/editName.js              \
 		ui/Track/toggle.js                \
 		                                  \
-		wa/init.js                        \
+		wa/_init.js                       \
 		wa/oscilloscope.js                \
 		                                  \
 		gs/_init.js                       \
 		gs/bpm.js                         \
 		gs/currentTime.js                 \
 		gs/playPauseStop.js               \
-		                                  \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
 		gs/events/divExtend.js            \
@@ -79,7 +74,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/toolSelect.js           \
 		gs/events/toolSlip.js             \
 		gs/events/toolZoom.js             \
-		                                  \
 		gs/samples/sampleCreate.js        \
 		gs/samples/sampleSelect.js        \
 		gs/samples/sampleDelete.js        \
@@ -98,7 +92,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/Sample/slip.js         \
 		gs/samples/Sample/when.js         \
 		                                  \
-		ui/initAfter.js                   \
+		init.js                           \
 		                                  \
 		-o compressed.js                  \
 		--compress                        \

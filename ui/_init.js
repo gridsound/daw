@@ -1,15 +1,30 @@
 "use strict";
 
+( function() {
+
+// Remove all whitespace nodes :
+function rmChild( el ) {
+	var save, n = el.firstChild;
+	while ( n !== null ) {
+		rmChild( save = n );
+		n = n.nextSibling;
+		if ( save.nodeType !== 1 && /^\s*$/.test( save.textContent ) ) {
+			el.removeChild( save );
+		}
+	}
+}
+rmChild( document.body );
+
 window.ui = {
+
+	// DOM :
 	jqWindow: $( window ),
 	jqBody: $( "body" ),
-
 	jqVisual: $( "#visual" ),
 	jqVisualCanvas: $( "#visual canvas" ),
 	jqClockMin: $( "#visual .clock .min" ),
 	jqClockSec: $( "#visual .clock .sec" ),
 	jqClockMs: $( "#visual .clock .ms" ),
-
 	jqMenu: $( "#menu" ),
 	jqPlay: $( "#menu .btn.play" ),
 	jqStop: $( "#menu .btn.stop" ),
@@ -19,10 +34,8 @@ window.ui = {
 	jqBpmList: $( "#menu .bpm-list" ),
 	jqBtnTools: $( "#menu .tools [data-tool]" ),
 	jqBtnMagnet: $( "#menu .tools .magnet" ),
-
 	jqFiles: $( "#files" ),
 	jqFilelist: $( "#files .filelist" ),
-
 	jqGrid: $( "#grid" ),
 	jqGridEm: $( "#grid .emWrapper" ),
 	jqGridHeader: $( "#grid .header" ),
@@ -35,13 +48,17 @@ window.ui = {
 	jqTrackNames: $( "#grid .trackNames" ),
 	jqTrackLines: $( "#grid .trackLines" ),
 	jqTrackLinesBg: $( "#grid .trackLinesBg" ),
-	jqTrackNamesExtend: $( "#grid .trackNames .extend" )
+	jqTrackNamesExtend: $( "#grid .trackNames .extend" ),
+
+	// Attrs :
+	tool: {},
+	files: [],
+	tracks: [],
+	nbTracksOn: 0,
 };
 
 ui.gridEm = parseFloat( ui.jqGrid.css( "fontSize" ) );
-ui.tool = {};
-ui.files = [];
-ui.tracks = [];
-ui.nbTracksOn = 0;
 ui.gridColsY = ui.jqGridCols.offset().top;
 ui.jqVisualCanvas[ 0 ].height = ui.jqVisualCanvas.height();
+
+} )();
