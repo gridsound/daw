@@ -68,7 +68,7 @@
 		position: absolute;
 		height: 100%;
 		width: $w;
-		margin: 0 $w/-2;
+		max-width: 50%;
 		cursor: ew-resize;
 		&:hover, &.hover {
 			background: rgba( #fff, .25 );
@@ -78,6 +78,7 @@
 		}
 	}
 
+	// In the filelist :
 	.filelist & {
 		height: 32px;
 		border-bottom: 1px solid #000;
@@ -100,6 +101,7 @@
 		}
 	}
 
+	// In tracks :
 	.track & {
 		position: absolute;
 		height: 1em;
@@ -107,18 +109,22 @@
 		span {
 			background: $color_sampleTitleBg;
 		}
+	}
+	.track.off & {
+		opacity: $opacity_sampleOff;
+	}
+
+	// data-tool :
+	#grid[data-tool="slip"] & {
+		cursor: ew-resize;
+	}
+	#grid[data-tool="paint"] & {
 		.crop {
 			display: block;
 		}
 	}
 
-	.track.off & {
-		opacity: $opacity_sampleOff;
-	}
-
-	#grid[data-tool="slip"] & {
-		cursor: ew-resize;
-	}
+	// Responsive (small, medium, big) :
 	#grid[data-sample-size="small"] & {
 		.waveform {
 			opacity: .15;
@@ -155,6 +161,7 @@
 		}
 	}
 
+	// Selected :
 	&.selected {
 		#grid[data-sample-size="small"] & {
 			background: $color_sampleSelectedBg;
