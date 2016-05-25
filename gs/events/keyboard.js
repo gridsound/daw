@@ -3,6 +3,8 @@
 (function() {
 
 var
+	KEY_BACKSPACE = 8,
+	KEY_ENTER = 13,
 	KEY_SHIFT = 16,
 	KEY_CTRL = 17,
 	KEY_SPACE = 32,
@@ -39,16 +41,29 @@ function setBackOldTool() {
 	}
 }
 
+function keys( k ) {
+	switch ( k ) {
+		case KEY_ENTER:
+			gs.playToggle();
+		break;
+		case KEY_BACKSPACE:
+			ui.stopFile();
+			gs.stop();
+		break;
+		case KEY_G:
+			ui.toggleMagnetism();
+		break;
+		default: return true;
+	}
+}
+
 ui.jqWindow.blur( setBackOldTool );
 
 ui.jqBody
 	.keydown( function( e ) {
 		// lg( "keyCode: " + e.keyCode );
 		e = e.keyCode;
-		if ( e === KEY_G ) {
-			ui.toggleMagnetism();
-			return false;
-		} else {
+		if ( keys( e ) ) {
 			var tool = shortcuts[ e ];
 			if ( tool && tool !== ui.currentTool ) {
 				if ( shiftCtrlSpace( e ) ) {
