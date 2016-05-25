@@ -3,21 +3,34 @@
 (function() {
 
 var
+	KEY_SHIFT = 16,
+	KEY_CTRL = 17,
+	KEY_SPACE = 32,
+	KEY_B = 66,
+	KEY_C = 67,
+	KEY_D = 68,
+	KEY_G = 71,
+	KEY_H = 72,
+	KEY_M = 77,
+	KEY_S = 83,
+	KEY_V = 86,
+	KEY_Z = 90,
 	oldTool,
-	shortcuts = {
-		16: "select", // Shift
-		86: "select", // V
-		66: "paint",  // B
-		68: "delete", // D
-		77: "mute",   // M
-		83: "slip",   // S
-		67: "cut",    // C
-		32: "hand",   // Space
-		72: "hand",   // H
-		17: "zoom",   // Ctrl
-		90: "zoom"    // Z
-	}
+	shortcuts = {}
 ;
+
+shortcuts[ KEY_B ] = "paint";
+shortcuts[ KEY_D ] = "delete";
+shortcuts[ KEY_M ] = "mute";
+shortcuts[ KEY_S ] = "slip";
+shortcuts[ KEY_C ] = "cut";
+shortcuts[ KEY_SPACE ] = shortcuts[ KEY_H ] = "hand";
+shortcuts[ KEY_SHIFT ] = shortcuts[ KEY_V ] = "select";
+shortcuts[ KEY_CTRL ]  = shortcuts[ KEY_Z ] = "zoom";
+
+function shiftCtrlSpace( k ) {
+	return k === KEY_SHIFT || k === KEY_CTRL || k === KEY_SPACE;
+}
 
 function setBackOldTool() {
 	if ( oldTool ) {
@@ -32,13 +45,13 @@ ui.jqBody
 	.keydown( function( e ) {
 		// lg( "keyCode: " + e.keyCode );
 		e = e.keyCode;
-		if ( e === 8 ) {
+		if ( e === KEY_G ) {
 			ui.toggleMagnetism();
 			return false;
 		} else {
 			var tool = shortcuts[ e ];
 			if ( tool && tool !== ui.currentTool ) {
-				if ( e === 16 || e === 17 || e === 32 ) {
+				if ( shiftCtrlSpace( e ) ) {
 					oldTool = ui.currentTool;
 				}
 				ui.selectTool( tool );
@@ -46,8 +59,7 @@ ui.jqBody
 		}
 	})
 	.keyup( function( e ) {
-		e = e.keyCode;
-		if ( e === 16 || e === 17 || e === 32 ) {
+		if ( shiftCtrlSpace( e.keyCode ) ) {
 			setBackOldTool();
 		}
 	})
