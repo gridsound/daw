@@ -3,14 +3,18 @@
 (function() {
 
 var sampleSave,
-	durationCropping;
+	cropping,
+	startCropping,
+	endCropping;
 
 ui.tool.paint = {
 	mousedown: function( e, sample ) {
-		durationCropping = e.target.classList.contains( "crop" );
-		if ( durationCropping ) {
+		startCropping = e.target.classList.contains( "start" );
+		endCropping = e.target.classList.contains( "end" );
+		cropping = startCropping || endCropping;
+		if ( cropping ) {
 			ui.jqBody.addClass( "cursor-ewResize" );
-			sample.jqCropEnd.addClass( "hover" );
+			sample[ startCropping ? "jqCropStart" : "jqCropEnd" ].addClass( "hover" );
 		}
 		sampleSave = sample;
 	},
@@ -19,9 +23,9 @@ ui.tool.paint = {
 			gs.samplesForEach( sampleSave, function( s ) {
 				wa.composition.update( s.wsample, "mv" );
 			});
-			if ( durationCropping ) {
-				durationCropping = false;
-				sampleSave.jqCropEnd.removeClass( "hover" );
+			if ( cropping ) {
+				sampleSave[ startCropping ? "jqCropStart" : "jqCropEnd" ].removeClass( "hover" );
+				cropping = startCropping = endCropping = false;
 				ui.jqBody.removeClass( "cursor-ewResize" );
 			}
 			sampleSave = null;
@@ -29,10 +33,17 @@ ui.tool.paint = {
 	},
 	mousemove: function( e, sample, mx, my ) {
 		if ( sampleSave ) {
-			if ( durationCropping ) {
-				gs.samplesDuration( sampleSave, mx / ui.gridEm );
+			mx /= ui.gridEm;
+			if ( cropping ) {
+				if ( startCropping ) {
+					gs.samplesMoveX( sampleSave, mx );
+					gs.samplesSlip( sampleSave, -mx );
+					gs.samplesDuration( sampleSave, -mx );
+				} else {
+					gs.samplesDuration( sampleSave, mx );
+				}
 			} else {
-				gs.samplesMoveX( sampleSave, mx / ui.gridEm );
+				gs.samplesMoveX( sampleSave, mx );
 				
 				// Changes tracks:
 				e = e.target;

@@ -68,10 +68,10 @@
 		position: absolute;
 		height: 100%;
 		width: $w;
-		max-width: 50%;
+		max-width: 25%;
 		cursor: ew-resize;
 		&:hover, &.hover {
-			background: rgba( #fff, .25 );
+			background: rgba( #fff, .18 );
 		}
 		&.end {
 			right: 0;
