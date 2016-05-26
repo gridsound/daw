@@ -8,6 +8,7 @@ var
 	KEY_SHIFT = 16,
 	KEY_CTRL = 17,
 	KEY_SPACE = 32,
+	KEY_DEL = 46,
 	KEY_B = 66,
 	KEY_C = 67,
 	KEY_D = 68,
@@ -49,6 +50,9 @@ function keys( k ) {
 		case KEY_BACKSPACE:
 			ui.stopFile();
 			gs.stop();
+		break;
+		case KEY_DEL:
+			gs.samplesDelete();
 		break;
 		case KEY_G:
 			ui.toggleMagnetism();
