@@ -44,7 +44,7 @@ wa.oscilloscope = function () {
 
 			ctx.lineJoin = "round";
 			ctx.lineWidth = 1 + Math.round( 2 * max );
-			ctx.strokeStyle = "rgba(200,200,255," + Math.min( max * 5, 1 ) + ")";
+			ctx.strokeStyle = "rgba(255,255,255," + Math.min( .3 + max * 4, 1 ) + ")";
 			ctx.stroke();
 		ctx.restore();
 	};
