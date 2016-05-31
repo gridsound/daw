@@ -2,8 +2,8 @@
 
 ( function() {
 
-var samplesCopied = [],
-	dist;
+var dist,
+	samplesCopied = [];
 
 gs.samplesCopy = function() {
 	var min = Infinity,
@@ -21,11 +21,14 @@ gs.samplesCopy = function() {
 };
 
 gs.samplesPaste = function() {
+	gs.samplesUnselect();
 	samplesCopied.forEach( function( s ) {
 		var ns = gs.sampleCreate( s.uifile, s.track.id, s.xem + dist );
 		ns.slip( s.wsample.offset );
 		ns.duration( s.wsample.duration );
+		gs.sampleSelect( ns, true );
 	} );
+	gs.samplesCopy();
 };
 
 } )();

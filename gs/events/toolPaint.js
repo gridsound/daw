@@ -9,14 +9,18 @@ var sampleSave,
 
 ui.tool.paint = {
 	mousedown: function( e, sample ) {
-		startCropping = e.target.classList.contains( "start" );
-		endCropping = e.target.classList.contains( "end" );
-		cropping = startCropping || endCropping;
-		if ( cropping ) {
-			ui.jqBody.addClass( "cursor-ewResize" );
-			sample[ startCropping ? "jqCropStart" : "jqCropEnd" ].addClass( "hover" );
+		if ( !sample ) {
+			gs.samplesUnselect();
+		} else {
+			startCropping = e.target.classList.contains( "start" );
+			endCropping = e.target.classList.contains( "end" );
+			cropping = startCropping || endCropping;
+			if ( cropping ) {
+				ui.jqBody.addClass( "cursor-ewResize" );
+				sample[ startCropping ? "jqCropStart" : "jqCropEnd" ].addClass( "hover" );
+			}
+			sampleSave = sample;
 		}
-		sampleSave = sample;
 	},
 	mouseup: function() {
 		if ( sampleSave ) {
