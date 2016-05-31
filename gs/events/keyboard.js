@@ -3,6 +3,8 @@
 (function() {
 
 var
+	keysPressed = [],
+
 	KEY_BACKSPACE = 8,
 	KEY_ENTER = 13,
 	KEY_SHIFT = 16,
@@ -42,8 +44,8 @@ function setBackOldTool() {
 	}
 }
 
-function keys( k ) {
-	switch ( k ) {
+function keys( e ) {
+	switch ( e.keyCode ) {
 		case KEY_ENTER:
 			gs.playToggle();
 		break;
@@ -57,6 +59,16 @@ function keys( k ) {
 		case KEY_G:
 			ui.toggleMagnetism();
 		break;
+		case KEY_C:
+			if ( e.ctrlKey ) {
+				gs.samplesCopy();
+			}
+		break;
+		case KEY_V:
+			if ( e.ctrlKey ) {
+				gs.samplesPaste();
+			}
+		break;
 		default: return true;
 	}
 }
@@ -65,19 +77,23 @@ ui.jqWindow.blur( setBackOldTool );
 
 ui.jqBody
 	.keydown( function( e ) {
-		// lg( "keyCode: " + e.keyCode );
-		e = e.keyCode;
-		if ( keys( e ) ) {
-			var tool = shortcuts[ e ];
-			if ( tool && tool !== ui.currentTool ) {
-				if ( shiftCtrlSpace( e ) ) {
-					oldTool = ui.currentTool;
+		var k = e.keyCode;
+		if ( !keysPressed[ k ] ) {
+			// lg( "keyCode: " + k );
+			keysPressed[ k ] = true;
+			if ( keys( e ) ) {
+				var tool = shortcuts[ k ];
+				if ( tool && tool !== ui.currentTool ) {
+					if ( shiftCtrlSpace( k ) ) {
+						oldTool = ui.currentTool;
+					}
+					ui.selectTool( tool );
 				}
-				ui.selectTool( tool );
 			}
 		}
 	})
 	.keyup( function( e ) {
+		keysPressed[ e.keyCode ] = false;
 		if ( shiftCtrlSpace( e.keyCode ) ) {
 			setBackOldTool();
 		}

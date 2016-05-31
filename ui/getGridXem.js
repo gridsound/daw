@@ -1,16 +1,36 @@
 "use strict";
 
-ui.getGridXem = function( pageX ) {
-	var rest,
-		prec = 1 / 4,
-		xem = ( pageX - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft ) / ui.gridEm;
+( function() {
 
-	if ( ui.isMagnetized ) {
-		rest = xem % prec;
-		xem -= rest;
-		if ( rest > prec / 2 ) {
-			xem += prec;
-		}
+var prec = 1 / 4,
+	prec2 = prec / 2;
+
+function eq( x, y ) {
+	return Math.abs( x - y ) < .0001;
+}
+
+function round( x ) {
+	var rest = x % prec;
+	x -= rest;
+	if ( rest > prec2 ) {
+		x += prec;
 	}
-	return xem;
+	return x;
+}
+
+ui.xemFloor = function( xem ) {
+	var n = round( xem );
+	return n < xem || eq( n, xem ) ? n : n - prec;
 };
+
+ui.xemCeil = function( xem ) {
+	var n = round( xem );
+	return n > xem || eq( n, xem ) ? n : n + prec;
+};
+
+ui.getGridXem = function( pageX ) {
+	var xem = ( pageX - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft ) / ui.gridEm;
+	return ui.isMagnetized ? round( xem ) : xem;
+};
+
+} )();
