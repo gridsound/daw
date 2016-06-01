@@ -32,35 +32,29 @@ ui.tool.select = {
 				px = e.pageX,
 				py = e.pageY;
 
-			if ( !dragging ) {
-				if ( Math.max( Math.abs( px - ax ), Math.abs( py - ay ) ) > 5 ) {
-					++selectionId;
-					dragging = true;
-					atrackId = ui.getTrackFromPageY( ay ).id;
-					axem = ui.getGridXem( ax );
-					jqRect.appendTo( ui.jqTrackLines );
-				}
+			if ( !dragging && Math.max( Math.abs( px - ax ), Math.abs( py - ay ) ) > 5 ) {
+				++selectionId;
+				dragging = true;
+				atrackId = ui.getTrackFromPageY( ay ).id;
+				axem = ui.getGridXem( ax );
+				jqRect.appendTo( ui.jqTrackLines );
 			}
+
 			if ( dragging ) {
 				btrackId = ui.getTrackFromPageY( py ).id;
 				xem = ui.getGridXem( px );
 				var trackMin = Math.min( atrackId, btrackId ),
 					trackMax = Math.max( atrackId, btrackId ),
 					xemMin = Math.min( axem, xem ),
-					xemMax = Math.max( axem, xem ),
-					top = trackMin,
-					left = xemMin,
-					width = xemMax - xemMin,
-					height = trackMax - trackMin + 1;
+					xemMax = Math.max( axem, xem );
 
 				gs.samples.forEach( function( s ) {
 					var xemA, xemB, trackId = s.track.id;
-
 					if ( trackMin <= trackId && trackId <= trackMax ) {
 						xemA = s.xem;
 						xemB = xemA + s.wsample.duration * ui.BPMem;
-						if ( ( xemMin <= xemA && xemA <= xemMax ) ||
-							( xemMin <= xemB && xemB <= xemMax ) ||
+						if ( ( xemMin <= xemA && xemA < xemMax ) ||
+							( xemMin < xemB && xemB <= xemMax ) ||
 							( xemA <= xemMin && xemMax <= xemB ) )
 						{
 							if ( !s.selected ) {
@@ -76,10 +70,10 @@ ui.tool.select = {
 				} );
 
 				jqRect.css( {
-					top: top + "em",
-					left: left + "em",
-					width: width + "em",
-					height: height + "em"
+					top: trackMin + "em",
+					left: xemMin + "em",
+					width: xemMax - xemMin + "em",
+					height: trackMax - trackMin + 1 + "em"
 				} );
 			}
 		}
