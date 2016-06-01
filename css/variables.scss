@@ -1,6 +1,7 @@
 $COLOR_MAIN: #142b3c;
 $COLOR_SAMPLE: #76c4ff;
 $COLOR_SAMPLE_SELECTED: #b51818;
+$COLOR_SELECTION: #ff3636;
 
 $fa-circle: "\f111";
 $fa-caret-down: "\f0d7";
@@ -51,6 +52,9 @@ $color_trackName: #fff;
 $color_trackOffName: rgba( #fff, .2 );
 $color_trackToggleOff: #111;
 $color_trackToggleOn: #4cb849;
+
+$color_squareSelectionBorder: $COLOR_SELECTION;
+$color_squareSelectionBg: rgba( $COLOR_SELECTION, .3 );
 
 $color_timearrow: #9ac060;
 $shadow_timearrow: 0 0 3px rgba( $color_timearrow, .8 );

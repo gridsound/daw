@@ -27,6 +27,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/bpm.js                         \
 		ui/currentTime.js                 \
 		ui/getGridXem.js                  \
+		ui/getTrackFromPageY.js           \
 		ui/newFile.js                     \
 		ui/newTrack.js                    \
 		ui/playFile.js                    \
