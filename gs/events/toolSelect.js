@@ -28,7 +28,7 @@ ui.tool.select = {
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
-			var btrackId, xem,
+			var btrackId, bxem,
 				px = e.pageX,
 				py = e.pageY;
 
@@ -41,12 +41,13 @@ ui.tool.select = {
 			}
 
 			if ( dragging ) {
-				btrackId = ui.getTrackFromPageY( py ).id;
-				xem = ui.getGridXem( px );
+				btrackId = ui.getTrackFromPageY( py );
+				btrackId = btrackId ? btrackId.id : 0;
+				bxem = Math.max( 0, ui.getGridXem( px ) );
 				var trackMin = Math.min( atrackId, btrackId ),
 					trackMax = Math.max( atrackId, btrackId ),
-					xemMin = Math.min( axem, xem ),
-					xemMax = Math.max( axem, xem );
+					xemMin = Math.min( axem, bxem ),
+					xemMax = Math.max( axem, bxem );
 
 				gs.samples.forEach( function( s ) {
 					var xemA, xemB, trackId = s.track.id;
