@@ -11,6 +11,7 @@ html, body {
 }
 
 body {
+	overflow: hidden; // Deactivate the Apple's creepy scroll bounce effect.
 	margin: 0;
 	cursor: default;
 	font: 14px sans-serif;
@@ -20,7 +21,6 @@ body {
 		$color_bodyStripA,
 		$color_bodyStripB
 	);
-
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	    -ms-user-select: none;
