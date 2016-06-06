@@ -103,14 +103,18 @@
 		bottom: 0;
 	}
 
-	.cols, .trackLines {
+	.cols,
+	.trackLines {
 		transition: 0s ease-out;
 	}
 
 	.cols {
 		position: absolute;
-		width: 100%;
-		top: 0;
+		left: 0;
+		right: -30px; // -30 to hide the scrollbar (for the moment)
+		height: 100%;
+		overflow: auto;
+		overflow-x: hidden;
 		transition-property: top, font-size;
 
 		> * {
@@ -118,6 +122,10 @@
 			top: 0;
 			left: 0;
 		}
+	}
+
+	.colB {
+		right: 0;
 	}
 
 	.trackNames {
@@ -130,15 +138,12 @@
 		background: $color_tracknamesBg;
 	}
 
-	.colB {
-		right: 0;
-	}
-
 	.trackLinesBg {
 		position: absolute;
-		width: 200%;
+		width: 1000000px;
 		top: 0;
-		height: 99999px;
+		bottom: 0;
+		overflow: hidden;
 		background: $color_tracklinesBg;
 
 		* {
@@ -167,10 +172,12 @@
 			}
 		}
 	}
+
 	.trackLines {
-		position: absolute;
-		right: 0;
-		transition-property: left;
+		position: relative;
+		width: 1000000px;
+		margin-left: 0;
+		transition-property: margin-left;
 	}
 	&[data-tool="hand"] .trackLines {
 		cursor: move;

@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+( function() {
 
 var
 	mouseIsDown,
@@ -18,6 +18,22 @@ function setBackOldTool() {
 }
 
 ui.jqWindow.blur( setBackOldTool );
+
+ui.jqGridCols.on( {
+	wheel: function( e ) {
+		if ( ui.currentTool === "zoom" ) {
+			ui.tool.zoom.wheel( e.originalEvent );
+			return false;
+		}
+	},
+	scroll: function() {
+		ui.gridScrollTop = ui.jqGridCols[ 0 ].scrollTop;
+		ui.updateGridTopShadow();
+		if ( ui.currentTool === "zoom" ) {
+			return false;
+		}
+	}
+} );
 
 ui.jqTrackLines.on( {
 	contextmenu: false,
@@ -37,17 +53,6 @@ ui.jqTrackLines.on( {
 			}
 		}
 	}
-});
-
-ui.jqGrid.on( "wheel", function( e ) {
-	e = e.originalEvent;
-	if ( ui.currentTool === "zoom" ) {
-		ui.tool.zoom.wheel( e );
-	} else {
-		// Vertical scroll:
-		ui.setGridTop( ui.gridTop + ( e.deltaY < 0 ? .9 : -.9 ) * ui.gridEm );
-	}
-	ui.updateGridBoxShadow();
 });
 
 ui.jqBody.on( {
@@ -82,6 +87,6 @@ ui.jqBody.on( {
 			return false;
 		}
 	}
-});
+} );
 
-})();
+} )();

@@ -2,5 +2,6 @@
 
 ui.setTrackLinesLeft = function( xpx ) {
 	ui.trackLinesLeft = xpx = Math.min( ~~xpx, 0 );
-	ui.jqTrackLines.css( "left", xpx / ui.gridEm + "em" );
+	ui.jqTrackLines.css( "marginLeft", xpx / ui.gridEm + "em" );
+	ui.updateGridLeftShadow();
 };

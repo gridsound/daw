@@ -9,9 +9,8 @@ ui.tool.hand = {
 	},
 	mousemove: function( e, sample, mx, my ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
-		ui.setGridTop( ui.gridTop + my );
+		ui.setGridScrollTop( ui.gridScrollTop - my );
 		ui.updateTimeline();
 		ui.updateTrackLinesBg();
-		ui.updateGridBoxShadow();
 	}
 };

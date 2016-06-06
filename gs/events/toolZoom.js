@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+( function() {
 
 function zoom( e, z ) {
 	ui.setGridZoom(
@@ -16,9 +16,9 @@ ui.tool.zoom = {
 	},
 	mousedown: function( e ) {
 		if ( e.button === 0 ) {
-			zoom( e, e.altKey ? .8 : 1.2 );
+			zoom( e, e.altKey ? .7 : 1.3 );
 		}
 	}
 };
 
-})();
+} )();

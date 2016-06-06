@@ -1,11 +1,8 @@
 "use strict";
 
-(function() {
+( function() {
 
-var
-	keysPressed = [],
-
-	KEY_BACKSPACE = 8,
+var KEY_BACKSPACE = 8,
 	KEY_ENTER = 13,
 	KEY_SHIFT = 16,
 	KEY_CTRL = 17,
@@ -21,6 +18,7 @@ var
 	KEY_V = 86,
 	KEY_Z = 90,
 	oldTool,
+	keysPressed = [],
 	shortcuts = {}
 ;
 
@@ -91,13 +89,16 @@ ui.jqBody
 				}
 			}
 		}
-	})
+		if ( k === KEY_SPACE || k === KEY_BACKSPACE ) {
+			return false;
+		}
+	} )
 	.keyup( function( e ) {
 		keysPressed[ e.keyCode ] = false;
 		if ( shiftCtrlSpace( e.keyCode ) ) {
 			setBackOldTool();
 		}
-	})
+	} )
 ;
 
-})();
+} )();

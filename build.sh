@@ -36,13 +36,13 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/sample.js                      \
 		ui/selectTool.js                  \
 		ui/setFilesWidth.js               \
-		ui/setGridTop.js                  \
+		ui/setGridScrollTop.js            \
 		ui/setGridZoom.js                 \
 		ui/setTrackLinesLeft.js           \
 		ui/setTrackNamesWidth.js          \
 		ui/toggleMagnetism.js             \
 		ui/toggleTracks.js                \
-		ui/updateGridBoxShadow.js         \
+		ui/updateGridShadows.js           \
 		ui/updateTimeline.js              \
 		ui/updateTrackLinesBg.js          \
 		ui/File/constructor.js            \

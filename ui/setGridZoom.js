@@ -11,7 +11,7 @@ ui.setGridZoom = function( zm, xpx, ypx ) {
 	ui.jqGrid.attr( "data-sample-size",
 		ui.gridEm < 40 ? "small" :
 		ui.gridEm < 80 ? "medium" : "big" );
-	ui.setGridTop( ypx - ( -ui.gridTop + ypx ) * zmMul );
+	ui.setGridScrollTop( -( ypx - ( ui.gridScrollTop + ypx ) * zmMul ) );
 	ui.setTrackLinesLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
 	ui.updateTimeline();
 	ui.updateTrackLinesBg();

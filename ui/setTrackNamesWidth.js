@@ -20,5 +20,4 @@ ui.setTrackNamesWidth = function( wpx ) {
 	}
 	ui.updateTimeline();
 	ui.updateTrackLinesBg();
-	ui.updateGridBoxShadow();
 };
