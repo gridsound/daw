@@ -21,6 +21,7 @@ ui.jqGridCols.on( {
 	wheel: function( e ) {
 		if ( ui.currentTool === "zoom" ) {
 			ui.tool.zoom.wheel( e.originalEvent );
+			return false;
 		}
 	},
 	scroll: function() {
