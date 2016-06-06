@@ -2,12 +2,10 @@
 
 ( function() {
 
-var
-	mouseIsDown,
+var mouseIsDown,
 	oldTool,
 	xemSave,
-	px = 0, py = 0
-;
+	px = 0, py = 0;
 
 function setBackOldTool() {
 	if ( oldTool ) {
@@ -23,15 +21,11 @@ ui.jqGridCols.on( {
 	wheel: function( e ) {
 		if ( ui.currentTool === "zoom" ) {
 			ui.tool.zoom.wheel( e.originalEvent );
-			return false;
 		}
 	},
 	scroll: function() {
 		ui.gridScrollTop = ui.jqGridCols[ 0 ].scrollTop;
 		ui.updateGridTopShadow();
-		if ( ui.currentTool === "zoom" ) {
-			return false;
-		}
 	}
 } );
 
@@ -53,9 +47,14 @@ ui.jqTrackLines.on( {
 			}
 		}
 	}
-});
+} );
 
 ui.jqBody.on( {
+	wheel: function( e ) {
+		if ( e.ctrlKey ) {
+			return false;
+		}
+	},
 	mousemove: function( e ) {
 		if ( mouseIsDown ) {
 			var fn = ui.tool[ ui.currentTool ].mousemove,
@@ -80,11 +79,6 @@ ui.jqBody.on( {
 				fn( e, e.target.gsSample );
 			}
 			setBackOldTool();
-		}
-	},
-	wheel: function( e ) {
-		if ( e.ctrlKey ) {
-			return false;
 		}
 	}
 } );
