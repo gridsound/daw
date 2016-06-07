@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+( function() {
 
 var sampleSave,
 	cropping,
@@ -26,7 +26,7 @@ ui.tool.paint = {
 		if ( sampleSave ) {
 			gs.samplesForEach( sampleSave, function( s ) {
 				wa.composition.update( s.wsample, "mv" );
-			});
+			} );
 			if ( cropping ) {
 				sampleSave[ startCropping ? "jqCropStart" : "jqCropEnd" ].removeClass( "hover" );
 				cropping = startCropping = endCropping = false;
@@ -39,12 +39,11 @@ ui.tool.paint = {
 		if ( sampleSave ) {
 			mx /= ui.gridEm;
 			if ( cropping ) {
-				if ( startCropping ) {
+				if ( endCropping ) {
+					gs.samplesDuration( sampleSave, mx );
+				} else if ( mx = -gs.samplesDuration( sampleSave, -mx ) ) {
 					gs.samplesMoveX( sampleSave, mx );
 					gs.samplesSlip( sampleSave, -mx );
-					gs.samplesDuration( sampleSave, -mx );
-				} else {
-					gs.samplesDuration( sampleSave, mx );
 				}
 			} else {
 				gs.samplesMoveX( sampleSave, mx );
@@ -59,12 +58,12 @@ ui.tool.paint = {
 						if ( nbTracksToMove < 0 ) {
 							gs.selectedSamples.forEach( function( s ) {
 								minTrackId = Math.min( s.track.id, minTrackId );
-							});
+							} );
 							nbTracksToMove = -Math.min( minTrackId, -nbTracksToMove );
 						}
 						gs.selectedSamples.forEach( function( s ) {
 							s.inTrack( s.track.id + nbTracksToMove );
-						});
+						} );
 					} else {
 						sampleSave.inTrack( track.id );
 					}
@@ -74,4 +73,4 @@ ui.tool.paint = {
 	}
 };
 
-})();
+} )();
