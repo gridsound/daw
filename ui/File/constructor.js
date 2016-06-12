@@ -3,6 +3,7 @@
 ui.File = function( file ) {
 	var that = this;
 
+	this.id = ui.files.length; // change it when files could be removed
 	this.file = file;
 	this.fullname = file.name;
 	this.name = file.name.replace( /\.[^.]+$/, "" );
