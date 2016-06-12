@@ -12,9 +12,19 @@ ui.Track = function( grid, obj ) {
 	this.jqColLinesTrack[ 0 ].uitrack = this;
 
 	this.wfilters = wa.wctx.createFilters();
+	this.samples = [];
 
 	this.initToggle()
 		.initEditName()
 		.toggle( obj.toggle !== false )
 		.editName( obj.name || "" );
 };
+
+ui.Track.prototype = {
+	removeSample: function( s ) {
+		var index = this.samples.indexOf( s );
+		if ( index >= 0 ) {
+			this.samples.splice( index, 1 );
+		}
+	}
+}
