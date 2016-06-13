@@ -37,6 +37,7 @@ window.ui = {
 	jqBtnSave: $( "#menu .tools .save" ),
 	jqFiles: $( "#files" ),
 	jqFilelist: $( "#files .filelist" ),
+	jqInputFile: $( "#files .filelist input[type='file']" ),
 	jqGrid: $( "#grid" ),
 	jqGridEm: $( "#grid .emWrapper" ),
 	jqGridHeader: $( "#grid .header" ),
