@@ -1,11 +1,27 @@
 "use strict";
 
+( function() {
+
+var clickedFile;
+
+ui.jqInputFile.change( function() {
+	if ( clickedFile )
+	{
+		clickedFile.file = this.files[ 0 ];
+		clickedFile.fullname = this.files[ 0 ].name;
+		clickedFile.name = this.files[ 0 ].name.replace( /\.[^.]+$/, "" );
+		clickedFile.jqName.text( clickedFile.name );
+		clickedFile = undefined;
+	}
+});
+
+
 ui.File = function( file ) {
 	var that = this;
 
 	this.id = ui.files.length; // change it when files could be removed
 	this.file = file.length ? undefined : file;
-	this.fullname = file.name || file[1];
+	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
 	this.isLoaded =
 	this.isLoading = false;
@@ -27,9 +43,13 @@ ui.File = function( file ) {
 				ui.playFile( that );
 			} else if ( !that.file ) {
 				alert( "Select the corresponding file or drag and drop the file " + that.name );
+				clickedFile = that;
+				ui.jqInputFile.click();
 			} else if ( !that.isLoading ) {
 				that.loaded();
 			}
 		}
 	});
 };
+
+})();
