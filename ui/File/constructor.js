@@ -7,10 +7,7 @@ var clickedFile;
 ui.jqInputFile.change( function() {
 	if ( clickedFile )
 	{
-		clickedFile.file = this.files[ 0 ];
-		clickedFile.fullname = this.files[ 0 ].name;
-		clickedFile.name = this.files[ 0 ].name.replace( /\.[^.]+$/, "" );
-		clickedFile.jqName.text( clickedFile.name );
+		clickedFile.associate( this.files[ 0 ] );
 		clickedFile = undefined;
 	}
 });
@@ -19,12 +16,16 @@ ui.jqInputFile.change( function() {
 ui.File = function( file ) {
 	var that = this;
 
-	this.id = ui.files.length; // change it when files could be removed
+	this.id = ui.files.length; // change it when uifiles could be removed
 	this.file = file.length ? undefined : file;
 	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
 	this.isLoaded =
 	this.isLoading = false;
+	if ( !this.file ) {
+		this.savedSize = file[ 2 ];
+		this.savedType = file[ 3 ];
+	}
 	this.jqFile = $( "<a class='sample to-load' draggable='true'>" );
 	this.jqName = $( "<span class='text-overflow'>" )
 		.appendTo( this.jqFile )

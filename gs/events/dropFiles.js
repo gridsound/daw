@@ -10,7 +10,22 @@ ui.jqBody.on( {
 				// FIX ME : ResetAll
 				gs.load( this );
 			} else {
-				ui.newFile( this );
+				var
+					fileFound = false,
+					that = this
+				;
+				// Can be optimized with a fileless uifile array and maybe use for
+				ui.files.forEach( function( f, index ) {
+					if ( f.fullname === that.name
+						 && f.savedSize === that.size
+						 && f.savedType === that.type ) {
+						f.associate( that );
+						fileFound = true;
+					}
+				});
+				if ( !fileFound ) {
+					ui.newFile( this );
+				}
 			}
 		});
 		return false;
