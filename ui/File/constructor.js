@@ -7,16 +7,19 @@ var clickedFile;
 ui.jqInputFile.change( function() {
 	if ( clickedFile )
 	{
-		clickedFile.associate( this.files[ 0 ] );
+		clickedFile.joinFile( this.files[ 0 ] );
 		clickedFile = undefined;
 	}
 });
 
 
 ui.File = function( file ) {
-	var that = this;
+	var
+		that = this,
+		icone = file.length ? "question" : "download";
+	;
 
-	this.id = ui.files.length; // change it when uifiles could be removed
+	this.id = ui.files.length; // FIX ME when uifiles could be removed
 	this.file = file.length ? undefined : file;
 	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
@@ -30,7 +33,7 @@ ui.File = function( file ) {
 	this.jqName = $( "<span class='text-overflow'>" )
 		.appendTo( this.jqFile )
 		.text( this.name );
-	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-download'>" ).prependTo( this.jqName );
+	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-" + icone + "'>" ).prependTo( this.jqName );
 	this.jqFile.on( {
 		contextmenu: false,
 		dragstart: this.dragstart.bind( this ),
@@ -43,7 +46,7 @@ ui.File = function( file ) {
 			if ( that.isLoaded ) {
 				ui.playFile( that );
 			} else if ( !that.file ) {
-				alert( "Select the corresponding file or drag and drop the file " + that.name );
+				alert( "Choose the file to associate or drag and drop " + that.name );
 				clickedFile = that;
 				ui.jqInputFile.click();
 			} else if ( !that.isLoading ) {
@@ -52,5 +55,18 @@ ui.File = function( file ) {
 		}
 	});
 };
+
+ui.File.prototype = {
+	associate: function( file ) {
+		this.file = file;
+		this.savedSize = undefined;
+		this.savedType = undefined;
+		if ( this.fullname !== file.name ) {
+			this.fullname = file.name;
+			this.name = this.fullname.replace( /\.[^.]+$/, "" );
+			this.jqName.text( this.name );
+		}
+	}
+}
 
 })();

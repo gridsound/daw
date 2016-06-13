@@ -19,7 +19,7 @@ ui.jqBody.on( {
 					if ( f.fullname === that.name
 						 && f.savedSize === that.size
 						 && f.savedType === that.type ) {
-						f.associate( that );
+						f.joinFile( that );
 						fileFound = true;
 					}
 				});
