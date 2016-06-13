@@ -17,4 +17,9 @@ gs.save = function()
 			f.file.type
 		]);
 	});
+
+	return {
+		href: "data:text/plain;charset=utf-8," + encodeURIComponent( JSON.stringify(_save) ),
+		download: "s.txt"
+	};
 }

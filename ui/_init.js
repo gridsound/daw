@@ -34,6 +34,7 @@ window.ui = {
 	jqBpmList: $( "#menu .bpm-list" ),
 	jqBtnTools: $( "#menu .tools [data-tool]" ),
 	jqBtnMagnet: $( "#menu .tools .magnet" ),
+	jqBtnSave: $( "#menu .tools .save" ),
 	jqFiles: $( "#files" ),
 	jqFilelist: $( "#files .filelist" ),
 	jqGrid: $( "#grid" ),
