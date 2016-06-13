@@ -56,17 +56,4 @@ ui.File = function( file ) {
 	});
 };
 
-ui.File.prototype = {
-	associate: function( file ) {
-		this.file = file;
-		this.savedSize = undefined;
-		this.savedType = undefined;
-		if ( this.fullname !== file.name ) {
-			this.fullname = file.name;
-			this.name = this.fullname.replace( /\.[^.]+$/, "" );
-			this.jqName.text( this.name );
-		}
-	}
-}
-
 })();
