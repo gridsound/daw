@@ -6,8 +6,8 @@ ui.jqBody.on( {
 		e = e.originalEvent;
 		var data = e && e.dataTransfer;
 		$.each( data && data.files, function() {
-			ui.newFile( this );
-		});
+			gs.files.push( ui.newFile( this ) );
+		} );
 		return false;
 	}
-});
+} );
