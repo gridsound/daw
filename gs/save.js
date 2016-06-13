@@ -23,3 +23,18 @@ gs.save = function()
 		download: "s.txt"
 	};
 }
+
+gs.load = function( file ) {
+	var
+		that = this,
+		reader = new FileReader()
+	;
+	reader.onload = function( event ) {
+		that._save = JSON.parse( event.target.result );
+		that.bpm( that._save.bpm );
+		that._save.files.forEach( function( f ) {
+			ui.newFile( f );
+		});
+	};
+	reader.readAsText( file );
+}

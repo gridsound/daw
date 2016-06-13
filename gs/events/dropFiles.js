@@ -6,7 +6,12 @@ ui.jqBody.on( {
 		e = e.originalEvent;
 		var data = e && e.dataTransfer;
 		$.each( data && data.files, function() {
-			ui.newFile( this );
+			if ( !this.type || this.type === "text/plain" ) {
+				// FIX ME : ResetAll
+				gs.load( this );
+			} else {
+				ui.newFile( this );
+			}
 		});
 		return false;
 	}
