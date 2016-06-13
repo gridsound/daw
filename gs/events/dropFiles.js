@@ -7,7 +7,7 @@ ui.jqBody.on( {
 		var data = e && e.dataTransfer;
 		$.each( data && data.files, function() {
 			if ( !this.type || this.type === "text/plain" ) {
-				// FIX ME : ResetAll
+				gs.reset();
 				gs.load( this );
 			} else {
 				var
@@ -24,10 +24,10 @@ ui.jqBody.on( {
 					}
 				});
 				if ( !fileFound ) {
-					ui.newFile( this );
+					gs.files.push( ui.newFile( this ) );
 				}
 			}
 		});
 		return false;
 	}
-});
+} );
