@@ -9,10 +9,12 @@ ui.File = function( file ) {
 	this.isLoaded =
 	this.isLoading = false;
 	this.jqFile = $( "<a class='sample to-load' draggable='true'>" );
-	this.jqName = $( "<span class='text-overflow'>" )
+	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-download'>" );
+	this.jqName = $( "<span>" + this.name + "</span>" );
+	$( "<span class='name text-overflow'>" )
+		.append( this.jqToLoad )
+		.append( this.jqName )
 		.appendTo( this.jqFile )
-		.text( this.name );
-	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-download'>" ).prependTo( this.jqName );
 	this.jqFile.on( {
 		contextmenu: false,
 		dragstart: this.dragstart.bind( this ),
