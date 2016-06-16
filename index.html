@@ -43,13 +43,16 @@
 		<a data-tool="slip"   class="btn fa fa-fw fa-exchange" title="Slip (S)"></a>
 		<a data-tool="cut"    class="btn fa fa-fw fa-scissors" title="Cut (C)"></a>
 		<a data-tool="hand"   class="btn fa fa-fw fa-hand-paper-o" title="Hand (H)"></a>
-		<a data-tool="zoom"   class="btn fa fa-fw fa-search" title="Zoom (Z)"></a>
+		<a data-tool="zoom"   class="btn fa fa-fw fa-search last" title="Zoom (Z)"></a>
+		<a data-edit="save"   class="btn fa fa-fw fa-save save" title="Save (Ctrl+S)"></a>
 	</div>
 </div>
 
 <div id="files">
 	<div class="extend cursor-ewResize" data-mousemove-fn="files"></div>
-	<div class="filelist"></div>
+	<div class="filelist">
+		<input type="file"/>
+	</div>
 	<div class="placeholder">
 		<i class="fa fa-file-audio-o"></i><br/>
 		<b>Drop audio files here</b>
@@ -120,6 +123,7 @@
 <script src="ui/updateTrackLinesBg.js"></script>
 <script src="ui/File/constructor.js"></script>
 <script src="ui/File/dragstart.js"></script>
+<script src="ui/File/joinFile.js"></script>
 <script src="ui/File/loaded.js"></script>
 <script src="ui/Track/constructor.js"></script>
 <script src="ui/Track/editName.js"></script>
@@ -132,6 +136,7 @@
 <script src="gs/bpm.js"></script>
 <script src="gs/currentTime.js"></script>
 <script src="gs/playPauseStop.js"></script>
+<script src="gs/save.js"></script>
 <script src="gs/reset.js"></script>
 <script src="gs/events/bpm.js"></script>
 <script src="gs/events/currentTime.js"></script>
@@ -141,6 +146,7 @@
 <script src="gs/events/keyboard.js"></script>
 <script src="gs/events/playPauseStop.js"></script>
 <script src="gs/events/resize.js"></script>
+<script src="gs/events/save.js"></script>
 <script src="gs/events/tools.js"></script>
 <script src="gs/events/toolDelete.js"></script>
 <script src="gs/events/toolHand.js"></script>

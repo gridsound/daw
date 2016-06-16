@@ -1,15 +1,36 @@
 "use strict";
 
-ui.File = function( file ) {
-	var that = this;
+( function() {
 
-	this.file = file;
-	this.fullname = file.name;
-	this.name = file.name.replace( /\.[^.]+$/, "" );
+var clickedFile;
+
+ui.jqInputFile.change( function() {
+	if ( clickedFile )
+	{
+		clickedFile.joinFile( this.files[ 0 ] );
+		clickedFile = undefined;
+	}
+});
+
+
+ui.File = function( file ) {
+	var
+		that = this,
+		icone = file.length ? "question" : "download";
+	;
+
+	this.id = ui.files.length; // FIX ME when uifiles could be removed
+	this.file = file.length ? undefined : file;
+	this.fullname = file.name || file[ 1 ];
+	this.name = this.fullname.replace( /\.[^.]+$/, "" );
 	this.isLoaded =
 	this.isLoading = false;
+	if ( !this.file ) {
+		this.savedSize = file[ 2 ];
+		this.savedType = file[ 3 ];
+	}
 	this.jqFile = $( "<a class='sample to-load' draggable='true'>" );
-	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-download'>" );
+	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-" + icone + "'>" );
 	this.jqName = $( "<span>" + this.name + "</span>" );
 	$( "<span class='name text-overflow'>" )
 		.append( this.jqToLoad )
@@ -26,9 +47,15 @@ ui.File = function( file ) {
 		click: function() {
 			if ( that.isLoaded ) {
 				ui.playFile( that );
+			} else if ( !that.file ) {
+				alert( "Choose the file to associate or drag and drop " + that.name );
+				clickedFile = that;
+				ui.jqInputFile.click();
 			} else if ( !that.isLoading ) {
 				that.loaded();
 			}
 		}
 	});
 };
+
+})();

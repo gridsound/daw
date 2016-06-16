@@ -72,9 +72,18 @@
 			}
 		}
 
+		.last {
+			border-right-width: 1px;
+		}
+
 		.magnet {
 			margin-right: 3px;
 			border-right-width: 1px;
+		}
+
+		.save {
+			margin-left: 3px;
+			border-left-width: 1px;
 		}
 	}
 }

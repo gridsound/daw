@@ -12,6 +12,9 @@
 		overflow: auto;
 		height: 100%;
 		background: $color_filesBg;
+		input {
+			display: none;
+		}
 	}
 
 	.placeholder {

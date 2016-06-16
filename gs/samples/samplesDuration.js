@@ -7,17 +7,19 @@ gs.samplesDuration = function( sample, mxem ) {
 		mxem = Math.min( mxem, s.wsample.bufferDuration - s.wsample.duration );
 	}
 
-	mxem /= ui.BPMem;
-	if ( sample.selected ) {
-		gs.selectedSamples.forEach( calc );
-	} else {
-		calc( sample );
+	if ( sample.wsample ) { // check wsample for empty sample
+		mxem /= ui.BPMem;
+		if ( sample.selected ) {
+			gs.selectedSamples.forEach( calc );
+		} else {
+			calc( sample );
+		}
+		if ( mxem < 0 ) {
+			mxem = -Math.min( durMin, -mxem );
+		}
+		gs.samplesForEach( sample, function( s ) {
+			s.duration( s.wsample.duration + mxem );
+		} );
 	}
-	if ( mxem < 0 ) {
-		mxem = -Math.min( durMin, -mxem );
-	}
-	gs.samplesForEach( sample, function( s ) {
-		s.duration( s.wsample.duration + mxem );
-	} );
 	return mxem * ui.BPMem;
 };

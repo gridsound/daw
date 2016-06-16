@@ -47,6 +47,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/updateTrackLinesBg.js          \
 		ui/File/constructor.js            \
 		ui/File/dragstart.js              \
+		ui/File/joinFile.js               \
 		ui/File/loaded.js                 \
 		ui/Track/constructor.js           \
 		ui/Track/editName.js              \
@@ -59,6 +60,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/bpm.js                         \
 		gs/currentTime.js                 \
 		gs/playPauseStop.js               \
+		gs/save.js                        \
 		gs/reset.js                       \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
@@ -68,6 +70,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/keyboard.js             \
 		gs/events/playPauseStop.js        \
 		gs/events/resize.js               \
+		gs/events/save.js                 \
 		gs/events/tools.js                \
 		gs/events/toolDelete.js           \
 		gs/events/toolHand.js             \
