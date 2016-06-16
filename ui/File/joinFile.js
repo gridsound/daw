@@ -9,8 +9,7 @@ ui.File.prototype.joinFile = function( file ) {
 	if ( this.fullname !== file.name ) {
 		this.fullname = file.name;
 		this.name = this.fullname.replace( /\.[^.]+$/, "" );
-		this.jqName.text( this.name )	// Awww FIX ME PLZ :'(
-			.prepend( this.jqToLoad );
+		this.jqName.text( this.name );
 	}
 
 	if ( this.samplesToSet.length ) {
@@ -21,7 +20,7 @@ ui.File.prototype.joinFile = function( file ) {
 
 				s.canvas = s.jqWaveform[ 0 ];
 				s.canvasCtx = s.canvas.getContext( "2d" );
-				// s.jqName.appendTo( s.jqSample ).text( this.name );
+				s.jqName.appendTo( s.jqSample ).text( that.name );
 
 				s.wsample.duration = s.savedDuration;
 				s.wsample.offset = s.savedOffset;

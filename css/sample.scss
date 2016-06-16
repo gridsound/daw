@@ -50,7 +50,7 @@
 		margin-right: .5em;
 		opacity: .5;
 	}
-	span {
+	.name {
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -86,7 +86,7 @@
 		.waveform {
 			opacity: .75;
 		}
-		span {
+		.name {
 			transition: padding .2s;
 		}
 		&:hover {
@@ -95,7 +95,7 @@
 			.waveform {
 				opacity: 1;
 			}
-			span {
+			.name {
 				padding-left: 1em;
 			}
 		}
@@ -106,7 +106,7 @@
 		position: absolute;
 		height: 1em;
 
-		span {
+		.name {
 			background: $color_sampleTitleBg;
 		}
 	}
@@ -129,14 +129,14 @@
 		.waveform {
 			opacity: .15;
 		}
-		span {
+		.name {
 			font-size: 11px;
 			background: transparent;
 		}
 	}
 	#grid[data-sample-size="medium"] &,
 	#grid[data-sample-size="big"] & {
-		span {
+		.name {
 			top: 0;
 			padding: 2px;
 			font-size: 11px;
@@ -147,7 +147,7 @@
 		.waveformWrapper {
 			top: 15px;
 		}
-		span {
+		.name {
 			padding: 2px;
 			font-size: 11px;
 		}
@@ -156,7 +156,7 @@
 		.waveformWrapper {
 			top: 24px;
 		}
-		span {
+		.name {
 			padding: .5em;
 		}
 	}
@@ -168,7 +168,7 @@
 		}
 		#grid[data-sample-size="medium"] &,
 		#grid[data-sample-size="big"] & {
-			span {
+			.name {
 				background: $color_sampleSelectedSpanBg;
 			}
 		}
