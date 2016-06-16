@@ -4,9 +4,6 @@ ui.File.prototype.joinFile = function( file ) {
 	var that = this;
 
 	this.file = file;
-	this.wbuff =
-	this.savedSize =
-	this.savedType = undefined;
 	this.jqToLoad.removeClass( "fa-question" )
 		.addClass( "fa-download" );
 	if ( this.fullname !== file.name ) {

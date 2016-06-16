@@ -5,8 +5,9 @@ gs.Sample.prototype.inTrack = function( trackId ) {
 	if ( track !== this.track && this.wsample ) { // check wsample for empty sample
 		this.wsample.disconnect();
 		this.wsample.connect( track.wfilters );
-		if ( this.track )
+		if ( this.track ) {
 			this.track.removeSample( this );
+		}
 		this.track = track;
 		this.track.samples.push( this );
 		ui.CSS_sampleTrack( this );

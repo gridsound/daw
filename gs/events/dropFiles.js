@@ -7,7 +7,6 @@ ui.jqBody.on( {
 		var data = e && e.dataTransfer;
 		$.each( data && data.files, function() {
 			if ( !this.type || this.type === "text/plain" ) {
-				gs.reset();
 				gs.load( this );
 			} else {
 				var

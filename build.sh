@@ -61,7 +61,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/currentTime.js                 \
 		gs/playPauseStop.js               \
 		gs/save.js                        \
-		gs/reset.js                       \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
 		gs/events/divExtend.js            \
