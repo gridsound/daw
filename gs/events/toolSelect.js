@@ -51,24 +51,26 @@ ui.tool.select = {
 
 				gs.samples.forEach( function( s ) {
 					var xemA, xemB, trackId = s.track.id;
-					if ( trackMin <= trackId && trackId <= trackMax ) {
-						xemA = s.xem;
-						xemB = xemA + s.wsample.duration * ui.BPMem;
-						if ( ( xemMin <= xemA && xemA < xemMax ) ||
-							( xemMin < xemB && xemB <= xemMax ) ||
-							( xemA <= xemMin && xemMax <= xemB ) )
-						{
-							if ( !s.selected ) {
-								s.squareSelected = selectionId;
-								gs.sampleSelect( s, true );
+					if ( s.wsample ) { // check wsample for empty sample
+						if ( trackMin <= trackId && trackId <= trackMax ) {
+							xemA = s.xem;
+							xemB = xemA + s.wsample.duration * ui.BPMem;
+							if ( ( xemMin <= xemA && xemA < xemMax ) ||
+								( xemMin < xemB && xemB <= xemMax ) ||
+								( xemA <= xemMin && xemMax <= xemB ) )
+							{
+								if ( !s.selected ) {
+									s.squareSelected = selectionId;
+									gs.sampleSelect( s, true );
+								}
+								return;
 							}
-							return;
+						}
+						if ( s.squareSelected === selectionId ) {
+							gs.sampleSelect( s, false );
 						}
 					}
-					if ( s.squareSelected === selectionId ) {
-						gs.sampleSelect( s, false );
-					}
-				} );
+				});
 
 				jqRect.css( {
 					top: trackMin + "em",

@@ -2,9 +2,11 @@
 
 gs.sampleCreate = function( uifile, trackId, xem ) {
 	var sample = new gs.Sample( uifile );
-	sample.inTrack( trackId );
-	sample.moveX( xem );
+	if ( uifile.file ) {
+		sample.inTrack( trackId );
+		sample.moveX( xem );
+		wa.composition.addSamples( [ sample.wsample ] );
+	}
 	gs.samples.push( sample );
-	wa.composition.addSamples( [ sample.wsample ] );
 	return sample;
 };

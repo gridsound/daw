@@ -1,6 +1,6 @@
 "use strict";
 
-ui.File.prototype.loaded = function() {
+ui.File.prototype.loaded = function( fn ) {
 	var that = this;
 
 	this.isLoading = true;
@@ -25,5 +25,7 @@ ui.File.prototype.loaded = function() {
 		ctx.putImageData( img, 0, 0 );
 		that.jqFile.prepend( canvas );
 		ui.playFile( that );
+		if ( fn )
+			fn();
 	});
 };

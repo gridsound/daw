@@ -1,7 +1,7 @@
 "use strict";
 
 gs.samplesMoveX = function( sample, mxem ) {
-	if ( sample.selected && mxem < 0 ) {
+	if ( sample.selected && sample.wsample && mxem < 0 ) { // check wsample for empty sample
 		var xemMin = Infinity;
 		gs.selectedSamples.forEach( function( s ) {
 			xemMin = Math.min( xemMin, s.xem );

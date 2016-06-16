@@ -4,7 +4,7 @@ ui.Track = function( grid, obj ) {
 	obj = obj || {}
 
 	this.grid = grid;
-	this.id = ui.tracks.length;
+	this.id = ui.tracks.length; // FIX ME when tracks could be moved or removed
 	this.jqColNamesTrack = $( "<div class='track'>" ).appendTo( ui.jqTrackNames );
 	this.jqColLinesTrack = $( "<div class='track'>" ).appendTo( ui.jqTrackLines );
 
