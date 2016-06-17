@@ -2,17 +2,15 @@
 
 (function() {
 
-var
-	uifileDragging,
-	jqWaveformTmp
-;
+var uifileDragging,
+	jqWaveformTmp;
 
 ui.jqBody
 	.mousemove( function( e ) {
 		if ( uifileDragging ) {
 			jqWaveformTmp.css( { left: e.pageX, top: e.pageY } );
 		}
-	})
+	} )
 	.mouseup( function( e ) {
 		if ( uifileDragging ) {
 			var track = ui.getTrackFromPageY( e.pageY ),
@@ -23,7 +21,7 @@ ui.jqBody
 			}
 			uifileDragging = null;
 		}
-	})
+	} )
 ;
 
 ui.File.prototype.dragstart = function( e ) {

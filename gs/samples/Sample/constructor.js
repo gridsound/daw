@@ -6,7 +6,7 @@ gs.Sample = function( uifile ) {
 	this.jqSample = $( "<div class='sample'>" );
 	this.jqWaveformWrapper = $( "<div class='waveformWrapper'>" ).appendTo( this.jqSample );
 	this.jqWaveform = $( "<canvas class='waveform'>" ).appendTo( this.jqWaveformWrapper );
-	this.jqName = $( "<span class='text-overflow'>" ).appendTo( this.jqSample ).text( uifile.name ); // maj uifile.name
+	this.jqName = $( "<span class='name text-overflow'>" ).appendTo( this.jqSample ).text( uifile.name );
 	this.jqCropStart = $( "<div class='crop start'>" ).appendTo( this.jqSample );
 	this.jqCropEnd = $( "<div class='crop end'>" ).appendTo( this.jqSample );
 

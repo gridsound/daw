@@ -10,15 +10,13 @@ ui.jqBody.on( {
 				gs.reset();
 				gs.load( this );
 			} else {
-				var
-					fileFound = false,
-					that = this
-				;
-				// Can be optimized with a fileless uifile array and maybe use for
+				var fileFound = false,
+					that = this;
+
 				ui.files.forEach( function( f, index ) {
+						console.log(f, that);
 					if ( f.fullname === that.name
-						 && f.savedSize === that.size
-						 && f.savedType === that.type ) {
+						 && f.savedSize === that.size ) {
 						f.joinFile( that );
 						fileFound = true;
 					}

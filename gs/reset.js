@@ -9,8 +9,8 @@ gs.reset = function() {
 		gs.sampleSelect( sample, true );
 	} );
 	gs.samplesDelete();
-	gs.files.forEach( function( file ) {
+	ui.files.forEach( function( file ) {
 		file.jqFile.remove();
 	} );
-	gs.files = [];
+	ui.files = [];
 };

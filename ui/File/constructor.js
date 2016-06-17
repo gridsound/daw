@@ -14,10 +14,8 @@ ui.jqInputFile.change( function() {
 
 
 ui.File = function( file ) {
-	var
-		that = this,
+	var that = this,
 		icone = file.length ? "question" : "download";
-	;
 
 	this.id = ui.files.length; // FIX ME when uifiles could be removed
 	this.file = file.length ? undefined : file;
@@ -30,10 +28,12 @@ ui.File = function( file ) {
 		this.savedType = file[ 3 ];
 	}
 	this.jqFile = $( "<a class='sample to-load' draggable='true'>" );
-	this.jqName = $( "<span class='text-overflow'>" )
+	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-" + icone + "'>" );
+	this.jqName = $( "<span>" + this.name + "</span>" );
+	$( "<span class='name text-overflow'>" )
+		.append( this.jqToLoad )
+		.append( this.jqName )
 		.appendTo( this.jqFile )
-		.text( this.name );
-	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-" + icone + "'>" ).prependTo( this.jqName );
 	this.jqFile.on( {
 		contextmenu: false,
 		dragstart: this.dragstart.bind( this ),

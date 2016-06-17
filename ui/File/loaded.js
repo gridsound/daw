@@ -27,5 +27,5 @@ ui.File.prototype.loaded = function( fn ) {
 		ui.playFile( that );
 		if ( fn )
 			fn();
-	});
+	} );
 };

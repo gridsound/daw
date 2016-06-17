@@ -8,7 +8,7 @@ gs.playToggle = function( b ) {
 };
 
 gs.play = function() {
-	if ( !wa.composition.isPlaying && gs.samples.length ) {
+	if ( !wa.composition.isPlaying && wa.composition.wSamples.length && gs.samples.length ) {
 		wa.composition.play();
 		if ( wa.composition.isPlaying ) {
 			ui.play();
