@@ -27,7 +27,7 @@ ui.File = function( file ) {
 			if ( that.isLoaded ) {
 				ui.playFile( that );
 			} else if ( !that.isLoading ) {
-				that.loaded();
+				that.load( ui.playFile );
 			}
 		}
 	});
