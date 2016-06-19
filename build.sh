@@ -56,6 +56,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/bpm.js                         \
 		gs/currentTime.js                 \
 		gs/playPauseStop.js               \
+		gs/load.js                        \
 		gs/save.js                        \
 		gs/reset.js                       \
 		                                  \
