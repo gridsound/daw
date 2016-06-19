@@ -14,7 +14,6 @@ ui.jqBody.on( {
 					that = this;
 
 				ui.files.forEach( function( f, index ) {
-						console.log(f, that);
 					if ( f.fullname === that.name
 						 && f.savedSize === that.size ) {
 						f.joinFile( that );

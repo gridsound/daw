@@ -1,6 +1,6 @@
 "use strict";
 
-ui.File.prototype.loaded = function( fn ) {
+ui.File.prototype.load = function( fn ) {
 	var that = this;
 
 	this.isLoading = true;
@@ -21,11 +21,9 @@ ui.File.prototype.loaded = function( fn ) {
 		canvas.width = 400;
 		canvas.height = 50;
 		img = ctx.createImageData( canvas.width, canvas.height );
-		wbuff.drawWaveform( img, [ 0x39, 0x39, 0x5A, 0xFF ] )
+		wbuff.drawWaveform( img, [ 0x39, 0x39, 0x5A, 0xFF ] );
 		ctx.putImageData( img, 0, 0 );
 		that.jqFile.prepend( canvas );
-		ui.playFile( that );
-		if ( fn )
-			fn();
-	} );
+		fn( that );
+	});
 };

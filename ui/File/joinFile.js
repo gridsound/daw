@@ -13,7 +13,7 @@ ui.File.prototype.joinFile = function( file ) {
 	}
 
 	if ( this.samplesToSet.length ) {
-		this.loaded( function() {
+		this.load( function() {
 			that.samplesToSet.forEach( function( s ) {
 				s.wsample = that.wbuff.createSample();
 				wa.composition.addSamples( [ s.wsample ] );
@@ -25,6 +25,7 @@ ui.File.prototype.joinFile = function( file ) {
 				s.wsample.duration = s.savedDuration;
 				s.wsample.offset = s.savedOffset;
 				s.wsample.when = s.savedWhen;
+
 				ui.CSS_sampleDuration( s );
 				ui.CSS_sampleWaveform( s );
 

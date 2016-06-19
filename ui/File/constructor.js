@@ -25,7 +25,6 @@ ui.File = function( file ) {
 	this.isLoading = false;
 	if ( !this.file ) {
 		this.savedSize = file[ 2 ];
-		this.savedType = file[ 3 ];
 	}
 	this.jqFile = $( "<a class='sample to-load' draggable='true'>" );
 	this.jqToLoad = $( "<i class='to-load fa fa-fw fa-" + icone + "'>" );
@@ -50,7 +49,7 @@ ui.File = function( file ) {
 				clickedFile = that;
 				ui.jqInputFile.click();
 			} else if ( !that.isLoading ) {
-				that.loaded();
+				that.load( ui.playFile );
 			}
 		}
 	});

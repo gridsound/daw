@@ -11,8 +11,8 @@ gs.save = function() {
 	ui.files.forEach( function( f ) {
 		_save.files.push( [
 			f.id,
-			f.file.name,
-			f.file.size
+			f.fullname,
+			f.savedSize || f.file.size
 		] );
 	} );
 
@@ -21,16 +21,16 @@ gs.save = function() {
 			s.xem,
 			s.track.id,
 			s.uifile.id,
-			s.wsample.when,
-			s.wsample.offset,
-			s.wsample.duration
+			s.wsample ? s.wsample.when : s.savedWhen,
+			s.wsample ? s.wsample.offset : s.savedOffset,
+			s.wsample ? s.wsample.duration : s.savedDuration
 		] );
 	} );
 
 	// TODO save wfilters
 	ui.tracks.forEach( function( t ) {
 		if ( t.isOn || t.samples.length ||
-			 t.name || t.wfilters.length ) {
+			 t.name || ( t.wfilters && t.wfilters.length ) ) {
 			_save.tracks.push( [
 				t.id,
 				t.isOn,

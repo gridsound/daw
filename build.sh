@@ -48,7 +48,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/File/constructor.js            \
 		ui/File/dragstart.js              \
 		ui/File/joinFile.js               \
-		ui/File/loaded.js                 \
+		ui/File/load.js                   \
 		ui/Track/constructor.js           \
 		ui/Track/editName.js              \
 		ui/Track/toggle.js                \
