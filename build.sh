@@ -28,6 +28,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/currentTime.js                 \
 		ui/getGridXem.js                  \
 		ui/getTrackFromPageY.js           \
+		ui/file.js                        \
 		ui/newTrack.js                    \
 		ui/playPauseStop.js               \
 		ui/resize.js                      \
@@ -77,7 +78,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/toolZoom.js             \
 		                                  \
 		gs/files/fileCreate.js            \
-		gs/files/filePlay.js              \
+		gs/files/filePlayStop.js          \
 		gs/files/File/constructor.js      \
 		gs/files/File/dragstart.js        \
 		gs/files/File/joinFile.js         \
