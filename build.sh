@@ -28,9 +28,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/currentTime.js                 \
 		ui/getGridXem.js                  \
 		ui/getTrackFromPageY.js           \
-		ui/newFile.js                     \
 		ui/newTrack.js                    \
-		ui/playFile.js                    \
 		ui/playPauseStop.js               \
 		ui/resize.js                      \
 		ui/sample.js                      \
@@ -45,10 +43,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/updateGridShadows.js           \
 		ui/updateTimeline.js              \
 		ui/updateTrackLinesBg.js          \
-		ui/File/constructor.js            \
-		ui/File/dragstart.js              \
-		ui/File/joinFile.js               \
-		ui/File/load.js                   \
+		                                  \
 		ui/Track/constructor.js           \
 		ui/Track/editName.js              \
 		ui/Track/toggle.js                \
@@ -62,6 +57,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/playPauseStop.js               \
 		gs/save.js                        \
 		gs/reset.js                       \
+		                                  \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
 		gs/events/divExtend.js            \
@@ -79,6 +75,14 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/toolSelect.js           \
 		gs/events/toolSlip.js             \
 		gs/events/toolZoom.js             \
+		                                  \
+		gs/files/fileCreate.js            \
+		gs/files/filePlay.js              \
+		gs/files/File/constructor.js      \
+		gs/files/File/dragstart.js        \
+		gs/files/File/joinFile.js         \
+		gs/files/File/load.js             \
+		                                  \
 		gs/samples/sampleCreate.js        \
 		gs/samples/sampleSelect.js        \
 		gs/samples/sampleDelete.js        \
@@ -89,6 +93,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/samplesMoveX.js        \
 		gs/samples/samplesSlip.js         \
 		gs/samples/samplesUnselect.js     \
+		                                  \
 		gs/samples/Sample/constructor.js  \
 		gs/samples/Sample/delete.js       \
 		gs/samples/Sample/duration.js     \

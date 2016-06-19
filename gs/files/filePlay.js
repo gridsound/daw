@@ -1,31 +1,31 @@
 "use strict";
 
-(function() {
+( function() {
 
 var wsample,
 	jqCursor = $( "<div class='cursor'>" );
 
-ui.playFile = function( uifile ) {
+gs.filePlay = function( gsfile ) {
 	if ( wsample ) {
 		wsample.stop();
 	}
-	if ( uifile.isLoaded ) {
-		uifile.jqCanvasWaveform.after(
+	if ( gsfile.isLoaded ) {
+		gsfile.jqCanvasWaveform.after(
 			jqCursor.css( "transitionDuration", 0 ).css( "left", 0 )
 		);
-		wsample = uifile.wbuff.createSample().onended( ui.stopFile ).load().start();
+		wsample = gsfile.wbuff.createSample().onended( gs.fileStop ).load().start();
 		setTimeout( function() {
-			jqCursor.css( "transitionDuration", uifile.wbuff.buffer.duration + "s" )
+			jqCursor.css( "transitionDuration", gsfile.wbuff.buffer.duration + "s" )
 				.css( "left", "100%" );
 		}, 20 );
 	}
 };
 
-ui.stopFile = function() {
+gs.fileStop = function() {
 	if ( wsample ) {
 		wsample.stop();
 		jqCursor.detach();
 	}
 };
 
-})();
+} )();

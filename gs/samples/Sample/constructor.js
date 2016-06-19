@@ -1,12 +1,12 @@
 "use strict";
 
-gs.Sample = function( uifile ) {
-	this.uifile = uifile;
+gs.Sample = function( gsfile ) {
+	this.gsfile = gsfile;
 
 	this.jqSample = $( "<div class='sample'>" );
 	this.jqWaveformWrapper = $( "<div class='waveformWrapper'>" ).appendTo( this.jqSample );
 	this.jqWaveform = $( "<canvas class='waveform'>" ).appendTo( this.jqWaveformWrapper );
-	this.jqName = $( "<span class='name text-overflow'>" ).appendTo( this.jqSample ).text( uifile.name );
+	this.jqName = $( "<span class='name text-overflow'>" ).appendTo( this.jqSample ).text( gsfile.name );
 	this.jqCropStart = $( "<div class='crop start'>" ).appendTo( this.jqSample );
 	this.jqCropEnd = $( "<div class='crop end'>" ).appendTo( this.jqSample );
 
@@ -17,8 +17,8 @@ gs.Sample = function( uifile ) {
 	this.jqCropEnd[ 0 ].gsSample = this;
 
 	// Update when files are available
-	if ( uifile.file ) {
-		this.wsample = uifile.wbuff.createSample();
+	if ( gsfile.file ) {
+		this.wsample = gsfile.wbuff.createSample();
 		this.canvas = this.jqWaveform[ 0 ];
 		this.canvasCtx = this.canvas.getContext( "2d" );
 

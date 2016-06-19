@@ -11,13 +11,12 @@ ui.jqInputFile.change( function() {
 	}
 } );
 
-ui.File = function( file ) {
+gs.File = function( file ) {
 	var that = this,
 		icon = file.length ? "question" : "download";
 
 	this.isLoaded =
 	this.isLoading = false;
-	this.id = ui.files.length; // FIXME when uifiles could be removed
 	this.file = file.length ? null : file;
 	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
@@ -36,18 +35,18 @@ ui.File = function( file ) {
 		dragstart: this.dragstart.bind( this ),
 		mousedown: function( e ) {
 			if ( e.button !== 0 ) {
-				ui.stopFile();
+				gs.fileStop();
 			}
 		},
 		click: function() {
 			if ( that.isLoaded ) {
-				ui.playFile( that );
+				gs.filePlay( that );
 			} else if ( !that.file ) {
 				alert( "Choose the file to associate or drag and drop " + that.name );
 				clickedFile = that;
 				ui.jqInputFile.click();
 			} else if ( !that.isLoading ) {
-				that.load( ui.playFile );
+				that.load( gs.filePlay );
 			}
 		}
 	} );

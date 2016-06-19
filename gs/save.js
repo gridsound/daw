@@ -8,7 +8,7 @@ gs.save = function() {
 			tracks: []
 		};
 
-	ui.files.forEach( function( f ) {
+	gs.files.forEach( function( f ) {
 		_save.files.push( [
 			f.id,
 			f.fullname,
@@ -20,7 +20,7 @@ gs.save = function() {
 		_save.samples.push( [
 			s.xem,
 			s.track.id,
-			s.uifile.id,
+			s.gsfile.id,
 			s.wsample ? s.wsample.when : s.savedWhen,
 			s.wsample ? s.wsample.offset : s.savedOffset,
 			s.wsample ? s.wsample.duration : s.savedDuration
@@ -57,7 +57,7 @@ gs.load = function( file ) {
 		that.bpm( that._save.bpm );
 
 		that._save.files.forEach( function( f ) {
-			nf = ui.newFile( f );
+			nf = gs.fileCreate( f );
 			nf.samplesToSet = [];
 		} );
 
@@ -81,8 +81,8 @@ gs.load = function( file ) {
 				offset = s[ 4 ],
 				duration = s[ 5 ];
 
-			ns = gs.sampleCreate( ui.files[ fileId ] );
-			ns.uifile.samplesToSet.push(ns);
+			ns = gs.sampleCreate( gs.files[ fileId ] );
+			ns.gsfile.samplesToSet.push(ns);
 
 			// inTrack()
 			ns.track = ui.tracks[ trackId ];

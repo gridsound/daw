@@ -1,12 +1,12 @@
 "use strict";
 
 ui.jqPlay.click( function() {
-	ui.stopFile();
+	gs.fileStop();
 	gs.playToggle();
 } );
 
 ui.jqStop.click( function() {
-	ui.stopFile();
+	gs.fileStop();
 	gs.stop();
 } );
 

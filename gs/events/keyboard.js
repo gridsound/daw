@@ -48,7 +48,7 @@ function keys( e ) {
 			gs.playToggle();
 		break;
 		case KEY_BACKSPACE:
-			ui.stopFile();
+			gs.fileStop();
 			gs.stop();
 		break;
 		case KEY_DEL:

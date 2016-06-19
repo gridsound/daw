@@ -1,32 +1,31 @@
 "use strict";
 
-(function() {
+( function() {
 
-var uifileDragging,
+var gsfileDragging,
 	jqWaveformTmp;
 
 ui.jqBody
 	.mousemove( function( e ) {
-		if ( uifileDragging ) {
+		if ( gsfileDragging ) {
 			jqWaveformTmp.css( { left: e.pageX, top: e.pageY } );
 		}
 	} )
 	.mouseup( function( e ) {
-		if ( uifileDragging ) {
+		if ( gsfileDragging ) {
 			var track = ui.getTrackFromPageY( e.pageY ),
 				xem = ui.getGridXem( e.pageX );
 			jqWaveformTmp.remove();
 			if ( track && xem >= 0 ) {
-				gs.sampleCreate( uifileDragging, track.id, xem );
+				gs.sampleCreate( gsfileDragging, track.id, xem );
 			}
-			uifileDragging = null;
+			gsfileDragging = null;
 		}
-	} )
-;
+	} );
 
-ui.File.prototype.dragstart = function( e ) {
-	if ( this.isLoaded && !uifileDragging ) {
-		uifileDragging = this;
+gs.File.prototype.dragstart = function( e ) {
+	if ( this.isLoaded && !gsfileDragging ) {
+		gsfileDragging = this;
 		jqWaveformTmp = this.jqCanvasWaveform.clone();
 		var canvas = jqWaveformTmp[ 0 ];
 		canvas.getContext( "2d" ).drawImage(

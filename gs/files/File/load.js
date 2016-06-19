@@ -1,6 +1,6 @@
 "use strict";
 
-ui.File.prototype.load = function( fn ) {
+gs.File.prototype.load = function( fn ) {
 	var that = this;
 
 	this.isLoading = true;

@@ -10,21 +10,18 @@ ui.jqBody.on( {
 				gs.reset();
 				gs.load( this );
 			} else {
-				var fileFound = false,
-					that = this;
+				var that = this;
 
-				ui.files.forEach( function( f, index ) {
-					if ( f.fullname === that.name
-						 && f.savedSize === that.size ) {
+				if ( !gs.files.some( function( f ) {
+					if ( f.fullname === that.name && f.savedSize === that.size ) {
 						f.joinFile( that );
-						fileFound = true;
+						return true;
 					}
-				});
-				if ( !fileFound ) {
-					gs.files.push( ui.newFile( this ) );
+				} ) ) {
+					gs.fileCreate( this );
 				}
 			}
-		});
+		} );
 		return false;
 	}
 } );

@@ -54,7 +54,6 @@ window.ui = {
 
 	// Attrs :
 	tool: {},
-	files: [],
 	tracks: [],
 	nbTracksOn: 0,
 };

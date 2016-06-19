@@ -1,6 +1,6 @@
 "use strict";
 
-ui.File.prototype.joinFile = function( file ) {
+gs.File.prototype.joinFile = function( file ) {
 	var that = this;
 
 	this.file = file;
