@@ -13,4 +13,5 @@ gs.reset = function() {
 		f.jqFile.remove();
 	} );
 	gs.files = [];
+	return this;
 };

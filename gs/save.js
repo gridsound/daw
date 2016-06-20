@@ -12,7 +12,7 @@ gs.save = function() {
 		_save.files.push( [
 			f.id,
 			f.fullname,
-			f.savedSize || f.file.size
+			f.file ? f.file.size : f.size
 		] );
 	} );
 

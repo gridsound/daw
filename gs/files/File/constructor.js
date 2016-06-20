@@ -31,7 +31,7 @@ gs.File = function( file ) {
 	if ( this.file ) {
 		ui.CSS_fileToLoad( this );
 	} else {
-		this.savedSize = file[ 2 ];
+		this.size = file[ 2 ];
 		ui.CSS_fileWithoutData( this );
 	}
 

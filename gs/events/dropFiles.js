@@ -1,26 +1,39 @@
 "use strict";
 
+function loadFile( droppedFiles ) {
+	droppedFiles.forEach( function( file ) {
+		if ( !gs.files.some( function( f ) {
+			var size = f.file ? f.file.size : f.size;
+			if ( f.fullname === file.name && size === file.size ) {
+				if ( !f.file ) {
+					f.joinFile( file );
+				}
+				return true;
+			}
+		} ) ) {
+			gs.fileCreate( file );
+		}
+	} );
+}
+
 ui.jqBody.on( {
 	dragover: false,
 	drop: function( e ) {
 		e = e.originalEvent;
-		var data = e && e.dataTransfer;
+		var data = e && e.dataTransfer,
+			saveFile = false,
+			droppedFiles = [];
 		$.each( data && data.files, function() {
-			if ( !this.type || this.type === "text/plain" ) {
-				gs.reset();
-				gs.load( this );
+			if ( this.type && this.type !== "text/plain" ) {
+				droppedFiles.push( this );
 			} else {
-				var that = this;
-
-				if ( !gs.files.some( function( f ) {
-					if ( f.fullname === that.name && f.savedSize === that.size ) {
-						f.joinFile( that );
-						return true;
-					}
-				} ) ) {
-					gs.fileCreate( this );
-				}
+				saveFile = this;
+				gs.reset();
 			}
+		} );
+		gs.load( saveFile )
+		.then( function() {
+			loadFile( droppedFiles );
 		} );
 		return false;
 	}
