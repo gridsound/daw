@@ -20,6 +20,7 @@ window.ui = {
 	// DOM :
 	jqWindow: $( window ),
 	jqBody: $( "body" ),
+	jqAbout: $( "#about" ),
 	jqVisual: $( "#visual" ),
 	jqVisualCanvas: $( "#visual canvas" ),
 	jqClockMin: $( "#visual .clock .min" ),

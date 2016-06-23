@@ -39,6 +39,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/setGridZoom.js                 \
 		ui/setTrackLinesLeft.js           \
 		ui/setTrackNamesWidth.js          \
+		ui/toggleAbout.js                 \
 		ui/toggleMagnetism.js             \
 		ui/toggleTracks.js                \
 		ui/updateGridShadows.js           \
@@ -60,6 +61,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/save.js                        \
 		gs/reset.js                       \
 		                                  \
+		gs/events/routing.js              \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
 		gs/events/divExtend.js            \

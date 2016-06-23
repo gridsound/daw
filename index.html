@@ -7,6 +7,31 @@
 </head>
 <body>
 
+<div id="about">
+	<div class="container">
+		<div class="logo-cell">
+			<div class="logo"></div>
+		</div>
+		<div class="content-cell">
+			<div class="credits">
+				<p>
+					<a target="_blank" href="//github.com/GridSound/gridsound.github.io">GridSound</a> and its
+					<a target="_blank" href="//github.com/GridSound/webaudio-library">WebAudio-library</a>
+					are two distinct open-source projects hosted on <i class="fa fa-github"></i> GitHub and maintened by&nbsp;:
+				</p>
+				<a target="_blank" class="contributor" href="//github.com/Misty418">
+					<img src="//avatars0.githubusercontent.com/u/3739218?v=3&s=50"/>
+					<span class="name"><b>Misty418</b> (Mélanie Ducani)</span>
+				</a><br/>
+				<a target="_blank" class="contributor" href="//github.com/Mr21">
+					<img src="//avatars0.githubusercontent.com/u/850754?v=3&s=50"/>
+					<span class="name"><b>Mr21</b> (Thomas Tortorini)</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div id="visual">
 	<canvas></canvas>
 	<div class="clock">
@@ -115,6 +140,7 @@
 <script src="ui/setGridZoom.js"></script>
 <script src="ui/setTrackLinesLeft.js"></script>
 <script src="ui/setTrackNamesWidth.js"></script>
+<script src="ui/toggleAbout.js"></script>
 <script src="ui/toggleMagnetism.js"></script>
 <script src="ui/toggleTracks.js"></script>
 <script src="ui/updateGridShadows.js"></script>
@@ -136,6 +162,7 @@
 <script src="gs/save.js"></script>
 <script src="gs/reset.js"></script>
 
+<script src="gs/events/routing.js"></script>
 <script src="gs/events/bpm.js"></script>
 <script src="gs/events/currentTime.js"></script>
 <script src="gs/events/divExtend.js"></script>
