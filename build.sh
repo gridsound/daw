@@ -93,6 +93,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/sampleDelete.js        \
 		gs/samples/samplesForEach.js      \
 		gs/samples/samplesCopyPaste.js    \
+		gs/samples/samplesCut.js          \
 		gs/samples/samplesDelete.js       \
 		gs/samples/samplesDuration.js     \
 		gs/samples/samplesMoveX.js        \
