@@ -100,6 +100,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/samplesUnselect.js     \
 		                                  \
 		gs/samples/Sample/constructor.js  \
+		gs/samples/Sample/cut.js          \
 		gs/samples/Sample/delete.js       \
 		gs/samples/Sample/duration.js     \
 		gs/samples/Sample/inTrack.js      \
