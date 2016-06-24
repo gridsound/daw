@@ -2,6 +2,17 @@
 
 ( function() {
 
+var jqApp = $( "#app" ),
+	tpl = Handlebars.templates;
+
+// Creating all the DOM :
+for ( var k in tpl ) {
+	if ( k !== "app" ) {
+		Handlebars.registerPartial( k, tpl[ k ] );
+	}
+}
+jqApp.append( Handlebars.templates.app( {} ) );
+
 // Remove all whitespace nodes :
 function rmChild( el ) {
 	var save, n = el.firstChild;
@@ -15,11 +26,13 @@ function rmChild( el ) {
 }
 rmChild( document.body );
 
+// The `ui` global object :
 window.ui = {
 
 	// DOM :
 	jqWindow: $( window ),
 	jqBody: $( "body" ),
+	jqApp: jqApp,
 	jqAbout: $( "#about" ),
 	jqVisual: $( "#visual" ),
 	jqVisualCanvas: $( "#visual canvas" ),

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Handlebars's templates
+if [[ -z $1 || $1 == "html" ]]; then
+	echo "Compressing HTML...";
+	handlebars templates -f templates/precompiled.js
+fi
+
 # Build the big `style.css` file.
 if [[ -z $1 || $1 == "css" ]]; then
 	echo "Compressing CSS...";

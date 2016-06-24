@@ -13,110 +13,13 @@
 </head>
 <body>
 
-<div id="about">
-	<div class="container">
-		<div class="logo-cell">
-			<div class="logo"></div>
-		</div>
-		<div class="content-cell">
-			<div class="credits">
-				<p>
-					<a target="_blank" href="//github.com/GridSound/gridsound.github.io">GridSound</a> and its
-					<a target="_blank" href="//github.com/GridSound/webaudio-library">WebAudio-library</a>
-					are two distinct open-source projects hosted on <i class="fa fa-github"></i> GitHub and maintened by&nbsp;:
-				</p>
-				<a target="_blank" class="contributor" href="//github.com/Misty418">
-					<img src="//avatars0.githubusercontent.com/u/3739218?v=3&s=50"/>
-					<span class="name"><b>Misty418</b> (Mélanie Ducani)</span>
-				</a><br/>
-				<a target="_blank" class="contributor" href="//github.com/Mr21">
-					<img src="//avatars0.githubusercontent.com/u/850754?v=3&s=50"/>
-					<span class="name"><b>Mr21</b> (Thomas Tortorini)</span>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="visual">
-	<canvas></canvas>
-	<div class="clock">
-		<span class="min"></span>
-		<span class="sec"></span>
-		<span class="ms"></span>
-	</div>
-</div>
-
-<div id="menu">
-	<a class="btn play fa fa-play" title="Play/pause (Enter)"></a>
-	<a class="btn stop fa fa-stop" title="Stop (Backspace)"></a>
-	<div class="bpm" title="Beats per minute (Scroll to change)">
-		<span class="text">
-			<a class="a-bpm">
-				<i class="fa"></i>
-				<span class="int"></span>
-				<span class="dec"></span>
-			</a>
-			<div class="bpm-list">
-				<a>80</a><a>90</a><a>100</a>
-				<a>110</a><a>120</a><a>130</a>
-				<a>140</a><a>150</a><a>160</a>
-			</div>
-			<span class="unit">&nbsp;bpm</span>
-		</span>
-	</div>
-	<div class="tools">
-		<a data-option="magnet" class="btn fa fa-fw fa-magnet magnet" title="Toggle magnetism (G)"></a>
-		<a data-tool="select" class="btn fa fa-fw fa-mouse-pointer" title="Select (V)"></a>
-		<a data-tool="paint"  class="btn fa fa-fw fa-paint-brush" title="Paint (B)"></a>
-		<a data-tool="delete" class="btn fa fa-fw fa-eraser" title="Delete (D)"></a>
-		<a data-tool="mute"   class="btn fa fa-fw fa-volume-off" title="Mute (M)"></a>
-		<a data-tool="slip"   class="btn fa fa-fw fa-exchange" title="Slip (S)"></a>
-		<a data-tool="cut"    class="btn fa fa-fw fa-scissors" title="Cut (C)"></a>
-		<a data-tool="hand"   class="btn fa fa-fw fa-hand-paper-o" title="Hand (H)"></a>
-		<a data-tool="zoom"   class="btn fa fa-fw fa-search last" title="Zoom (Z)"></a>
-		<a data-edit="save"   class="btn fa fa-fw fa-save save" title="Save (Ctrl+S)"></a>
-	</div>
-	<a href="#about" class="about fa fa-question" title="About"></a>
-</div>
-
-<div id="files">
-	<div class="extend cursor-ewResize" data-mousemove-fn="files"></div>
-	<div class="filelist">
-		<input type="file"/>
-	</div>
-	<div class="placeholder">
-		<i class="fa fa-file-audio-o"></i><br/>
-		<b>Drop audio files here</b>
-	</div>
-</div>
-
-<div id="grid">
-	<div class="emWrapper">
-		<div class="header">
-			<div class="timeline">
-				<span class="timeArrow"></span>
-			</div>
-		</div>
-		<div class="trackList">
-			<div class="cols">
-				<div class="colA trackNames">
-					<div class="extend cursor-ewResize" data-mousemove-fn="trackNames"></div>
-				</div>
-				<div class="colB">
-					<div class="trackLinesBg"></div>
-					<div class="trackLines">
-						<div class="timeCursor"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<div id="app"></div>
 
 <script>function lg( s ) { console.log( s ); }</script>
 
 <script src="jstools/jquery.min.js"></script>
+<script src="jstools/handlebars.runtime.min.js"></script>
+<script src="templates/precompiled.js"></script>
 
 <!-- Production -->
 <script src="compressed.js"></script>
