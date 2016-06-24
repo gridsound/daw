@@ -72,6 +72,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/resize.js               \
 		gs/events/save.js                 \
 		gs/events/tools.js                \
+		gs/events/toolCut.js              \
 		gs/events/toolDelete.js           \
 		gs/events/toolHand.js             \
 		gs/events/toolMute.js             \

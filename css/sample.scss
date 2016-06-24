@@ -118,6 +118,9 @@
 	#grid[data-tool="slip"] & {
 		cursor: ew-resize;
 	}
+	#grid[data-tool="cut"] & {
+		cursor: ns-resize;
+	}
 	#grid[data-tool="paint"] & {
 		.crop {
 			display: block;
