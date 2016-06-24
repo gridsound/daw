@@ -36,6 +36,7 @@ window.ui = {
 	jqBtnTools: $( "#menu .tools [data-tool]" ),
 	jqBtnMagnet: $( "#menu .tools .magnet" ),
 	jqBtnSave: $( "#menu .tools .save" ),
+	jqBtnAbout: $( "#menu .about" ),
 	jqFiles: $( "#files" ),
 	jqFilelist: $( "#files .filelist" ),
 	jqInputFile: $( "#files .filelist input[type='file']" ),
