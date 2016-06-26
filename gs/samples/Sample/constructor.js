@@ -1,6 +1,6 @@
 "use strict";
 
-gs.Sample = function( gsfile ) {
+gs.Sample = function( gsfile, trackId, xem ) {
 	this.gsfile = gsfile;
 
 	this.jqSample = $( Handlebars.templates.sample( gsfile ) );
@@ -20,8 +20,11 @@ gs.Sample = function( gsfile ) {
 		this.wsample = gsfile.wbuff.createSample();
 		this.canvas = this.jqWaveform[ 0 ];
 		this.canvasCtx = this.canvas.getContext( "2d" );
+		this.inTrack( trackId );
+		this.moveX( xem );
 		ui.CSS_sampleDuration( this );
 		ui.CSS_sampleWaveform( this );
+		wa.composition.addSamples( [ this.wsample ] );
 	}
 
 	this.select( false );
