@@ -1,11 +1,9 @@
 "use strict";
 
 gs.File.prototype.joinFile = function( file ) {
-	var that = this;
-
 	this.file = file;
-	this.jqToLoad.removeClass( "fa-question" )
-		.addClass( "fa-download" );
+
+	ui.CSS_fileToLoad( this );
 	if ( this.fullname !== file.name ) {
 		this.fullname = file.name;
 		this.name = this.fullname.replace( /\.[^.]+$/, "" );
@@ -13,6 +11,7 @@ gs.File.prototype.joinFile = function( file ) {
 	}
 
 	if ( this.samplesToSet.length ) {
+		var that = this;
 		this.load( function() {
 			that.samplesToSet.forEach( function( s ) {
 				s.wsample = that.wbuff.createSample();
