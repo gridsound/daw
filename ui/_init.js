@@ -7,11 +7,11 @@ var jqApp = $( "#app" ),
 
 // Creating all the DOM :
 for ( var k in tpl ) {
-	if ( k !== "app" ) {
+	if ( k !== "_app" ) {
 		Handlebars.registerPartial( k, tpl[ k ] );
 	}
 }
-jqApp.append( Handlebars.templates.app( {} ) );
+jqApp.append( Handlebars.templates[ "_app" ]( {} ) );
 
 // Remove all whitespace nodes :
 function rmChild( el ) {

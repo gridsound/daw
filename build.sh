@@ -3,7 +3,7 @@
 # Handlebars's templates
 if [[ -z $1 || $1 == "html" ]]; then
 	echo "Compressing HTML...";
-	handlebars templates -f templates/precompiled.js
+	handlebars templates -f templates/__precompiled.js
 fi
 
 # Build the big `style.css` file.
