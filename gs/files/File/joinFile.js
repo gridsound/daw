@@ -22,12 +22,10 @@ gs.File.prototype.joinFile = function( file ) {
 				s.canvasCtx = s.canvas.getContext( "2d" );
 				s.jqName.appendTo( s.jqSample ).text( that.name );
 
-				s.wsample.duration = s.savedDuration;
-				s.wsample.offset = s.savedOffset;
-				s.wsample.when = s.savedWhen;
-
-				ui.CSS_sampleDuration( s );
+				s.when( s.savedWhen );
+				s.duration( s.savedDuration );
 				ui.CSS_sampleWaveform( s );
+				s.slip( s.savedOffset );
 
 				s.wsample.connect( s.track.wfilters );
 			} );
