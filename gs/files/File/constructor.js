@@ -20,13 +20,9 @@ gs.File = function( file ) {
 	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
 
-	this.jqFile = $( "<a class='sample' draggable='true'>" );
-	this.jqName = $( "<span>" + this.name + "</span>" );
-	this.jqToLoad = $( "<i class='to-load fa fa-fw'>" );
-	$( "<span class='name text-overflow'>" )
-		.append( this.jqToLoad )
-		.append( this.jqName )
-		.appendTo( this.jqFile );
+	this.jqFile = $( Handlebars.templates.file( this ) );
+	this.jqToLoad = this.jqFile.find( ".to-load" );
+	this.jqName = this.jqFile.find( ".name" );
 
 	if ( this.file ) {
 		ui.CSS_fileToLoad( this );
