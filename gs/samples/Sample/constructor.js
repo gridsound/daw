@@ -9,6 +9,8 @@ gs.Sample = function( gsfile, trackId, xem ) {
 	this.jqName = this.jqSample.find( ".name" );
 	this.jqCropStart = this.jqSample.find( ".crop.start" );
 	this.jqCropEnd = this.jqSample.find( ".crop.end" );
+	this.canvas = this.jqWaveform[ 0 ];
+	this.canvasCtx = this.canvas.getContext( "2d" );
 
 	var that = this;
 	this.jqSample.find( "*" ).each( function() {
@@ -18,8 +20,6 @@ gs.Sample = function( gsfile, trackId, xem ) {
 	// Update when files are available
 	if ( gsfile.file ) {
 		this.wsample = gsfile.wbuff.createSample();
-		this.canvas = this.jqWaveform[ 0 ];
-		this.canvasCtx = this.canvas.getContext( "2d" );
 		this.inTrack( trackId );
 		this.moveX( xem );
 		ui.CSS_sampleDuration( this );
