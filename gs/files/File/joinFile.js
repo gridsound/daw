@@ -20,7 +20,7 @@ gs.File.prototype.joinFile = function( file ) {
 
 				s.canvas = s.jqWaveform[ 0 ];
 				s.canvasCtx = s.canvas.getContext( "2d" );
-				s.jqName.appendTo( s.jqSample ).text( that.name );
+				s.jqName.text( that.name );
 
 				s.wsample.duration = s.savedDuration;
 				s.wsample.offset = s.savedOffset;
