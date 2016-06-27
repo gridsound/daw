@@ -14,9 +14,9 @@ gs.File.prototype.joinFile = function( file ) {
 		this.load( function( gsfile ) {
 			gsfile.samplesToSet.forEach( function( s ) {
 				s.wsample = gsfile.wbuff.createSample();
-				s.wsample.duration = s.savedDuration;
-				s.wsample.offset = s.savedOffset;
-				s.wsample.when = s.savedWhen;
+				s.when( s.savedWhen );
+				s.slip( s.savedOffset );
+				s.duration( s.savedDuration );
 				s.wsample.connect( s.track.wfilters );
 				wa.composition.addSamples( [ s.wsample ] );
 				s.jqName.text( gsfile.name );
