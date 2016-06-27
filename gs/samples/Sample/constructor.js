@@ -1,29 +1,30 @@
 "use strict";
 
-gs.Sample = function( gsfile ) {
+gs.Sample = function( gsfile, trackId, xem ) {
 	this.gsfile = gsfile;
 
-	this.jqSample = $( "<div class='sample'>" );
-	this.jqWaveformWrapper = $( "<div class='waveformWrapper'>" ).appendTo( this.jqSample );
-	this.jqWaveform = $( "<canvas class='waveform'>" ).appendTo( this.jqWaveformWrapper );
-	this.jqName = $( "<span class='name text-overflow'>" ).appendTo( this.jqSample ).text( gsfile.name );
-	this.jqCropStart = $( "<div class='crop start'>" ).appendTo( this.jqSample );
-	this.jqCropEnd = $( "<div class='crop end'>" ).appendTo( this.jqSample );
+	this.jqSample = $( Handlebars.templates.sample( gsfile ) );
+	this.jqWaveformWrapper = this.jqSample.find( ".waveformWrapper" );
+	this.jqWaveform = this.jqSample.find( ".waveform" );
+	this.jqName = this.jqSample.find( ".name" );
+	this.jqCropStart = this.jqSample.find( ".crop.start" );
+	this.jqCropEnd = this.jqSample.find( ".crop.end" );
+	this.canvas = this.jqWaveform[ 0 ];
+	this.canvasCtx = this.canvas.getContext( "2d" );
 
-	this.jqName[ 0 ].gsSample =
-	this.jqWaveformWrapper[ 0 ].gsSample =
-	this.jqWaveform[ 0 ].gsSample =
-	this.jqCropStart[ 0 ].gsSample =
-	this.jqCropEnd[ 0 ].gsSample = this;
+	var that = this;
+	this.jqSample.find( "*" ).each( function() {
+		this.gsSample = that;
+	} );
 
 	// Update when files are available
 	if ( gsfile.file ) {
 		this.wsample = gsfile.wbuff.createSample();
-		this.canvas = this.jqWaveform[ 0 ];
-		this.canvasCtx = this.canvas.getContext( "2d" );
-
+		this.inTrack( trackId );
+		this.moveX( xem );
 		ui.CSS_sampleDuration( this );
 		ui.CSS_sampleWaveform( this );
+		wa.composition.addSamples( [ this.wsample ] );
 	}
 
 	this.select( false );

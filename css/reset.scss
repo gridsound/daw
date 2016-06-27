@@ -28,10 +28,10 @@ body {
 }
 
 a {
-	// For Firefox.
 	outline: 0;
 	cursor: pointer;
 	text-decoration: none;
+	color: inherit;
 }
 
 input {

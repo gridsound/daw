@@ -8,6 +8,7 @@ var KEY_BACKSPACE = 8,
 	KEY_CTRL = 17,
 	KEY_SPACE = 32,
 	KEY_DEL = 46,
+	KEY_ESCAPE = 27,
 	KEY_B = 66,
 	KEY_C = 67,
 	KEY_D = 68,
@@ -44,6 +45,12 @@ function setBackOldTool() {
 
 function keys( e ) {
 	switch ( e.keyCode ) {
+		case KEY_ESCAPE:
+			if ( ui.jqAbout.hasClass( "show" ) ) {
+				ui.toggleAbout( false );
+				location.hash = "";
+			}
+		break;
 		case KEY_ENTER:
 			gs.playToggle();
 		break;

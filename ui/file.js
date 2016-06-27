@@ -1,7 +1,7 @@
 "use strict";
 
 ui.CSS_fileToLoad = function( f ) {
-	f.jqToLoad.addClass( "fa-download" );
+	f.jqToLoad.addClass( "fa-download" ).removeClass( "fa-question" );
 	f.jqFile.addClass( "to-load" );
 };
 
@@ -10,8 +10,7 @@ ui.CSS_fileWithoutData = function( f ) {
 };
 
 ui.CSS_fileLoading = function( f ) {
-	f.jqToLoad.removeClass( "fa-download" )
-		.addClass( "fa-refresh fa-spin" );
+	f.jqToLoad.addClass( "fa-refresh fa-spin" ).removeClass( "fa-download" );
 };
 
 ui.CSS_fileReady = function( f ) {
@@ -20,6 +19,5 @@ ui.CSS_fileReady = function( f ) {
 };
 
 ui.CSS_fileError = function( f ) {
-	f.jqToLoad.removeClass( "fa-refresh fa-spin" )
-		.addClass( "fa-times" );
+	f.jqToLoad.addClass( "fa-times" ).removeClass( "fa-refresh fa-spin" );
 };

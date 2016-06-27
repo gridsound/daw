@@ -34,6 +34,7 @@
 		background: $c;
 		&:hover {
 			background: lighten( $c, $lighten_toolHover );
+			opacity: 1;
 		}
 	}
 
@@ -85,5 +86,22 @@
 			margin-left: 3px;
 			border-left-width: 1px;
 		}
+	}
+
+	.about {
+		$s: 32px;
+		position: absolute;
+		right: 0;
+		top: 4px;
+		width: $s;
+		height: $s;
+		line-height: $s;
+		border: 0;
+		border-radius: 50%;
+		color: $color_bodyStripA;
+		font-size: 22px;
+		text-align: center;
+		opacity: .4;
+		@include writeBg( #bbb );
 	}
 }
