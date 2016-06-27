@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+( function() {
 
 var sampleSave;
 
@@ -16,4 +16,4 @@ ui.tool.cut = {
 	}
 };
 
-})();
+} )();
