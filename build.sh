@@ -78,6 +78,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/resize.js               \
 		gs/events/save.js                 \
 		gs/events/tools.js                \
+		gs/events/toolCut.js              \
 		gs/events/toolDelete.js           \
 		gs/events/toolHand.js             \
 		gs/events/toolMute.js             \
@@ -98,6 +99,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/sampleDelete.js        \
 		gs/samples/samplesForEach.js      \
 		gs/samples/samplesCopyPaste.js    \
+		gs/samples/samplesCut.js          \
 		gs/samples/samplesDelete.js       \
 		gs/samples/samplesDuration.js     \
 		gs/samples/samplesMoveX.js        \
@@ -105,6 +107,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/samplesUnselect.js     \
 		                                  \
 		gs/samples/Sample/constructor.js  \
+		gs/samples/Sample/cut.js          \
 		gs/samples/Sample/delete.js       \
 		gs/samples/Sample/duration.js     \
 		gs/samples/Sample/inTrack.js      \
