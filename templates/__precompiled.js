@@ -6,12 +6,12 @@ templates['about'] = template({"compiler":[7,">= 4.0.0"],"main":function(contain
 templates['file'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<a class=\"sample\" draggable=\"true\">\r\n	<span class=\"name text-overflow\">\r\n		<i class=\"to-load fa fa-fw\"></i>\r\n		<span>"
+  return "<a class=\"sample\" draggable=\"true\">\r\n	<span class=\"name text-overflow\">\r\n		<i class=\"icon fa fa-fw\"></i>\r\n		<span>"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\r\n	</span>\r\n</a>\r\n";
 },"useData":true});
 templates['files'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"files\">\r\n	<div class=\"extend cursor-ewResize\" data-mousemove-fn=\"files\"></div>\r\n	<div class=\"filelist\">\r\n		<input type=\"file\"/>\r\n	</div>\r\n	<div class=\"placeholder\">\r\n		<i class=\"fa fa-file-audio-o\"></i><br/>\r\n		<b>Drop audio files here</b>\r\n	</div>\r\n</div>\r\n";
+    return "<div id=\"files\">\r\n	<input type=\"file\"/>\r\n	<div class=\"extend cursor-ewResize\" data-mousemove-fn=\"files\"></div>\r\n	<nav class=\"filters\">\r\n		<a href=\"#\" class=\"used\">Used</a>\r\n		<a href=\"#\" class=\"loaded\">Loaded</a>\r\n		<a href=\"#\" class=\"unloaded\">Unloaded</a>\r\n	</nav>\r\n	<div class=\"filelist\"></div>\r\n	<div class=\"placeholder\">\r\n		<i class=\"fa fa-file-audio-o\"></i><br/>\r\n		<b>Drop audio files here</b>\r\n	</div>\r\n</div>\r\n";
 },"useData":true});
 templates['grid'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id=\"grid\">\r\n	<div class=\"emWrapper\">\r\n		<div class=\"header\">\r\n			<div class=\"timeline\">\r\n				<span class=\"timeArrow\"></span>\r\n			</div>\r\n		</div>\r\n		<div class=\"trackList\">\r\n			<div class=\"cols\">\r\n				<div class=\"colA trackNames\">\r\n					<div class=\"extend cursor-ewResize\" data-mousemove-fn=\"trackNames\"></div>\r\n				</div>\r\n				<div class=\"colB\">\r\n					<div class=\"trackLinesBg\"></div>\r\n					<div class=\"trackLines\">\r\n						<div class=\"timeCursor\"></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";

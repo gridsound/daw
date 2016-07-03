@@ -1,20 +1,61 @@
 #files {
-	box-sizing: border-box;
 	position: absolute;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
 	z-index: 3;
 	min-width: 150px;
 	max-width: 400px;
 	left: 0;
 	top: 59px;
 	bottom: 0;
+	background: $color_filesBg;
+
+	input {
+		display: none;
+	}
+
+	.filters {
+		$pad: 10px;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 0 $pad $pad;
+		font-size: 12px;
+		font-weight: bold;
+		background: $color_sampleBg;
+		border-bottom: 2px dashed #000;
+
+		a {
+			margin: $pad $pad 0 0;
+			border-radius: .2em;
+			color: #272727;
+			font-variant: all-small-caps;
+		}
+		&.used .used,
+		&.loaded .loaded,
+		&.unloaded .unloaded {
+			color: #969696;
+		}
+	}
 
 	.filelist {
+		flex: 1;
 		overflow: auto;
-		height: 100%;
-		background: $color_filesBg;
-		input {
-			display: none;
-		}
+	}
+
+	.sample {
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		margin-top: -1px;
+		transition: all .2s;
+	}
+	.filters.used + .filelist .sample.used,
+	.filters.loaded + .filelist .sample.loaded,
+	.filters.unloaded + .filelist .sample.unloaded {
+		height: 32px;
+		visibility: visible;
+		margin-top: 0;
 	}
 
 	.placeholder {

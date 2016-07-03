@@ -19,13 +19,14 @@ gs.File = function( file ) {
 	this.file = file.length ? null : file;
 	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
+	this.nbSamples = 0;
 
 	this.jqFile = $( Handlebars.templates.file( this ) );
-	this.jqToLoad = this.jqFile.find( ".to-load" );
+	this.jqIcon = this.jqFile.find( ".icon" );
 	this.jqName = this.jqFile.find( ".name" );
 
 	if ( this.file ) {
-		ui.CSS_fileToLoad( this );
+		ui.CSS_fileUnloaded( this );
 	} else {
 		this.size = file[ 2 ];
 		ui.CSS_fileWithoutData( this );

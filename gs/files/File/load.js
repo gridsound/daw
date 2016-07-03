@@ -12,7 +12,7 @@ gs.File.prototype.load = function( fn ) {
 		that.wbuff = wbuff;
 		that.isLoaded = true;
 		that.isLoading = false;
-		ui.CSS_fileReady( that );
+		ui.CSS_fileLoaded( that );
 		that.jqCanvasWaveform = $( "<canvas class='waveform'>" );
 		canvas = that.jqCanvasWaveform[ 0 ];
 		ctx = canvas.getContext( "2d" );

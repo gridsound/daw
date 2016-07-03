@@ -72,6 +72,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/currentTime.js          \
 		gs/events/divExtend.js            \
 		gs/events/dropFiles.js            \
+		gs/events/fileFilters.js          \
 		gs/events/gridMouse.js            \
 		gs/events/keyboard.js             \
 		gs/events/playPauseStop.js        \
