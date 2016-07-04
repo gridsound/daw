@@ -29,8 +29,8 @@ function onload( resolve, e ) {
 		while ( id >= ui.tracks.length ) {
 			ui.newTrack();
 		}
-		ui.tracks[ id ].isOn = t[ 1 ];
-		ui.tracks[ id ].name = t[ 2 ];
+		ui.tracks[ id ].toggle( t[ 1 ] )
+			.editName( t[ 2 ] );
 	} );
 
 	save.samples.forEach( function( s ) {
