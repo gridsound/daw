@@ -9,7 +9,6 @@
 	left: 0;
 	top: 59px;
 	bottom: 0;
-	background: $color_filesBg;
 
 	input {
 		display: none;
@@ -22,19 +21,22 @@
 		padding: 0 0 $pad $pad;
 		font-size: 12px;
 		font-weight: bold;
-		background: $color_sampleBg;
-		border-bottom: 2px dashed #000;
+		background: $color_fileFiltersBg;
+		border-bottom: 1px dashed #000;
 
 		a {
 			margin: $pad $pad 0 0;
 			border-radius: .2em;
-			color: #272727;
+			color: #969696;
+			opacity: .5;
+			text-decoration: line-through;
 			font-variant: all-small-caps;
 		}
 		&.used .used,
 		&.loaded .loaded,
 		&.unloaded .unloaded {
-			color: #969696;
+			opacity: 1;
+			text-decoration: none;
 		}
 	}
 

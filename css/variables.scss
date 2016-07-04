@@ -8,6 +8,7 @@ $fa-caret-down: "\f0d7";
 $fa-caret-up: "\f0d8";
 // ---------------------------------------
 
+$color_appBg: #383838;
 $color_bodyStripA: #333;
 $color_bodyStripB: darken( $color_bodyStripA, 2 );
 $width_bodyStrip: 42px;
@@ -33,8 +34,9 @@ $color_bpmUnit: #666;
 $color_bpmListBg: rgba( $color_bpmBg, .5 );
 $color_bpmListHover: #111;
 
-$color_filesBg: rgba( #000, .5 );
-$color_filesPlaceholder: #555;
+$color_filesBg: #1c1c1c;
+$color_fileFiltersBg: rgba( #000, .35 );
+$color_filesPlaceholder: $color_fileFiltersBg;
 
 $color_timelineBg: #0d0d0d;
 $color_timelineText: #888;

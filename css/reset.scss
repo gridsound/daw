@@ -15,12 +15,7 @@ body {
 	margin: 0;
 	cursor: default;
 	font: 14px sans-serif;
-	background: $color_bodyStripA;
-	@include strip-background( 45deg,
-		$width_bodyStrip,
-		$color_bodyStripA,
-		$color_bodyStripB
-	);
+	background: $color_appBg;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	    -ms-user-select: none;
