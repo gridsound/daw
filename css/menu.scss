@@ -1,4 +1,5 @@
 #menu {
+	display: flex;
 	box-sizing: border-box;
 	position: absolute;
 	right: 0;
@@ -50,18 +51,24 @@
 	}
 
 	.tools {
+		display: flex;
+		align-self: flex-end;
+		width: 280px;
+		height: 28px;
 		border-top-width: 1px;
 		vertical-align: bottom;
 		font-size: 24px;
 		line-height: 1em;
-		height: auto;
 
 		.btn {
-			line-height: 1em;
-			width: 1em;
+			display: flex;
+			align-items: center;
 			border: 0 solid $color_toolBorder;
 			@include writeBg( $color_tool );
 
+			&:before {
+				width: 100%;
+			}
 			&.active {
 				background: lighten( $color_tool, $lighten_toolSelected );
 			}
@@ -88,11 +95,14 @@
 		}
 	}
 
+	.separator {
+		flex: 1;
+		visibility: hidden;
+	}
+
 	.about {
 		$s: 32px;
-		position: absolute;
-		right: 0;
-		top: 4px;
+		align-self: center;
 		width: $s;
 		height: $s;
 		line-height: $s;
