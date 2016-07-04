@@ -4,8 +4,8 @@
 	flex-direction: column;
 	box-sizing: border-box;
 	z-index: 3;
-	min-width: 150px;
-	max-width: 400px;
+	min-width: 200px;
+	max-width: 450px;
 	left: 0;
 	top: 59px;
 	bottom: 0;
@@ -15,22 +15,23 @@
 	}
 
 	.filters {
-		$pad: 10px;
 		display: flex;
 		flex-wrap: wrap;
-		padding: 0 0 $pad $pad;
 		font-size: 12px;
 		font-weight: bold;
 		background: $color_fileFiltersBg;
 		border-bottom: 1px dashed #000;
 
 		a {
-			margin: $pad $pad 0 0;
+			padding: 10px;
 			border-radius: .2em;
 			color: #969696;
 			opacity: .5;
 			text-decoration: line-through;
 			font-variant: all-small-caps;
+			&:hover {
+				background: rgba( #fff, .05 );
+			}
 		}
 		&.used .used,
 		&.loaded .loaded,
