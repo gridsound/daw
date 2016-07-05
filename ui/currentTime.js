@@ -12,11 +12,10 @@ function cursorTime( s ) {
 }
 
 function clockTime( s ) {
-	ui._clockTime = s;
 	ui.jqClockMin.text( ~~( s / 60 ) );
 	var sc = ~~( s % 60 );
 	ui.jqClockSec.text( sc < 10 ? "0" + sc : sc );
-	s = Math.round( ( s - ~~s ) * 1000 );
+	s = Math.floor( ( s - ~~s ) * 1000 );
 	if ( s < 10 ) {
 		s = "00" + s;
 	} else if ( s < 100 ) {
