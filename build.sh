@@ -31,6 +31,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/_init.js                       \
 		ui/analyserToggle.js              \
 		ui/bpm.js                         \
+		ui/setClockUnit.js                \
 		ui/currentTime.js                 \
 		ui/getGridXem.js                  \
 		ui/getTrackFromPageY.js           \
@@ -70,6 +71,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/routing.js              \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
+		gs/events/clockUnits.js           \
 		gs/events/divExtend.js            \
 		gs/events/dropFiles.js            \
 		gs/events/fileFilters.js          \

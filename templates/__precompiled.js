@@ -27,7 +27,7 @@ templates['sample'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
     + "</span>\r\n	<div class=\"crop start\"></div>\r\n	<div class=\"crop end\"></div>\r\n</div>\r\n";
 },"useData":true});
 templates['visual'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"visual\">\r\n	<canvas></canvas>\r\n	<div class=\"clock\">\r\n		<span class=\"min\"></span>\r\n		<span class=\"sec\"></span>\r\n		<span class=\"ms\"></span>\r\n	</div>\r\n</div>\r\n";
+    return "<div id=\"visual\">\r\n	<canvas></canvas>\r\n	<div class=\"clock\">\r\n		<span class=\"min\"></span>\r\n		<span class=\"sec\"></span>\r\n		<span class=\"ms\"></span>\r\n		<a class=\"units\" href=\"#\">\r\n			<span class=\"s\">sec</span>\r\n			<span class=\"b\">beat</span>\r\n		</a>\r\n	</div>\r\n</div>\r\n";
 },"useData":true});
 templates['_app'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;

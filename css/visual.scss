@@ -25,15 +25,35 @@
 		color: $color_clock;
 		@include text-stroke( $color_clockStroke );
 
-		.sec:before,
-		.sec:after {
-			content: ":";
-			padding: 0 .15em;
+		.units {
+			position: absolute;
+			top: 11px;
+			right: -4px;
+			font: 10px consolas;
+			line-height: 0;
+
+			span {
+				margin-left: 1px;
+				opacity: .5;
+			}
+
+			&[data-unit="s"] .s,
+			&[data-unit="b"] .b {
+				opacity: 1;
+			}
 		}
-		.sec:after {
-			content: ".";
+
+		> .sec {
+			&:before,
+			&:after {
+				content: ":";
+				padding: 0 .15em;
+			}
+			&:after {
+				content: ".";
+			}
 		}
-		.ms {
+		> .ms {
 			font-size: .5em;
 		}
 	}

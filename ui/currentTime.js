@@ -25,8 +25,8 @@ function clockTime( s ) {
 }
 
 ui.currentTime = function( s ) {
-	clockTime( s );
 	cursorTime( s );
+	clockTime( gs.clockUnit === "s" ? s : s * ui.BPMem );
 };
 
 } )();

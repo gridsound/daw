@@ -13,6 +13,7 @@ gs.bpm( 120 );
 gs.currentTime( 0 );
 
 ui.jqBtnTools.filter( "[data-tool='paint']" ).click();
+ui.jqVisualClockUnits.find( ".s" ).click();
 
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();
