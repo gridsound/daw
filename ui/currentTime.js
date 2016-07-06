@@ -12,21 +12,32 @@ function cursorTime( s ) {
 }
 
 function clockTime( s ) {
-	ui.jqClockMin.text( ~~( s / 60 ) );
-	var sc = ~~( s % 60 );
-	ui.jqClockSec.text( sc < 10 ? "0" + sc : sc );
-	s = Math.floor( ( s - ~~s ) * 1000 );
-	if ( s < 10 ) {
-		s = "00" + s;
-	} else if ( s < 100 ) {
-		s = "0" + s;
+	var a, b, bb;
+
+	if ( gs.clockUnit === "s" ) {
+		a = ~~( s / 60 );
+		b = ~~( s % 60 );
+	} else {
+		s *= ui.BPMem;
+		a = 1 + ~~s;
+		s *= 4;
+		b = 1 + ~~s % 4;
 	}
-	ui.jqClockMs.text( s );
+	b = b < 10 ? "0" + b : b;
+	bb = Math.floor( ( s - ~~s ) * 1000 );
+	if ( bb < 10 ) {
+		bb = "00" + bb;
+	} else if ( bb < 100 ) {
+		bb = "0" + bb;
+	}
+	ui.jqClockMin.text( a );
+	ui.jqClockSec.text( b );
+	ui.jqClockMs.text( bb );
 }
 
 ui.currentTime = function( s ) {
 	cursorTime( s );
-	clockTime( gs.clockUnit === "s" ? s : s * ui.BPMem );
+	clockTime( s );
 };
 
 } )();
