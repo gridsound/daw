@@ -1,0 +1,10 @@
+#app {
+	height: 100%;
+	cursor: default;
+	font: 14px sans-serif;
+	background: $color_appBg;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
