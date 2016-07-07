@@ -3,9 +3,9 @@
 ( function() {
 
 var KEY_BACKSPACE = 8,
-	KEY_ENTER = 13,
 	KEY_SHIFT = 16,
 	KEY_CTRL = 17,
+	KEY_ALT = 18,
 	KEY_SPACE = 32,
 	KEY_DEL = 46,
 	KEY_ESCAPE = 27,
@@ -28,12 +28,12 @@ shortcuts[ KEY_D ] = "delete";
 shortcuts[ KEY_M ] = "mute";
 shortcuts[ KEY_S ] = "slip";
 shortcuts[ KEY_C ] = "cut";
-shortcuts[ KEY_SPACE ] = shortcuts[ KEY_H ] = "hand";
+shortcuts[ KEY_ALT ] = shortcuts[ KEY_H ] = "hand";
 shortcuts[ KEY_SHIFT ] = shortcuts[ KEY_V ] = "select";
 shortcuts[ KEY_CTRL ]  = shortcuts[ KEY_Z ] = "zoom";
 
 function shiftCtrlSpace( k ) {
-	return k === KEY_SHIFT || k === KEY_CTRL || k === KEY_SPACE;
+	return k === KEY_SHIFT || k === KEY_CTRL || k === KEY_ALT;
 }
 
 function setBackOldTool() {
@@ -51,8 +51,14 @@ function keys( e ) {
 				location.hash = "";
 			}
 		break;
-		case KEY_ENTER:
-			gs.playToggle();
+		case KEY_SPACE:
+			if ( e.ctrlKey ) {
+				gs.playToggle();
+			} else if ( gs.isPlaying ) {
+				gs.stop();
+			} else {
+				gs.play();
+			}
 		break;
 		case KEY_BACKSPACE:
 			gs.fileStop();
@@ -96,7 +102,7 @@ ui.jqBody
 				}
 			}
 		}
-		if ( k === KEY_SPACE || k === KEY_BACKSPACE ) {
+		if ( k === KEY_SPACE || k === KEY_BACKSPACE || k === KEY_ALT ) {
 			return false;
 		}
 	} )
