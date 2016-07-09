@@ -20,14 +20,14 @@ gs.play = function() {
 gs.pause = function() {
 	if ( wa.composition.isPlaying ) {
 		wa.composition.pause();
-		ui.pause();
 		gs.isPaused = !( gs.isPlaying = false );
+		ui.pause();
 	}
 };
 
 gs.stop = function() {
 	wa.composition.stop();
 	gs.currentTime( 0 );
-	ui.stop();
 	gs.isPaused = gs.isPlaying = false;
+	ui.stop();
 };

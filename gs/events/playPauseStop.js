@@ -10,4 +10,4 @@ ui.jqStop.click( function() {
 	gs.stop();
 } );
 
-wa.composition.onended( ui.stop );
+wa.composition.onended( gs.stop );
