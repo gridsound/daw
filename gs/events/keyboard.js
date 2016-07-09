@@ -38,8 +38,8 @@ shortcuts[ KEY_CTRL ]  = shortcuts[ KEY_Z ] = "zoom";
 function setBackOldTool() {
 	if ( oldTool ) {
 		ui.selectTool( oldTool );
-		oldTool = null;
 	}
+	CLSholded = oldTool = null;
 }
 
 function keys( e ) {
