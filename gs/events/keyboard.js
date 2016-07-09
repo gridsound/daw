@@ -49,7 +49,7 @@ function keys( e ) {
 				ui.toggleAbout( false );
 				location.hash = "";
 			}
-		break;
+		return;
 		case KEY_SPACE:
 			if ( e.ctrlKey ) {
 				gs.playToggle();
@@ -58,29 +58,31 @@ function keys( e ) {
 			} else {
 				gs.play();
 			}
-		break;
+		return;
 		case KEY_BACKSPACE:
 			gs.fileStop();
 			gs.stop();
-		break;
+		return;
 		case KEY_DEL:
 			gs.samplesDelete();
-		break;
+		return;
 		case KEY_G:
 			ui.toggleMagnetism();
-		break;
+		return;
 		case KEY_C:
-			if ( e.ctrlKey ) {
-				gs.samplesCopy();
+			if ( !e.ctrlKey ) {
+				return true;
 			}
-		break;
+			gs.samplesCopy();
+		return;
 		case KEY_V:
-			if ( e.ctrlKey ) {
-				gs.samplesPaste();
+			if ( !e.ctrlKey ) {
+				return true;
 			}
-		break;
-		default: return true;
+			gs.samplesPaste();
+		return;
 	}
+	return true;
 }
 
 function keyup( e ) {
