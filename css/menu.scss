@@ -52,46 +52,32 @@
 
 	.tools {
 		display: flex;
-		align-self: flex-end;
-		width: 280px;
-		height: 28px;
-		border-top-width: 1px;
-		vertical-align: bottom;
-		font-size: 24px;
-		line-height: 1em;
-
+		align-items: center;
+		border: 0;
+		.sep {
+			width: 1px;
+			height: 65%;
+			margin: 0 3px;
+			background: rgba( #fff, .12 );
+		}
 		.btn {
 			display: flex;
 			align-items: center;
-			border: 0 solid $color_toolBorder;
-			@include writeBg( $color_tool );
+			width: 35px;
+			height: 100%;
+			font-size: 16px;
+			color: rgba( #fff, .3 );
+			transition: color .2s;
 
 			&:before {
 				width: 100%;
 			}
+			&:hover {
+				color: rgba( #fff, .6 );
+			}
 			&.active {
-				background: lighten( $color_tool, $lighten_toolSelected );
+				color: #fff;
 			}
-			& + * {
-				border-left-width: 1px;
-			}
-			&:before {
-				font-size: 14px;
-			}
-		}
-
-		.last {
-			border-right-width: 1px;
-		}
-
-		.magnet {
-			margin-right: 3px;
-			border-right-width: 1px;
-		}
-
-		.save {
-			margin-left: 3px;
-			border-left-width: 1px;
 		}
 	}
 
