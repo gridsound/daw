@@ -2,6 +2,9 @@
 
 ( function() {
 
+ui.jqWindow.blur( setBackOldTool );
+ui.jqBody.keydown( keydown ).keyup( keyup );
+
 var KEY_BACKSPACE = 8,
 	KEY_SHIFT = 16,
 	KEY_CTRL = 17,
@@ -18,10 +21,10 @@ var KEY_BACKSPACE = 8,
 	KEY_S = 83,
 	KEY_V = 86,
 	KEY_Z = 90,
+	CLSholded,
 	oldTool,
 	keysPressed = [],
-	shortcuts = {}
-;
+	shortcuts = {};
 
 shortcuts[ KEY_B ] = "paint";
 shortcuts[ KEY_D ] = "delete";
@@ -31,10 +34,6 @@ shortcuts[ KEY_C ] = "cut";
 shortcuts[ KEY_ALT ] = shortcuts[ KEY_H ] = "hand";
 shortcuts[ KEY_SHIFT ] = shortcuts[ KEY_V ] = "select";
 shortcuts[ KEY_CTRL ]  = shortcuts[ KEY_Z ] = "zoom";
-
-function shiftCtrlSpace( k ) {
-	return k === KEY_SHIFT || k === KEY_CTRL || k === KEY_ALT;
-}
 
 function setBackOldTool() {
 	if ( oldTool ) {
@@ -84,34 +83,36 @@ function keys( e ) {
 	}
 }
 
-ui.jqWindow.blur( setBackOldTool );
+function keyup( e ) {
+	var k = e.keyCode;
+	keysPressed[ k ] = false;
+	if ( k === CLSholded ) {
+		CLSholded = null;
+		setBackOldTool();
+	}
+}
 
-ui.jqBody
-	.keydown( function( e ) {
-		var k = e.keyCode;
-		if ( !keysPressed[ k ] ) {
-			// lg( "keyCode: " + k );
-			keysPressed[ k ] = true;
-			if ( keys( e ) ) {
-				var tool = shortcuts[ k ];
-				if ( tool && tool !== ui.currentTool ) {
-					if ( shiftCtrlSpace( k ) ) {
+function keydown( e ) {
+	var tool, cls, k = e.keyCode;
+	if ( !keysPressed[ k ] ) {
+		keysPressed[ k ] = true;
+		if ( keys( e ) ) {
+			tool = shortcuts[ k ];
+			if ( tool && tool !== ui.currentTool ) {
+				cls = k === KEY_CTRL || k === KEY_ALT || k === KEY_SHIFT;
+				if ( !cls || !CLSholded ) {
+					if ( cls ) {
+						CLSholded = k;
 						oldTool = ui.currentTool;
 					}
 					ui.selectTool( tool );
 				}
 			}
 		}
-		if ( k === KEY_SPACE || k === KEY_BACKSPACE || k === KEY_ALT ) {
-			return false;
-		}
-	} )
-	.keyup( function( e ) {
-		keysPressed[ e.keyCode ] = false;
-		if ( shiftCtrlSpace( e.keyCode ) ) {
-			setBackOldTool();
-		}
-	} )
-;
+	}
+	if ( k === KEY_SPACE || k === KEY_BACKSPACE || k === KEY_ALT ) {
+		return false;
+	}
+}
 
 } )();
