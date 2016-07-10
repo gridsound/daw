@@ -55,10 +55,10 @@
 		align-items: center;
 		border: 0;
 		.sep {
-			width: 1px;
+			width: 0;
 			height: 65%;
 			margin: 0 3px;
-			background: rgba( #fff, .12 );
+			border-left: 1px dashed rgba( #fff, .15 );
 		}
 		.btn {
 			display: flex;
