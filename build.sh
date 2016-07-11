@@ -69,28 +69,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/save.js                        \
 		gs/reset.js                       \
 		                                  \
-		gs/events/routing.js              \
-		gs/events/bpm.js                  \
-		gs/events/currentTime.js          \
-		gs/events/clockUnits.js           \
-		gs/events/divExtend.js            \
-		gs/events/dropFiles.js            \
-		gs/events/fileFilters.js          \
-		gs/events/gridMouse.js            \
-		gs/events/keyboard.js             \
-		gs/events/playPauseStop.js        \
-		gs/events/resize.js               \
-		gs/events/save.js                 \
-		gs/events/tools.js                \
-		gs/events/toolCut.js              \
-		gs/events/toolDelete.js           \
-		gs/events/toolHand.js             \
-		gs/events/toolMute.js             \
-		gs/events/toolPaint.js            \
-		gs/events/toolSelect.js           \
-		gs/events/toolSlip.js             \
-		gs/events/toolZoom.js             \
-		                                  \
 		gs/files/fileCreate.js            \
 		gs/files/filePlayStop.js          \
 		gs/files/File/constructor.js      \
@@ -120,6 +98,28 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/Sample/select.js       \
 		gs/samples/Sample/slip.js         \
 		gs/samples/Sample/when.js         \
+		                                  \
+		gs/events/routing.js              \
+		gs/events/bpm.js                  \
+		gs/events/currentTime.js          \
+		gs/events/clockUnits.js           \
+		gs/events/divExtend.js            \
+		gs/events/dropFiles.js            \
+		gs/events/fileFilters.js          \
+		gs/events/gridMouse.js            \
+		gs/events/keyboard.js             \
+		gs/events/playPauseStop.js        \
+		gs/events/resize.js               \
+		gs/events/save.js                 \
+		gs/events/tools.js                \
+		gs/events/toolCut.js              \
+		gs/events/toolDelete.js           \
+		gs/events/toolHand.js             \
+		gs/events/toolMute.js             \
+		gs/events/toolPaint.js            \
+		gs/events/toolSelect.js           \
+		gs/events/toolSlip.js             \
+		gs/events/toolZoom.js             \
 		                                  \
 		init.js                           \
 		                                  \
