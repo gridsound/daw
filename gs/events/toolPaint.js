@@ -16,7 +16,7 @@ ui.tool.paint = {
 			endCropping = e.target.classList.contains( "end" );
 			cropping = startCropping || endCropping;
 			if ( cropping ) {
-				ui.jqBody.addClass( "cursor-ewResize" );
+				ui.cursor( "app", "ew-resize" );
 				sample[ startCropping ? "jqCropStart" : "jqCropEnd" ].addClass( "hover" );
 			}
 			sampleSave = sample;
@@ -30,7 +30,7 @@ ui.tool.paint = {
 			if ( cropping ) {
 				sampleSave[ startCropping ? "jqCropStart" : "jqCropEnd" ].removeClass( "hover" );
 				cropping = startCropping = endCropping = false;
-				ui.jqBody.removeClass( "cursor-ewResize" );
+				ui.cursor( "app", null );
 			}
 			sampleSave = null;
 		}

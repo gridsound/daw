@@ -33,6 +33,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/bpm.js                         \
 		ui/setClockUnit.js                \
 		ui/currentTime.js                 \
+		ui/cursor.js                      \
 		ui/getGridXem.js                  \
 		ui/getTrackFromPageY.js           \
 		ui/file.js                        \

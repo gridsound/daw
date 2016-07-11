@@ -1,11 +1,8 @@
 "use strict";
 
-(function() {
+( function() {
 
-var
-	mousemoving = false,
-	fn,
-	fns = {
+var fn, fns = {
 		files: function( e ) {
 			var w = e.pageX;
 			ui.setFilesWidth( w < 35 ? 0 : w );
@@ -14,29 +11,28 @@ var
 			var w = e.pageX - ui.jqGrid.offset().left;
 			ui.setTrackNamesWidth( w < 35 ? 0 : w );
 		}
-	}
-;
+	},
+	mousemoving = false;
 
 $( ".extend" ).mousedown( function( e ) {
 	if ( e.button === 0 ) {
 		mousemoving = true;
-		ui.jqBody.addClass( "cursor-ewResize" );
+		ui.cursor( "app", "col-resize" );
 		fn = fns[ this.dataset.mousemoveFn ];
 	}
-});
+} );
 
 ui.jqBody
 	.mouseup( function( e ) {
 		if ( e.button === 0 && mousemoving ) {
 			mousemoving = false;
-			ui.jqBody.removeClass( "cursor-ewResize" );
+			ui.cursor( "app", null );
 		}
-	})
+	} )
 	.mousemove( function( e ) {
 		if ( mousemoving ) {
 			fn( e );
 		}
-	})
-;
+	} );
 
-})();
+} )();

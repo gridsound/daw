@@ -11,6 +11,22 @@ function zoom( e, z ) {
 }
 
 ui.tool.zoom = {
+	start: function() {
+		ui.cursor( "grid", "zoom-in" );
+	},
+	end: function() {
+		ui.cursor( "grid", null );
+	},
+	keydown: function( e ) {
+		if ( e.keyCode === 18 ) {
+			ui.cursor( "grid", "zoom-out" );
+		}
+	},
+	keyup: function( e ) {
+		if ( e.keyCode === 18 ) {
+			ui.cursor( "grid", "zoom-in" );
+		}
+	},
 	wheel: function( e ) {
 		zoom( e, e.deltaY < 0 ? 1.1 : .9 );
 	},
