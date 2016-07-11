@@ -1,21 +1,17 @@
 "use strict";
 
 wa.oscilloscope = function () {
-	var
-		max = 0,
-		PI2 = Math.PI / 2
-	;
+	var max = 0,
+		PI2 = Math.PI / 2;
 
 	return function( canvas, ctx, data ) {
-		var
-			y,
+		var y,
 			x = 0,
 			w = canvas.width,
 			h = canvas.height,
 			len = data.length,
 			len2 = len / 2,
-			mult = w / len
-		;
+			mult = w / ( len - 1 );
 
 		ctx.globalCompositeOperation = "source-in";
 		ctx.fillStyle = "rgba(" +

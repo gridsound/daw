@@ -77,6 +77,7 @@ window.ui = {
 
 ui.gridEm = parseFloat( ui.jqGrid.css( "fontSize" ) );
 ui.gridColsY = ui.jqGridCols.offset().top;
+ui.jqVisualCanvas[ 0 ].width = 256;
 ui.jqVisualCanvas[ 0 ].height = ui.jqVisualCanvas.height();
 
 } )();

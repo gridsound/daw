@@ -5,7 +5,7 @@
 var wctx = new walContext(),
 	analyser = wctx.ctx.createAnalyser();
 
-analyser.fftSize = 1024;
+analyser.fftSize = 256;
 wctx.filters.pushBack( analyser );
 
 window.wa = {

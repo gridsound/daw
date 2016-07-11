@@ -14,7 +14,6 @@ ui.setTrackNamesWidth = function( wpx ) {
 	ui.jqTimeline.css( "left", wpx );
 	ui.jqVisual.css( "width", visualWidth );
 	ui.jqMenu.css( "left", visualWidth );
-	ui.jqVisualCanvas[ 0 ].width = visualWidth;
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}
