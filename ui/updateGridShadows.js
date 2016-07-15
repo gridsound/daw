@@ -8,14 +8,14 @@ var gradientPx = 2,
 
 ui.updateGridLeftShadow = function() {
 	var x = -ui.trackLinesLeft;
-	ui.jqTrackNames.css( "boxShadow", x
+	ui.css( ui.jqTrackNames[ 0 ], "boxShadow", x
 		? Math.min( 2 + x / 8, 5 ) + "px 0" + css
 		: "none" );
 };
 
 ui.updateGridTopShadow = function() {
 	var y = ui.gridScrollTop;
-	ui.jqGridHeader.css( "boxShadow", y
+	ui.css( ui.jqGridHeader[ 0 ], "boxShadow", y
 		? "0px " + Math.min( 2 + y / 8, 5 ) + css
 		: "none" );
 };

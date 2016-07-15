@@ -5,7 +5,7 @@ ui.CSS_sampleTrack = function( s ) {
 };
 
 ui.CSS_sampleWhen = function( s ) {
-	s.jqSample.css( "left", s.wsample.when * ui.BPMem + "em" );
+	ui.css( s.jqSample[ 0 ], "left", s.wsample.when * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleSelect = function( s ) {
@@ -17,12 +17,12 @@ ui.CSS_sampleDelete = function( s ) {
 };
 
 ui.CSS_sampleOffset = function( s ) {
-	s.jqWaveform.css( "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
+	ui.css( s.jqWaveform[ 0 ], "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleDuration = function( s ) {
-	s.jqSample.css( "width", s.wsample.duration * ui.BPMem + "em" );
-	s.jqWaveform.css( "width", s.wsample.bufferDuration * ui.BPMem + "em" );
+	ui.css( s.jqSample[ 0 ],   "width", s.wsample.duration * ui.BPMem + "em" );
+	ui.css( s.jqWaveform[ 0 ], "width", s.wsample.bufferDuration * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleWaveform = function( s ) {

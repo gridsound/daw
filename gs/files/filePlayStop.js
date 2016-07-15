@@ -10,13 +10,13 @@ gs.filePlay = function( gsfile ) {
 		wsample.stop();
 	}
 	if ( gsfile.isLoaded ) {
-		gsfile.jqCanvasWaveform.after(
-			jqCursor.css( "transitionDuration", 0 ).css( "left", 0 )
-		);
+		ui.css( jqCursor[ 0 ], "transitionDuration", 0 );
+		ui.css( jqCursor[ 0 ], "left", 0 );
+		gsfile.jqCanvasWaveform.after( jqCursor );
 		wsample = gsfile.wbuff.createSample().onended( gs.fileStop ).load().start();
 		setTimeout( function() {
-			jqCursor.css( "transitionDuration", gsfile.wbuff.buffer.duration + "s" )
-				.css( "left", "100%" );
+			ui.css( jqCursor[ 0 ], "transitionDuration", gsfile.wbuff.buffer.duration + "s" );
+			ui.css( jqCursor[ 0 ], "left", "100%" );
 		}, 20 );
 	}
 };

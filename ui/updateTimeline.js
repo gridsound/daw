@@ -2,8 +2,8 @@
 
 ( function() {
 
-var nbNums = 0,
-	jqContent = $( ui.jqTimeArrow );
+var elFirstNum,
+	nbNums = 0;
 
 function createNb( nb ) {
 	if ( nb > nbNums ) {
@@ -17,8 +17,8 @@ function createNb( nb ) {
 		}
 		jqNums = $( html );
 		ui.jqTimeline.append( jqNums );
-		if ( jqContent.length < 2 ) {
-			jqContent = jqContent.add( jqNums.eq( 0 ) );
+		if ( !elFirstNum ) {
+			elFirstNum = jqNums[ 0 ];
 		}
 	}
 }
@@ -28,7 +28,8 @@ ui.updateTimeline = function() {
 		widthEm = ui.trackLinesWidth / ui.gridEm;
 
 	createNb( Math.ceil( -leftEm + widthEm ) );
-	jqContent.css( "marginLeft", leftEm + "em" );
+	ui.css( elFirstNum, "marginLeft", leftEm + "em" );
+	ui.css( ui.jqTimeArrow[ 0 ], "marginLeft", leftEm + "em" );
 };
 
 } )();

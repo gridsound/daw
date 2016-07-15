@@ -6,14 +6,14 @@ ui.setTrackNamesWidth = function( wpx ) {
 	var visualWidth,
 		oldWidth = ui.trackNamesWidth;
 
-	ui.jqTrackNames.css( "width", wpx );
+	ui.css( ui.jqTrackNames[ 0 ], "width", wpx + "px" );
 	ui.trackNamesWidth = wpx = ui.jqTrackNames.outerWidth();
 	ui.trackLinesWidth = ui.gridColsWidth - wpx;
 	visualWidth = ui.filesWidth + wpx;
-	ui.jqGridColB.css( "left", wpx );
-	ui.jqTimeline.css( "left", wpx );
-	ui.jqVisual.css( "width", visualWidth );
-	ui.jqMenu.css( "left", visualWidth );
+	ui.css( ui.jqGridColB[ 0 ], "left", wpx + "px" );
+	ui.css( ui.jqTimeline[ 0 ], "left", wpx + "px" );
+	ui.css( ui.jqVisual[ 0 ], "width", visualWidth + "px" );
+	ui.css( ui.jqMenu[ 0 ], "left", visualWidth + "px" );
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}

@@ -15,7 +15,7 @@ gs.bpm = function( bpm ) {
 			ui.CSS_sampleOffset( s );
 		} else {
 			s.savedWhen = s.xem / ui.BPMem;
-			s.jqSample.css( "width", s.savedDuration * ui.BPMem + "em" );
+			ui.css( s.jqSample[ 0 ], "width", s.savedDuration * ui.BPMem + "em" );
 		}
 	});
 	gs.currentTime( xem / ui.BPMem );

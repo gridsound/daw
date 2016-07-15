@@ -8,7 +8,8 @@ var gsfileDragging,
 ui.jqBody
 	.mousemove( function( e ) {
 		if ( gsfileDragging ) {
-			jqWaveformTmp.css( { left: e.pageX, top: e.pageY } );
+			ui.css( jqWaveformTmp[ 0 ], "left", e.pageX + "px" );
+			ui.css( jqWaveformTmp[ 0 ], "top", e.pageY + "px" );
 		}
 	} )
 	.mouseup( function( e ) {
@@ -32,9 +33,10 @@ gs.File.prototype.dragstart = function( e ) {
 			this.jqCanvasWaveform[ 0 ],
 			0, 0, canvas.width, canvas.height
 		);
+		ui.css( jqWaveformTmp[ 0 ], "left", e.pageX + "px" );
+		ui.css( jqWaveformTmp[ 0 ], "top", e.pageY + "px" );
 		jqWaveformTmp
 			.addClass( "dragging" )
-			.css( { left: e.pageX, top: e.pageY } )
 			.appendTo( ui.jqBody )
 		;
 	}

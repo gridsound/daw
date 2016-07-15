@@ -28,7 +28,7 @@ function writeHtml( nb4em ) {
 
 ui.updateTrackLinesBg = function() {
 	writeHtml( Math.ceil( ui.trackLinesWidth / ui.gridEm / 4 ) + 2 );
-	jqFirstDiv.css( "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
+	ui.css( jqFirstDiv[ 0 ], "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
 };
 
 })();

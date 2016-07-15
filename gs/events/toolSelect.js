@@ -6,7 +6,6 @@ var ax, ay, atrackId, axem,
 	clicked,
 	dragging,
 	selectionId = 0,
-	cssReset = { width: 0, height: 0 },
 	jqRect = $( "<div id='squareSelection'>" );
 
 ui.tool.select = {
@@ -24,7 +23,9 @@ ui.tool.select = {
 	mouseup: function() {
 		clicked =
 		dragging = false;
-		jqRect.css( cssReset ).detach();
+		ui.css( jqRect[ 0 ], "width", "0px" );
+		ui.css( jqRect[ 0 ], "height", "0px" );
+		jqRect.detach();
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
@@ -71,13 +72,10 @@ ui.tool.select = {
 						}
 					}
 				});
-
-				jqRect.css( {
-					top: trackMin + "em",
-					left: xemMin + "em",
-					width: xemMax - xemMin + "em",
-					height: trackMax - trackMin + 1 + "em"
-				} );
+				ui.css( jqRect[ 0 ], "top", trackMin + "em" );
+				ui.css( jqRect[ 0 ], "left", xemMin + "em" );
+				ui.css( jqRect[ 0 ], "width", xemMax - xemMin + "em" );
+				ui.css( jqRect[ 0 ], "height", trackMax - trackMin + 1 + "em" );
 			}
 		}
 	}
