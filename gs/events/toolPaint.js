@@ -16,10 +16,11 @@ ui.tool.paint = {
 			endCropping = e.target.classList.contains( "end" );
 			cropping = startCropping || endCropping;
 			if ( cropping ) {
-				ui.cursor( "app", "ew-resize" );
 				sample[ startCropping ? "jqCropStart" : "jqCropEnd" ].addClass( "hover" );
 			}
 			sampleSave = sample;
+			ui.cursor( "app", !cropping ? "grabbing" :
+				startCropping ? "w-resize" : "e-resize" );
 		}
 	},
 	mouseup: function() {
@@ -30,9 +31,9 @@ ui.tool.paint = {
 			if ( cropping ) {
 				sampleSave[ startCropping ? "jqCropStart" : "jqCropEnd" ].removeClass( "hover" );
 				cropping = startCropping = endCropping = false;
-				ui.cursor( "app", null );
 			}
 			sampleSave = null;
+			ui.cursor( "app", null );
 		}
 	},
 	mousemove: function( e, sample, mx, my ) {

@@ -21,6 +21,7 @@ ui.jqBody
 				gs.sampleCreate( gsfileDragging, track.id, xem );
 			}
 			gsfileDragging = null;
+			ui.cursor( "app", null );
 		}
 	} );
 
@@ -35,10 +36,8 @@ gs.File.prototype.dragstart = function( e ) {
 		);
 		ui.css( jqWaveformTmp[ 0 ], "left", e.pageX + "px" );
 		ui.css( jqWaveformTmp[ 0 ], "top", e.pageY + "px" );
-		jqWaveformTmp
-			.addClass( "dragging" )
-			.appendTo( ui.jqBody )
-		;
+		jqWaveformTmp.addClass( "dragging" ).appendTo( ui.jqBody );
+		ui.cursor( "app", "grabbing" );
 	}
 	return false;
 };

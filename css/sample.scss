@@ -123,6 +123,7 @@
 		cursor: ns-resize;
 	}
 	#grid[data-tool="paint"] & {
+		@extend [data-cursor="grab"];
 		.crop {
 			display: block;
 		}
