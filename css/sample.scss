@@ -8,7 +8,8 @@
 	height: $h;
 	margin-left: -$w / 2;
 	margin-top: 20px;
-	border: 2px solid rgba( #000, .8 );
+	border: 1px solid rgba( #000, .8 );
+	fill: $color_fileWaveform;
 	background: rgba( #000, .5 );
 }
 
@@ -35,6 +36,7 @@
 		display: block;
 		width: 100%;
 		height: 100%;
+		fill: $color_sampleWaveform;
 		transition: opacity .2s;
 	}
 	.cursor {
@@ -86,12 +88,13 @@
 
 		.waveform {
 			opacity: .75;
+			fill: $color_fileWaveform;
 		}
 		.name {
 			transition: padding .2s;
 		}
 		&:hover {
-			background: #000;
+			background: #080808;
 
 			.waveform {
 				opacity: 1;
@@ -131,7 +134,7 @@
 
 	// Responsive (small, medium, big) :
 	#grid[data-sample-size="small"] & {
-		.waveform {
+		.waveformWrapper {
 			opacity: .15;
 		}
 		.name {

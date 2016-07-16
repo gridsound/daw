@@ -5,12 +5,10 @@ gs.Sample = function( gsfile, trackId, xem ) {
 
 	this.jqSample = $( Handlebars.templates.sample( gsfile ) );
 	this.jqWaveformWrapper = this.jqSample.find( ".waveformWrapper" );
-	this.jqWaveform = this.jqSample.find( ".waveform" );
+	this.elSVG = this.jqSample.find( "svg" )[ 0 ];
 	this.jqName = this.jqSample.find( ".name" );
 	this.jqCropStart = this.jqSample.find( ".crop.start" );
 	this.jqCropEnd = this.jqSample.find( ".crop.end" );
-	this.canvas = this.jqWaveform[ 0 ];
-	this.canvasCtx = this.canvas.getContext( "2d" );
 
 	var that = this;
 	this.jqSample.find( "*" ).each( function() {

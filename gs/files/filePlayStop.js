@@ -12,7 +12,7 @@ gs.filePlay = function( gsfile ) {
 	if ( gsfile.isLoaded ) {
 		ui.css( jqCursor[ 0 ], "transitionDuration", 0 );
 		ui.css( jqCursor[ 0 ], "left", 0 );
-		gsfile.jqCanvasWaveform.after( jqCursor );
+		gsfile.elWaveformWrap.appendChild( jqCursor[ 0 ] );
 		wsample = gsfile.wbuff.createSample().onended( gs.fileStop ).load().start();
 		setTimeout( function() {
 			ui.css( jqCursor[ 0 ], "transitionDuration", gsfile.wbuff.buffer.duration + "s" );

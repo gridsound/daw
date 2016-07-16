@@ -24,7 +24,7 @@ $opacity_analyserWaveform: .2;
 $color_menuText: $color_clock;
 $color_playBtn: $COLOR_MAIN;
 $color_stopBtn: #333;
-$color_tool: $color_playBtn;
+$color_tool: $COLOR_MAIN;
 $lighten_toolHover: 5%;
 $lighten_toolSelected: 10%;
 $color_toolBorder: #1c1c27;
@@ -37,13 +37,14 @@ $color_bpmListHover: #111;
 $color_filesBg: #1c1c1c;
 $color_fileFiltersBg: rgba( #000, .35 );
 $color_filesPlaceholder: $color_fileFiltersBg;
+$color_fileWaveform: lighten( $COLOR_MAIN, 10% );
 
 $color_timelineBg: #0d0d0d;
 $color_timelineText: #888;
 
 $color_tracknamesBg: #272727;
 $color_tracknamesBorder: #151515;
-$color_tracklinesBg: $color_playBtn;
+$color_tracklinesBg: $COLOR_MAIN;
 $color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
 $color_tracklinesBorder: #090909;
 
@@ -64,6 +65,7 @@ $color_cursorTimeBg: rgba( #ffa, .4 );
 $color_cursorTimeShadow: #50ff00;
 
 // Sample :
+$color_sampleWaveform: #ddf;
 $color_sampleName: #aaa;
 $color_sampleNameHighlight: #fff;
 $color_sampleTitleBg: rgba( $COLOR_SAMPLE, .3 );

@@ -6,7 +6,7 @@ templates['about'] = template({"compiler":[7,">= 4.0.0"],"main":function(contain
 templates['file'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<a class=\"sample\" draggable=\"true\">\r\n	<span class=\"name text-overflow\">\r\n		<i class=\"icon fa fa-fw\"></i>\r\n		<span>"
+  return "<a class=\"sample\" draggable=\"true\">\r\n	<div class=\"waveformWrapper\">\r\n		<svg class=\"waveform\" preserveAspectRatio=\"none\"><path/></svg>\r\n	</div>\r\n	<span class=\"name text-overflow\">\r\n		<i class=\"icon fa fa-fw\"></i>\r\n		<span>"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\r\n	</span>\r\n</a>\r\n";
 },"useData":true});
@@ -22,7 +22,7 @@ templates['menu'] = template({"compiler":[7,">= 4.0.0"],"main":function(containe
 templates['sample'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<div class=\"sample\">\r\n	<div class=\"waveformWrapper\">\r\n		<canvas class=\"waveform\"></canvas>\r\n	</div>\r\n	<span class=\"name text-overflow\">"
+  return "<div class=\"sample\">\r\n	<div class=\"waveformWrapper\">\r\n		<svg class=\"waveform\" preserveAspectRatio=\"none\"><path/></svg>\r\n	</div>\r\n	<span class=\"name text-overflow\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\r\n	<div class=\"crop start\"></div>\r\n	<div class=\"crop end\"></div>\r\n</div>\r\n";
 },"useData":true});

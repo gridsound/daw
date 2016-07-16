@@ -17,18 +17,14 @@ ui.CSS_sampleDelete = function( s ) {
 };
 
 ui.CSS_sampleOffset = function( s ) {
-	ui.css( s.jqWaveform[ 0 ], "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
+	ui.css( s.elSVG, "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleDuration = function( s ) {
-	ui.css( s.jqSample[ 0 ],   "width", s.wsample.duration * ui.BPMem + "em" );
-	ui.css( s.jqWaveform[ 0 ], "width", s.wsample.bufferDuration * ui.BPMem + "em" );
+	ui.css( s.jqSample[ 0 ], "width", s.wsample.duration * ui.BPMem + "em" );
+	ui.css( s.elSVG, "width", s.wsample.bufferDuration * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleWaveform = function( s ) {
-	var w = s.canvas.width = ~~( s.wsample.bufferDuration * 300 ),
-		h = s.canvas.height = 50,
-		img = s.canvasCtx.createImageData( w, h );
-	s.wsample.wBuffer.drawWaveform( img, [ 0xDD, 0xDD, 0xFF, 0xFF ] );
-	s.canvasCtx.putImageData( img, 0, 0 );
+	s.wsample.wBuffer.waveformSVG( s.elSVG, ~~( s.wsample.bufferDuration * 200 ), 50 );
 };
