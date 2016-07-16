@@ -6,8 +6,7 @@ ui.Track.prototype.initEditName = function() {
 	this.jqName =
 	$( "<span class='name text-overflow'>" )
 		.appendTo( this.jqColNamesTrack )
-		.dblclick( this.editName.bind( this, true ) )
-	;
+		.dblclick( this.editName.bind( this, true ) );
 
 	this.jqNameInput =
 	$( "<input type='text'/>" )
@@ -15,7 +14,7 @@ ui.Track.prototype.initEditName = function() {
 		.blur( function() {
 			that.editName( this.value )
 				.editName( false );
-		})
+		} )
 		.keydown( function( e ) {
 			// 27->Echap, 13->Enter
 			if ( e.keyCode === 13 || e.keyCode === 27 ) {
@@ -24,27 +23,21 @@ ui.Track.prototype.initEditName = function() {
 			}
 			// Don't interfere with any other keyboard shortcuts.
 			e.stopPropagation();
-		})
-	;
+		} );
 	return this;
 };
 
 ui.Track.prototype.editName = function( name ) {
-	var
-		input = this.jqNameInput[ 0 ],
-		trackId = "Track " + ( this.id + 1 )
-	;
+	var input = this.jqNameInput[ 0 ],
+		trackId = "Track " + ( this.id + 1 );
 
 	if ( typeof name === "string" ) {
 		name = name
 			.replace( /^\s+|\s+$/, "" )
-			.replace( /\s+/g, " " )
-		;
+			.replace( /\s+/g, " " );
 		name = name === trackId ? "" : name;
-		this.jqName
-			.toggleClass( "empty", name === "" )
-			.text( name || trackId )
-		;
+		this.jqName.toggleClass( "empty", name === "" );
+		this.jqName[ 0 ].textContent = name || trackId;
 		this.name = name;
 
 	// Else name is a boolean.

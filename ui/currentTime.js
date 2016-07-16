@@ -34,9 +34,9 @@ function clockTime( s ) {
 	} else if ( bb < 100 ) {
 		bb = "0" + bb;
 	}
-	ui.jqClockMin.text( a );
-	ui.jqClockSec.text( b );
-	ui.jqClockMs.text( bb );
+	ui.jqClockMin[ 0 ].textContent = a;
+	ui.jqClockSec[ 0 ].textContent = b;
+	ui.jqClockMs[ 0 ].textContent = bb;
 }
 
 ui.currentTime = function( s ) {
