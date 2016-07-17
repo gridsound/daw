@@ -2,16 +2,17 @@
 
 ( function() {
 
-var jqApp = $( "#app" ),
-	tpl = Handlebars.templates;
+window.ui = {};
+ui.elApp = qS( "#app" );
 
 // Creating all the DOM :
-for ( var k in tpl ) {
+var k, tpl = Handlebars.templates;
+for ( k in tpl ) {
 	if ( k !== "_app" ) {
 		Handlebars.registerPartial( k, tpl[ k ] );
 	}
 }
-jqApp.append( Handlebars.templates[ "_app" ]( {} ) );
+ui.elApp.innerHTML = Handlebars.templates._app( {} );
 
 // Remove all whitespace nodes :
 function rmChild( el ) {
@@ -26,58 +27,57 @@ function rmChild( el ) {
 }
 rmChild( document.body );
 
-// The `ui` global object :
-window.ui = {
+ui.tool = {};
+ui.tracks = [];
+ui.nbTracksOn = 0;
 
-	// DOM :
-	jqWindow: $( window ),
-	jqBody: $( "body" ),
-	jqApp: jqApp,
-	jqAbout: $( "#about" ),
-	jqVisual: $( "#visual" ),
-	jqVisualCanvas: $( "#visual canvas" ),
-	jqVisualClockUnits: $( "#visual .clock .units" ),
-	jqClockMin: $( "#visual .clock > .min" ),
-	jqClockSec: $( "#visual .clock > .sec" ),
-	jqClockMs: $( "#visual .clock > .ms" ),
-	jqMenu: $( "#menu" ),
-	jqPlay: $( "#menu .btn.play" ),
-	jqStop: $( "#menu .btn.stop" ),
-	jqBpmA: $( "#menu .bpm .a-bpm" ),
-	jqBpmInt: $( "#menu .bpm .int" ),
-	jqBpmDec: $( "#menu .bpm .dec" ),
-	jqBpmList: $( "#menu .bpm-list" ),
-	jqBtnTools: $( "#menu .tools [data-tool]" ),
-	jqBtnMagnet: $( "#menu .tools .magnet" ),
-	jqBtnSave: $( "#menu .tools .save" ),
-	jqBtnAbout: $( "#menu .about" ),
-	jqFiles: $( "#files" ),
-	jqFileFilters: $( "#files .filters" ),
-	jqFilelist: $( "#files .filelist" ),
-	jqInputFile: $( "#files .filelist input[type='file']" ),
-	jqGrid: $( "#grid" ),
-	jqGridEm: $( "#grid .emWrapper" ),
-	jqGridHeader: $( "#grid .header" ),
-	jqTimeline: $( "#grid .timeline" ),
-	jqTimeArrow: $( "#grid .timeArrow" ),
-	jqTimeCursor: $( "#grid .timeCursor" ),
-	jqTrackList: $( "#grid .trackList" ),
-	jqGridCols: $( "#grid .cols" ),
-	jqGridColB: $( "#grid .colB" ),
-	jqTrackNames: $( "#grid .trackNames" ),
-	jqTrackLines: $( "#grid .trackLines" ),
-	jqTrackLinesBg: $( "#grid .trackLinesBg" ),
-	jqTrackNamesExtend: $( "#grid .trackNames .extend" ),
+ui.elAbout = qS( "#about" );
 
-	// Attrs :
-	tool: {},
-	tracks: [],
-	nbTracksOn: 0,
-};
+ui.elVisual       = qS( "#visual" );
+ui.elVisualCanvas = qS( ui.elVisual, "canvas" );
+ui.elClockUnits   = qS( ui.elVisual, ".clock .units" );
+ui.elClockMin     = qS( ui.elVisual, ".clock > .min" );
+ui.elClockSec     = qS( ui.elVisual, ".clock > .sec" );
+ui.elClockMs      = qS( ui.elVisual, ".clock > .ms" );
 
-ui.gridEm = parseFloat( ui.jqGrid.css( "fontSize" ) );
-ui.gridColsY = ui.jqGridCols.offset().top;
-ui.jqVisualCanvas[ 0 ].width = 256;
-ui.jqVisualCanvas[ 0 ].height = ui.jqVisualCanvas.height();
+ui.elMenu      = qS( "#menu" );
+ui.elPlay      = qS( ui.elMenu, ".btn.play" );
+ui.elStop      = qS( ui.elMenu, ".btn.stop" );
+ui.elBpmA      = qS( ui.elMenu, ".bpm .a-bpm" );
+ui.elBpmInt    = qS( ui.elMenu, ".bpm .int" );
+ui.elBpmDec    = qS( ui.elMenu, ".bpm .dec" );
+ui.elBpmList   = qS( ui.elMenu, ".bpm-list" );
+ui.elTools     = qS( ui.elMenu, ".tools" );
+ui.elBtnMagnet = qS( ui.elTools, ".magnet" );
+ui.elBtnSave   = qS( ui.elTools, ".save" );
+
+ui.elFiles       = qS( "#files" );
+ui.elInputFile   = qS( ui.elFiles, "input[type='file']" );
+ui.elFileFilters = qS( ui.elFiles, ".filters" );
+ui.elFilelist    = qS( ui.elFiles, ".filelist" );
+
+ui.elGrid             = qS( "#grid" );
+ui.elGridEm           = qS( ui.elGrid, ".emWrapper" );
+ui.elGridHeader       = qS( ui.elGrid, ".header" );
+ui.elTimeline         = qS( ui.elGrid, ".timeline" );
+ui.elTimeArrow        = qS( ui.elGrid, ".timeArrow" );
+ui.elTimeCursor       = qS( ui.elGrid, ".timeCursor" );
+ui.elTrackList        = qS( ui.elGrid, ".trackList" );
+ui.elGridCols         = qS( ui.elGrid, ".cols" );
+ui.elGridColB         = qS( ui.elGrid, ".colB" );
+ui.elTrackNames       = qS( ui.elGrid, ".trackNames" );
+ui.elTrackLines       = qS( ui.elGrid, ".trackLines" );
+ui.elTrackLinesBg     = qS( ui.elGrid, ".trackLinesBg" );
+
+ui.gridEm = parseFloat( getComputedStyle( ui.elGrid ).fontSize );
+ui.gridColsY = ui.elGridCols.getBoundingClientRect().top;
+ui.elVisualCanvas.width = 256;
+ui.elVisualCanvas.height = ui.elVisualCanvas.clientHeight;
+
+function qS( par, sel ) {
+	return sel
+		? par.querySelector( sel )
+		: document.querySelector( par );
+}
 
 } )();

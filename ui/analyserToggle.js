@@ -1,13 +1,11 @@
 "use strict";
 
-(function() {
+( function() {
 
-var
-	animId,
+var animId,
 	emptyArr = [],
-	canvas = ui.jqVisualCanvas[ 0 ],
-	ctxCanvas = canvas.getContext( "2d" )
-;
+	canvas = ui.elVisualCanvas,
+	ctxCanvas = canvas.getContext( "2d" );
 
 function frame() {
 	var data = emptyArr;
@@ -33,4 +31,4 @@ ui.analyserToggle = function( b ) {
 	}
 };
 
-})();
+} )();

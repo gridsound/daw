@@ -8,7 +8,7 @@ var fn, fns = {
 			ui.setFilesWidth( w < 35 ? 0 : w );
 		},
 		trackNames: function( e ) {
-			var w = e.pageX - ui.jqGrid.offset().left;
+			var w = e.pageX - ui.elGrid.getBoundingClientRect().left;
 			ui.setTrackNamesWidth( w < 35 ? 0 : w );
 		}
 	},
@@ -22,17 +22,17 @@ $( ".extend" ).mousedown( function( e ) {
 	}
 } );
 
-ui.jqBody
-	.mouseup( function( e ) {
-		if ( e.button === 0 && mousemoving ) {
-			mousemoving = false;
-			ui.cursor( "app", null );
-		}
-	} )
-	.mousemove( function( e ) {
-		if ( mousemoving ) {
-			fn( e );
-		}
-	} );
+document.body.addEventListener( "mouseup", function( e ) {
+	if ( e.button === 0 && mousemoving ) {
+		mousemoving = false;
+		ui.cursor( "app", null );
+	}
+} );
+
+document.body.addEventListener( "mousemove", function( e ) {
+	if ( mousemoving ) {
+		fn( e );
+	}
+} );
 
 } )();

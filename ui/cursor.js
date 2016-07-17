@@ -4,14 +4,20 @@
 
 var gridsave = null;
 
-function setCur( jq, c ) { jq.attr( "data-cursor", c ); }
+function setCur( el, c ) {
+	if ( c ) {
+		el.dataset.cursor = c;
+	} else {
+		el.removeAttribute( "data-cursor" );
+	}
+}
 
 ui.cursor = function( el, cur ) {
 	if ( el === "app" ) {
-		setCur( ui.jqApp, cur );
-		setCur( ui.jqTrackLines, cur ? null : gridsave );
+		setCur( ui.elApp, cur );
+		setCur( ui.elTrackLines, cur ? null : gridsave );
 	} else {
-		setCur( ui.jqTrackLines, gridsave = cur );
+		setCur( ui.elTrackLines, gridsave = cur );
 	}
 };
 

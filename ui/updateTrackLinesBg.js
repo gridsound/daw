@@ -1,34 +1,32 @@
 "use strict";
 
-(function() {
+( function() {
 
-var jqFirstDiv,
+var elFirstDiv,
 	nb4emSave = 0;
 
 function writeHtml( nb4em ) {
-	var i, j, k,
-		nb = nb4em - nb4emSave,
-		html = "";
+	var i, j, k, d1, d2,
+		nb = nb4em - nb4emSave;
 
 	nb4emSave = Math.max( nb4em, nb4emSave );
 	for ( i = 0; i < nb; ++i ) {
-		html += "<div>";
+		d1 = document.createElement( "div" );
 		for ( j = 0; j < 4; ++j ) {
-			html += "<div>";
+			d2 = document.createElement( "div" );
 			for ( k = 0; k < 4; ++k ) {
-				html += "<div></div>";
+				d2.appendChild( document.createElement( "div" ) );
 			}
-			html += "</div>";
+			d1.appendChild( d2 );
 		}
-		html += "</div>";
+		ui.elTrackLinesBg.appendChild( d1 );
 	}
-	ui.jqTrackLinesBg.append( html );
-	jqFirstDiv = jqFirstDiv || ui.jqTrackLinesBg.children().eq( 0 );
+	elFirstDiv = elFirstDiv || ui.elTrackLinesBg.firstChild;
 };
 
 ui.updateTrackLinesBg = function() {
 	writeHtml( Math.ceil( ui.trackLinesWidth / ui.gridEm / 4 ) + 2 );
-	ui.css( jqFirstDiv[ 0 ], "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
+	ui.css( elFirstDiv, "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
 };
 
-})();
+} )();

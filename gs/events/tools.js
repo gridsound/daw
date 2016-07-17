@@ -1,13 +1,24 @@
 "use strict";
 
-ui.jqBtnMagnet.click( ui.toggleMagnetism );
+( function() {
 
-ui.jqBtnTools.tool = {};
+ui.elBtnMagnet.onclick = ui.toggleMagnetism;
 
-ui.jqBtnTools
-	.each( function() {
-		ui.jqBtnTools.tool[ this.dataset.tool ] = this;
-	} )
-	.click( function() {
-		ui.selectTool( this.dataset.tool );
-	} );
+ui.elTools.onclick = function( e ) {
+	if ( e = e.target.dataset.tool ) {
+		ui.selectTool( e );
+	}
+};
+
+var tool,
+	tools = ui.elTools.children,
+	i = 0;
+
+ui.elTools.tool = {};
+while ( tool = tools[ i++ ] ) {
+	if ( tool.dataset.tool ) {
+		ui.elTools.tool[ tool.dataset.tool ] = tool;
+	}
+}
+
+} )();

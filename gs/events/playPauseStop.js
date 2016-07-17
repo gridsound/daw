@@ -1,13 +1,13 @@
 "use strict";
 
-ui.jqPlay.click( function() {
+ui.elPlay.onclick = function() {
 	gs.fileStop();
 	gs.playToggle();
-} );
+};
 
-ui.jqStop.click( function() {
+ui.elStop.onclick = function() {
 	gs.fileStop();
 	gs.stop();
-} );
+};
 
 wa.composition.onended( gs.stop );

@@ -2,25 +2,28 @@
 
 ( function() {
 
-ui.jqBpmA.mousedown( function() {
-	ui.jqBpmA.toggleClass( "clicked" );
-	return false;
-});
+ui.elBpmInt.onwheel = wheel.bind( null, 1 );
+ui.elBpmDec.onwheel = wheel.bind( null, .01 );
 
-ui.jqBpmList.children().mousedown( function() {
-	gs.bpm( +this.textContent );
-});
+ui.elBpmA.onmousedown = function( e ) {
+	ui.elBpmA.classList.toggle( "clicked" );
+	e.stopPropagation();
+};
 
-ui.jqBody.mousedown( function() {
-	ui.jqBpmA.removeClass( "clicked" );
-});
+ui.elBpmList.onmousedown = function( e ) {
+	var bpm = +e.target.textContent;
+	if ( bpm ) {
+		gs.bpm( bpm );
+	}
+};
+
+document.body.addEventListener( "mousedown", function() {
+	ui.elBpmA.classList.remove( "clicked" );
+} );
 
 function wheel( inc, e ) {
-	e = e.originalEvent.deltaY;
+	e = e.deltaY;
 	gs.bpm( gs._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );
 }
-
-ui.jqBpmInt.on( "wheel", wheel.bind( null, 1 ) );
-ui.jqBpmDec.on( "wheel", wheel.bind( null, .01 ) );
 
 } )();

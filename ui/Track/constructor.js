@@ -4,9 +4,9 @@ ui.Track = function( grid, obj ) {
 	obj = obj || {}
 
 	this.grid = grid;
-	this.id = ui.tracks.length; // FIX ME when tracks could be moved or removed
-	this.jqColNamesTrack = $( "<div class='track'>" ).appendTo( ui.jqTrackNames );
-	this.jqColLinesTrack = $( "<div class='track'>" ).appendTo( ui.jqTrackLines );
+	this.id = ui.tracks.length; // FIXME: when tracks could be moved or removed
+	this.jqColNamesTrack = $( "<div class='track'>" ).appendTo( ui.elTrackNames );
+	this.jqColLinesTrack = $( "<div class='track'>" ).appendTo( ui.elTrackLines );
 
 	this.jqColNamesTrack[ 0 ].uitrack
 	this.jqColLinesTrack[ 0 ].uitrack = this;

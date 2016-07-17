@@ -38,7 +38,7 @@ ui.tool.select = {
 				dragging = true;
 				atrackId = ui.getTrackFromPageY( ay ).id;
 				axem = ui.getGridXem( ax );
-				jqRect.appendTo( ui.jqTrackLines );
+				jqRect.appendTo( ui.elTrackLines );
 			}
 
 			if ( dragging ) {

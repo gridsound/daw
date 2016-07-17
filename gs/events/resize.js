@@ -1,3 +1,3 @@
 "use strict";
 
-ui.jqWindow.on( "resize", ui.resize );
+window.onresize = ui.resize();

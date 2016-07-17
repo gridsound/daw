@@ -4,7 +4,7 @@ ui.selectTool = function() {
 	var oldBtnTool;
 
 	return function( strTool ) {
-		var uiTool, btnTool = ui.jqBtnTools.tool[ strTool ];
+		var uiTool, btnTool = ui.elTools.tool[ strTool ];
 
 		if ( btnTool !== oldBtnTool ) {
 			if ( oldBtnTool ) {
@@ -15,7 +15,7 @@ ui.selectTool = function() {
 			}
 			oldBtnTool = btnTool;
 			btnTool.classList.add( "active" );
-			ui.jqGrid[ 0 ].dataset.tool =
+			ui.elGrid.dataset.tool =
 			ui.currentTool = strTool;
 			uiTool = ui.tool[ strTool ];
 			if ( uiTool.start ) {

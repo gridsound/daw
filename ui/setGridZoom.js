@@ -7,10 +7,10 @@ ui.setGridZoom = function( zm, xpx, ypx ) {
 	var zmMul = zm / ui.gridZoom;
 	ui.gridZoom = zm;
 	ui.gridEm *= zmMul;
-	ui.css( ui.jqGridEm[ 0 ], "fontSize", zm + "em" );
-	ui.jqGrid.attr( "data-sample-size",
+	ui.css( ui.elGridEm, "fontSize", zm + "em" );
+	ui.elGrid.dataset.sampleSize =
 		ui.gridEm < 40 ? "small" :
-		ui.gridEm < 80 ? "medium" : "big" );
+		ui.gridEm < 80 ? "medium" : "big";
 	ui.setGridScrollTop( -( ypx - ( ui.gridScrollTop + ypx ) * zmMul ) );
 	ui.setTrackLinesLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
 	ui.updateTimeline();

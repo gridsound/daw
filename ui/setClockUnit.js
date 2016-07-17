@@ -1,6 +1,6 @@
 "use strict";
 
 ui.setClockUnit = function( unit ) {
-	ui.jqVisualClockUnits.attr( "data-unit", unit );
+	ui.elClockUnits.dataset.unit = unit;
 	ui.currentTime( gs.currentTime() );
 };

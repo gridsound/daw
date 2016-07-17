@@ -7,18 +7,13 @@ var elFirstNum,
 
 function createNb( nb ) {
 	if ( nb > nbNums ) {
-		var html = "",
-			i = nbNums,
-			jqNums;
-
+		var div, i = nbNums;
 		nbNums = nb;
 		while ( i++ < nb ) {
-			html += "<div><span></span></div>";
-		}
-		jqNums = $( html );
-		ui.jqTimeline.append( jqNums );
-		if ( !elFirstNum ) {
-			elFirstNum = jqNums[ 0 ];
+			div = document.createElement( "div" );
+			div.appendChild( document.createElement( "span" ) );
+			ui.elTimeline.appendChild( div );
+			elFirstNum = elFirstNum || div;
 		}
 	}
 }
@@ -29,7 +24,7 @@ ui.updateTimeline = function() {
 
 	createNb( Math.ceil( -leftEm + widthEm ) );
 	ui.css( elFirstNum, "marginLeft", leftEm + "em" );
-	ui.css( ui.jqTimeArrow[ 0 ], "marginLeft", leftEm + "em" );
+	ui.css( ui.elTimeArrow, "marginLeft", leftEm + "em" );
 };
 
 } )();

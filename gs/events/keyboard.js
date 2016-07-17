@@ -2,8 +2,9 @@
 
 ( function() {
 
-ui.jqWindow.blur( setBackOldTool );
-ui.jqBody.keydown( keydown ).keyup( keyup );
+window.addEventListener( "blur", setBackOldTool );
+document.body.onkeydown = keydown;
+document.body.onkeyup = keyup;
 
 function setBackOldTool() {
 	if ( oldTool ) {
@@ -85,7 +86,7 @@ fn[ K_CTRL ] = CASTool.bind( null, K_CTRL, "zoom" );
 fn[ K_SHIFT ] = CASTool.bind( null, K_SHIFT, "select" );
 fn[ K_B ] = keyTool.bind( null, "paint" );
 fn[ K_D ] = keyTool.bind( null, "delete" );
-fn[ K_M ] = $.noop;// keyTool.bind( null, "mute" );
+fn[ K_M ] = function() {}; // keyTool.bind( null, "mute" );
 fn[ K_S ] = keyTool.bind( null, "slip" );
 fn[ K_H ] = keyTool.bind( null, "hand" );
 fn[ K_Z ] = keyTool.bind( null, "zoom" );
@@ -118,7 +119,7 @@ fn[ K_SPACE ] = function( e ) {
 };
 
 fn[ K_ESCAPE ] = function() {
-	if ( ui.jqAbout.hasClass( "show" ) ) {
+	if ( ui.elAbout.classList.contains( "show" ) ) {
 		ui.toggleAbout( false );
 		location.hash = "";
 	}

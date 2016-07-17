@@ -2,9 +2,27 @@
 
 ( function() {
 
-var clist = ui.jqFileFilters[ 0 ].classList,
-	flsStr = "used loaded unloaded",
-	fls = flsStr.split( " " );
+ui.elFileFilters.onclick =
+ui.elFileFilters.oncontextmenu = function() { return false; };
+ui.elFileFilters.onmouseup = function( e ) {
+	var b, a = e.target;
+	if ( a.nodeName === "A" ) {
+		if ( e.button === 0 ) {
+			clist.toggle( a.className );
+		} else if ( e.button === 2 ) {
+			b = clist.contains( a.className ) && allFalseExcept( a.className );
+			allClasses( b );
+			if ( !b ) {
+				clist.add( a.className );
+			}
+		}
+	}
+};
+
+var clist = ui.elFileFilters.classList,
+	fls = [ "used", "loaded", "unloaded" ];
+
+allClasses( true );
 
 function allFalseExcept( fsel ) {
 	return fls.every( function( f ) {
@@ -12,26 +30,10 @@ function allFalseExcept( fsel ) {
 	} );
 }
 
-ui.jqFileFilters
-	.addClass( flsStr )
-	.on( {
-		click: false,
-		contextmenu: false,
-		mouseup: function( e ) {
-			var a = e.target;
-			if ( a.nodeName === "A" ) {
-				if ( e.button === 0 ) {
-					clist.toggle( a.className );
-				} else if ( e.button === 2 ) {
-					if ( clist.contains( a.className ) && allFalseExcept( a.className ) ) {
-						ui.jqFileFilters.addClass( flsStr );
-					} else {
-						ui.jqFileFilters.removeClass( flsStr );
-						clist.add( a.className );
-					}
-				}
-			}
-		}
-	} );
+function allClasses( b ) {
+	clist.toggle( "used", b );
+	clist.toggle( "loaded", b );
+	clist.toggle( "unloaded", b );
+}
 
 } )();

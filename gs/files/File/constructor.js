@@ -4,12 +4,12 @@
 
 var clickedFile;
 
-ui.jqInputFile.change( function() {
+ui.elInputFile.onchange = function() {
 	if ( clickedFile ) {
 		clickedFile.joinFile( this.files[ 0 ] );
 		clickedFile = null;
 	}
-} );
+};
 
 gs.File = function( file ) {
 	var that = this;
@@ -46,7 +46,7 @@ gs.File = function( file ) {
 			} else if ( !that.file ) {
 				alert( "Choose the file to associate or drag and drop " + that.name );
 				clickedFile = that;
-				ui.jqInputFile.click();
+				ui.elInputFile.click();
 			} else if ( !that.isLoading ) {
 				that.load( gs.filePlay );
 			}

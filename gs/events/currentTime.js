@@ -1,5 +1,5 @@
 "use strict";
 
-ui.jqTimeline.mouseup( function( e ) {
+ui.elTimeline.onmouseup = function( e ) {
 	gs.currentTime( ui.getGridXem( e.pageX ) / ui.BPMem );
-} );
+};

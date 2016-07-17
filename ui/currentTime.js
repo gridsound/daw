@@ -3,16 +3,13 @@
 ( function() {
 
 function cursorTime( s ) {
-	var val,
-		cu = ui.jqTimeCursor[ 0 ],
-		ar = ui.jqTimeArrow[ 0 ];
 	if ( s > 0 ) {
-		val = s * ui.BPMem + "em";
-		ui.css( cu, "left", val );
-		ui.css( ar, "left", val );
+		var v = s * ui.BPMem + "em";
+		ui.css( ui.elTimeCursor, "left", v );
+		ui.css( ui.elTimeArrow, "left", v );
 	}
-	cu.classList.toggle( "visible", s > 0 );
-	ar.classList.toggle( "visible", s > 0 );
+	ui.elTimeCursor.classList.toggle( "visible", s > 0 );
+	ui.elTimeArrow.classList.toggle( "visible", s > 0 );
 }
 
 function clockTime( s ) {
@@ -34,9 +31,9 @@ function clockTime( s ) {
 	} else if ( bb < 100 ) {
 		bb = "0" + bb;
 	}
-	ui.jqClockMin[ 0 ].textContent = a;
-	ui.jqClockSec[ 0 ].textContent = b;
-	ui.jqClockMs[ 0 ].textContent = bb;
+	ui.elClockMin.textContent = a;
+	ui.elClockSec.textContent = b;
+	ui.elClockMs.textContent = bb;
 }
 
 ui.currentTime = function( s ) {
