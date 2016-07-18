@@ -1,32 +1,39 @@
 "use strict";
 
 ui.CSS_fileUnloaded = function( f ) {
-	f.jqIcon.addClass( "fa-download" ).removeClass( "fa-question" );
-	f.jqFile.addClass( "unloaded" );
+	f.elIcon.classList.add( "fa-download" );
+	f.elIcon.classList.remove( "fa-question" );
+	f.elFile.classList.add( "unloaded" );
 };
 
 ui.CSS_fileWithoutData = function( f ) {
-	f.jqIcon.addClass( "fa-question" ).removeClass( "fa-download" );
-	f.jqFile.addClass( "unloaded" );
+	f.elIcon.classList.add( "fa-question" );
+	f.elIcon.classList.remove( "fa-download" );
+	f.elFile.classList.add( "unloaded" );
 };
 
 ui.CSS_fileLoading = function( f ) {
-	f.jqIcon.addClass( "fa-refresh fa-spin" ).removeClass( "fa-download" );
+	f.elIcon.classList.add( "fa-refresh" );
+	f.elIcon.classList.add( "fa-spin" );
+	f.elIcon.classList.remove( "fa-download" );
 };
 
 ui.CSS_fileLoaded = function( f ) {
-	f.jqFile.addClass( "loaded" ).removeClass( "unloaded" );
-	f.jqIcon.remove();
+	f.elFile.classList.add( "loaded" );
+	f.elFile.classList.remove( "unloaded" );
+	f.elIcon.remove();
 };
 
 ui.CSS_fileError = function( f ) {
-	f.jqIcon.addClass( "fa-times" ).removeClass( "fa-refresh fa-spin" );
+	f.elIcon.classList.add( "fa-times" );
+	f.elIcon.classList.remove( "fa-refresh" );
+	f.elIcon.classList.remove( "fa-spin" );
 };
 
 ui.CSS_fileUsed = function( f ) {
-	f.jqFile.addClass( "used" );
+	f.elFile.classList.add( "used" );
 };
 
 ui.CSS_fileUnused = function( f ) {
-	f.jqFile.removeClass( "used" );
+	f.elFile.classList.remove( "used" );
 };

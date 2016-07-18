@@ -5,11 +5,13 @@ ui.Track = function( grid, obj ) {
 
 	this.grid = grid;
 	this.id = ui.tracks.length; // FIXME: when tracks could be moved or removed
-	this.jqColNamesTrack = $( "<div class='track'>" ).appendTo( ui.elTrackNames );
-	this.jqColLinesTrack = $( "<div class='track'>" ).appendTo( ui.elTrackLines );
+	this.elColNamesTrack = wisdom.cE( "<div class='track'>" )[ 0 ];
+	this.elColLinesTrack = wisdom.cE( "<div class='track'>" )[ 0 ];
+	ui.elTrackNames.appendChild( this.elColNamesTrack );
+	ui.elTrackLines.appendChild( this.elColLinesTrack );
 
-	this.jqColNamesTrack[ 0 ].uitrack
-	this.jqColLinesTrack[ 0 ].uitrack = this;
+	this.elColNamesTrack.uitrack
+	this.elColLinesTrack.uitrack = this;
 
 	this.wfilters = wa.wctx.createFilters();
 	this.samples = [];

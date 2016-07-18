@@ -3,17 +3,17 @@
 gs.Sample = function( gsfile, trackId, xem ) {
 	this.gsfile = gsfile;
 
-	this.jqSample = $( Handlebars.templates.sample( gsfile ) );
-	this.jqWaveformWrapper = this.jqSample.find( ".waveformWrapper" );
-	this.elSVG = this.jqSample.find( "svg" )[ 0 ];
-	this.jqName = this.jqSample.find( ".name" );
-	this.jqCropStart = this.jqSample.find( ".crop.start" );
-	this.jqCropEnd = this.jqSample.find( ".crop.end" );
+	this.elSample = wisdom.cE( Handlebars.templates.sample( gsfile ) )[ 0 ];
+	this.elSVG = this.elSample.querySelector( "svg" );
+	this.elName = this.elSample.querySelector( ".name" );
+	this.elCropStart = this.elSample.querySelector( ".crop.start" );
+	this.elCropEnd = this.elSample.querySelector( ".crop.end" );
 
-	var that = this;
-	this.jqSample.find( "*" ).each( function() {
-		this.gsSample = that;
-	} );
+	var child, i = 0,
+		children = this.elSample.querySelectorAll( "*" );
+	while ( child = children[ i++ ] ) {
+		child.gsSample = this;
+	}
 
 	// Update when files are available
 	if ( gsfile.file ) {

@@ -6,7 +6,7 @@ var ax, ay, atrackId, axem,
 	clicked,
 	dragging,
 	selectionId = 0,
-	jqRect = $( "<div id='squareSelection'>" );
+	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
 
 ui.tool.select = {
 	mousedown: function( e, sample ) {
@@ -21,11 +21,10 @@ ui.tool.select = {
 		}
 	},
 	mouseup: function() {
-		clicked =
-		dragging = false;
-		ui.css( jqRect[ 0 ], "width", "0px" );
-		ui.css( jqRect[ 0 ], "height", "0px" );
-		jqRect.detach();
+		clicked = dragging = false;
+		ui.css( elRect, "width", "0px" );
+		ui.css( elRect, "height", "0px" );
+		elRect.remove();
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
@@ -38,7 +37,7 @@ ui.tool.select = {
 				dragging = true;
 				atrackId = ui.getTrackFromPageY( ay ).id;
 				axem = ui.getGridXem( ax );
-				jqRect.appendTo( ui.elTrackLines );
+				ui.elTrackLines.appendChild( elRect );
 			}
 
 			if ( dragging ) {
@@ -72,10 +71,10 @@ ui.tool.select = {
 						}
 					}
 				});
-				ui.css( jqRect[ 0 ], "top", trackMin + "em" );
-				ui.css( jqRect[ 0 ], "left", xemMin + "em" );
-				ui.css( jqRect[ 0 ], "width", xemMax - xemMin + "em" );
-				ui.css( jqRect[ 0 ], "height", trackMax - trackMin + 1 + "em" );
+				ui.css( elRect, "top", trackMin + "em" );
+				ui.css( elRect, "left", xemMin + "em" );
+				ui.css( elRect, "width", xemMax - xemMin + "em" );
+				ui.css( elRect, "height", trackMax - trackMin + 1 + "em" );
 			}
 		}
 	}

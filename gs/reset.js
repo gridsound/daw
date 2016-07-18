@@ -10,7 +10,7 @@ gs.reset = function() {
 	} );
 	gs.samplesDelete();
 	gs.files.forEach( function( f ) {
-		f.jqFile.remove();
+		f.elFile.remove();
 	} );
 	gs.files = [];
 	return this;

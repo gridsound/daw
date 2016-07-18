@@ -16,7 +16,7 @@ ui.tool.paint = {
 			endCropping = e.target.classList.contains( "end" );
 			cropping = startCropping || endCropping;
 			if ( cropping ) {
-				sample[ startCropping ? "jqCropStart" : "jqCropEnd" ].addClass( "hover" );
+				sample[ startCropping ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
 			}
 			sampleSave = sample;
 			ui.cursor( "app", !cropping ? "grabbing" :
@@ -29,7 +29,7 @@ ui.tool.paint = {
 				wa.composition.update( s.wsample, "mv" );
 			} );
 			if ( cropping ) {
-				sampleSave[ startCropping ? "jqCropStart" : "jqCropEnd" ].removeClass( "hover" );
+				sampleSave[ startCropping ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
 				cropping = startCropping = endCropping = false;
 			}
 			sampleSave = null;

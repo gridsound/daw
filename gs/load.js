@@ -48,8 +48,8 @@ function onload( resolve, e ) {
 		ns.track.samples.push( ns );
 
 		ui.CSS_sampleTrack( ns );
-		ui.css( ns.jqSample[ 0 ], "left", s[ 3 ] * ui.BPMem + "em" );
-		ui.css( ns.jqSample[ 0 ], "width", s[ 5 ] * ui.BPMem + "em" );
+		ui.css( ns.elSample, "left", s[ 3 ] * ui.BPMem + "em" );
+		ui.css( ns.elSample, "width", s[ 5 ] * ui.BPMem + "em" );
 	} );
 	resolve();
 }

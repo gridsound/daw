@@ -3,18 +3,16 @@
 ui.Track.prototype.initToggle = function() {
 	var that = this;
 
-	this.jqToggle =
-	$( "<a class='toggle'>" )
-		.appendTo( this.jqColNamesTrack )
-		.on( "contextmenu", false )
-		.mousedown( function( e ) {
-			if ( e.button === 0 ) {
-				that.toggle();
-			} else if ( e.button === 2 ) {
-				ui.toggleTracks( that );
-			}
-		})
-	;
+	this.elToggle = wisdom.cE( "<a class='toggle'>" )[ 0 ];
+	this.elColNamesTrack.appendChild( this.elToggle );
+	this.elToggle.oncontextmenu = function() { return false; };
+	this.elToggle.onmousedown = function( e ) {
+		if ( e.button === 0 ) {
+			that.toggle();
+		} else if ( e.button === 2 ) {
+			ui.toggleTracks( that );
+		}
+	};
 	return this;
 };
 
@@ -26,10 +24,9 @@ ui.Track.prototype.toggle = function( b ) {
 		this.wfilters.gain( +b );
 		this.isOn = b;
 		this.grid.nbTracksOn += b ? 1 : -1;
-		this.jqToggle.toggleClass( "on", b );
-		this.jqColNamesTrack
-			.add( this.jqColLinesTrack )
-				.toggleClass( "off", !b );
+		this.elToggle.classList.toggle( "on", b );
+		this.elColNamesTrack.classList.toggle( "off", !b );
+		this.elColLinesTrack.classList.toggle( "off", !b );
 	}
 	return this;
 };

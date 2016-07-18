@@ -21,6 +21,8 @@ fi
 if [[ -z $1 || $1 == "js" ]]; then
 	echo "Compressing JS...";
 	uglifyjs \
+		jstools/wisdom.js                 \
+		                                  \
 		../webaudio-library/src/walcontext.js  \
 		../webaudio-library/src/composition.js \
 		../webaudio-library/src/buffer.js      \

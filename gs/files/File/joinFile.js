@@ -7,7 +7,7 @@ gs.File.prototype.joinFile = function( file ) {
 	if ( this.fullname !== file.name ) {
 		this.fullname = file.name;
 		this.name = this.fullname.replace( /\.[^.]+$/, "" );
-		this.jqName[ 0 ].textContent = this.name;
+		this.elName.textContent = this.name;
 	}
 
 	if ( this.samplesToSet.length ) {
@@ -19,7 +19,7 @@ gs.File.prototype.joinFile = function( file ) {
 				s.duration( s.savedDuration );
 				s.wsample.connect( s.track.wfilters );
 				wa.composition.addSamples( [ s.wsample ] );
-				s.jqName[ 0 ].textContent = gsfile.name;
+				s.elName.textContent = gsfile.name;
 				ui.CSS_sampleDuration( s );
 				ui.CSS_sampleWaveform( s );
 			} );
