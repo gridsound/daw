@@ -3,10 +3,7 @@
 ( function() {
 
 var fn,
-	elExtend,
-	i = 0,
 	mousemoving = false,
-	elExtends = document.querySelectorAll( ".extend" ),
 	fns = {
 		files: function( e ) {
 			var w = e.pageX;
@@ -18,7 +15,7 @@ var fn,
 		}
 	};
 
-while ( elExtend = elExtends[ i++ ] ) {
+wisdom.qSA( ".extend" ).forEach( function( elExtend ) {
 	elExtend.onmousedown = function( e ) {
 		if ( e.button === 0 ) {
 			mousemoving = true;
@@ -26,7 +23,7 @@ while ( elExtend = elExtends[ i++ ] ) {
 			fn = fns[ this.dataset.mousemoveFn ];
 		}
 	};
-}
+} );
 
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( e.button === 0 && mousemoving ) {

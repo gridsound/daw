@@ -10,7 +10,7 @@ gs.File.prototype.load = function( fn ) {
 		that.wbuff = wbuff;
 		that.isLoaded = true;
 		that.isLoading = false;
-		that.elSVG = that.elFile.querySelector( "svg" );
+		that.elSVG = wisdom.qS( that.elFile, "svg" );
 		that.elWaveformWrap = that.elSVG.parentNode;
 		wbuff.waveformSVG( that.elSVG, 400, 50 );
 		ui.CSS_fileLoaded( that );

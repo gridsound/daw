@@ -22,8 +22,8 @@ gs.File = function( file ) {
 	this.nbSamples = 0;
 
 	this.elFile = wisdom.cE( Handlebars.templates.file( this ) )[ 0 ];
-	this.elName = this.elFile.querySelector( ".name" );
-	this.elIcon = this.elFile.querySelector( ".icon" );
+	this.elName = wisdom.qS( this.elFile, ".name" );
+	this.elIcon = wisdom.qS( this.elFile, ".icon" );
 
 	if ( this.file ) {
 		ui.CSS_fileUnloaded( this );

@@ -12,8 +12,8 @@ ui.updateTrackLinesBg();
 gs.bpm( 120 );
 gs.currentTime( 0 );
 
-ui.elClockUnits.querySelector( ".s" ).click();
-ui.elMenu.querySelector( "[data-tool='paint']" ).click();
+wisdom.qS( ui.elClockUnits, ".s" ).click();
+wisdom.qS( ui.elMenu, "[data-tool='paint']" ).click();
 
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();

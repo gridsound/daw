@@ -2,11 +2,14 @@
 
 ( function() {
 
+var k,
+	tpl = Handlebars.templates,
+	qS = wisdom.qS;
+
 window.ui = {};
 ui.elApp = qS( "#app" );
 
 // Creating all the DOM :
-var k, tpl = Handlebars.templates;
 for ( k in tpl ) {
 	if ( k !== "_app" ) {
 		Handlebars.registerPartial( k, tpl[ k ] );
@@ -56,28 +59,22 @@ ui.elInputFile   = qS( ui.elFiles, "input[type='file']" );
 ui.elFileFilters = qS( ui.elFiles, ".filters" );
 ui.elFilelist    = qS( ui.elFiles, ".filelist" );
 
-ui.elGrid             = qS( "#grid" );
-ui.elGridEm           = qS( ui.elGrid, ".emWrapper" );
-ui.elGridHeader       = qS( ui.elGrid, ".header" );
-ui.elTimeline         = qS( ui.elGrid, ".timeline" );
-ui.elTimeArrow        = qS( ui.elGrid, ".timeArrow" );
-ui.elTimeCursor       = qS( ui.elGrid, ".timeCursor" );
-ui.elTrackList        = qS( ui.elGrid, ".trackList" );
-ui.elGridCols         = qS( ui.elGrid, ".cols" );
-ui.elGridColB         = qS( ui.elGrid, ".colB" );
-ui.elTrackNames       = qS( ui.elGrid, ".trackNames" );
-ui.elTrackLines       = qS( ui.elGrid, ".trackLines" );
-ui.elTrackLinesBg     = qS( ui.elGrid, ".trackLinesBg" );
+ui.elGrid         = qS( "#grid" );
+ui.elGridEm       = qS( ui.elGrid, ".emWrapper" );
+ui.elGridHeader   = qS( ui.elGrid, ".header" );
+ui.elTimeline     = qS( ui.elGrid, ".timeline" );
+ui.elTimeArrow    = qS( ui.elGrid, ".timeArrow" );
+ui.elTimeCursor   = qS( ui.elGrid, ".timeCursor" );
+ui.elTrackList    = qS( ui.elGrid, ".trackList" );
+ui.elGridCols     = qS( ui.elGrid, ".cols" );
+ui.elGridColB     = qS( ui.elGrid, ".colB" );
+ui.elTrackNames   = qS( ui.elGrid, ".trackNames" );
+ui.elTrackLines   = qS( ui.elGrid, ".trackLines" );
+ui.elTrackLinesBg = qS( ui.elGrid, ".trackLinesBg" );
 
 ui.gridEm = parseFloat( getComputedStyle( ui.elGrid ).fontSize );
 ui.gridColsY = ui.elGridCols.getBoundingClientRect().top;
 ui.elVisualCanvas.width = 256;
 ui.elVisualCanvas.height = ui.elVisualCanvas.clientHeight;
-
-function qS( par, sel ) {
-	return sel
-		? par.querySelector( sel )
-		: document.querySelector( par );
-}
 
 } )();
