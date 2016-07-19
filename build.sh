@@ -33,7 +33,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/_init.js                       \
 		ui/analyserToggle.js              \
 		ui/bpm.js                         \
-		ui/css.js                         \
 		ui/setClockUnit.js                \
 		ui/currentTime.js                 \
 		ui/cursor.js                      \

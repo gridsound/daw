@@ -180,12 +180,14 @@ function setclazz( b, el ) {
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 function forEachElement( els, fn ) {
-	if ( els.length === undefined ) {
-		return fn( els, 0 );
-	}
-	for ( var res, el, i = 0; el = els[ i ]; ++i ) {
-		if ( ( res = fn( el, i ) ) !== undefined ) {
-			return res;
+	if ( els ) {
+		if ( els.length === undefined ) {
+			return fn( els, 0 );
+		}
+		for ( var res, el, i = 0; el = els[ i ]; ++i ) {
+			if ( ( res = fn( el, i ) ) !== undefined ) {
+				return res;
+			}
 		}
 	}
 }

@@ -7,7 +7,7 @@ ui.setGridZoom = function( zm, xpx, ypx ) {
 	var zmMul = zm / ui.gridZoom;
 	ui.gridZoom = zm;
 	ui.gridEm *= zmMul;
-	ui.css( ui.elGridEm, "fontSize", zm + "em" );
+	wisdom.css( ui.elGridEm, "fontSize", zm + "em" );
 	ui.elGrid.dataset.sampleSize =
 		ui.gridEm < 40 ? "small" :
 		ui.gridEm < 80 ? "medium" : "big";

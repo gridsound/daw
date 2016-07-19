@@ -26,7 +26,7 @@ function writeHtml( nb4em ) {
 
 ui.updateTrackLinesBg = function() {
 	writeHtml( Math.ceil( ui.trackLinesWidth / ui.gridEm / 4 ) + 2 );
-	ui.css( elFirstDiv, "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
+	wisdom.css( elFirstDiv, "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
 };
 
 } )();

@@ -23,8 +23,8 @@ ui.updateTimeline = function() {
 		widthEm = ui.trackLinesWidth / ui.gridEm;
 
 	createNb( Math.ceil( -leftEm + widthEm ) );
-	ui.css( elFirstNum, "marginLeft", leftEm + "em" );
-	ui.css( ui.elTimeArrow, "marginLeft", leftEm + "em" );
+	wisdom.css( elFirstNum, "marginLeft", leftEm + "em" );
+	wisdom.css( ui.elTimeArrow, "marginLeft", leftEm + "em" );
 };
 
 } )();

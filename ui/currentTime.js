@@ -5,8 +5,8 @@
 function cursorTime( s ) {
 	if ( s > 0 ) {
 		var v = s * ui.BPMem + "em";
-		ui.css( ui.elTimeCursor, "left", v );
-		ui.css( ui.elTimeArrow, "left", v );
+		wisdom.css( ui.elTimeCursor, "left", v );
+		wisdom.css( ui.elTimeArrow, "left", v );
 	}
 	ui.elTimeCursor.classList.toggle( "visible", s > 0 );
 	ui.elTimeArrow.classList.toggle( "visible", s > 0 );

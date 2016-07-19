@@ -5,7 +5,7 @@ ui.CSS_sampleTrack = function( s ) {
 };
 
 ui.CSS_sampleWhen = function( s ) {
-	ui.css( s.elSample, "left", s.wsample.when * ui.BPMem + "em" );
+	wisdom.css( s.elSample, "left", s.wsample.when * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleSelect = function( s ) {
@@ -17,12 +17,12 @@ ui.CSS_sampleDelete = function( s ) {
 };
 
 ui.CSS_sampleOffset = function( s ) {
-	ui.css( s.elSVG, "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
+	wisdom.css( s.elSVG, "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleDuration = function( s ) {
-	ui.css( s.elSample, "width", s.wsample.duration * ui.BPMem + "em" );
-	ui.css( s.elSVG, "width", s.wsample.bufferDuration * ui.BPMem + "em" );
+	wisdom.css( s.elSample, "width", s.wsample.duration * ui.BPMem + "em" );
+	wisdom.css( s.elSVG, "width", s.wsample.bufferDuration * ui.BPMem + "em" );
 };
 
 ui.CSS_sampleWaveform = function( s ) {

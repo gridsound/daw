@@ -7,8 +7,8 @@ var gsfileDragging,
 
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( gsfileDragging ) {
-		ui.css( elWaveformTmp, "left", e.pageX + "px" );
-		ui.css( elWaveformTmp, "top", e.pageY + "px" );
+		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
+		wisdom.css( elWaveformTmp, "top", e.pageY + "px" );
 	}
 } );
 
@@ -29,8 +29,8 @@ gs.File.prototype.dragstart = function( e ) {
 	if ( this.isLoaded && !gsfileDragging ) {
 		gsfileDragging = this;
 		elWaveformTmp = this.elSVG.cloneNode( true );
-		ui.css( elWaveformTmp, "left", e.pageX + "px" );
-		ui.css( elWaveformTmp, "top", e.pageY + "px" );
+		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
+		wisdom.css( elWaveformTmp, "top", e.pageY + "px" );
 		elWaveformTmp.classList.add( "dragging" );
 		document.body.appendChild( elWaveformTmp );
 		ui.cursor( "app", "grabbing" );

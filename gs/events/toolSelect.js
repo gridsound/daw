@@ -22,8 +22,8 @@ ui.tool.select = {
 	},
 	mouseup: function() {
 		clicked = dragging = false;
-		ui.css( elRect, "width", "0px" );
-		ui.css( elRect, "height", "0px" );
+		wisdom.css( elRect, "width", "0px" );
+		wisdom.css( elRect, "height", "0px" );
 		elRect.remove();
 	},
 	mousemove: function( e ) {
@@ -71,10 +71,10 @@ ui.tool.select = {
 						}
 					}
 				});
-				ui.css( elRect, "top", trackMin + "em" );
-				ui.css( elRect, "left", xemMin + "em" );
-				ui.css( elRect, "width", xemMax - xemMin + "em" );
-				ui.css( elRect, "height", trackMax - trackMin + 1 + "em" );
+				wisdom.css( elRect, "top", trackMin + "em" );
+				wisdom.css( elRect, "left", xemMin + "em" );
+				wisdom.css( elRect, "width", xemMax - xemMin + "em" );
+				wisdom.css( elRect, "height", trackMax - trackMin + 1 + "em" );
 			}
 		}
 	}
