@@ -4,7 +4,8 @@
 
 var k,
 	tpl = Handlebars.templates,
-	qS = wisdom.qS;
+	qS = wisdom.qS,
+	qSA = wisdom.qSA;
 
 window.ui = {};
 ui.elApp = qS( "#app" );
@@ -46,13 +47,14 @@ ui.elClockMs      = qS( ui.elVisual, ".clock > .ms" );
 ui.elMenu      = qS( "#menu" );
 ui.elPlay      = qS( ui.elMenu, ".btn.play" );
 ui.elStop      = qS( ui.elMenu, ".btn.stop" );
+ui.elBpm       = qS( ui.elMenu, ".bpm" );
 ui.elBpmA      = qS( ui.elMenu, ".bpm .a-bpm" );
 ui.elBpmInt    = qS( ui.elMenu, ".bpm .int" );
 ui.elBpmDec    = qS( ui.elMenu, ".bpm .dec" );
 ui.elBpmList   = qS( ui.elMenu, ".bpm-list" );
-ui.elTools     = qS( ui.elMenu, ".tools" );
-ui.elBtnMagnet = qS( ui.elTools, ".magnet" );
-ui.elBtnSave   = qS( ui.elTools, ".save" );
+ui.elBtnMagnet = qS( ui.elMenu, ".btn.magnet" );
+ui.elBtnSave   = qS( ui.elMenu, ".btn.save" );
+ui.elToolBtns  = qSA( ui.elMenu, ".btn[data-tool]" );
 
 ui.elFiles       = qS( "#files" );
 ui.elInputFile   = qS( ui.elFiles, "input[type='file']" );

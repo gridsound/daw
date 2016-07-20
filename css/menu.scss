@@ -1,4 +1,6 @@
 #menu {
+	$marginBetweenBtn: 5px;
+
 	display: flex;
 	box-sizing: border-box;
 	position: absolute;
@@ -13,9 +15,6 @@
 		vertical-align: top;
 		line-height: 40px;
 		height: 100%;
-		margin-right: 5px;
-		border: solid #000;
-		border-width: 0 1px;
 
 		&:first-child {
 			margin-left: -1px;
@@ -25,7 +24,6 @@
 			font-size: 14px;
 
 			&:active {
-				box-shadow: inset 0 2px 3px rgba( #000, .7 );
 				padding-top: .2em;
 			}
 		}
@@ -44,55 +42,63 @@
 		text-align: center;
 		transition:
 			box-shadow .05s,
-			background .2s;
+			background .2s,
+			color .2s;
 
 		&.play  { @include writeBg( $color_playBtn ); }
 		&.stop  { @include writeBg( $color_stopBtn ); }
 	}
 
-	.tools {
-		display: flex;
-		align-items: center;
-		border: 0;
-		.sep {
-			width: 0;
-			height: 65%;
-			margin: 0 3px;
-			border-left: 1px dashed rgba( #fff, .15 );
-		}
-		.btn {
-			display: flex;
-			align-items: center;
-			width: 35px;
-			height: 100%;
-			font-size: 16px;
-			color: rgba( #fff, .3 );
-			transition: color .2s;
+	.border {
+		margin-right: $marginBetweenBtn;
+		border: solid #000;
+		border-width: 0 1px;
 
-			&:before {
-				width: 100%;
-			}
-			&:hover {
-				color: rgba( #fff, .6 );
-			}
-			&.active {
-				color: #fff;
-			}
+		&:active,
+		&.clicked {
+			box-shadow: inset 0 2px 3px rgba( #000, .7 );
 		}
 	}
 
-	.separator {
+	.sep {
+		align-self: center;
+		width: 0;
+		height: 65%;
+		margin: 0 3px;
+		border-left: 1px dashed rgba( #fff, .15 );
+	}
+	.bpm ~ .btn {
+		display: flex;
+		align-items: center;
+		width: 35px;
+		height: 100%;
+		font-size: 16px;
+		color: rgba( #fff, .3 );
+
+		&:before {
+			width: 100%;
+		}
+		&:hover {
+			color: rgba( #fff, .6 );
+		}
+		&.active {
+			color: #fff;
+		}
+	}
+
+	.flex1 {
 		flex: 1;
 		visibility: hidden;
 	}
 
 	.about {
 		$s: 32px;
+		margin-left: $marginBetweenBtn;
 		align-self: center;
 		width: $s;
 		height: $s;
+		min-width: $s;
 		line-height: $s;
-		border: 0;
 		border-radius: 50%;
 		color: $color_bodyStripA;
 		font-size: 22px;

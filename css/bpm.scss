@@ -1,6 +1,7 @@
 #menu .bpm {
 	display: inline-block;
 	position: relative;
+	min-width: 126px;
 	height: 100%;
 	border: solid #000;
 	border-width: 0 1px;
@@ -22,14 +23,17 @@
 	.unit {
 		color: $color_bpmUnit;
 	}
+	.unit {
+		margin-left: .35em;
+	}
 	.fa {
 		vertical-align: top;
 		line-height: 40px;
 		margin-right: 4px;
 		font-size: 14px;
 	}
-	.a-bpm         .fa:before { content: $fa-caret-down; }
-	.a-bpm.clicked .fa:before { content: $fa-caret-up; }
+	.a-bpm .fa:before { content: $fa-caret-down; }
+	&.clicked .a-bpm .fa:before { content: $fa-caret-up; }
 
 	.bpm-list {
 		position: absolute;
@@ -59,7 +63,7 @@
 		}
 	}
 
-	.a-bpm.clicked + .bpm-list {
+	&.clicked .bpm-list {
 		height: 270px;
 		opacity: 1;
 	}
