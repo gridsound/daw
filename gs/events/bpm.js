@@ -5,7 +5,7 @@
 ui.elBpmInt.onwheel = wheel.bind( null, 1 );
 ui.elBpmDec.onwheel = wheel.bind( null, .01 );
 
-ui.elBpmA.onmousedown = function( e ) {
+ui.elBpm.onmousedown = function( e ) {
 	ui.elBpm.classList.toggle( "clicked" );
 	e.stopPropagation();
 };
@@ -15,6 +15,7 @@ ui.elBpmList.onmousedown = function( e ) {
 	if ( bpm ) {
 		gs.bpm( bpm );
 	}
+	return false;
 };
 
 document.body.addEventListener( "mousedown", function() {
