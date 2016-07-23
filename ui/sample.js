@@ -17,14 +17,18 @@ ui.CSS_sampleDelete = function( s ) {
 };
 
 ui.CSS_sampleOffset = function( s ) {
-	wisdom.css( s.elSVG, "marginLeft", -s.wsample.offset * ui.BPMem + "em" );
+	ui.CSS_sampleWaveform( s );
 };
 
 ui.CSS_sampleDuration = function( s ) {
 	wisdom.css( s.elSample, "width", s.wsample.duration * ui.BPMem + "em" );
-	wisdom.css( s.elSVG, "width", s.wsample.bufferDuration * ui.BPMem + "em" );
+	ui.CSS_sampleWaveform( s );
 };
 
 ui.CSS_sampleWaveform = function( s ) {
-	s.wsample.wBuffer.waveformSVG( s.elSVG, ~~( s.wsample.bufferDuration * 200 ), 50 );
+	var off = s.wsample.offset,
+		dur = Math.min( s.wsample.duration, s.wsample.bufferDuration - off ),
+		durEm = dur * ui.BPMem;
+	wisdom.css( s.elSVG, "width", durEm + "em" );
+	s.wsample.wBuffer.waveformSVG( s.elSVG, ~~( durEm * 50 ), 50, off, dur );
 };
