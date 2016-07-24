@@ -9,5 +9,7 @@ gs.Sample.prototype.cut = function( newDuration ) {
 		ns.slip( ws.offset + newDuration );
 		ns.duration( ws.duration - newDuration );
 		this.duration( newDuration );
+		wa.composition.update( ns.wsample, "mv" );
+		wa.composition.update( this.wsample, "mv" );
 	}
 };
