@@ -51,6 +51,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/setGridZoom.js                 \
 		ui/setTrackLinesLeft.js           \
 		ui/setTrackNamesWidth.js          \
+		ui/showFilesHistory.js            \
 		ui/toggleAbout.js                 \
 		ui/toggleMagnetism.js             \
 		ui/toggleTracks.js                \
@@ -112,6 +113,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/fileFilters.js          \
 		gs/events/gridMouse.js            \
 		gs/events/keyboard.js             \
+		gs/events/panelMenu.js            \
 		gs/events/playPauseStop.js        \
 		gs/events/resize.js               \
 		gs/events/save.js                 \

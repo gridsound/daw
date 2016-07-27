@@ -12,6 +12,7 @@ ui.updateTrackLinesBg();
 gs.bpm( 120 );
 gs.currentTime( 0 );
 
+ui.elBtnFiles.click();
 wisdom.qS( ui.elClockUnits, ".s" ).click();
 wisdom.qS( ui.elMenu, "[data-tool='paint']" ).click();
 
