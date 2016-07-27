@@ -20,10 +20,10 @@ ui.tool.select = {
 		}
 		if ( sample ) {
 			gs.sampleSelect( sample, !sample.selected );
+			gs.history.add( { action: gs.history.select.bind( gs.history, [ sample ] , unselected ),
+							  undo: gs.history.undoSelect.bind( gs.history, unselected, [ sample ] ) } );
+			unselected = null;
 		}
-		gs.history.add( { action: gs.history.select.bind(gs.history, sample ? [ sample ] : undefined , unselected ),
-						  undo: gs.history.undoSelect.bind(gs.history, unselected, sample ? [ sample ] : undefined ) } );
-		unselected = null;
 
 	},
 	mouseup: function() {
@@ -31,7 +31,11 @@ ui.tool.select = {
 		wisdom.css( elRect, "width", "0px" );
 		wisdom.css( elRect, "height", "0px" );
 		elRect.remove();
-
+		if ( unselected ) {
+			gs.history.add( { action: gs.history.select.bind( gs.history, null , unselected ),
+							  undo: gs.history.undoSelect.bind( gs.history, unselected, null ) } );
+			unselected = null;
+		}
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
