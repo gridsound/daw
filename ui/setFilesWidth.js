@@ -1,8 +1,8 @@
 "use strict";
 
 ui.setFilesWidth = function( wpx ) {
-	wisdom.css( ui.elFiles, "width", wpx + "px" );
-	ui.filesWidth = wpx = ui.elFiles.clientWidth;
+	wisdom.css( ui.elPanel, "width", wpx + "px" );
+	ui.filesWidth = wpx = ui.elPanel.clientWidth;
 	ui.gridColsWidth = ui.screenWidth - wpx;
 	ui.trackLinesWidth = ui.gridColsWidth - ui.trackNamesWidth;
 	wisdom.css( ui.elGrid, "left", wpx + "px" );

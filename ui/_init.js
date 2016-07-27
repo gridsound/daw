@@ -56,10 +56,10 @@ ui.elBtnMagnet = qS( ui.elMenu, ".btn.magnet" );
 ui.elBtnSave   = qS( ui.elMenu, ".btn.save" );
 ui.elToolBtns  = qSA( ui.elMenu, ".btn[data-tool]" );
 
-ui.elFiles       = qS( "#files" );
-ui.elInputFile   = qS( ui.elFiles, "input[type='file']" );
-ui.elFileFilters = qS( ui.elFiles, ".filters" );
-ui.elFilelist    = qS( ui.elFiles, ".filelist" );
+ui.elPanel       = qS( "#panel" );
+ui.elInputFile   = qS( ui.elPanel, "input[type='file']" );
+ui.elFileFilters = qS( ui.elPanel, ".filters" );
+ui.elFilelist    = qS( ui.elPanel, ".filelist" );
 
 ui.elGrid         = qS( "#grid" );
 ui.elGridEm       = qS( ui.elGrid, ".emWrapper" );

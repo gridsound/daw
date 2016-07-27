@@ -5,7 +5,7 @@
 var fn,
 	mousemoving = false,
 	fns = {
-		files: function( e ) {
+		panel: function( e ) {
 			var w = e.pageX;
 			ui.setFilesWidth( w < 35 ? 0 : w );
 		},
