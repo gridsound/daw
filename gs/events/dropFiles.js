@@ -14,7 +14,7 @@ document.body.ondrop = function( e ) {
 
 	// IE :
 	} else if ( !data.files.length ) {
-		alerte( "Your browser doesn't support folders." );
+		alert( "Your browser doesn't support folders." );
 
 	// Firefox :
 	} else {
