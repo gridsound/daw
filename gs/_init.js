@@ -3,5 +3,6 @@
 window.gs = {
 	files: [],
 	samples: [],
-	selectedSamples: []
+	selectedSamples: [],
+	history: new History()
 };

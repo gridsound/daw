@@ -6,6 +6,7 @@ var ax, ay, atrackId, axem,
 	clicked,
 	dragging,
 	selectionId = 0,
+	unselected = null,
 	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
 
 ui.tool.select = {
@@ -14,17 +15,23 @@ ui.tool.select = {
 		ax = e.pageX;
 		ay = e.pageY;
 		if ( !e.shiftKey ) {
+			unselected = gs.selectedSamples;
 			gs.samplesUnselect();
 		}
 		if ( sample ) {
 			gs.sampleSelect( sample, !sample.selected );
 		}
+		gs.history.add( { action: gs.history.select.bind(gs.history, sample ? [ sample ] : undefined , unselected ),
+						  undo: gs.history.undoSelect.bind(gs.history, unselected, sample ? [ sample ] : undefined ) } );
+		unselected = null;
+
 	},
 	mouseup: function() {
 		clicked = dragging = false;
 		wisdom.css( elRect, "width", "0px" );
 		wisdom.css( elRect, "height", "0px" );
 		elRect.remove();
+
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
