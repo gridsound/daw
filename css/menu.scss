@@ -46,6 +46,7 @@
 			color .2s;
 
 		&.play  { @include writeBg( $color_playBtn ); }
+		&.pause { @include writeBg( $color_pauseBtn ); }
 		&.stop  { @include writeBg( $color_stopBtn ); }
 	}
 
@@ -70,6 +71,7 @@
 	.bpm ~ .btn {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		width: 35px;
 		height: 100%;
 		font-size: 16px;

@@ -1,21 +1,20 @@
 "use strict";
 
 ui.CSS_fileUnloaded = function( f ) {
-	f.elIcon.classList.add( "fa-download" );
-	f.elIcon.classList.remove( "fa-question" );
+	f.elIcon.classList.add( "ramload" );
+	f.elIcon.classList.remove( "question" );
 	f.elFile.classList.add( "unloaded" );
 };
 
 ui.CSS_fileWithoutData = function( f ) {
-	f.elIcon.classList.add( "fa-question" );
-	f.elIcon.classList.remove( "fa-download" );
+	f.elIcon.classList.add( "question" );
+	f.elIcon.classList.remove( "ramload" );
 	f.elFile.classList.add( "unloaded" );
 };
 
 ui.CSS_fileLoading = function( f ) {
-	f.elIcon.classList.add( "fa-refresh" );
-	f.elIcon.classList.add( "fa-spin" );
-	f.elIcon.classList.remove( "fa-download" );
+	f.elIcon.classList.add( "loading" );
+	f.elIcon.classList.remove( "ramload" );
 };
 
 ui.CSS_fileLoaded = function( f ) {
@@ -25,9 +24,8 @@ ui.CSS_fileLoaded = function( f ) {
 };
 
 ui.CSS_fileError = function( f ) {
-	f.elIcon.classList.add( "fa-times" );
-	f.elIcon.classList.remove( "fa-refresh" );
-	f.elIcon.classList.remove( "fa-spin" );
+	f.elIcon.classList.add( "cross" );
+	f.elIcon.classList.remove( "loading" );
 };
 
 ui.CSS_fileUsed = function( f ) {
