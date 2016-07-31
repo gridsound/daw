@@ -1,10 +1,26 @@
 "use strict";
 
+function sameArray( arr1, arr2 ) {
+	var i;
+	if ( !arr1 || !arr2 ||
+		arr1.length != arr2.length ) {
+		return false;
+	}
+	for ( i = arr1.length - 1; i >= 0; i-- ) {
+		if ( arr1[ i ] !== arr2[ i ] ) {
+			return false;
+		}
+	}
+	return true;
+}
+
 ( function() {
 
 var ax, ay, atrackId, axem,
 	clicked,
 	dragging,
+	oldSelection,
+	selected = [],
 	selectionId = 0,
 	unselected = null,
 	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
@@ -20,9 +36,7 @@ ui.tool.select = {
 		}
 		if ( sample ) {
 			gs.sampleSelect( sample, !sample.selected );
-			gs.history.add( { action: gs.history.select.bind( gs.history, [ sample ] , unselected ),
-							  undo: gs.history.undoSelect.bind( gs.history, unselected, [ sample ] ) } );
-			unselected = null;
+			selected.push( sample );
 		}
 
 	},
@@ -31,11 +45,16 @@ ui.tool.select = {
 		wisdom.css( elRect, "width", "0px" );
 		wisdom.css( elRect, "height", "0px" );
 		elRect.remove();
-		if ( unselected ) {
-			gs.history.add( { action: gs.history.select.bind( gs.history, null , unselected ),
-							  undo: gs.history.undoSelect.bind( gs.history, unselected, null ) } );
-			unselected = null;
+
+		if ( !sameArray( gs.selectedSamples, oldSelection ) ) {
+			gs.history.add( {
+				action: { func: gs.history.select, samples: selected.length > 0 ? selected : null, removedSamples: unselected },
+				undo: { func: gs.history.undoSelect, samples: unselected, removedSamples: selected.length > 0 ? selected : null }
+			} );
+			oldSelection = gs.selectedSamples.slice();
 		}
+		unselected = null;
+		selected = [];
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
@@ -73,12 +92,14 @@ ui.tool.select = {
 								if ( !s.selected ) {
 									s.squareSelected = selectionId;
 									gs.sampleSelect( s, true );
+									selected.push( s );
 								}
 								return;
 							}
 						}
 						if ( s.squareSelected === selectionId ) {
 							gs.sampleSelect( s, false );
+							selected.push( s );
 						}
 					}
 				});

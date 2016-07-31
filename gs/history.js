@@ -17,15 +17,15 @@ History.prototype = {
 	},
 	undo: function() {
 		if ( this.rip > 0 ) {
-			// Do action
-			this.actions[ this.rip ].undo();
+			var undo = this.actions[ this.rip ].undo;
+			undo.func( undo.samples, undo.removedSamples );
 			this.rip--;
 		}
 	},
 	redo: function() {
 		if ( this.rip < this.actions.length - 1 ) {
-			this.rip++;
-			this.actions[ this.rip ].action();
+			var action = this.actions[ ++this.rip ].action;
+			action.func( action.samples, action.removedSamples );
 		}
 	},
 	select: function( samplesArr, unselectedArr ) {
