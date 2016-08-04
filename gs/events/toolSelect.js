@@ -47,9 +47,17 @@ ui.tool.select = {
 		elRect.remove();
 
 		if ( !sameArray( gs.selectedSamples, oldSelection ) ) {
-			gs.history.add( {
-				action: { func: gs.history.select, samples: selected.length > 0 ? selected : null, removedSamples: unselected },
-				undo: { func: gs.history.undoSelect, samples: unselected, removedSamples: selected.length > 0 ? selected : null }
+			gs.history.push( {
+				action: {
+					func: gs.history.select,
+					samples: selected.length ? selected : null,
+					removedSamples: unselected
+				},
+				undo: {
+					func: gs.history.undoSelect,
+					samples: unselected,
+					removedSamples: selected.length ? selected : null
+				}
 			} );
 			oldSelection = gs.selectedSamples.slice();
 		}
