@@ -75,6 +75,9 @@ History.prototype = {
 				action.sample.inTrack( action.trackId );
 			}
 		}
+		gs.samplesForEach( action.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		} );
 	},
 	undoMoveX: function( undo ) {
 		var nbTracksToMove, minTrackId = Infinity;
@@ -96,26 +99,51 @@ History.prototype = {
 				undo.sample.inTrack( undo.trackId );
 			}
 		}
+		gs.samplesForEach( undo.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		} );
 	},
 	crop: function( action ) {
 		gs.samplesDuration( action.sample, -action.xemDiff );
 		gs.samplesMoveX( action.sample, action.xemDiff );
 		gs.samplesSlip( action.sample, -action.xemDiff );
+		gs.samplesForEach( action.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		} );
 
 	},
 	undoCrop: function( undo ) {
 		gs.samplesDuration( undo.sample, -undo.xemDiff );
 		gs.samplesMoveX( undo.sample, undo.xemDiff );
 		gs.samplesSlip( undo.sample, -undo.xemDiff );
+		gs.samplesForEach( undo.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		} );
 
 	},
 	endCrop: function( action ) {
 		gs.samplesDuration( action.sample, -action.durationDiff );
+		gs.samplesForEach( action.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		} );
 
 	},
 	undoEndCrop: function( undo ) {
 		gs.samplesDuration( undo.sample, -undo.durationDiff );
-
-
+		gs.samplesForEach( undo.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		} );
+	},
+	slip: function( action ) {
+		gs.samplesSlip( action.sample, action.offsetDiff / ui.gridEm );
+		gs.samplesForEach( action.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		});
+	},
+	undoSlip: function( undo ) {
+		gs.samplesSlip( undo.sample, undo.offsetDiff / ui.gridEm );
+		gs.samplesForEach( undo.sample, function( s ) {
+			wa.composition.update( s.wsample, "mv" );
+		});
 	}
 };
