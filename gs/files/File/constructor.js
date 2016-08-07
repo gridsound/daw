@@ -38,6 +38,9 @@ gs.File = function( file ) {
 		if ( e.button !== 0 ) {
 			gs.fileStop();
 		}
+		if ( e.ctrlKey ) {
+			gs.fileDelete( that );
+		}
 	};
 	this.elFile.onclick = function() {
 		if ( that.isLoaded ) {

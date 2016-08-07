@@ -75,8 +75,10 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/reset.js                       \
 		                                  \
 		gs/files/fileCreate.js            \
+		gs/files/fileDelete.js            \
 		gs/files/filePlayStop.js          \
 		gs/files/File/constructor.js      \
+		gs/files/File/delete.js           \
 		gs/files/File/dragstart.js        \
 		gs/files/File/joinFile.js         \
 		gs/files/File/load.js             \
