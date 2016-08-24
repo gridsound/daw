@@ -19,5 +19,3 @@ wisdom.qS( ui.elMenu, "[data-tool='paint']" ).click();
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();
 }
-
-window.onhashchange();

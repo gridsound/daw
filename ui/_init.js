@@ -35,8 +35,6 @@ ui.tool = {};
 ui.tracks = [];
 ui.nbTracksOn = 0;
 
-ui.elAbout = qS( "#about" );
-
 ui.elVisual       = qS( "#visual" );
 ui.elVisualCanvas = qS( ui.elVisual, "canvas" );
 ui.elClockUnits   = qS( ui.elVisual, ".clock .units" );
