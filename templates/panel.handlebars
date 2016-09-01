@@ -1,14 +1,5 @@
 <div id="panel">
 	<div class="extend" data-mousemove-fn="panel"></div>
-	<input type="file"/>
-	<nav class="filters">
-		<a href="#" class="used">Used</a>
-		<a href="#" class="loaded">Loaded</a>
-		<a href="#" class="unloaded">Unloaded</a>
-	</nav>
-	<div class="filelist"></div>
-	<div class="placeholder">
-		<i class="icon file-audio"></i><br/>
-		<b>Drop audio files here</b>
-	</div>
+	{{> panel-history }}
+	{{> panel-files }}
 </div>

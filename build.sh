@@ -42,6 +42,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/getTrackFromPageY.js           \
 		ui/file.js                        \
 		ui/newTrack.js                    \
+		ui/panelSection.js                \
 		ui/playPauseStop.js               \
 		ui/resize.js                      \
 		ui/sample.js                      \
@@ -51,7 +52,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/setGridZoom.js                 \
 		ui/setTrackLinesLeft.js           \
 		ui/setTrackNamesWidth.js          \
-		ui/showFilesHistory.js            \
 		ui/toggleMagnetism.js             \
 		ui/toggleTracks.js                \
 		ui/updateGridShadows.js           \

@@ -41,8 +41,8 @@ ui.elClockUnits   = qS( ui.elVisual, ".clock .units" );
 ui.elClockMin     = qS( ui.elVisual, ".clock > .min" );
 ui.elClockSec     = qS( ui.elVisual, ".clock > .sec" );
 ui.elClockMs      = qS( ui.elVisual, ".clock > .ms" );
-ui.elBtnHistory   = qS( ui.elVisual, ".panel-history" );
-ui.elBtnFiles     = qS( ui.elVisual, ".panel-files" );
+ui.elBtnHistory   = qS( ui.elVisual, ".btn.history" );
+ui.elBtnFiles     = qS( ui.elVisual, ".btn.files" );
 
 ui.elMenu      = qS( "#menu" );
 ui.elPlay      = qS( ui.elMenu, ".btn.play" );

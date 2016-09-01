@@ -13,14 +13,15 @@
 $icon-caret-down       : "\f0d7"; // fa-caret-down
 $icon-caret-up         : "\f0d8"; // fa-caret-up
 $icon-circle           : "\f111"; // fa-circle
+$icon-circle-o         : "\f10c"; // fa-circle-o
 $icon-cross            : "\f00d"; // fa-times
 
 // placeholder :
 $icon-file-audio       : "\f1c7"; // fa-file-audio-o
 
 // #panel :
-$icon-panel-history    : "\f0e2"; // fa-undo
-$icon-panel-files      : "\f001"; // fa-music
+$icon-history          : "\f0e2"; // fa-undo
+$icon-files            : "\f001"; // fa-music
 
 // .file :
 $icon-ramload          : "\f019"; // fa-download
@@ -77,8 +78,8 @@ $icon-tool-zoom        : "\f002"; // fa-search
 	&.circle:after        { content: $icon-circle;        }
 	&.cross:after         { content: $icon-cross;         }
 	&.file-audio:after    { content: $icon-file-audio;    }
-	&.panel-history:after { content: $icon-panel-history; }
-	&.panel-files:after   { content: $icon-panel-files;   }
+	&.history:after       { content: $icon-history;       }
+	&.files:after         { content: $icon-files;         }
 	&.ramload:after       { content: $icon-ramload;       }
 	&.loading:after       { content: $icon-loading;       }
 	&.about:after,

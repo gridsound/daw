@@ -9,8 +9,7 @@
 	left: 0;
 	top: 0;
 	height: $height;
-	border: solid #000;
-	border-width: 0 1px 1px 0;
+	border-right: 1px solid #000;
 	background: $color_visualBg;
 
 	canvas {
@@ -48,16 +47,15 @@
 			transition: .2s;
 			transition-property: background, color;
 
-			&:hover,
-			&.selected {
-				background: rgba( #fff, .15 );
-			}
 			&:hover {
 				color: #ccc;
+				background: rgba( #fff, .15 );
 			}
-			&.selected {
+			#app[data-panel="files"] &.files,
+			#app[data-panel="history"] &.history {
 				color: #fff;
 				border-color: #666;
+				background: rgba( #fff, .15 );
 			}
 		}
 	}
