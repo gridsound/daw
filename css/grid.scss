@@ -23,6 +23,7 @@
 		height: 100%;
 		border-top: 1px solid #000;
 		background: $color_timelineBg;
+		cursor: default;
 		counter-reset: section;
 
 		div {
