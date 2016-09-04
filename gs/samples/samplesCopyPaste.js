@@ -15,7 +15,7 @@ gs.samplesCopy = function() {
 		min = ui.xemFloor( min * ui.BPMem );
 		max = ui.xemCeil( max * ui.BPMem );
 	}
-	allDuration = ( max - min ) / ui.BPMem; // <--- pb
+	allDuration = ( max - min ) / ui.BPMem;
 };
 
 gs.samplesPaste = function() {
