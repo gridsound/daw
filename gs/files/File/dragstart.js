@@ -2,9 +2,6 @@
 
 ( function() {
 
-var gsfileDragging,
-	elWaveformTmp;
-
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( gsfileDragging ) {
 		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
@@ -18,7 +15,7 @@ document.body.addEventListener( "mouseup", function( e ) {
 			xem = ui.getGridXem( e.pageX );
 		elWaveformTmp.remove();
 		if ( track && xem >= 0 ) {
-			gs.sampleCreate( gsfileDragging, track.id, xem );
+			gs.sampleCreate( gsfileDragging, track.id, xem / ui.BPMem );
 		}
 		gsfileDragging = null;
 		ui.cursor( "app", null );
@@ -37,5 +34,8 @@ gs.File.prototype.dragstart = function( e ) {
 	}
 	return false;
 };
+
+var gsfileDragging,
+	elWaveformTmp;
 
 })();

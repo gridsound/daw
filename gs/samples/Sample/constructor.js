@@ -1,6 +1,6 @@
 "use strict";
 
-gs.Sample = function( gsfile, trackId, xem ) {
+gs.Sample = function( gsfile, trackId, when ) {
 	this.gsfile = gsfile;
 
 	this.elSample = wisdom.cE( Handlebars.templates.sample( gsfile ) )[ 0 ];
@@ -17,7 +17,7 @@ gs.Sample = function( gsfile, trackId, xem ) {
 	if ( gsfile.file ) {
 		this.wsample = gsfile.wbuff.createSample();
 		this.inTrack( trackId );
-		this.moveX( xem );
+		this.moveX( when * ui.BPMem );
 		ui.CSS_sampleDuration( this );
 		ui.CSS_sampleWaveform( this );
 		wa.composition.addSamples( [ this.wsample ] );
