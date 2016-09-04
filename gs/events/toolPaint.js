@@ -43,8 +43,8 @@ ui.tool.paint = {
 			var mxem = ui.em_xRel;
 			if ( cropping ) {
 				if ( endCropping ) {
-					gs.samplesDuration( sampleSave, mxem );
-				} else if ( mxem = -gs.samplesDuration( sampleSave, -mxem ) ) {
+					gs.samplesDuration( sampleSave, mxem / ui.BPMem );
+				} else if ( mxem = -gs.samplesDuration( sampleSave, -mxem / ui.BPMem ) ) {
 					gs.samplesMoveX( sampleSave, mxem );
 					gs.samplesSlip( sampleSave, -mxem );
 				}
