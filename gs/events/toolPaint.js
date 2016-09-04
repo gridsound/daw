@@ -45,11 +45,11 @@ ui.tool.paint = {
 				if ( endCropping ) {
 					gs.samplesDuration( sampleSave, mxem / ui.BPMem );
 				} else if ( mxem = -gs.samplesDuration( sampleSave, -mxem / ui.BPMem ) ) {
-					gs.samplesMoveX( sampleSave, mxem );
+					gs.samplesMoveX( sampleSave, mxem / ui.BPMem );
 					gs.samplesSlip( sampleSave, -mxem );
 				}
 			} else {
-				gs.samplesMoveX( sampleSave, mxem );
+				gs.samplesMoveX( sampleSave, mxem / ui.BPMem );
 				
 				// Changes tracks:
 				e = e.target;

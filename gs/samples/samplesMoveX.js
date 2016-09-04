@@ -1,15 +1,18 @@
 "use strict";
 
-gs.samplesMoveX = function( sample, mxem ) {
-	if ( sample.selected && sample.wsample && mxem < 0 ) { // check wsample for empty sample
-		var xemMin = Infinity;
-		gs.selectedSamples.forEach( function( s ) {
-			xemMin = Math.min( xemMin, s.xem );
-		});
-		mxem = -Math.min( xemMin, -mxem );
+gs.samplesMoveX = function( sample, secRel ) {
+	if ( sample.selected && sample.wsample && secRel < 0 ) {
+		secRel = -Math.min(
+			-secRel,
+
+			// The minimum wsample.when of the selected samples :
+			gs.selectedSamples.reduce( function( min, s ) {
+				return Math.min( min, s.wsample.when );
+			}, Infinity )
+		);
 	}
 
 	gs.samplesForEach( sample, function( s ) {
-		s.moveX( Math.max( 0, s.xem + mxem ) );
-	});
+		s.moveX( Math.max( 0, ( s.wsample.when + secRel ) * ui.BPMem ) );
+	} );
 };
