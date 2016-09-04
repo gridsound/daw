@@ -22,10 +22,10 @@ templates['panel-history'] = template({"compiler":[7,">= 4.0.0"],"main":function
 templates['panel'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div id=\"panel\">\n	<div class=\"extend\" data-mousemove-fn=\"panel\"></div>\n"
+  return "<div id=\"panel\">\r\n	<div class=\"extend\" data-mousemove-fn=\"panel\"></div>\r\n"
     + ((stack1 = container.invokePartial(partials["panel-history"],depth0,{"name":"panel-history","data":data,"indent":"\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + ((stack1 = container.invokePartial(partials["panel-files"],depth0,{"name":"panel-files","data":data,"indent":"\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "</div>\n";
+    + "</div>\r\n";
 },"usePartial":true,"useData":true});
 templates['sample'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
@@ -35,7 +35,7 @@ templates['sample'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
     + "</span>\r\n	<div class=\"crop start\"></div>\r\n	<div class=\"crop end\"></div>\r\n</div>\r\n";
 },"useData":true});
 templates['visual'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"visual\">\n	<canvas></canvas>\n	<div class=\"columns\">\n		<div class=\"cell-btn\"><a class=\"btn icon fw history\" title=\"History (undo/redo)\"></a></div>\n		<div class=\"cell-btn\"><a class=\"btn icon fw files\" title=\"Audio files\"></a></div>\n		<div class=\"cell-clock\">\n			<div class=\"clock\">\n				<span class=\"min\"></span>\n				<span class=\"sec\"></span>\n				<span class=\"ms\"></span>\n				<a class=\"units\" href=\"#\">\n					<span class=\"s\">sec</span>\n					<span class=\"b\">beat</span>\n				</a>\n			</div>\n		</div>\n	</div>\n</div>\n";
+    return "<div id=\"visual\">\r\n	<canvas></canvas>\r\n	<div class=\"columns\">\r\n		<div class=\"cell-btn\"><a class=\"btn icon fw history\" title=\"History (undo/redo)\"></a></div>\r\n		<div class=\"cell-btn\"><a class=\"btn icon fw files\" title=\"Audio files\"></a></div>\r\n		<div class=\"cell-clock\">\r\n			<div class=\"clock\">\r\n				<span class=\"min\"></span>\r\n				<span class=\"sec\"></span>\r\n				<span class=\"ms\"></span>\r\n				<a class=\"units\" href=\"#\">\r\n					<span class=\"s\">sec</span>\r\n					<span class=\"b\">beat</span>\r\n				</a>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
 },"useData":true});
 templates['_app'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;

@@ -9,7 +9,9 @@ var ax, ay, atrackId, axem,
 	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
 
 ui.tool.select = {
-	mousedown: function( e, sample ) {
+	mousedown: function( e ) {
+		var sample = e.target.gsSample;
+
 		clicked = true;
 		ax = e.pageX;
 		ay = e.pageY;

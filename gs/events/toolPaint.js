@@ -8,7 +8,9 @@ var sampleSave,
 	endCropping;
 
 ui.tool.paint = {
-	mousedown: function( e, sample ) {
+	mousedown: function( e ) {
+		var sample = e.target.gsSample;
+
 		if ( !sample ) {
 			gs.samplesUnselect();
 		} else {
@@ -36,18 +38,18 @@ ui.tool.paint = {
 			ui.cursor( "app", null );
 		}
 	},
-	mousemove: function( e, sample, mx, my ) {
+	mousemove: function( e ) {
 		if ( sampleSave ) {
-			mx /= ui.gridEm;
+			var mxem = ui.em_xRel;
 			if ( cropping ) {
 				if ( endCropping ) {
-					gs.samplesDuration( sampleSave, mx );
-				} else if ( mx = -gs.samplesDuration( sampleSave, -mx ) ) {
-					gs.samplesMoveX( sampleSave, mx );
-					gs.samplesSlip( sampleSave, -mx );
+					gs.samplesDuration( sampleSave, mxem );
+				} else if ( mxem = -gs.samplesDuration( sampleSave, -mxem ) ) {
+					gs.samplesMoveX( sampleSave, mxem );
+					gs.samplesSlip( sampleSave, -mxem );
 				}
 			} else {
-				gs.samplesMoveX( sampleSave, mx );
+				gs.samplesMoveX( sampleSave, mxem );
 				
 				// Changes tracks:
 				e = e.target;

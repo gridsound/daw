@@ -5,8 +5,8 @@
 var sampleSave;
 
 ui.tool.cut = {
-	mousedown: function( e, sample ) {
-		sampleSave = sample;
+	mousedown: function( e ) {
+		sampleSave = e.target.gsSample;
 	},
 	mouseup: function( e ) {
 		if ( sampleSave ) {

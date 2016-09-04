@@ -1,10 +1,10 @@
 "use strict";
 
 ui.tool.delete = {
-	mousedown: function( e, sample ) {
-		gs.sampleDelete( sample );
+	mousedown: function( e ) {
+		gs.sampleDelete( e.target.gsSample );
 	},
-	mousemove: function( e, sample ) {
-		gs.sampleDelete( sample );
+	mousemove: function( e ) {
+		gs.sampleDelete( e.target.gsSample );
 	}
 };
