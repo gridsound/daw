@@ -40,16 +40,16 @@ ui.tool.paint = {
 	},
 	mousemove: function( e ) {
 		if ( sampleSave ) {
-			var mxem = ui.em_xRel;
+			var secRel = ui.secRel;
 			if ( cropping ) {
 				if ( endCropping ) {
-					gs.samplesDuration( sampleSave, mxem / ui.BPMem );
-				} else if ( mxem = -gs.samplesDuration( sampleSave, -mxem / ui.BPMem ) ) {
-					gs.samplesMoveX( sampleSave, mxem / ui.BPMem );
-					gs.samplesSlip( sampleSave, -mxem );
+					gs.samplesDuration( sampleSave, secRel );
+				} else if ( secRel = -gs.samplesDuration( sampleSave, -secRel ) ) {
+					gs.samplesMoveX( sampleSave, secRel );
+					gs.samplesSlip( sampleSave, -secRel );
 				}
 			} else {
-				gs.samplesMoveX( sampleSave, mxem / ui.BPMem );
+				gs.samplesMoveX( sampleSave, secRel );
 				
 				// Changes tracks:
 				e = e.target;

@@ -1,8 +1,7 @@
 "use strict";
 
-gs.samplesSlip = function( sample, mxem ) {
-	mxem /= ui.BPMem;
+gs.samplesSlip = function( sample, secRel ) {
 	gs.samplesForEach( sample, function( s ) {
-		s.slip( s.wsample.offset - mxem );
-	});
+		s.slip( s.wsample.offset - secRel );
+	} );
 };

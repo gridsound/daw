@@ -10,7 +10,7 @@ ui.tool.cut = {
 	},
 	mouseup: function( e ) {
 		if ( sampleSave ) {
-			gs.samplesCut( sampleSave, ui.getGridXem( e.pageX ) / ui.BPMem );
+			gs.samplesCut( sampleSave, ui.getGridSec( e.pageX ) );
 		}
 		sampleSave = null;
 	}

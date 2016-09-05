@@ -12,10 +12,10 @@ gs.samplesCopy = function() {
 		return s;
 	} );
 	if ( ui.isMagnetized ) {
-		min = ui.xemFloor( min * ui.BPMem );
-		max = ui.xemCeil( max * ui.BPMem );
+		min = ui.secFloor( min );
+		max = ui.secCeil( max );
 	}
-	allDuration = ( max - min ) / ui.BPMem;
+	allDuration = max - min;
 };
 
 gs.samplesPaste = function() {

@@ -13,6 +13,8 @@ gs.samplesMoveX = function( sample, secRel ) {
 	}
 
 	gs.samplesForEach( sample, function( s ) {
-		s.moveX( Math.max( 0, ( s.wsample.when + secRel ) * ui.BPMem ) );
+		if ( s.wsample ) {
+			s.when( Math.max( 0, s.wsample.when + secRel ) );
+		}
 	} );
 };

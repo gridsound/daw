@@ -17,7 +17,7 @@ gs.Sample = function( gsfile, trackId, when ) {
 	if ( gsfile.file ) {
 		this.wsample = gsfile.wbuff.createSample();
 		this.inTrack( trackId );
-		this.moveX( when * ui.BPMem );
+		this.when( when );
 		ui.CSS_sampleDuration( this );
 		ui.CSS_sampleWaveform( this );
 		wa.composition.addSamples( [ this.wsample ] );

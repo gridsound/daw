@@ -38,7 +38,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/setClockUnit.js                \
 		ui/currentTime.js                 \
 		ui/cursor.js                      \
-		ui/getGridXem.js                  \
+		ui/getGridSec.js                  \
 		ui/getTrackFromPageY.js           \
 		ui/file.js                        \
 		ui/newTrack.js                    \
@@ -99,7 +99,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/Sample/delete.js       \
 		gs/samples/Sample/duration.js     \
 		gs/samples/Sample/inTrack.js      \
-		gs/samples/Sample/moveX.js        \
 		gs/samples/Sample/mute.js         \
 		gs/samples/Sample/select.js       \
 		gs/samples/Sample/slip.js         \

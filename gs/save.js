@@ -18,7 +18,6 @@ gs.save = function() {
 
 	gs.samples.forEach( function( s ) {
 		_save.samples.push( [
-			s.xem,
 			s.track.id,
 			s.gsfile.id,
 			s.wsample ? s.wsample.when : s.savedWhen,

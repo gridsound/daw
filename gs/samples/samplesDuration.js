@@ -20,5 +20,5 @@ gs.samplesDuration = function( sample, secRel ) {
 			s.duration( s.wsample.duration + secRel );
 		} );
 	}
-	return secRel * ui.BPMem;
+	return secRel;
 };

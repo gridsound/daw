@@ -18,7 +18,7 @@ ui.tool.slip = {
 	},
 	mousemove: function( e ) {
 		if ( sampleSave ) {
-			gs.samplesSlip( sampleSave, ui.em_xRel );
+			gs.samplesSlip( sampleSave, ui.secRel );
 		}
 	}
 };

@@ -12,10 +12,10 @@ document.body.addEventListener( "mousemove", function( e ) {
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
 		var track = ui.getTrackFromPageY( e.pageY ),
-			xem = ui.getGridXem( e.pageX );
+			sec = ui.getGridSec( e.pageX );
 		elWaveformTmp.remove();
-		if ( track && xem >= 0 ) {
-			gs.sampleCreate( gsfileDragging, track.id, xem / ui.BPMem );
+		if ( track && sec >= 0 ) {
+			gs.sampleCreate( gsfileDragging, track.id, sec );
 		}
 		gsfileDragging = null;
 		ui.cursor( "app", null );

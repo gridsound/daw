@@ -2,10 +2,11 @@
 
 ( function() {
 
-ui.px_x = ui.px_y =
-ui.em_x = ui.em_y =
-ui.px_xRel = ui.px_yRel =
-ui.em_xRel = ui.em_yRel = 0;
+ui.sec =
+ui.px_x =
+ui.px_y =
+ui.px_xRel =
+ui.px_yRel = 0;
 
 window.addEventListener( "blur", setBackOldTool );
 
@@ -26,7 +27,7 @@ ui.elTrackLines.onmousedown = function( e ) {
 		mouseIsDown = true;
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
-		ui.em_x = ui.getGridXem( e.pageX );
+		ui.sec = ui.getGridSec( e.pageX );
 		if ( e.button === 2 ) {
 			oldTool = ui.currentTool;
 			ui.selectTool( "delete" );
@@ -47,14 +48,14 @@ document.body.onwheel = function( e ) {
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( mouseIsDown ) {
 		var fn = ui.tool[ ui.currentTool ].mousemove,
-			xemNew = ui.getGridXem( e.pageX );
+			secNew = ui.getGridSec( e.pageX );
 
 		ui.px_xRel = e.pageX - ui.px_x;
 		ui.px_yRel = e.pageY - ui.px_y;
-		ui.em_xRel = xemNew - ui.em_x;
+		ui.secRel = secNew - ui.sec;
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
-		ui.em_x = xemNew;
+		ui.sec = secNew;
 		if ( fn ) {
 			fn( e );
 		}
