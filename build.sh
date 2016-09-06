@@ -90,7 +90,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/samplesCut.js          \
 		gs/samples/samplesDelete.js       \
 		gs/samples/samplesDuration.js     \
-		gs/samples/samplesMoveX.js        \
+		gs/samples/samplesWhen.js         \
 		gs/samples/samplesSlip.js         \
 		gs/samples/samplesUnselect.js     \
 		                                  \

@@ -1,6 +1,6 @@
 "use strict";
 
-gs.samplesMoveX = function( sample, secRel ) {
+gs.samplesWhen = function( sample, secRel ) {
 	if ( sample.selected && sample.wsample && secRel < 0 ) {
 		secRel = -Math.min(
 			-secRel,

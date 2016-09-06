@@ -45,12 +45,12 @@ ui.tool.paint = {
 				if ( endCropping ) {
 					gs.samplesDuration( sampleSave, secRel );
 				} else if ( secRel = -gs.samplesDuration( sampleSave, -secRel ) ) {
-					gs.samplesMoveX( sampleSave, secRel );
+					gs.samplesWhen( sampleSave, secRel );
 					gs.samplesSlip( sampleSave, -secRel );
 				}
 			} else {
-				gs.samplesMoveX( sampleSave, secRel );
-				
+				gs.samplesWhen( sampleSave, secRel );
+
 				// Changes tracks:
 				e = e.target;
 				var nbTracksToMove, minTrackId = Infinity,
