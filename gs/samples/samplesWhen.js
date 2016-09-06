@@ -11,10 +11,10 @@ gs.samplesWhen = function( sample, secRel ) {
 			}, Infinity )
 		);
 	}
-
 	gs.samplesForEach( sample, function( s ) {
 		if ( s.wsample ) {
 			s.when( Math.max( 0, s.wsample.when + secRel ) );
 		}
 	} );
+	return secRel;
 };
