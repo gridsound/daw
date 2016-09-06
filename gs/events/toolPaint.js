@@ -2,11 +2,6 @@
 
 ( function() {
 
-var sampleSave,
-	cropping,
-	startCropping,
-	endCropping;
-
 ui.tool.paint = {
 	mousedown: function( e ) {
 		var sample = e.target.gsSample;
@@ -42,12 +37,9 @@ ui.tool.paint = {
 		if ( sampleSave ) {
 			var secRel = ui.secRel;
 			if ( cropping ) {
-				if ( endCropping ) {
-					gs.samplesDuration( sampleSave, secRel );
-				} else if ( secRel = -gs.samplesDuration( sampleSave, -secRel ) ) {
-					gs.samplesWhen( sampleSave, secRel );
-					gs.samplesSlip( sampleSave, -secRel );
-				}
+				secRel = startCropping
+					? gs.samplesCropStart( sampleSave, secRel )
+					: gs.samplesCropEnd( sampleSave, secRel );
 			} else {
 				gs.samplesWhen( sampleSave, secRel );
 
@@ -75,5 +67,10 @@ ui.tool.paint = {
 		}
 	}
 };
+
+var sampleSave,
+	cropping,
+	startCropping,
+	endCropping;
 
 } )();

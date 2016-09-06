@@ -92,6 +92,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/samplesDuration.js     \
 		gs/samples/samplesWhen.js         \
 		gs/samples/samplesSlip.js         \
+		gs/samples/samplesCrop.js         \
 		gs/samples/samplesUnselect.js     \
 		                                  \
 		gs/samples/Sample/constructor.js  \
