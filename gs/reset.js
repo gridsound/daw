@@ -6,9 +6,8 @@ gs.reset = function() {
 		t.toggle( true );
 	} );
 	gs.samples.forEach( function( s ) {
-		gs.sampleSelect( s, true );
+		gs.sampleDelete( s );
 	} );
-	gs.samplesDelete();
 	gs.files.forEach( function( f ) {
 		f.elFile.remove();
 	} );

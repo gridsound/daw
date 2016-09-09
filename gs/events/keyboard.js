@@ -79,7 +79,21 @@ function CASTool( k, tool ) {
 	}
 }
 
-fn[ K_DEL ] = gs.samplesDelete;
+function deleteAction( event ) {
+	gs.history.push( {
+		action: {
+			func: gs.history.removeSample,
+			samples: gs.selectedSamples.slice()
+		},
+		undo: {
+			func: gs.history.undoRemoveSample,
+			samples: gs.selectedSamples.slice()
+		}
+	} );
+	gs.samplesDelete( event );
+}
+
+fn[ K_DEL ] = deleteAction;
 fn[ K_G ] = ui.toggleMagnetism;
 fn[ K_ALT ] = CASTool.bind( null, K_ALT, "hand" );
 fn[ K_CTRL ] = CASTool.bind( null, K_CTRL, "zoom" );

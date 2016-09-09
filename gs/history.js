@@ -145,5 +145,26 @@ History.prototype = {
 		gs.samplesForEach( undo.sample, function( s ) {
 			wa.composition.update( s.wsample, "mv" );
 		});
+	},
+	removeSample: function( action ) {
+		action.samples.forEach( function( s ) {
+			gs.samplesDelete( s );
+		});
+	},
+	undoRemoveSample: function( undo ) {
+		undo.samples.forEach( function( s ) {
+			wa.composition.addSamples( [ s.wsample ] );
+			gs.samples.push( s );
+			ui.CSS_sampleCreate( s );
+			s.inTrack( s.oldTrack.id );
+			s.when( s.wsample.when );
+			s.duration( s.wsample.duration );
+			s.slip( s.wsample.offset );
+			gs.sampleSelect( s, s.oldSelected );
+
+			if ( !s.gsfile.nbSamples++ ) {
+				ui.CSS_fileUsed( s.gsfile );
+			}
+		});
 	}
 };
