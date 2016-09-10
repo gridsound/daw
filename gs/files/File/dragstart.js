@@ -5,6 +5,23 @@
 var gsfileDragging,
 	elWaveformTmp;
 
+function createAction( gsfileDragging, trackId, xem ) {
+	var s = gs.sampleCreate( gsfileDragging, trackId, xem );
+	s.oldTrack = s.track;
+	s.oldSelected = false;
+	gs.history.push( {
+		action: {
+			func: gs.history.insertSample,
+			samples: [ s ]
+		},
+		undo: {
+			func: gs.history.undoInsertSample,
+			samples: [ s ]
+		}
+	} );
+	return s;
+}
+
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( gsfileDragging ) {
 		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
@@ -18,8 +35,9 @@ document.body.addEventListener( "mouseup", function( e ) {
 			xem = ui.getGridXem( e.pageX );
 		elWaveformTmp.remove();
 		if ( track && xem >= 0 ) {
-			gs.sampleCreate( gsfileDragging, track.id, xem );
+			createAction( gsfileDragging, track.id, xem );
 		}
+
 		gsfileDragging = null;
 		ui.cursor( "app", null );
 	}

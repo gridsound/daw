@@ -6,6 +6,29 @@ History = function() {
 	this.actions.push( {} );
 };
 
+function insertSample( action ) {
+	action.samples.forEach( function( s ) {
+		wa.composition.addSamples( [ s.wsample ] );
+		gs.samples.push( s );
+		ui.CSS_sampleCreate( s );
+		s.inTrack( s.oldTrack.id );
+		s.when( s.wsample.when );
+		s.duration( s.wsample.duration );
+		s.slip( s.wsample.offset );
+		gs.sampleSelect( s, s.oldSelected );
+
+		if ( !s.gsfile.nbSamples++ ) {
+			ui.CSS_fileUsed( s.gsfile );
+		}
+	});
+}
+
+function removeSample( action ) {
+	action.samples.forEach( function( s ) {
+		gs.samplesDelete( s );
+	});
+}
+
 History.prototype = {
 	push: function( obj ) {
 		if ( this.rip < this.actions.length - 1 ) {
@@ -146,25 +169,16 @@ History.prototype = {
 			wa.composition.update( s.wsample, "mv" );
 		});
 	},
+	insertSample: function( action ) {
+		insertSample( action );
+	},
+	undoInsertSample: function( undo ) {
+		removeSample( undo );
+	},
 	removeSample: function( action ) {
-		action.samples.forEach( function( s ) {
-			gs.samplesDelete( s );
-		});
+		removeSample( action );
 	},
 	undoRemoveSample: function( undo ) {
-		undo.samples.forEach( function( s ) {
-			wa.composition.addSamples( [ s.wsample ] );
-			gs.samples.push( s );
-			ui.CSS_sampleCreate( s );
-			s.inTrack( s.oldTrack.id );
-			s.when( s.wsample.when );
-			s.duration( s.wsample.duration );
-			s.slip( s.wsample.offset );
-			gs.sampleSelect( s, s.oldSelected );
-
-			if ( !s.gsfile.nbSamples++ ) {
-				ui.CSS_fileUsed( s.gsfile );
-			}
-		});
+		insertSample( undo );
 	}
 };
