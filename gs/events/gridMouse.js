@@ -2,7 +2,6 @@
 
 ( function() {
 
-ui.sec =
 ui.px_x =
 ui.px_y =
 ui.px_xRel =
@@ -25,9 +24,9 @@ ui.elTrackLines.oncontextmenu = function() { return false; };
 ui.elTrackLines.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
 		mouseIsDown = true;
+		mousedownSec = ui.getGridSec( e.pageX );
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
-		ui.sec = ui.getGridSec( e.pageX );
 		if ( e.button === 2 ) {
 			oldTool = ui.currentTool;
 			ui.selectTool( "delete" );
@@ -52,12 +51,10 @@ document.body.addEventListener( "mousemove", function( e ) {
 
 		ui.px_xRel = e.pageX - ui.px_x;
 		ui.px_yRel = e.pageY - ui.px_y;
-		ui.secRel = secNew - ui.sec;
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
-		ui.sec = secNew;
 		if ( fn ) {
-			fn( e );
+			mousedownSec += fn( e, secNew - mousedownSec );
 		}
 	}
 } );
@@ -73,7 +70,9 @@ document.body.addEventListener( "mouseup", function( e ) {
 	}
 } );
 
-var mouseIsDown, oldTool;
+var mouseIsDown,
+	mousedownSec,
+	oldTool;
 
 function setBackOldTool() {
 	if ( oldTool ) {

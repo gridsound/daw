@@ -1,15 +1,16 @@
 "use strict";
 
 gs.samplesWhen = function( sample, secRel ) {
-	if ( sample.selected && sample.wsample && secRel < 0 ) {
-		secRel = -Math.min(
-			-secRel,
+	if ( !sample.wsample ) {
+		return 0;
+	}
 
-			// The minimum wsample.when of the selected samples :
-			gs.selectedSamples.reduce( function( min, s ) {
+	if ( secRel < 0 ) {
+		secRel = -Math.min( -secRel, sample.selected
+			? gs.selectedSamples.reduce( function( min, s ) {
 				return Math.min( min, s.wsample.when );
 			}, Infinity )
-		);
+			: sample.wsample.when );
 	}
 	gs.samplesForEach( sample, function( s ) {
 		if ( s.wsample ) {
