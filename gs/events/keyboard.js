@@ -107,6 +107,16 @@ fn[ K_V ] = function( e ) {
 	}
 };
 
+fn[ K_Z ] = function( e ) {
+	if ( e.ctrlKey ) {
+		if ( e.shiftKey ) {
+			gs.history.redo();
+		} else {
+			gs.history.undo();
+		}
+	}
+};
+
 fn[ K_SPACE ] = function( e ) {
 	gs.fileStop();
 	if ( e.ctrlKey ) {
