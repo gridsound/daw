@@ -1,8 +1,8 @@
 "use strict";
 
 gs.Sample.prototype.select = function( b ) {
-	if ( this.wsample ) { // check wsample for empty sample
-		this.selected = b;
-		ui.CSS_sampleSelect( this );
-	}
+
+	// Don't let the unloaded samples to be selected.
+	this.selected = !b ? false : !!this.wsample;
+	ui.CSS_sampleSelect( this );
 };

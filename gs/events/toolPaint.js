@@ -30,20 +30,19 @@ ui.tool.paint = {
 				sample.wsample.duration,
 				sample.track.id
 			);
-			startCropping = e.target.classList.contains( "start" );
-			endCropping = e.target.classList.contains( "end" );
-			cropping = startCropping || endCropping;
+			croppingStart = e.target.classList.contains( "start" );
+			cropping = croppingStart || e.target.classList.contains( "end" );
 			if ( cropping ) {
-				action = startCropping ? gs.history.crop : gs.history.endCrop;
-				undo = startCropping ? gs.history.undoCrop : gs.history.undoEndCrop;
-				sample[ startCropping ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
+				action = croppingStart ? gs.history.crop : gs.history.endCrop;
+				undo = croppingStart ? gs.history.undoCrop : gs.history.undoEndCrop;
+				sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
 			} else {
 				action = gs.history.moveX;
 				undo = gs.history.undoMoveX;
 			}
 			sampleSave = sample;
 			ui.cursor( "app", !cropping ? "grabbing" :
-				startCropping ? "w-resize" : "e-resize" );
+				croppingStart ? "w-resize" : "e-resize" );
 		}
 	},
 	mouseup: function() {
@@ -52,8 +51,8 @@ ui.tool.paint = {
 				wa.composition.update( s.wsample, "mv" );
 			} );
 			if ( cropping ) {
-				sampleSave[ startCropping ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
-				cropping = startCropping = endCropping = false;
+				sampleSave[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
+				cropping = croppingStart = false;
 			}
 			if ( sampleSave.xem != oldData[ 0 ] || sampleSave.wsample.offset != oldData[ 1 ] ||
 				 sampleSave.wsample.duration != oldData[ 2 ] || sampleSave.track.id != oldData[ 3 ] ) {
@@ -85,17 +84,10 @@ ui.tool.paint = {
 			ui.cursor( "app", null );
 		}
 	},
-	mousemove: function( e ) {
+	mousemove: function( e, secRel ) {
 		if ( sampleSave ) {
-			var secRel = ui.secRel;
-			if ( cropping ) {
-				secRel = startCropping
-					? gs.samplesCropStart( sampleSave, secRel )
-					: gs.samplesCropEnd( sampleSave, secRel );
-			} else {
-				gs.samplesWhen( sampleSave, secRel );
-
-				// Changes tracks:
+			// Changes tracks:
+			if ( !cropping ) {
 				e = e.target;
 				var nbTracksToMove, minTrackId = Infinity,
 					track = e.uitrack || e.gsSample && e.gsSample.track;
@@ -116,14 +108,18 @@ ui.tool.paint = {
 					}
 				}
 			}
+			return cropping
+				? croppingStart
+					? gs.samplesCropStart( sampleSave, secRel )
+					: gs.samplesCropEnd( sampleSave, secRel )
+				: gs.samplesWhen( sampleSave, secRel );
 		}
 	}
 };
 
 var sampleSave,
 	cropping,
-	startCropping,
-	endCropping,
+	croppingStart,
 	action,
 	undo,
 	oldData = [];
