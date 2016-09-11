@@ -82,6 +82,8 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/files/File/joinFile.js         \
 		gs/files/File/load.js             \
 		                                  \
+		gs/history/history.js             \
+		                                  \
 		gs/samples/sampleCreate.js        \
 		gs/samples/sampleSelect.js        \
 		gs/samples/sampleDelete.js        \
