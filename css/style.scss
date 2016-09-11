@@ -1,9 +1,7 @@
 ---
 ---
 
-@import 'font-awesome.min';
-
-@import 'about';
+@import 'icons';
 @import 'variables';
 @import 'mixins';
 @import 'reset';
@@ -14,7 +12,9 @@
 @import 'visual';
 @import 'menu';
 @import 'bpm';
-@import 'files';
+@import 'panel';
+@import 'panel-files';
+@import 'panel-history';
 @import 'sample';
 @import 'grid';
 @import 'track';

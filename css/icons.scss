@@ -1,0 +1,102 @@
+@font-face {
+	font-family: "FontAwesome";
+	src: url( "../fonts/fontawesome-webfont.eot?v=4.5.0" );
+	src:
+		url( "../fonts/fontawesome-webfont.eot?#iefix&v=4.5.0") format( "embedded-opentype" ),
+		url( "../fonts/fontawesome-webfont.woff2?v=4.5.0" ) format( "woff2" ),
+		url( "../fonts/fontawesome-webfont.woff?v=4.5.0" ) format( "woff" ),
+		url( "../fonts/fontawesome-webfont.ttf?v=4.5.0" ) format( "truetype" ),
+		url( "../fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular" ) format( "svg" );
+}
+
+// Shapes :
+$icon-caret-down       : "\f0d7"; // fa-caret-down
+$icon-caret-up         : "\f0d8"; // fa-caret-up
+$icon-circle           : "\f111"; // fa-circle
+$icon-circle-o         : "\f10c"; // fa-circle-o
+$icon-cross            : "\f00d"; // fa-times
+
+// placeholder :
+$icon-file-audio       : "\f1c7"; // fa-file-audio-o
+
+// #panel :
+$icon-history          : "\f0e2"; // fa-undo
+$icon-files            : "\f001"; // fa-music
+
+// .file :
+$icon-ramload          : "\f019"; // fa-download
+$icon-loading          : "\f021"; // fa-refresh
+
+// #about :
+$icon-question         : "\f128"; // fa-question
+$icon-github           : "\f09b"; // fa-github
+$icon-github-alt       : "\f113"; // fa-github-alt
+$icon-about            : $icon-question;
+
+// #menu :
+$icon-play             : "\f04b"; // fa-play
+$icon-pause            : "\f04c"; // fa-pause
+$icon-stop             : "\f04d"; // fa-stop
+$icon-save             : "\f0c7"; // fa-save
+$icon-magnet           : "\f076"; // fa-magnet
+$icon-tool-cut         : "\f0c4"; // fa-scissors
+$icon-tool-delete      : "\f12d"; // fa-eraser
+$icon-tool-hand        : "\f256"; // fa-hand-paper-o
+$icon-tool-mute        : "\f026"; // fa-volume-off
+$icon-tool-paint       : "\f1fc"; // fa-paint-brush
+$icon-tool-select      : "\f245"; // fa-mouse-pointer
+$icon-tool-slip        : "\f0ec"; // fa-exchange
+$icon-tool-zoom        : "\f002"; // fa-search
+
+.icon {
+	display: inline-block;
+	font-family: "FontAwesome";
+	font-weight: normal;
+	font-style: normal;
+
+	&.fw {
+		width: 1.28571429em;
+		text-align: center;
+	}
+
+	&:after {
+		display: inline-block;
+	}
+
+	&.loading,
+	&.spin {
+		animation: keyframes-spin 2s infinite linear;
+	}
+
+	@keyframes keyframes-spin {
+		  0% { transform: rotate(   0deg ); }
+		100% { transform: rotate( 359deg ); }
+	}
+
+	&.caret-down:after    { content: $icon-caret-down;    }
+	&.caret-up:after      { content: $icon-caret-up;      }
+	&.circle:after        { content: $icon-circle;        }
+	&.cross:after         { content: $icon-cross;         }
+	&.file-audio:after    { content: $icon-file-audio;    }
+	&.history:after       { content: $icon-history;       }
+	&.files:after         { content: $icon-files;         }
+	&.ramload:after       { content: $icon-ramload;       }
+	&.loading:after       { content: $icon-loading;       }
+	&.about:after,
+	&.question:after      { content: $icon-question;      }
+	&.github:after        { content: $icon-github;        }
+	&.github-alt:after    { content: $icon-github-alt;    }
+	&.play:after          { content: $icon-play;          }
+	&.pause:after         { content: $icon-pause;         }
+	&.stop:after          { content: $icon-stop;          }
+	&.save:after          { content: $icon-save;          }
+	&.magnet:after        { content: $icon-magnet;        }
+	&.tool-cut:after      { content: $icon-tool-cut;      }
+	&.tool-delete:after   { content: $icon-tool-delete;   }
+	&.tool-hand:after     { content: $icon-tool-hand;     }
+	&.tool-mute:after     { content: $icon-tool-mute;     }
+	&.tool-paint:after    { content: $icon-tool-paint;    }
+	&.tool-select:after   { content: $icon-tool-select;   }
+	&.tool-slip:after     { content: $icon-tool-slip;     }
+	&.tool-zoom:after     { content: $icon-tool-zoom;     }
+}

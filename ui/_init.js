@@ -35,14 +35,14 @@ ui.tool = {};
 ui.tracks = [];
 ui.nbTracksOn = 0;
 
-ui.elAbout = qS( "#about" );
-
 ui.elVisual       = qS( "#visual" );
 ui.elVisualCanvas = qS( ui.elVisual, "canvas" );
 ui.elClockUnits   = qS( ui.elVisual, ".clock .units" );
 ui.elClockMin     = qS( ui.elVisual, ".clock > .min" );
 ui.elClockSec     = qS( ui.elVisual, ".clock > .sec" );
 ui.elClockMs      = qS( ui.elVisual, ".clock > .ms" );
+ui.elBtnHistory   = qS( ui.elVisual, ".btn.history" );
+ui.elBtnFiles     = qS( ui.elVisual, ".btn.files" );
 
 ui.elMenu      = qS( "#menu" );
 ui.elPlay      = qS( ui.elMenu, ".btn.play" );
@@ -56,10 +56,10 @@ ui.elBtnMagnet = qS( ui.elMenu, ".btn.magnet" );
 ui.elBtnSave   = qS( ui.elMenu, ".btn.save" );
 ui.elToolBtns  = qSA( ui.elMenu, ".btn[data-tool]" );
 
-ui.elFiles       = qS( "#files" );
-ui.elInputFile   = qS( ui.elFiles, "input[type='file']" );
-ui.elFileFilters = qS( ui.elFiles, ".filters" );
-ui.elFilelist    = qS( ui.elFiles, ".filelist" );
+ui.elPanel       = qS( "#panel" );
+ui.elInputFile   = qS( ui.elPanel, "input[type='file']" );
+ui.elFileFilters = qS( ui.elPanel, ".filters" );
+ui.elFilelist    = qS( ui.elPanel, ".filelist" );
 
 ui.elGrid         = qS( "#grid" );
 ui.elGridEm       = qS( ui.elGrid, ".emWrapper" );

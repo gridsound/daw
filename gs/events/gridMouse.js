@@ -2,6 +2,12 @@
 
 ( function() {
 
+ui.sec =
+ui.px_x =
+ui.px_y =
+ui.px_xRel =
+ui.px_yRel = 0;
+
 window.addEventListener( "blur", setBackOldTool );
 
 ui.elGridCols.onwheel = function( e ) {
@@ -19,16 +25,16 @@ ui.elTrackLines.oncontextmenu = function() { return false; };
 ui.elTrackLines.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
 		mouseIsDown = true;
-		xemSave = ui.getGridXem( e.pageX );
-		px = e.pageX;
-		py = e.pageY;
+		ui.px_x = e.pageX;
+		ui.px_y = e.pageY;
+		ui.sec = ui.getGridSec( e.pageX );
 		if ( e.button === 2 ) {
 			oldTool = ui.currentTool;
 			ui.selectTool( "delete" );
 		}
 		var fn = ui.tool[ ui.currentTool ].mousedown;
 		if ( fn ) {
-			fn( e, e.target.gsSample );
+			fn( e );
 		}
 	}
 };
@@ -42,35 +48,32 @@ document.body.onwheel = function( e ) {
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( mouseIsDown ) {
 		var fn = ui.tool[ ui.currentTool ].mousemove,
-			newXem = ui.getGridXem( e.pageX );
+			secNew = ui.getGridSec( e.pageX );
+
+		ui.px_xRel = e.pageX - ui.px_x;
+		ui.px_yRel = e.pageY - ui.px_y;
+		ui.secRel = secNew - ui.sec;
+		ui.px_x = e.pageX;
+		ui.px_y = e.pageY;
+		ui.sec = secNew;
 		if ( fn ) {
-			fn( e, e.target.gsSample,
-				ui.currentTool !== "hand"
-					? ( newXem - xemSave ) * ui.gridEm
-					: e.pageX - px,
-				e.pageY - py
-			);
+			fn( e );
 		}
-		xemSave = newXem;
-		px = e.pageX;
-		py = e.pageY;
 	}
 } );
 
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( mouseIsDown ) {
 		var fn = ui.tool[ ui.currentTool ].mouseup;
+
 		if ( fn ) {
-			fn( e, e.target.gsSample );
+			fn( e );
 		}
 		setBackOldTool();
 	}
 } );
 
-var mouseIsDown,
-	oldTool,
-	xemSave,
-	px = 0, py = 0;
+var mouseIsDown, oldTool;
 
 function setBackOldTool() {
 	if ( oldTool ) {

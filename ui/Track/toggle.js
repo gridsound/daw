@@ -3,7 +3,7 @@
 ui.Track.prototype.initToggle = function() {
 	var that = this;
 
-	this.elToggle = wisdom.cE( "<a class='toggle'>" )[ 0 ];
+	this.elToggle = wisdom.cE( "<a class='toggle icon circle'>" )[ 0 ];
 	this.elColNamesTrack.appendChild( this.elToggle );
 	this.elToggle.oncontextmenu = function() { return false; };
 	this.elToggle.onmousedown = function( e ) {

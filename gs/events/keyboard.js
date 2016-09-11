@@ -54,7 +54,7 @@ var CAShold,
 	K_ALT = 18,
 	K_SPACE = 32,
 	K_DEL = 46,
-	K_ESCAPE = 27,
+	// K_ESCAPE = 27,
 	K_B = 66,
 	K_C = 67,
 	K_D = 68,
@@ -139,13 +139,6 @@ fn[ K_SPACE ] = function( e ) {
 		gs.stop();
 	} else {
 		gs.play();
-	}
-};
-
-fn[ K_ESCAPE ] = function() {
-	if ( ui.elAbout.classList.contains( "show" ) ) {
-		ui.toggleAbout( false );
-		location.hash = "";
 	}
 };
 

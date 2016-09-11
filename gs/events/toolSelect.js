@@ -16,20 +16,10 @@ function sameArray( arr1, arr2 ) {
 
 ( function() {
 
-var ax, ay, atrackId, axem,
-	clicked,
-	dragging,
-	oldSelection,
-	selected = [],
-	selectionId = 0,
-	unselected = null,
-	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
-
 ui.tool.select = {
-	mousedown: function( e, sample ) {
-		clicked = true;
-		ax = e.pageX;
-		ay = e.pageY;
+	mousedown: function( e ) {
+		var sample = e.target.gsSample;
+
 		if ( !e.shiftKey ) {
 			unselected = gs.selectedSamples;
 			gs.samplesUnselect();
@@ -39,6 +29,9 @@ ui.tool.select = {
 			selected.push( sample );
 		}
 
+		ax = e.pageX;
+		ay = e.pageY;
+		clicked = true;
 	},
 	mouseup: function() {
 		clicked = dragging = false;
@@ -66,7 +59,7 @@ ui.tool.select = {
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
-			var btrackId, bxem,
+			var btrackId, bsec,
 				px = e.pageX,
 				py = e.pageY;
 
@@ -74,28 +67,30 @@ ui.tool.select = {
 				++selectionId;
 				dragging = true;
 				atrackId = ui.getTrackFromPageY( ay ).id;
-				axem = ui.getGridXem( ax );
+				asec = ui.getGridSec( ax );
 				ui.elTrackLines.appendChild( elRect );
 			}
 
+			// TODO: optimize this part :
 			if ( dragging ) {
 				btrackId = ui.getTrackFromPageY( py );
 				btrackId = btrackId ? btrackId.id : 0;
-				bxem = Math.max( 0, ui.getGridXem( px ) );
+				bsec = Math.max( 0, ui.getGridSec( px ) );
 				var trackMin = Math.min( atrackId, btrackId ),
 					trackMax = Math.max( atrackId, btrackId ),
-					xemMin = Math.min( axem, bxem ),
-					xemMax = Math.max( axem, bxem );
+					secMin = Math.min( asec, bsec ),
+					secMax = Math.max( asec, bsec );
 
 				gs.samples.forEach( function( s ) {
-					var xemA, xemB, trackId = s.track.id;
-					if ( s.wsample ) { // check wsample for empty sample
+					if ( s.wsample ) {
+						var secA, secB, trackId = s.track.id;
+
 						if ( trackMin <= trackId && trackId <= trackMax ) {
-							xemA = s.xem;
-							xemB = xemA + s.wsample.duration * ui.BPMem;
-							if ( ( xemMin <= xemA && xemA < xemMax ) ||
-								( xemMin < xemB && xemB <= xemMax ) ||
-								( xemA <= xemMin && xemMax <= xemB ) )
+							secA = s.wsample.when;
+							secB = secA + s.wsample.duration;
+							if ( ( secMin <= secA && secA < secMax ) ||
+								( secMin < secB && secB <= secMax ) ||
+								( secA <= secMin && secMax <= secB ) )
 							{
 								if ( !s.selected ) {
 									s.squareSelected = selectionId;
@@ -110,14 +105,23 @@ ui.tool.select = {
 							selected.push( s );
 						}
 					}
-				});
+				} );
 				wisdom.css( elRect, "top", trackMin + "em" );
-				wisdom.css( elRect, "left", xemMin + "em" );
-				wisdom.css( elRect, "width", xemMax - xemMin + "em" );
+				wisdom.css( elRect, "left", secMin * ui.BPMem + "em" );
+				wisdom.css( elRect, "width", ( secMax - secMin ) * ui.BPMem + "em" );
 				wisdom.css( elRect, "height", trackMax - trackMin + 1 + "em" );
 			}
 		}
 	}
 };
+
+var ax, ay, atrackId, asec,
+	clicked,
+	dragging,
+	oldSelection,
+	selected = [],
+	unselected = null,
+	selectionId = 0,
+	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
 
 } )();

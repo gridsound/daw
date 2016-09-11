@@ -1,15 +1,4 @@
 #files {
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-	box-sizing: border-box;
-	z-index: 3;
-	min-width: 200px;
-	max-width: 450px;
-	left: 0;
-	top: 59px;
-	bottom: 0;
-
 	input {
 		display: none;
 	}
@@ -61,6 +50,10 @@
 		margin-top: 0;
 	}
 
+	.filelist:empty + .placeholder {
+		display: block;
+	}
+
 	.placeholder {
 		display: none;
 		position: absolute;
@@ -70,13 +63,9 @@
 		text-align: center;
 		color: $color_filesPlaceholder;
 
-		.fa {
+		.icon {
 			font-size: 80px;
 			margin-bottom: .2em;
 		}
 	}
-	.filelist:empty + .placeholder {
-		display: block;
-	}
 }
-

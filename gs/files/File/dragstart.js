@@ -2,9 +2,6 @@
 
 ( function() {
 
-var gsfileDragging,
-	elWaveformTmp;
-
 function createAction( gsfileDragging, trackId, xem ) {
 	var s = gs.sampleCreate( gsfileDragging, trackId, xem );
 	s.oldTrack = s.track;
@@ -32,10 +29,11 @@ document.body.addEventListener( "mousemove", function( e ) {
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
 		var track = ui.getTrackFromPageY( e.pageY ),
-			xem = ui.getGridXem( e.pageX );
+			sec = ui.getGridSec( e.pageX );
 		elWaveformTmp.remove();
-		if ( track && xem >= 0 ) {
-			createAction( gsfileDragging, track.id, xem );
+
+		if ( track && sec >= 0 ) {
+			createAction( gsfileDragging, track.id, sec );
 		}
 
 		gsfileDragging = null;
@@ -56,4 +54,7 @@ gs.File.prototype.dragstart = function( e ) {
 	return false;
 };
 
-})();
+var gsfileDragging,
+	elWaveformTmp;
+
+} )();

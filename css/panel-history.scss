@@ -1,0 +1,43 @@
+#history {
+	$task-height: 26px;
+	$task-fs: 12px;
+
+	.task {
+		display: block;
+		box-sizing: border-box;
+		height: $task-height;
+		line-height: $task-height;
+		font-size: $task-fs;
+		border-bottom: 1px solid #000;
+		background: $color_taskBg;
+		color: #ddd;
+		transition: .2s;
+		transition-property: color, background;
+
+		.icon {
+			width: 18px;
+			vertical-align: middle;
+			line-height: $task-height;
+			opacity: .5;
+			font-size: 6px;
+			transition: font-size .2s;
+		}
+		&.undone {
+			color: #666;
+			border-bottom-style: dashed;
+
+			.icon {
+				&:after {
+					content: $icon-circle-o;
+				}
+			}
+		}
+		&:hover {
+			color: #fff;
+			background: $color_taskHoverBg;
+			.icon {
+				font-size: 10px;
+			}
+		}
+	}
+}

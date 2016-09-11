@@ -2,11 +2,14 @@
 
 ( function() {
 
+var saveFile, arrFiles = [];
+
 document.body.ondragover = function() { return false; };
 document.body.ondrop = function( e ) {
-	var data = e && e.dataTransfer,
-		saveFile = false,
-		droppedFiles = [];
+	var data = e && e.dataTransfer;
+
+	arrFiles = [];
+	saveFile = false;
 
 	// Chrome :
 	if ( data.items ) {
@@ -14,27 +17,25 @@ document.body.ondrop = function( e ) {
 
 	// IE :
 	} else if ( !data.files.length ) {
-		alerte( "Your browser doesn't support folders." );
+		alert( "Your browser doesn't support folders." );
 
 	// Firefox :
 	} else {
 		var f, i = 0;
 		while ( f = data.files[ i++ ] ) {
 			if ( f.type && f.type !== "text/plain" ) {
-				droppedFiles.push( f );
+				arrFiles.push( f );
 			} else if ( !saveFile ) {
 				saveFile = f;
 				gs.reset();
 			}
 		}
 		gs.load( saveFile ).then( function() {
-			loadFiles( droppedFiles );
+			loadFiles();
 		} );
 	}
 	return false;
 };
-
-var saveFile, arrFiles = [];
 
 function traverseTree( item ) {
 	return new Promise( function( resolve ) {
@@ -71,13 +72,13 @@ function extractData( droppedItems ) {
 	}
 	Promise.all( arrayPromises ).then( function() {
 		gs.load( saveFile ).then( function() {
-			loadFiles( arrFiles );
+			loadFiles();
 		} );
 	} );
 }
 
-function loadFiles( droppedFiles ) {
-	droppedFiles.forEach( function( file ) {
+function loadFiles() {
+	arrFiles.forEach( function( file ) {
 		if ( !gs.files.some( function( f ) {
 			var size = f.file ? f.file.size : f.size;
 			if ( f.fullname === file.name && size === file.size ) {

@@ -20,21 +20,21 @@
 	.dec:before {
 		content: ".";
 	}
-	.fa,
+	.icon,
 	.unit {
 		color: $color_bpmUnit;
 	}
 	.unit {
 		margin-left: .35em;
 	}
-	.fa {
+	.icon {
 		vertical-align: top;
 		line-height: 40px;
 		margin-right: 4px;
 		font-size: 14px;
 	}
-	.a-bpm .fa:before { content: $fa-caret-down; }
-	&.clicked .a-bpm .fa:before { content: $fa-caret-up; }
+	.a-bpm .icon:after { content: $icon-caret-down; }
+	&.clicked .a-bpm .icon:after { content: $icon-caret-up; }
 
 	.bpm-list {
 		position: absolute;

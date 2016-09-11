@@ -1,0 +1,24 @@
+#panel {
+	position: absolute;
+	box-sizing: border-box;
+	z-index: 3;
+	min-width: 200px;
+	max-width: 450px;
+	left: 0;
+	top: 59px;
+	bottom: 0;
+	border-top: 1px solid #000;
+
+	section {
+		position: absolute;
+		display: none;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+
+		#app[data-panel="files"] &#files,
+		#app[data-panel="history"] &#history {
+			display: flex;
+		}
+	}
+}

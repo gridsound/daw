@@ -40,14 +40,16 @@ History.prototype = {
 	undo: function() {
 		if ( this.rip > 0 ) {
 			var undo = this.actions[ this.rip ].undo;
-			undo.func( undo );
+			if ( undo.func )
+				undo.func( undo );
 			--this.rip;
 		}
 	},
 	redo: function() {
 		if ( this.rip < this.actions.length - 1 ) {
 			var action = this.actions[ ++this.rip ].action;
-			action.func( action );
+			if ( action.func )
+				action.func( action );
 		}
 	},
 	select: function( action ) {
@@ -81,7 +83,7 @@ History.prototype = {
 	moveX: function( action ) {
 		var nbTracksToMove, minTrackId = Infinity;
 
-		gs.samplesMoveX( action.sample, action.xemDiff );
+		gs.samplesWhen( action.sample, action.whenDiff );
 		if ( action.changeTrack ) {
 			if ( action.sample.selected ) {
 				nbTracksToMove = action.trackId - action.sample.track.id;
@@ -105,7 +107,7 @@ History.prototype = {
 	undoMoveX: function( undo ) {
 		var nbTracksToMove, minTrackId = Infinity;
 
-		gs.samplesMoveX( undo.sample, undo.xemDiff );
+		gs.samplesWhen( undo.sample, undo.whenDiff );
 		if ( undo.changeTrack ) {
 			if ( undo.sample.selected ) {
 				nbTracksToMove = undo.trackId - undo.sample.track.id;
@@ -127,18 +129,18 @@ History.prototype = {
 		} );
 	},
 	crop: function( action ) {
-		gs.samplesDuration( action.sample, -action.xemDiff );
-		gs.samplesMoveX( action.sample, action.xemDiff );
-		gs.samplesSlip( action.sample, -action.xemDiff );
+		gs.samplesDuration( action.sample, -action.whenDiff );
+		gs.samplesWhen( action.sample, action.whenDiff );
+		gs.samplesSlip( action.sample, -action.whenDiff );
 		gs.samplesForEach( action.sample, function( s ) {
 			wa.composition.update( s.wsample, "mv" );
 		} );
 
 	},
 	undoCrop: function( undo ) {
-		gs.samplesDuration( undo.sample, -undo.xemDiff );
-		gs.samplesMoveX( undo.sample, undo.xemDiff );
-		gs.samplesSlip( undo.sample, -undo.xemDiff );
+		gs.samplesDuration( undo.sample, -undo.whenDiff );
+		gs.samplesWhen( undo.sample, undo.whenDiff );
+		gs.samplesSlip( undo.sample, -undo.whenDiff );
 		gs.samplesForEach( undo.sample, function( s ) {
 			wa.composition.update( s.wsample, "mv" );
 		} );
@@ -158,13 +160,13 @@ History.prototype = {
 		} );
 	},
 	slip: function( action ) {
-		gs.samplesSlip( action.sample, action.offsetDiff / ui.gridEm );
+		gs.samplesSlip( action.sample, action.offsetDiff );
 		gs.samplesForEach( action.sample, function( s ) {
 			wa.composition.update( s.wsample, "mv" );
 		});
 	},
 	undoSlip: function( undo ) {
-		gs.samplesSlip( undo.sample, undo.offsetDiff / ui.gridEm );
+		gs.samplesSlip( undo.sample, undo.offsetDiff );
 		gs.samplesForEach( undo.sample, function( s ) {
 			wa.composition.update( s.wsample, "mv" );
 		});

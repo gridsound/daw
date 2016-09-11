@@ -1,25 +1,24 @@
 "use strict";
 
-gs.samplesDuration = function( sample, mxem ) {
+gs.samplesDuration = function( sample, secRel ) {
 	var durMin = Infinity;
 	function calc( s ) {
 		durMin = Math.min( durMin, s.wsample.duration );
-		mxem = Math.min( mxem, s.wsample.bufferDuration - s.wsample.duration );
+		secRel = Math.min( secRel, s.wsample.bufferDuration - s.wsample.duration );
 	}
 
 	if ( sample.wsample ) { // check wsample for empty sample
-		mxem /= ui.BPMem;
 		if ( sample.selected ) {
 			gs.selectedSamples.forEach( calc );
 		} else {
 			calc( sample );
 		}
-		if ( mxem < 0 ) {
-			mxem = -Math.min( durMin, -mxem );
+		if ( secRel < 0 ) {
+			secRel = -Math.min( durMin, -secRel );
 		}
 		gs.samplesForEach( sample, function( s ) {
-			s.duration( s.wsample.duration + mxem );
+			s.duration( s.wsample.duration + secRel );
 		} );
 	}
-	return mxem * ui.BPMem;
+	return secRel;
 };

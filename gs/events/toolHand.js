@@ -13,9 +13,9 @@ ui.tool.hand = {
 	mouseup: function() {
 		ui.cursor( "app", null );
 	},
-	mousemove: function( e, sample, mx, my ) {
-		ui.setTrackLinesLeft( ui.trackLinesLeft + mx );
-		ui.setGridScrollTop( ui.gridScrollTop - my );
+	mousemove: function( e ) {
+		ui.setTrackLinesLeft( ui.trackLinesLeft + ui.px_xRel );
+		ui.setGridScrollTop( ui.gridScrollTop - ui.px_yRel );
 		ui.updateTimeline();
 		ui.updateTrackLinesBg();
 	}

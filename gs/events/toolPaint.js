@@ -2,16 +2,10 @@
 
 ( function() {
 
-var sampleSave,
-	cropping,
-	action,
-	undo,
-	oldData = [],
-	startCropping,
-	endCropping;
-
 ui.tool.paint = {
-	mousedown: function( e, sample ) {
+	mousedown: function( e ) {
+		var sample = e.target.gsSample;
+
 		if ( !sample ) {
 			if ( gs.selectedSamples.length ) {
 				var unselected = gs.selectedSamples.slice();
@@ -31,7 +25,7 @@ ui.tool.paint = {
 			}
 		} else {
 			oldData.push(
-				sample.xem,
+				sample.wsample.when,
 				sample.wsample.offset,
 				sample.wsample.duration,
 				sample.track.id
@@ -40,7 +34,12 @@ ui.tool.paint = {
 			endCropping = e.target.classList.contains( "end" );
 			cropping = startCropping || endCropping;
 			if ( cropping ) {
+				action = startCropping ? gs.history.crop : gs.history.endCrop;
+				undo = startCropping ? gs.history.undoCrop : gs.history.undoEndCrop;
 				sample[ startCropping ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
+			} else {
+				action = gs.history.moveX;
+				undo = gs.history.undoMoveX;
 			}
 			sampleSave = sample;
 			ui.cursor( "app", !cropping ? "grabbing" :
@@ -62,18 +61,18 @@ ui.tool.paint = {
 					action: {
 						func: action,
 						sample: sampleSave,
-						xemDiff: sampleSave.xem - oldData[ 0 ],
+						whenDiff: sampleSave.wsample.when - oldData[ 0 ],
 						offset: sampleSave.wsample.offset - oldData[ 1 ],
-						durationDiff: ( oldData[ 2 ] - sampleSave.wsample.duration ) * ui.BPMem,
+						durationDiff: oldData[ 2 ] - sampleSave.wsample.duration,
 						trackId: sampleSave.track.id,
 						changeTrack : sampleSave.track.id != oldData[ 3 ]
 					},
 					undo: {
 						func: undo,
 						sample: sampleSave,
-						xemDiff: oldData[ 0 ] - sampleSave.xem,
+						whenDiff: oldData[ 0 ] - sampleSave.wsample.when,
 						offset: oldData[ 1 ] - sampleSave.wsample.offset,
-						durationDiff: ( sampleSave.wsample.duration - oldData[ 2 ] ) * ui.BPMem,
+						durationDiff: sampleSave.wsample.duration - oldData[ 2 ],
 						trackId: oldData[ 3 ],
 						changeTrack : sampleSave.track.id != oldData[ 3 ]
 					}
@@ -86,23 +85,16 @@ ui.tool.paint = {
 			ui.cursor( "app", null );
 		}
 	},
-	mousemove: function( e, sample, mx, my ) {
+	mousemove: function( e ) {
 		if ( sampleSave ) {
-			mx /= ui.gridEm;
+			var secRel = ui.secRel;
 			if ( cropping ) {
-				action = startCropping ? gs.history.crop : gs.history.endCrop;
-				undo = startCropping ? gs.history.undoCrop : gs.history.undoEndCrop;
-				if ( endCropping ) {
-					gs.samplesDuration( sampleSave, mx );
-				} else if ( mx = -gs.samplesDuration( sampleSave, -mx ) ) {
-					gs.samplesMoveX( sampleSave, mx );
-					gs.samplesSlip( sampleSave, -mx );
-				}
+				secRel = startCropping
+					? gs.samplesCropStart( sampleSave, secRel )
+					: gs.samplesCropEnd( sampleSave, secRel );
 			} else {
-				action = gs.history.moveX;
-				undo = gs.history.undoMoveX;
-				gs.samplesMoveX( sampleSave, mx );
-				
+				gs.samplesWhen( sampleSave, secRel );
+
 				// Changes tracks:
 				e = e.target;
 				var nbTracksToMove, minTrackId = Infinity,
@@ -127,5 +119,13 @@ ui.tool.paint = {
 		}
 	}
 };
+
+var sampleSave,
+	cropping,
+	startCropping,
+	endCropping,
+	action,
+	undo,
+	oldData = [];
 
 } )();

@@ -38,10 +38,11 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/setClockUnit.js                \
 		ui/currentTime.js                 \
 		ui/cursor.js                      \
-		ui/getGridXem.js                  \
+		ui/getGridSec.js                  \
 		ui/getTrackFromPageY.js           \
 		ui/file.js                        \
 		ui/newTrack.js                    \
+		ui/panelSection.js                \
 		ui/playPauseStop.js               \
 		ui/resize.js                      \
 		ui/sample.js                      \
@@ -51,7 +52,6 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/setGridZoom.js                 \
 		ui/setTrackLinesLeft.js           \
 		ui/setTrackNamesWidth.js          \
-		ui/toggleAbout.js                 \
 		ui/toggleMagnetism.js             \
 		ui/toggleTracks.js                \
 		ui/updateGridShadows.js           \
@@ -75,8 +75,10 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/reset.js                       \
 		                                  \
 		gs/files/fileCreate.js            \
+		gs/files/fileDelete.js            \
 		gs/files/filePlayStop.js          \
 		gs/files/File/constructor.js      \
+		gs/files/File/delete.js           \
 		gs/files/File/dragstart.js        \
 		gs/files/File/joinFile.js         \
 		gs/files/File/load.js             \
@@ -89,8 +91,9 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/samplesCut.js          \
 		gs/samples/samplesDelete.js       \
 		gs/samples/samplesDuration.js     \
-		gs/samples/samplesMoveX.js        \
+		gs/samples/samplesWhen.js         \
 		gs/samples/samplesSlip.js         \
+		gs/samples/samplesCrop.js         \
 		gs/samples/samplesUnselect.js     \
 		                                  \
 		gs/samples/Sample/constructor.js  \
@@ -98,13 +101,11 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/samples/Sample/delete.js       \
 		gs/samples/Sample/duration.js     \
 		gs/samples/Sample/inTrack.js      \
-		gs/samples/Sample/moveX.js        \
 		gs/samples/Sample/mute.js         \
 		gs/samples/Sample/select.js       \
 		gs/samples/Sample/slip.js         \
 		gs/samples/Sample/when.js         \
 		                                  \
-		gs/events/routing.js              \
 		gs/events/bpm.js                  \
 		gs/events/currentTime.js          \
 		gs/events/clockUnits.js           \
@@ -113,6 +114,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/fileFilters.js          \
 		gs/events/gridMouse.js            \
 		gs/events/keyboard.js             \
+		gs/events/panelMenu.js            \
 		gs/events/playPauseStop.js        \
 		gs/events/resize.js               \
 		gs/events/save.js                 \

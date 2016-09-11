@@ -3,9 +3,6 @@ $COLOR_SAMPLE: #76c4ff;
 $COLOR_SAMPLE_SELECTED: #b51818;
 $COLOR_SELECTION: #ff3636;
 
-$fa-circle: "\f111";
-$fa-caret-down: "\f0d7";
-$fa-caret-up: "\f0d8";
 // ---------------------------------------
 
 $color_appBg: #383838;
@@ -23,6 +20,7 @@ $opacity_analyserWaveform: .2;
 
 $color_menuText: $color_clock;
 $color_playBtn: $COLOR_MAIN;
+$color_pauseBtn: #522;
 $color_stopBtn: #333;
 $color_tool: $COLOR_MAIN;
 $lighten_toolHover: 5%;
@@ -33,6 +31,9 @@ $color_bpmBg: #222;
 $color_bpmUnit: #666;
 $color_bpmListBg: rgba( $color_bpmBg, .5 );
 $color_bpmListHover: #111;
+
+$color_taskBg: darken( $color_appBg, 10% );
+$color_taskHoverBg: darken( $color_taskBg, 10% );
 
 $color_filesBg: #1c1c1c;
 $color_fileFiltersBg: rgba( #000, .35 );

@@ -16,11 +16,11 @@
 
 <div id="app"></div>
 
-<!-- Production - ->
+<!-- Production -->
 <script src="compressed.js"></script>
 <!-- -->
 
-<!-- Development -->
+<!-- Development - ->
 <script src="jstools/wisdom.js"></script>
 <script src="jstools/handlebars.runtime.min.js"></script>
 <script src="templates/__precompiled.js"></script>
@@ -38,10 +38,11 @@
 <script src="ui/setClockUnit.js"></script>
 <script src="ui/currentTime.js"></script>
 <script src="ui/cursor.js"></script>
-<script src="ui/getGridXem.js"></script>
+<script src="ui/getGridSec.js"></script>
 <script src="ui/getTrackFromPageY.js"></script>
 <script src="ui/file.js"></script>
 <script src="ui/newTrack.js"></script>
+<script src="ui/panelSection.js"></script>
 <script src="ui/playPauseStop.js"></script>
 <script src="ui/resize.js"></script>
 <script src="ui/sample.js"></script>
@@ -51,7 +52,6 @@
 <script src="ui/setGridZoom.js"></script>
 <script src="ui/setTrackLinesLeft.js"></script>
 <script src="ui/setTrackNamesWidth.js"></script>
-<script src="ui/toggleAbout.js"></script>
 <script src="ui/toggleMagnetism.js"></script>
 <script src="ui/toggleTracks.js"></script>
 <script src="ui/updateGridShadows.js"></script>
@@ -75,8 +75,10 @@
 <script src="gs/reset.js"></script>
 
 <script src="gs/files/fileCreate.js"></script>
+<script src="gs/files/fileDelete.js"></script>
 <script src="gs/files/filePlayStop.js"></script>
 <script src="gs/files/File/constructor.js"></script>
+<script src="gs/files/File/delete.js"></script>
 <script src="gs/files/File/dragstart.js"></script>
 <script src="gs/files/File/joinFile.js"></script>
 <script src="gs/files/File/load.js"></script>
@@ -89,8 +91,9 @@
 <script src="gs/samples/samplesCopyPaste.js"></script>
 <script src="gs/samples/samplesDelete.js"></script>
 <script src="gs/samples/samplesDuration.js"></script>
-<script src="gs/samples/samplesMoveX.js"></script>
+<script src="gs/samples/samplesWhen.js"></script>
 <script src="gs/samples/samplesSlip.js"></script>
+<script src="gs/samples/samplesCrop.js"></script>
 <script src="gs/samples/samplesUnselect.js"></script>
 
 <script src="gs/samples/Sample/constructor.js"></script>
@@ -98,13 +101,11 @@
 <script src="gs/samples/Sample/delete.js"></script>
 <script src="gs/samples/Sample/duration.js"></script>
 <script src="gs/samples/Sample/inTrack.js"></script>
-<script src="gs/samples/Sample/moveX.js"></script>
 <script src="gs/samples/Sample/mute.js"></script>
 <script src="gs/samples/Sample/select.js"></script>
 <script src="gs/samples/Sample/slip.js"></script>
 <script src="gs/samples/Sample/when.js"></script>
 
-<script src="gs/events/routing.js"></script>
 <script src="gs/events/bpm.js"></script>
 <script src="gs/events/currentTime.js"></script>
 <script src="gs/events/clockUnits.js"></script>
@@ -113,6 +114,7 @@
 <script src="gs/events/fileFilters.js"></script>
 <script src="gs/events/gridMouse.js"></script>
 <script src="gs/events/keyboard.js"></script>
+<script src="gs/events/panelMenu.js"></script>
 <script src="gs/events/playPauseStop.js"></script>
 <script src="gs/events/resize.js"></script>
 <script src="gs/events/save.js"></script>

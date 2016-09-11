@@ -12,20 +12,20 @@ function pushDelAction( sample ) {
 			func: gs.history.undoRemoveSample,
 			samples: [ sample ]
 		}
-	} );
+	});
 }
 
 ui.tool.delete = {
 	mousedown: function( e, sample ) {
-		if ( sample ) {
-			pushDelAction( sample );
-			gs.samplesDelete( sample );
+		if ( e.target.gsSample ) {
+			pushDelAction( e.target.gsSample );
+			gs.samplesDelete( e.target.gsSample );
 		}
 	},
 	mousemove: function( e, sample ) {
-		if ( sample ) {
-			pushDelAction( sample );
-			gs.samplesDelete( sample );
+		if ( e.target.gsSample ) {
+			pushDelAction( e.target.gsSample );
+			gs.samplesDelete( e.target.gsSample );
 		}
 	}
 };

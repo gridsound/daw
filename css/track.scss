@@ -28,24 +28,25 @@
 	}
 
 	.toggle {
+		$width: 14px;
+		$circleWidth: 6px;
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 14px;
+		width: $width;
 		height: 100%;
 		color: $color_trackToggleOff;
+		font-size: $circleWidth;
+		line-height: 1em;
 
 		&.on {
 			color: $color_trackToggleOn;
 		}
 		&:after {
-			content: $fa-circle;
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			$w: 6px;
-			font: $w "FontAwesome";
-			margin: $w / -2;
+			margin: $circleWidth / -2;
 		}
 	}
 
