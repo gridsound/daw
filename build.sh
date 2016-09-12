@@ -41,6 +41,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		ui/getGridSec.js                  \
 		ui/getTrackFromPageY.js           \
 		ui/file.js                        \
+		ui/history.js                     \
 		ui/newTrack.js                    \
 		ui/panelSection.js                \
 		ui/playPauseStop.js               \

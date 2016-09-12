@@ -8,6 +8,7 @@ ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
 ui.toggleMagnetism( true );
 ui.updateTrackLinesBg();
+ui.historyReset();
 
 gs.bpm( 120 );
 gs.currentTime( 0 );
