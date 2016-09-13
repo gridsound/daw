@@ -59,6 +59,13 @@ function cropSample( action ) {
 	} );
 }
 
+function endCropSample( action ) {
+	gs.samplesDuration( action.sample, -action.durationDiff );
+	gs.samplesForEach( action.sample, function( s ) {
+		wa.composition.update( s.wsample, "mv" );
+	} );
+}
+
 gs.history.select = function( action ) {
 	var samplesArr = action.samples,
 		unselectedArr = action.removedSamples;
@@ -119,6 +126,14 @@ gs.history.crop = function( action ) {
 
 gs.history.undoCrop = function( undo ) {
 	cropSample( undo );
+}
+
+gs.history.endCrop = function( action ) {
+	endCropSample( action );
+}
+
+gs.history.undoEndCrop = function( undo ) {
+	endCropSample( undo );
 }
 
 } )();
