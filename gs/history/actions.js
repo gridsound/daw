@@ -50,6 +50,15 @@ function moveSample( action ) {
 	} );
 }
 
+function cropSample( action ) {
+	gs.samplesDuration( action.sample, -action.whenDiff );
+	gs.samplesWhen( action.sample, action.whenDiff );
+	gs.samplesSlip( action.sample, -action.whenDiff );
+	gs.samplesForEach( action.sample, function( s ) {
+		wa.composition.update( s.wsample, "mv" );
+	} );
+}
+
 gs.history.select = function( action ) {
 	var samplesArr = action.samples,
 		unselectedArr = action.removedSamples;
@@ -102,6 +111,14 @@ gs.history.moveX = function( action ) {
 
 gs.history.undoMoveX = function( undo ) {
 	moveSample( undo );
+}
+
+gs.history.crop = function( action ) {
+	cropSample( action );
+}
+
+gs.history.undoCrop = function( undo ) {
+	cropSample( undo );
 }
 
 } )();
