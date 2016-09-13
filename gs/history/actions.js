@@ -25,6 +25,31 @@ function removeSample( action ) {
 	});
 }
 
+function moveSample( action ) {
+	var nbTracksToMove, minTrackId = Infinity;
+
+	gs.samplesWhen( action.sample, action.whenDiff );
+	if ( action.changeTrack ) {
+		if ( action.sample.selected ) {
+			nbTracksToMove = action.trackId - action.sample.track.id;
+			if ( nbTracksToMove < 0 ) {
+				gs.selectedSamples.forEach( function( s ) {
+					minTrackId = Math.min( s.track.id, minTrackId );
+				} );
+				nbTracksToMove = -Math.min( minTrackId, -nbTracksToMove );
+			}
+			gs.selectedSamples.forEach( function( s ) {
+				s.inTrack( s.track.id + nbTracksToMove );
+			} );
+		} else {
+			action.sample.inTrack( action.trackId );
+		}
+	}
+	gs.samplesForEach( action.sample, function( s ) {
+		wa.composition.update( s.wsample, "mv" );
+	} );
+}
+
 gs.history.select = function( action ) {
 	var samplesArr = action.samples,
 		unselectedArr = action.removedSamples;
@@ -69,6 +94,14 @@ gs.history.removeSample = function( action ) {
 
 gs.history.undoRemoveSample = function( undo ) {
 	insertSample( undo );
+}
+
+gs.history.moveX = function( action ) {
+	moveSample( action );
+}
+
+gs.history.undoMoveX = function( undo ) {
+	moveSample( undo );
 }
 
 } )();
