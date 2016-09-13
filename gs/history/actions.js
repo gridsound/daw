@@ -66,6 +66,13 @@ function endCropSample( action ) {
 	} );
 }
 
+function slipSample( action ) {
+	gs.samplesSlip( action.sample, action.offsetDiff );
+	gs.samplesForEach( action.sample, function( s ) {
+		wa.composition.update( s.wsample, "mv" );
+	});
+}
+
 gs.history.select = function( action ) {
 	var samplesArr = action.samples,
 		unselectedArr = action.removedSamples;
@@ -134,6 +141,14 @@ gs.history.endCrop = function( action ) {
 
 gs.history.undoEndCrop = function( undo ) {
 	endCropSample( undo );
+}
+
+gs.history.slip = function( action ) {
+	slipSample( action );
+}
+
+gs.history.undoSlip = function( undo ) {
+	slipSample( undo );
 }
 
 } )();
