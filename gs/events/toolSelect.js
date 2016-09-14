@@ -7,11 +7,14 @@ ui.tool.select = {
 		var sample = e.target.gsSample;
 
 		if ( !e.shiftKey ) {
+			unselected = gs.selectedSamples;
 			gs.samplesUnselect();
 		}
 		if ( sample ) {
 			gs.sampleSelect( sample, !sample.selected );
+			selected.push( sample );
 		}
+
 		ax = e.pageX;
 		ay = e.pageY;
 		clicked = true;
@@ -21,6 +24,24 @@ ui.tool.select = {
 		wisdom.css( elRect, "width", "0px" );
 		wisdom.css( elRect, "height", "0px" );
 		elRect.remove();
+
+		if ( !isSameArray( gs.selectedSamples, oldSelection ) ) {
+			gs.history.push( {
+				action: {
+					func: gs.history.select,
+					samples: selected.length ? selected : null,
+					removedSamples: unselected
+				},
+				undo: {
+					func: gs.history.undoSelect,
+					samples: unselected,
+					removedSamples: selected.length ? selected : null
+				}
+			} );
+			oldSelection = gs.selectedSamples.slice();
+		}
+		unselected = null;
+		selected = [];
 	},
 	mousemove: function( e ) {
 		if ( clicked ) {
@@ -60,12 +81,14 @@ ui.tool.select = {
 								if ( !s.selected ) {
 									s.squareSelected = selectionId;
 									gs.sampleSelect( s, true );
+									selected.push( s );
 								}
 								return;
 							}
 						}
 						if ( s.squareSelected === selectionId ) {
 							gs.sampleSelect( s, false );
+							selected.push( s );
 						}
 					}
 				} );
@@ -81,6 +104,9 @@ ui.tool.select = {
 var ax, ay, atrackId, asec,
 	clicked,
 	dragging,
+	oldSelection,
+	selected = [],
+	unselected = null,
 	selectionId = 0,
 	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
 

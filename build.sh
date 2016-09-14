@@ -21,6 +21,7 @@ fi
 if [[ -z $1 || $1 == "js" ]]; then
 	echo "Compressing JS...";
 	uglifyjs \
+		jstools/isSameArray.js                 \
 		jstools/wisdom.js                      \
 		jstools/handlebars.runtime.min.js      \
 		templates/__precompiled.js             \
