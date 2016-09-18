@@ -1,13 +1,5 @@
 "use strict";
 
-ui.elPlay.onclick = function() {
-	gs.fileStop();
-	gs.playToggle();
-};
-
-ui.elStop.onclick = function() {
-	gs.fileStop();
-	gs.stop();
-};
-
-wa.composition.onended( gs.stop );
+ui.elPlay.onclick = gs.playPause;
+ui.elStop.onclick = gs.stop;
+wa.composition.onended( gs.compositionStop );

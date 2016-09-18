@@ -1,13 +1,10 @@
 "use strict";
 
-gs.playToggle = function( b ) {
-	if ( typeof b !== "boolean" ) {
-		b = !wa.composition.isPlaying;
-	}
-	b ? gs.play() : gs.pause();
-};
+gs.playStop  = function() { ( gs.isPlaying ? gs.stop : gs.play )(); };
+gs.playPause = function() { ( wa.composition.isPlaying ? gs.pause : gs.play )(); };
 
 gs.play = function() {
+	gs.fileStop();
 	if ( !wa.composition.isPlaying && wa.composition.wSamples.length && gs.samples.length ) {
 		wa.composition.play();
 		if ( wa.composition.isPlaying ) {
@@ -18,6 +15,7 @@ gs.play = function() {
 };
 
 gs.pause = function() {
+	gs.fileStop();
 	if ( wa.composition.isPlaying ) {
 		wa.composition.pause();
 		gs.isPaused = !( gs.isPlaying = false );
@@ -26,6 +24,11 @@ gs.pause = function() {
 };
 
 gs.stop = function() {
+	gs.fileStop();
+	gs.compositionStop();
+};
+
+gs.compositionStop = function() {
 	wa.composition.stop();
 	gs.currentTime( 0 );
 	gs.isPaused = gs.isPlaying = false;

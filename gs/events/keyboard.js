@@ -14,8 +14,8 @@ keyboardRouter(
 	{ fn: keyTool, keys: [ "b" ], name: "paint" },
 	{ fn: keyTool, keys: [ "h" ], name: "hand" },
 
-	{ fn: playStop,           keys: [ " " ] },
-	{ fn: playPause,          keys: [ "ctrl", " " ] },
+	{ fn: gs.playStop,        keys: [ " " ] },
+	{ fn: gs.playPause,       keys: [ "ctrl", " " ] },
 	{ fn: gs.samplesDelete,   keys: [ "delete" ] },
 	{ fn: ui.toggleMagnetism, keys: [ "g" ] },
 	{ fn: gs.samplesCopy,     keys: [ "ctrl", "c" ] },
@@ -39,15 +39,5 @@ function keyToolCAS( route, e ) {
 		oldTool = null;
 	}
 };
-
-function playStop() {
-	gs.fileStop();
-	( gs.isPlaying ? gs.stop : gs.play )();
-}
-
-function playPause() {
-	gs.fileStop();
-	gs.playToggle();
-}
 
 } )();
