@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#  _____     _   _ _____               _
+# |   __|___|_|_| |   __|___ _ _ ___ _| |
+# |  |  |  _| | . |__   | . | | |   | . |
+# |_____|_| |_|___|_____|___|___|_|_|___|.com
+#
+
 # Handlebars's templates
 if [[ -z $1 || $1 == "html" ]]; then
 	echo "Compressing HTML...";
@@ -22,6 +28,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 	echo "Compressing JS...";
 	uglifyjs \
 		jstools/isSameArray.js                 \
+		jstools/keyboardRouter.min.js          \
 		jstools/wisdom.js                      \
 		jstools/handlebars.runtime.min.js      \
 		templates/__precompiled.js             \
@@ -32,7 +39,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		../webaudio-library/src/waveform.js    \
 		../webaudio-library/src/filters.js     \
 		../webaudio-library/src/sample.js      \
-		                                  \
+		                                       \
 		ui/_init.js                       \
 		ui/analyserToggle.js              \
 		ui/bpm.js                         \
