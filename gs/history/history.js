@@ -8,6 +8,7 @@ gs.history = {
 			actions.splice( rip + 1 );
 		}
 		actions.push( obj );
+		ui.historyPush( obj );
 		++rip;
 	},
 	undo: function() {
@@ -17,6 +18,7 @@ gs.history = {
 				undo.func( undo );
 			}
 			--rip;
+			ui.historyGo( -1 );
 		}
 	},
 	redo: function() {
@@ -25,6 +27,7 @@ gs.history = {
 			if ( action.func ) {
 				action.func( action );
 			}
+			ui.historyGo( +1 );
 		}
 	}
 };
