@@ -6,13 +6,27 @@ ui.tool.paint = {
 	mousedown: function( e ) {
 		var sample = e.target.gsSample;
 
-		if ( !sample ) {
+		if ( !sample && gs.selectedSamples.length ) {
+			pushAction( null, gs.selectedSamples.slice() );
 			gs.samplesUnselect();
-		} else {
+		} else if ( sample ) {
+			oldData.push(
+				sample.wsample.when,
+				sample.wsample.offset,
+				sample.wsample.duration,
+				sample.track.id
+			);
 			croppingStart = e.target.classList.contains( "start" );
 			cropping = croppingStart || e.target.classList.contains( "end" );
 			if ( cropping ) {
+				action = croppingStart ? gs.history.crop : gs.history.endCrop;
+				undo = croppingStart ? gs.history.undoCrop : gs.history.undoEndCrop;
+				name = croppingStart ? "crop" : "endCrop";
 				sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
+			} else {
+				action = gs.history.moveX;
+				undo = gs.history.undoMoveX;
+				name = "move"
 			}
 			sampleSave = sample;
 			ui.cursor( "app", !cropping ? "grabbing" :
@@ -27,6 +41,34 @@ ui.tool.paint = {
 			if ( cropping ) {
 				sampleSave[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
 				cropping = croppingStart = false;
+			}
+			if ( sampleSave.xem != oldData[ 0 ] || sampleSave.wsample.offset != oldData[ 1 ] ||
+				 sampleSave.wsample.duration != oldData[ 2 ] || sampleSave.track.id != oldData[ 3 ] ) {
+				gs.history.push( {
+					name: name,
+					action: {
+						func: action,
+						sample: sampleSave,
+						whenDiff: sampleSave.wsample.when - oldData[ 0 ],
+						offset: sampleSave.wsample.offset - oldData[ 1 ],
+						durationDiff: oldData[ 2 ] - sampleSave.wsample.duration,
+						trackId: sampleSave.track.id,
+						changeTrack : sampleSave.track.id != oldData[ 3 ]
+					},
+					undo: {
+						func: undo,
+						sample: sampleSave,
+						whenDiff: oldData[ 0 ] - sampleSave.wsample.when,
+						offset: oldData[ 1 ] - sampleSave.wsample.offset,
+						durationDiff: sampleSave.wsample.duration - oldData[ 2 ],
+						trackId: oldData[ 3 ],
+						changeTrack : sampleSave.track.id != oldData[ 3 ]
+					}
+				} );
+				action =
+				undo = null;
+				name = "";
+				oldData = [];
 			}
 			sampleSave = null;
 			ui.cursor( "app", null );
@@ -67,6 +109,10 @@ ui.tool.paint = {
 
 var sampleSave,
 	cropping,
-	croppingStart;
+	croppingStart,
+	action,
+	undo,
+	name,
+	oldData = [];
 
 } )();
