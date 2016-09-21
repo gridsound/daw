@@ -1,6 +1,8 @@
 "use strict";
 
-gs.bpm = function( bpm ) {
+ui.BPMem = 1;
+
+gs.bpm = function( bpm, delay ) {
 	if ( !arguments.length ) {
 		return gs._bpm;
 	}
@@ -10,6 +12,7 @@ gs.bpm = function( bpm ) {
 
 	gs._bpm = Math.max( 20, Math.min( bpm, 999 ) );
 	ui.bpm( gs._bpm );
+	ui.BPMem = bpm / 60;
 	BPMdiff = oldBPMem / ui.BPMem;
 	gs.samples.forEach( function( s ) {
 		// We don't have to call .CSS_sampleWhen, the samples doesn't move when the BPM changes.

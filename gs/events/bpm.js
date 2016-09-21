@@ -24,7 +24,11 @@ document.body.addEventListener( "mousedown", function() {
 
 function wheel( inc, e ) {
 	e = e.deltaY;
-	gs.bpm( gs._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );
+	ui.bpm( ui._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );
+	clearTimeout( bpmTimeout );
+	bpmTimeout = setTimeout( gs.bpm.bind( null, ui._bpm ), 400 );
 }
+
+var bpmTimeout;
 
 } )();
