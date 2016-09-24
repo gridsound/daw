@@ -14,7 +14,7 @@
 		transition: .2s;
 		transition-property: color, background;
 
-		.icon {
+		.circle {
 			width: 18px;
 			vertical-align: middle;
 			line-height: $task-height;
@@ -22,11 +22,24 @@
 			font-size: 6px;
 			transition: font-size .2s;
 		}
+		.tool {
+			margin-right: 5px;
+			width: 16px;
+			height: 16px;
+			line-height: 16px;
+			border-radius: 2px;
+			padding: 1px;
+			background: #353535;
+		}
+		.title {
+			font-family: monospace;
+			font-size: 10px;
+		}
 		&.undone {
-			color: #666;
+			color: #888;
 			border-bottom-style: dashed;
 
-			.icon {
+			.circle {
 				&:after {
 					content: $icon-circle-o;
 				}
@@ -35,7 +48,7 @@
 		&:hover {
 			color: #fff;
 			background: $color_taskHoverBg;
-			.icon {
+			.circle {
 				font-size: 10px;
 			}
 		}

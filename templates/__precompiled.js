@@ -11,11 +11,13 @@ templates['grid'] = template({"compiler":[7,">= 4.0.0"],"main":function(containe
     return "<div id=\"grid\">\r\n	<div class=\"emWrapper\">\r\n		<div class=\"header\">\r\n			<div class=\"timeline\">\r\n				<span class=\"timeArrow icon caret-down\"></span>\r\n			</div>\r\n		</div>\r\n		<div class=\"trackList\">\r\n			<div class=\"cols\">\r\n				<div class=\"colA trackNames\">\r\n					<div class=\"extend\" data-mousemove-fn=\"trackNames\"></div>\r\n				</div>\r\n				<div class=\"colB\">\r\n					<div class=\"trackLinesBg\"></div>\r\n					<div class=\"trackLines\">\r\n						<div class=\"timeCursor\"></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
 },"useData":true});
 templates['historyAction'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function";
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<a class=\"task\">\r\n	<i class=\"icon fw circle\"></i>\r\n	<b class=\"text\">"
-    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</b>\r\n	<span class=\"text\">"
+  return "<a class=\"task\">\r\n	<i class=\"icon fw circle\"></i\r\n	><i class=\"icon fw tool tool-"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\"></i\r\n	><b class=\"title\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</b\r\n	><span class=\"text\">"
     + ((stack1 = ((helper = (helper = helpers.desc || (depth0 != null ? depth0.desc : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"desc","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</span>\r\n</a>\r\n";
 },"useData":true});
