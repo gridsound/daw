@@ -51,9 +51,9 @@ function moveSample( action ) {
 }
 
 function cropSample( action ) {
-	gs.samplesDuration( action.sample, -action.whenDiff );
+	gs.samplesDuration( action.sample, -action.durationDiff );
 	gs.samplesWhen( action.sample, action.whenDiff );
-	gs.samplesSlip( action.sample, -action.whenDiff );
+	gs.samplesSlip( action.sample, -action.offset );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );
