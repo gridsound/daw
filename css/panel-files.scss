@@ -4,23 +4,12 @@
 	}
 
 	.filters {
-		display: flex;
-		flex-wrap: wrap;
-		font-size: 12px;
-		font-weight: bold;
-		background: $color_fileFiltersBg;
-		border-bottom: 1px dashed #000;
-
 		a {
-			padding: 10px;
+			padding: 6px 10px;
 			border-radius: .2em;
-			color: #969696;
 			opacity: .5;
 			text-decoration: line-through;
 			font-variant: all-small-caps;
-			&:hover {
-				background: rgba( #fff, .05 );
-			}
 		}
 		&.used .used,
 		&.loaded .loaded,
@@ -28,11 +17,6 @@
 			opacity: 1;
 			text-decoration: none;
 		}
-	}
-
-	.filelist {
-		flex: 1;
-		overflow: auto;
 	}
 
 	.sample {

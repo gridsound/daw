@@ -19,20 +19,24 @@ templates['grid'] = template({"compiler":[7,">= 4.0.0"],"main":function(containe
     return "<div id=\"grid\">\n	<div class=\"emWrapper\">\n		<div class=\"header\">\n			<div class=\"timeline\">\n				<span class=\"timeArrow icon caret-down\"></span>\n			</div>\n		</div>\n		<div class=\"trackList\">\n			<div class=\"cols\">\n				<div class=\"colA trackNames\">\n					<div class=\"extend\" data-mousemove-fn=\"trackNames\"></div>\n				</div>\n				<div class=\"colB\">\n					<div class=\"trackLinesBg\"></div>\n					<div class=\"trackLines\">\n						<div class=\"timeCursor\"></div>\n					</div>\n				</div>\n			</div>\n		</div>\n	</div>\n</div>\n";
 },"useData":true});
 templates['historyAction'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper;
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<a class=\"task\">\n	<i class=\"icon fw circle\"></i>\n	<span class=\"text\">"
-    + ((stack1 = ((helper = (helper = helpers.desc || (depth0 != null ? depth0.desc : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"desc","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+  return "<a class=\"task\">\n	<i class=\"icon fw circle\"></i\n	><i class=\"icon fw tool tool-"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\"></i\n	><b class=\"title\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</b\n	><span class=\"text\">"
+    + ((stack1 = ((helper = (helper = helpers.desc || (depth0 != null ? depth0.desc : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"desc","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</span>\n</a>\n";
 },"useData":true});
 templates['menu'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id=\"menu\">\n	<a class=\"btn border icon play\" title=\"Play/pause (press Space, hold Ctrl for pause)\"></a>\n	<a class=\"btn border icon stop\" title=\"Stop (press Space)\"></a>\n	<div class=\"bpm border\" title=\"Beats per minute (Scroll to change)\">\n		<span class=\"text\">\n			<a class=\"a-bpm\">\n				<i class=\"icon\"></i>\n				<span class=\"int\"></span>\n				<span class=\"dec\"></span>\n			</a>\n			<div class=\"bpm-list\">\n				<a>80</a><a>90</a><a>100</a>\n				<a>110</a><a>120</a><a>130</a>\n				<a>140</a><a>150</a><a>160</a>\n			</div>\n			<span class=\"unit\">bpm</span>\n		</span>\n	</div>\n	<a data-edit=\"save\"     class=\"btn icon fw save\" title=\"Save\"></a>\n	<a data-option=\"magnet\" class=\"btn icon fw magnet\" title=\"Toggle magnetism (press G)\"></a>\n	<div class=\"sep\"></div>\n	<a data-tool=\"select\" class=\"btn icon fw tool-select\" title=\"Select (hold Shift or press V)\"></a>\n	<a data-tool=\"paint\"  class=\"btn icon fw tool-paint\" title=\"Paint (press B)\"></a>\n	<a data-tool=\"delete\" class=\"btn icon fw tool-delete\" title=\"Delete (press D)\"></a>\n	<a data-tool=\"mute\"   class=\"btn icon fw tool-mute\" title=\"Mute (press M)\" style=\"display: none;\"></a>\n	<a data-tool=\"slip\"   class=\"btn icon fw tool-slip\" title=\"Slip (press S)\"></a>\n	<a data-tool=\"cut\"    class=\"btn icon fw tool-cut\" title=\"Cut (press C)\"></a>\n	<a data-tool=\"hand\"   class=\"btn icon fw tool-hand\" title=\"Hand (hold Alt or press H)\"></a>\n	<a data-tool=\"zoom\"   class=\"btn icon fw tool-zoom last\" title=\"Zoom (hold Ctrl or press Z)\"></a>\n	<div class=\"flex1\"></div>\n	<a href=\"..\" target=\"_blank\" class=\"icon about\" title=\"About\"></a>\n</div>\n";
 },"useData":true});
 templates['panel-files'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<section id=\"files\">\n	<input type=\"file\"/>\n	<nav class=\"filters\">\n		<a href=\"#\" class=\"used\">Used</a>\n		<a href=\"#\" class=\"loaded\">Loaded</a>\n		<a href=\"#\" class=\"unloaded\">Unloaded</a>\n	</nav>\n	<div class=\"filelist\"></div>\n	<div class=\"placeholder\">\n		<i class=\"icon file-audio\"></i><br/>\n		<b>Drop audio files here</b>\n	</div>\n</section>\n";
+    return "<section id=\"files\">\n	<input type=\"file\"/>\n	<nav class=\"filters\">\n		<a href=\"#\" class=\"used\">Used</a>\n		<a href=\"#\" class=\"loaded\">Loaded</a>\n		<a href=\"#\" class=\"unloaded\">Unloaded</a>\n	</nav>\n	<div class=\"list filelist\"></div>\n	<div class=\"placeholder\">\n		<i class=\"icon file-audio\"></i><br/>\n		<b>Drop audio files here</b>\n	</div>\n</section>\n";
 },"useData":true});
 templates['panel-history'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<section id=\"history\">\n	<div class=\"actionlist\"></div>\n</section>\n";
+    return "<section id=\"history\">\n	<nav>\n		<span class=\"title\">History</span>\n		<a href=\"#\" class=\"btn icon fw undo\" title=\"Undo (Ctrl + Z)\"></a>\n		<a href=\"#\" class=\"btn icon fw redo\" title=\"Redo (Ctrl + Shift + Z)\"></a>\n	</nav>\n	<div class=\"list actionlist\"></div>\n</section>\n";
 },"useData":true});
 templates['panel'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
