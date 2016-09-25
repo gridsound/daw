@@ -2,33 +2,9 @@
 	$task-height: 26px;
 	$task-fs: 12px;
 	$btn-bg: #454545;
-	$title-color: lighten( $btn-bg, 20 );
 	$btn-size: 18px;
 
-	display: flex;
-	flex-direction: column;
-
-	.actionlist {
-		flex: 1;
-		overflow: auto;
-	}
-
 	nav {
-		padding: 5px;
-		border-bottom: 1px solid #111;
-		color: #fff;
-		background: #272727;
-
-		.title,
-		.btn {
-			vertical-align: middle;
-		}
-
-		.title {
-			font-size: 11px;
-			color: $title-color;
-		}
-
 		.btn {
 			display: inline-block;
 			width: $btn-size;
@@ -37,7 +13,6 @@
 			padding: 1px;
 			margin-left: 10px;
 			border-radius: 2px;
-			background: $btn-bg;
 		}
 	}
 
@@ -75,8 +50,8 @@
 			font-size: 11px;
 		}
 		&.undone {
-			color: #888;
 			border-bottom-style: dashed;
+			opacity: .4;
 
 			.circle {
 				&:after {
@@ -87,6 +62,8 @@
 		&:hover {
 			color: #fff;
 			background: $color_taskHoverBg;
+			opacity: 1;
+
 			.circle {
 				font-size: 10px;
 			}
