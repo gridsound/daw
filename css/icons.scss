@@ -22,6 +22,8 @@ $icon-file-audio       : "\f1c7"; // fa-file-audio-o
 // #panel :
 $icon-history          : "\f0e2"; // fa-undo
 $icon-files            : "\f001"; // fa-music
+$icon-undo             : "\f112"; // fa-reply
+$icon-redo             : "\f064"; // fa-share
 
 // .file :
 $icon-ramload          : "\f019"; // fa-download
@@ -95,6 +97,8 @@ $icon-tool-zoom        : "\f002"; // fa-search
 	&.stop:after          { content: $icon-stop;          }
 	&.save:after          { content: $icon-save;          }
 	&.magnet:after        { content: $icon-magnet;        }
+	&.undo:after          { content: $icon-undo;          }
+	&.redo:after          { content: $icon-redo;          }
 
 	&.tool-cut:after      { content: $icon-tool-cut;      }
 	&.tool-delete:after   { content: $icon-tool-delete;   }

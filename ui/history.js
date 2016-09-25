@@ -15,26 +15,18 @@ ui.historyPush = function( action ) {
 		elAction = wisdom.cE( Handlebars.templates.historyAction( action ) )[ 0 ];
 
 	while ( nbUndoneActions-- > 0 ) {
-		ui.elHistoryActionList.lastChild.remove();
 		elActions.pop();
+		ui.elHistoryActionList.lastChild.remove();
 	}
+	ind++;
 	elAction.historyAction = action;
-	elAction.historyIndex = ind++;
-	ui.elHistoryActionList.appendChild( elAction );
 	elActions.push( elAction );
+	ui.elHistoryActionList.appendChild( elAction );
+	ui.elHistoryActionList.scrollTop = 1000000000;
 };
 
-ui.historyGo = function( n ) {
-	if ( n < 0 ) {
-		while ( n++ < 0 ) {
-			elActions[ --ind ].classList.add( "undone" );
-		}
-	} else if ( n > 0 ) {
-		while ( n-- > 0 ) {
-			elActions[ ind++ ].classList.remove( "undone" );
-		}
-	}
-};
+ui.historyUndo = function() { elActions[ --ind ].classList.add( "undone" ); };
+ui.historyRedo = function() { elActions[ ind++ ].classList.remove( "undone" ); };
 
 var ind, elActions;
 

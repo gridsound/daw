@@ -61,6 +61,8 @@ ui.elHistoryActionList = qS( ui.elPanel, ".actionlist" );
 ui.elInputFile         = qS( ui.elPanel, "input[type='file']" );
 ui.elFileFilters       = qS( ui.elPanel, ".filters" );
 ui.elFilelist          = qS( ui.elPanel, ".filelist" );
+ui.elBtnUndo           = qS( "#history .btn.undo" );
+ui.elBtnRedo           = qS( "#history .btn.redo" );
 
 ui.elGrid         = qS( "#grid" );
 ui.elGridEm       = qS( ui.elGrid, ".emWrapper" );

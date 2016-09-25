@@ -124,6 +124,7 @@ if [[ -z $1 || $1 == "js" ]]; then
 		gs/events/dropFiles.js            \
 		gs/events/fileFilters.js          \
 		gs/events/gridMouse.js            \
+		gs/events/history.js              \
 		gs/events/keyboard.js             \
 		gs/events/panelMenu.js            \
 		gs/events/playPauseStop.js        \

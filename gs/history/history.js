@@ -3,31 +3,42 @@
 ( function() {
 
 gs.history = {
-	push: function( obj ) {
+	goToAction: function( action ) {
+		var n = action.id - rip + 1;
+		if ( n < 0 ) {
+			while ( n++ ) {
+				gs.history.undo();
+			}
+		} else if ( n > 0 ) {
+			while ( n-- ) {
+				gs.history.redo();
+			}
+		}
+	},
+	push: function( action ) {
 		if ( rip < actions.length - 1 ) {
 			actions.splice( rip + 1 );
 		}
-		actions.push( obj );
-		ui.historyPush( obj );
-		++rip;
+		action.id = rip++;
+		actions.push( action );
+		ui.historyPush( action );
 	},
 	undo: function() {
 		if ( rip > 0 ) {
-			var undo = actions[ rip ].undo;
+			var undo = actions[ rip-- ].undo;
 			if ( undo.func ) {
 				undo.func( undo );
 			}
-			--rip;
-			ui.historyGo( -1 );
+			ui.historyUndo();
 		}
 	},
 	redo: function() {
 		if ( rip < actions.length - 1 ) {
-			var action = actions[ ++rip ].action;
-			if ( action.func ) {
-				action.func( action );
+			var redo = actions[ ++rip ].action;
+			if ( redo.func ) {
+				redo.func( redo );
 			}
-			ui.historyGo( +1 );
+			ui.historyRedo();
 		}
 	}
 };

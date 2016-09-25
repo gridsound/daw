@@ -28,7 +28,7 @@ templates['panel-files'] = template({"compiler":[7,">= 4.0.0"],"main":function(c
     return "<section id=\"files\">\r\n	<input type=\"file\"/>\r\n	<nav class=\"filters\">\r\n		<a href=\"#\" class=\"used\">Used</a>\r\n		<a href=\"#\" class=\"loaded\">Loaded</a>\r\n		<a href=\"#\" class=\"unloaded\">Unloaded</a>\r\n	</nav>\r\n	<div class=\"filelist\"></div>\r\n	<div class=\"placeholder\">\r\n		<i class=\"icon file-audio\"></i><br/>\r\n		<b>Drop audio files here</b>\r\n	</div>\r\n</section>\r\n";
 },"useData":true});
 templates['panel-history'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<section id=\"history\">\r\n	<div class=\"actionlist\"></div>\r\n</section>\r\n";
+    return "<section id=\"history\">\r\n	<nav>\r\n		<span class=\"title\">History</span>\r\n		<a href=\"#\" class=\"btn icon fw undo\" title=\"Undo (Ctrl + Z)\"></a>\r\n		<a href=\"#\" class=\"btn icon fw redo\" title=\"Redo (Ctrl + Shift + Z)\"></a>\r\n	</nav>\r\n	<div class=\"actionlist\"></div>\r\n</section>\r\n";
 },"useData":true});
 templates['panel'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
