@@ -1,5 +1,17 @@
 "use strict";
 
+ui.CSS_sampleCreate = function( s ) {
+	s.elSample = wisdom.cE( Handlebars.templates.sample( s.gsfile ) )[ 0 ];
+	s.elSVG = wisdom.qS( s.elSample, "svg" );
+	s.elName = wisdom.qS( s.elSample, ".name" );
+	s.elCropStart = wisdom.qS( s.elSample, ".crop.start" );
+	s.elCropEnd = wisdom.qS( s.elSample, ".crop.end" );
+
+	wisdom.qSA( s.elSample, "*" ).forEach( function( el ) {
+		el.gsSample = s;
+	}, s );
+}
+
 ui.CSS_sampleTrack = function( s ) {
 	s.track.elColLinesTrack.appendChild( s.elSample );
 };
