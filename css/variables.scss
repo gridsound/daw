@@ -1,19 +1,24 @@
-$COLOR_MAIN: #142b3c;
+$COLOR_MAIN: lighten( #142b3c, 3 );
 $COLOR_SAMPLE: #76c4ff;
 $COLOR_SAMPLE_SELECTED: #b51818;
 $COLOR_SELECTION: #ff3636;
 
 // ---------------------------------------
 
-$color_appBg: #383838;
-$color_bodyStripA: #333;
+$color_appBg: lighten( grayscale( $COLOR_MAIN ), 7 );
+$color_bodyStripA: $color_appBg;
 $color_bodyStripB: darken( $color_bodyStripA, 2 );
 $width_bodyStrip: 42px;
 $width_scrollbarSize: 5px;
 $color_scrollbarBg: #222;
 $color_scrollbarThumb: #888;
 
+$color_panelNav: darken( $color_appBg, 5 );
+$color_tracknamesBg: darken( $color_appBg, 6.2 );
 $color_visualBg: rgba( #060315, .5 );
+$color_tracklinesBg: $COLOR_MAIN;
+$color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
+
 $color_clock: #ccc;
 $color_clockStroke: #000;
 $opacity_analyserWaveform: .2;
@@ -21,13 +26,12 @@ $opacity_analyserWaveform: .2;
 $color_menuText: $color_clock;
 $color_playBtn: $COLOR_MAIN;
 $color_pauseBtn: #522;
-$color_stopBtn: #333;
-$color_tool: $COLOR_MAIN;
+$color_stopBtn: lighten( $color_appBg, 8 );
 $lighten_toolHover: 5%;
 $lighten_toolSelected: 10%;
 $color_toolBorder: #1c1c27;
 
-$color_bpmBg: #222;
+$color_bpmBg: darken( $color_appBg, 6.2 );
 $color_bpmUnit: #666;
 $color_bpmListBg: rgba( $color_bpmBg, .5 );
 $color_bpmListHover: #111;
@@ -43,10 +47,7 @@ $color_fileWaveform: lighten( $COLOR_MAIN, 10% );
 $color_timelineBg: #0d0d0d;
 $color_timelineText: #888;
 
-$color_tracknamesBg: #272727;
 $color_tracknamesBorder: #151515;
-$color_tracklinesBg: $COLOR_MAIN;
-$color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
 $color_tracklinesBorder: #090909;
 
 $color_trackOffBg: rgba( #000, .2 );
