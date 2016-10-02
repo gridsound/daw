@@ -28,7 +28,7 @@ gs.save = function() {
 
 	// TODO save wfilters
 	ui.tracks.forEach( function( t ) {
-		if ( t.isOn || t.samples.length ||
+		if ( !t.isOn || t.samples.length ||
 			 t.name || ( t.wfilters && t.wfilters.length ) ) {
 			_save.tracks.push( [
 				t.id,
