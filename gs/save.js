@@ -8,9 +8,9 @@ gs.save = function() {
 			return [
 				s.track.id,
 				s.gsfile.id,
-				s.wsample ? s.wsample.when : s.savedWhen,
-				s.wsample ? s.wsample.offset : s.savedOffset,
-				s.wsample ? s.wsample.duration : s.savedDuration
+				ui.BPMem * ( s.wsample ? s.wsample.when : s.savedWhen ),
+				ui.BPMem * ( s.wsample ? s.wsample.offset : s.savedOffset ),
+				ui.BPMem * ( s.wsample ? s.wsample.duration : s.savedDuration )
 			];
 		} ),
 		tracks = ui.tracks.reduce( function( arr, t ) {
