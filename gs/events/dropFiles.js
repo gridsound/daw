@@ -2,33 +2,25 @@
 
 ( function() {
 
-var saveFile, arrFiles = [];
+var saveFile, arrFiles;
 
 document.body.ondragover = function() { return false; };
 document.body.ondrop = function( e ) {
-	var data = e && e.dataTransfer;
+	var file,
+		i = 0,
+		data = e && e.dataTransfer;
 
 	arrFiles = [];
 	saveFile = false;
 
 	// Chrome :
-	if ( data.items ) {
-		extractData( data.items );
-
-	// IE :
-	} else if ( !data.files.length ) {
-		alert( "Your browser doesn't support folders." );
+	if ( data.items && data.items.length ) {
+		dataItems( data.items );
 
 	// Firefox :
 	} else {
-		var f, i = 0;
-		while ( f = data.files[ i++ ] ) {
-			if ( f.type && f.type !== "text/plain" ) {
-				arrFiles.push( f );
-			} else if ( !saveFile ) {
-				saveFile = f;
-				gs.reset();
-			}
+		while ( file = data.files[ i++ ] ) {
+			pushFile( file );
 		}
 		gs.load( saveFile ).then( function() {
 			loadFiles();
@@ -36,46 +28,6 @@ document.body.ondrop = function( e ) {
 	}
 	return false;
 };
-
-function traverseTree( item ) {
-	return new Promise( function( resolve ) {
-		if ( item.isFile ) {
-			item.file( function( file ) {
-				if ( file.type && file.type !== "text/plain" ) {
-					arrFiles.push( file );
-				} else if ( !saveFile ) {
-					saveFile = file;
-					gs.reset();
-				}
-				resolve();
-			} );
-		} else if ( item.isDirectory ) {
-			var dirReader = item.createReader();
-			dirReader.readEntries( function( files ) {
-				var promArr = [];
-				files.forEach( function( f ) {
-					promArr.push( traverseTree( f ) );
-				} );
-				Promise.all( promArr ).then( resolve );
-			} );
-		}
-	} );
-}
-
-function extractData( droppedItems ) {
-	var item, i = 0, arrayPromises = [];
-
-	while ( item = droppedItems[ i++ ] ) {
-		if ( item = item.webkitGetAsEntry() ) {
-			arrayPromises.push( traverseTree( item ) );
-		}
-	}
-	Promise.all( arrayPromises ).then( function() {
-		gs.load( saveFile ).then( function() {
-			loadFiles();
-		} );
-	} );
-}
 
 function loadFiles() {
 	arrFiles.forEach( function( file ) {
@@ -91,6 +43,61 @@ function loadFiles() {
 			gs.fileCreate( file );
 		}
 	} );
+}
+
+function dataItems( droppedItems ) {
+	var item, i = 0, arrayPromises = [];
+
+	while ( item = droppedItems[ i++ ] ) {
+		if ( item.webkitGetAsEntry &&
+			( item = item.webkitGetAsEntry() )
+		) {
+			arrayPromises.push( traverseTree( item ) );
+		} else if ( item = item.getAsFile() ) {
+			lg("item.getAsFile()", item)
+			pushFile( item );
+		}
+	}
+	Promise.all( arrayPromises ).then( function() {
+		gs.load( saveFile ).then( function() {
+			loadFiles();
+		} );
+	} );
+}
+
+function traverseTree( item ) {
+	return new Promise( function( resolve ) {
+		if ( item.isFile ) {
+			item.file( function( file ) {
+				pushFile( file );
+				resolve();
+			} );
+		} else if ( item.isDirectory ) {
+			var dirReader = item.createReader();
+			dirReader.readEntries( function( files ) {
+				var promArr = [];
+				files.forEach( function( f ) {
+					promArr.push( traverseTree( f ) );
+				} );
+				Promise.all( promArr ).then( resolve );
+			} );
+		} else {
+			resolve();
+		}
+	} );
+}
+
+function pushFile( file ) {
+	switch ( /[^.]*.?([^.]*)$/.exec( file.name )[ 1 ].toLowerCase() ) {
+		case "gs":
+			saveFile = file;
+			gs.reset();
+			break;
+		case "mp3": case "mpg": case "mpeg":
+		case "wav": case "wave":
+		case "ogg":
+			arrFiles.push( file );
+	}
 }
 
 } )();
