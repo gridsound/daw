@@ -105,7 +105,7 @@ function cropEnd( action ) {
 }
 
 function slip( action ) {
-	gs.samplesSlip( action.sample, action.offsetDiff );
+	gs.samplesSlip( action.sample, action.offset );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );

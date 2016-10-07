@@ -2,36 +2,36 @@
 
 ( function() {
 
-var	sampleSave,
-	oldOffset;
-
 ui.tool.slip = {
 	mousedown: function( e ) {
-		sampleSave = e.target.gsSample;
-		if ( sampleSave ) {
-			oldOffset = sampleSave.wsample.offset;
+		_sample = e.target.gsSample;
+		if ( _sample ) {
+			_offset = _sample.wsample.offset;
 		}
 	},
 	mouseup: function() {
-		if ( sampleSave ) {
+		if ( _sample ) {
 			gs.history.push( "slip", {
-					sample: sampleSave,
-					offsetDiff: oldOffset - sampleSave.wsample.offset
+					sample: _sample,
+					offset: _offset - _sample.wsample.offset
 				}, {
-					sample: sampleSave,
-					offsetDiff: sampleSave.wsample.offset - oldOffset
+					sample: _sample,
+					offset: _sample.wsample.offset - _offset
 			} );
-			gs.samplesForEach( sampleSave, function( s ) {
+			gs.samplesForEach( _sample, function( s ) {
 				wa.composition.update( s.wsample, "mv" );
 			} );
 		}
-		sampleSave = null;
+		_sample = null;
 	},
 	mousemove: function( e, secRel ) {
-		if ( sampleSave ) {
-			return gs.samplesSlip( sampleSave, secRel );
+		if ( _sample ) {
+			return gs.samplesSlip( _sample, secRel );
 		}
 	}
 };
+
+var	_sample,
+	_offset;
 
 } )();
