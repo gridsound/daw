@@ -2,6 +2,53 @@
 
 ( function() {
 
+Object.assign( gs.history, {
+	select:           select,
+	undoSelect:       undoSelect,
+	insertSample:     insertSample,
+	removeSample:     removeSample,
+	moveX:            moveSample,
+	crop:             cropSample,
+	endCrop:          endCropSample,
+	slip:             slipSample,
+	undoInsertSample: removeSample,
+	undoRemoveSample: insertSample,
+	undoMoveX:        moveSample,
+	undoCrop:         cropSample,
+	undoEndCrop:      endCropSample,
+	undoSlip:         slipSample,
+} );
+
+function select( action ) {
+	var samplesArr = action.samples,
+		unselectedArr = action.removedSamples;
+
+	if ( unselectedArr && unselectedArr.length > 0 ) {
+		gs.samplesUnselect();
+	}
+	if ( samplesArr ) {
+		samplesArr.forEach( function( s ) {
+			gs.sampleSelect( s, !s.selected );
+		} );
+	}
+}
+
+function undoSelect( action ) {
+	var samplesArr = action.samples,
+		unselectedArr = action.removedSamples;
+
+	if ( samplesArr && samplesArr.length > 0 ) {
+		gs.samplesUnselect();
+		samplesArr.forEach( function( s ) {
+			gs.sampleSelect( s, !s.selected );
+		} );
+	} else if ( unselectedArr ) {
+		unselectedArr.forEach( function( s ) {
+			gs.sampleSelect( s, !s.selected );
+		} );
+	}
+}
+
 function insertSample( action ) {
 	action.samples.forEach( function( s ) {
 		wa.composition.addSamples( [ s.wsample ] );
@@ -16,13 +63,13 @@ function insertSample( action ) {
 		if ( !s.gsfile.nbSamples++ ) {
 			ui.CSS_fileUsed( s.gsfile );
 		}
-	});
+	} );
 }
 
 function removeSample( action ) {
 	action.samples.forEach( function( s ) {
 		gs.samplesDelete( s );
-	});
+	} );
 }
 
 function moveSample( action ) {
@@ -70,85 +117,7 @@ function slipSample( action ) {
 	gs.samplesSlip( action.sample, action.offsetDiff );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
-	});
-}
-
-gs.history.select = function( action ) {
-	var samplesArr = action.samples,
-		unselectedArr = action.removedSamples;
-
-	if ( unselectedArr && unselectedArr.length > 0 ) {
-		gs.samplesUnselect();
-	}
-	if ( samplesArr ) {
-		samplesArr.forEach( function( s ) {
-			gs.sampleSelect( s, !s.selected );
-		} );
-	}
-}
-
-gs.history.undoSelect = function( undo ) {
-	var samplesArr = undo.samples,
-		unselectedArr = undo.removedSamples;
-
-	if ( samplesArr && samplesArr.length > 0 ) {
-		gs.samplesUnselect();
-		samplesArr.forEach( function( s ) {
-			gs.sampleSelect( s, !s.selected );
-		} );
-	} else if ( unselectedArr ) {
-		unselectedArr.forEach( function( s ) {
-			gs.sampleSelect( s, !s.selected );
-		} );
-	}
-}
-
-gs.history.insertSample = function( action ) {
-	insertSample( action );
-}
-
-gs.history.undoInsertSample = function( undo ) {
-	removeSample( undo );
-}
-
-gs.history.removeSample = function( action ) {
-	removeSample( action );
-}
-
-gs.history.undoRemoveSample = function( undo ) {
-	insertSample( undo );
-}
-
-gs.history.moveX = function( action ) {
-	moveSample( action );
-}
-
-gs.history.undoMoveX = function( undo ) {
-	moveSample( undo );
-}
-
-gs.history.crop = function( action ) {
-	cropSample( action );
-}
-
-gs.history.undoCrop = function( undo ) {
-	cropSample( undo );
-}
-
-gs.history.endCrop = function( action ) {
-	endCropSample( action );
-}
-
-gs.history.undoEndCrop = function( undo ) {
-	endCropSample( undo );
-}
-
-gs.history.slip = function( action ) {
-	slipSample( action );
-}
-
-gs.history.undoSlip = function( undo ) {
-	slipSample( undo );
+	} );
 }
 
 } )();
