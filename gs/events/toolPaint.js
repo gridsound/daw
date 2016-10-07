@@ -36,25 +36,23 @@ ui.tool.paint = {
 				_sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
 				cropping = croppingStart = false;
 			}
-			if ( _sample.track.id !== _trackId ||
-				 _sample.wsample.when !== _when ||
-				 _sample.wsample.offset !== _offset ||
+			if ( _sample.track.id         !== _trackId ||
+				 _sample.wsample.when     !== _when    ||
+				 _sample.wsample.offset   !== _offset  ||
 				 _sample.wsample.duration !== _duration
 			) {
 				gs.history.push( actionName, {
-						sample: _sample,
-						trackId: _sample.track.id,
-						changeTrack: _sample.track.id !== _trackId,
-						when: _sample.wsample.when - _when,
-						offset: _sample.wsample.offset - _offset,
-						duration: _duration - _sample.wsample.duration,
-					}, {
-						sample: _sample,
-						trackId: _trackId,
-						changeTrack: _sample.track.id !== _trackId,
-						when: _when - _sample.wsample.when,
-						offset: _offset - _sample.wsample.offset,
+						sample:   _sample,
+						track:    _sample.track.id - _trackId,
+						when:     _sample.wsample.when - _when,
+						offset:   _sample.wsample.offset - _offset,
 						duration: _sample.wsample.duration - _duration,
+					}, {
+						sample:   _sample,
+						track:    _trackId - _sample.track.id,
+						when:     _when - _sample.wsample.when,
+						offset:   _offset - _sample.wsample.offset,
+						duration: _duration - _sample.wsample.duration,
 				} );
 			}
 			_sample =

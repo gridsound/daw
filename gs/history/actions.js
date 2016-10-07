@@ -73,23 +73,14 @@ function d3lete( action ) {
 }
 
 function move( action ) {
-	var nbTracksToMove, minTrackId = Infinity;
-
 	gs.samplesWhen( action.sample, action.when );
-	if ( action.changeTrack ) {
+	if ( action.track ) {
 		if ( action.sample.selected ) {
-			nbTracksToMove = action.trackId - action.sample.track.id;
-			if ( nbTracksToMove < 0 ) {
-				gs.selectedSamples.forEach( function( s ) {
-					minTrackId = Math.min( s.track.id, minTrackId );
-				} );
-				nbTracksToMove = -Math.min( minTrackId, -nbTracksToMove );
-			}
 			gs.selectedSamples.forEach( function( s ) {
-				s.inTrack( s.track.id + nbTracksToMove );
+				s.inTrack( s.track.id + action.track );
 			} );
 		} else {
-			action.sample.inTrack( action.trackId );
+			action.sample.inTrack( action.sample.track.id + action.track );
 		}
 	}
 	gs.samplesForEach( action.sample, function( s ) {
@@ -98,7 +89,7 @@ function move( action ) {
 }
 
 function crop( action ) {
-	gs.samplesDuration( action.sample, -action.duration );
+	gs.samplesDuration( action.sample, action.duration );
 	gs.samplesWhen( action.sample, action.when );
 	gs.samplesSlip( action.sample, -action.offset );
 	gs.samplesForEach( action.sample, function( s ) {
@@ -107,7 +98,7 @@ function crop( action ) {
 }
 
 function cropEnd( action ) {
-	gs.samplesDuration( action.sample, -action.duration );
+	gs.samplesDuration( action.sample, action.duration );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );
