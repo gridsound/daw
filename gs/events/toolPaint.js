@@ -10,12 +10,10 @@ ui.tool.paint = {
 			pushAction( null, gs.selectedSamples.slice() );
 			gs.samplesUnselect();
 		} else if ( sample ) {
-			oldData.push(
-				sample.wsample.when,
-				sample.wsample.offset,
-				sample.wsample.duration,
-				sample.track.id
-			);
+			_trackId = sample.track.id;
+			_when = sample.wsample.when;
+			_offset = sample.wsample.offset;
+			_duration = sample.wsample.duration;
 			croppingStart = e.target.classList.contains( "start" );
 			cropping = croppingStart || e.target.classList.contains( "end" );
 			if ( cropping ) {
@@ -24,54 +22,59 @@ ui.tool.paint = {
 			} else {
 				actionName = "move";
 			}
-			sampleSave = sample;
+			_sample = sample;
 			ui.cursor( "app", !cropping ? "grabbing" :
 				croppingStart ? "w-resize" : "e-resize" );
 		}
 	},
 	mouseup: function() {
-		if ( sampleSave ) {
-			gs.samplesForEach( sampleSave, function( s ) {
+		if ( _sample ) {
+			gs.samplesForEach( _sample, function( s ) {
 				wa.composition.update( s.wsample, "mv" );
 			} );
 			if ( cropping ) {
-				sampleSave[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
+				_sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
 				cropping = croppingStart = false;
 			}
-			if ( sampleSave.xem !== oldData[ 0 ] || sampleSave.wsample.offset !== oldData[ 1 ] ||
-				 sampleSave.wsample.duration !== oldData[ 2 ] || sampleSave.track.id !== oldData[ 3 ]
+			if ( _sample.track.id !== _trackId ||
+				 _sample.wsample.when !== _when ||
+				 _sample.wsample.offset !== _offset ||
+				 _sample.wsample.duration !== _duration
 			) {
 				gs.history.push( actionName, {
-						sample: sampleSave,
-						whenDiff: sampleSave.wsample.when - oldData[ 0 ],
-						offset: sampleSave.wsample.offset - oldData[ 1 ],
-						durationDiff: oldData[ 2 ] - sampleSave.wsample.duration,
-						trackId: sampleSave.track.id,
-						changeTrack: sampleSave.track.id !== oldData[ 3 ]
+						sample: _sample,
+						trackId: _sample.track.id,
+						changeTrack: _sample.track.id !== _trackId,
+						when: _sample.wsample.when - _when,
+						offset: _sample.wsample.offset - _offset,
+						duration: _duration - _sample.wsample.duration,
 					}, {
-						sample: sampleSave,
-						whenDiff: oldData[ 0 ] - sampleSave.wsample.when,
-						offset: oldData[ 1 ] - sampleSave.wsample.offset,
-						durationDiff: sampleSave.wsample.duration - oldData[ 2 ],
-						trackId: oldData[ 3 ],
-						changeTrack: sampleSave.track.id !== oldData[ 3 ]
+						sample: _sample,
+						trackId: _trackId,
+						changeTrack: _sample.track.id !== _trackId,
+						when: _when - _sample.wsample.when,
+						offset: _offset - _sample.wsample.offset,
+						duration: _sample.wsample.duration - _duration,
 				} );
-				oldData = [];
 			}
-			sampleSave = null;
+			_sample =
+			_trackId =
+			_when =
+			_offset =
+			_duration = null;
 			ui.cursor( "app", null );
 		}
 	},
 	mousemove: function( e, secRel ) {
-		if ( sampleSave ) {
+		if ( _sample ) {
 			// Changes tracks:
 			if ( !cropping ) {
 				e = e.target;
 				var nbTracksToMove, minTrackId = Infinity,
 					track = e.uitrack || e.gsSample && e.gsSample.track;
 				if ( track ) {
-					if ( sampleSave.selected ) {
-						nbTracksToMove = track.id - sampleSave.track.id;
+					if ( _sample.selected ) {
+						nbTracksToMove = track.id - _sample.track.id;
 						if ( nbTracksToMove < 0 ) {
 							gs.selectedSamples.forEach( function( s ) {
 								minTrackId = Math.min( s.track.id, minTrackId );
@@ -82,23 +85,26 @@ ui.tool.paint = {
 							s.inTrack( s.track.id + nbTracksToMove );
 						} );
 					} else {
-						sampleSave.inTrack( track.id );
+						_sample.inTrack( track.id );
 					}
 				}
 			}
 			return cropping
 				? croppingStart
-					? gs.samplesCropStart( sampleSave, secRel )
-					: gs.samplesCropEnd( sampleSave, secRel )
-				: gs.samplesWhen( sampleSave, secRel );
+					? gs.samplesCropStart( _sample, secRel )
+					: gs.samplesCropEnd( _sample, secRel )
+				: gs.samplesWhen( _sample, secRel );
 		}
 	}
 };
 
-var sampleSave,
+var _sample,
+	_trackId,
+	_when,
+	_offset,
+	_duration,
 	cropping,
 	croppingStart,
-	actionName,
-	oldData = [];
+	actionName;
 
 } )();

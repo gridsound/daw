@@ -75,7 +75,7 @@ function d3lete( action ) {
 function move( action ) {
 	var nbTracksToMove, minTrackId = Infinity;
 
-	gs.samplesWhen( action.sample, action.whenDiff );
+	gs.samplesWhen( action.sample, action.when );
 	if ( action.changeTrack ) {
 		if ( action.sample.selected ) {
 			nbTracksToMove = action.trackId - action.sample.track.id;
@@ -98,8 +98,8 @@ function move( action ) {
 }
 
 function crop( action ) {
-	gs.samplesDuration( action.sample, -action.durationDiff );
-	gs.samplesWhen( action.sample, action.whenDiff );
+	gs.samplesDuration( action.sample, -action.duration );
+	gs.samplesWhen( action.sample, action.when );
 	gs.samplesSlip( action.sample, -action.offset );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
@@ -107,7 +107,7 @@ function crop( action ) {
 }
 
 function cropEnd( action ) {
-	gs.samplesDuration( action.sample, -action.durationDiff );
+	gs.samplesDuration( action.sample, -action.duration );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );
