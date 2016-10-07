@@ -12,11 +12,8 @@ ui.tool.slip = {
 	mouseup: function() {
 		if ( _sample ) {
 			gs.history.push( "slip", {
-					sample: _sample,
-					offset: _offset - _sample.wsample.offset
-				}, {
-					sample: _sample,
-					offset: _sample.wsample.offset - _offset
+				sample: _sample,
+				offset: _offset - _sample.wsample.offset,
 			} );
 			gs.samplesForEach( _sample, function( s ) {
 				wa.composition.update( s.wsample, "mv" );

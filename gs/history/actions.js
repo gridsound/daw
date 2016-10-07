@@ -3,53 +3,46 @@
 ( function() {
 
 Object.assign( gs.history, {
-	select:       select,
-	select_undo:  select_undo,
-	insert:       insert,
-	insert_undo:  d3lete,
-	delete:       d3lete,
-	delete_undo:  insert,
-	move:         move,
-	move_undo:    move,
-	crop:         crop,
-	crop_undo:    crop,
-	cropEnd:      cropEnd,
-	cropEnd_undo: cropEnd,
-	slip:         slip,
-	slip_undo:    slip,
+	select:  select,
+	insert:  insert,
+	delete:  d3lete,
+	move:    move,
+	crop:    crop,
+	cropEnd: cropEnd,
+	slip:    slip,
 } );
 
-function select( action ) {
+function select( action, undo ) {
 	var samplesArr = action.samples,
 		unselectedArr = action.removedSamples;
 
-	if ( unselectedArr && unselectedArr.length > 0 ) {
-		gs.samplesUnselect();
-	}
-	if ( samplesArr ) {
-		samplesArr.forEach( function( s ) {
-			gs.sampleSelect( s, !s.selected );
-		} );
-	}
-}
-
-function select_undo( action ) {
-	var samplesArr = action.samples,
-		unselectedArr = action.removedSamples;
-
-	if ( samplesArr && samplesArr.length > 0 ) {
-		gs.samplesUnselect();
-		samplesArr.forEach( function( s ) {
-			gs.sampleSelect( s, !s.selected );
-		} );
-	} else if ( unselectedArr ) {
-		unselectedArr.forEach( function( s ) {
-			gs.sampleSelect( s, !s.selected );
-		} );
+	if ( !undo ) {
+		if ( unselectedArr && unselectedArr.length > 0 ) {
+			gs.samplesUnselect();
+		}
+		if ( samplesArr ) {
+			samplesArr.forEach( function( s ) {
+				gs.sampleSelect( s, !s.selected );
+			} );
+		}
+	} else {
+		if ( unselectedArr && unselectedArr.length > 0 ) {
+			gs.samplesUnselect();
+			unselectedArr.forEach( function( s ) {
+				gs.sampleSelect( s, !s.selected );
+			} );
+		} else if ( samplesArr ) {
+			samplesArr.forEach( function( s ) {
+				gs.sampleSelect( s, !s.selected );
+			} );
+		}
 	}
 }
 
-function insert( action ) {
+function insert( action, undo ) {
+	if ( undo ) {
+		return d3lete( action, false );
+	}
 	action.samples.forEach( function( s ) {
 		wa.composition.addSamples( [ s.wsample ] );
 		gs.samples.push( s );
@@ -66,46 +59,66 @@ function insert( action ) {
 	} );
 }
 
-function d3lete( action ) {
+function d3lete( action, undo ) {
+	if ( undo ) {
+		return insert( action, false );
+	}
 	action.samples.forEach( function( s ) {
 		gs.samplesDelete( s );
 	} );
 }
 
-function move( action ) {
-	gs.samplesWhen( action.sample, action.when );
-	if ( action.track ) {
-		if ( action.sample.selected ) {
+function move( action, undo ) {
+	var sign   = undo ? -1 : 1,
+		sample = action.sample,
+		track  = sign * action.track,
+		when   = sign * action.when;
+
+	gs.samplesWhen( sample, when );
+	if ( track ) {
+		if ( sample.selected ) {
 			gs.selectedSamples.forEach( function( s ) {
-				s.inTrack( s.track.id + action.track );
+				s.inTrack( s.track.id + track );
 			} );
 		} else {
-			action.sample.inTrack( action.sample.track.id + action.track );
+			sample.inTrack( sample.track.id + track );
 		}
 	}
+	gs.samplesForEach( sample, function( s ) {
+		wa.composition.update( s.wsample, "mv" );
+	} );
+}
+
+function crop( action, undo ) {
+	var sign     = undo ? -1 : 1,
+		sample   = action.sample,
+		when     = sign * action.when,
+		offset   = sign * action.offset,
+		duration = sign * action.duration;
+
+	gs.samplesDuration( sample, duration );
+	gs.samplesWhen( sample, when );
+	gs.samplesSlip( sample, -offset );
+	gs.samplesForEach( sample, function( s ) {
+		wa.composition.update( s.wsample, "mv" );
+	} );
+}
+
+function cropEnd( action, undo ) {
+	var sign = undo ? -1 : 1,
+		duration = sign * action.duration;
+
+	gs.samplesDuration( action.sample, duration );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );
 }
 
-function crop( action ) {
-	gs.samplesDuration( action.sample, action.duration );
-	gs.samplesWhen( action.sample, action.when );
-	gs.samplesSlip( action.sample, -action.offset );
-	gs.samplesForEach( action.sample, function( s ) {
-		wa.composition.update( s.wsample, "mv" );
-	} );
-}
+function slip( action, undo ) {
+	var sign = undo ? -1 : 1,
+		offset = sign * action.offset;
 
-function cropEnd( action ) {
-	gs.samplesDuration( action.sample, action.duration );
-	gs.samplesForEach( action.sample, function( s ) {
-		wa.composition.update( s.wsample, "mv" );
-	} );
-}
-
-function slip( action ) {
-	gs.samplesSlip( action.sample, action.offset );
+	gs.samplesSlip( action.sample, offset );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );

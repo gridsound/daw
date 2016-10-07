@@ -11,7 +11,7 @@ function del( e ) {
 	var s = e.target.gsSample;
 
 	if ( s ) {
-		gs.history.push( "delete", { samples: [ s ] }, { samples: [ s ] } );
+		gs.history.push( "delete", { samples: [ s ] } );
 		gs.samplesDelete( s );
 	}
 }

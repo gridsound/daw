@@ -42,17 +42,11 @@ ui.tool.paint = {
 				 _sample.wsample.duration !== _duration
 			) {
 				gs.history.push( actionName, {
-						sample:   _sample,
-						track:    _sample.track.id - _trackId,
-						when:     _sample.wsample.when - _when,
-						offset:   _sample.wsample.offset - _offset,
-						duration: _sample.wsample.duration - _duration,
-					}, {
-						sample:   _sample,
-						track:    _trackId - _sample.track.id,
-						when:     _when - _sample.wsample.when,
-						offset:   _offset - _sample.wsample.offset,
-						duration: _duration - _sample.wsample.duration,
+					sample:   _sample,
+					track:    _sample.track.id - _trackId,
+					when:     _sample.wsample.when - _when,
+					offset:   _sample.wsample.offset - _offset,
+					duration: _sample.wsample.duration - _duration,
 				} );
 			}
 			_sample =

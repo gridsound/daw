@@ -3,11 +3,8 @@
 // This function is temporarly in the global scope.
 function pushAction( selected, unselected ) {
 	gs.history.push( "select", {
-			samples: selected && selected.length ? selected : null,
-			removedSamples: unselected
-		}, {
-			samples: unselected,
-			removedSamples: selected && selected.length ? selected : null
+		samples: selected && selected.length ? selected : null,
+		removedSamples: unselected
 	} );
 }
 
@@ -26,7 +23,6 @@ ui.tool.select = {
 			gs.sampleSelect( sample, !sample.selected );
 			selected.push( sample );
 		}
-
 		ax = e.pageX;
 		ay = e.pageY;
 		clicked = true;
