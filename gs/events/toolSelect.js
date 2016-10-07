@@ -1,18 +1,15 @@
 "use strict";
 
+// This function is temporarly in the global scope.
 function pushAction( selected, unselected ) {
-	gs.history.push( {
-		name: "select",
-		action: {
+	gs.history.push( "select", {
 			func: gs.history.select,
 			samples: selected && selected.length ? selected : null,
 			removedSamples: unselected
-		},
-		undo: {
+		}, {
 			func: gs.history.undoSelect,
 			samples: unselected,
 			removedSamples: selected && selected.length ? selected : null
-		}
 	} );
 }
 

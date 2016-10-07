@@ -3,17 +3,13 @@
 ( function() {
 
 function pushDelAction( sample ) {
-	gs.history.push( {
-		name: "Delete",
-		action: {
+	gs.history.push( "delete", {
 			func: gs.history.removeSample,
 			samples: [ sample ]
-		},
-		undo: {
+		}, {
 			func: gs.history.undoRemoveSample,
 			samples: [ sample ]
-		}
-	});
+	} );
 }
 
 ui.tool.delete = {

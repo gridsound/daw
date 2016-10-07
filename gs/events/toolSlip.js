@@ -14,18 +14,14 @@ ui.tool.slip = {
 	},
 	mouseup: function() {
 		if ( sampleSave ) {
-			gs.history.push( {
-				name: "slip",
-				action: {
+			gs.history.push( "slip", {
 					func: gs.history.slip,
 					sample: sampleSave,
-					offsetDiff: ( oldOffset - sampleSave.wsample.offset )
-				},
-				undo: {
+					offsetDiff: oldOffset - sampleSave.wsample.offset
+				}, {
 					func: gs.history.undoSlip,
 					sample: sampleSave,
 					offsetDiff: sampleSave.wsample.offset - oldOffset
-				}
 			} );
 			gs.samplesForEach( sampleSave, function( s ) {
 				wa.composition.update( s.wsample, "mv" );

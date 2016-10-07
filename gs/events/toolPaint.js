@@ -42,28 +42,25 @@ ui.tool.paint = {
 				sampleSave[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
 				cropping = croppingStart = false;
 			}
-			if ( sampleSave.xem != oldData[ 0 ] || sampleSave.wsample.offset != oldData[ 1 ] ||
-				 sampleSave.wsample.duration != oldData[ 2 ] || sampleSave.track.id != oldData[ 3 ] ) {
-				gs.history.push( {
-					name: name,
-					action: {
+			if ( sampleSave.xem !== oldData[ 0 ] || sampleSave.wsample.offset !== oldData[ 1 ] ||
+				 sampleSave.wsample.duration !== oldData[ 2 ] || sampleSave.track.id !== oldData[ 3 ]
+			) {
+				gs.history.push( name, {
 						func: action,
 						sample: sampleSave,
 						whenDiff: sampleSave.wsample.when - oldData[ 0 ],
 						offset: sampleSave.wsample.offset - oldData[ 1 ],
 						durationDiff: oldData[ 2 ] - sampleSave.wsample.duration,
 						trackId: sampleSave.track.id,
-						changeTrack : sampleSave.track.id != oldData[ 3 ]
-					},
-					undo: {
+						changeTrack: sampleSave.track.id !== oldData[ 3 ]
+					}, {
 						func: undo,
 						sample: sampleSave,
 						whenDiff: oldData[ 0 ] - sampleSave.wsample.when,
 						offset: oldData[ 1 ] - sampleSave.wsample.offset,
 						durationDiff: sampleSave.wsample.duration - oldData[ 2 ],
 						trackId: oldData[ 3 ],
-						changeTrack : sampleSave.track.id != oldData[ 3 ]
-					}
+						changeTrack: sampleSave.track.id !== oldData[ 3 ]
 				} );
 				action =
 				undo = null;

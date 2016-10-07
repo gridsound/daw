@@ -15,13 +15,20 @@ gs.history = {
 			}
 		}
 	},
-	push: function( action ) {
+	push: function( actionName, redo, undo ) {
+		var action = {
+			id: rip,
+			name: actionName,
+			redo: redo,
+			undo: undo,
+		};
+
 		if ( rip < actions.length - 1 ) {
 			actions.splice( rip + 1 );
 		}
-		action.id = rip++;
 		actions.push( action );
 		ui.historyPush( action );
+		++rip;
 	},
 	undo: function() {
 		if ( rip > 0 ) {
@@ -34,7 +41,7 @@ gs.history = {
 	},
 	redo: function() {
 		if ( rip < actions.length - 1 ) {
-			var redo = actions[ ++rip ].action;
+			var redo = actions[ ++rip ].redo;
 			if ( redo.func ) {
 				redo.func( redo );
 			}
