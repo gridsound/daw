@@ -49,7 +49,7 @@ $icon-tool-mute        : "\f026"; // fa-volume-off
 $icon-tool-paint       : "\f1fc"; // fa-paint-brush
 	$icon-tool-move    : "\f047"; // fa-arrows
 	$icon-tool-crop    : "\f125"; // fa-crop
-	$icon-tool-endCrop : "\f125"; // fa-crop
+	$icon-tool-cropEnd : "\f125"; // fa-crop
 $icon-tool-select      : "\f245"; // fa-mouse-pointer
 $icon-tool-slip        : "\f0ec"; // fa-exchange
 $icon-tool-zoom        : "\f002"; // fa-search
@@ -107,7 +107,7 @@ $icon-tool-zoom        : "\f002"; // fa-search
 	&.tool-paint:after    { content: $icon-tool-paint;    }
 		&.tool-move:after    { content: $icon-tool-move;     }
 		&.tool-crop:after    { content: $icon-tool-crop;     }
-		&.tool-endCrop:after { content: $icon-tool-endCrop;  }
+		&.tool-cropEnd:after { content: $icon-tool-cropEnd;  }
 	&.tool-select:after   { content: $icon-tool-select;   }
 	&.tool-slip:after     { content: $icon-tool-slip;     }
 	&.tool-zoom:after     { content: $icon-tool-zoom;     }

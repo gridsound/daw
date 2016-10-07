@@ -2,29 +2,18 @@
 
 ( function() {
 
-function pushDelAction( sample ) {
-	gs.history.push( "delete", {
-			func: gs.history.removeSample,
-			samples: [ sample ]
-		}, {
-			func: gs.history.undoRemoveSample,
-			samples: [ sample ]
-	} );
-}
-
 ui.tool.delete = {
-	mousedown: function( e ) {
-		if ( e.target.gsSample ) {
-			pushDelAction( e.target.gsSample );
-			gs.samplesDelete( e.target.gsSample );
-		}
-	},
-	mousemove: function( e ) {
-		if ( e.target.gsSample ) {
-			pushDelAction( e.target.gsSample );
-			gs.samplesDelete( e.target.gsSample );
-		}
-	}
+	mousedown: del,
+	mousemove: del
 };
+
+function del( e ) {
+	var s = e.target.gsSample;
+
+	if ( s ) {
+		gs.history.push( "delete", { samples: [ s ] }, { samples: [ s ] } );
+		gs.samplesDelete( s );
+	}
+}
 
 } )();

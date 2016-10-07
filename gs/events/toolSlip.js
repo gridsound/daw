@@ -15,11 +15,9 @@ ui.tool.slip = {
 	mouseup: function() {
 		if ( sampleSave ) {
 			gs.history.push( "slip", {
-					func: gs.history.slip,
 					sample: sampleSave,
 					offsetDiff: oldOffset - sampleSave.wsample.offset
 				}, {
-					func: gs.history.undoSlip,
 					sample: sampleSave,
 					offsetDiff: sampleSave.wsample.offset - oldOffset
 			} );

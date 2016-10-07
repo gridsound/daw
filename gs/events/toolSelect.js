@@ -3,11 +3,9 @@
 // This function is temporarly in the global scope.
 function pushAction( selected, unselected ) {
 	gs.history.push( "select", {
-			func: gs.history.select,
 			samples: selected && selected.length ? selected : null,
 			removedSamples: unselected
 		}, {
-			func: gs.history.undoSelect,
 			samples: unselected,
 			removedSamples: selected && selected.length ? selected : null
 	} );

@@ -23,6 +23,8 @@ gs.history = {
 			undo: undo,
 		};
 
+		redo.func = gs.history[ actionName ];
+		undo.func = gs.history[ actionName + "_undo" ];
 		if ( rip < actions.length - 1 ) {
 			actions.splice( rip + 1 );
 		}

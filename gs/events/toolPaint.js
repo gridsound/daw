@@ -19,14 +19,10 @@ ui.tool.paint = {
 			croppingStart = e.target.classList.contains( "start" );
 			cropping = croppingStart || e.target.classList.contains( "end" );
 			if ( cropping ) {
-				action = croppingStart ? gs.history.crop : gs.history.endCrop;
-				undo = croppingStart ? gs.history.undoCrop : gs.history.undoEndCrop;
-				name = croppingStart ? "crop" : "endCrop";
+				actionName = croppingStart ? "crop" : "cropEnd";
 				sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
 			} else {
-				action = gs.history.moveX;
-				undo = gs.history.undoMoveX;
-				name = "move"
+				actionName = "move";
 			}
 			sampleSave = sample;
 			ui.cursor( "app", !cropping ? "grabbing" :
@@ -45,8 +41,7 @@ ui.tool.paint = {
 			if ( sampleSave.xem !== oldData[ 0 ] || sampleSave.wsample.offset !== oldData[ 1 ] ||
 				 sampleSave.wsample.duration !== oldData[ 2 ] || sampleSave.track.id !== oldData[ 3 ]
 			) {
-				gs.history.push( name, {
-						func: action,
+				gs.history.push( actionName, {
 						sample: sampleSave,
 						whenDiff: sampleSave.wsample.when - oldData[ 0 ],
 						offset: sampleSave.wsample.offset - oldData[ 1 ],
@@ -54,7 +49,6 @@ ui.tool.paint = {
 						trackId: sampleSave.track.id,
 						changeTrack: sampleSave.track.id !== oldData[ 3 ]
 					}, {
-						func: undo,
 						sample: sampleSave,
 						whenDiff: oldData[ 0 ] - sampleSave.wsample.when,
 						offset: oldData[ 1 ] - sampleSave.wsample.offset,
@@ -62,9 +56,6 @@ ui.tool.paint = {
 						trackId: oldData[ 3 ],
 						changeTrack: sampleSave.track.id !== oldData[ 3 ]
 				} );
-				action =
-				undo = null;
-				name = "";
 				oldData = [];
 			}
 			sampleSave = null;
@@ -107,9 +98,7 @@ ui.tool.paint = {
 var sampleSave,
 	cropping,
 	croppingStart,
-	action,
-	undo,
-	name,
+	actionName,
 	oldData = [];
 
 } )();
