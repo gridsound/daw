@@ -13,30 +13,9 @@ Object.assign( gs.history, {
 } );
 
 function select( action, undo ) {
-	var samplesArr = action.samples,
-		unselectedArr = action.removedSamples;
-
-	if ( !undo ) {
-		if ( unselectedArr && unselectedArr.length > 0 ) {
-			gs.samplesUnselect();
-		}
-		if ( samplesArr ) {
-			samplesArr.forEach( function( s ) {
-				gs.sampleSelect( s, !s.selected );
-			} );
-		}
-	} else {
-		if ( unselectedArr && unselectedArr.length > 0 ) {
-			gs.samplesUnselect();
-			unselectedArr.forEach( function( s ) {
-				gs.sampleSelect( s, !s.selected );
-			} );
-		} else if ( samplesArr ) {
-			samplesArr.forEach( function( s ) {
-				gs.sampleSelect( s, !s.selected );
-			} );
-		}
-	}
+	action.samples.forEach( function( s ) {
+		gs.sampleSelect( s, !s.selected );
+	} );
 }
 
 function insert( action, undo ) {

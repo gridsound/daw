@@ -7,7 +7,7 @@ ui.tool.paint = {
 		var sample = e.target.gsSample;
 
 		if ( !sample && gs.selectedSamples.length ) {
-			pushAction( null, gs.selectedSamples.slice() );
+			gs.history.push( "select", { samples: gs.selectedSamples.slice() } );
 			gs.samplesUnselect();
 		} else if ( sample ) {
 			_trackId = sample.track.id;
