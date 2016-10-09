@@ -12,14 +12,14 @@ Object.assign( gs.history, {
 	slip:    slip,
 } );
 
-function select( action, undo ) {
+function select( action ) {
 	action.samples.forEach( function( s ) {
 		gs.sampleSelect( s, !s.selected );
 	} );
 }
 
-function insert( action, undo ) {
-	if ( undo ) {
+function insert( action, sign ) {
+	if ( sign === -1 ) {
 		return d3lete( action, false );
 	}
 	action.samples.forEach( function( s ) {
@@ -38,22 +38,21 @@ function insert( action, undo ) {
 	} );
 }
 
-function d3lete( action, undo ) {
-	if ( undo ) {
-		return insert( action, false );
+function d3lete( action, sign ) {
+	if ( sign === -1 ) {
+		insert( action, false );
+	} else {
+		action.samples.forEach( function( s ) {
+			gs.samplesDelete( s );
+		} );
 	}
-	action.samples.forEach( function( s ) {
-		gs.samplesDelete( s );
-	} );
 }
 
-function move( action, undo ) {
-	var sign   = undo ? -1 : 1,
-		sample = action.sample,
-		track  = sign * action.track,
-		when   = sign * action.when;
+function move( action, sign ) {
+	var sample = action.sample,
+		track = action.track * sign;
 
-	gs.samplesWhen( sample, when );
+	gs.samplesWhen( sample, action.when * sign );
 	if ( track ) {
 		if ( sample.selected ) {
 			gs.selectedSamples.forEach( function( s ) {
@@ -68,36 +67,26 @@ function move( action, undo ) {
 	} );
 }
 
-function crop( action, undo ) {
-	var sign     = undo ? -1 : 1,
-		sample   = action.sample,
-		when     = sign * action.when,
-		offset   = sign * action.offset,
-		duration = sign * action.duration;
+function crop( action, sign ) {
+	var sample = action.sample;
 
-	gs.samplesDuration( sample, duration );
-	gs.samplesWhen( sample, when );
-	gs.samplesSlip( sample, -offset );
+	gs.samplesDuration( sample, action.duration * sign );
+	gs.samplesWhen( sample, action.when * sign );
+	gs.samplesSlip( sample, -action.offset * sign );
 	gs.samplesForEach( sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );
 }
 
-function cropEnd( action, undo ) {
-	var sign = undo ? -1 : 1,
-		duration = sign * action.duration;
-
-	gs.samplesDuration( action.sample, duration );
+function cropEnd( action, sign ) {
+	gs.samplesDuration( action.sample, action.duration * sign );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );
 }
 
-function slip( action, undo ) {
-	var sign = undo ? -1 : 1,
-		offset = sign * action.offset;
-
-	gs.samplesSlip( action.sample, offset );
+function slip( action, sign ) {
+	gs.samplesSlip( action.sample, action.offset * sign );
 	gs.samplesForEach( action.sample, function( s ) {
 		wa.composition.update( s.wsample, "mv" );
 	} );

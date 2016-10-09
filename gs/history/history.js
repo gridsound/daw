@@ -34,7 +34,7 @@ gs.history = {
 		if ( rip > 0 ) {
 			var act = actions[ rip-- ];
 			if ( act.fn ) {
-				act.fn( act.data, true );
+				act.fn( act.data, -1 );
 			}
 			ui.historyUndo();
 		}
@@ -43,7 +43,7 @@ gs.history = {
 		if ( rip < actions.length - 1 ) {
 			var act = actions[ ++rip ];
 			if ( act.fn ) {
-				act.fn( act.data, false );
+				act.fn( act.data, +1 );
 			}
 			ui.historyRedo();
 		}
