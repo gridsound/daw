@@ -11,14 +11,17 @@ document.body.addEventListener( "mousemove", function( e ) {
 
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
-		var track = ui.getTrackFromPageY( e.pageY ),
-			sec = ui.getGridSec( e.pageX );
 		elWaveformTmp.remove();
-		if ( track && sec >= 0 ) {
-			gs.sampleCreate( gsfileDragging, track.id, sec );
-		}
 		gsfileDragging = null;
 		ui.cursor( "app", null );
+	}
+} );
+
+ui.elGridColB.addEventListener( "mouseup", function( e ) {
+	if ( gsfileDragging ) {
+		gs.sampleCreate( gsfileDragging,
+			ui.getTrackFromPageY( e.pageY ).id,
+			ui.getGridSec( e.pageX ) );
 	}
 } );
 
@@ -38,4 +41,4 @@ gs.File.prototype.dragstart = function( e ) {
 var gsfileDragging,
 	elWaveformTmp;
 
-})();
+} )();

@@ -1,5 +1,7 @@
 "use strict";
 
+( function() {
+
 ui.resize();
 ui.setFilesWidth( 200 );
 ui.setTrackLinesLeft( 0 );
@@ -20,3 +22,5 @@ wisdom.qS( ui.elMenu, "[data-tool='paint']" ).click();
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();
 }
+
+} )();
