@@ -14,13 +14,13 @@ WEBAUDIO_PATH = ../webaudio-library/src/
 
 all:
 	@head -5 Makefile
-	@$(MAKE) css
-	@$(MAKE) html
+	@make css
+	@make html
 
 html:
 	@echo ":: HTML"
 	@handlebars $(TPL_DIR) -f $(TPL_FILE)
-	@$(MAKE) js
+	@make js
 
 js:
 	@echo ":: JS"
