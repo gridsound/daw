@@ -52,7 +52,6 @@ src = \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
 	ui/ui.js                          \
-	ui/dom.js                         \
 	ui/_init.js                       \
 	                                  \
 	ui/analyserToggle.js              \
