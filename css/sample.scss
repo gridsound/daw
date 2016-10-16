@@ -44,8 +44,8 @@
 		height: 100%;
 		top: 0;
 		width: 1px;
-		background: $color_cursorTimeBg;
-		box-shadow: -1px 0 3px rgba( $color_cursorTimeShadow, .7 );
+		background: $color_currentTimeCursorBg;
+		box-shadow: -1px 0 3px rgba( $color_currentTimeCursorShadow, .7 );
 		transition: left linear;
 		left: 0;
 	}
@@ -82,8 +82,7 @@
 	}
 
 	// In the filelist :
-	.filelist & {
-		height: 32px;
+	#filesList & {
 		border-bottom: 1px solid #000;
 
 		.waveform {

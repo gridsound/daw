@@ -2,6 +2,11 @@
 
 ( function() {
 
+ui.updateTracksBg = function() {
+	writeHtml( Math.ceil( ui.trackLinesWidth / ui.gridEm / 4 ) + 2 );
+	wisdom.css( elFirstDiv, "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
+};
+
 var elFirstDiv,
 	nb4emSave = 0;
 
@@ -19,14 +24,9 @@ function writeHtml( nb4em ) {
 			}
 			d1.appendChild( d2 );
 		}
-		ui.elTrackLinesBg.appendChild( d1 );
+		ui.dom.tracksBg.appendChild( d1 );
 	}
-	elFirstDiv = elFirstDiv || ui.elTrackLinesBg.firstChild;
-};
-
-ui.updateTrackLinesBg = function() {
-	writeHtml( Math.ceil( ui.trackLinesWidth / ui.gridEm / 4 ) + 2 );
-	wisdom.css( elFirstDiv, "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
+	elFirstDiv = elFirstDiv || ui.dom.tracksBg.firstChild;
 };
 
 } )();

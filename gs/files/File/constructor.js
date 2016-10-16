@@ -4,7 +4,7 @@
 
 var clickedFile;
 
-ui.elInputFile.onchange = function() {
+ui.dom.filesInput.onchange = function() {
 	if ( clickedFile ) {
 		clickedFile.joinFile( this.files[ 0 ] );
 		clickedFile = null;
@@ -48,7 +48,7 @@ gs.File = function( file ) {
 		} else if ( !that.file ) {
 			alert( "Choose the file to associate or drag and drop " + that.name );
 			clickedFile = that;
-			ui.elInputFile.click();
+			ui.dom.filesInput.click();
 		} else if ( !that.isLoading ) {
 			that.load( gs.filePlay );
 		}

@@ -1,13 +1,13 @@
 "use strict";
 
 ui.setFilesWidth = function( wpx ) {
-	wisdom.css( ui.elPanel, "width", wpx + "px" );
-	ui.filesWidth = wpx = ui.elPanel.clientWidth;
+	wisdom.css( ui.dom.panel, "width", wpx + "px" );
+	ui.filesWidth = wpx = ui.dom.panel.clientWidth;
 	ui.gridColsWidth = ui.screenWidth - wpx;
 	ui.trackLinesWidth = ui.gridColsWidth - ui.trackNamesWidth;
-	wisdom.css( ui.elGrid, "left", wpx + "px" );
-	wisdom.css( ui.elVisual, "width", wpx + ui.trackNamesWidth + "px" );
-	wisdom.css( ui.elMenu, "left", wpx + ui.trackNamesWidth + "px" );
-	ui.updateTimeline();
-	ui.updateTrackLinesBg();
+	wisdom.css( ui.dom.grid, "left", wpx + "px" );
+	wisdom.css( ui.dom.visual, "width", wpx + ui.trackNamesWidth + "px" );
+	wisdom.css( ui.dom.menu, "left", wpx + ui.trackNamesWidth + "px" );
+	ui.updateGridTimeline();
+	ui.updateTracksBg();
 };

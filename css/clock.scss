@@ -1,0 +1,41 @@
+#clock {
+	height: 100%;
+	line-height: 60px;
+	font-family: "LCDBOLD";
+	font-size: 38px;
+	color: $color_clock;
+	@include text-stroke( $color_clockStroke );
+
+	&Sec {
+		&:before,
+		&:after {
+			content: ":";
+			padding: 0 .15em;
+		}
+		&:after {
+			content: ".";
+		}
+	}
+
+	&Ms {
+		font-size: .5em;
+	}
+
+	&Units {
+		position: absolute;
+		top: 20px;
+		right: 9px;
+		font: 10px consolas;
+		line-height: 0;
+
+		span {
+			margin-left: 3px;
+			opacity: .5;
+		}
+
+		&[data-unit="s"] .s,
+		&[data-unit="b"] .b {
+			opacity: 1;
+		}
+	}
+}

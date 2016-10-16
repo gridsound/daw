@@ -9,19 +9,19 @@ ui.px_yRel = 0;
 
 window.addEventListener( "blur", setBackOldTool );
 
-ui.elGridCols.onwheel = function( e ) {
+ui.dom.gridCols.onwheel = function( e ) {
 	if ( ui.currentTool === "zoom" ) {
 		ui.tool.zoom.wheel( e );
 		return false;
 	}
 };
-ui.elGridCols.onscroll = function() {
-	ui.gridScrollTop = ui.elGridCols.scrollTop;
+ui.dom.gridCols.onscroll = function() {
+	ui.gridScrollTop = ui.dom.gridCols.scrollTop;
 	ui.updateGridTopShadow();
 };
 
-ui.elTrackLines.oncontextmenu = function() { return false; };
-ui.elTrackLines.onmousedown = function( e ) {
+ui.dom.tracksLines.oncontextmenu = function() { return false; };
+ui.dom.tracksLines.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
 		mouseIsDown = true;
 		mousedownSec = ui.getGridSec( e.pageX );

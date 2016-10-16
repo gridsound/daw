@@ -2,15 +2,15 @@
 
 ( function() {
 
-ui.elBpmInt.onwheel = wheel.bind( null, 1 );
-ui.elBpmDec.onwheel = wheel.bind( null, .01 );
+ui.dom.bpmInt.onwheel = wheel.bind( null, 1 );
+ui.dom.bpmDec.onwheel = wheel.bind( null, .01 );
 
-ui.elBpm.onmousedown = function( e ) {
-	ui.elBpm.classList.toggle( "clicked" );
+ui.dom.bpm.onmousedown = function( e ) {
+	ui.dom.bpm.classList.toggle( "clicked" );
 	e.stopPropagation();
 };
 
-ui.elBpmList.onmousedown = function( e ) {
+ui.dom.bpmList.onmousedown = function( e ) {
 	var bpm = +e.target.textContent;
 	if ( bpm ) {
 		gs.bpm( bpm );
@@ -19,7 +19,7 @@ ui.elBpmList.onmousedown = function( e ) {
 };
 
 document.body.addEventListener( "mousedown", function() {
-	ui.elBpm.classList.remove( "clicked" );
+	ui.dom.bpm.classList.remove( "clicked" );
 } );
 
 function wheel( inc, e ) {

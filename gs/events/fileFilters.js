@@ -2,9 +2,9 @@
 
 ( function() {
 
-ui.elFileFilters.onclick =
-ui.elFileFilters.oncontextmenu = function() { return false; };
-ui.elFileFilters.onmouseup = function( e ) {
+ui.dom.filesFilters.onclick =
+ui.dom.filesFilters.oncontextmenu = function() { return false; };
+ui.dom.filesFilters.onmouseup = function( e ) {
 	var b, a = e.target;
 	if ( a.nodeName === "A" ) {
 		if ( e.button === 0 ) {
@@ -19,7 +19,7 @@ ui.elFileFilters.onmouseup = function( e ) {
 	}
 };
 
-var clist = ui.elFileFilters.classList,
+var clist = ui.dom.filesFilters.classList,
 	fls = [ "used", "loaded", "unloaded" ];
 
 allClasses( true );

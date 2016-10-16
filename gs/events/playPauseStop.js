@@ -1,5 +1,5 @@
 "use strict";
 
-ui.elPlay.onclick = gs.playPause;
-ui.elStop.onclick = gs.stop;
+ui.dom.btnPlay.onclick = gs.playPause;
+ui.dom.btnStop.onclick = gs.stop;
 wa.composition.onended( gs.compositionStop );

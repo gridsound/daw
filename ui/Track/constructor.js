@@ -7,8 +7,8 @@ ui.Track = function( grid, obj ) {
 	this.id = ui.tracks.length; // FIXME: when tracks could be moved or removed
 	this.elColNamesTrack = wisdom.cE( "<div class='track'>" )[ 0 ];
 	this.elColLinesTrack = wisdom.cE( "<div class='track'>" )[ 0 ];
-	ui.elTrackNames.appendChild( this.elColNamesTrack );
-	ui.elTrackLines.appendChild( this.elColLinesTrack );
+	ui.dom.tracksNames.appendChild( this.elColNamesTrack );
+	ui.dom.tracksLines.appendChild( this.elColLinesTrack );
 
 	this.elColNamesTrack.uitrack
 	this.elColLinesTrack.uitrack = this;

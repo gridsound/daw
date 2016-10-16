@@ -1,14 +1,14 @@
 <div id="visual">
-	<canvas></canvas>
+	<canvas id="visualCanvas"></canvas>
 	<div class="columns">
-		<div class="cell-btn"><a class="btn icon fw history" title="History (undo/redo)"></a></div>
-		<div class="cell-btn"><a class="btn icon fw files" title="Audio files"></a></div>
+		<div class="cell-btn"><a id="btnHistory" class="btn icon fw history" title="History (undo/redo)"></a></div>
+		<div class="cell-btn"><a id="btnFiles" class="btn icon fw files" title="Audio files"></a></div>
 		<div class="cell-clock">
-			<div class="clock">
-				<span class="min"></span>
-				<span class="sec"></span>
-				<span class="ms"></span>
-				<a class="units" href="#">
+			<div id="clock">
+				<span id="clockMin"></span>
+				<span id="clockSec"></span>
+				<span id="clockMs"></span>
+				<a id="clockUnits" href="#">
 					<span class="s">sec</span>
 					<span class="b">beat</span>
 				</a>

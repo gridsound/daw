@@ -1,7 +1,8 @@
 "use strict";
 
-ui.elBtnSave.onclick = function() {
+ui.dom.btnSave.onclick = function() {
 	var att = gs.save();
-	ui.elBtnSave.setAttribute( "href", att.href );
-	ui.elBtnSave.setAttribute( "download", att.download );
+
+	ui.dom.btnSave.setAttribute( "href", att.href );
+	ui.dom.btnSave.setAttribute( "download", att.download );
 };

@@ -14,10 +14,10 @@ $color_scrollbarBg: #222;
 $color_scrollbarThumb: #888;
 
 $color_panelNav: darken( $color_appBg, 5 );
-$color_tracknamesBg: darken( $color_appBg, 6.2 );
+$color_tracksNamesBg: darken( $color_appBg, 6.2 );
 $color_visualBg: rgba( #060315, .5 );
-$color_tracklinesBg: $COLOR_MAIN;
-$color_tracklinesBgEven: darken( $color_tracklinesBg, 2 );
+$color_tracksBg: $COLOR_MAIN;
+$color_tracksBgEven: darken( $color_tracksBg, 2 );
 
 $color_clock: #ccc;
 $color_clockStroke: #000;
@@ -47,8 +47,8 @@ $color_fileWaveform: lighten( $COLOR_MAIN, 10% );
 $color_timelineBg: #0d0d0d;
 $color_timelineText: #888;
 
-$color_tracknamesBorder: #151515;
-$color_tracklinesBorder: #090909;
+$color_tracksNamesBorder: #151515;
+$color_tracksLinesBorder: #090909;
 
 $color_trackOffBg: rgba( #000, .2 );
 $border_trackFirst: rgba( #fff, .05 );
@@ -61,10 +61,10 @@ $color_trackToggleOn: #4cb849;
 $color_squareSelectionBorder: $COLOR_SELECTION;
 $color_squareSelectionBg: rgba( $COLOR_SELECTION, .3 );
 
-$color_timearrow: #9ac060;
-$shadow_timearrow: 0 0 3px rgba( $color_timearrow, .8 );
-$color_cursorTimeBg: rgba( #ffa, .4 );
-$color_cursorTimeShadow: #50ff00;
+$color_currentTimeArrow: #9ac060;
+$shadow_currentTimeArrow: 0 0 3px rgba( $color_currentTimeArrow, .8 );
+$color_currentTimeCursorBg: rgba( #ffa, .4 );
+$color_currentTimeCursorShadow: #50ff00;
 
 // Sample :
 $color_sampleWaveform: #ddf;

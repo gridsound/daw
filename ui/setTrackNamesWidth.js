@@ -6,17 +6,17 @@ ui.setTrackNamesWidth = function( wpx ) {
 	var visualWidth,
 		oldWidth = ui.trackNamesWidth;
 
-	wisdom.css( ui.elTrackNames, "width", wpx + "px" );
-	ui.trackNamesWidth = wpx = ui.elTrackNames.getBoundingClientRect().width;
+	wisdom.css( ui.dom.tracksNames, "width", wpx + "px" );
+	ui.trackNamesWidth = wpx = ui.dom.tracksNames.getBoundingClientRect().width;
 	ui.trackLinesWidth = ui.gridColsWidth - wpx;
 	visualWidth = ui.filesWidth + wpx;
-	wisdom.css( ui.elGridColB, "left", wpx + "px" );
-	wisdom.css( ui.elTimeline, "left", wpx + "px" );
-	wisdom.css( ui.elVisual, "width", visualWidth + "px" );
-	wisdom.css( ui.elMenu, "left", visualWidth + "px" );
+	wisdom.css( ui.dom.gridColB, "left", wpx + "px" );
+	wisdom.css( ui.dom.gridTimeline, "left", wpx + "px" );
+	wisdom.css( ui.dom.visual, "width", visualWidth + "px" );
+	wisdom.css( ui.dom.menu, "left", visualWidth + "px" );
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}
-	ui.updateTimeline();
-	ui.updateTrackLinesBg();
+	ui.updateGridTimeline();
+	ui.updateTracksBg();
 };

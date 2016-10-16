@@ -51,7 +51,10 @@ src = \
 	$(WEBAUDIO_PATH)filters.js        \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
+	ui/ui.js                          \
+	ui/dom.js                         \
 	ui/_init.js                       \
+	                                  \
 	ui/analyserToggle.js              \
 	ui/bpm.js                         \
 	ui/setClockUnit.js                \
@@ -75,8 +78,8 @@ src = \
 	ui/toggleMagnetism.js             \
 	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \
-	ui/updateTimeline.js              \
-	ui/updateTrackLinesBg.js          \
+	ui/updateGridTimeline.js          \
+	ui/updateTracksBg.js              \
 	                                  \
 	ui/Track/constructor.js           \
 	ui/Track/editName.js              \

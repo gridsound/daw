@@ -10,15 +10,15 @@ function frame() {
 }
 
 ui.play = function() {
-	ui.elPlay.classList.remove( "play" );
-	ui.elPlay.classList.add( "pause" );
+	ui.dom.btnPlay.classList.remove( "play" );
+	ui.dom.btnPlay.classList.add( "pause" );
 	frame();
 };
 
 ui.pause = function() {
 	cancelAnimationFrame( reqFrameId );
-	ui.elPlay.classList.remove( "pause" );
-	ui.elPlay.classList.add( "play" );
+	ui.dom.btnPlay.classList.remove( "pause" );
+	ui.dom.btnPlay.classList.add( "play" );
 };
 
 ui.stop = function() {

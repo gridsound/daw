@@ -7,14 +7,14 @@
 	overflow: hidden;
 	font-size: 30px;
 
-	.header {
+	&Header {
 		position: relative;
 		z-index: 2;
 		height: 19px;
 		border-bottom: 1px solid #000;
 	}
 
-	.timeline {
+	&Timeline {
 		box-sizing: border-box;
 		position: absolute;
 		overflow: hidden;
@@ -60,48 +60,7 @@
 		}
 	}
 
-	.timeArrow,
-	.timeCursor {
-		opacity: 0;
-		transition: opacity .2s;
-		&.visible {
-			opacity: 1;
-		}
-	}
-
-	.timeArrow {
-		position: absolute;
-		z-index: 1;
-		bottom: 0;
-		line-height: 19px;
-
-		&:after {
-			color: $color_timearrow;
-			font-size: 28px;
-			margin-left: -8px;
-			text-shadow: $shadow_timearrow;
-		}
-	}
-
-	.timeCursor {
-		position: absolute;
-		z-index: 1;
-		height: 100%;
-		width: 1px;
-		margin-left: -1px;
-		background: $color_cursorTimeBg;
-		box-shadow: -2px 0 10px $color_cursorTimeShadow;
-	}
-
-	.trackList {
-		position: absolute;
-		overflow: hidden;
-		width: 100%;
-		top: 20px;
-		bottom: 0;
-	}
-
-	.cols {
+	&Cols {
 		position: absolute;
 		left: 0;
 		right: -30px; // -30 to hide the scrollbar (for the moment)
@@ -117,41 +76,55 @@
 		}
 	}
 
-	.colB {
+	&ColB {
 		right: 0;
 	}
+}
 
-	.trackNames {
+#tracks {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	top: 20px;
+	bottom: 0;
+
+	&Names {
 		box-sizing: border-box;
 		z-index: 2;
 		min-width: 16px;
 		max-width: 300px;
 		border: solid #000;
 		border-width: 0 1px;
-		background: $color_tracknamesBg;
+		background: $color_tracksNamesBg;
 	}
 
-	.trackLinesBg {
+	&Lines {
+		position: relative;
+		width: 1000000px;
+		margin-left: 0;
+	}
+
+	&Bg {
 		position: absolute;
 		width: 1000000px;
 		top: 0;
 		bottom: 0;
 		overflow: hidden;
-		background: $color_tracklinesBg;
+		background: $color_tracksBg;
 
 		* {
 			display: inline-block;
 			height: 100%;
-			& + * {
+			+ * {
 				border-left: 1px solid;
 				margin-left: -1px;
 			}
 		}
 		> * {
 			width: 4em;
-			border-color: $color_tracklinesBorder;
+			border-color: $color_tracksLinesBorder;
 			&:nth-child( even ) {
-				background: $color_tracklinesBgEven;
+				background: $color_tracksBgEven;
 			}
 
 			* {
@@ -165,10 +138,39 @@
 			}
 		}
 	}
+}
 
-	.trackLines {
-		position: relative;
-		width: 1000000px;
-		margin-left: 0;
+#currentTime {
+	&Arrow,
+	&Cursor {
+		opacity: 0;
+		transition: opacity .2s;
+		&.visible {
+			opacity: 1;
+		}
+	}
+
+	&Arrow {
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		line-height: 19px;
+
+		&:after {
+			color: $color_currentTimeArrow;
+			font-size: 28px;
+			margin-left: -8px;
+			text-shadow: $shadow_currentTimeArrow;
+		}
+	}
+
+	&Cursor {
+		position: absolute;
+		z-index: 1;
+		height: 100%;
+		width: 1px;
+		margin-left: -1px;
+		background: $color_currentTimeCursorBg;
+		box-shadow: -2px 0 10px $color_currentTimeCursorShadow;
 	}
 }

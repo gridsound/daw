@@ -8,14 +8,14 @@ var gradientPx = 2,
 
 ui.updateGridLeftShadow = function() {
 	var x = -ui.trackLinesLeft;
-	wisdom.css( ui.elTrackNames, "boxShadow", x
+	wisdom.css( ui.dom.tracksNames, "boxShadow", x
 		? Math.min( 2 + x / 8, 5 ) + "px 0" + css
 		: "none" );
 };
 
 ui.updateGridTopShadow = function() {
 	var y = ui.gridScrollTop;
-	wisdom.css( ui.elGridHeader, "boxShadow", y
+	wisdom.css( ui.dom.gridHeader, "boxShadow", y
 		? "0px " + Math.min( 2 + y / 8, 5 ) + css
 		: "none" );
 };

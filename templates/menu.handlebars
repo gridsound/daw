@@ -1,14 +1,14 @@
 <div id="menu">
-	<a class="btn border icon play" title="Play/pause (press Space, hold Ctrl for pause)"></a>
-	<a class="btn border icon stop" title="Stop (press Space)"></a>
-	<div class="bpm border" title="Beats per minute (Scroll to change)">
+	<a id="btnPlay" class="btn border icon play" title="Play/pause (press Space, hold Ctrl for pause)"></a>
+	<a id="btnStop" class="btn border icon stop" title="Stop (press Space)"></a>
+	<div id="bpm" class="border" title="Beats per minute (Scroll to change)">
 		<span class="text">
-			<a class="a-bpm">
+			<a class="bpmLink">
 				<i class="icon"></i>
-				<span class="int"></span>
-				<span class="dec"></span>
+				<span id="bpmInt"></span>
+				<span id="bpmDec"></span>
 			</a>
-			<div class="bpm-list">
+			<div id="bpmList">
 				<a>80</a><a>90</a><a>100</a>
 				<a>110</a><a>120</a><a>130</a>
 				<a>140</a><a>150</a><a>160</a>
@@ -16,8 +16,8 @@
 			<span class="unit">bpm</span>
 		</span>
 	</div>
-	<a data-edit="save"     class="btn icon fw save" title="Save"></a>
-	<a data-option="magnet" class="btn icon fw magnet" title="Toggle magnetism (press G)"></a>
+	<a data-edit="save"     id="btnSave"   class="btn icon fw save" title="Save"></a>
+	<a data-option="magnet" id="btnMagnet" class="btn icon fw magnet" title="Toggle magnetism (press G)"></a>
 	<div class="sep"></div>
 	<a data-tool="select" class="btn icon fw tool-select" title="Select (hold Shift or press V)"></a>
 	<a data-tool="paint"  class="btn icon fw tool-paint" title="Paint (press B)"></a>

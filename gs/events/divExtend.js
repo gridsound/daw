@@ -10,7 +10,7 @@ var fn,
 			ui.setFilesWidth( w < 35 ? 0 : w );
 		},
 		trackNames: function( e ) {
-			var w = e.pageX - ui.elGrid.getBoundingClientRect().left;
+			var w = e.pageX - ui.dom.grid.getBoundingClientRect().left;
 			ui.setTrackNamesWidth( w < 35 ? 0 : w );
 		}
 	};

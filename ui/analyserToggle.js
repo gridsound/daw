@@ -4,7 +4,7 @@
 
 var animId,
 	emptyArr = [],
-	canvas = ui.elVisualCanvas,
+	canvas = ui.dom.visualCanvas,
 	ctxCanvas = canvas.getContext( "2d" );
 
 function frame() {

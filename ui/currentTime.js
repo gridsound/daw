@@ -2,17 +2,23 @@
 
 ( function() {
 
-function cursorTime( s ) {
+ui.currentTime = function( s ) {
+	timeCursor( s );
+	timeClock( s );
+};
+
+function timeCursor( s ) {
 	if ( s > 0 ) {
 		var v = s * ui.BPMem + "em";
-		wisdom.css( ui.elTimeCursor, "left", v );
-		wisdom.css( ui.elTimeArrow, "left", v );
+
+		wisdom.css( ui.dom.currentTimeCursor, "left", v );
+		wisdom.css( ui.dom.currentTimeArrow, "left", v );
 	}
-	ui.elTimeCursor.classList.toggle( "visible", s > 0 );
-	ui.elTimeArrow.classList.toggle( "visible", s > 0 );
+	ui.dom.currentTimeCursor.classList.toggle( "visible", s > 0 );
+	ui.dom.currentTimeArrow.classList.toggle( "visible", s > 0 );
 }
 
-function clockTime( s ) {
+function timeClock( s ) {
 	var a, b, bb;
 
 	if ( gs.clockUnit === "s" ) {
@@ -31,14 +37,9 @@ function clockTime( s ) {
 	} else if ( bb < 100 ) {
 		bb = "0" + bb;
 	}
-	ui.elClockMin.textContent = a;
-	ui.elClockSec.textContent = b;
-	ui.elClockMs.textContent = bb;
+	ui.dom.clockMin.textContent = a;
+	ui.dom.clockSec.textContent = b;
+	ui.dom.clockMs.textContent = bb;
 }
-
-ui.currentTime = function( s ) {
-	cursorTime( s );
-	clockTime( s );
-};
 
 } )();

@@ -17,7 +17,7 @@ document.body.addEventListener( "mouseup", function( e ) {
 	}
 } );
 
-ui.elGridColB.addEventListener( "mouseup", function( e ) {
+ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
 		gs.sampleCreate( gsfileDragging,
 			ui.getTrackFromPageY( e.pageY ).id,

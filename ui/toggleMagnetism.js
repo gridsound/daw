@@ -7,5 +7,5 @@ ui.toggleMagnetism = function( b ) {
 		b = !ui.isMagnetized;
 	}
 	ui.isMagnetized = b;
-	ui.elBtnMagnet.classList.toggle( "active", b );
+	ui.dom.btnMagnet.classList.toggle( "active", b );
 };

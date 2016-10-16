@@ -1,4 +1,4 @@
-#menu .bpm {
+#bpm {
 	display: inline-block;
 	position: relative;
 	min-width: 126px;
@@ -14,12 +14,6 @@
 		font-size: 16px;
 	}
 
-	.int {
-		font-size: 30px;
-	}
-	.dec:before {
-		content: ".";
-	}
 	.icon,
 	.unit {
 		color: $color_bpmUnit;
@@ -33,10 +27,19 @@
 		margin-right: 4px;
 		font-size: 14px;
 	}
-	.a-bpm .icon:after { content: $icon-caret-down; }
-	&.clicked .a-bpm .icon:after { content: $icon-caret-up; }
+	.bpmLink .icon:after {
+		content: $icon-caret-down;
+	}
 
-	.bpm-list {
+	&Int {
+		font-size: 30px;
+	}
+
+	&Dec:before {
+		content: ".";
+	}
+
+	&List {
 		position: absolute;
 		box-sizing: border-box;
 		overflow: hidden;
@@ -64,8 +67,14 @@
 		}
 	}
 
-	&.clicked .bpm-list {
-		height: 270px;
-		opacity: 1;
+	&.clicked {
+		.bpmLink .icon:after {
+			content: $icon-caret-up;
+		}
+
+		#bpmList {
+			height: 270px;
+			opacity: 1;
+		}
 	}
 }

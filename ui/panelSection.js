@@ -1,5 +1,5 @@
 "use strict";
 
 ui.panelSection = function( section ) {
-	ui.elApp.dataset.panel = section;
+	ui.dom.app.dataset.panel = section;
 };

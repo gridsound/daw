@@ -1,14 +1,11 @@
 #visual {
-	$height: 60px;
-	$btns-size: 24px;
-
 	box-sizing: border-box;
 	overflow: hidden;
 	position: absolute;
 	z-index: 3;
 	left: 0;
 	top: 0;
-	height: $height;
+	height: 60px;
 	border-right: 1px solid #000;
 	background: $color_visualBg;
 
@@ -33,31 +30,6 @@
 		justify-content: flex-end;
 		width: 50px;
 		text-align: center;
-
-		a {
-			display: inline-block;
-			width: $btns-size;
-			height: $btns-size;
-			line-height: $btns-size;
-			margin-bottom: 7px;
-			border-radius: 50%;
-			color: #999;
-			border: 2px solid transparent;
-			background: rgba( #fff, .07 );
-			transition: .2s;
-			transition-property: background, color;
-
-			&:hover {
-				color: #ccc;
-				background: rgba( #fff, .15 );
-			}
-			#app[data-panel="files"] &.files,
-			#app[data-panel="history"] &.history {
-				color: #fff;
-				border-color: #666;
-				background: rgba( #fff, .15 );
-			}
-		}
 	}
 
 	.cell-clock {
@@ -66,45 +38,33 @@
 		padding: 0 12px 0 5px;
 		text-align: right;
 	}
+}
 
-	.clock {
-		height: 100%;
-		line-height: $height;
-		font-family: "LCDBOLD";
-		font-size: 38px;
-		color: $color_clock;
-		@include text-stroke( $color_clockStroke );
+#btnFiles,
+#btnHistory {
+	$size: 24px;
 
-		.units {
-			position: absolute;
-			top: 20px;
-			right: 9px;
-			font: 10px consolas;
-			line-height: 0;
+	display: inline-block;
+	width: $size;
+	height: $size;
+	line-height: $size;
+	margin-bottom: 7px;
+	border-radius: 50%;
+	color: #999;
+	border: 2px solid transparent;
+	background: rgba( #fff, .07 );
+	transition: .2s;
+	transition-property: background, color;
 
-			span {
-				margin-left: 3px;
-				opacity: .5;
-			}
-
-			&[data-unit="s"] .s,
-			&[data-unit="b"] .b {
-				opacity: 1;
-			}
-		}
-
-		> .sec {
-			&:before,
-			&:after {
-				content: ":";
-				padding: 0 .15em;
-			}
-			&:after {
-				content: ".";
-			}
-		}
-		> .ms {
-			font-size: .5em;
-		}
+	&:hover {
+		color: #ccc;
+		background: rgba( #fff, .15 );
 	}
+}
+
+#app[data-panel="files"] #btnFiles,
+#app[data-panel="history"] #btnHistory {
+	color: #fff;
+	border-color: #666;
+	background: rgba( #fff, .15 );
 }

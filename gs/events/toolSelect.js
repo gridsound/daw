@@ -45,7 +45,7 @@ ui.tool.select = {
 				dragging = true;
 				atrackId = ui.getTrackFromPageY( ay ).id;
 				asec = ui.getGridSec( ax );
-				ui.elTrackLines.appendChild( elRect );
+				ui.dom.tracksLines.appendChild( elRect );
 			}
 
 			// TODO: optimize this part:
