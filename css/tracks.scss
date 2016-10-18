@@ -1,0 +1,58 @@
+#tracks {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	top: 20px;
+	bottom: 0;
+
+	&Names {
+		box-sizing: border-box;
+		z-index: 2;
+		min-width: 16px;
+		max-width: 300px;
+		border: solid #000;
+		border-width: 0 1px;
+		background: $color_tracksNamesBg;
+	}
+
+	&Lines {
+		position: relative;
+		width: 1000000px;
+		margin-left: 0;
+	}
+
+	&Bg {
+		position: absolute;
+		width: 1000000px;
+		top: 0;
+		bottom: 0;
+		overflow: hidden;
+		background: $color_tracksBg;
+
+		* {
+			display: inline-block;
+			height: 100%;
+			+ * {
+				border-left: 1px solid;
+				margin-left: -1px;
+			}
+		}
+		> * {
+			width: 4em;
+			border-color: $color_tracksLinesBorder;
+			&:nth-child( even ) {
+				background: $color_tracksBgEven;
+			}
+
+			* {
+				width: 25%;
+			}
+			> * {
+				border-color: rgba( #000, .5 );
+				* {
+					border-color: rgba( #000, .2 );
+				}
+			}
+		}
+	}
+}
