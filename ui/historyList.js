@@ -4,6 +4,9 @@ ui.initElement( "historyList", function( el ) {
 	var ind, elActions;
 
 	return {
+		click: function( e ) {
+			( e = e.target.historyAction ) && gs.history.goToAction( e );
+		},
 		reset: function() {
 			ind = 0;
 			elActions = [];
@@ -18,8 +21,7 @@ ui.initElement( "historyList", function( el ) {
 				elAction = wisdom.cE( Handlebars.templates.historyAction( action ) )[ 0 ];
 
 			while ( nbUndoneActions-- > 0 ) {
-				elActions.pop();
-				el.lastChild.remove();
+				elActions.pop().remove();
 			}
 			ind++;
 			elAction.historyAction = action;

@@ -8,13 +8,15 @@ ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
 ui.visualCanvas.on();
-ui.toggleMagnetism( true );
+ui.btnMagnet.toggle( true );
 ui.tracksBg.update();
 ui.historyList.reset();
 ui.timelineLoop.hide();
 
 gs.bpm( 120 );
 gs.currentTime( 0 );
+
+wa.composition.onended( gs.compositionStop );
 
 ui.dom.btnFiles.click();
 wisdom.qS( ui.dom.clockUnits, ".s" ).click();

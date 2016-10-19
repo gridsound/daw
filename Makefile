@@ -51,9 +51,18 @@ src = \
 	$(WEBAUDIO_PATH)filters.js        \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
+	gs/_init.js                       \
+	gs/playPauseStop.js               \
+	gs/history/history.js             \
+	gs/history/actions.js             \
+	                                  \
 	ui/ui.js                          \
+	ui/btnMagnet.js                   \
 	ui/btnPlay.js                     \
+	ui/btnSave.js                     \
 	ui/btnStop.js                     \
+	ui/btnUndo.js                     \
+	ui/btnRedo.js                     \
 	ui/clock.js                       \
 	ui/currentTimeCursor.js           \
 	ui/historyList.js                 \
@@ -78,7 +87,6 @@ src = \
 	ui/setGridZoom.js                 \
 	ui/setTrackLinesLeft.js           \
 	ui/setTrackNamesWidth.js          \
-	ui/toggleMagnetism.js             \
 	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \
 	                                  \
@@ -89,10 +97,8 @@ src = \
 	wa/_init.js                       \
 	wa/oscilloscope.js                \
 	                                  \
-	gs/_init.js                       \
 	gs/bpm.js                         \
 	gs/currentTime.js                 \
-	gs/playPauseStop.js               \
 	gs/load.js                        \
 	gs/save.js                        \
 	gs/reset.js                       \
@@ -105,9 +111,6 @@ src = \
 	gs/files/File/dragstart.js        \
 	gs/files/File/joinFile.js         \
 	gs/files/File/load.js             \
-	                                  \
-	gs/history/history.js             \
-	gs/history/actions.js             \
 	                                  \
 	gs/samples/sampleCreate.js        \
 	gs/samples/sampleSelect.js        \
@@ -133,18 +136,14 @@ src = \
 	gs/samples/Sample/when.js         \
 	                                  \
 	gs/events/bpm.js                  \
-	gs/events/currentTime.js          \
 	gs/events/clockUnits.js           \
 	gs/events/divExtend.js            \
 	gs/events/dropFiles.js            \
 	gs/events/fileFilters.js          \
 	gs/events/gridMouse.js            \
-	gs/events/history.js              \
 	gs/events/keyboard.js             \
 	gs/events/panelMenu.js            \
-	gs/events/playPauseStop.js        \
 	gs/events/resize.js               \
-	gs/events/save.js                 \
 	gs/events/tools.js                \
 	gs/events/toolCut.js              \
 	gs/events/toolDelete.js           \

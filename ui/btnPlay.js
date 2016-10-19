@@ -12,6 +12,7 @@ ui.initElement( "btnPlay", function( el ) {
 	}
 
 	return {
+		click: gs.playPause,
 		play: function() {
 			el.classList.remove( "play" );
 			el.classList.add( "pause" );

@@ -18,6 +18,9 @@ ui.initElement( "timeline", function( el ) {
 	}
 
 	return {
+		mouseup: function( e ) {
+			gs.currentTime( ui.getGridSec( e.pageX ) );
+		},
 		update: function() {
 			var leftEm = ui.trackLinesLeft / ui.gridEm,
 				widthEm = ui.trackLinesWidth / ui.gridEm;

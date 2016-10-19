@@ -2,7 +2,8 @@
 
 ( function() {
 
-var initFns = [];
+var initFns = [],
+	events = "click mousedown mouseup".split( " " );
 
 window.ui = {
 	dom: {},
@@ -47,7 +48,15 @@ window.ui = {
 
 		// Call each init functions :
 		initFns.forEach( function( v ) {
-			ui[ v.name ] = v.fn( ui.dom[ v.name ] );
+			var k, el = ui.dom[ v.name ],
+				proto = v.fn( el );
+
+			ui[ v.name ] = proto;
+			for ( k in proto ) {
+				if ( events.indexOf( k ) > -1 ) {
+					el.addEventListener( k, proto[ k ] );
+				}
+			}
 		} );
 	},
 };
