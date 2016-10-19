@@ -53,6 +53,7 @@ src = \
 	                                  \
 	ui/ui.js                          \
 	ui/clock.js                       \
+	ui/historyList.js                 \
 	ui/timeline.js                    \
 	ui/timelineLoop.js                \
 	ui/_init.js                       \
@@ -64,7 +65,6 @@ src = \
 	ui/getGridSec.js                  \
 	ui/getTrackFromPageY.js           \
 	ui/file.js                        \
-	ui/history.js                     \
 	ui/newTrack.js                    \
 	ui/panelSection.js                \
 	ui/playPauseStop.js               \

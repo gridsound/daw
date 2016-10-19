@@ -27,7 +27,7 @@ gs.history = {
 			actions.splice( rip + 1 );
 		}
 		actions.push( action );
-		ui.historyPush( action );
+		ui.historyList.push( action );
 		++rip;
 	},
 	undo: function() {
@@ -36,7 +36,7 @@ gs.history = {
 			if ( act.fn ) {
 				act.fn( act.data, -1 );
 			}
-			ui.historyUndo();
+			ui.historyList.undo();
 		}
 	},
 	redo: function() {
@@ -45,7 +45,7 @@ gs.history = {
 			if ( act.fn ) {
 				act.fn( act.data, +1 );
 			}
-			ui.historyRedo();
+			ui.historyList.redo();
 		}
 	}
 };

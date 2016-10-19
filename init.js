@@ -10,7 +10,7 @@ ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
 ui.toggleMagnetism( true );
 ui.updateTracksBg();
-ui.historyReset();
+ui.historyList.reset();
 ui.timelineLoop.hide();
 
 gs.bpm( 120 );
