@@ -17,6 +17,6 @@ ui.tool.hand = {
 		ui.setTrackLinesLeft( ui.trackLinesLeft + ui.px_xRel );
 		ui.setGridScrollTop( ui.gridScrollTop - ui.px_yRel );
 		ui.timeline.update();
-		ui.updateTracksBg();
+		ui.tracksBg.update();
 	}
 };

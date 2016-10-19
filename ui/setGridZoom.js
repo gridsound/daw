@@ -14,5 +14,5 @@ ui.setGridZoom = function( zm, xpx, ypx ) {
 	ui.setGridScrollTop( -( ypx - ( ui.gridScrollTop + ypx ) * zmMul ) );
 	ui.setTrackLinesLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
 	ui.timeline.update();
-	ui.updateTracksBg();
+	ui.tracksBg.update();
 };

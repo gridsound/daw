@@ -9,7 +9,7 @@ ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0, 0 );
 ui.analyserToggle( true );
 ui.toggleMagnetism( true );
-ui.updateTracksBg();
+ui.tracksBg.update();
 ui.historyList.reset();
 ui.timelineLoop.hide();
 

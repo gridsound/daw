@@ -56,6 +56,7 @@ src = \
 	ui/historyList.js                 \
 	ui/timeline.js                    \
 	ui/timelineLoop.js                \
+	ui/tracksBg.js                    \
 	ui/_init.js                       \
 	                                  \
 	ui/analyserToggle.js              \
@@ -79,7 +80,6 @@ src = \
 	ui/toggleMagnetism.js             \
 	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \
-	ui/updateTracksBg.js              \
 	                                  \
 	ui/Track/constructor.js           \
 	ui/Track/editName.js              \

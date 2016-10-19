@@ -18,5 +18,5 @@ ui.setTrackNamesWidth = function( wpx ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}
 	ui.timeline.update();
-	ui.updateTracksBg();
+	ui.tracksBg.update();
 };
