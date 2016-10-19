@@ -9,7 +9,7 @@ gs.play = function() {
 		wa.composition.play();
 		if ( wa.composition.isPlaying ) {
 			gs.isPaused = !( gs.isPlaying = true );
-			ui.play();
+			ui.btnPlay.play();
 		}
 	}
 };
@@ -19,7 +19,7 @@ gs.pause = function() {
 	if ( wa.composition.isPlaying ) {
 		wa.composition.pause();
 		gs.isPaused = !( gs.isPlaying = false );
-		ui.pause();
+		ui.btnPlay.pause();
 	}
 };
 
@@ -32,5 +32,5 @@ gs.compositionStop = function() {
 	wa.composition.stop();
 	gs.currentTime( 0 );
 	gs.isPaused = gs.isPlaying = false;
-	ui.stop();
+	ui.btnStop.stop();
 };

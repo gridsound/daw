@@ -52,6 +52,8 @@ src = \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
 	ui/ui.js                          \
+	ui/btnPlay.js                     \
+	ui/btnStop.js                     \
 	ui/clock.js                       \
 	ui/historyList.js                 \
 	ui/timeline.js                    \
@@ -68,7 +70,6 @@ src = \
 	ui/file.js                        \
 	ui/newTrack.js                    \
 	ui/panelSection.js                \
-	ui/playPauseStop.js               \
 	ui/resize.js                      \
 	ui/sample.js                      \
 	ui/selectTool.js                  \
