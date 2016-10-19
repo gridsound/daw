@@ -52,13 +52,13 @@ src = \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
 	ui/ui.js                          \
+	ui/clock.js                       \
 	ui/timeline.js                    \
 	ui/timelineLoop.js                \
 	ui/_init.js                       \
 	                                  \
 	ui/analyserToggle.js              \
 	ui/bpm.js                         \
-	ui/setClockUnit.js                \
 	ui/currentTime.js                 \
 	ui/cursor.js                      \
 	ui/getGridSec.js                  \
