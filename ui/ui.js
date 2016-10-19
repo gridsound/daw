@@ -1,7 +1,16 @@
 "use strict";
 
+( function() {
+
+var initFns = [];
+
 window.ui = {
 	dom: {},
+
+	initElement: function( name, fn ) {
+		initFns.push( { name: name, fn: fn } );
+		return ui;
+	},
 
 	init: function( app, tplApp, obj ) {
 		var k, tpl = Handlebars.templates;
@@ -35,5 +44,12 @@ window.ui = {
 				ui.dom[ el.id ] = el;
 			}
 		}
+
+		// Call each init functions :
+		initFns.forEach( function( v ) {
+			ui[ v.name ] = v.fn( ui.dom[ v.name ] );
+		} );
 	},
 };
+
+} )();

@@ -8,6 +8,6 @@ ui.setFilesWidth = function( wpx ) {
 	wisdom.css( ui.dom.grid, "left", wpx + "px" );
 	wisdom.css( ui.dom.visual, "width", wpx + ui.trackNamesWidth + "px" );
 	wisdom.css( ui.dom.menu, "left", wpx + ui.trackNamesWidth + "px" );
-	ui.updateTimeline();
+	ui.timeline.update();
 	ui.updateTracksBg();
 };

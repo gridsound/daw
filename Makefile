@@ -52,6 +52,8 @@ src = \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
 	ui/ui.js                          \
+	ui/timeline.js                    \
+	ui/timelineLoop.js                \
 	ui/_init.js                       \
 	                                  \
 	ui/analyserToggle.js              \
@@ -74,11 +76,9 @@ src = \
 	ui/setGridZoom.js                 \
 	ui/setTrackLinesLeft.js           \
 	ui/setTrackNamesWidth.js          \
-	ui/timelineLoop.js                \
 	ui/toggleMagnetism.js             \
 	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \
-	ui/updateTimeline.js              \
 	ui/updateTracksBg.js              \
 	                                  \
 	ui/Track/constructor.js           \
