@@ -23,7 +23,7 @@ function insert( action, sign ) {
 		return d3lete( action, false );
 	}
 	action.samples.forEach( function( s ) {
-		wa.composition.addSamples( [ s.wsample ] );
+		wa.composition.add( [ s.wsample ] );
 		gs.samples.push( s );
 		ui.CSS_sampleCreate( s );
 		s.inTrack( s.oldTrack.id );

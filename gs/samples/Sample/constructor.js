@@ -20,7 +20,7 @@ gs.Sample = function( gsfile, trackId, when ) {
 		this.when( when );
 		ui.CSS_sampleDuration( this );
 		ui.CSS_sampleWaveform( this );
-		wa.composition.addSamples( [ this.wsample ] );
+		wa.composition.add( [ this.wsample ] );
 	}
 
 	this.select( false );
