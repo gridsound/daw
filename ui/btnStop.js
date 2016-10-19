@@ -4,7 +4,8 @@ ui.initElement( "btnStop", function( el ) {
 	return {
 		stop: function() {
 			ui.btnPlay.pause();
-			ui.currentTime( 0 );
+			ui.currentTimeCursor.at( 0 );
+			ui.clock.setTime( 0 );
 		}
 	};
 } );

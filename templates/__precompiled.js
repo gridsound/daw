@@ -1,5 +1,8 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['clock'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div id=\"clock\">\r\n	<span id=\"clockMin\"></span>\r\n	<span id=\"clockSec\"></span>\r\n	<span id=\"clockMs\"></span>\r\n	<a id=\"clockUnits\" href=\"#\">\r\n		<span class=\"s\">sec</span>\r\n		<span class=\"b\">beat</span>\r\n	</a>\r\n</div>\r\n";
+},"useData":true});
 templates['file'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
@@ -63,8 +66,12 @@ templates['timelineLoop'] = template({"compiler":[7,">= 4.0.0"],"main":function(
     return "<div id=\"timelineLoop\"></div>\r\n";
 },"useData":true});
 templates['visual'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"visual\">\r\n	<canvas id=\"visualCanvas\"></canvas>\r\n	<div class=\"columns\">\r\n		<div class=\"cell-btn\"><a id=\"btnHistory\" class=\"btn icon fw history\" title=\"History (undo/redo)\"></a></div>\r\n		<div class=\"cell-btn\"><a id=\"btnFiles\" class=\"btn icon fw files\" title=\"Audio files\"></a></div>\r\n		<div class=\"cell-clock\">\r\n			<div id=\"clock\">\r\n				<span id=\"clockMin\"></span>\r\n				<span id=\"clockSec\"></span>\r\n				<span id=\"clockMs\"></span>\r\n				<a id=\"clockUnits\" href=\"#\">\r\n					<span class=\"s\">sec</span>\r\n					<span class=\"b\">beat</span>\r\n				</a>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
-},"useData":true});
+    var stack1;
+
+  return "<div id=\"visual\">\r\n	<canvas id=\"visualCanvas\"></canvas>\r\n	<div class=\"columns\">\r\n		<div class=\"cell-btn\"><a id=\"btnHistory\" class=\"btn icon fw history\" title=\"History (undo/redo)\"></a></div>\r\n		<div class=\"cell-btn\"><a id=\"btnFiles\" class=\"btn icon fw files\" title=\"Audio files\"></a></div>\r\n		<div class=\"cell-clock\">\r\n"
+    + ((stack1 = container.invokePartial(partials.clock,depth0,{"name":"clock","data":data,"indent":"\t\t\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "		</div>\r\n	</div>\r\n</div>\r\n";
+},"usePartial":true,"useData":true});
 templates['_app'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 

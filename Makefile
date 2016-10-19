@@ -55,15 +55,15 @@ src = \
 	ui/btnPlay.js                     \
 	ui/btnStop.js                     \
 	ui/clock.js                       \
+	ui/currentTimeCursor.js           \
 	ui/historyList.js                 \
 	ui/timeline.js                    \
 	ui/timelineLoop.js                \
 	ui/tracksBg.js                    \
+	ui/visualCanvas.js                \
 	ui/_init.js                       \
 	                                  \
-	ui/analyserToggle.js              \
 	ui/bpm.js                         \
-	ui/currentTime.js                 \
 	ui/cursor.js                      \
 	ui/getGridSec.js                  \
 	ui/getTrackFromPageY.js           \

@@ -3,8 +3,11 @@
 ui.initElement( "clock", function( el ) {
 	return {
 		setUnit: function( unit ) {
+			var sec = gs.currentTime();
+
 			ui.dom.clockUnits.dataset.unit = unit;
-			ui.currentTime( gs.currentTime() );
+			ui.currentTimeCursor.at( sec );
+			ui.clock.setTime( sec );
 		},
 		setTime: function( s ) {
 			//  0: 0. 00

@@ -4,7 +4,10 @@ ui.initElement( "btnPlay", function( el ) {
 	var reqFrameId;
 
 	function frame() {
-		ui.currentTime( wa.composition.currentTime() );
+		var sec = wa.composition.currentTime();
+
+		ui.currentTimeCursor.at( sec );
+		ui.clock.setTime( sec );
 		reqFrameId = requestAnimationFrame( frame );
 	}
 

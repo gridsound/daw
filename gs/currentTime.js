@@ -5,5 +5,7 @@ gs.currentTime = function( sec ) {
 		return wa.composition.currentTime();
 	}
 	wa.composition.currentTime( sec );
-	ui.currentTime( wa.composition.currentTime() );
+	sec = wa.composition.currentTime();
+	ui.currentTimeCursor.at( sec );
+	ui.clock.setTime( sec );
 };
