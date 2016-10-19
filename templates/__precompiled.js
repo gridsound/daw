@@ -57,7 +57,7 @@ templates['timeline'] = template({"compiler":[7,">= 4.0.0"],"main":function(cont
 
   return "<div id=\"timeline\">\r\n	<span id=\"currentTimeArrow\" class=\"icon caret-down\"></span>\r\n"
     + ((stack1 = container.invokePartial(partials.timelineLoop,depth0,{"name":"timelineLoop","data":data,"indent":"\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "</div>\r\n";
+    + "	<div id=\"timelineBeats\"></div>\r\n</div>\r\n";
 },"usePartial":true,"useData":true});
 templates['timelineBeat'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<span class=\"timelineBeat\">\r\n	<span></span>\r\n</span>\r\n";

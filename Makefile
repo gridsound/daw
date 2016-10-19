@@ -67,6 +67,7 @@ src = \
 	ui/currentTimeCursor.js           \
 	ui/historyList.js                 \
 	ui/timeline.js                    \
+	ui/timelineBeats.js               \
 	ui/timelineLoop.js                \
 	ui/tracksBg.js                    \
 	ui/visualCanvas.js                \

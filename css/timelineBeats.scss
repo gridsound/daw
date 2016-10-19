@@ -1,10 +1,14 @@
+#timelineBeats {
+	height: 100%;
+}
+
 .timelineBeat {
 	display: inline-block;
 	width: 1em;
 	height: 100%;
 	color: $timelineBeat_color;
 
-	&:nth-child( 3 ) {
+	&:first-child {
 		visibility: hidden;
 	}
 	span {
@@ -23,7 +27,7 @@
 			content: counter( beatCounter );
 		}
 	}
-	&:nth-child( 4n+2 ) span {
+	&:nth-child( 4n ) span {
 		margin-top: 0;
 		font-size: 14px;
 		font-weight: bold;
