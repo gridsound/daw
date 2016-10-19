@@ -2,16 +2,22 @@ $COLOR_MAIN: lighten( #142b3c, 3 );
 $COLOR_SAMPLE: #76c4ff;
 $COLOR_SAMPLE_SELECTED: #b51818;
 $COLOR_SELECTION: #ff3636;
+$YELLOW: #4cb849;
 
 // ---------------------------------------
 
 $color_appBg: lighten( grayscale( $COLOR_MAIN ), 7 );
-$color_bodyStripA: $color_appBg;
-$color_bodyStripB: darken( $color_bodyStripA, 2 );
-$width_bodyStrip: 42px;
 $width_scrollbarSize: 5px;
 $color_scrollbarBg: #222;
 $color_scrollbarThumb: #888;
+
+/* timeline */
+$timeline_bgColor: #0d0d0d;
+	/* timelineBeat */
+	$timelineBeat_color: #888;
+	/* timelineLoop */
+	$timelineLoop_borderColor: $YELLOW;
+	$timelineLoop_bgColor: rgba( $YELLOW, .3 );
 
 $color_panelNav: darken( $color_appBg, 5 );
 $color_tracksNamesBg: darken( $color_appBg, 6.2 );
@@ -44,9 +50,6 @@ $color_fileFiltersBg: rgba( #000, .35 );
 $color_filesPlaceholder: $color_fileFiltersBg;
 $color_fileWaveform: lighten( $COLOR_MAIN, 10% );
 
-$color_timelineBg: #0d0d0d;
-$color_timelineText: #888;
-
 $color_tracksNamesBorder: #151515;
 $color_tracksLinesBorder: #090909;
 
@@ -56,7 +59,7 @@ $border_trackOffFirst: rgba( #000, .2 );
 $color_trackName: #fff;
 $color_trackOffName: rgba( #fff, .2 );
 $color_trackToggleOff: #111;
-$color_trackToggleOn: #4cb849;
+$color_trackToggleOn: $YELLOW;
 
 $color_squareSelectionBorder: $COLOR_SELECTION;
 $color_squareSelectionBg: rgba( $COLOR_SELECTION, .3 );

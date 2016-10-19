@@ -2,28 +2,27 @@
 
 ( function() {
 
-ui.updateGridTimeline = function() {
+ui.updateTimeline = function() {
 	var leftEm = ui.trackLinesLeft / ui.gridEm,
 		widthEm = ui.trackLinesWidth / ui.gridEm;
 
 	createNb( Math.ceil( -leftEm + widthEm ) );
-	wisdom.css( elFirstNum, "marginLeft", leftEm + "em" );
+	wisdom.css( beatFirst, "marginLeft", leftEm + "em" );
 	wisdom.css( ui.dom.currentTimeArrow, "marginLeft", leftEm + "em" );
 };
 
-var elFirstNum,
+var beatFirst,
 	nbNums = 0;
 
 function createNb( nb ) {
 	if ( nb > nbNums ) {
-		var div, i = nbNums;
+		var beat, i = nbNums;
 
 		nbNums = nb;
 		while ( i++ < nb ) {
-			div = document.createElement( "div" );
-			div.appendChild( document.createElement( "span" ) );
-			ui.dom.gridTimeline.appendChild( div );
-			elFirstNum = elFirstNum || div;
+			beat = wisdom.cE( Handlebars.templates.timelineBeat() )[ 0 ];
+			ui.dom.timeline.appendChild( beat );
+			beatFirst = beatFirst || beat;
 		}
 	}
 }

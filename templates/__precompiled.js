@@ -8,8 +8,12 @@ templates['file'] = template({"compiler":[7,">= 4.0.0"],"main":function(containe
     + "</span>\r\n	</span>\r\n</a>\r\n";
 },"useData":true});
 templates['grid'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"grid\">\r\n	<div id=\"gridEm\">\r\n		<div id=\"gridHeader\">\r\n			<div id=\"gridTimeline\">\r\n				<span id=\"currentTimeArrow\" class=\"icon caret-down\"></span>\r\n			</div>\r\n		</div>\r\n		<div id=\"tracks\">\r\n			<div id=\"gridCols\">\r\n				<div id=\"tracksNames\" class=\"colA\">\r\n					<div class=\"extend\" data-mousemove-fn=\"trackNames\"></div>\r\n				</div>\r\n				<div id=\"gridColB\">\r\n					<div id=\"tracksBg\"></div>\r\n					<div id=\"tracksLines\">\r\n						<div id=\"currentTimeCursor\"></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
-},"useData":true});
+    var stack1;
+
+  return "<div id=\"grid\">\r\n	<div id=\"gridEm\">\r\n		<div id=\"gridHeader\">\r\n"
+    + ((stack1 = container.invokePartial(partials.timeline,depth0,{"name":"timeline","data":data,"indent":"\t\t\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "		</div>\r\n		<div id=\"tracks\">\r\n			<div id=\"gridCols\">\r\n				<div id=\"tracksNames\" class=\"colA\">\r\n					<div class=\"extend\" data-mousemove-fn=\"trackNames\"></div>\r\n				</div>\r\n				<div id=\"gridColB\">\r\n					<div id=\"tracksBg\"></div>\r\n					<div id=\"tracksLines\">\r\n						<div id=\"currentTimeCursor\"></div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";
+},"usePartial":true,"useData":true});
 templates['historyAction'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -44,6 +48,19 @@ templates['sample'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
   return "<div class=\"sample\">\r\n	<div class=\"waveformWrapper\">\r\n		<svg class=\"waveform\" preserveAspectRatio=\"none\"><path/></svg>\r\n	</div>\r\n	<span class=\"name text-overflow\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\r\n	<div class=\"crop start\"></div>\r\n	<div class=\"crop end\"></div>\r\n</div>\r\n";
+},"useData":true});
+templates['timeline'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div id=\"timeline\">\r\n	<span id=\"currentTimeArrow\" class=\"icon caret-down\"></span>\r\n"
+    + ((stack1 = container.invokePartial(partials.timelineLoop,depth0,{"name":"timelineLoop","data":data,"indent":"\t","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "</div>\r\n";
+},"usePartial":true,"useData":true});
+templates['timelineBeat'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<span class=\"timelineBeat\">\r\n	<span></span>\r\n</span>\r\n";
+},"useData":true});
+templates['timelineLoop'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div id=\"timelineLoop\"></div>\r\n";
 },"useData":true});
 templates['visual'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div id=\"visual\">\r\n	<canvas id=\"visualCanvas\"></canvas>\r\n	<div class=\"columns\">\r\n		<div class=\"cell-btn\"><a id=\"btnHistory\" class=\"btn icon fw history\" title=\"History (undo/redo)\"></a></div>\r\n		<div class=\"cell-btn\"><a id=\"btnFiles\" class=\"btn icon fw files\" title=\"Audio files\"></a></div>\r\n		<div class=\"cell-clock\">\r\n			<div id=\"clock\">\r\n				<span id=\"clockMin\"></span>\r\n				<span id=\"clockSec\"></span>\r\n				<span id=\"clockMs\"></span>\r\n				<a id=\"clockUnits\" href=\"#\">\r\n					<span class=\"s\">sec</span>\r\n					<span class=\"b\">beat</span>\r\n				</a>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n";

@@ -1,0 +1,8 @@
+#timelineLoop {
+	position: absolute;
+	box-sizing: border-box;
+	height: 100%;
+	border: 0 solid $timelineLoop_borderColor;
+	border-width: 0 1px;
+	background: $timelineLoop_bgColor;
+}

@@ -1,0 +1,32 @@
+.timelineBeat {
+	display: inline-block;
+	width: 1em;
+	height: 100%;
+	color: $timelineBeat_color;
+
+	&:nth-child( 3 ) {
+		visibility: hidden;
+	}
+	span {
+		display: inline-block;
+		vertical-align: top;
+		width: 100%;
+		margin-left: -50%;
+		text-align: center;
+		font-family: monospace;
+		margin-top: 2px;
+		font-size: 12px;
+		opacity: .5;
+
+		&:after {
+			counter-increment: beatCounter;
+			content: counter( beatCounter );
+		}
+	}
+	&:nth-child( 4n+2 ) span {
+		margin-top: 0;
+		font-size: 14px;
+		font-weight: bold;
+		opacity: 1;
+	}
+}

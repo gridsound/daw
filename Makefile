@@ -77,7 +77,7 @@ src = \
 	ui/toggleMagnetism.js             \
 	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \
-	ui/updateGridTimeline.js          \
+	ui/updateTimeline.js              \
 	ui/updateTracksBg.js              \
 	                                  \
 	ui/Track/constructor.js           \

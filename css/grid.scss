@@ -14,52 +14,6 @@
 		border-bottom: 1px solid #000;
 	}
 
-	&Timeline {
-		box-sizing: border-box;
-		position: absolute;
-		overflow: hidden;
-		top: 0;
-		right: -3em;
-		height: 100%;
-		border-top: 1px solid #000;
-		background: $color_timelineBg;
-		cursor: default;
-		counter-reset: section;
-
-		div {
-			display: inline-block;
-			width: 1em;
-			height: 100%;
-			color: $color_timelineText;
-
-			&:first-child {
-				visibility: hidden;
-			}
-			span {
-				display: inline-block;
-				vertical-align: top;
-				width: 100%;
-				margin-left: -50%;
-				text-align: center;
-				font-family: monospace;
-				margin-top: 2px;
-				font-size: 12px;
-				opacity: .5;
-
-				&:after {
-					counter-increment: section;
-					content: counter( section );
-				}
-			}
-			&:nth-child( 4n+1 ) span {
-				margin-top: 0;
-				font-size: 14px;
-				font-weight: bold;
-				opacity: 1;
-			}
-		}
-	}
-
 	&Cols {
 		position: absolute;
 		left: 0;

@@ -1,0 +1,12 @@
+#timeline {
+	box-sizing: border-box;
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	right: -3em;
+	height: 100%;
+	border-top: 1px solid #000;
+	background: $timeline_bgColor;
+	cursor: default;
+	counter-reset: beatCounter;
+}

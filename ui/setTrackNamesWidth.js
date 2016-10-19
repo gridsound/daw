@@ -11,12 +11,12 @@ ui.setTrackNamesWidth = function( wpx ) {
 	ui.trackLinesWidth = ui.gridColsWidth - wpx;
 	visualWidth = ui.filesWidth + wpx;
 	wisdom.css( ui.dom.gridColB, "left", wpx + "px" );
-	wisdom.css( ui.dom.gridTimeline, "left", wpx + "px" );
+	wisdom.css( ui.dom.timeline, "left", wpx + "px" );
 	wisdom.css( ui.dom.visual, "width", visualWidth + "px" );
 	wisdom.css( ui.dom.menu, "left", visualWidth + "px" );
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}
-	ui.updateGridTimeline();
+	ui.updateTimeline();
 	ui.updateTracksBg();
 };
