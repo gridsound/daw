@@ -9,6 +9,7 @@ ui.updateTimeline = function() {
 	createNb( Math.ceil( -leftEm + widthEm ) );
 	wisdom.css( beatFirst, "marginLeft", leftEm + "em" );
 	wisdom.css( ui.dom.currentTimeArrow, "marginLeft", leftEm + "em" );
+	wisdom.css( ui.dom.timelineLoop, "marginLeft", leftEm + "em" );
 };
 
 var beatFirst,

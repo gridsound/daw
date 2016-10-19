@@ -74,6 +74,7 @@ src = \
 	ui/setGridZoom.js                 \
 	ui/setTrackLinesLeft.js           \
 	ui/setTrackNamesWidth.js          \
+	ui/timelineLoop.js                \
 	ui/toggleMagnetism.js             \
 	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \

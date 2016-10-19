@@ -26,6 +26,10 @@ input {
 	outline: 0;
 }
 
+.hidden {
+	display: none !important;
+}
+
 .no-transition {
 	transition: none !important;
 }

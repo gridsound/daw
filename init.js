@@ -11,6 +11,7 @@ ui.analyserToggle( true );
 ui.toggleMagnetism( true );
 ui.updateTracksBg();
 ui.historyReset();
+ui.timelineLoop.hide();
 
 gs.bpm( 120 );
 gs.currentTime( 0 );
