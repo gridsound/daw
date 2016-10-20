@@ -11,7 +11,7 @@ ui.visualCanvas.on();
 ui.btnMagnet.toggle( true );
 ui.tracksBg.update();
 ui.historyList.reset();
-ui.timelineLoop.hide();
+ui.timelineLoop.toggle( false );
 
 gs.bpm( 120 );
 gs.currentTime( 0 );

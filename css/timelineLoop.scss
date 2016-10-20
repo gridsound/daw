@@ -1,8 +1,37 @@
 #timelineLoop {
 	position: absolute;
-	box-sizing: border-box;
 	height: 100%;
-	border: 0 solid $timelineLoop_borderColor;
-	border-width: 0 1px;
 	background: $timelineLoop_bgColor;
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		width: 1000em;
+		height: 100%;
+		background: $timelineLoop_outerFilter;
+	}
+	&:before { right: 100%; }
+	&:after { left: 100%; }
+
+	.time {
+		$border: 2px;
+		position: absolute;
+		z-index: 1;
+		width: 10px;
+		height: 100%;
+		border: 0 solid $timelineLoop_borderColor;
+		cursor: w-resize;
+
+		&.a {
+			right: 100%;
+			border-right-width: $border;
+			margin-right: $border / -2;
+		}
+		&.b {
+			left: 100%;
+			border-left-width: $border;
+			margin-left: $border / -2;
+		}
+	}
 }

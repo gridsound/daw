@@ -1,9 +1,23 @@
 "use strict";
 
 ui.initElement( "timeline", function() {
+	var firstClick;
+
 	return {
+		mousedown: function( e ) {
+			var now = Date.now();
+
+			if ( now - firstClick < 250 ) {
+				gs.loop.stop();
+				gs.loop.timeA( ui.getGridSec( e.pageX ) );
+				ui.timelineLoop.clickTime( "b" );
+			}
+			firstClick = now;
+		},
 		mouseup: function( e ) {
-			gs.currentTime( ui.getGridSec( e.pageX ) );
+			if ( !ui.timelineLoop.dragging ) {
+				gs.currentTime( ui.getGridSec( e.pageX ) );
+			}
 		},
 		update: function() {
 			var leftEm = ui.trackLinesLeft / ui.gridEm,

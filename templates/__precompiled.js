@@ -63,7 +63,7 @@ templates['timelineBeat'] = template({"compiler":[7,">= 4.0.0"],"main":function(
     return "<span class=\"timelineBeat\">\r\n	<span></span>\r\n</span>\r\n";
 },"useData":true});
 templates['timelineLoop'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"timelineLoop\"></div>\r\n";
+    return "<div id=\"timelineLoop\">\r\n	<div class=\"time a\"></div>\r\n	<div class=\"time b\"></div>\r\n</div>\r\n";
 },"useData":true});
 templates['visual'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;

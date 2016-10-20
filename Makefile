@@ -52,6 +52,7 @@ src = \
 	$(WEBAUDIO_PATH)sample.js         \
 	                                  \
 	gs/_init.js                       \
+	gs/loop.js                        \
 	gs/playPauseStop.js               \
 	gs/history/history.js             \
 	gs/history/actions.js             \

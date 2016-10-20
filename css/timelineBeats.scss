@@ -6,7 +6,6 @@
 	display: inline-block;
 	width: 1em;
 	height: 100%;
-	color: $timelineBeat_color;
 
 	&:first-child {
 		visibility: hidden;
@@ -20,7 +19,7 @@
 		font-family: monospace;
 		margin-top: 2px;
 		font-size: 12px;
-		opacity: .5;
+		color: $timelineBeat_color;
 
 		&:after {
 			counter-increment: beatCounter;
@@ -31,6 +30,6 @@
 		margin-top: 0;
 		font-size: 14px;
 		font-weight: bold;
-		opacity: 1;
+		color: $timelineBeat_4nColor;
 	}
 }
