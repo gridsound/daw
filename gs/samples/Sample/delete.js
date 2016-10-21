@@ -6,7 +6,7 @@ gs.Sample.prototype.delete = function() {
 		this.track.removeSample( this );
 		this.oldTrack = this.track; // for the undo
 		this.track = undefined;
-		wa.composition.remove( [ this.wsample ], "rm" );
+		wa.composition.remove( this.wsample );
 		ui.CSS_sampleDelete( this );
 	}
 };

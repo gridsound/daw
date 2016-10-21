@@ -14,7 +14,7 @@ gs.bpm = function( bpm, delay ) {
 	ui.bpm( gs._bpm );
 	ui.BPMem = bpm / 60;
 	BPMdiff = oldBPMem / ui.BPMem;
-	gs.samples.forEach( function( s ) {
+	wa.composition.samples.forEach( function( s ) {
 		// We don't have to call .CSS_sampleWhen, the samples doesn't move when the BPM changes.
 		if ( s.wsample ) {
 			s.wsample.when = s.wsample.when * BPMdiff;

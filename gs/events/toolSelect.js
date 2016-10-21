@@ -58,7 +58,7 @@ ui.tool.select = {
 					secMin = Math.min( asec, bsec ),
 					secMax = Math.max( asec, bsec );
 
-				gs.samples.forEach( function( s ) {
+				wa.composition.samples.forEach( function( s ) {
 					if ( s.wsample ) {
 						if ( trackMin <= s.track.id && s.track.id <= trackMax ) {
 							var secA = s.wsample.when,

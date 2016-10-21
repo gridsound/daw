@@ -4,7 +4,7 @@ gs.save = function() {
 	var files = gs.files.map( function( f ) {
 			return [ f.id, f.fullname, f.file ? f.file.size : f.size ];
 		} ),
-		samples = gs.samples.map( function( s ) {
+		samples = wa.composition.samples.map( function( s ) {
 			return [
 				s.track.id,
 				s.gsfile.id,

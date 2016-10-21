@@ -5,7 +5,7 @@ gs.reset = function() {
 		t.editName( "" );
 		t.toggle( true );
 	} );
-	gs.samples.forEach( function( s ) {
+	wa.composition.samples.forEach( function( s ) {
 		gs.sampleSelect( s, true );
 	} );
 	gs.samplesDelete();

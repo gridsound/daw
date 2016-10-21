@@ -44,9 +44,7 @@ function onload( resolve, e ) {
 		ns.savedWhen     = whn / ui.BPMem;
 		ns.savedOffset   = ofs / ui.BPMem;
 		ns.savedDuration = dur / ui.BPMem;
-		ns.track = ui.tracks[ s[ 0 ] ];
-		ns.track.samples.push( ns );
-		ui.CSS_sampleTrack( ns );
+		ns.inTrack( s[ 0 ] );
 		wisdom.css( ns.elSample, "left", whn + "em" );
 		wisdom.css( ns.elSample, "width", dur + "em" );
 	} );

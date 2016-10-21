@@ -7,7 +7,7 @@ gs.samplesForEach = function( sample, fn ) {
 				if ( s.wsample ) {
 					fn( s );
 				}
-			});
+			} );
 		} else {
 			fn( sample );
 		}

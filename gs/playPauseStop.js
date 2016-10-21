@@ -5,7 +5,7 @@ gs.playPause = function() { ( wa.composition.isPlaying ? gs.pause : gs.play )();
 
 gs.play = function() {
 	gs.fileStop();
-	if ( !wa.composition.isPlaying && wa.composition.wSamples.length && gs.samples.length ) {
+	if ( !wa.composition.isPlaying && wa.composition.samples.length ) {
 		wa.composition.play();
 		if ( wa.composition.isPlaying ) {
 			gs.isPaused = !( gs.isPlaying = true );

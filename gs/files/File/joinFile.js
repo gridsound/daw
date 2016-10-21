@@ -18,7 +18,7 @@ gs.File.prototype.joinFile = function( file ) {
 				s.slip( s.savedOffset );
 				s.duration( s.savedDuration );
 				s.wsample.connect( s.track.wfilters );
-				wa.composition.add( [ s.wsample ] );
+				wa.composition.add( s.wsample );
 				s.elName.textContent = gsfile.name;
 				ui.CSS_sampleDuration( s );
 				ui.CSS_sampleWaveform( s );
