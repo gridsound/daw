@@ -74,10 +74,10 @@ ui.tool.paint = {
 							nbTracksToMove = -Math.min( minTrackId, -nbTracksToMove );
 						}
 						gs.selectedSamples.forEach( function( s ) {
-							s.inTrack( s.track.id + nbTracksToMove );
+							gs.sample.inTrack( s, s.track.id + nbTracksToMove );
 						} );
 					} else {
-						_sample.inTrack( track.id );
+						gs.sample.inTrack( _sample, track.id );
 					}
 				}
 			}

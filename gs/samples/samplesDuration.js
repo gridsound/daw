@@ -2,6 +2,7 @@
 
 gs.samplesDuration = function( sample, secRel ) {
 	var durMin = Infinity;
+
 	function calc( s ) {
 		durMin = Math.min( durMin, s.wsample.duration );
 		secRel = Math.min( secRel, s.wsample.bufferDuration - s.wsample.duration );
@@ -17,7 +18,7 @@ gs.samplesDuration = function( sample, secRel ) {
 			secRel = -Math.min( durMin, -secRel );
 		}
 		gs.samplesForEach( sample, function( s ) {
-			s.duration( s.wsample.duration + secRel );
+			gs.sample.duration( s, s.wsample.duration + secRel );
 		} );
 	}
 	return secRel;

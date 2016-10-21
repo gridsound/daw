@@ -1,12 +1,12 @@
 "use strict";
 
-gs.Sample.prototype.delete = function() {
-	if ( this.wsample ) { // check wsample for empty sample
-		this.wsample.stop();
-		this.track.removeSample( this );
-		this.oldTrack = this.track; // for the undo
-		this.track = undefined;
-		wa.composition.remove( this.wsample );
-		ui.CSS_sampleDelete( this );
+gs.sample.delete = function( smp ) {
+	if ( smp.wsample ) { // TODO: #emptySample
+		smp.wsample.stop();
+		smp.track.removeSample( smp );
+		smp.oldTrack = smp.track; // TODO: #undo
+		smp.track = undefined;
+		wa.composition.remove( smp.wsample );
+		ui.CSS_sampleDelete( smp );
 	}
 };

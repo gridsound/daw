@@ -1,5 +1,5 @@
 "use strict";
 
-gs.Sample.prototype.mute = function() {
+gs.sample.mute = function( smp ) {
 	lg( "sample muted (in development)" );
 };

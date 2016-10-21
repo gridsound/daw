@@ -1,18 +1,18 @@
 "use strict";
 
-gs.Sample.prototype.inTrack = function( trackId ) {
+gs.sample.inTrack = function( smp, trackId ) {
 	var track = ui.tracks[ trackId ];
 
-	if ( track !== this.track ) {
-		if ( this.wsample ) { // check wsample for empty sample
-			this.wsample.disconnect();
-			this.wsample.connect( track.wfilters );
+	if ( track !== smp.track ) {
+		if ( smp.wsample ) { // TODO: #emptySample
+			smp.wsample.disconnect();
+			smp.wsample.connect( track.wfilters );
 		}
-		if ( this.track ) {
-			this.track.removeSample( this );
+		if ( smp.track ) {
+			smp.track.removeSample( smp );
 		}
-		this.track = track;
-		this.track.samples.push( this );
-		ui.CSS_sampleTrack( this );
+		smp.track = track;
+		smp.track.samples.push( smp );
+		ui.CSS_sampleTrack( smp );
 	}
 };

@@ -14,7 +14,7 @@ gs.samplesWhen = function( sample, secRel ) {
 	}
 	gs.samplesForEach( sample, function( s ) {
 		if ( s.wsample ) {
-			s.when( Math.max( 0, s.wsample.when + secRel ) );
+			gs.sample.when( s, Math.max( 0, s.wsample.when + secRel ) );
 		}
 	} );
 	return secRel;

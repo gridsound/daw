@@ -1,8 +1,8 @@
 "use strict";
 
-gs.Sample.prototype.when = function( sec ) {
-	if ( this.wsample ) { // check wsample for empty sample
-		this.wsample.when = sec;
-		ui.CSS_sampleWhen( this );
+gs.sample.when = function( smp, sec ) {
+	if ( smp.wsample ) { // TODO: #emptySample
+		smp.wsample.when = sec;
+		ui.CSS_sampleWhen( smp );
 	}
 };

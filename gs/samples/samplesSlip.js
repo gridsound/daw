@@ -18,7 +18,7 @@ gs.samplesSlip = function( sample, secRel ) {
 			: sample.wsample.offset );
 
 	gs.samplesForEach( sample, function( s ) {
-		s.slip( s.wsample.offset - secRel );
+		gs.sample.slip( s, s.wsample.offset - secRel );
 	} );
 	return secRel;
 };

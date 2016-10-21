@@ -22,8 +22,9 @@ gs.samplesPaste = function() {
 	gs.samplesUnselect();
 	samplesCopied.forEach( function( s ) {
 		var ns = gs.sampleCreate( s.gsfile, s.track.id, s.wsample.when + allDuration );
-		ns.slip( s.wsample.offset );
-		ns.duration( s.wsample.duration );
+
+		gs.sample.slip( ns, s.wsample.offset );
+		gs.sample.duration( ns, s.wsample.duration );
 		gs.sampleSelect( ns, true );
 	} );
 	gs.samplesCopy();

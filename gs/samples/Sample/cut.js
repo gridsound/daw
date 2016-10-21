@@ -1,14 +1,14 @@
 "use strict";
 
-gs.Sample.prototype.cut = function( newDuration ) {
-	var ns, ws = this.wsample;
+gs.sample.cut = function( smp, newDuration ) {
+	var ns, ws = smp.wsample;
 
-	if ( ws && newDuration < ws.duration ) {
-		ns = gs.sampleCreate( this.gsfile, this.track.id, ws.when + newDuration );
-		ns.slip( ws.offset + newDuration );
-		ns.duration( ws.duration - newDuration );
-		this.duration( newDuration );
+	if ( ws && newDuration < ws.duration ) { // TODO: #emptySample
+		ns = gs.sampleCreate( smp.gsfile, smp.track.id, ws.when + newDuration );
+		gs.sample.slip( ns, ws.offset + newDuration );
+		gs.sample.duration( ns, ws.duration - newDuration );
+		gs.sample.duration( smp, newDuration );
 		wa.composition.update( ns.wsample, "mv" );
-		wa.composition.update( this.wsample, "mv" );
+		wa.composition.update( smp.wsample, "mv" );
 	}
 };

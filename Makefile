@@ -127,7 +127,7 @@ src = \
 	gs/samples/samplesCrop.js         \
 	gs/samples/samplesUnselect.js     \
 	                                  \
-	gs/samples/Sample/constructor.js  \
+	gs/samples/Sample/create.js       \
 	gs/samples/Sample/cut.js          \
 	gs/samples/Sample/delete.js       \
 	gs/samples/Sample/duration.js     \

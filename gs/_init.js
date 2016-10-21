@@ -1,7 +1,7 @@
 "use strict";
 
 window.gs = {
+	sample: {},
 	files: [],
-	samples: [],
 	selectedSamples: []
 };

@@ -25,10 +25,10 @@ function insert( action, sign ) {
 	action.samples.forEach( function( s ) {
 		wa.composition.add( s.wsample );
 		ui.CSS_sampleCreate( s );
-		s.inTrack( s.oldTrack.id );
-		s.when( s.wsample.when );
-		s.duration( s.wsample.duration );
-		s.slip( s.wsample.offset );
+		gs.sample.inTrack( s, s.oldTrack.id );
+		gs.sample.when( s, s.wsample.when );
+		gs.sample.duration( s, s.wsample.duration );
+		gs.sample.slip( s, s.wsample.offset );
 		gs.sampleSelect( s, s.oldSelected );
 
 		if ( !s.gsfile.nbSamples++ ) {
@@ -55,10 +55,10 @@ function move( action, sign ) {
 	if ( track ) {
 		if ( sample.selected ) {
 			gs.selectedSamples.forEach( function( s ) {
-				s.inTrack( s.track.id + track );
+				gs.sample.inTrack( s, s.track.id + track );
 			} );
 		} else {
-			sample.inTrack( sample.track.id + track );
+			gs.sample.inTrack( sample, sample.track.id + track );
 		}
 	}
 	gs.samplesForEach( sample, function( s ) {

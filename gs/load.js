@@ -41,10 +41,10 @@ function onload( resolve, e ) {
 			dur = s[ 4 ];
 
 		ns.gsfile.samplesToSet.push( ns );
-		ns.savedWhen     = whn / ui.BPMem;
+		ns.savedWhen     = whn / ui.BPMem; // TODO: #emptySample
 		ns.savedOffset   = ofs / ui.BPMem;
 		ns.savedDuration = dur / ui.BPMem;
-		ns.inTrack( s[ 0 ] );
+		gs.sample.inTrack( ns, s[ 0 ] );
 		wisdom.css( ns.elSample, "left", whn + "em" );
 		wisdom.css( ns.elSample, "width", dur + "em" );
 	} );
