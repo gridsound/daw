@@ -4,52 +4,52 @@
 
 ui.tool.paint = {
 	mousedown: function( e ) {
-		var sample = e.target.gsSample;
+		var smp = e.target.gsSample;
 
-		if ( !sample && gs.selectedSamples.length ) {
+		if ( !smp && gs.selectedSamples.length ) {
 			gs.history.push( "select", { samples: gs.selectedSamples.slice() } );
 			gs.samplesUnselect();
-		} else if ( sample ) {
-			_trackId = sample.track.id;
-			_when = sample.wsample.when;
-			_offset = sample.wsample.offset;
-			_duration = sample.wsample.duration;
+		} else if ( smp ) {
+			_trackId = smp.data.track.id;
+			_when = smp.when;
+			_offset = smp.offset;
+			_duration = smp.duration;
 			croppingStart = e.target.classList.contains( "start" );
 			cropping = croppingStart || e.target.classList.contains( "end" );
 			if ( cropping ) {
 				actionName = croppingStart ? "crop" : "cropEnd";
-				sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
+				smp.data[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.add( "hover" );
 			} else {
 				actionName = "move";
 			}
-			_sample = sample;
+			_smp = smp;
 			ui.cursor( "app", !cropping ? "grabbing" :
 				croppingStart ? "w-resize" : "e-resize" );
 		}
 	},
 	mouseup: function() {
-		if ( _sample ) {
-			gs.samplesForEach( _sample, function( s ) {
-				wa.composition.update( s.wsample, "mv" );
+		if ( _smp ) {
+			gs.samplesForEach( _smp, function( smp ) {
+				wa.composition.update( smp, "mv" );
 			} );
 			if ( cropping ) {
-				_sample[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
+				_smp.data[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );
 				cropping = croppingStart = false;
 			}
-			if ( _sample.track.id         !== _trackId ||
-				 _sample.wsample.when     !== _when    ||
-				 _sample.wsample.offset   !== _offset  ||
-				 _sample.wsample.duration !== _duration
+			if ( _smp.data.track.id !== _trackId ||
+				 _smp.when          !== _when    ||
+				 _smp.offset        !== _offset  ||
+				 _smp.duration      !== _duration
 			) {
 				gs.history.push( actionName, {
-					sample:   _sample,
-					track:    _sample.track.id - _trackId,
-					when:     _sample.wsample.when - _when,
-					offset:   _sample.wsample.offset - _offset,
-					duration: _sample.wsample.duration - _duration,
+					sample:   _smp,
+					track:    _smp.data.track.id - _trackId,
+					when:     _smp.when - _when,
+					offset:   _smp.offset - _offset,
+					duration: _smp.duration - _duration,
 				} );
 			}
-			_sample =
+			_smp =
 			_trackId =
 			_when =
 			_offset =
@@ -58,39 +58,40 @@ ui.tool.paint = {
 		}
 	},
 	mousemove: function( e, secRel ) {
-		if ( _sample ) {
+		if ( _smp ) {
 			// Changes tracks:
 			if ( !cropping ) {
 				e = e.target;
 				var nbTracksToMove, minTrackId = Infinity,
-					track = e.uitrack || e.gsSample && e.gsSample.track;
+					track = e.uitrack || e.gsSample && e.gsSample.data.track;
+
 				if ( track ) {
-					if ( _sample.selected ) {
-						nbTracksToMove = track.id - _sample.track.id;
+					if ( _smp.data.selected ) {
+						nbTracksToMove = track.id - _smp.data.track.id;
 						if ( nbTracksToMove < 0 ) {
-							gs.selectedSamples.forEach( function( s ) {
-								minTrackId = Math.min( s.track.id, minTrackId );
+							gs.selectedSamples.forEach( function( smp ) {
+								minTrackId = Math.min( smp.data.track.id, minTrackId );
 							} );
 							nbTracksToMove = -Math.min( minTrackId, -nbTracksToMove );
 						}
-						gs.selectedSamples.forEach( function( s ) {
-							gs.sample.inTrack( s, s.track.id + nbTracksToMove );
+						gs.selectedSamples.forEach( function( smp ) {
+							gs.sample.inTrack( smp, smp.data.track.id + nbTracksToMove );
 						} );
 					} else {
-						gs.sample.inTrack( _sample, track.id );
+						gs.sample.inTrack( _smp, track.id );
 					}
 				}
 			}
 			return cropping
 				? croppingStart
-					? gs.samplesCropStart( _sample, secRel )
-					: gs.samplesCropEnd( _sample, secRel )
-				: gs.samplesWhen( _sample, secRel );
+					? gs.samplesCropStart( _smp, secRel )
+					: gs.samplesCropEnd( _smp, secRel )
+				: gs.samplesWhen( _smp, secRel );
 		}
 	}
 };
 
-var _sample,
+var _smp,
 	_trackId,
 	_when,
 	_offset,

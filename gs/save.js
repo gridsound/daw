@@ -1,16 +1,23 @@
-"use strict"
+"use strict";
+
+( function() {
 
 gs.save = function() {
 	var files = gs.files.map( function( f ) {
-			return [ f.id, f.fullname, f.file ? f.file.size : f.size ];
-		} ),
-		samples = wa.composition.samples.map( function( s ) {
 			return [
-				s.track.id,
-				s.gsfile.id,
-				ui.BPMem * ( s.wsample ? s.wsample.when : s.savedWhen ),
-				ui.BPMem * ( s.wsample ? s.wsample.offset : s.savedOffset ),
-				ui.BPMem * ( s.wsample ? s.wsample.duration : s.savedDuration )
+				f.id,
+				f.fullname,
+				f.file ? f.file.size : f.size,
+				f.wbuff ? f.wbuff.buffer.duration : f.bufferDuration
+			];
+		} ),
+		samples = wa.composition.samples.map( function( smp ) {
+			return [
+				smp.data.track.id,
+				smp.data.gsfile.id,
+				ui.BPMem * smp.when,
+				ui.BPMem * smp.offset,
+				ui.BPMem * smp.duration
 			];
 		} ),
 		tracks = ui.tracks.reduce( function( arr, t ) {
@@ -24,11 +31,11 @@ gs.save = function() {
 		download: "gridsound-composition.gs",
 		href: "data:text/plain;charset=utf-8," + encodeURIComponent(
 			'{' +
-				'\n\t"saveformat": 1,' +
+				'\n\t"saveformat": 2,' +
 				'\n\t"bpm": ' + gs._bpm + ',' +
 				'\n\t"files": [\n'   + reduce( files   ) + '\t],' +
-				'\n\t"samples": [\n' + reduce( samples ) + '\t],' +
-				'\n\t"tracks": [\n'  + reduce( tracks  ) + '\t]'  +
+				'\n\t"tracks": [\n'  + reduce( tracks  ) + '\t],' +
+				'\n\t"samples": [\n' + reduce( samples ) + '\t]'  +
 			'\n}'
 		)
 	};
@@ -40,3 +47,5 @@ function reduce( arr ) {
 		return _ + "\t\t" + JSON.stringify( it ) + ( i < len ? "," : "" ) + "\n";
 	}, "" )
 }
+
+} )();

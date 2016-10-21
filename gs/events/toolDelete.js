@@ -8,11 +8,11 @@ ui.tool.delete = {
 };
 
 function del( e ) {
-	var s = e.target.gsSample;
+	var smp = e.target.gsSample;
 
-	if ( s ) {
-		gs.history.push( "delete", { samples: [ s ] } );
-		gs.samplesDelete( s );
+	if ( smp ) {
+		gs.history.push( "delete", { samples: [ smp ] } );
+		gs.samplesDelete( smp );
 	}
 }
 

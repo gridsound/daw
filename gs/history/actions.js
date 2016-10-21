@@ -13,37 +13,35 @@ Object.assign( gs.history, {
 } );
 
 function select( action ) {
-	action.samples.forEach( function( s ) {
-		gs.sampleSelect( s, !s.selected );
+	action.samples.forEach( function( smp ) {
+		gs.sampleSelect( smp, !smp.data.selected );
 	} );
 }
 
 function insert( action, sign ) {
 	if ( sign === -1 ) {
-		return d3lete( action, false );
+		return d3lete( action, +1 );
 	}
-	action.samples.forEach( function( s ) {
-		wa.composition.add( s.wsample );
-		ui.CSS_sampleCreate( s );
-		gs.sample.inTrack( s, s.oldTrack.id );
-		gs.sample.when( s, s.wsample.when );
-		gs.sample.duration( s, s.wsample.duration );
-		gs.sample.slip( s, s.wsample.offset );
-		gs.sampleSelect( s, s.oldSelected );
+	action.samples.forEach( function( smp ) {
+		wa.composition.add( smp );
+		ui.CSS_sampleCreate( smp );
+		gs.sample.inTrack( smp, smp.data.oldTrack.id );
+		gs.sample.when( smp, smp.when );
+		gs.sample.duration( smp, smp.duration );
+		gs.sample.slip( smp, smp.offset );
+		gs.sampleSelect( smp, smp.data.oldSelected );
 
-		if ( !s.gsfile.nbSamples++ ) {
-			ui.CSS_fileUsed( s.gsfile );
+		if ( !smp.data.gsfile.nbSamples++ ) {
+			ui.CSS_fileUsed( smp.data.gsfile );
 		}
 	} );
 }
 
 function d3lete( action, sign ) {
 	if ( sign === -1 ) {
-		insert( action, false );
+		insert( action, +1 );
 	} else {
-		action.samples.forEach( function( s ) {
-			gs.samplesDelete( s );
-		} );
+		action.samples.forEach( gs.sampleDelete );
 	}
 }
 
@@ -53,16 +51,16 @@ function move( action, sign ) {
 
 	gs.samplesWhen( sample, action.when * sign );
 	if ( track ) {
-		if ( sample.selected ) {
-			gs.selectedSamples.forEach( function( s ) {
-				gs.sample.inTrack( s, s.track.id + track );
+		if ( sample.data.selected ) {
+			gs.selectedSamples.forEach( function( smp ) {
+				gs.sample.inTrack( smp, smp.data.track.id + track );
 			} );
 		} else {
-			gs.sample.inTrack( sample, sample.track.id + track );
+			gs.sample.inTrack( sample, sample.data.track.id + track );
 		}
 	}
-	gs.samplesForEach( sample, function( s ) {
-		wa.composition.update( s.wsample, "mv" );
+	gs.samplesForEach( sample, function( smp ) {
+		wa.composition.update( smp, "mv" );
 	} );
 }
 
@@ -72,22 +70,22 @@ function crop( action, sign ) {
 	gs.samplesDuration( sample, action.duration * sign );
 	gs.samplesWhen( sample, action.when * sign );
 	gs.samplesSlip( sample, -action.offset * sign );
-	gs.samplesForEach( sample, function( s ) {
-		wa.composition.update( s.wsample, "mv" );
+	gs.samplesForEach( sample, function( smp ) {
+		wa.composition.update( smp, "mv" );
 	} );
 }
 
 function cropEnd( action, sign ) {
 	gs.samplesDuration( action.sample, action.duration * sign );
-	gs.samplesForEach( action.sample, function( s ) {
-		wa.composition.update( s.wsample, "mv" );
+	gs.samplesForEach( action.sample, function( smp ) {
+		wa.composition.update( smp, "mv" );
 	} );
 }
 
 function slip( action, sign ) {
 	gs.samplesSlip( action.sample, action.offset * sign );
-	gs.samplesForEach( action.sample, function( s ) {
-		wa.composition.update( s.wsample, "mv" );
+	gs.samplesForEach( action.sample, function( smp ) {
+		wa.composition.update( smp, "mv" );
 	} );
 }
 

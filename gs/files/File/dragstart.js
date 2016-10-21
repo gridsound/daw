@@ -19,9 +19,11 @@ document.body.addEventListener( "mouseup", function( e ) {
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
-		gs.sampleCreate( gsfileDragging,
-			ui.getTrackFromPageY( e.pageY ).id,
-			ui.getGridSec( e.pageX ) );
+		var smp = gs.sample.create( gsfileDragging );
+
+		gs.sample.inTrack( smp, ui.getTrackFromPageY( e.pageY ).id );
+		gs.sample.when( smp, ui.getGridSec( e.pageX ) );
+		wa.composition.update( smp, "ad" );
 	}
 } );
 

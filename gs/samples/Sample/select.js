@@ -1,8 +1,6 @@
 "use strict";
 
 gs.sample.select = function( smp, b ) {
-
-	// TODO: #emptySample
-	smp.selected = !b ? false : !!smp.wsample;
+	smp.data.selected = b;
 	ui.CSS_sampleSelect( smp );
 };

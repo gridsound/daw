@@ -12,6 +12,7 @@ ui.dom.bpm.onmousedown = function( e ) {
 
 ui.dom.bpmList.onmousedown = function( e ) {
 	var bpm = +e.target.textContent;
+
 	if ( bpm ) {
 		gs.bpm( bpm );
 	}

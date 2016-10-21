@@ -1,25 +1,23 @@
 "use strict";
 
-gs.samplesDuration = function( sample, secRel ) {
+gs.samplesDuration = function( smp, secRel ) {
 	var durMin = Infinity;
 
 	function calc( s ) {
-		durMin = Math.min( durMin, s.wsample.duration );
-		secRel = Math.min( secRel, s.wsample.bufferDuration - s.wsample.duration );
+		durMin = Math.min( durMin, s.duration );
+		secRel = Math.min( secRel, s.bufferDuration - s.duration );
 	}
 
-	if ( sample.wsample ) { // check wsample for empty sample
-		if ( sample.selected ) {
-			gs.selectedSamples.forEach( calc );
-		} else {
-			calc( sample );
-		}
-		if ( secRel < 0 ) {
-			secRel = -Math.min( durMin, -secRel );
-		}
-		gs.samplesForEach( sample, function( s ) {
-			gs.sample.duration( s, s.wsample.duration + secRel );
-		} );
+	if ( smp.data.selected ) {
+		gs.selectedSamples.forEach( calc );
+	} else {
+		calc( smp );
 	}
+	if ( secRel < 0 ) {
+		secRel = -Math.min( durMin, -secRel );
+	}
+	gs.samplesForEach( smp, function( s ) {
+		gs.sample.duration( s, s.duration + secRel );
+	} );
 	return secRel;
 };

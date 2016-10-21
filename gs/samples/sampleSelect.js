@@ -1,12 +1,12 @@
 "use strict";
 
-gs.sampleSelect = function( sample, b ) {
-	if ( sample && sample.wsample && sample.selected !== b ) { // check wsample for empty sample
-		sample.select( b );
+gs.sampleSelect = function( smp, b ) {
+	if ( smp && smp.data.selected !== b ) {
+		gs.sample.select( smp, b );
 		if ( b ) {
-			gs.selectedSamples.push( sample );
+			gs.selectedSamples.push( smp );
 		} else {
-			gs.selectedSamples.splice( gs.selectedSamples.indexOf( sample ), 1 );
+			gs.selectedSamples.splice( gs.selectedSamples.indexOf( smp ), 1 );
 		}
 	}
 };

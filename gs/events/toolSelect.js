@@ -4,22 +4,22 @@
 
 ui.tool.select = {
 	mousedown: function( e ) {
-		var sample = e.target.gsSample;
+		var smp = e.target.gsSample;
 
 		selected = [];
 		if ( e.shiftKey ) {
-			if ( !!sample ) {
-				selected.push( sample );
-				gs.sampleSelect( sample, !sample.selected );
+			if ( !!smp ) {
+				selected.push( smp );
+				gs.sampleSelect( smp, !smp.data.selected );
 			}
 		} else {
 			gs.selectedSamples.forEach( function( s ) {
-				if ( s !== sample ) {
+				if ( s !== smp ) {
 					selected.push( s );
 				}
 			} );
 			gs.samplesUnselect();
-			gs.sampleSelect( sample, true );
+			gs.sampleSelect( smp, true );
 		}
 		ax = e.pageX;
 		ay = e.pageY;
@@ -58,29 +58,27 @@ ui.tool.select = {
 					secMin = Math.min( asec, bsec ),
 					secMax = Math.max( asec, bsec );
 
-				wa.composition.samples.forEach( function( s ) {
-					if ( s.wsample ) {
-						if ( trackMin <= s.track.id && s.track.id <= trackMax ) {
-							var secA = s.wsample.when,
-								secB = s.wsample.duration + secA;
+				wa.composition.samples.forEach( function( smp ) {
+					if ( trackMin <= smp.data.track.id && smp.data.track.id <= trackMax ) {
+						var secA = smp.when,
+							secB = smp.duration + secA;
 
-							if ( ( secMin <= secA && secA < secMax ) ||
-								( secMin < secB && secB <= secMax ) ||
-								( secA <= secMin && secMax <= secB ) )
-							{
-								if ( !s.selected ) {
-									s.squareSelected = selectionId;
-									gs.sampleSelect( s, true );
-									selected.push( s );
-								}
-								return;
+						if ( ( secMin <= secA && secA < secMax ) ||
+							( secMin < secB && secB <= secMax ) ||
+							( secA <= secMin && secMax <= secB ) )
+						{
+							if ( !smp.data.selected ) {
+								smp.data.squareSelected = selectionId;
+								gs.sampleSelect( smp, true );
+								selected.push( smp );
 							}
+							return;
 						}
-						if ( s.squareSelected === selectionId ) {
-							delete s.squareSelected;
-							gs.sampleSelect( s, false );
-							selected.splice( selected.indexOf( s ), 1 );
-						}
+					}
+					if ( smp.data.squareSelected === selectionId ) {
+						delete smp.data.squareSelected;
+						gs.sampleSelect( smp, false );
+						selected.splice( selected.indexOf( smp ), 1 );
 					}
 				} );
 				wisdom.css( elRect, "top", trackMin + "em" );

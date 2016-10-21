@@ -4,31 +4,31 @@
 
 ui.tool.slip = {
 	mousedown: function( e ) {
-		_sample = e.target.gsSample;
-		if ( _sample ) {
-			_offset = _sample.wsample.offset;
+		_smp = e.target.gsSample;
+		if ( _smp ) {
+			_offset = _smp.offset;
 		}
 	},
 	mouseup: function() {
-		if ( _sample ) {
+		if ( _smp ) {
 			gs.history.push( "slip", {
-				sample: _sample,
-				offset: _offset - _sample.wsample.offset,
+				sample: _smp,
+				offset: _offset - _smp.offset,
 			} );
-			gs.samplesForEach( _sample, function( s ) {
-				wa.composition.update( s.wsample, "mv" );
+			gs.samplesForEach( _smp, function( smp ) {
+				wa.composition.update( smp, "mv" );
 			} );
 		}
-		_sample = null;
+		_smp = null;
 	},
 	mousemove: function( e, secRel ) {
-		if ( _sample ) {
-			return gs.samplesSlip( _sample, secRel );
+		if ( _smp ) {
+			return gs.samplesSlip( _smp, secRel );
 		}
 	}
 };
 
-var	_sample,
+var	_smp,
 	_offset;
 
 } )();

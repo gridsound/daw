@@ -1,21 +1,15 @@
 "use strict";
 
-gs.samplesWhen = function( sample, secRel ) {
-	if ( !sample.wsample ) {
-		return 0;
-	}
-
+gs.samplesWhen = function( smp, secRel ) {
 	if ( secRel < 0 ) {
-		secRel = -Math.min( -secRel, sample.selected
+		secRel = -Math.min( -secRel, smp.data.selected
 			? gs.selectedSamples.reduce( function( min, s ) {
-				return Math.min( min, s.wsample.when );
+				return Math.min( min, s.when );
 			}, Infinity )
-			: sample.wsample.when );
+			: smp.when );
 	}
-	gs.samplesForEach( sample, function( s ) {
-		if ( s.wsample ) {
-			gs.sample.when( s, Math.max( 0, s.wsample.when + secRel ) );
-		}
+	gs.samplesForEach( smp, function( s ) {
+		gs.sample.when( s, Math.max( 0, s.when + secRel ) );
 	} );
 	return secRel;
 };

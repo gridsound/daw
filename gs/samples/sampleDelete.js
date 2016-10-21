@@ -1,12 +1,12 @@
 "use strict";
 
-gs.sampleDelete = function( sample ) {
-	if ( sample && sample.wsample ) { // check wsample for empty sample
-		sample.oldSelected = !!sample.selected; // For the undo
-		gs.sampleSelect( sample, false );
-		if ( !--sample.gsfile.nbSamples ) {
-			ui.CSS_fileUnused( sample.gsfile );
+gs.sampleDelete = function( smp ) {
+	if ( smp ) {
+		smp.data.oldSelected = !!smp.data.selected; // TODO: #undo
+		gs.sampleSelect( smp, false );
+		if ( !--smp.data.gsfile.nbSamples ) {
+			ui.CSS_fileUnused( smp.data.gsfile );
 		}
-		sample.delete();
+		gs.sample.delete( smp );
 	}
 };

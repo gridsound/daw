@@ -14,16 +14,10 @@ gs.bpm = function( bpm, delay ) {
 	ui.bpm( gs._bpm );
 	ui.BPMem = bpm / 60;
 	BPMdiff = oldBPMem / ui.BPMem;
-	wa.composition.samples.forEach( function( s ) {
-		// We don't have to call .CSS_sampleWhen, the samples doesn't move when the BPM changes.
-		if ( s.wsample ) {
-			s.wsample.when = s.wsample.when * BPMdiff;
-			ui.CSS_sampleDuration( s );
-			ui.CSS_sampleOffset( s );
-		} else {
-			s.savedWhen = s.savedWhen * BPMdiff;
-			wisdom.css( s.elSample, "width", s.savedDuration * ui.BPMem + "em" );
-		}
+	wa.composition.samples.forEach( function( smp ) {
+		smp.when = smp.when * BPMdiff;
+		ui.CSS_sampleDuration( smp );
+		ui.CSS_sampleOffset( smp );
 	} );
 	gs.currentTime( oldTimeEm / ui.BPMem );
 };

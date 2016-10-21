@@ -2,18 +2,18 @@
 
 ( function() {
 
-var sampleSave;
-
 ui.tool.cut = {
 	mousedown: function( e ) {
-		sampleSave = e.target.gsSample;
+		_smp = e.target.gsSample;
 	},
 	mouseup: function( e ) {
-		if ( sampleSave ) {
-			gs.samplesCut( sampleSave, ui.getGridSec( e.pageX ) );
+		if ( _smp ) {
+			gs.samplesCut( _smp, ui.getGridSec( e.pageX ) );
 		}
-		sampleSave = null;
+		_smp = null;
 	}
 };
+
+var _smp;
 
 } )();

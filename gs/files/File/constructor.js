@@ -17,13 +17,14 @@ gs.File = function( file ) {
 	this.isLoaded =
 	this.isLoading = false;
 	this.file = file.length ? null : file;
+	this.bufferDuration = file.length ? file[ 3 ] : null;
 	this.fullname = file.name || file[ 1 ];
 	this.name = this.fullname.replace( /\.[^.]+$/, "" );
 	this.nbSamples = 0;
-
 	this.elFile = wisdom.cE( Handlebars.templates.file( this ) )[ 0 ];
 	this.elName = wisdom.qS( this.elFile, ".name" );
 	this.elIcon = wisdom.qS( this.elFile, ".icon" );
+	this.samplesToSet = [];
 
 	if ( this.file ) {
 		ui.CSS_fileUnloaded( this );
