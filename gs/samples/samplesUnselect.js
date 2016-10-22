@@ -2,7 +2,8 @@
 
 gs.samplesUnselect = function() {
 	gs.selectedSamples.forEach( function( smp ) {
-		gs.sample.select( smp, false );
+		smp.data.selected = false;
+		ui.sample.select( smp );
 	} );
 	gs.selectedSamples = [];
 };

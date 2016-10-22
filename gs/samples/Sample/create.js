@@ -5,6 +5,7 @@ gs.sample.create = function( gsfile ) {
 		elSample = wisdom.cE( Handlebars.templates.sample( gsfile ) )[ 0 ];
 
 	smp.data = {
+		selected: false,
 		gsfile: gsfile,
 		elSample: elSample,
 		elSVG: wisdom.qS( elSample, "svg" ),
@@ -21,9 +22,9 @@ gs.sample.create = function( gsfile ) {
 		smp.setBufferDuration( gsfile.bufferDuration );
 	}
 	wa.composition.add( smp );
-	gs.sample.select( smp, false );
 	++gsfile.nbSamples;
 	ui.CSS_fileUsed( gsfile );
 	ui.CSS_sampleDuration( smp );
+	ui.sample.select( smp );
 	return smp;
 };

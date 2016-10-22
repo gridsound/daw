@@ -10,7 +10,7 @@ ui.tool.select = {
 		if ( e.shiftKey ) {
 			if ( !!smp ) {
 				selected.push( smp );
-				gs.sampleSelect( smp, !smp.data.selected );
+				gs.sample.select( smp );
 			}
 		} else {
 			gs.selectedSamples.forEach( function( s ) {
@@ -19,7 +19,7 @@ ui.tool.select = {
 				}
 			} );
 			gs.samplesUnselect();
-			gs.sampleSelect( smp, true );
+			gs.sample.select( smp, true );
 		}
 		ax = e.pageX;
 		ay = e.pageY;
@@ -69,7 +69,7 @@ ui.tool.select = {
 						{
 							if ( !smp.data.selected ) {
 								smp.data.squareSelected = selectionId;
-								gs.sampleSelect( smp, true );
+								gs.sample.select( smp, true );
 								selected.push( smp );
 							}
 							return;
@@ -77,7 +77,7 @@ ui.tool.select = {
 					}
 					if ( smp.data.squareSelected === selectionId ) {
 						delete smp.data.squareSelected;
-						gs.sampleSelect( smp, false );
+						gs.sample.select( smp, false );
 						selected.splice( selected.indexOf( smp ), 1 );
 					}
 				} );

@@ -6,7 +6,7 @@ gs.reset = function() {
 		t.toggle( true );
 	} );
 	wa.composition.samples.forEach( function( s ) {
-		gs.sampleSelect( s, true );
+		gs.sample.select( s, true );
 	} );
 	gs.samplesDelete();
 	gs.files.forEach( function( f ) {

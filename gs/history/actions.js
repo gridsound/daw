@@ -14,7 +14,7 @@ Object.assign( gs.history, {
 
 function select( action ) {
 	action.samples.forEach( function( smp ) {
-		gs.sampleSelect( smp, !smp.data.selected );
+		gs.sample.select( smp );
 	} );
 }
 
@@ -29,7 +29,7 @@ function insert( action, sign ) {
 		gs.sample.when( smp, smp.when );
 		gs.sample.duration( smp, smp.duration );
 		gs.sample.slip( smp, smp.offset );
-		gs.sampleSelect( smp, smp.data.oldSelected );
+		gs.sample.select( smp, smp.data.oldSelected );
 
 		if ( !smp.data.gsfile.nbSamples++ ) {
 			ui.CSS_fileUsed( smp.data.gsfile );
@@ -41,7 +41,7 @@ function d3lete( action, sign ) {
 	if ( sign === -1 ) {
 		insert( action, +1 );
 	} else {
-		action.samples.forEach( gs.sampleDelete );
+		action.samples.forEach( gs.sample.delete );
 	}
 }
 

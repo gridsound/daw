@@ -1,5 +1,11 @@
 "use strict";
 
+ui.sample = {
+	select: function( smp ) {
+		smp.data.elSample.classList.toggle( "selected", smp.data.selected );
+	}
+};
+
 ui.CSS_sampleCreate = function( smp ) {
 	var elSample = wisdom.cE( Handlebars.templates.sample( smp.data.gsfile ) )[ 0 ];
 
@@ -19,10 +25,6 @@ ui.CSS_sampleTrack = function( smp ) {
 
 ui.CSS_sampleWhen = function( smp ) {
 	wisdom.css( smp.data.elSample, "left", smp.when * ui.BPMem + "em" );
-};
-
-ui.CSS_sampleSelect = function( smp ) {
-	smp.data.elSample.classList.toggle( "selected", smp.data.selected );
 };
 
 ui.CSS_sampleDelete = function( smp ) {

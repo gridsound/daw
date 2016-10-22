@@ -28,7 +28,7 @@ gs.samplesPaste = function() {
 		gs.sample.slip( smp2, smp.offset );
 		gs.sample.duration( smp2, smp.duration );
 		wa.composition.update( smp2, "ad" );
-		gs.sampleSelect( smp2, true );
+		gs.sample.select( smp2, true );
 	} );
 	gs.samplesCopy();
 };
