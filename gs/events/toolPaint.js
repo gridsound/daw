@@ -29,7 +29,7 @@ ui.tool.paint = {
 	},
 	mouseup: function() {
 		if ( _smp ) {
-			gs.samplesForEach( _smp, function( smp ) {
+			gs.samples.selected.do( _smp, function( smp ) {
 				wa.composition.update( smp, "mv" );
 			} );
 			if ( cropping ) {

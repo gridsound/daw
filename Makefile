@@ -114,7 +114,10 @@ src = \
 	gs/files/File/joinFile.js         \
 	gs/files/File/load.js             \
 	                                  \
-	gs/samples/samplesForEach.js      \
+	gs/samples/selected/do.js         \
+	gs/samples/selected/min.js        \
+	gs/samples/selected/max.js        \
+	                                  \
 	gs/samples/samplesCopyPaste.js    \
 	gs/samples/samplesCut.js          \
 	gs/samples/samplesDelete.js       \

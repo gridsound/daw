@@ -59,7 +59,7 @@ function move( action, sign ) {
 			gs.sample.inTrack( sample, sample.data.track.id + track );
 		}
 	}
-	gs.samplesForEach( sample, function( smp ) {
+	gs.samples.selected.do( sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
@@ -70,21 +70,21 @@ function crop( action, sign ) {
 	gs.samplesDuration( sample, action.duration * sign );
 	gs.samplesWhen( sample, action.when * sign );
 	gs.samplesSlip( sample, -action.offset * sign );
-	gs.samplesForEach( sample, function( smp ) {
+	gs.samples.selected.do( sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
 
 function cropEnd( action, sign ) {
 	gs.samplesDuration( action.sample, action.duration * sign );
-	gs.samplesForEach( action.sample, function( smp ) {
+	gs.samples.selected.do( action.sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
 
 function slip( action, sign ) {
 	gs.samplesSlip( action.sample, action.offset * sign );
-	gs.samplesForEach( action.sample, function( smp ) {
+	gs.samples.selected.do( action.sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }

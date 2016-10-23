@@ -2,7 +2,7 @@
 
 gs.samplesCut = function( smp, sec ) {
 	sec -= smp.when;
-	gs.samplesForEach( smp, function( s ) {
+	gs.samples.selected.do( smp, function( s ) {
 		gs.sample.cut( s, sec );
 	} );
 };

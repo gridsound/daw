@@ -1,22 +1,11 @@
 "use strict";
 
 gs.samplesDuration = function( smp, secRel ) {
-	var durMin = Infinity;
+	secRel = secRel < 0
+		? -Math.min( -secRel, gs.samples.selected.min( smp, function( s ) { return s.duration; } ) )
+		:  Math.min(  secRel, gs.samples.selected.min( smp, function( s ) { return s.bufferDuration - s.duration; } ) );
 
-	function calc( s ) {
-		durMin = Math.min( durMin, s.duration );
-		secRel = Math.min( secRel, s.bufferDuration - s.duration );
-	}
-
-	if ( smp.data.selected ) {
-		gs.selectedSamples.forEach( calc );
-	} else {
-		calc( smp );
-	}
-	if ( secRel < 0 ) {
-		secRel = -Math.min( durMin, -secRel );
-	}
-	gs.samplesForEach( smp, function( s ) {
+	gs.samples.selected.do( smp, function( s ) {
 		gs.sample.duration( s, s.duration + secRel );
 	} );
 	return secRel;
