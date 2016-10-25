@@ -1,6 +1,6 @@
 "use strict";
 
-gs.samplesDelete = function( smp ) {
+gs.samples.selected.delete = function( smp ) {
 	if ( smp ) {
 		if ( smp.data ) {
 			gs.sample.delete( smp );

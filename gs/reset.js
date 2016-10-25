@@ -8,7 +8,7 @@ gs.reset = function() {
 	wa.composition.samples.forEach( function( s ) {
 		gs.sample.select( s, true );
 	} );
-	gs.samplesDelete();
+	gs.samples.selected.delete();
 	gs.files.forEach( function( f ) {
 		f.elFile.remove();
 	} );

@@ -1,6 +1,6 @@
 "use strict";
 
-gs.samplesSlip = function( smp, secRel ) {
+gs.samples.selected.slip = function( smp, secRel ) {
 	secRel = secRel < 0
 		? -Math.min( -secRel, gs.samples.selected.min( smp, function( s ) { return s.bufferDuration - s.offset; } ) )
 		:  Math.min(  secRel, gs.samples.selected.min( smp, function( s ) { return s.offset; } ) );

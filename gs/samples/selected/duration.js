@@ -1,6 +1,6 @@
 "use strict";
 
-gs.samplesDuration = function( smp, secRel ) {
+gs.samples.selected.duration = function( smp, secRel ) {
 	secRel = secRel < 0
 		? -Math.min( -secRel, gs.samples.selected.min( smp, function( s ) { return s.duration; } ) )
 		:  Math.min(  secRel, gs.samples.selected.min( smp, function( s ) { return s.bufferDuration - s.duration; } ) );

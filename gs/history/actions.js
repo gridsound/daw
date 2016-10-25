@@ -49,7 +49,7 @@ function move( action, sign ) {
 	var sample = action.sample,
 		track = action.track * sign;
 
-	gs.samplesWhen( sample, action.when * sign );
+	gs.samples.selected.when( sample, action.when * sign );
 	if ( track ) {
 		if ( sample.data.selected ) {
 			gs.selectedSamples.forEach( function( smp ) {
@@ -67,23 +67,23 @@ function move( action, sign ) {
 function crop( action, sign ) {
 	var sample = action.sample;
 
-	gs.samplesDuration( sample, action.duration * sign );
-	gs.samplesWhen( sample, action.when * sign );
-	gs.samplesSlip( sample, -action.offset * sign );
+	gs.samples.selected.duration( sample, action.duration * sign );
+	gs.samples.selected.when( sample, action.when * sign );
+	gs.samples.selected.slip( sample, -action.offset * sign );
 	gs.samples.selected.do( sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
 
 function cropEnd( action, sign ) {
-	gs.samplesDuration( action.sample, action.duration * sign );
+	gs.samples.selected.duration( action.sample, action.duration * sign );
 	gs.samples.selected.do( action.sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
 
 function slip( action, sign ) {
-	gs.samplesSlip( action.sample, action.offset * sign );
+	gs.samples.selected.slip( action.sample, action.offset * sign );
 	gs.samples.selected.do( action.sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );

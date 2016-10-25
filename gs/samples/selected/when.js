@@ -1,6 +1,6 @@
 "use strict";
 
-gs.samplesWhen = function( smp, secRel ) {
+gs.samples.selected.when = function( smp, secRel ) {
 	if ( secRel < 0 ) {
 		secRel = -Math.min( -secRel,
 			gs.samples.selected.min( smp, function( s ) { return s.when; } ) );

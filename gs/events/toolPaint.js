@@ -8,7 +8,7 @@ ui.tool.paint = {
 
 		if ( !smp && gs.selectedSamples.length ) {
 			gs.history.push( "select", { samples: gs.selectedSamples.slice() } );
-			gs.samplesUnselect();
+			gs.samples.selected.unselect();
 		} else if ( smp ) {
 			_trackId = smp.data.track.id;
 			_when = smp.when;
@@ -84,9 +84,9 @@ ui.tool.paint = {
 			}
 			return cropping
 				? croppingStart
-					? gs.samplesCropStart( _smp, secRel )
-					: gs.samplesCropEnd( _smp, secRel )
-				: gs.samplesWhen( _smp, secRel );
+					? gs.samples.selected.cropStart( _smp, secRel )
+					: gs.samples.selected.cropEnd( _smp, secRel )
+				: gs.samples.selected.when( _smp, secRel );
 		}
 	}
 };

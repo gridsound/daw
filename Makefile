@@ -114,28 +114,26 @@ src = \
 	gs/files/File/joinFile.js         \
 	gs/files/File/load.js             \
 	                                  \
+	gs/sample/create.js               \
+	gs/sample/cut.js                  \
+	gs/sample/delete.js               \
+	gs/sample/duration.js             \
+	gs/sample/inTrack.js              \
+	gs/sample/mute.js                 \
+	gs/sample/select.js               \
+	gs/sample/slip.js                 \
+	gs/sample/when.js                 \
 	gs/samples/selected/do.js         \
 	gs/samples/selected/min.js        \
 	gs/samples/selected/max.js        \
-	                                  \
-	gs/samples/samplesCopyPaste.js    \
-	gs/samples/samplesCut.js          \
-	gs/samples/samplesDelete.js       \
-	gs/samples/samplesDuration.js     \
-	gs/samples/samplesWhen.js         \
-	gs/samples/samplesSlip.js         \
-	gs/samples/samplesCrop.js         \
-	gs/samples/samplesUnselect.js     \
-	                                  \
-	gs/samples/Sample/create.js       \
-	gs/samples/Sample/cut.js          \
-	gs/samples/Sample/delete.js       \
-	gs/samples/Sample/duration.js     \
-	gs/samples/Sample/inTrack.js      \
-	gs/samples/Sample/mute.js         \
-	gs/samples/Sample/select.js       \
-	gs/samples/Sample/slip.js         \
-	gs/samples/Sample/when.js         \
+	gs/samples/selected/copyPaste.js  \
+	gs/samples/selected/cut.js        \
+	gs/samples/selected/delete.js     \
+	gs/samples/selected/duration.js   \
+	gs/samples/selected/when.js       \
+	gs/samples/selected/slip.js       \
+	gs/samples/selected/crop.js       \
+	gs/samples/selected/unselect.js   \
 	                                  \
 	gs/events/bpm.js                  \
 	gs/events/clockUnits.js           \

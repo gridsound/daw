@@ -12,7 +12,7 @@ function del( e ) {
 
 	if ( smp ) {
 		gs.history.push( "delete", { samples: [ smp ] } );
-		gs.samplesDelete( smp );
+		gs.samples.selected.delete( smp );
 	}
 }
 

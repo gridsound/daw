@@ -8,7 +8,7 @@ ui.tool.cut = {
 	},
 	mouseup: function( e ) {
 		if ( _smp ) {
-			gs.samplesCut( _smp, ui.getGridSec( e.pageX ) );
+			gs.samples.selected.cut( _smp, ui.getGridSec( e.pageX ) );
 		}
 		_smp = null;
 	}

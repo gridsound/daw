@@ -14,14 +14,14 @@ keyboardRouter(
 	{ fn: keyTool, keys: [ "b" ], name: "paint" },
 	{ fn: keyTool, keys: [ "h" ], name: "hand" },
 
-	{ fn: gs.playStop,         keys: [ " " ] },
-	{ fn: gs.playPause,        keys: [ "ctrl", " " ] },
-	{ fn: gs.samplesDelete,    keys: [ "delete" ] },
-	{ fn: ui.btnMagnet.toggle, keys: [ "g" ] },
-	{ fn: gs.samplesCopy,      keys: [ "ctrl", "c" ] },
-	{ fn: gs.samplesPaste,     keys: [ "ctrl", "v" ] },
-	{ fn: gs.history.undo,     keys: [ "ctrl", "z" ] },
-	{ fn: gs.history.redo,     keys: [ "ctrl", "shift", "z" ] }
+	{ fn: gs.playStop,                keys: [ " " ] },
+	{ fn: gs.playPause,               keys: [ "ctrl", " " ] },
+	{ fn: gs.samples.selected.delete, keys: [ "delete" ] },
+	{ fn: ui.btnMagnet.toggle,        keys: [ "g" ] },
+	{ fn: gs.samples.selected.copy,   keys: [ "ctrl", "c" ] },
+	{ fn: gs.samples.selected.paste,  keys: [ "ctrl", "v" ] },
+	{ fn: gs.history.undo,            keys: [ "ctrl", "z" ] },
+	{ fn: gs.history.redo,            keys: [ "ctrl", "shift", "z" ] }
 );
 
 var oldTool;

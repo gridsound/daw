@@ -2,7 +2,7 @@
 
 ( function() {
 
-gs.samplesCopy = function() {
+gs.samples.selected.copy = function() {
 	var min = Infinity,
 		max = -Infinity;
 
@@ -18,8 +18,8 @@ gs.samplesCopy = function() {
 	allDuration = max - min;
 };
 
-gs.samplesPaste = function() {
-	gs.samplesUnselect();
+gs.samples.selected.paste = function() {
+	gs.samples.selected.unselect();
 	samplesCopied.forEach( function( smp ) {
 		var smp2 = gs.sample.create( smp.data.gsfile );
 
@@ -27,10 +27,10 @@ gs.samplesPaste = function() {
 		gs.sample.when( smp2, smp.when + allDuration );
 		gs.sample.slip( smp2, smp.offset );
 		gs.sample.duration( smp2, smp.duration );
-		wa.composition.update( smp2, "ad" );
 		gs.sample.select( smp2, true );
+		wa.composition.update( smp2, "ad" );
 	} );
-	gs.samplesCopy();
+	gs.samples.selected.copy();
 };
 
 var allDuration,

@@ -23,7 +23,7 @@ ui.tool.slip = {
 	},
 	mousemove: function( e, secRel ) {
 		if ( _smp ) {
-			return gs.samplesSlip( _smp, secRel );
+			return gs.samples.selected.slip( _smp, secRel );
 		}
 	}
 };

@@ -1,6 +1,6 @@
 "use strict";
 
-gs.samplesUnselect = function() {
+gs.samples.selected.unselect = function() {
 	gs.selectedSamples.forEach( function( smp ) {
 		smp.data.selected = false;
 		ui.sample.select( smp );

@@ -18,7 +18,7 @@ ui.tool.select = {
 					selected.push( s );
 				}
 			} );
-			gs.samplesUnselect();
+			gs.samples.selected.unselect();
 			gs.sample.select( smp, true );
 		}
 		ax = e.pageX;
