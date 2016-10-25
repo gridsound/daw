@@ -35,12 +35,12 @@ function loadFiles() {
 			var size = f.file ? f.file.size : f.size;
 			if ( f.fullname === file.name && size === file.size ) {
 				if ( !f.file ) {
-					f.joinFile( file );
+					gs.file.joinFile( f, file );
 				}
 				return true;
 			}
 		} ) ) {
-			gs.fileCreate( file );
+			gs.file.create( file );
 		}
 	} );
 }

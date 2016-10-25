@@ -105,14 +105,12 @@ src = \
 	gs/save.js                        \
 	gs/reset.js                       \
 	                                  \
-	gs/files/fileCreate.js            \
-	gs/files/fileDelete.js            \
-	gs/files/filePlayStop.js          \
-	gs/files/File/constructor.js      \
-	gs/files/File/delete.js           \
-	gs/files/File/dragstart.js        \
-	gs/files/File/joinFile.js         \
-	gs/files/File/load.js             \
+	gs/file/create.js                 \
+	gs/file/delete.js                 \
+	gs/file/dragstart.js              \
+	gs/file/joinFile.js               \
+	gs/file/load.js                   \
+	gs/file/playStop.js               \
 	                                  \
 	gs/sample/create.js               \
 	gs/sample/cut.js                  \

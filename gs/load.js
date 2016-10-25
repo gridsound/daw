@@ -19,7 +19,7 @@ function onload( resolve, e ) {
 	var save = JSON.parse( e.target.result );
 
 	gs.bpm( save.bpm );
-	save.files.forEach( gs.fileCreate );
+	save.files.forEach( gs.file.create );
 	save.tracks.forEach( function( t ) {
 		var id = t[ 0 ];
 

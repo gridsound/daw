@@ -27,10 +27,10 @@ ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	}
 } );
 
-gs.File.prototype.dragstart = function( e ) {
-	if ( this.isLoaded && !gsfileDragging ) {
-		gsfileDragging = this;
-		elWaveformTmp = this.elSVG.cloneNode( true );
+gs.file.dragstart = function( that, e ) {
+	if ( that.isLoaded && !gsfileDragging ) {
+		gsfileDragging = that;
+		elWaveformTmp = that.elSVG.cloneNode( true );
 		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
 		wisdom.css( elWaveformTmp, "top", e.pageY + "px" );
 		elWaveformTmp.classList.add( "dragging" );

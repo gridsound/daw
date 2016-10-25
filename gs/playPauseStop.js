@@ -4,7 +4,7 @@ gs.playStop  = function() { ( gs.isPlaying ? gs.stop : gs.play )(); };
 gs.playPause = function() { ( wa.composition.isPlaying ? gs.pause : gs.play )(); };
 
 gs.play = function() {
-	gs.fileStop();
+	gs.file.stop();
 	if ( !wa.composition.isPlaying && wa.composition.samples.length ) {
 		wa.composition.play();
 		if ( wa.composition.isPlaying ) {
@@ -15,7 +15,7 @@ gs.play = function() {
 };
 
 gs.pause = function() {
-	gs.fileStop();
+	gs.file.stop();
 	if ( wa.composition.isPlaying ) {
 		wa.composition.pause();
 		gs.isPaused = !( gs.isPlaying = false );
@@ -24,7 +24,7 @@ gs.pause = function() {
 };
 
 gs.stop = function() {
-	gs.fileStop();
+	gs.file.stop();
 	gs.compositionStop();
 };
 

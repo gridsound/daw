@@ -2,26 +2,26 @@
 
 ( function() {
 
-gs.filePlay = function( gsfile ) {
+gs.file.play = function( that ) {
 	if ( smp ) {
 		smp.stop();
 	}
-	if ( gsfile.isLoaded ) {
+	if ( that.isLoaded ) {
 		wisdom.css( elCursor, "transitionDuration", 0 );
 		wisdom.css( elCursor, "left", 0 );
-		gsfile.elWaveformWrap.appendChild( elCursor );
+		that.elWaveformWrap.appendChild( elCursor );
 		smp = wa.wctx.createSample()
-			.setBuffer( gsfile.wbuff )
-			.onended( gs.fileStop )
+			.setBuffer( that.wbuff )
+			.onended( gs.file.stop )
 			.load().start();
 		setTimeout( function() {
-			wisdom.css( elCursor, "transitionDuration", gsfile.wbuff.buffer.duration + "s" );
+			wisdom.css( elCursor, "transitionDuration", that.wbuff.buffer.duration + "s" );
 			wisdom.css( elCursor, "left", "100%" );
 		}, 20 );
 	}
 };
 
-gs.fileStop = function() {
+gs.file.stop = function() {
 	if ( smp ) {
 		smp.stop();
 		elCursor.remove();

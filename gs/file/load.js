@@ -1,12 +1,9 @@
 "use strict";
 
-gs.File.prototype.load = function( fn ) {
-	var that = this;
-
-	this.isLoading = true;
-	ui.CSS_fileLoading( this );
-
-	wa.wctx.createBuffer( this.file ).then( function( wbuff ) {
+gs.file.load = function( that, fn ) {
+	that.isLoading = true;
+	ui.CSS_fileLoading( that );
+	wa.wctx.createBuffer( that.file ).then( function( wbuff ) {
 		that.wbuff = wbuff;
 		that.isLoaded = true;
 		that.isLoading = false;

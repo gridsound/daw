@@ -5,6 +5,7 @@ window.gs = {
 	samples: {
 		selected: {}
 	},
+	file: {},
 	files: [],
 	selectedSamples: []
 };
