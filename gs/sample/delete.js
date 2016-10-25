@@ -14,6 +14,6 @@ gs.sample.delete = function( smp ) {
 		data.oldTrack = data.track; // TODO: #undo
 		smp.data.track = undefined;
 		wa.composition.remove( smp );
-		ui.CSS_sampleDelete( smp );
+		ui.sample.delete( smp );
 	}
 };

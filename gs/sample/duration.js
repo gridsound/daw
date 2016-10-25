@@ -2,5 +2,5 @@
 
 gs.sample.duration = function( smp, dur ) {
 	smp.duration = Math.max( 0, Math.min( dur, smp.bufferDuration ) );
-	ui.CSS_sampleDuration( smp );
+	ui.sample.duration( smp );
 };

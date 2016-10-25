@@ -24,7 +24,7 @@ function insert( action, sign ) {
 	}
 	action.samples.forEach( function( smp ) {
 		wa.composition.add( smp );
-		ui.CSS_sampleCreate( smp );
+		ui.sample.create( smp );
 		gs.sample.inTrack( smp, smp.data.oldTrack.id );
 		gs.sample.when( smp, smp.when );
 		gs.sample.duration( smp, smp.duration );

@@ -2,5 +2,5 @@
 
 gs.sample.slip = function( smp, offset ) {
 	smp.offset = Math.min( smp.bufferDuration, Math.max( offset, 0 ) );
-	ui.CSS_sampleOffset( smp );
+	ui.sample.waveform( smp );
 };

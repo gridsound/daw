@@ -15,8 +15,7 @@ gs.File.prototype.joinFile = function( file ) {
 			gsfile.samplesToSet.forEach( function( smp ) {
 				smp.setBuffer( gsfile.wbuff );
 				smp.data.elName.textContent = gsfile.name;
-				ui.CSS_sampleWaveform( smp );
-				ui.CSS_sampleDuration( smp );
+				ui.sample.duration( smp );
 			} );
 		} );
 	}

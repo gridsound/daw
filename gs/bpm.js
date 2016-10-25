@@ -16,8 +16,7 @@ gs.bpm = function( bpm, delay ) {
 	BPMdiff = oldBPMem / ui.BPMem;
 	wa.composition.samples.forEach( function( smp ) {
 		smp.when = smp.when * BPMdiff;
-		ui.CSS_sampleDuration( smp );
-		ui.CSS_sampleOffset( smp );
+		ui.sample.duration( smp );
 	} );
 	gs.currentTime( oldTimeEm / ui.BPMem );
 };

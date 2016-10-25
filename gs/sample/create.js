@@ -1,30 +1,22 @@
 "use strict";
 
 gs.sample.create = function( gsfile ) {
-	var smp = wa.wctx.createSample(),
-		elSample = wisdom.cE( Handlebars.templates.sample( gsfile ) )[ 0 ];
+	var smp = wa.wctx.createSample();
 
-	smp.data = {
-		selected: false,
-		gsfile: gsfile,
-		elSample: elSample,
-		elSVG: wisdom.qS( elSample, "svg" ),
-		elName: wisdom.qS( elSample, ".name" ),
-		elCropStart: wisdom.qS( elSample, ".crop.start" ),
-		elCropEnd: wisdom.qS( elSample, ".crop.end" ),
-	};
-	wisdom.qSA( elSample, "*" ).forEach( function( el ) {
-		el.gsSample = smp;
-	} );
 	if ( gsfile.file ) {
 		smp.setBuffer( gsfile.wbuff );
 	} else {
 		smp.setBufferDuration( gsfile.bufferDuration );
 	}
-	wa.composition.add( smp );
+	smp.data = {
+		selected: false,
+		gsfile: gsfile,
+	};
 	++gsfile.nbSamples;
+	wa.composition.add( smp );
 	ui.CSS_fileUsed( gsfile );
-	ui.CSS_sampleDuration( smp );
+	ui.sample.create( smp );
+	ui.sample.duration( smp );
 	ui.sample.select( smp );
 	return smp;
 };

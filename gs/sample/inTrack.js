@@ -12,6 +12,6 @@ gs.sample.inTrack = function( smp, trackId ) {
 		}
 		smpData.track = track;
 		track.samples.push( smp );
-		ui.CSS_sampleTrack( smp );
+		ui.sample.inTrack( smp );
 	}
 };
