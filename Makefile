@@ -54,6 +54,11 @@ src = \
 	gs/_init.js                       \
 	gs/loop.js                        \
 	gs/playPauseStop.js               \
+	gs/file/delete.js                 \
+	gs/file/joinFile.js               \
+	gs/file/load.js                   \
+	gs/file/play.js                   \
+	gs/file/stop.js                   \
 	gs/history/history.js             \
 	gs/history/actions.js             \
 	                                  \
@@ -106,11 +111,7 @@ src = \
 	gs/reset.js                       \
 	                                  \
 	gs/file/create.js                 \
-	gs/file/delete.js                 \
 	gs/file/dragstart.js              \
-	gs/file/joinFile.js               \
-	gs/file/load.js                   \
-	gs/file/playStop.js               \
 	                                  \
 	gs/sample/create.js               \
 	gs/sample/cut.js                  \
