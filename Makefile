@@ -54,6 +54,8 @@ src = \
 	gs/_init.js                       \
 	gs/loop.js                        \
 	gs/playPauseStop.js               \
+	gs/file/click.js                  \
+	gs/file/create.js                 \
 	gs/file/delete.js                 \
 	gs/file/joinFile.js               \
 	gs/file/load.js                   \
@@ -71,6 +73,7 @@ src = \
 	ui/btnRedo.js                     \
 	ui/clock.js                       \
 	ui/currentTimeCursor.js           \
+	ui/filesCursor.js                 \
 	ui/filesInput.js                  \
 	ui/historyList.js                 \
 	ui/timeline.js                    \
@@ -110,9 +113,6 @@ src = \
 	gs/load.js                        \
 	gs/save.js                        \
 	gs/reset.js                       \
-	                                  \
-	gs/file/click.js                  \
-	gs/file/create.js                 \
 	gs/file/dragstart.js              \
 	                                  \
 	gs/sample/create.js               \

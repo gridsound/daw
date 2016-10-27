@@ -5,6 +5,6 @@ gs.file.stop = function() {
 
 	if ( smp ) {
 		smp.stop();
-		gs.file.cursor.remove();
+		ui.filesCursor.remove();
 	}
 };
