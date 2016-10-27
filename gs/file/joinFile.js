@@ -3,7 +3,7 @@
 gs.file.joinFile = function( that, file ) {
 	that.file = file;
 
-	ui.CSS_fileUnloaded( that );
+	ui.file.unloaded( that );
 	if ( that.fullname !== file.name ) {
 		that.fullname = file.name;
 		that.name = that.fullname.replace( /\.[^.]+$/, "" );

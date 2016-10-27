@@ -2,7 +2,7 @@
 
 gs.file.load = function( that, fn ) {
 	that.isLoading = true;
-	ui.CSS_fileLoading( that );
+	ui.file.loading( that );
 	wa.wctx.createBuffer( that.file ).then( function( wbuff ) {
 		that.wbuff = wbuff;
 		that.isLoaded = true;
@@ -10,11 +10,11 @@ gs.file.load = function( that, fn ) {
 		that.elSVG = wisdom.qS( that.elFile, "svg" );
 		that.elWaveformWrap = that.elSVG.parentNode;
 		wbuff.waveformSVG( that.elSVG, 400, 50 );
-		ui.CSS_fileLoaded( that );
+		ui.file.loaded( that );
 		fn( that );
 	}, function() {
 		that.isLoading = false;
-		ui.CSS_fileError( that );
+		ui.file.error( that );
 		alert( "At this day, the file: \"" + that.fullname +
 			"\" can not be decoded by your browser.\n" );
 	} );

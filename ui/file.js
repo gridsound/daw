@@ -1,37 +1,33 @@
 "use strict";
 
-ui.CSS_fileUnloaded = function( f ) {
-	f.elIcon.classList.add( "ramload" );
-	f.elIcon.classList.remove( "question" );
-	f.elFile.classList.add( "unloaded" );
-};
-
-ui.CSS_fileWithoutData = function( f ) {
-	f.elIcon.classList.add( "question" );
-	f.elIcon.classList.remove( "ramload" );
-	f.elFile.classList.add( "unloaded" );
-};
-
-ui.CSS_fileLoading = function( f ) {
-	f.elIcon.classList.add( "loading" );
-	f.elIcon.classList.remove( "ramload" );
-};
-
-ui.CSS_fileLoaded = function( f ) {
-	f.elFile.classList.add( "loaded" );
-	f.elFile.classList.remove( "unloaded" );
-	f.elIcon.remove();
-};
-
-ui.CSS_fileError = function( f ) {
-	f.elIcon.classList.add( "cross" );
-	f.elIcon.classList.remove( "loading" );
-};
-
-ui.CSS_fileUsed = function( f ) {
-	f.elFile.classList.add( "used" );
-};
-
-ui.CSS_fileUnused = function( f ) {
-	f.elFile.classList.remove( "used" );
+ui.file = {
+	unloaded: function( that ) {
+		that.elIcon.classList.add( "ramload" );
+		that.elIcon.classList.remove( "question" );
+		that.elFile.classList.add( "unloaded" );
+	},
+	loading: function( that ) {
+		that.elIcon.classList.add( "loading" );
+		that.elIcon.classList.remove( "ramload" );
+	},
+	loaded: function( that ) {
+		that.elFile.classList.add( "loaded" );
+		that.elFile.classList.remove( "unloaded" );
+		that.elIcon.remove();
+	},
+	withoutData: function( that ) {
+		that.elIcon.classList.add( "question" );
+		that.elIcon.classList.remove( "ramload" );
+		that.elFile.classList.add( "unloaded" );
+	},
+	error: function( that ) {
+		that.elIcon.classList.add( "cross" );
+		that.elIcon.classList.remove( "loading" );
+	},
+	used: function( that ) {
+		that.elFile.classList.add( "used" );
+	},
+	unused: function( that ) {
+		that.elFile.classList.remove( "used" );
+	}
 };

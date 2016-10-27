@@ -71,6 +71,7 @@ src = \
 	ui/btnRedo.js                     \
 	ui/clock.js                       \
 	ui/currentTimeCursor.js           \
+	ui/filesInput.js                  \
 	ui/historyList.js                 \
 	ui/timeline.js                    \
 	ui/timelineBeats.js               \
@@ -110,6 +111,7 @@ src = \
 	gs/save.js                        \
 	gs/reset.js                       \
 	                                  \
+	gs/file/click.js                  \
 	gs/file/create.js                 \
 	gs/file/dragstart.js              \
 	                                  \

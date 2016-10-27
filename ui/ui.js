@@ -3,7 +3,7 @@
 ( function() {
 
 var initFns = [],
-	events = "click mousedown mouseup mousemove".split( " " );
+	events = "click mousedown mouseup mousemove change".split( " " );
 
 window.ui = {
 	dom: {},

@@ -32,7 +32,7 @@ function insert( action, sign ) {
 		gs.sample.select( smp, smp.data.oldSelected );
 
 		if ( !smp.data.gsfile.nbSamples++ ) {
-			ui.CSS_fileUsed( smp.data.gsfile );
+			ui.file.used( smp.data.gsfile );
 		}
 	} );
 }

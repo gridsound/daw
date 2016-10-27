@@ -1,16 +1,5 @@
 "use strict";
 
-( function() {
-
-var clickedFile;
-
-ui.dom.filesInput.onchange = function() {
-	if ( clickedFile ) {
-		gs.file.joinFile( clickedFile, this.files[ 0 ] );
-		clickedFile = null;
-	}
-};
-
 gs.file.create = function( file ) {
 	var that = {
 			id: gs.files.length,
@@ -28,13 +17,14 @@ gs.file.create = function( file ) {
 	that.elName = wisdom.qS( that.elFile, ".name" );
 	that.elIcon = wisdom.qS( that.elFile, ".icon" );
 	if ( that.file ) {
-		ui.CSS_fileUnloaded( that );
+		ui.file.unloaded( that );
 	} else {
 		that.size = file[ 2 ];
-		ui.CSS_fileWithoutData( that );
+		ui.file.withoutData( that );
 	}
-	that.elFile.oncontextmenu = function() { return false; };
+	that.elFile.onclick = gs.file.click.bind( null, that );
 	that.elFile.ondragstart = gs.file.dragstart.bind( null, that );
+	that.elFile.oncontextmenu = function() { return false; };
 	that.elFile.onmousedown = function( e ) {
 		if ( e.button !== 0 ) {
 			gs.file.stop();
@@ -43,20 +33,7 @@ gs.file.create = function( file ) {
 			gs.file.delete( that );
 		}
 	};
-	that.elFile.onclick = function() {
-		if ( that.isLoaded ) {
-			gs.file.play( that );
-		} else if ( !that.file ) {
-			alert( "Choose the file to associate or drag and drop " + that.name );
-			clickedFile = that;
-			ui.dom.filesInput.click();
-		} else if ( !that.isLoading ) {
-			gs.file.load( that, gs.file.play );
-		}
-	};
 	gs.files.push( that );
 	ui.dom.filesList.appendChild( that.elFile );
 	return that;
 };
-
-} )();

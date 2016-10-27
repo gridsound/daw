@@ -7,7 +7,7 @@ gs.sample.delete = function( smp ) {
 		data.oldSelected = !!data.selected; // TODO: #undo
 		gs.sample.select( smp, false );
 		if ( !--data.gsfile.nbSamples ) {
-			ui.CSS_fileUnused( data.gsfile );
+			ui.file.unused( data.gsfile );
 		}
 		smp.stop();
 		data.track.removeSample( smp );
