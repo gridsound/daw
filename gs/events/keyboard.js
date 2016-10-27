@@ -11,6 +11,7 @@ keyboardRouter(
 	{ fn: keyTool, keys: [ "d" ], name: "delete" },
 	{ fn: keyTool, keys: [ "c" ], name: "cut" },
 	{ fn: keyTool, keys: [ "v" ], name: "select" },
+	{ fn: keyTool, keys: [ "g" ], name: "gain" },
 	{ fn: keyTool, keys: [ "b" ], name: "paint" },
 	{ fn: keyTool, keys: [ "h" ], name: "hand" },
 

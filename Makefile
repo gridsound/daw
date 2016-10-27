@@ -120,6 +120,7 @@ src = \
 	gs/sample/mute.js                 \
 	gs/sample/select.js               \
 	gs/sample/slip.js                 \
+	gs/sample/gain.js                 \
 	gs/sample/when.js                 \
 	gs/samples/selected/do.js         \
 	gs/samples/selected/min.js        \
@@ -130,6 +131,7 @@ src = \
 	gs/samples/selected/duration.js   \
 	gs/samples/selected/when.js       \
 	gs/samples/selected/slip.js       \
+	gs/samples/selected/gain.js       \
 	gs/samples/selected/crop.js       \
 	gs/samples/selected/unselect.js   \
 	                                  \
@@ -150,6 +152,7 @@ src = \
 	gs/events/toolPaint.js            \
 	gs/events/toolSelect.js           \
 	gs/events/toolSlip.js             \
+	gs/events/toolGain.js             \
 	gs/events/toolZoom.js             \
 	                                  \
 	init.js

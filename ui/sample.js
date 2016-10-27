@@ -33,10 +33,11 @@ ui.sample = {
 		if ( smp.wBuffer ) {
 			var off = smp.offset,
 				dur = Math.min( smp.duration, smp.bufferDuration - off ),
+				gain = smp.connectedTo.gain.value,
 				durEm = dur * ui.BPMem;
 
 			wisdom.css( smp.data.elSVG, "width", durEm + "em" );
-			smp.wBuffer.waveformSVG( smp.data.elSVG, ~~( durEm * 50 ), 50, off, dur );
+			smp.wBuffer.waveformSVG( smp.data.elSVG, ~~( durEm * 50 ), 50, off, dur, gain );
 		}
 	}
 };

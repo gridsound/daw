@@ -105,6 +105,7 @@ $icon-tool-zoom        : "\f002"; // fa-search
 	&.tool-hand:after     { content: $icon-tool-hand;     }
 	&.tool-mute:after     { content: $icon-tool-mute;     }
 	&.tool-paint:after    { content: $icon-tool-paint;    }
+	&.tool-gain:after     { content: $icon-tool-mute;     }
 		&.tool-move:after    { content: $icon-tool-move;     }
 		&.tool-crop:after    { content: $icon-tool-crop;     }
 		&.tool-cropEnd:after { content: $icon-tool-cropEnd;  }
