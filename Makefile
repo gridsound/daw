@@ -155,4 +155,5 @@ src = \
 	gs/events/toolSlip.js             \
 	gs/events/toolZoom.js             \
 	                                  \
-	init.js
+	init.js                           \
+	analyticstracking.js
