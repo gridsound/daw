@@ -1,7 +1,7 @@
 "use strict";
 
 gs.file.joinFile = function( that, file ) {
-	that.file = file;
+	var wbuff = that.wbuff;
 
 	ui.file.unloaded( that );
 	if ( that.fullname !== file.name ) {
@@ -10,13 +10,11 @@ gs.file.joinFile = function( that, file ) {
 		that.elName.textContent = that.name;
 	}
 
-	if ( that.samplesToSet.length ) {
-		gs.file.load( that, function( that ) {
-			that.samplesToSet.forEach( function( smp ) {
-				smp.setBuffer( that.wbuff );
-				smp.data.elName.textContent = that.name;
-				ui.sample.duration( smp );
-			} );
+	that.file = file;
+	gs.file.load( that, function( that ) {
+		wbuff.samples.forEach( function( smp ) {
+			smp.data.elName.textContent = that.name;
+			ui.sample.duration( smp );
 		} );
-	}
+	} );
 }

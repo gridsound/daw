@@ -3,8 +3,7 @@
 gs.file.load = function( that, fn ) {
 	that.isLoading = true;
 	ui.file.loading( that );
-	wa.wctx.createBuffer( that.file ).then( function( wbuff ) {
-		that.wbuff = wbuff;
+	that.wbuff.setFile( that.file ).then( function( wbuff ) {
 		that.isLoaded = true;
 		that.isLoading = false;
 		that.elSVG = wisdom.qS( that.elFile, "svg" );

@@ -2,21 +2,14 @@
 
 ui.BPMem = 1;
 
-gs.bpm = function( bpm, delay ) {
+gs.bpm = function( bpm ) {
 	if ( !arguments.length ) {
 		return gs._bpm;
 	}
-	var BPMdiff,
-		oldBPMem = ui.BPMem,
-		oldTimeEm = gs.currentTime() * oldBPMem;
-
-	gs._bpm = Math.max( 20, Math.min( bpm, 999 ) );
+	wa.composition.bpm( Math.max( 20, Math.min( bpm, 999 ) ) );
+	gs._bpm = wa.composition.bpm();
 	ui.bpm( gs._bpm );
-	ui.BPMem = bpm / 60;
-	BPMdiff = oldBPMem / ui.BPMem;
-	wa.composition.samples.forEach( function( smp ) {
-		smp.when = smp.when * BPMdiff;
-		ui.sample.duration( smp );
-	} );
-	gs.currentTime( oldTimeEm / ui.BPMem );
+	ui.BPMem = gs._bpm / 60;
+	wa.composition.samples.forEach( ui.sample.duration );
+	ui.clock.setTime( gs.currentTime() );
 };

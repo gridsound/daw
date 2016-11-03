@@ -1,12 +1,10 @@
 "use strict";
 
 gs.sample.create = function( gsfile ) {
-	var smp = wa.wctx.createSample();
+	var smp = wa.wctx.createSample( gsfile.wbuff );
 
-	if ( gsfile.file ) {
-		smp.setBuffer( gsfile.wbuff );
-	} else {
-		smp.setBufferDuration( gsfile.bufferDuration );
+	if ( !gsfile.wbuff.buffer ) {
+		gsfile.wbuff._setDuration( gsfile.bufferDuration );
 	}
 	smp.data = {
 		selected: false,
@@ -17,6 +15,5 @@ gs.sample.create = function( gsfile ) {
 	ui.file.used( gsfile );
 	ui.sample.create( smp );
 	ui.sample.duration( smp );
-	ui.sample.select( smp );
 	return smp;
 };

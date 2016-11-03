@@ -30,7 +30,7 @@ ui.sample = {
 		ui.sample.waveform( smp );
 	},
 	waveform: function( smp ) {
-		if ( smp.wBuffer ) {
+		if ( smp.wBuffer.buffer ) {
 			var off = smp.offset,
 				dur = Math.min( smp.duration, smp.bufferDuration - off ),
 				durEm = dur * ui.BPMem;
