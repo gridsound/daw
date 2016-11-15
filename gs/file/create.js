@@ -13,6 +13,7 @@ gs.file.create = function( file ) {
 			fullname: file.name || file[ 1 ],
 		};
 
+	that.wbuff.sample.onended( gs.file.stop );
 	that.name = that.fullname.replace( /\.[^.]+$/, "" );
 	that.elFile = wisdom.cE( Handlebars.templates.file( that ) )[ 0 ];
 	that.elName = wisdom.qS( that.elFile, ".name" );

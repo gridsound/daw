@@ -39,17 +39,18 @@ clean:
 .PHONY: all html css js clean
 
 src = \
-	jstools/keyboardRouter.min.js          \
-	jstools/wisdom.js                      \
-	jstools/handlebars.runtime.min.js      \
-	$(TPL_FILE)                            \
-	                                  \
-	$(WEBAUDIO_PATH)walcontext.js     \
-	$(WEBAUDIO_PATH)composition.js    \
-	$(WEBAUDIO_PATH)buffer.js         \
-	$(WEBAUDIO_PATH)waveform.js       \
-	$(WEBAUDIO_PATH)filters.js        \
-	$(WEBAUDIO_PATH)sample.js         \
+	jstools/keyboardRouter.min.js       \
+	jstools/wisdom.js                   \
+	jstools/handlebars.runtime.min.js   \
+	$(TPL_FILE)                         \
+	                                    \
+	$(WEBAUDIO_PATH)walcontext.js       \
+	$(WEBAUDIO_PATH)composition.js      \
+	$(WEBAUDIO_PATH)composition-loop.js \
+	$(WEBAUDIO_PATH)buffer.js           \
+	$(WEBAUDIO_PATH)waveform.js         \
+	$(WEBAUDIO_PATH)filters.js          \
+	$(WEBAUDIO_PATH)sample.js           \
 	                                  \
 	gs/_init.js                       \
 	gs/loop.js                        \

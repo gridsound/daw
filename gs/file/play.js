@@ -8,7 +8,7 @@ gs.file.play = function( that ) {
 	}
 	if ( that.isLoaded ) {
 		ui.filesCursor.insertInto( that );
-		gs.file.playingSmp = wa.wctx.createSample( that.wbuff ).onended( gs.file.stop ).start();
+		gs.file.playingSmp = that.wbuff.sample.start();
 		setTimeout( ui.filesCursor.startMoving.bind( null, that.wbuff.buffer.duration ), 20 );
 	}
 };
