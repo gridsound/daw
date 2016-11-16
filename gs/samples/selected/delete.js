@@ -1,12 +1,11 @@
 "use strict";
 
-gs.samples.selected.delete = function( smp ) {
-	if ( smp ) {
-		if ( smp.data ) {
-			gs.sample.delete( smp );
-		} else {
-			gs.selectedSamples.slice( 0 ).forEach( gs.sample.delete );
-			gs.selectedSamples = [];
-		}
+gs.samples.selected.delete = function() {
+	if ( gs.selectedSamples.length ) {
+		var smps = gs.selectedSamples.slice();
+
+		smps.forEach( gs.sample.delete );
+		gs.history.push( "delete", { samples: smps } );
+		gs.selectedSamples.length = 0;
 	}
 };

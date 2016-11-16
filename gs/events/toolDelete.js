@@ -19,7 +19,7 @@ function del( e ) {
 	var smp = e.target.gsSample;
 
 	if ( smp ) {
-		gs.samples.selected.delete( smp );
+		gs.sample.delete( smp );
 		smpDeleted.push( smp );
 	}
 }

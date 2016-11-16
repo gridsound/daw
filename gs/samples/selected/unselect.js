@@ -5,5 +5,5 @@ gs.samples.selected.unselect = function() {
 		smp.data.selected = false;
 		ui.sample.select( smp );
 	} );
-	gs.selectedSamples = [];
+	gs.selectedSamples.length = 0;
 };
