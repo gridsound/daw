@@ -4,28 +4,52 @@
 
 Object.assign( gs.history, {
 	select:  select,
-	insert:  insert,
+	create:  create,
 	delete:  d3lete,
 	move:    move,
 	crop:    crop,
 	cropEnd: cropEnd,
 	slip:    slip,
+	paste:   paste,
 } );
 
-function select( action ) {
-	action.samples.forEach( function( smp ) {
+function paste( data, sign ) {
+	if ( sign > 0 ) {
+		data.selected.forEach( function( smp ) {
+			gs.sample.select( smp, false );
+		} );
+		data.pasted.forEach( function( smp, i ) {
+			var cpy = data.copied[ i ];
+
+			gs.sample.inTrack( smp, cpy.data.track.id );
+			gs.sample.when( smp, cpy.when + data.allDuration );
+			gs.sample.slip( smp, cpy.offset );
+			gs.sample.duration( smp, cpy.duration );
+			gs.sample.select( smp, true );
+		} );
+		wa.composition.add( data.pasted );
+	} else {
+		data.pasted.forEach( gs.sample.delete );
+		data.selected.forEach( function( smp ) {
+			gs.sample.select( smp, true );
+		} );
+	}
+}
+
+function select( data ) {
+	data.samples.forEach( function( smp ) {
 		gs.sample.select( smp );
 	} );
 }
 
-function insert( action, sign ) {
+function create( data, sign ) {
 	if ( sign === -1 ) {
-		return d3lete( action, +1 );
+		return d3lete( data, +1 );
 	}
-	action.samples.forEach( function( smp ) {
+	data.samples.forEach( function( smp ) {
 		wa.composition.add( smp );
 		ui.sample.create( smp );
-		gs.sample.inTrack( smp, smp.data.oldTrack.id );
+		gs.sample.inTrack( smp, smp.data.track.id );
 		gs.sample.when( smp, smp.when );
 		gs.sample.duration( smp, smp.duration );
 		gs.sample.slip( smp, smp.offset );
@@ -37,19 +61,19 @@ function insert( action, sign ) {
 	} );
 }
 
-function d3lete( action, sign ) {
+function d3lete( data, sign ) {
 	if ( sign === -1 ) {
-		insert( action, +1 );
+		create( data, +1 );
 	} else {
-		action.samples.forEach( gs.sample.delete );
+		data.samples.forEach( gs.sample.delete );
 	}
 }
 
-function move( action, sign ) {
-	var sample = action.sample,
-		track = action.track * sign;
+function move( data, sign ) {
+	var sample = data.sample,
+		track = data.track * sign;
 
-	gs.samples.selected.when( sample, action.when * sign );
+	gs.samples.selected.when( sample, data.when * sign );
 	if ( track ) {
 		if ( sample.data.selected ) {
 			gs.selectedSamples.forEach( function( smp ) {
@@ -64,27 +88,27 @@ function move( action, sign ) {
 	} );
 }
 
-function crop( action, sign ) {
-	var sample = action.sample;
+function crop( data, sign ) {
+	var sample = data.sample;
 
-	gs.samples.selected.duration( sample, action.duration * sign );
-	gs.samples.selected.when( sample, action.when * sign );
-	gs.samples.selected.slip( sample, -action.offset * sign );
+	gs.samples.selected.duration( sample, data.duration * sign );
+	gs.samples.selected.when( sample, data.when * sign );
+	gs.samples.selected.slip( sample, -data.offset * sign );
 	gs.samples.selected.do( sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
 
-function cropEnd( action, sign ) {
-	gs.samples.selected.duration( action.sample, action.duration * sign );
-	gs.samples.selected.do( action.sample, function( smp ) {
+function cropEnd( data, sign ) {
+	gs.samples.selected.duration( data.sample, data.duration * sign );
+	gs.samples.selected.do( data.sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }
 
-function slip( action, sign ) {
-	gs.samples.selected.slip( action.sample, action.offset * sign );
-	gs.samples.selected.do( action.sample, function( smp ) {
+function slip( data, sign ) {
+	gs.samples.selected.slip( data.sample, data.offset * sign );
+	gs.samples.selected.do( data.sample, function( smp ) {
 		wa.composition.update( smp, "mv" );
 	} );
 }

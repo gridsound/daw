@@ -23,7 +23,7 @@ ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 
 		gs.sample.inTrack( smp, ui.getTrackFromPageY( e.pageY ).id );
 		gs.sample.when( smp, ui.getGridSec( e.pageX ) );
-		wa.composition.update( smp, "ad" );
+		wa.composition.add( smp );
 	}
 } );
 

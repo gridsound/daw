@@ -54,6 +54,8 @@ $icon-tool-select      : "\f245"; // fa-mouse-pointer
 $icon-tool-slip        : "\f0ec"; // fa-exchange
 $icon-tool-zoom        : "\f002"; // fa-search
 
+$icon-clone: "\f24d"; // fa-clone
+
 .icon {
 	display: inline-block;
 	font-family: "FontAwesome";
@@ -100,6 +102,7 @@ $icon-tool-zoom        : "\f002"; // fa-search
 	&.undo:after          { content: $icon-undo;          }
 	&.redo:after          { content: $icon-redo;          }
 
+	&.tool-create:after   { content: $icon-tool-paint;    }
 	&.tool-cut:after      { content: $icon-tool-cut;      }
 	&.tool-delete:after   { content: $icon-tool-delete;   }
 	&.tool-hand:after     { content: $icon-tool-hand;     }
@@ -111,4 +114,5 @@ $icon-tool-zoom        : "\f002"; // fa-search
 	&.tool-select:after   { content: $icon-tool-select;   }
 	&.tool-slip:after     { content: $icon-tool-slip;     }
 	&.tool-zoom:after     { content: $icon-tool-zoom;     }
+	&.tool-paste:after    { content: $icon-clone;         }
 }

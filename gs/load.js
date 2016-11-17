@@ -38,7 +38,7 @@ function onload( resolve, e ) {
 		gs.sample.when( smp, s[ 2 ] / ui.BPMem );
 		gs.sample.slip( smp, s[ 3 ] / ui.BPMem );
 		gs.sample.duration( smp, s[ 4 ] / ui.BPMem );
-		wa.composition.update( smp, "ad" );
+		wa.composition.add( smp );
 	} );
 	resolve();
 }

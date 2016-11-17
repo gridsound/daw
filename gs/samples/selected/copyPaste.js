@@ -19,18 +19,20 @@ gs.samples.selected.copy = function() {
 };
 
 gs.samples.selected.paste = function() {
-	gs.samples.selected.unselect();
-	samplesCopied.forEach( function( smp ) {
-		var smp2 = gs.sample.create( smp.data.gsfile );
+	if ( samplesCopied.length ) {
+		var data = {
+				selected: gs.selectedSamples.slice(),
+				allDuration: allDuration,
+				copied: samplesCopied,
+				pasted: samplesCopied.map( function( smp ) {
+					return gs.sample.create( smp.data.gsfile );
+				} )
+			};
 
-		gs.sample.inTrack( smp2, smp.data.track.id );
-		gs.sample.when( smp2, smp.when + allDuration );
-		gs.sample.slip( smp2, smp.offset );
-		gs.sample.duration( smp2, smp.duration );
-		gs.sample.select( smp2, true );
-		wa.composition.update( smp2, "ad" );
-	} );
-	gs.samples.selected.copy();
+		gs.history.push( "paste", data );
+		gs.history.paste( data, 1 ); // TODO: #history
+		gs.samples.selected.copy();
+	}
 };
 
 var allDuration,

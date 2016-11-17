@@ -62,17 +62,16 @@ ui.tool.paint = {
 			// Changes tracks:
 			if ( !cropping ) {
 				e = e.target;
-				var nbTracksToMove, minTrackId = Infinity,
-					track = e.uitrack || e.gsSample && e.gsSample.data.track;
+				var track = e.uitrack || e.gsSample && e.gsSample.data.track,
+					nbTracksToMove = track && track.id - _smp.data.track.id;
 
-				if ( track ) {
+				if ( nbTracksToMove ) {
 					if ( _smp.data.selected ) {
-						nbTracksToMove = track.id - _smp.data.track.id;
 						if ( nbTracksToMove < 0 ) {
-							gs.selectedSamples.forEach( function( smp ) {
-								minTrackId = Math.min( smp.data.track.id, minTrackId );
-							} );
-							nbTracksToMove = -Math.min( minTrackId, -nbTracksToMove );
+							nbTracksToMove = -Math.min( -nbTracksToMove,
+								gs.selectedSamples.reduce( function( min, smp ) {
+									return Math.min( min, smp.data.track.id );
+								}, Infinity ) );
 						}
 						gs.selectedSamples.forEach( function( smp ) {
 							gs.sample.inTrack( smp, smp.data.track.id + nbTracksToMove );
