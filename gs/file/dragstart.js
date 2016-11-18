@@ -19,11 +19,11 @@ document.body.addEventListener( "mouseup", function( e ) {
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
-		var smp = gs.sample.create( gsfileDragging );
-
-		gs.sample.inTrack( smp, ui.getTrackFromPageY( e.pageY ).id );
-		gs.sample.when( smp, ui.getGridSec( e.pageX ) );
-		wa.composition.add( smp );
+		gs.history.pushExec( "create", {
+			sample: gs.sample.create( gsfileDragging ),
+			track: ui.getTrackFromPageY( e.pageY ),
+			when: ui.getGridSec( e.pageX )
+		} );
 	}
 } );
 

@@ -4,6 +4,7 @@
 
 Object.assign( gs.history, {
 	select:  select,
+	create:  create,
 	delete:  d3lete,
 	move:    move,
 	crop:    crop,
@@ -60,6 +61,19 @@ function select( data ) {
 	data.samples.forEach( function( smp ) {
 		gs.sample.select( smp );
 	} );
+}
+
+
+function create( data, sign ) {
+	var smp = data.sample;
+
+	if ( sign > 0 ) {
+		gs.sample.inTrack( smp, data.track.id );
+		gs.sample.when( smp, data.when );
+		wa.composition.add( smp );
+	} else {
+		gs.sample.delete( smp );
+	}
 }
 
 function d3lete( data, sign ) {
