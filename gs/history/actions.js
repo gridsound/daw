@@ -11,6 +11,7 @@ Object.assign( gs.history, {
 	cropEnd: cropEnd,
 	slip:    slip,
 	paste:   paste,
+	cut:     cut,
 } );
 
 function paste( data, sign ) {
@@ -34,6 +35,26 @@ function paste( data, sign ) {
 			gs.sample.select( smp, true );
 		} );
 	}
+}
+
+function cut( data, sign ) {
+	var nsmp, dur = data.duration;
+
+	data.samples.forEach( function( smp, i ) {
+		nsmp = data.newSamples[ i ];
+		if ( sign > 0 ) {
+			gs.sample.inTrack( nsmp, smp.data.track.id );
+			gs.sample.when( nsmp, smp.when + dur );
+			gs.sample.slip( nsmp, smp.offset + dur );
+			gs.sample.duration( nsmp, smp.duration - dur );
+			gs.sample.duration( smp, dur );
+			wa.composition.add( nsmp );
+		} else {
+			gs.sample.duration( smp, dur + nsmp.duration );
+			gs.sample.delete( nsmp );
+		}
+		wa.composition.update( smp );
+	} );
 }
 
 function select( data ) {

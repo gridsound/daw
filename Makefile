@@ -117,7 +117,6 @@ src = \
 	gs/file/dragstart.js              \
 	                                  \
 	gs/sample/create.js               \
-	gs/sample/cut.js                  \
 	gs/sample/delete.js               \
 	gs/sample/duration.js             \
 	gs/sample/inTrack.js              \
