@@ -20,17 +20,14 @@ gs.samples.selected.copy = function() {
 
 gs.samples.selected.paste = function() {
 	if ( samplesCopied.length ) {
-		var data = {
-				selected: gs.selectedSamples.slice(),
-				allDuration: allDuration,
-				copied: samplesCopied,
-				pasted: samplesCopied.map( function( smp ) {
-					return gs.sample.create( smp.data.gsfile );
-				} )
-			};
-
-		gs.history.push( "paste", data );
-		gs.history.paste( data, 1 ); // TODO: #history
+		gs.history.pushExec( "paste", {
+			selected: gs.selectedSamples.slice(),
+			allDuration: allDuration,
+			copied: samplesCopied,
+			pasted: samplesCopied.map( function( smp ) {
+				return gs.sample.create( smp.data.gsfile );
+			} )
+		} );
 		gs.samples.selected.copy();
 	}
 };

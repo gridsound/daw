@@ -4,7 +4,6 @@
 
 Object.assign( gs.history, {
 	select:  select,
-	create:  create,
 	delete:  d3lete,
 	move:    move,
 	crop:    crop,
@@ -63,30 +62,21 @@ function select( data ) {
 	} );
 }
 
-function create( data, sign ) {
-	if ( sign === -1 ) {
-		return d3lete( data, +1 );
-	}
-	data.samples.forEach( function( smp ) {
-		wa.composition.add( smp );
-		ui.sample.create( smp );
-		gs.sample.inTrack( smp, smp.data.track.id );
-		gs.sample.when( smp, smp.when );
-		gs.sample.duration( smp, smp.duration );
-		gs.sample.slip( smp, smp.offset );
-		gs.sample.select( smp, smp.data.oldSelected );
-
-		if ( !smp.data.gsfile.nbSamples++ ) {
-			ui.file.used( smp.data.gsfile );
-		}
-	} );
-}
-
 function d3lete( data, sign ) {
-	if ( sign === -1 ) {
-		create( data, +1 );
-	} else {
+	if ( sign > 0 ) {
 		data.samples.forEach( gs.sample.delete );
+	} else {
+		data.samples.forEach( function( smp ) {
+			gs.sample.inTrack( smp, smp.data.track.id );
+			gs.sample.when( smp, smp.when );
+			gs.sample.slip( smp, smp.offset );
+			gs.sample.duration( smp, smp.duration );
+			gs.sample.select( smp, smp.data.oldSelected );
+			wa.composition.add( smp );
+			if ( !smp.data.gsfile.nbSamples++ ) {
+				ui.file.used( smp.data.gsfile );
+			}
+		} );
 	}
 }
 

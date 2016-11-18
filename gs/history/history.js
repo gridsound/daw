@@ -30,6 +30,10 @@ gs.history = {
 		ui.historyList.push( action );
 		++rip;
 	},
+	pushExec: function( actionName, data ) {
+		gs.history.push( actionName, data );
+		gs.history[ actionName ]( data, 1 );
+	},
 	undo: function() {
 		if ( rip > 0 ) {
 			var act = actions[ rip-- ];
