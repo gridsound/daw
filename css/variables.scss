@@ -3,7 +3,6 @@ $COLOR_SAMPLE: #76c4ff;
 $COLOR_SAMPLE_SELECTED: #b51818;
 $COLOR_SELECTION: #ff3636;
 $YELLOW: #4cb849;
-$BLUE_LIGHT: #c0c0ff;
 
 // ---------------------------------------
 
@@ -18,9 +17,9 @@ $timeline_bgColor: darken( $COLOR_MAIN, 10 );
 	$timelineBeat_color: lighten( grayscale( $timeline_bgColor ), 30 );
 	$timelineBeat_4nColor: lighten( $timelineBeat_color, 20 );
 	/* timelineLoop */
-	$timelineLoop_borderColor: $BLUE_LIGHT;
-	$timelineLoop_bgColor: rgba( $BLUE_LIGHT, .05 );
-	$timelineLoop_outerFilter: rgba( #000, .5 );
+	$timelineLoop_borderColor: lighten( $COLOR_MAIN, 50 );
+	$timelineLoop_bgColor: rgba( $timelineLoop_borderColor, .05 );
+	$timelineLoop_outerFilter: rgba( #000, .35 );
 
 $color_panelNav: darken( $color_appBg, 5 );
 $color_tracksNamesBg: darken( $color_appBg, 6.2 );
