@@ -2,7 +2,6 @@ $COLOR_MAIN: lighten( #142b35, 5 );
 $COLOR_SAMPLE: #76c4ff;
 $COLOR_SAMPLE_SELECTED: #b51818;
 $COLOR_SELECTION: #ff3636;
-$YELLOW: #4cb849;
 
 // ---------------------------------------
 
@@ -61,8 +60,7 @@ $border_trackFirst: rgba( #fff, .05 );
 $border_trackOffFirst: rgba( #000, .2 );
 $color_trackName: #fff;
 $color_trackOffName: rgba( #fff, .2 );
-$color_trackToggleOff: #111;
-$color_trackToggleOn: $YELLOW;
+$track-toggle-width: 18px;
 
 $color_squareSelectionBorder: $COLOR_SELECTION;
 $color_squareSelectionBg: rgba( $COLOR_SELECTION, .3 );

@@ -5,7 +5,7 @@ ui.Track = function( grid, obj ) {
 
 	this.grid = grid;
 	this.id = ui.tracks.length; // FIXME: when tracks could be moved or removed
-	this.elColNamesTrack = wisdom.cE( "<div class='track'>" )[ 0 ];
+	this.elColNamesTrack = wisdom.cE( Handlebars.templates.track() )[ 0 ];
 	this.elColLinesTrack = wisdom.cE( "<div class='track'>" )[ 0 ];
 	ui.dom.tracksNames.appendChild( this.elColNamesTrack );
 	ui.dom.tracksLines.appendChild( this.elColLinesTrack );

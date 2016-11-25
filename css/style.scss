@@ -1,6 +1,8 @@
 ---
 ---
 
+@import '../../gs-ui-components/bin/gs-ui-components.css';
+
 @import 'icons';
 @import 'variables';
 @import 'mixins';
@@ -22,7 +24,7 @@
 @import 'timeline';
 @import 'timelineBeats';
 @import 'timelineLoop';
-@import 'tracks';
 @import 'track';
+@import 'tracks';
 @import 'light-toggle';
 @import 'squareSelection';

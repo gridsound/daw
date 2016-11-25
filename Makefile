@@ -11,6 +11,7 @@ TPL_DIR       = templates/
 TPL_FILE      = $(TPL_DIR)__precompiled.js
 JS_FILE       = compressed.js
 WEBAUDIO_PATH = ../webaudio-library/src/
+GSUICOMPONENTS = ../gs-ui-components/bin/gs-ui-components.js
 
 all:
 	@head -5 Makefile
@@ -43,7 +44,7 @@ src = \
 	jstools/wisdom.js                   \
 	jstools/handlebars.runtime.min.js   \
 	$(TPL_FILE)                         \
-	                                    \
+	$(GSUICOMPONENTS)                   \
 	$(WEBAUDIO_PATH)walcontext.js       \
 	$(WEBAUDIO_PATH)composition.js      \
 	$(WEBAUDIO_PATH)composition-loop.js \
@@ -99,7 +100,6 @@ src = \
 	ui/setGridZoom.js                 \
 	ui/setTrackLinesLeft.js           \
 	ui/setTrackNamesWidth.js          \
-	ui/toggleTracks.js                \
 	ui/updateGridShadows.js           \
 	                                  \
 	ui/Track/constructor.js           \

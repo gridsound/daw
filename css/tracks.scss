@@ -8,7 +8,7 @@
 	&Names {
 		box-sizing: border-box;
 		z-index: 2;
-		min-width: 16px;
+		min-width: $track-toggle-width + 2px;
 		max-width: 300px;
 		border: solid #000;
 		border-width: 0 1px;
