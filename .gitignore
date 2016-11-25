@@ -2,3 +2,4 @@
 .sass-cache/
 *.css.map
 *.css
+__precompiled.js
