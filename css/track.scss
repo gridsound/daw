@@ -18,66 +18,26 @@
 		box-shadow: inset 0 2px 0 $border_trackOffFirst;
 	}
 
-	#tracksNames & {
-		overflow: hidden;
-		padding: 5px 0 5px $track-toggle-width;
-
-		* {
-			vertical-align: top;
-		}
-	}
-
 	.gs-ui-toggle {
 		position: absolute;
-		top: 0;
-		left: 0;
 		width: $track-toggle-width;
 		height: 100%;
 		font-size: 6px;
-		line-height: 1em;
 	}
 
-	#tracksNames & .name {
-		display: block;
-		min-width: 14px; // Avoid a graphic glitch when we resize the tracknames column.
-		font-size: 14px;
-		margin-top: -6px;
-		padding-right: 5px;
-		color: $color_trackName;
-
-		&.empty {
-			color: $color_trackOffName;
-			font-weight: normal;
-			font-style: italic;
-		}
-	}
-
-	input {
-		display: none;
-		width: 100%;
+	.gs-ui-span-editable {
+		position: absolute;
+		left: $track-toggle-width;
+		right: 6px;
 		height: 100%;
-		margin: 0;
-		border: 0;
-		padding: 0;
-		color: $color_trackName;
-		text-overflow: ellipsis;
-		background: transparent;
+		font-size: 14px;
 	}
 
 	&.off {
 		background: $color_trackOffBg;
 
-		#tracksNames & .name {
-			color: $color_trackOffName;
-		}
-	}
-
-	&.editing {
-		#tracksNames & .name {
-			display: none;
-		}
-		input {
-			display: block;
+		.gs-ui-span-editable {
+			color: rgba( #fff, .2 ); // $c-span-editable-empty;
 		}
 	}
 }
