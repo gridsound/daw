@@ -11,7 +11,6 @@ TPL_DIR       = templates/
 TPL_FILE      = $(TPL_DIR)__precompiled.js
 JS_FILE       = compressed.js
 WEBAUDIO_PATH = ../webaudio-library/src/
-GSUICOMPONENTS = ../gs-ui-components/bin/gs-ui-components.js
 
 all:
 	@head -5 Makefile
@@ -32,7 +31,7 @@ css:
 	@cd $(CSS_DIR); \
 		tail -n +3 $(SASS_FILE) > ___tmp.scss; \
 		sass ___tmp.scss $(CSS_FILE); \
-		rm ___tmp.scss;
+		rm ___tmp.scss
 
 clean:
 	rm -f $(JS_FILE) $(CSS_DIR)$(CSS_FILE) $(TPL_FILE)
@@ -43,8 +42,8 @@ src = \
 	jstools/keyboardRouter.min.js       \
 	jstools/wisdom.js                   \
 	jstools/handlebars.runtime.min.js   \
+	gs-ui-components/gs-ui-components.js\
 	$(TPL_FILE)                         \
-	$(GSUICOMPONENTS)                   \
 	$(WEBAUDIO_PATH)walcontext.js       \
 	$(WEBAUDIO_PATH)composition.js      \
 	$(WEBAUDIO_PATH)composition-loop.js \
