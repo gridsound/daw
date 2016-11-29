@@ -30,10 +30,9 @@ $icon-ramload          : "\f019"; // fa-download
 $icon-loading          : "\f021"; // fa-refresh
 
 // #about :
-$icon-question         : "\f128"; // fa-question
+$icon-question         : "\f059"; // fa-question-circle
 $icon-github           : "\f09b"; // fa-github
 $icon-github-alt       : "\f113"; // fa-github-alt
-$icon-about            : $icon-question;
 
 // #menu :
 $icon-play             : "\f04b"; // fa-play
@@ -90,7 +89,6 @@ $icon-clone: "\f24d"; // fa-clone
 	&.files:after         { content: $icon-files;         }
 	&.ramload:after       { content: $icon-ramload;       }
 	&.loading:after       { content: $icon-loading;       }
-	&.about:after,
 	&.question:after      { content: $icon-question;      }
 	&.github:after        { content: $icon-github;        }
 	&.github-alt:after    { content: $icon-github-alt;    }

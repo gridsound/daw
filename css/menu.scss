@@ -1,5 +1,11 @@
 #menu {
 	$marginBetweenBtn: 5px;
+	@mixin writeBg( $c ) {
+		background: $c;
+		&:hover {
+			background: lighten( $c, $lighten_toolHover );
+		}
+	}
 
 	display: flex;
 	box-sizing: border-box;
@@ -10,44 +16,45 @@
 	line-height: 40px;
 	color: $color_menuText;
 
-	> * {
-		display: inline-block;
-		vertical-align: top;
-		line-height: 40px;
-		height: 100%;
-
-		&:first-child {
-			margin-left: -1px;
-		}
-		&.btn {
-			width: 40px;
-			font-size: 14px;
-
-			&:active {
-				padding-top: .2em;
-			}
-		}
-	}
-
-	@mixin writeBg( $c ) {
-		background: $c;
-		&:hover {
-			background: lighten( $c, $lighten_toolHover );
-			opacity: 1;
-		}
-	}
-
 	.btn {
 		box-sizing: border-box;
+		width: 40px;
+		font-size: 14px;
 		text-align: center;
 		transition:
 			box-shadow .05s,
 			background .2s,
 			color .2s;
 
-		&.play  { @include writeBg( $color_playBtn ); }
-		&.pause { @include writeBg( $color_pauseBtn ); }
-		&.stop  { @include writeBg( $color_stopBtn ); }
+		&:active {
+			padding-top: .2em;
+		}
+		&.small {
+			width: 35px;
+			font-size: 16px;
+			color: darken( $color_menuText, 30 );
+
+			&:hover {
+				color: darken( $color_menuText, 15 );
+			}
+			&.active {
+				color: $color_menuText;
+			}
+		}
+	}
+	.play {
+		margin-left: -1px;
+		@include writeBg( $color_playBtn );
+	}
+	.pause {
+		@include writeBg( $color_pauseBtn );
+	}
+	.stop {
+		@include writeBg( $color_stopBtn );
+	}
+	.btn.question {
+		margin-right: $marginBetweenBtn;
+		font-size: 32px;
 	}
 
 	.border {
@@ -66,46 +73,11 @@
 		width: 0;
 		height: 65%;
 		margin: 0 3px;
-		border-left: 1px dashed rgba( #fff, .15 );
+		border-left: 1px dashed;
+		opacity: .3;
 	}
-	#bpm ~ .btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 35px;
-		height: 100%;
-		font-size: 16px;
-		color: rgba( #fff, .3 );
-
-		&:before {
-			width: 100%;
-		}
-		&:hover {
-			color: rgba( #fff, .6 );
-		}
-		&.active {
-			color: #fff;
-		}
-	}
-
 	.flex1 {
 		flex: 1;
 		visibility: hidden;
-	}
-
-	.about {
-		$s: 32px;
-		margin: 0 $marginBetweenBtn;
-		align-self: center;
-		width: $s;
-		height: $s;
-		min-width: $s;
-		line-height: $s;
-		border-radius: 50%;
-		color: $color_appBg;
-		font-size: 22px;
-		text-align: center;
-		opacity: .4;
-		@include writeBg( #bbb );
 	}
 }
