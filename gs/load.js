@@ -1,23 +1,6 @@
 "use strict";
 
-( function() {
-
-gs.load = function( saveFile ) {
-	return new Promise( function( resolve, reject ) {
-		if ( !saveFile ) {
-			resolve();
-		} else {
-			var reader = new FileReader();
-
-			reader.onload = onload.bind( null, resolve );
-			reader.readAsText( saveFile );
-		}
-	} );
-};
-
-function onload( resolve, e ) {
-	var save = JSON.parse( e.target.result );
-
+gs.load = function( save ) {
 	gs.bpm( save.bpm );
 	save.files.forEach( gs.file.create );
 	save.tracks.forEach( function( t ) {
@@ -40,7 +23,4 @@ function onload( resolve, e ) {
 		gs.sample.duration( smp, s[ 4 ] / ui.BPMem );
 		wa.composition.add( smp );
 	} );
-	resolve();
-}
-
-} )();
+};

@@ -113,6 +113,7 @@ src = \
 	gs/currentTime.js                 \
 	gs/load.js                        \
 	gs/save.js                        \
+	gs/readCompositionFile.js         \
 	gs/reset.js                       \
 	gs/file/dragstart.js              \
 	                                  \
