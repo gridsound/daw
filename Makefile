@@ -117,8 +117,8 @@ src = \
 	gs/compositions/add.js            \
 	gs/compositions/load.js           \
 	gs/compositions/readFile.js       \
-	gs/compositions/save.js           \
 	gs/compositions/serialize.js      \
+	gs/compositions/store.js          \
 	gs/sample/create.js               \
 	gs/sample/delete.js               \
 	gs/sample/duration.js             \
