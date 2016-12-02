@@ -19,10 +19,6 @@ ui.dom.bpmList.onmousedown = function( e ) {
 	return false;
 };
 
-document.body.addEventListener( "mousedown", function() {
-	ui.dom.bpm.classList.remove( "clicked" );
-} );
-
 function wheel( inc, e ) {
 	e = e.deltaY;
 	ui.bpm( ui._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );

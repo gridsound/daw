@@ -136,6 +136,7 @@ src = \
 	gs/samples/selected/crop.js       \
 	gs/samples/selected/unselect.js   \
 	                                  \
+	gs/events/bodyClick.js            \
 	gs/events/bpm.js                  \
 	gs/events/clockUnits.js           \
 	gs/events/divExtend.js            \
