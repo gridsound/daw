@@ -2,7 +2,7 @@
 
 ( function() {
 
-gs.save = function() {
+gs.compositions.serialize = function() {
 	var files = gs.files.map( function( f ) {
 			return [
 				f.id,
@@ -43,6 +43,7 @@ gs.save = function() {
 
 function reduce( arr ) {
 	var len = arr.length - 1;
+
 	return arr.reduce( function( _, it, i ) {
 		return _ + "\t\t" + JSON.stringify( it ) + ( i < len ? "," : "" ) + "\n";
 	}, "" )

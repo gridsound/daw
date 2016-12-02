@@ -22,7 +22,7 @@ document.body.ondrop = function( e ) {
 		while ( file = data.files[ i++ ] ) {
 			pushFile( file );
 		}
-		gs.readCompositionFile( saveFile ).then( function() {
+		gs.compositions.readFile( saveFile ).then( function() {
 			loadFiles();
 		} );
 	}
@@ -59,7 +59,7 @@ function dataItems( droppedItems ) {
 		}
 	}
 	Promise.all( arrayPromises ).then( function() {
-		gs.readCompositionFile( saveFile ).then( function() {
+		gs.compositions.readFile( saveFile ).then( function() {
 			loadFiles();
 		} );
 	} );

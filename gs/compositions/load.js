@@ -1,6 +1,6 @@
 "use strict";
 
-gs.load = function( save ) {
+gs.compositions.load = function( save ) {
 	gs.bpm( save.bpm );
 	save.files.forEach( gs.file.create );
 	save.tracks.forEach( function( t ) {

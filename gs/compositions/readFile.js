@@ -1,6 +1,6 @@
 "use strict";
 
-gs.readCompositionFile = function( saveFile ) {
+gs.compositions.readFile = function( saveFile ) {
 	return new Promise( function( resolve, reject ) {
 		if ( !saveFile ) {
 			resolve();
@@ -8,7 +8,7 @@ gs.readCompositionFile = function( saveFile ) {
 			var reader = new FileReader();
 
 			reader.onload = function( e ) {
-				gs.load( JSON.parse( e.target.result ) );
+				gs.compositions.load( JSON.parse( e.target.result ) );
 				resolve();
 			};
 			reader.readAsText( saveFile );

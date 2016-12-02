@@ -111,12 +111,14 @@ src = \
 	                                  \
 	gs/bpm.js                         \
 	gs/currentTime.js                 \
-	gs/load.js                        \
-	gs/save.js                        \
-	gs/readCompositionFile.js         \
 	gs/reset.js                       \
 	gs/file/dragstart.js              \
 	                                  \
+	gs/compositions/add.js            \
+	gs/compositions/load.js           \
+	gs/compositions/readFile.js       \
+	gs/compositions/save.js           \
+	gs/compositions/serialize.js      \
 	gs/sample/create.js               \
 	gs/sample/delete.js               \
 	gs/sample/duration.js             \
