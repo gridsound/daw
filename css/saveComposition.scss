@@ -1,0 +1,23 @@
+.saveComposition {
+	display: block;
+	padding: 10px;
+	background: rgba( #000, .3 );
+	transition: .2s;
+	transition-property: background, color;
+
+	.name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.bpm:after {
+		content: " BPM - ";
+	}
+
+	&:hover {
+		color: #fff;
+		background: rgba( #fff, .07 );
+	}
+}

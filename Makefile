@@ -69,7 +69,6 @@ src = \
 	ui/timestampText.js               \
 	ui/btnMagnet.js                   \
 	ui/btnPlay.js                     \
-	ui/btnSave.js                     \
 	ui/btnStop.js                     \
 	ui/btnUndo.js                     \
 	ui/btnRedo.js                     \
@@ -78,6 +77,7 @@ src = \
 	ui/filesCursor.js                 \
 	ui/filesInput.js                  \
 	ui/historyList.js                 \
+	ui/save.js                        \
 	ui/timeline.js                    \
 	ui/timelineBeats.js               \
 	ui/timelineLoop.js                \

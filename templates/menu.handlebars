@@ -1,7 +1,7 @@
 <div id="menu">
-	<a id="btnPlay" class="btn border icon play" title="Play/pause (press Space, hold Ctrl for pause)"></a>
-	<a id="btnStop" class="btn border icon stop" title="Stop (press Space)"></a>
-	<div id="bpm" class="border" title="Beats per minute (Scroll to change)">
+	<a id="btnPlay" class="btn border inshadow icon play" title="Play/pause (press Space, hold Ctrl for pause)"></a>
+	<a id="btnStop" class="btn border inshadow icon stop" title="Stop (press Space)"></a>
+	<div id="bpm" class="border inshadow" title="Beats per minute (Scroll to change)">
 		<span class="text">
 			<a class="bpmLink">
 				<i class="icon"></i>
@@ -16,7 +16,7 @@
 			<span class="unit">bpm</span>
 		</span>
 	</div>
-	<a data-edit="save"     id="btnSave"   class="btn small icon fw save" title="Save"></a>
+	{{> save }}
 	<a data-option="magnet" id="btnMagnet" class="btn small icon fw magnet" title="Toggle magnetism (press G)"></a>
 	<div class="sep"></div>
 	<a data-tool="select" class="btn small icon fw tool-select" title="Select (hold Shift or press V)"></a>
