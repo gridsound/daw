@@ -1,8 +1,12 @@
 "use strict";
 
 ui.initElement( "save", function( el ) {
-	var elList = el.querySelector( ".list" );
+	var elList = el.querySelector( ".list" ),
+		elLabel = el.querySelector( "label" );
 
+	elLabel.addEventListener( "mousedown", function( e ) {
+		e.stopPropagation();
+	} );
 	return {
 		click: function( e ) {
 			var el = e.target;
