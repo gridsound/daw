@@ -66,6 +66,7 @@ src = \
 	gs/history/actions.js             \
 	                                  \
 	ui/ui.js                          \
+	ui/timestampText.js               \
 	ui/btnMagnet.js                   \
 	ui/btnPlay.js                     \
 	ui/btnSave.js                     \
