@@ -1,6 +1,6 @@
 "use strict";
 
-ui.timestampText = function( t, bpm ) {
+common.timestampText = function( t, bpm ) {
 	//  0: 0. 000
 	var a, b, c;
 

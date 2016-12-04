@@ -52,6 +52,9 @@ src = \
 	$(WEBAUDIO_PATH)filters.js          \
 	$(WEBAUDIO_PATH)sample.js           \
 	                                  \
+	common/_init.js                   \
+	common/timestampText.js           \
+	                                  \
 	gs/_init.js                       \
 	gs/loop.js                        \
 	gs/playPauseStop.js               \
@@ -66,7 +69,6 @@ src = \
 	gs/history/actions.js             \
 	                                  \
 	ui/ui.js                          \
-	ui/timestampText.js               \
 	ui/btnMagnet.js                   \
 	ui/btnPlay.js                     \
 	ui/btnStop.js                     \
