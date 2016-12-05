@@ -1,6 +1,7 @@
 "use strict";
 
 gs.reset = function() {
+	delete gs.compositions.current;
 	ui.tracks.forEach( function( t ) {
 		t.editName( "" );
 		t.toggle( true );

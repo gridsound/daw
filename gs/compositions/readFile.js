@@ -8,7 +8,11 @@ gs.compositions.readFile = function( saveFile ) {
 			var reader = new FileReader();
 
 			reader.onload = function( e ) {
-				gs.compositions.load( JSON.parse( e.target.result ) );
+				// TODO: check if there is a cmp loaded BUT NOT saved.
+				var cmp = JSON.parse( e.target.result );
+
+				gs.compositions.store( cmp );
+				gs.compositions.load( cmp );
 				resolve();
 			};
 			reader.readAsText( saveFile );

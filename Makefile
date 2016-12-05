@@ -54,6 +54,7 @@ src = \
 	                                  \
 	common/_init.js                   \
 	common/timestampText.js           \
+	common/uuid.js                    \
 	                                  \
 	gs/_init.js                       \
 	gs/loop.js                        \
@@ -116,9 +117,10 @@ src = \
 	gs/reset.js                       \
 	gs/file/dragstart.js              \
 	                                  \
-	gs/compositions/add.js            \
+	gs/compositions/init.js           \
 	gs/compositions/load.js           \
 	gs/compositions/readFile.js       \
+	gs/compositions/save.js           \
 	gs/compositions/serialize.js      \
 	gs/compositions/store.js          \
 	gs/sample/create.js               \

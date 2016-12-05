@@ -1,33 +1,43 @@
 "use strict";
 
 ui.initElement( "save", function( el ) {
-	var elList = el.querySelector( ".list" ),
-		elLabel = el.querySelector( "label" );
+	var elCmps = {},
+		elList = el.querySelector( ".list" );
 
-	elLabel.addEventListener( "mousedown", function( e ) {
-		e.stopPropagation();
-	} );
 	return {
+		mousedown: function( e ) {
+			e.stopPropagation();
+		},
 		click: function( e ) {
 			var el = e.target;
 
 			if ( el.classList.contains( "save" ) ) {
-				// TODO: This 3 lines will move soon.
-				var attr = gs.compositions.serialize();
-
-				el.setAttribute( "href", attr.href );
-				el.setAttribute( "download", attr.download );
-			} else if ( el.gsComposition ) {
-				gs.compositions.load( el.gsComposition );
+				gs.compositions.save( gs.compositions.current );
 			}
 		},
 		addComposition: function( cmp ) {
-			cmp.durationText = ui.timestampText( cmp.duration );
-			cmp.elCmp = wisdom.cE( Handlebars.templates.saveComposition( cmp ) )[ 0 ];
-			Array.from( cmp.elCmp.querySelectorAll( "*" ) ).forEach( function( el ) {
-				el.gsComposition = cmp;
-			} );
-			elList.appendChild( cmp.elCmp );
+			var elCmp = wisdom.cE( Handlebars.templates.saveComposition() )[ 0 ];
+
+			elCmp.onclick = function() {
+				gs.reset();
+				gs.compositions.load( cmp );
+				return false;
+			};
+			elCmps[ cmp.id ] = {
+				name: elCmp.querySelector( ".name" ),
+				bpm: elCmp.querySelector( ".bpm" ),
+				duration: elCmp.querySelector( ".duration" )
+			};
+			ui.save.updateComposition( cmp );
+			elList.appendChild( elCmp );
+		},
+		updateComposition: function( cmp ) {
+			var el = elCmps[ cmp.id ],
+				dur = common.timestampText( cmp.duration );
+
+			el.name.textContent = cmp.name;
+			el.bpm.textContent = cmp.bpm;
+			el.duration.textContent = dur.a + ":" + dur.b + "." + dur.c;
 		}
 	};
 } );

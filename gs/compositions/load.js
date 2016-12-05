@@ -1,9 +1,10 @@
 "use strict";
 
-gs.compositions.load = function( save ) {
-	gs.bpm( save.bpm );
-	save.files.forEach( gs.file.create );
-	save.tracks.forEach( function( t ) {
+gs.compositions.load = function( cmp ) {
+	gs.compositions.current = cmp;
+	gs.bpm( cmp.bpm );
+	cmp.files.forEach( gs.file.create );
+	cmp.tracks.forEach( function( t ) {
 		var id = t[ 0 ];
 
 		while ( id >= ui.tracks.length ) {
@@ -11,7 +12,7 @@ gs.compositions.load = function( save ) {
 		}
 		ui.tracks[ id ].toggle( t[ 1 ] ).editName( t[ 2 ] );
 	} );
-	save.samples.forEach( function( s ) {
+	cmp.samples.forEach( function( s ) {
 		//          0        1      2      3        4
 		// s = [ trackId, fileId, when, offset, duration ]
 		var smp = gs.sample.create( gs.files[ s[ 1 ] ] );

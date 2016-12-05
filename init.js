@@ -15,6 +15,7 @@ ui.timelineLoop.toggle( false );
 
 gs.bpm( 120 );
 gs.currentTime( 0 );
+gs.compositions.init();
 wa.composition.onended( gs.compositionStop );
 ui.dom.btnFiles.click();
 wisdom.qS( ui.dom.clockUnits, ".s" ).click();
@@ -23,10 +24,5 @@ wisdom.qS( ui.dom.menu, "[data-tool='paint']" ).click();
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();
 }
-
-// Local storage :
-var cmps = localStorage.compositions;
-
-cmps && cmps.forEach( gs.addComposition );
 
 } )();
