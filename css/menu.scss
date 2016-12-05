@@ -43,12 +43,9 @@
 			}
 		}
 	}
-	.play {
-		margin-left: -1px;
-		@include writeBg( $color_playBtn );
-	}
+	.play,
 	.pause {
-		@include writeBg( $color_pauseBtn );
+		@include writeBg( $color_playBtn );
 	}
 	.stop {
 		@include writeBg( $color_stopBtn );

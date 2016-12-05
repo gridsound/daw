@@ -33,7 +33,6 @@ $opacity_analyserWaveform: .2;
 
 $color_menuText: $color_clock;
 $color_playBtn: lighten( $COLOR_MAIN, 4 );
-$color_pauseBtn: adjust_hue( $color_playBtn, 180deg );
 $color_stopBtn: lighten( $color_appBg, 8 );
 $color_saveBtn: lighten( adjust_hue( $color_playBtn, 170deg ), 10 );
 $lighten_toolHover: 5%;
