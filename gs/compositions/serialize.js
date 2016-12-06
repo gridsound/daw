@@ -8,7 +8,7 @@ gs.compositions.serialize = function( cmp ) {
 			f.id,
 			f.fullname,
 			f.file ? f.file.size : f.size,
-			f.wbuff ? f.wbuff.buffer.duration : f.bufferDuration
+			f.wbuff.buffer ? f.wbuff.buffer.duration : f.bufferDuration
 		];
 	} );
 	cmp.samples = wa.composition.samples.map( function( smp ) {
