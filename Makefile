@@ -33,6 +33,11 @@ css:
 		sass ___tmp.scss $(CSS_FILE); \
 		rm ___tmp.scss
 
+uicmp:
+	cd ../gs-ui-components/; \
+		make; \
+		cp bin/gs-ui-components.css bin/gs-ui-components.js ../daw/gs-ui-components/
+
 clean:
 	rm -f $(JS_FILE) $(CSS_DIR)$(CSS_FILE) $(TPL_FILE)
 
