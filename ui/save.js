@@ -15,12 +15,16 @@ ui.initElement( "save", function( el ) {
 				gs.compositions.save( gs.compositions.current );
 			}
 		},
+		hideList: function() {
+			ui.dom.saveCheckbox.checked = false;
+		},
 		addComposition: function( cmp ) {
 			var elCmp = wisdom.cE( Handlebars.templates.saveComposition() )[ 0 ];
 
 			elCmp.onclick = function() {
 				gs.reset();
 				gs.compositions.load( cmp );
+				ui.save.hideList();
 				return false;
 			};
 			elCmps[ cmp.id ] = {
