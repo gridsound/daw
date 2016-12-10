@@ -44,6 +44,8 @@ clean:
 .PHONY: all html css js clean
 
 src = \
+	featuresTest.js                     \
+	                                    \
 	jstools/keyboardRouter.min.js       \
 	jstools/wisdom.js                   \
 	jstools/handlebars.runtime.min.js   \

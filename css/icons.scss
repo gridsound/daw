@@ -16,6 +16,12 @@ $icon-circle           : "\f111"; // fa-circle
 $icon-circle-o         : "\f10c"; // fa-circle-o
 $icon-cross            : "\f00d"; // fa-times
 
+// Browsers :
+$icon-chrome           : "\f268"; // fa-chrome
+$icon-firefox          : "\f269"; // fa-firefox
+$icon-safari           : "\f267"; // fa-safari
+$icon-edge             : "\f282"; // fa-edge
+
 // placeholder :
 $icon-file-audio       : "\f1c7"; // fa-file-audio-o
 
@@ -79,6 +85,11 @@ $icon-clone: "\f24d"; // fa-clone
 		  0% { transform: rotate(   0deg ); }
 		100% { transform: rotate( 359deg ); }
 	}
+
+	&.chrome:after        { content: $icon-chrome;        }
+	&.firefox:after       { content: $icon-firefox;       }
+	&.safari:after        { content: $icon-safari;        }
+	&.edge:after          { content: $icon-edge;          }
 
 	&.caret-down:after    { content: $icon-caret-down;    }
 	&.caret-up:after      { content: $icon-caret-up;      }

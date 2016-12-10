@@ -1,0 +1,12 @@
+#nowebaudio {
+	padding: 40px;
+	font: 24px sans-serif;
+	background: #333;
+	height: 100%;
+	color: #ddd;
+	line-height: 2.5em;
+
+	.icon + i {
+		font-size: 18px;
+	}
+}
