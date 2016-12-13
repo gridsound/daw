@@ -77,6 +77,7 @@ src = \
 	gs/history/actions.js             \
 	                                  \
 	ui/ui.js                          \
+	ui/bpm.js                         \
 	ui/btnMagnet.js                   \
 	ui/btnPlay.js                     \
 	ui/btnStop.js                     \
@@ -95,7 +96,6 @@ src = \
 	ui/visualCanvas.js                \
 	ui/_init.js                       \
 	                                  \
-	ui/bpm.js                         \
 	ui/cursor.js                      \
 	ui/getGridSec.js                  \
 	ui/getTrackFromPageY.js           \
@@ -151,7 +151,6 @@ src = \
 	gs/samples/selected/unselect.js   \
 	                                  \
 	gs/events/bodyClick.js            \
-	gs/events/bpm.js                  \
 	gs/events/clockUnits.js           \
 	gs/events/divExtend.js            \
 	gs/events/dropFiles.js            \

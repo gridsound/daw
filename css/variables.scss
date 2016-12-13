@@ -41,8 +41,6 @@ $color_toolBorder: #1c1c27;
 
 $color_bpmBg: darken( $color_appBg, 6.2 );
 $color_bpmUnit: #666;
-$color_bpmListBg: rgba( $color_bpmBg, .5 );
-$color_bpmListHover: #111;
 
 $color_taskBg: darken( $color_appBg, 10% );
 $color_taskHoverBg: darken( $color_taskBg, 10% );

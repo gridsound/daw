@@ -1,10 +1,33 @@
 "use strict";
 
-ui.bpm = function( bpm ) {
-	var bInt = ~~bpm,
-		bCent = Math.min( Math.round( ( bpm - bInt ) * 100 ), 99 );
+ui.initElement( "bpm", function( el ) {
+	var timeoutId;
 
-	ui._bpm = bpm;
-	ui.dom.bpmInt.textContent = bInt < 100 ? "0" + bInt : bInt;
-	ui.dom.bpmDec.textContent = bCent < 10 ? "0" + bCent : bCent;
-};
+	function wheel( inc, e ) {
+		e = e.deltaY;
+		ui.bpm.set( ui._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );
+		clearTimeout( timeoutId );
+		timeoutId = setTimeout( gs.bpm.bind( null, ui._bpm ), 400 );
+		e.preventDefault();
+	}
+
+	ui.dom.bpmInt.onwheel = wheel.bind( null, 1 );
+	ui.dom.bpmDec.onwheel = wheel.bind( null, .01 );
+
+	ui.dom.bpm.ondblclick = function() {
+		var bpm = +prompt( "BPM (20-999) :" );
+
+		bpm && gs.bpm( bpm );
+	};
+
+	return {
+		set: function( bpm ) {
+			var bInt = ~~bpm,
+				bCent = Math.min( Math.round( ( bpm - bInt ) * 100 ), 99 );
+
+			ui._bpm = bpm;
+			ui.dom.bpmInt.textContent = bInt < 100 ? "0" + bInt : bInt;
+			ui.dom.bpmDec.textContent = bCent < 10 ? "0" + bCent : bCent;
+		}
+	};
+} );

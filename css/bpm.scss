@@ -1,7 +1,7 @@
 #bpm {
 	display: inline-block;
 	position: relative;
-	min-width: 126px;
+	min-width: 112px;
 	height: 100%;
 	background: $color_bpmBg;
 	cursor: pointer;
@@ -11,68 +11,14 @@
 		font-family: "LCDBOLD";
 		font-size: 16px;
 	}
-
-	.icon,
 	.unit {
 		color: $color_bpmUnit;
-	}
-	.unit {
 		margin-left: .35em;
 	}
-	.icon {
-		vertical-align: top;
-		line-height: 40px;
-		margin-right: 4px;
-		font-size: 14px;
-	}
-	.bpmLink .icon:after {
-		content: $icon-caret-down;
-	}
-
 	&Int {
 		font-size: 30px;
 	}
-
 	&Dec:before {
 		content: ".";
-	}
-
-	&List {
-		position: absolute;
-		box-sizing: border-box;
-		overflow: hidden;
-		z-index: 4;
-		left: -1px;
-		top: 100%;
-		width: 95px;
-		border: solid #000;
-		border-width: 0 1px 1px;
-		text-align: right;
-		background: $color_bpmListBg;
-		transition: all .25s;
-		height: 0;
-		opacity: 0;
-
-		a {
-			display: block;
-			padding: 5px 10px;
-			font-size: 20px;
-			line-height: 1em;
-
-			&:hover {
-				background: $color_bpmListHover;
-			}
-		}
-	}
-
-	&.clicked {
-		.bpmLink .icon:after {
-			content: $icon-caret-up;
-		}
-
-		#bpmList {
-			height: 270px;
-			opacity: 1;
-		}
 	}
 }
