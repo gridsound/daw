@@ -4,53 +4,54 @@
 # |_____|_| |_|___|_____|___|___|_|_|___|.com
 #
 
+MAKE          = make --no-print-directory
 CSS_DIR       = css/
-SASS_FILE     = style.scss
 CSS_FILE      = style.css
+SASS_FILE     = style.scss
 TPL_DIR       = templates/
-TPL_FILE      = $(TPL_DIR)__precompiled.js
+TPL_FILE      = __precompiled.js
 JS_FILE       = compressed.js
 WEBAUDIO_PATH = ../webaudio-library/src/
+GSUI          = gs-ui-components
 
 all:
 	@head -5 Makefile
-	@make css
-	@make html
+	@$(MAKE) css
+	@$(MAKE) html
 
 html:
-	@echo ":: HTML"
-	@handlebars $(TPL_DIR) -f $(TPL_FILE)
-	@make js
+	@echo -n "* HTML ..... "
+	@handlebars $(TPL_DIR) -f $(TPL_DIR)$(TPL_FILE)
+	@echo $(TPL_FILE)
+	@$(MAKE) js
 
 js:
-	@echo ":: JS"
-	@uglifyjs $(src) -o $(JS_FILE) --compress --mangle
+	@echo -n "* JS ....... "
+	@uglifyjs $(JS_FILES) -o $(JS_FILE) --compress --mangle
+	@echo $(JS_FILE)
 
 css:
-	@echo ":: CSS"
+	@echo -n "* CSS ...... "
 	@cd $(CSS_DIR); \
 		tail -n +3 $(SASS_FILE) > ___tmp.scss; \
-		sass ___tmp.scss $(CSS_FILE); \
+		sass ___tmp.scss $(CSS_FILE) --style compressed; \
 		rm ___tmp.scss
+	@echo $(CSS_FILE)
 
 uicmp:
-	cd ../gs-ui-components/; \
-		make; \
-		cp bin/gs-ui-components.css bin/gs-ui-components.js ../daw/gs-ui-components/
+	@$(MAKE) -C ../$(GSUI)/
+	@cp ../$(GSUI)/bin/$(GSUI).css ../$(GSUI)/bin/$(GSUI).js $(GSUI)
 
-clean:
-	rm -f $(JS_FILE) $(CSS_DIR)$(CSS_FILE) $(TPL_FILE)
+.PHONY: all html css js
 
-.PHONY: all html css js clean
-
-src = \
+JS_FILES = \
 	featuresTest.js                     \
 	                                    \
 	jstools/keyboardRouter.min.js       \
 	jstools/wisdom.js                   \
 	jstools/handlebars.runtime.min.js   \
 	gs-ui-components/gs-ui-components.js\
-	$(TPL_FILE)                         \
+	$(TPL_DIR)$(TPL_FILE)               \
 	$(WEBAUDIO_PATH)walcontext.js       \
 	$(WEBAUDIO_PATH)composition.js      \
 	$(WEBAUDIO_PATH)composition-loop.js \
