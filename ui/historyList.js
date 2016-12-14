@@ -1,7 +1,8 @@
 "use strict";
 
 ui.initElement( "historyList", function( el ) {
-	var ind, elActions;
+	var ind,
+		elActions = [];
 
 	return {
 		click: function( e ) {
@@ -9,7 +10,7 @@ ui.initElement( "historyList", function( el ) {
 		},
 		reset: function() {
 			ind = 0;
-			elActions = [];
+			elActions.length = 0;
 			while ( el.hasChildNodes() ) {
 				el.lastChild.remove();
 			}

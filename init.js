@@ -10,9 +10,9 @@ ui.setGridZoom( 1.5, 0, 0 );
 ui.visualCanvas.on();
 ui.btnMagnet.toggle( true );
 ui.tracksBg.update();
-ui.historyList.reset();
 ui.timelineLoop.toggle( false );
 
+gs.history.reset();
 gs.bpm( 120 );
 gs.currentTime( 0 );
 gs.compositions.init();

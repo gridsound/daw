@@ -3,8 +3,14 @@
 ( function() {
 
 gs.history = {
+	reset: function() {
+		actions.length = 0;
+		rip = -1;
+		ui.historyList.reset();
+	},
 	goToAction: function( action ) {
 		var n = action.id - rip + 1;
+
 		if ( n < 0 ) {
 			while ( n++ ) {
 				gs.history.undo();
@@ -17,11 +23,11 @@ gs.history = {
 	},
 	push: function( actionName, data ) {
 		var action = {
-			id: rip,
-			name: actionName,
-			fn: gs.history[ actionName ],
-			data: data,
-		};
+				id: rip,
+				name: actionName,
+				fn: gs.history[ actionName ],
+				data: data
+			};
 
 		if ( rip < actions.length - 1 ) {
 			actions.splice( rip + 1 );
@@ -35,8 +41,9 @@ gs.history = {
 		gs.history[ actionName ]( data, 1 );
 	},
 	undo: function() {
-		if ( rip > 0 ) {
+		if ( rip > -1 ) {
 			var act = actions[ rip-- ];
+
 			if ( act.fn ) {
 				act.fn( act.data, -1 );
 			}
@@ -46,6 +53,7 @@ gs.history = {
 	redo: function() {
 		if ( rip < actions.length - 1 ) {
 			var act = actions[ ++rip ];
+
 			if ( act.fn ) {
 				act.fn( act.data, +1 );
 			}
@@ -54,7 +62,7 @@ gs.history = {
 	}
 };
 
-var actions = [ {} ],
-	rip = 0;
+var rip,
+	actions = [];
 
 } )();
