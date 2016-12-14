@@ -7,9 +7,7 @@ gs.compositions.store = function( cmp ) {
 		} );
 
 	cmp.id = cmp.id || common.uuid();
-	cmp.name = cmp.name
-		|| prompt( "Please enter a name for your new composition :" )
-		|| "Untitled";
+	cmp.name = cmp.name || gs.compositions.askName() || "Untitled";
 	if ( icmp > -1 ) {
 		cmps[ icmp ] = cmp;
 		ui.save.updateComposition( cmp );

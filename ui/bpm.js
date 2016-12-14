@@ -4,11 +4,12 @@ ui.initElement( "bpm", function( el ) {
 	var timeoutId;
 
 	function wheel( inc, e ) {
-		e = e.deltaY;
-		ui.bpm.set( ui._bpm + ( e > 0 ? -inc : e ? inc : 0 ) );
+		var dy = e.deltaY;
+
+		e.preventDefault();
+		ui.bpm.set( ui._bpm + ( dy > 0 ? -inc : dy ? inc : 0 ) );
 		clearTimeout( timeoutId );
 		timeoutId = setTimeout( gs.bpm.bind( null, ui._bpm ), 400 );
-		e.preventDefault();
 	}
 
 	ui.dom.bpmInt.onwheel = wheel.bind( null, 1 );

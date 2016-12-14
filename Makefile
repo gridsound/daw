@@ -126,6 +126,7 @@ JS_FILES = \
 	gs/file/dragstart.js              \
 	                                  \
 	gs/compositions/init.js           \
+	gs/compositions/askName.js        \
 	gs/compositions/load.js           \
 	gs/compositions/readFile.js       \
 	gs/compositions/save.js           \
