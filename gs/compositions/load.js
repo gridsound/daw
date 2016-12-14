@@ -24,4 +24,5 @@ gs.compositions.load = function( cmp ) {
 		gs.sample.duration( smp, s[ 4 ] / ui.BPMem );
 		wa.composition.add( smp );
 	} );
+	ui.save.selectComposition( cmp );
 };

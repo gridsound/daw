@@ -1,5 +1,5 @@
 "use strict";
 
-document.body.addEventListener( "mousedown", function() {
+document.body.addEventListener( "click", function() {
 	ui.save.hideList();
 } );

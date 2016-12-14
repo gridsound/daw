@@ -14,5 +14,6 @@ gs.reset = function() {
 		f.elFile.remove();
 	} );
 	gs.files = [];
+	ui.save.unselectComposition();
 	return this;
 };

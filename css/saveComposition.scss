@@ -3,7 +3,7 @@
 	padding: 10px;
 	background: rgba( #000, .3 );
 	transition: .2s;
-	transition-property: background, color;
+	transition-property: background, color, padding-left;
 
 	.name {
 		overflow: hidden;
@@ -18,6 +18,17 @@
 
 	&:hover {
 		color: #fff;
-		background: rgba( #fff, .07 );
+		padding-left: 15px;
+		background: rgba( #000, .4 );
+	}
+	&.selected {
+		color: #fff;
+		background: rgba( #000, .5 );
+
+		.name:before {
+			font-family: "FontAwesome";
+			padding-right: .5em;
+			content: $icon-play;
+		}
 	}
 }
