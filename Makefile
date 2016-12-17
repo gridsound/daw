@@ -41,6 +41,7 @@ css:
 uicmp:
 	@$(MAKE) -C ../$(GSUI)/
 	@cp ../$(GSUI)/bin/$(GSUI).css ../$(GSUI)/bin/$(GSUI).js $(GSUI)
+	@mv $(GSUI)/$(GSUI).css $(GSUI)/$(GSUI).scss
 
 .PHONY: all html css js
 
