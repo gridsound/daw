@@ -4,14 +4,14 @@
 
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( gsfileDragging ) {
-		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
-		wisdom.css( elWaveformTmp, "top", e.pageY + "px" );
+		elItemDragging.style.left = e.pageX + "px";
+		elItemDragging.style.top = e.pageY + "px";
 	}
 } );
 
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( gsfileDragging ) {
-		elWaveformTmp.remove();
+		elItemDragging.remove();
 		gsfileDragging = null;
 		ui.cursor( "app", null );
 	}
@@ -30,17 +30,17 @@ ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 gs.file.dragstart = function( that, e ) {
 	if ( that.isLoaded && !gsfileDragging ) {
 		gsfileDragging = that;
-		elWaveformTmp = that.elSVG.cloneNode( true );
-		wisdom.css( elWaveformTmp, "left", e.pageX + "px" );
-		wisdom.css( elWaveformTmp, "top", e.pageY + "px" );
-		elWaveformTmp.classList.add( "dragging" );
-		document.body.appendChild( elWaveformTmp );
+		elItemDragging = that.elFile.cloneNode( true );
+		elItemDragging.style.left = e.pageX + "px";
+		elItemDragging.style.top = e.pageY + "px";
+		elItemDragging.classList.add( "dragging" );
+		ui.dom.app.appendChild( elItemDragging );
 		ui.cursor( "app", "grabbing" );
 	}
 	return false;
 };
 
 var gsfileDragging,
-	elWaveformTmp;
+	elItemDragging;
 
 } )();

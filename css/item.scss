@@ -1,0 +1,41 @@
+.item {
+	display: block;
+	position: relative;
+	box-sizing: border-box;
+	height: $item_height;
+	background: $item_bg;
+	border-bottom: $item_border;
+	color: $item_color;
+	padding: 0 $item_padding;
+	transition: .2s;
+	transition-property: background, padding;
+
+	.info {
+		position: relative;
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+	.name {
+		font-weight: bold;
+		font-size: $item_nameFontSize;
+	}
+
+	&:hover {
+		color: $item_color_hover;
+		background: $item_bg_hover;
+		padding-left: $item_padding_hover;
+	}
+	&.dragging {
+		position: absolute;
+		z-index: 999;
+		$w: 150px;
+		$h: 50px;
+		width: $w;
+		height: $h;
+		margin-left: -$w / 2;
+		margin-top: 20px;
+		border: 1px solid rgba( #000, .8 );
+		fill: $color_fileWaveform;
+	}
+}

@@ -2,41 +2,45 @@
 
 ui.sample = {
 	create: function( smp ) {
-		var elSample = wisdom.cE( Handlebars.templates.sample( smp.data.gsfile ) )[ 0 ];
+		var elSmp = wisdom.cE( Handlebars.templates.gridBlockSample( smp.data.gsfile ) )[ 0 ];
 
-		smp.data.elSample = elSample
-		smp.data.elSVG = wisdom.qS( elSample, "svg" );
-		smp.data.elName = wisdom.qS( elSample, ".name" );
-		smp.data.elCropStart = wisdom.qS( elSample, ".crop.start" );
-		smp.data.elCropEnd = wisdom.qS( elSample, ".crop.end" );
-		wisdom.qSA( elSample, "*" ).forEach( function( el ) {
+		smp.data.elSmp = elSmp;
+		smp.data.elWave = elSmp.querySelector( ".gs-ui-waveform" );
+		smp.data.elName = elSmp.querySelector( ".name" );
+		smp.data.elCropStart = elSmp.querySelector( ".crop.start" );
+		smp.data.elCropEnd = elSmp.querySelector( ".crop.end" );
+		smp.data.gsuiWaveform = new gsuiWaveform( smp.data.elWave );
+		Array.from( elSmp.querySelectorAll( "*" ) ).forEach( function( el ) {
 			el.gsSample = smp;
 		} );
 	},
 	delete: function( smp ) {
-		smp.data.elSample.remove();
+		smp.data.elSmp.remove();
 	},
 	select: function( smp ) {
-		smp.data.elSample.classList.toggle( "selected", smp.data.selected );
+		smp.data.elSmp.classList.toggle( "selected", smp.data.selected );
 	},
 	inTrack: function( smp ) {
-		smp.data.track.elColLinesTrack.appendChild( smp.data.elSample );
+		smp.data.track.elColLinesTrack.appendChild( smp.data.elSmp );
 	},
 	when: function( smp ) {
-		wisdom.css( smp.data.elSample, "left", smp.when * ui.BPMem + "em" );
+		wisdom.css( smp.data.elSmp, "left", smp.when * ui.BPMem + "em" );
 	},
 	duration: function( smp ) {
-		wisdom.css( smp.data.elSample, "width", smp.duration * ui.BPMem + "em" );
+		wisdom.css( smp.data.elSmp, "width", smp.duration * ui.BPMem + "em" );
 		ui.sample.waveform( smp );
 	},
 	waveform: function( smp ) {
 		if ( smp.wBuffer.buffer ) {
 			var off = smp.offset,
 				dur = Math.min( smp.duration, smp.bufferDuration - off ),
-				durEm = dur * ui.BPMem;
+				durEm = dur * ui.BPMem,
+				wave = smp.data.gsuiWaveform;
 
-			wisdom.css( smp.data.elSVG, "width", durEm + "em" );
-			smp.wBuffer.waveformSVG( smp.data.elSVG, ~~( durEm * 50 ), 50, off, dur );
+			smp.data.elWave.style.width = durEm + "em";
+			wave.setResolution( ~~( dur * 1024 ), 128 );
+			wave.setBuffer( smp.wBuffer.buffer );
+			wave.draw( off, dur );
 		}
 	}
 };

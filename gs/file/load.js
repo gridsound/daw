@@ -4,11 +4,14 @@ gs.file.load = function( that, fn ) {
 	that.isLoading = true;
 	ui.file.loading( that );
 	that.wbuff.setFile( that.file ).then( function( wbuff ) {
+		var wave = new gsuiWaveform( that.elFile.querySelector( ".gs-ui-waveform" ) );
+
 		that.isLoaded = true;
 		that.isLoading = false;
-		that.elSVG = wisdom.qS( that.elFile, "svg" );
-		that.elWaveformWrap = that.elSVG.parentNode;
-		wbuff.waveformSVG( that.elSVG, 400, 50 );
+		that.gsuiWaveform = wave;
+		wave.setResolution( 250, 40 );
+		wave.setBuffer( wbuff.buffer );
+		wave.draw();
 		ui.file.loaded( that );
 		fn( that );
 	}, function() {

@@ -8,7 +8,7 @@ ui.initElement( "filesCursor", function( el ) {
 		insertInto: function( file ) {
 			el.style.transitionDuration =
 			el.style.left = 0;
-			file.elWaveformWrap.appendChild( el );
+			file.elFile.appendChild( el );
 		},
 		startMoving: function( sec ) {
 			el.style.transitionDuration = sec + "s";

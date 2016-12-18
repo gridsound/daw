@@ -27,7 +27,8 @@ $icon-file-audio       : "\f1c7"; // fa-file-audio-o
 
 // #panel :
 $icon-history          : "\f0e2"; // fa-undo
-$icon-files            : "\f001"; // fa-music
+$icon-music            : "\f001"; // fa-music
+$icon-files            : $icon-music;
 $icon-undo             : "\f112"; // fa-reply
 $icon-redo             : "\f064"; // fa-share
 
@@ -97,7 +98,8 @@ $icon-clone: "\f24d"; // fa-clone
 	&.cross:after         { content: $icon-cross;         }
 	&.file-audio:after    { content: $icon-file-audio;    }
 	&.history:after       { content: $icon-history;       }
-	&.files:after         { content: $icon-files;         }
+	&.files:after,
+	&.music:after         { content: $icon-music;         }
 	&.ramload:after       { content: $icon-ramload;       }
 	&.loading:after       { content: $icon-loading;       }
 	&.question:after      { content: $icon-question;      }

@@ -13,6 +13,8 @@
 @import 'cursors';
 
 @import 'app';
+@import 'item';
+@import 'itemBuffer';
 @import 'visual';
 @import 'clock';
 @import 'currentTimeCursor';
@@ -23,8 +25,9 @@
 @import 'panel';
 @import 'panel-files';
 @import 'panel-history';
-@import 'sample';
 @import 'grid';
+@import 'gridBlock';
+@import 'gridBlockSample';
 @import 'timeline';
 @import 'timelineBeats';
 @import 'timelineLoop';

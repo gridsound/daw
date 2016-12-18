@@ -1,6 +1,5 @@
 $COLOR_MAIN: lighten( #142b35, 5 );
 $COLOR_SAMPLE: #76c4ff;
-$COLOR_SAMPLE_SELECTED: #b51818;
 $COLOR_SELECTION: #ff3636;
 
 // ---------------------------------------
@@ -9,6 +8,35 @@ $color_appBg: lighten( grayscale( $COLOR_MAIN ), 10 );
 $width_scrollbarSize: 5px;
 $color_scrollbarBg: #222;
 $color_scrollbarThumb: #888;
+
+// .item
+$item_height: 38px;
+$item_bg: #2a2a2a;
+$item_bg_hover: #080808;
+$item_border: 1px solid #000;
+$item_color: #ddd;
+$item_color_hover: #fff;
+$item_nameFontSize: 12px;
+$item_padding: .3em;
+$item_padding_hover: $item_padding + .5em;
+$item_iconMargin: .3em;
+$item_waveFill: #5c557b;
+
+// .gridBlock
+$gridBlock_bg: rgba( #000, .5 );
+$gridBlock_radius: 2px;
+$gridBlock_headHeight: 16px;
+$gridBlock_headPadding: .4em;
+$gridBlock_fontSize: 11px;
+$gridBlock_fontSize_small: 11px;
+$gridBlock_headBg: #667;
+$gridBlock_borderBottom: 2px solid $gridBlock_headBg;
+$gridBlock_cropWidth: 10px;
+$gridBlock_cropBg: rgba( #fff, .2 );
+$gridBlock_headBg_selected: #b51818;
+$gridBlock_opacity_mute: .5;
+$gridBlock_contentOpacity_small: .3;
+$gridBlock_waveformFill: #fff;
 
 /* timeline */
 $timeline_bgColor: darken( $COLOR_MAIN, 10 );
@@ -65,13 +93,3 @@ $color_currentTimeArrow: #9ac060;
 $shadow_currentTimeArrow: 0 0 3px rgba( $color_currentTimeArrow, .8 );
 $color_currentTimeCursorBg: rgba( #ffa, .4 );
 $color_currentTimeCursorShadow: #50ff00;
-
-// Sample :
-$color_sampleWaveform: #ddf;
-$color_sampleName: #aaa;
-$color_sampleNameHighlight: #fff;
-$color_sampleTitleBg: rgba( $COLOR_SAMPLE, .3 );
-$opacity_sampleOff: .5;
-$color_sampleBg: rgba( #000, .5 );
-$color_sampleSelectedSpanBg: $COLOR_SAMPLE_SELECTED;
-$color_sampleSelectedBg: rgba( $COLOR_SAMPLE_SELECTED, .5 );
