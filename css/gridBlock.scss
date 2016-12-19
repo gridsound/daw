@@ -24,6 +24,8 @@
 		font-weight: bold;
 		text-shadow: 1px 1px 0 rgba( #fff, .2 );
 		background: $gridBlock_headBg;
+		transition: .2s;
+		transition-property: background, height;
 	}
 	.icon {
 		margin-right: $gridBlock_headPadding;
@@ -34,6 +36,8 @@
 		bottom: 0;
 		width: 100%;
 		border-bottom: $gridBlock_borderBottom;
+		transition: .2s;
+		transition-property: border-bottom-color, top, opacity;
 	}
 	.crop {
 		display: none;
@@ -55,6 +59,9 @@
 	&.selected {
 		.header {
 			background: $gridBlock_headBg_selected;
+		}
+		.content {
+			border-bottom-color: $gridBlock_headBg_selected;
 		}
 	}
 
@@ -79,9 +86,9 @@
 			font-size: $gridBlock_fontSize_small;
 		}
 		.content {
+			z-index: 1;
 			top: 0;
-			opacity: gridBlock_contentOpacity_small;
-			background: none;
+			opacity: $gridBlock_contentOpacity_small;
 		}
 	}
 }
