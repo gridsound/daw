@@ -1,5 +1,5 @@
 "use strict";
 
 ui.getTrackFromPageY = function( pageY ) {
-	return ui.tracks[ Math.floor( ( pageY - ui.gridColsY + ui.gridScrollTop ) / ui.gridEm ) ];
+	return ui.tracks[ Math.floor( ( pageY - ui.gridColsY + ui.gridScrollTop ) / ui.trackHeight ) ];
 };

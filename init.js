@@ -6,7 +6,7 @@ ui.resize();
 ui.setFilesWidth( 200 );
 ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
-ui.setGridZoom( 1.5, 0, 0 );
+ui.setGridZoom( 1.5, 0 );
 ui.visualCanvas.on();
 ui.btnMagnet.toggle( true );
 ui.tracksBg.update();
@@ -24,5 +24,7 @@ wisdom.qS( ui.dom.menu, "[data-tool='paint']" ).click();
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();
 }
+
+ui.trackHeight = ui.tracks[ 0 ].elColNamesTrack.offsetHeight;
 
 } )();

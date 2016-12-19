@@ -31,8 +31,8 @@ ui.tool.select = {
 			selected = null;
 		}
 		clicked = dragging = false;
-		wisdom.css( elRect, "width", "0px" );
-		wisdom.css( elRect, "height", "0px" );
+		elRect.style.width =
+		elRect.style.height = "0px";
 		elRect.remove();
 	},
 	mousemove: function( e ) {
@@ -65,8 +65,8 @@ ui.tool.select = {
 
 						if ( ( secMin <= secA && secA < secMax ) ||
 							( secMin < secB && secB <= secMax ) ||
-							( secA <= secMin && secMax <= secB ) )
-						{
+							( secA <= secMin && secMax <= secB )
+						) {
 							if ( !smp.data.selected ) {
 								smp.data.squareSelected = selectionId;
 								gs.sample.select( smp, true );
@@ -81,10 +81,10 @@ ui.tool.select = {
 						selected.splice( selected.indexOf( smp ), 1 );
 					}
 				} );
-				wisdom.css( elRect, "top", trackMin + "em" );
-				wisdom.css( elRect, "left", secMin * ui.BPMem + "em" );
-				wisdom.css( elRect, "width", ( secMax - secMin ) * ui.BPMem + "em" );
-				wisdom.css( elRect, "height", trackMax - trackMin + 1 + "em" );
+				elRect.style.left = secMin * ui.BPMem + "em";
+				elRect.style.width = ( secMax - secMin ) * ui.BPMem + "em";
+				elRect.style.top = trackMin * ui.trackHeight + "px";
+				elRect.style.height = ( trackMax - trackMin + 1 ) * ui.trackHeight + "px";
 			}
 		}
 	}

@@ -1,8 +1,7 @@
 .track {
 	position: relative;
 	box-sizing: border-box;
-	height: 1em;
-	line-height: 1em;
+	height: $track_height;
 	transition: .25s;
 	transition-property: background, box-shadow;
 
