@@ -1,5 +1,4 @@
 $COLOR_MAIN: lighten( #142b35, 5 );
-$COLOR_SAMPLE: #76c4ff;
 $COLOR_SELECTION: #ff3636;
 
 // ---------------------------------------
@@ -22,6 +21,20 @@ $item_padding_hover: $item_padding + .5em;
 $item_iconMargin: .3em;
 $item_waveFill: #5c557b;
 
+// .track
+$track_height: 50px;
+$track_namesBorder: 1px solid #151515;
+$track_linesBorderColor: #090909;
+$track_linesBorder: 1px solid $track_linesBorderColor;
+$track_namesBg: darken( $color_appBg, 6.2 );
+$track_bg_off: rgba( #000, .2 );
+$track_firstBorder: rgba( #fff, .05 );
+$track_firstBorder_off: rgba( #000, .2 );
+$track_toggleWidth: 18px;
+$track_spanEditableEmpty: rgba( #fff, .2 );
+$track_backBg: $COLOR_MAIN;
+$track_backBgEven: darken( $track_backBg, 2 );
+
 // .gridBlock
 $gridBlock_bg: rgba( #000, .5 );
 $gridBlock_radius: 2px;
@@ -38,22 +51,25 @@ $gridBlock_opacity_mute: .5;
 $gridBlock_contentOpacity_small: .3;
 $gridBlock_waveformFill: #fff;
 
-/* timeline */
+// #timeline
 $timeline_bgColor: darken( $COLOR_MAIN, 10 );
-	/* timelineBeat */
-	$timelineBeat_color: lighten( grayscale( $timeline_bgColor ), 30 );
-	$timelineBeat_4nColor: lighten( $timelineBeat_color, 20 );
-	/* timelineLoop */
-	$timelineLoop_borderColor: lighten( $COLOR_MAIN, 50 );
-	$timelineLoop_bgColor: rgba( $timelineLoop_borderColor, .05 );
-	$timelineLoop_outerFilter: rgba( #000, .35 );
+$timeline_border: 1px solid #000;
+
+// .timelineBeat
+$timelineBeat_color: lighten( grayscale( $timeline_bgColor ), 30 );
+$timelineBeat_4nColor: lighten( $timelineBeat_color, 20 );
+$timelineBeat_fontSize: 12px;
+$timelineBeat_4nFontSize: 14px;
+
+// #timelineLoop
+$timelineLoop_outerFilter: rgba( #000, .35 );
+$timelineLoop_borderWidth: 2px;
+$timelineLoop_widthCrop: 10px;
+$timelineLoop_borderColor: lighten( $COLOR_MAIN, 50 );
+$timelineLoop_bgColor: rgba( $timelineLoop_borderColor, .05 );
 
 $color_panelNav: darken( $color_appBg, 5 );
-$color_tracksNamesBg: darken( $color_appBg, 6.2 );
-$color_visualBg: rgba( #060315, .5 );
 $color_visualBg: darken( $COLOR_MAIN, 6 );
-$color_tracksBg: $COLOR_MAIN;
-$color_tracksBgEven: darken( $color_tracksBg, 2 );
 
 $color_clock: #ccc;
 $color_clockStroke: #000;
@@ -77,14 +93,6 @@ $color_filesBg: #1c1c1c;
 $color_fileFiltersBg: rgba( #000, .35 );
 $color_filesPlaceholder: $color_fileFiltersBg;
 $color_fileWaveform: lighten( $COLOR_MAIN, 10% );
-
-$color_tracksNamesBorder: #151515;
-$color_tracksLinesBorder: #090909;
-
-$color_trackOffBg: rgba( #000, .2 );
-$border_trackFirst: rgba( #fff, .05 );
-$border_trackOffFirst: rgba( #000, .2 );
-$track-toggle-width: 18px;
 
 $color_squareSelectionBorder: $COLOR_SELECTION;
 $color_squareSelectionBg: rgba( $COLOR_SELECTION, .3 );

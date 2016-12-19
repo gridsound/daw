@@ -15,23 +15,22 @@
 	&:after { left: 100%; }
 
 	.time {
-		$border: 2px;
 		position: absolute;
 		z-index: 1;
-		width: 10px;
+		width: $timelineLoop_widthCrop;
 		height: 100%;
 		border: 0 solid $timelineLoop_borderColor;
 		cursor: w-resize;
 
 		&.a {
 			right: 100%;
-			border-right-width: $border;
-			margin-right: $border / -2;
+			border-right-width: $timelineLoop_borderWidth;
+			margin-right: $timelineLoop_borderWidth / -2;
 		}
 		&.b {
 			left: 100%;
-			border-left-width: $border;
-			margin-left: $border / -2;
+			border-left-width: $timelineLoop_borderWidth;
+			margin-left: $timelineLoop_borderWidth / -2;
 		}
 	}
 }

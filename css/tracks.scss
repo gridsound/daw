@@ -8,11 +8,11 @@
 	&Names {
 		box-sizing: border-box;
 		z-index: 2;
-		min-width: $track-toggle-width + 2px;
+		min-width: $track_toggleWidth + 2px;
 		max-width: 300px;
 		border: solid #000;
 		border-width: 0 1px;
-		background: $color_tracksNamesBg;
+		background: $track_namesBg;
 	}
 
 	&Lines {
@@ -27,7 +27,7 @@
 		top: 0;
 		bottom: 0;
 		overflow: hidden;
-		background: $color_tracksBg;
+		background: $track_backBg;
 
 		* {
 			display: inline-block;
@@ -39,9 +39,9 @@
 		}
 		> * {
 			width: 4em;
-			border-color: $color_tracksLinesBorder;
+			border-color: $track_linesBorderColor;
 			&:nth-child( even ) {
-				background: $color_tracksBgEven;
+				background: $track_backBgEven;
 			}
 
 			* {

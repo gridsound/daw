@@ -18,7 +18,7 @@
 		text-align: center;
 		font-family: monospace;
 		margin-top: 2px;
-		font-size: 12px;
+		font-size: $timelineBeat_fontSize;
 		color: $timelineBeat_color;
 
 		&:after {
@@ -28,8 +28,8 @@
 	}
 	&:nth-child( 4n ) span {
 		margin-top: 0;
-		font-size: 14px;
 		font-weight: bold;
+		font-size: $timelineBeat_4nFontSize;
 		color: $timelineBeat_4nColor;
 	}
 }

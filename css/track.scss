@@ -6,38 +6,38 @@
 	transition: .25s;
 	transition-property: background, box-shadow;
 
-	#tracksNames .track + & { border-top: 1px solid $color_tracksNamesBorder; }
-	#tracksLines .track + & { border-top: 1px solid $color_tracksLinesBorder; }
+	#tracksNames .track + & { border-top: $track_namesBorder; }
+	#tracksLines .track + & { border-top: $track_linesBorder; }
 
 	:not(.track) + &:not(.off),
 	.track.off   + &:not(.off) {
-		box-shadow: inset 0 3px 0 $border_trackFirst;
+		box-shadow: inset 0 3px 0 $track_firstBorder;
 	}
 	:not(.track)     + &.off,
 	.track:not(.off) + &.off {
-		box-shadow: inset 0 2px 0 $border_trackOffFirst;
+		box-shadow: inset 0 2px 0 $track_firstBorder_off;
 	}
 
 	.gs-ui-toggle {
 		position: absolute;
-		width: $track-toggle-width;
+		width: $track_toggleWidth;
 		height: 100%;
 		font-size: 6px;
 	}
 
 	.gs-ui-span-editable {
 		position: absolute;
-		left: $track-toggle-width;
+		left: $track_toggleWidth;
 		right: 6px;
 		height: 100%;
 		font-size: 14px;
 	}
 
 	&.off {
-		background: $color_trackOffBg;
+		background: $track_bg_off;
 
 		.gs-ui-span-editable {
-			color: rgba( #fff, .2 ); // $c-span-editable-empty;
+			color: $track_spanEditableEmpty;
 		}
 	}
 }
