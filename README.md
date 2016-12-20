@@ -1,9 +1,7 @@
 # [_**GridSound**_(.com)](http://gridsound.com)
 
-<img width="78" align="left" src="https://gridsound.github.io/assets/icon/black/96.png"/>
-GridSound is a (**work-in-progress**) free HTML5 <i title="Digital Audio Workstation">D.A.W.</i> based on the new fresh WebAudio technology. If you are interested by reading the _todolist_, _how to contribute_, etc. please click here :
-[**Wiki**](https://github.com/GridSound/daw/wiki) :smile:  
-We are also creating a [**webaudio library**](https://github.com/GridSound/webaudio-library) to extract the reusable audio stuff code.
+<img width="256" align="right" src="https://gridsound.github.io/assets/icon/black/256.png"/>
+GridSound is a (**work-in-progress**) free HTML5 DAW (Digital Audio Workstation) based on the new fresh Web Audio technology. If you are interested by this project, please read the [**Wiki**](https://github.com/GridSound/daw/wiki) to have a lot more informations :)
 
 ###### Screenshot :
 <img width="400" src="https://gridsound.github.io/assets/screenshots/inChrome.jpg"/>
