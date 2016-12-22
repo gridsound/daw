@@ -2,17 +2,17 @@
 
 ( function() {
 
-var that, tA, tB,
+var that,
+	tA = -1,
+	tB = -1,
 	whenSave,
 	durationSave;
 
 gs.loop = that = {
 	reorderTimeAB: function() {
-		if ( tA > tB ) {
-			var tmp = tA;
-
-			tA = tB;
-			tB = tmp;
+		if ( tA >= 0 && tB >= 0 ) {
+			tA = wa.composition.loopWhen;
+			tB = tA + wa.composition.loopDuration;
 		}
 	},
 	timeA: function( sec ) {
@@ -26,15 +26,16 @@ gs.loop = that = {
 		that.update();
 	},
 	stop: function() {
-		tA = tB = undefined;
+		tA = tB = -1;
 		wa.composition.loop( false );
 		ui.timelineLoop.toggle( false );
 	},
 	update: function() {
-		var isLooping, when, duration = Math.abs( tB - tA );
+		if ( tA >= 0 && tB >= 0 ) {
+			var isLooping,
+				when = Math.min( tA, tB ),
+				duration = Math.abs( tB - tA );
 
-		if ( !isNaN( duration ) ) {
-			when = Math.min( tA, tB );
 			if ( when !== whenSave || duration !== durationSave ) {
 				whenSave = when;
 				durationSave = duration;
