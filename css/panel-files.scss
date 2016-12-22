@@ -1,8 +1,9 @@
 #files {
-	.sample {
+	.item {
 		height: 0;
 		overflow: hidden;
 		visibility: hidden;
+		opacity: 0;
 		margin-top: -1px;
 		transition: all .2s;
 	}
@@ -45,11 +46,12 @@
 			text-decoration: none;
 		}
 
-		&.used     + #filesList .sample.used,
-		&.loaded   + #filesList .sample.loaded,
-		&.unloaded + #filesList .sample.unloaded {
+		&.used     + #filesList .used,
+		&.loaded   + #filesList .loaded,
+		&.unloaded + #filesList .unloaded {
 			height: 32px;
 			visibility: visible;
+			opacity: 1;
 			margin-top: 0;
 		}
 	}
