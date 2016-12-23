@@ -46,20 +46,22 @@ uicmp:
 .PHONY: all html css js
 
 JS_FILES = \
-	featuresTest.js                     \
-	                                    \
-	jstools/keyboardRouter.min.js       \
-	jstools/wisdom.js                   \
-	jstools/handlebars.runtime.min.js   \
-	gs-ui-components/gs-ui-components.js\
-	$(TPL_DIR)$(TPL_FILE)               \
-	$(WEBAUDIO_PATH)walcontext.js       \
-	$(WEBAUDIO_PATH)composition.js      \
-	$(WEBAUDIO_PATH)composition-loop.js \
-	$(WEBAUDIO_PATH)buffer.js           \
-	$(WEBAUDIO_PATH)waveform.js         \
-	$(WEBAUDIO_PATH)filters.js          \
-	$(WEBAUDIO_PATH)sample.js           \
+	featuresTest.js                       \
+	                                      \
+	jstools/keyboardRouter.min.js         \
+	jstools/wisdom.js                     \
+	jstools/handlebars.runtime.min.js     \
+	gs-ui-components/gs-ui-components.js  \
+	$(TPL_DIR)$(TPL_FILE)                 \
+	$(WEBAUDIO_PATH)walcontext.js         \
+	$(WEBAUDIO_PATH)encode-wav.js         \
+	$(WEBAUDIO_PATH)composition.js        \
+	$(WEBAUDIO_PATH)composition-loop.js   \
+	$(WEBAUDIO_PATH)composition-render.js \
+	$(WEBAUDIO_PATH)buffer.js             \
+	$(WEBAUDIO_PATH)waveform.js           \
+	$(WEBAUDIO_PATH)filters.js            \
+	$(WEBAUDIO_PATH)sample.js             \
 	                                  \
 	common/_init.js                   \
 	common/timestampText.js           \
@@ -87,6 +89,7 @@ JS_FILES = \
 	ui/btnRedo.js                     \
 	ui/clock.js                       \
 	ui/currentTimeCursor.js           \
+	ui/exportToWaveFile.js            \
 	ui/filesCursor.js                 \
 	ui/filesInput.js                  \
 	ui/historyList.js                 \

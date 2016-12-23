@@ -37,25 +37,31 @@
 		position: absolute;
 		z-index: 4;
 		right: 0;
+		width: $save_dropdownWidth;
 		margin-top: 1px;
-		border-radius: 0 0 4px 4px;
+		border-radius: 0 0 $save_dropdownRadius $save_dropdownRadius;
 		font-size: 11px;
-		padding: 5px;
+		padding: 0 $save_dropdownPadding $save_dropdownPadding $save_dropdownPadding;
 		line-height: 18px;
-		background: $color_saveBtn;
-		box-shadow: 0 6px 20px rgba( #000, .6 );
+		background: $save_bg;
+		box-shadow: $save_dropdownShadow;
 		transition: .2s;
 		transition-property: visibility, opacity, top;
 
-		header {
+		.title {
 			font-weight: bold;
-			padding-bottom: 5px;
+			padding: $save_dropdownPadding 0;
+			opacity: .35;
+		}
+
+		> a {
+			display: block;
+			font-size: 13px;
 		}
 	}
 
 	.list {
 		overflow: auto;
-		width: 200px;
 		max-height: 300px;
 		border-radius: 4px;
 

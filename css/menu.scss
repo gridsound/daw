@@ -57,7 +57,7 @@
 	#save {
 		.save,
 		.caret {
-			@include writeBg( $color_saveBtn );
+			@include writeBg( $save_bg );
 		}
 	}
 
