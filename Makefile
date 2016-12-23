@@ -11,7 +11,7 @@ SASS_FILE     = style.scss
 TPL_DIR       = templates/
 TPL_FILE      = __precompiled.js
 JS_FILE       = compressed.js
-WEBAUDIO_PATH = ../webaudio-library/src/
+WEBAUDIO_PATH = ../gs-webaudio-library/src/
 GSUI          = gs-ui-components
 
 all:
