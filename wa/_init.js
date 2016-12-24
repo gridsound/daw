@@ -2,7 +2,7 @@
 
 ( function() {
 
-var wctx = new walContext(),
+var wctx = new gswaContext(),
 	analyser = wctx.ctx.createAnalyser();
 
 analyser.fftSize = 256;

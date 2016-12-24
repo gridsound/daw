@@ -43,26 +43,25 @@ uicmp:
 	@cp ../$(GSUI)/bin/$(GSUI).css ../$(GSUI)/bin/$(GSUI).js $(GSUI)
 	@mv $(GSUI)/$(GSUI).css $(GSUI)/$(GSUI).scss
 
-.PHONY: all html css js
+.PHONY: all html css js uicmp
 
 JS_FILES = \
-	featuresTest.js                       \
-	                                      \
-	jstools/keyboardRouter.min.js         \
-	jstools/wisdom.js                     \
-	jstools/handlebars.runtime.min.js     \
-	gs-ui-components/gs-ui-components.js  \
-	$(TPL_DIR)$(TPL_FILE)                 \
-	$(WEBAUDIO_PATH)walcontext.js         \
-	$(WEBAUDIO_PATH)encode-wav.js         \
-	$(WEBAUDIO_PATH)composition.js        \
-	$(WEBAUDIO_PATH)composition-loop.js   \
-	$(WEBAUDIO_PATH)composition-render.js \
-	$(WEBAUDIO_PATH)buffer.js             \
-	$(WEBAUDIO_PATH)waveform.js           \
-	$(WEBAUDIO_PATH)filters.js            \
-	$(WEBAUDIO_PATH)sample.js             \
-	                                  \
+	featuresTest.js                           \
+	                                          \
+	jstools/keyboardRouter.min.js             \
+	jstools/wisdom.js                         \
+	jstools/handlebars.runtime.min.js         \
+	gs-ui-components/gs-ui-components.js      \
+	$(TPL_DIR)$(TPL_FILE)                     \
+	$(WEBAUDIO_PATH)gswaContext.js            \
+	$(WEBAUDIO_PATH)gswaEncodeWAV.js          \
+	$(WEBAUDIO_PATH)gswaSample.js             \
+	$(WEBAUDIO_PATH)gswaBuffer.js             \
+	$(WEBAUDIO_PATH)gswaFilters.js            \
+	$(WEBAUDIO_PATH)gswaComposition.js        \
+	$(WEBAUDIO_PATH)gswaComposition.loop.js   \
+	$(WEBAUDIO_PATH)gswaComposition.render.js \
+	                                          \
 	common/_init.js                   \
 	common/timestampText.js           \
 	common/uuid.js                    \
