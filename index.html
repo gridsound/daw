@@ -13,7 +13,7 @@
 	<meta name="theme-color" content="#508ea9"/>
 	<link rel="manifest" href="manifest.json"/>
 	<link rel="shortcut icon" href="../assets/icon/black/32.png"/>
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="bin/gs-daw.min.css"/>
 	<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
 </head>
 <body>
@@ -21,26 +21,18 @@
 <div id="app"></div>
 
 <!-- Production -->
-<script src="compressed.js"></script>
+<script src="bin/gs-daw.min.js"></script>
 <!-- -->
 
 <!-- Development - ->
 <script src="featuresTest.js"></script>
 
-<script src="jstools/keyboardRouter.min.js"></script>
-<script src="jstools/wisdom.js"></script>
-<script src="jstools/handlebars.runtime.min.js"></script>
-<script src="templates/__precompiled.js"></script>
-<script src="gs-ui-components/gs-ui-components.js"></script>
-
-<script src="../gs-webaudio-library/src/gswaContext.js"></script>
-<script src="../gs-webaudio-library/src/gswaEncodeWAV.js"></script>
-<script src="../gs-webaudio-library/src/gswaSample.js"></script>
-<script src="../gs-webaudio-library/src/gswaBuffer.js"></script>
-<script src="../gs-webaudio-library/src/gswaFilters.js"></script>
-<script src="../gs-webaudio-library/src/gswaComposition.js"></script>
-<script src="../gs-webaudio-library/src/gswaComposition.loop.js"></script>
-<script src="../gs-webaudio-library/src/gswaComposition.render.js"></script>
+<script src="dep/keyboardRouter.min.js"></script>
+<script src="dep/wisdom.js"></script>
+<script src="dep/handlebars.runtime.min.js"></script>
+<script src="dep/gs-ui-components.min.js"></script>
+<script src="dep/gs-webaudio-library.min.js"></script>
+<script src="templates/__templates.js"></script>
 
 <script src="common/_init.js"></script>
 <script src="common/timestampText.js"></script>

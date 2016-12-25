@@ -4,15 +4,7 @@
 # |_____|_| |_|___|_____|___|___|_|_|___|.com
 #
 
-MAKE          = make --no-print-directory
-CSS_DIR       = css/
-CSS_FILE      = style.css
-SASS_FILE     = style.scss
-TPL_DIR       = templates/
-TPL_FILE      = __precompiled.js
-JS_FILE       = compressed.js
-WEBAUDIO_PATH = ../gs-webaudio-library/src/
-GSUI          = gs-ui-components
+MAKE = make --no-print-directory
 
 all:
 	@head -5 Makefile
@@ -20,48 +12,43 @@ all:
 	@$(MAKE) html
 
 html:
-	@echo -n "* HTML ..... "
-	@handlebars $(TPL_DIR) -f $(TPL_DIR)$(TPL_FILE)
-	@echo $(TPL_FILE)
+	@echo -n "* HTML ............... "
+	@handlebars templates -f templates/__templates.js
+	@echo __templates.js
 	@$(MAKE) js
 
 js:
-	@echo -n "* JS ....... "
-	@uglifyjs $(JS_FILES) -o $(JS_FILE) --compress --mangle
-	@echo $(JS_FILE)
+	@echo -n "* JS .................. "
+	@uglifyjs $(JS) -o bin/gs-daw.min.js --compress --mangle
+	@echo gs-daw.min.js
 
 css:
-	@echo -n "* CSS ...... "
-	@cd $(CSS_DIR); \
-		tail -n +3 $(SASS_FILE) > ___tmp.scss; \
-		sass ___tmp.scss $(CSS_FILE) --style compressed; \
-		rm ___tmp.scss
-	@echo $(CSS_FILE)
+	@echo -n "* CSS ................ "
+	@cp dep/gs-ui-components.min.css dep/gs-ui-components.min.scss
+	@sass -I css css/style.scss bin/gs-daw.min.css --style compressed
+	@rm dep/gs-ui-components.min.scss
+	@echo gs-daw.min.css
 
 uicmp:
-	@$(MAKE) -C ../$(GSUI)/
-	@cp ../$(GSUI)/bin/$(GSUI).css ../$(GSUI)/bin/$(GSUI).js $(GSUI)
-	@mv $(GSUI)/$(GSUI).css $(GSUI)/$(GSUI).scss
+	@$(MAKE) -C ../gs-ui-components/
+	@cp ../gs-ui-components/bin/gs-* dep
 
-.PHONY: all html css js uicmp
+walib:
+	@$(MAKE) -C ../gs-webaudio-library/
+	@cp ../gs-webaudio-library/bin/* dep
 
-JS_FILES = \
-	featuresTest.js                           \
-	                                          \
-	jstools/keyboardRouter.min.js             \
-	jstools/wisdom.js                         \
-	jstools/handlebars.runtime.min.js         \
-	gs-ui-components/gs-ui-components.js      \
-	$(TPL_DIR)$(TPL_FILE)                     \
-	$(WEBAUDIO_PATH)gswaContext.js            \
-	$(WEBAUDIO_PATH)gswaEncodeWAV.js          \
-	$(WEBAUDIO_PATH)gswaSample.js             \
-	$(WEBAUDIO_PATH)gswaBuffer.js             \
-	$(WEBAUDIO_PATH)gswaFilters.js            \
-	$(WEBAUDIO_PATH)gswaComposition.js        \
-	$(WEBAUDIO_PATH)gswaComposition.loop.js   \
-	$(WEBAUDIO_PATH)gswaComposition.render.js \
-	                                          \
+.PHONY: all html css js uicmp walib
+
+JS = \
+	featuresTest.js                   \
+	                                  \
+	dep/keyboardRouter.min.js         \
+	dep/wisdom.js                     \
+	dep/handlebars.runtime.min.js     \
+	dep/gs-ui-components.min.js       \
+	dep/gs-webaudio-library.min.js    \
+	templates/__templates.js          \
+	                                  \
 	common/_init.js                   \
 	common/timestampText.js           \
 	common/uuid.js                    \
