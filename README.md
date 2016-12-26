@@ -12,7 +12,7 @@ GridSound is a (**work-in-progress**) free HTML5 DAW (Digital Audio Workstation)
 - [x] Drop samples into the grid with several tools like selection, move, crop, cut.
 - [x] History, undo/redo.
 - [x] Use the localStorage to save many distinct compositions.
-- [ ] Possibility to export the composition in WAV or MP3.
+- [x] Possibility to export the composition in WAV.
 
 ## Alpha version
 - [ ] Creation of a minimap who will be the grid's horizontal scroll.
@@ -23,4 +23,5 @@ GridSound is a (**work-in-progress**) free HTML5 DAW (Digital Audio Workstation)
 ## Beta version
 - [ ] Fix every future bugs.
 
+<br/><br/>
 Please enjoy :)
