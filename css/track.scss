@@ -17,14 +17,14 @@
 		box-shadow: inset 0 2px 0 $track_firstBorder_off;
 	}
 
-	.gs-ui-toggle {
+	.gsuiToggle {
 		position: absolute;
 		width: $track_toggleWidth;
 		height: 100%;
 		font-size: 6px;
 	}
 
-	.gs-ui-span-editable {
+	.gsuiSpanEditable {
 		position: absolute;
 		left: $track_toggleWidth;
 		right: 6px;
@@ -35,7 +35,7 @@
 	&.off {
 		background: $track_bg_off;
 
-		.gs-ui-span-editable {
+		.gsuiSpanEditable {
 			color: $track_spanEditableEmpty;
 		}
 	}

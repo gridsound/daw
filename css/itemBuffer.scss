@@ -1,7 +1,7 @@
 /* .item.buffer */
 
 .item {
-	.gs-ui-waveform {
+	.gsuiWaveform {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -26,7 +26,7 @@
 	}
 
 	&:hover {
-		.gs-ui-waveform {
+		.gsuiWaveform {
 			opacity: 1;
 		}
 	}

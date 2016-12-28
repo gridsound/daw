@@ -4,7 +4,7 @@ ui.Track.prototype.initToggle = function() {
 	var that = this;
 
 	this.gsuiToggle = new gsuiToggle(
-		this.elColNamesTrack.querySelector( ".gs-ui-toggle" ), {
+		this.elColNamesTrack.querySelector( ".gsuiToggle" ), {
 		onchange: function( b ) {
 			that.isOn = b;
 			that.wfilters.gain( +b );

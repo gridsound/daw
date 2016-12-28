@@ -5,7 +5,7 @@ ui.Track.prototype.initEditName = function() {
 
 	this.name = "";
 	this.gsuiSpanEditable = new gsuiSpanEditable(
-		this.elColNamesTrack.querySelector( ".gs-ui-span-editable" ), {
+		this.elColNamesTrack.querySelector( ".gsuiSpanEditable" ), {
 		onchange: function( val ) {
 			that.name = val;
 		}

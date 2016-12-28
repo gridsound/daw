@@ -5,7 +5,7 @@ ui.sample = {
 		var elSmp = wisdom.cE( Handlebars.templates.gridBlockSample( smp.data.gsfile ) )[ 0 ];
 
 		smp.data.elSmp = elSmp;
-		smp.data.elWave = elSmp.querySelector( ".gs-ui-waveform" );
+		smp.data.elWave = elSmp.querySelector( ".gsuiWaveform" );
 		smp.data.elName = elSmp.querySelector( ".name" );
 		smp.data.elCropStart = elSmp.querySelector( ".crop.start" );
 		smp.data.elCropEnd = elSmp.querySelector( ".crop.end" );

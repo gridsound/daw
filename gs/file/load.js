@@ -4,7 +4,7 @@ gs.file.load = function( that, fn ) {
 	that.isLoading = true;
 	ui.file.loading( that );
 	that.wbuff.setFile( that.file ).then( function( wbuff ) {
-		var wave = new gsuiWaveform( that.elFile.querySelector( ".gs-ui-waveform" ) );
+		var wave = new gsuiWaveform( that.elFile.querySelector( ".gsuiWaveform" ) );
 
 		that.isLoaded = true;
 		that.isLoading = false;
