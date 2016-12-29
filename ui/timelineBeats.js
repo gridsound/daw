@@ -10,7 +10,7 @@ ui.initElement( "timelineBeats", function( el ) {
 
 				nbNums = nb;
 				while ( i++ < nb ) {
-					el.appendChild( wisdom.cE( Handlebars.templates.timelineBeat() )[ 0 ] );
+					el.appendChild( ui.createHTML( Handlebars.templates.timelineBeat() )[ 0 ] );
 				}
 			}
 		}

@@ -29,7 +29,7 @@ ui.initElement( "save", function( el ) {
 			elList.insertBefore( elCmp, elList.firstChild );
 		},
 		addComposition: function( cmp ) {
-			var elCmp = wisdom.cE( Handlebars.templates.saveComposition() )[ 0 ];
+			var elCmp = ui.createHTML( Handlebars.templates.saveComposition() )[ 0 ];
 
 			elCmp.onclick = function() {
 				gs.reset();

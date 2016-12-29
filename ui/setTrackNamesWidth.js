@@ -6,14 +6,14 @@ ui.setTrackNamesWidth = function( wpx ) {
 	var visualWidth,
 		oldWidth = ui.trackNamesWidth;
 
-	wisdom.css( ui.dom.tracksNames, "width", wpx + "px" );
+	ui.dom.tracksNames.style.width = wpx + "px";
 	ui.trackNamesWidth = wpx = ui.dom.tracksNames.getBoundingClientRect().width;
 	ui.trackLinesWidth = ui.gridColsWidth - wpx;
 	visualWidth = ui.filesWidth + wpx;
-	wisdom.css( ui.dom.gridColB, "left", wpx + "px" );
-	wisdom.css( ui.dom.timeline, "left", wpx + "px" );
-	wisdom.css( ui.dom.visual, "width", visualWidth + "px" );
-	wisdom.css( ui.dom.menu, "left", visualWidth + "px" );
+	ui.dom.gridColB.style.left =
+	ui.dom.timeline.style.left = wpx + "px";
+	ui.dom.visual.style.width =
+	ui.dom.menu.style.left = visualWidth + "px";
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}

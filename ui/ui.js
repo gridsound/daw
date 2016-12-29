@@ -13,6 +13,13 @@ window.ui = {
 		return ui;
 	},
 
+	createHTML: function( html ) {
+		var div = document.createElement( "div" );
+
+		div.innerHTML = html;
+		return Array.from( div.children );
+	},
+
 	init: function( app, tplApp, obj ) {
 		var k, tpl = Handlebars.templates;
 

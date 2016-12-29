@@ -43,7 +43,6 @@ JS = \
 	featuresTest.js                   \
 	                                  \
 	dep/keyboardRouter.min.js         \
-	dep/wisdom.js                     \
 	dep/handlebars.runtime.min.js     \
 	dep/gs-ui-components.min.js       \
 	dep/gs-webaudio-library.min.js    \

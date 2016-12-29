@@ -95,6 +95,6 @@ var ax, ay, atrackId, asec,
 	dragging,
 	selected,
 	selectionId = 0,
-	elRect = wisdom.cE( "<div id='squareSelection'>" )[ 0 ];
+	elRect = ui.createHTML( "<div id='squareSelection'>" )[ 0 ];
 
 } )();

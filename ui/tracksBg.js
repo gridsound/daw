@@ -26,7 +26,7 @@ ui.initElement( "tracksBg", function( el ) {
 	return {
 		update: function() {
 			writeHtml( Math.ceil( ui.trackLinesWidth / ui.gridEm / 4 ) + 2 );
-			wisdom.css( elFirstDiv, "marginLeft", ( ui.trackLinesLeft / ui.gridEm % 8 ) + "em" );
+			elFirstDiv.style.marginLeft = ui.trackLinesLeft / ui.gridEm % 8 + "em";
 		}
 	};
 } );

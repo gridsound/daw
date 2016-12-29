@@ -18,8 +18,8 @@ gs.currentTime( 0 );
 gs.compositions.init();
 wa.composition.onended( gs.compositionStop );
 ui.dom.btnFiles.click();
-wisdom.qS( ui.dom.clockUnits, ".s" ).click();
-wisdom.qS( ui.dom.menu, "[data-tool='paint']" ).click();
+ui.dom.clockUnits.querySelector( ".s" ).click();
+ui.dom.menu.querySelector( "[data-tool='paint']" ).click();
 
 for ( var i = 0; i < 42; ++i ) {
 	ui.newTrack();

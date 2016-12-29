@@ -19,7 +19,7 @@ ui.initElement( "historyList", function( el ) {
 		redo: function() { elActions[ ind++ ].classList.remove( "undone" ); },
 		push: function( action ) {
 			var nbUndoneActions = elActions.length - ind,
-				elAction = wisdom.cE( Handlebars.templates.historyAction( action ) )[ 0 ];
+				elAction = ui.createHTML( Handlebars.templates.historyAction( action ) )[ 0 ];
 
 			while ( nbUndoneActions-- > 0 ) {
 				elActions.pop().remove();

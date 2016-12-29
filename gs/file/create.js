@@ -15,7 +15,7 @@ gs.file.create = function( file ) {
 
 	that.wbuff.sample.onended( gs.file.stop );
 	that.name = that.fullname.replace( /\.[^.]+$/, "" );
-	that.elFile = wisdom.cE( Handlebars.templates.itemBuffer( that ) )[ 0 ];
+	that.elFile = ui.createHTML( Handlebars.templates.itemBuffer( that ) )[ 0 ];
 	that.elName = that.elFile.querySelector( ".name" );
 	that.elIcon = that.elFile.querySelector( ".icon" );
 	if ( that.file ) {

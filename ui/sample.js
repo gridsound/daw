@@ -2,7 +2,7 @@
 
 ui.sample = {
 	create: function( smp ) {
-		var elSmp = wisdom.cE( Handlebars.templates.gridBlockSample( smp.data.gsfile ) )[ 0 ];
+		var elSmp = ui.createHTML( Handlebars.templates.gridBlockSample( smp.data.gsfile ) )[ 0 ];
 
 		smp.data.elSmp = elSmp;
 		smp.data.elWave = elSmp.querySelector( ".gsuiWaveform" );
@@ -24,10 +24,10 @@ ui.sample = {
 		smp.data.track.elColLinesTrack.appendChild( smp.data.elSmp );
 	},
 	when: function( smp ) {
-		wisdom.css( smp.data.elSmp, "left", smp.when * ui.BPMem + "em" );
+		smp.data.elSmp.style.left = smp.when * ui.BPMem + "em";
 	},
 	duration: function( smp ) {
-		wisdom.css( smp.data.elSmp, "width", smp.duration * ui.BPMem + "em" );
+		smp.data.elSmp.style.width = smp.duration * ui.BPMem + "em";
 		ui.sample.waveform( smp );
 	},
 	waveform: function( smp ) {

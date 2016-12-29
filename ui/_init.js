@@ -1,8 +1,8 @@
 "use strict";
 
-ui.init( wisdom.qS( "#app" ), "_app", {} );
+ui.init( document.querySelector( "#app" ), "_app", {} );
 
-ui.dom.toolBtns = wisdom.qSA( ui.dom.menu, ".btn[data-tool]" );
+ui.dom.toolBtns = Array.from( ui.dom.menu.querySelectorAll( ".btn[data-tool]" ) );
 ui.tool = {};
 ui.tracks = [];
 ui.gridEm = parseFloat( getComputedStyle( ui.dom.grid ).fontSize );

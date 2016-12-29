@@ -15,7 +15,7 @@ var fn,
 		}
 	};
 
-wisdom.qSA( ".extend" ).forEach( function( elExtend ) {
+Array.from( document.querySelectorAll( ".extend" ) ).forEach( function( elExtend ) {
 	elExtend.onmousedown = function( e ) {
 		if ( e.button === 0 ) {
 			mousemoving = true;
