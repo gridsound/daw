@@ -89,7 +89,7 @@ function traverseTree( item ) {
 
 function pushFile( file ) {
 	switch ( /[^.]*.?([^.]*)$/.exec( file.name )[ 1 ].toLowerCase() ) {
-		case "gs":
+		case "gs": case "txt": case "json":
 			saveFile = file;
 			gs.reset();
 			break;
