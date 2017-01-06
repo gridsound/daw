@@ -10,7 +10,7 @@ ui.initElement( "save", function( el ) {
 
 			e.stopPropagation();
 			if ( el.classList.contains( "save" ) ) {
-				gs.compositions.save( gs.compositions.current );
+				gs.compositions.saveCurrent();
 			}
 		},
 		hideList: function() {

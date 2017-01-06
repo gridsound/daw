@@ -1,5 +1,10 @@
 "use strict";
 
+gs.compositions.saveCurrent = function() {
+	gs.compositions.save( gs.compositions.current );
+	return false;
+};
+
 gs.compositions.save = function( cmp ) {
 	var name;
 
