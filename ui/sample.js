@@ -31,16 +31,19 @@ ui.sample = {
 		ui.sample.waveform( smp );
 	},
 	waveform: function( smp ) {
-		if ( smp.wBuffer.buffer ) {
+		var buf = smp.wBuffer.buffer;
+
+		if ( buf ) {
 			var off = smp.offset,
-				dur = Math.min( smp.duration, smp.bufferDuration - off ),
+				dur = Math.min( smp.duration, buf.duration - off ),
 				durEm = dur * ui.BPMem,
-				wave = smp.data.gsuiWaveform;
+				wave = smp.data.gsuiWaveform,
+				bufData0 = buf.getChannelData( 0 ),
+				bufData1 = buf.numberOfChannels < 2 ? bufData0 : buf.getChannelData( 1 );
 
 			smp.data.elWave.style.width = durEm + "em";
 			wave.setResolution( ~~( dur * 1024 ), 128 );
-			wave.setBuffer( smp.wBuffer.buffer );
-			wave.draw( off, dur );
+			wave.draw( bufData0, bufData1, buf.duration, off, dur );
 		}
 	}
 };
