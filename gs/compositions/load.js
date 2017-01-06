@@ -22,7 +22,7 @@ gs.compositions.load = function( cmp ) {
 		gs.sample.when( smp, s[ 2 ] / ui.BPMem );
 		gs.sample.slip( smp, s[ 3 ] / ui.BPMem );
 		gs.sample.duration( smp, s[ 4 ] / ui.BPMem );
-		wa.composition.add( smp );
+		gs.composition.add( smp );
 	} );
 	ui.save.selectComposition( cmp );
 };

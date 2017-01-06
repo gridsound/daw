@@ -11,7 +11,7 @@ gs.sample.delete = function( smp ) {
 		}
 		smp.stop();
 		data.track.removeSample( smp );
-		wa.composition.remove( smp );
+		gs.composition.remove( smp );
 		ui.sample.delete( smp );
 	}
 };

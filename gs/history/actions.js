@@ -28,7 +28,7 @@ function paste( data, sign ) {
 			gs.sample.duration( smp, cpy.duration );
 			gs.sample.select( smp, true );
 		} );
-		wa.composition.add( data.pasted );
+		gs.composition.add( data.pasted );
 	} else {
 		data.pasted.forEach( gs.sample.delete );
 		data.selected.forEach( function( smp ) {
@@ -48,12 +48,12 @@ function cut( data, sign ) {
 			gs.sample.slip( nsmp, smp.offset + dur );
 			gs.sample.duration( nsmp, smp.duration - dur );
 			gs.sample.duration( smp, dur );
-			wa.composition.add( nsmp );
+			gs.composition.add( nsmp );
 		} else {
 			gs.sample.duration( smp, dur + nsmp.duration );
 			gs.sample.delete( nsmp );
 		}
-		wa.composition.update( smp );
+		gs.composition.update( smp );
 	} );
 }
 
@@ -70,7 +70,7 @@ function create( data, sign ) {
 	if ( sign > 0 ) {
 		gs.sample.inTrack( smp, data.track.id );
 		gs.sample.when( smp, data.when );
-		wa.composition.add( smp );
+		gs.composition.add( smp );
 	} else {
 		gs.sample.delete( smp );
 	}
@@ -86,7 +86,7 @@ function d3lete( data, sign ) {
 			gs.sample.slip( smp, smp.offset );
 			gs.sample.duration( smp, smp.duration );
 			gs.sample.select( smp, smp.data.oldSelected );
-			wa.composition.add( smp );
+			gs.composition.add( smp );
 			if ( !smp.data.gsfile.nbSamples++ ) {
 				ui.file.used( smp.data.gsfile );
 			}
@@ -109,7 +109,7 @@ function move( data, sign ) {
 		}
 	}
 	gs.samples.selected.do( sample, function( smp ) {
-		wa.composition.update( smp, "mv" );
+		gs.composition.update( smp, "mv" );
 	} );
 }
 
@@ -120,21 +120,21 @@ function crop( data, sign ) {
 	gs.samples.selected.when( sample, data.when * sign );
 	gs.samples.selected.slip( sample, -data.offset * sign );
 	gs.samples.selected.do( sample, function( smp ) {
-		wa.composition.update( smp, "mv" );
+		gs.composition.update( smp, "mv" );
 	} );
 }
 
 function cropEnd( data, sign ) {
 	gs.samples.selected.duration( data.sample, data.duration * sign );
 	gs.samples.selected.do( data.sample, function( smp ) {
-		wa.composition.update( smp, "mv" );
+		gs.composition.update( smp, "mv" );
 	} );
 }
 
 function slip( data, sign ) {
 	gs.samples.selected.slip( data.sample, data.offset * sign );
 	gs.samples.selected.do( data.sample, function( smp ) {
-		wa.composition.update( smp, "mv" );
+		gs.composition.update( smp, "mv" );
 	} );
 }
 

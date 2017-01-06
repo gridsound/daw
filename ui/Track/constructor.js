@@ -13,7 +13,7 @@ ui.Track = function( grid, obj ) {
 	this.elColNamesTrack.uitrack
 	this.elColLinesTrack.uitrack = this;
 
-	this.wfilters = wa.wctx.createFilters();
+	this.wfilters = gs.wctx.createFilters();
 	this.samples = [];
 
 	this.initToggle()

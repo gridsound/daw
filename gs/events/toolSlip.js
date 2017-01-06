@@ -16,7 +16,7 @@ ui.tool.slip = {
 				offset: _offset - _smp.offset,
 			} );
 			gs.samples.selected.do( _smp, function( smp ) {
-				wa.composition.update( smp, "mv" );
+				gs.composition.update( smp, "mv" );
 			} );
 		}
 		_smp = null;

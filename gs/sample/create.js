@@ -1,7 +1,7 @@
 "use strict";
 
 gs.sample.create = function( gsfile ) {
-	var smp = wa.wctx.createSample( gsfile.wbuff );
+	var smp = gs.wctx.createSample( gsfile.wbuff );
 
 	if ( !gsfile.wbuff.buffer ) {
 		gsfile.wbuff._setDuration( gsfile.bufferDuration );

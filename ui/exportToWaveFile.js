@@ -3,7 +3,7 @@
 ui.initElement( "exportToWaveFile", function( el ) {
 	return {
 		click: function( e ) {
-			wa.composition.render().then( function( blob ) {
+			gs.composition.render().then( function( blob ) {
 				ui.exportToWaveFile.downloadFile( gs.compositions.current.name + ".wav", blob );
 			} );
 			e.preventDefault();

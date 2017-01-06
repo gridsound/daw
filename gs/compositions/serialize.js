@@ -2,7 +2,7 @@
 
 gs.compositions.serialize = function( cmp ) {
 	cmp.bpm = gs._bpm;
-	cmp.duration = wa.composition.duration;
+	cmp.duration = gs.composition.duration;
 	cmp.files = gs.files.map( function( f ) {
 		return [
 			f.id,
@@ -11,7 +11,7 @@ gs.compositions.serialize = function( cmp ) {
 			f.wbuff.buffer ? f.wbuff.buffer.duration : f.bufferDuration
 		];
 	} );
-	cmp.samples = wa.composition.samples.map( function( smp ) {
+	cmp.samples = gs.composition.samples.map( function( smp ) {
 		return [
 			smp.data.track.id,
 			smp.data.gsfile.id,

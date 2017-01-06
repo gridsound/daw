@@ -11,8 +11,8 @@ var that,
 gs.loop = that = {
 	reorderTimeAB: function() {
 		if ( tA >= 0 && tB >= 0 ) {
-			tA = wa.composition.loopWhen;
-			tB = tA + wa.composition.loopDuration;
+			tA = gs.composition.loopWhen;
+			tB = tA + gs.composition.loopDuration;
 		}
 	},
 	timeA: function( sec ) {
@@ -27,7 +27,7 @@ gs.loop = that = {
 	},
 	stop: function() {
 		tA = tB = -1;
-		wa.composition.loop( false );
+		gs.composition.loop( false );
 		ui.timelineLoop.toggle( false );
 	},
 	update: function() {
@@ -39,10 +39,10 @@ gs.loop = that = {
 			if ( when !== whenSave || duration !== durationSave ) {
 				whenSave = when;
 				durationSave = duration;
-				// isLooping = wa.composition.isLooping;
+				// isLooping = gs.composition.isLooping;
 				isLooping = duration > 0.01;
 				if ( isLooping ) {
-					wa.composition.loop( when, duration );
+					gs.composition.loop( when, duration );
 					ui.timelineLoop.when( when );
 					ui.timelineLoop.duration( duration );
 				}

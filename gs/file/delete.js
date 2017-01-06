@@ -1,7 +1,7 @@
 "use strict";
 
 gs.file.delete = function( that ) {
-	wa.composition.samples.filter( function( smp ) {
+	gs.composition.samples.filter( function( smp ) {
 		return smp.data.gsfile === that;
 	} ).forEach( function( smp ) {
 		gs.sample.delete( smp );

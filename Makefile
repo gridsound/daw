@@ -83,7 +83,7 @@ JS = \
 	ui/timelineBeats.js               \
 	ui/timelineLoop.js                \
 	ui/tracksBg.js                    \
-	ui/visualCanvas.js                \
+	ui/visual.js                      \
 	ui/_init.js                       \
 	                                  \
 	ui/cursor.js                      \
@@ -105,9 +105,6 @@ JS = \
 	ui/Track/constructor.js           \
 	ui/Track/editName.js              \
 	ui/Track/toggle.js                \
-	                                  \
-	wa/_init.js                       \
-	wa/oscilloscope.js                \
 	                                  \
 	gs/bpm.js                         \
 	gs/currentTime.js                 \

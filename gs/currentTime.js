@@ -2,10 +2,10 @@
 
 gs.currentTime = function( sec ) {
 	if ( !arguments.length ) {
-		return wa.composition.currentTime();
+		return gs.composition.currentTime();
 	}
-	wa.composition.currentTime( sec );
-	sec = wa.composition.currentTime();
+	gs.composition.currentTime( sec );
+	sec = gs.composition.currentTime();
 	ui.currentTimeCursor.at( sec );
 	ui.clock.setTime( sec );
 };

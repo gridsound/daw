@@ -1,13 +1,13 @@
 "use strict";
 
 gs.playStop  = function() { ( gs.isPlaying ? gs.stop : gs.play )(); };
-gs.playPause = function() { ( wa.composition.isPlaying ? gs.pause : gs.play )(); };
+gs.playPause = function() { ( gs.composition.isPlaying ? gs.pause : gs.play )(); };
 
 gs.play = function() {
 	gs.file.stop();
-	if ( !wa.composition.isPlaying && wa.composition.samples.length ) {
-		wa.composition.play();
-		if ( wa.composition.isPlaying ) {
+	if ( !gs.composition.isPlaying && gs.composition.samples.length ) {
+		gs.composition.play();
+		if ( gs.composition.isPlaying ) {
 			gs.isPaused = !( gs.isPlaying = true );
 			ui.btnPlay.play();
 		}
@@ -16,8 +16,8 @@ gs.play = function() {
 
 gs.pause = function() {
 	gs.file.stop();
-	if ( wa.composition.isPlaying ) {
-		wa.composition.pause();
+	if ( gs.composition.isPlaying ) {
+		gs.composition.pause();
 		gs.isPaused = !( gs.isPlaying = false );
 		ui.btnPlay.pause();
 	}
@@ -29,7 +29,7 @@ gs.stop = function() {
 };
 
 gs.compositionStop = function() {
-	wa.composition.stop();
+	gs.composition.stop();
 	gs.currentTime( 0 );
 	gs.isPaused = gs.isPlaying = false;
 	ui.btnStop.stop();

@@ -3,7 +3,7 @@
 gs.file.create = function( file ) {
 	var that = {
 			id: gs.files.length,
-			wbuff: wa.wctx.createBuffer(),
+			wbuff: gs.wctx.createBuffer(),
 			isLoaded: false,
 			isLoading: false,
 			nbSamples: 0,

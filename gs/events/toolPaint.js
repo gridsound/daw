@@ -30,7 +30,7 @@ ui.tool.paint = {
 	mouseup: function() {
 		if ( _smp ) {
 			gs.samples.selected.do( _smp, function( smp ) {
-				wa.composition.update( smp, "mv" );
+				gs.composition.update( smp, "mv" );
 			} );
 			if ( cropping ) {
 				_smp.data[ croppingStart ? "elCropStart" : "elCropEnd" ].classList.remove( "hover" );

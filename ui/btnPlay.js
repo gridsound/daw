@@ -4,7 +4,7 @@ ui.initElement( "btnPlay", function( el ) {
 	var reqFrameId;
 
 	function frame() {
-		var sec = wa.composition.currentTime();
+		var sec = gs.composition.currentTime();
 
 		ui.currentTimeCursor.at( sec );
 		ui.clock.setTime( sec );
