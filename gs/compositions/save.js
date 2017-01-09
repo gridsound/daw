@@ -2,21 +2,23 @@
 
 gs.compositions.saveCurrent = function() {
 	gs.compositions.save( gs.compositions.current );
-	return false;
 };
 
 gs.compositions.save = function( cmp ) {
-	var name;
-
-	if ( !cmp ) {
-		name = gs.compositions.askName();
-		if ( !name ) {
-			return;
-		}
-		cmp = { name: name };
+	if ( cmp ) {
+		_save( cmp );
+	} else {
+		ui.gsuiPopup.open( "prompt", "Composition's name",
+			"Please enter a name for your new composition :" )
+		.then( function( name ) {
+			name && _save( { name: name.trim() } );
+		} );
 	}
-	gs.compositions.current = cmp;
-	gs.compositions.serialize( cmp );
-	gs.compositions.store( cmp );
-	ui.save.selectComposition( cmp );
+
+	function _save( cmp ) {
+		gs.compositions.current = cmp;
+		gs.compositions.serialize( cmp );
+		gs.compositions.store( cmp );
+		ui.save.selectComposition( cmp );
+	}
 };

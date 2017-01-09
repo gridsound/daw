@@ -20,7 +20,8 @@ gs.file.load = function( that, fn ) {
 	}, function() {
 		that.isLoading = false;
 		ui.file.error( that );
-		alert( "At this day, the file: \"" + that.fullname +
-			"\" can not be decoded by your browser.\n" );
+		ui.gsuiPopup.open( "warning", "Unknown file format",
+			"At this day, the file <code>" + that.fullname +
+				"</code> can not be decoded by your browser.\n" );
 	} );
 };

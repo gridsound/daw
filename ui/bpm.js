@@ -16,9 +16,10 @@ ui.initElement( "bpm", function( el ) {
 	ui.dom.bpmDec.onwheel = wheel.bind( null, .01 );
 
 	ui.dom.bpm.ondblclick = function() {
-		var bpm = +prompt( "BPM (20-999) :" );
-
-		bpm && gs.bpm( bpm );
+		ui.gsuiPopup.open( "prompt", "BPM", "Choose your BPM (20-999) :", gs._bpm )
+			.then( function( bpm ) {
+				+bpm && gs.bpm( +bpm );
+			} );
 	};
 
 	return {
