@@ -3,8 +3,10 @@
 ui.initElement( "exportToWaveFile", function( el ) {
 	return {
 		click: function( e ) {
+			var renderer = gs.composition.render();
+
 			e.preventDefault();
-			gs.composition.render().then( function( blob ) {
+			renderer && renderer.then( function( blob ) {
 				var cmp = gs.compositions.current;
 
 				ui.exportToWaveFile.downloadFile(
