@@ -3,10 +3,13 @@
 ui.initElement( "exportToWaveFile", function( el ) {
 	return {
 		click: function( e ) {
-			gs.composition.render().then( function( blob ) {
-				ui.exportToWaveFile.downloadFile( gs.compositions.current.name + ".wav", blob );
-			} );
 			e.preventDefault();
+			gs.composition.render().then( function( blob ) {
+				var cmp = gs.compositions.current;
+
+				ui.exportToWaveFile.downloadFile(
+					( cmp ? cmp.name : "untitled" ) + ".wav", blob );
+			} );
 		},
 		downloadFile: function( filename, blob ) {
 			var a = document.createElement( "a" ),
