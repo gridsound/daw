@@ -10,13 +10,6 @@ ui.initElement( "visual", function( el ) {
 		return gs.analyserData;
 	} );
 	uiOsc.drawBegin( function( ctx, max, w, h ) {
-		if ( gs.isPaused ) {
-			return false;
-		}
-		if ( !gs.isPlaying ) {
-			uiOsc.clear();
-			return false;
-		}
 		ctx.globalCompositeOperation = "source-in";
 		ctx.fillStyle = "rgba(0,0,0,.8)";
 		ctx.fillRect( 0, 0, w, h );
