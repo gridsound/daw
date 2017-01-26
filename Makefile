@@ -29,15 +29,19 @@ css:
 	@rm dep/gs-ui-components.min.scss
 	@echo gs-daw.min.css
 
-uicmp:
-	@$(MAKE) -C ../gs-ui-components/
-	@cp ../gs-ui-components/bin/gs-* dep
+wafwk:
+	@$(MAKE) -C ../gs-webaudio-framework/
+	@cp ../gs-webaudio-framework/bin/* dep
 
 walib:
 	@$(MAKE) -C ../gs-webaudio-library/
 	@cp ../gs-webaudio-library/bin/* dep
 
-.PHONY: all html css js uicmp walib
+uicmp:
+	@$(MAKE) -C ../gs-ui-components/
+	@cp ../gs-ui-components/bin/gs-* dep
+
+.PHONY: all html css js wafwk walib uicmp
 
 JS = \
 	featuresTest.js                   \
@@ -46,6 +50,7 @@ JS = \
 	dep/handlebars.runtime.min.js     \
 	dep/gs-ui-components.min.js       \
 	dep/gs-webaudio-library.min.js    \
+	dep/gs-webaudio-framework.min.js  \
 	templates/__templates.js          \
 	                                  \
 	common/_init.js                   \
