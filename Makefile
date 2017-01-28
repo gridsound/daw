@@ -57,6 +57,9 @@ JS = \
 	common/timestampText.js           \
 	common/uuid.js                    \
 	                                  \
+	src/init.js                       \
+	src/frameworkOn.js                \
+	                                  \
 	gs/_init.js                       \
 	gs/loop.js                        \
 	gs/playPauseStop.js               \
@@ -95,7 +98,6 @@ JS = \
 	ui/getGridSec.js                  \
 	ui/getTrackFromPageY.js           \
 	ui/file.js                        \
-	ui/newTrack.js                    \
 	ui/panelSection.js                \
 	ui/resize.js                      \
 	ui/sample.js                      \
@@ -162,4 +164,6 @@ JS = \
 	gs/events/toolZoom.js             \
 	                                  \
 	init.js                           \
+	src/run.js                        \
+	                                  \
 	analyticstracking.js

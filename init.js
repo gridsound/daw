@@ -29,10 +29,4 @@ ui.dom.btnFiles.click();
 ui.dom.clockUnits.querySelector( ".s" ).click();
 ui.dom.menu.querySelector( "[data-tool='paint']" ).click();
 
-for ( var i = 0; i < 42; ++i ) {
-	ui.newTrack();
-}
-
-ui.trackHeight = ui.tracks[ 0 ].elColNamesTrack.offsetHeight;
-
 } )();

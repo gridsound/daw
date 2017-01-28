@@ -8,7 +8,7 @@ gs.compositions.load = function( cmp ) {
 		var id = t[ 0 ];
 
 		while ( id >= ui.tracks.length ) {
-			ui.newTrack();
+			waFwk.do.addTrack( {} );
 		}
 		ui.tracks[ id ].toggle( t[ 1 ] ).editName( t[ 2 ] );
 	} );
