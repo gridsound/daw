@@ -14,6 +14,9 @@ GridSound is a (**work-in-progress**) free HTML5 DAW (Digital Audio Workstation)
 - [x] Use the localStorage to save many distinct compositions.
 - [x] Possibility to export the composition in WAV.
 
+## Dispatch the code into 3 other repositories
+- [ ] [gs-ui-components](https://github.com/GridSound/gs-ui-components), [gs-webaudio-framework](https://github.com/GridSound/gs-webaudio-framework), [gs-webaudio-library](https://github.com/GridSound/gs-webaudio-library)
+
 ## Alpha version
 - [ ] Creation of a minimap who will be the grid's horizontal scroll.
 - [ ] Possibility to create some reusable patterns like a piano melody or a drum loop.
