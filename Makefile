@@ -58,7 +58,8 @@ JS = \
 	common/uuid.js                    \
 	                                  \
 	src/init.js                       \
-	src/frameworkOn.js                \
+	src/framework.on.js               \
+	src/framework.on/addTrack.js      \
 	                                  \
 	gs/_init.js                       \
 	gs/loop.js                        \
@@ -108,10 +109,6 @@ JS = \
 	ui/setTrackLinesLeft.js           \
 	ui/setTrackNamesWidth.js          \
 	ui/updateGridShadows.js           \
-	                                  \
-	ui/Track/constructor.js           \
-	ui/Track/editName.js              \
-	ui/Track/toggle.js                \
 	                                  \
 	gs/bpm.js                         \
 	gs/currentTime.js                 \

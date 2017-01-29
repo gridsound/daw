@@ -1,9 +1,5 @@
 "use strict";
 
-waFwk.on.addTrack = function( trkObject ) {
-	ui.tracks.push( new ui.Track( this ) );
-};
-
 waFwk.on.removeTrack = function( trkObject ) {
 	lg( "removeTrack", trkObject );
 };

@@ -20,9 +20,14 @@ gs.compositions.serialize = function( cmp ) {
 			ui.BPMem * smp.duration
 		];
 	} );
-	cmp.tracks = ui.tracks.reduce( function( arr, t ) {
-		if ( !t.isOn || t.samples.length || t.name || ( t.wfilters && t.wfilters.length ) ) {
-			arr.push( [ t.id, t.isOn, t.name ] );
+	cmp.tracks = waFwk.tracks.reduce( function( arr, trkObj ) {
+		var usr = trkObj.userData;
+
+		if ( !usr.isOn
+			|| usr.samples.length || usr.name
+			|| ( usr.wfilters && usr.wfilters.length )
+		) {
+			arr.push( [ usr.id, usr.isOn, usr.name ] );
 		}
 		return arr;
 	}, [] );

@@ -5,12 +5,15 @@ gs.compositions.load = function( cmp ) {
 	gs.bpm( cmp.bpm );
 	cmp.files.forEach( gs.file.create );
 	cmp.tracks.forEach( function( t ) {
-		var id = t[ 0 ];
+		var userData,
+			id = t[ 0 ];
 
-		while ( id >= ui.tracks.length ) {
+		while ( id >= waFwk.tracks.length ) {
 			waFwk.do.addTrack( {} );
 		}
-		ui.tracks[ id ].toggle( t[ 1 ] ).editName( t[ 2 ] );
+		userData = waFwk.tracks[ id ].userData;
+		userData.toggle( t[ 1 ] );
+		userData.editName( t[ 2 ] );
 	} );
 	cmp.samples.forEach( function( s ) {
 		//          0        1      2      3        4

@@ -2,9 +2,9 @@
 
 gs.reset = function() {
 	delete gs.compositions.current;
-	ui.tracks.forEach( function( t ) {
-		t.editName( "" );
-		t.toggle( true );
+	waFwk.tracks.forEach( function( trkObj ) {
+		trkObj.userData.editName( "" );
+		trkObj.userData.toggle( true );
 	} );
 	gs.composition.samples.forEach( function( s ) {
 		gs.sample.select( s, true );

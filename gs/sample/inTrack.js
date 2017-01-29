@@ -2,14 +2,14 @@
 
 gs.sample.inTrack = function( smp, trackId ) {
 	var smpData = smp.data,
-		track = ui.tracks[ trackId ];
+		trkUsrData = waFwk.tracks[ trackId ].userData;
 
 	smp.disconnect();
-	smp.connect( track.wfilters );
+	smp.connect( trkUsrData.wfilters );
 	if ( smpData.track ) {
 		smpData.track.removeSample( smp );
 	}
-	smpData.track = track;
-	track.samples.push( smp );
+	smpData.track = trkUsrData;
+	trkUsrData.samples.push( smp );
 	ui.sample.inTrack( smp );
 };
