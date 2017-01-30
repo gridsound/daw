@@ -7,7 +7,7 @@ gs.sample.delete = function( smp ) {
 		data.oldSelected = !!data.selected;
 		gs.sample.select( smp, false );
 		if ( !--data.gsfile.nbSamples ) {
-			ui.file.unused( data.gsfile );
+			data.gsfile.source.unused();
 		}
 		smp.stop();
 		data.track.removeSample( smp );

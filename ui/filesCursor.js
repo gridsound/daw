@@ -5,10 +5,10 @@ ui.initElement( "filesCursor", function( el ) {
 		remove: function() {
 			el.remove();
 		},
-		insertInto: function( file ) {
+		insertInto: function( source ) {
 			el.style.transitionDuration =
 			el.style.left = 0;
-			file.elFile.appendChild( el );
+			source.elRoot.appendChild( el );
 		},
 		startMoving: function( sec ) {
 			el.style.transitionDuration = sec + "s";

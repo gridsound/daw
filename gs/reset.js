@@ -11,7 +11,7 @@ gs.reset = function() {
 	} );
 	gs.samples.selected.delete();
 	gs.files.forEach( function( f ) {
-		f.elFile.remove();
+		f.source.elRoot.remove();
 	} );
 	gs.files = [];
 	gs.history.reset();

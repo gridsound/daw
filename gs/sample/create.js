@@ -11,7 +11,7 @@ gs.sample.create = function( gsfile ) {
 		gsfile: gsfile,
 	};
 	++gsfile.nbSamples;
-	ui.file.used( gsfile );
+	gsfile.source.used();
 	ui.sample.create( smp );
 	ui.sample.duration( smp );
 	return smp;

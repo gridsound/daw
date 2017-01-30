@@ -33,6 +33,7 @@ function loadFiles() {
 	arrFiles.forEach( function( file ) {
 		if ( !gs.files.some( function( f ) {
 			var size = f.file ? f.file.size : f.size;
+
 			if ( f.fullname === file.name && size === file.size ) {
 				if ( !f.file ) {
 					gs.file.joinFile( f, file );
@@ -74,8 +75,10 @@ function traverseTree( item ) {
 			} );
 		} else if ( item.isDirectory ) {
 			var dirReader = item.createReader();
+
 			dirReader.readEntries( function( files ) {
 				var promArr = [];
+
 				files.forEach( function( f ) {
 					promArr.push( traverseTree( f ) );
 				} );

@@ -7,7 +7,7 @@ gs.file.play = function( that ) {
 		smp.stop();
 	}
 	if ( that.isLoaded ) {
-		ui.filesCursor.insertInto( that );
+		ui.filesCursor.insertInto( that.source );
 		gs.file.playingSmp = that.wbuff.sample.start();
 		setTimeout( ui.filesCursor.startMoving.bind( null, that.wbuff.buffer.duration ), 20 );
 	}

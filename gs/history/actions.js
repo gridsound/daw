@@ -88,7 +88,7 @@ function d3lete( data, sign ) {
 			gs.sample.select( smp, smp.data.oldSelected );
 			gs.composition.add( smp );
 			if ( !smp.data.gsfile.nbSamples++ ) {
-				ui.file.used( smp.data.gsfile );
+				smp.data.gsfile.source.used();
 			}
 		} );
 	}

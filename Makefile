@@ -60,7 +60,6 @@ JS = \
 	gs/_init.js                       \
 	gs/loop.js                        \
 	gs/playPauseStop.js               \
-	gs/file/click.js                  \
 	gs/file/create.js                 \
 	gs/file/delete.js                 \
 	gs/file/joinFile.js               \
@@ -90,6 +89,7 @@ JS = \
 	                                  \
 	src/init.js                       \
 	src/framework.on.js               \
+	src/framework.on/addSource.js     \
 	src/framework.on/addTrack.js      \
 	src/framework.on/playPauseStop.js \
 	src/framework.on/setBPM.js        \
@@ -97,7 +97,6 @@ JS = \
 	ui/cursor.js                      \
 	ui/getGridSec.js                  \
 	ui/getTrackFromPageY.js           \
-	ui/file.js                        \
 	ui/panelSection.js                \
 	ui/resize.js                      \
 	ui/sample.js                      \
@@ -111,7 +110,6 @@ JS = \
 	                                  \
 	gs/currentTime.js                 \
 	gs/reset.js                       \
-	gs/file/dragstart.js              \
 	                                  \
 	gs/compositions/init.js           \
 	gs/compositions/load.js           \
