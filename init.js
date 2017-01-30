@@ -21,7 +21,6 @@ ui.tracksBg.update();
 ui.timelineLoop.toggle( false );
 
 gs.history.reset();
-gs.bpm( 120 );
 gs.currentTime( 0 );
 gs.compositions.init();
 gs.composition.onended( gs.compositionStop );

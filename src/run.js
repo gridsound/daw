@@ -2,6 +2,8 @@
 
 ( function() {
 
+waFwk.do.setBPM( 120 );
+
 for ( var i = 0; i < 42; ++i ) {
 	waFwk.do.addTrack( {} );
 }

@@ -2,7 +2,7 @@
 
 gs.compositions.load = function( cmp ) {
 	gs.compositions.current = cmp;
-	gs.bpm( cmp.bpm );
+	waFwk.do.setBPM( cmp.bpm );
 	cmp.files.forEach( gs.file.create );
 	cmp.tracks.forEach( function( t ) {
 		var userData,

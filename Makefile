@@ -57,10 +57,6 @@ JS = \
 	common/timestampText.js           \
 	common/uuid.js                    \
 	                                  \
-	src/init.js                       \
-	src/framework.on.js               \
-	src/framework.on/addTrack.js      \
-	                                  \
 	gs/_init.js                       \
 	gs/loop.js                        \
 	gs/playPauseStop.js               \
@@ -75,7 +71,6 @@ JS = \
 	gs/history/actions.js             \
 	                                  \
 	ui/ui.js                          \
-	ui/bpm.js                         \
 	ui/btnMagnet.js                   \
 	ui/btnPlay.js                     \
 	ui/btnStop.js                     \
@@ -95,6 +90,11 @@ JS = \
 	ui/visual.js                      \
 	ui/_init.js                       \
 	                                  \
+	src/init.js                       \
+	src/framework.on.js               \
+	src/framework.on/addTrack.js      \
+	src/framework.on/setBPM.js        \
+	                                  \
 	ui/cursor.js                      \
 	ui/getGridSec.js                  \
 	ui/getTrackFromPageY.js           \
@@ -110,7 +110,6 @@ JS = \
 	ui/setTrackNamesWidth.js          \
 	ui/updateGridShadows.js           \
 	                                  \
-	gs/bpm.js                         \
 	gs/currentTime.js                 \
 	gs/reset.js                       \
 	gs/file/dragstart.js              \

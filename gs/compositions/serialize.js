@@ -1,7 +1,7 @@
 "use strict";
 
 gs.compositions.serialize = function( cmp ) {
-	cmp.bpm = gs._bpm;
+	cmp.bpm = waFwk.bpm;
 	cmp.duration = gs.composition.duration;
 	cmp.files = gs.files.map( function( f ) {
 		return [
