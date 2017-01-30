@@ -72,8 +72,6 @@ JS = \
 	                                  \
 	ui/ui.js                          \
 	ui/btnMagnet.js                   \
-	ui/btnPlay.js                     \
-	ui/btnStop.js                     \
 	ui/btnUndo.js                     \
 	ui/btnRedo.js                     \
 	ui/clock.js                       \
@@ -93,6 +91,7 @@ JS = \
 	src/init.js                       \
 	src/framework.on.js               \
 	src/framework.on/addTrack.js      \
+	src/framework.on/playPauseStop.js \
 	src/framework.on/setBPM.js        \
 	                                  \
 	ui/cursor.js                      \

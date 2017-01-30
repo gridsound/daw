@@ -36,18 +36,6 @@ waFwk.on.unload = function( cmpObject ) {
 	lg( "unload", cmpObject );
 };
 
-waFwk.on.play = function( cmpObject ) {
-	lg( "play", cmpObject );
-};
-
-waFwk.on.pause = function( cmpObject ) {
-	lg( "pause", cmpObject );
-};
-
-waFwk.on.stop = function( cmpObject ) {
-	lg( "stop", cmpObject );
-};
-
 waFwk.on.save = function( cmpObject ) {
 	lg( "save", cmpObject );
 };

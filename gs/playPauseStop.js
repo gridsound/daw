@@ -7,9 +7,10 @@ gs.play = function() {
 	gs.file.stop();
 	if ( !gs.composition.isPlaying && gs.composition.samples.length ) {
 		gs.composition.play();
+		waFwk.do.play();
 		if ( gs.composition.isPlaying ) {
-			gs.isPaused = !( gs.isPlaying = true );
-			ui.btnPlay.play();
+			gs.isPlaying = true;
+			gs.isPaused = false;
 		}
 	}
 };
@@ -18,8 +19,9 @@ gs.pause = function() {
 	gs.file.stop();
 	if ( gs.composition.isPlaying ) {
 		gs.composition.pause();
-		gs.isPaused = !( gs.isPlaying = false );
-		ui.btnPlay.pause();
+		waFwk.do.pause();
+		gs.isPlaying = false;
+		gs.isPaused = true;
 	}
 };
 
@@ -30,7 +32,7 @@ gs.stop = function() {
 
 gs.compositionStop = function() {
 	gs.composition.stop();
+	waFwk.do.stop();
 	gs.currentTime( 0 );
 	gs.isPaused = gs.isPlaying = false;
-	ui.btnStop.stop();
 };
