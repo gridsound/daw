@@ -63,7 +63,6 @@ JS = \
 	gs/file/create.js                 \
 	gs/file/delete.js                 \
 	gs/file/joinFile.js               \
-	gs/file/load.js                   \
 	gs/file/play.js                   \
 	gs/file/stop.js                   \
 	gs/history/history.js             \
@@ -90,6 +89,7 @@ JS = \
 	src/init.js                       \
 	src/framework.on.js               \
 	src/framework.on/addSource.js     \
+	src/framework.on/loadSource.js    \
 	src/framework.on/addTrack.js      \
 	src/framework.on/playPauseStop.js \
 	src/framework.on/setBPM.js        \

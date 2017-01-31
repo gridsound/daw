@@ -12,10 +12,6 @@ waFwk.on.addSources = function( srcArr ) {
 	lg( "addSources", srcArr );
 };
 
-waFwk.on.loadSource = function( srcObj ) {
-	lg( "loadSource", srcObj );
-};
-
 waFwk.on.loadSources = function( srcArr ) {
 	lg( "loadSources", srcArr );
 };

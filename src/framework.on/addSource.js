@@ -18,6 +18,7 @@ waFwk.on.addSource = function( srcObj ) {
 			fullname: file.name || file[ 1 ],
 		};
 
+	source.srcObj = srcObj;
 	source.that = that;
 	source.setName( that.fullname.replace( /\.[^.]+$/, "" ) );
 	ui.dom.filesList.appendChild( source.elRoot );
@@ -61,19 +62,6 @@ Source.prototype = {
 		this.elIcon.classList.add( "loading" );
 		this.elIcon.classList.remove( "ramload" );
 	},
-	loaded: function() {
-		var buf = this.that.wbuff.buffer,
-			bufDur = buf.duration,
-			bufData0 = buf.getChannelData( 0 ),
-			bufData1 = buf.numberOfChannels < 2 ? bufData0 : buf.getChannelData( 1 );
-
-		this.uiWaveform = new gsuiWaveform( this.elWave );
-		this.uiWaveform.setResolution( 250, 40 );
-		this.uiWaveform.draw( bufData0, bufData1, bufDur, 0, bufDur );
-		this.elRoot.classList.add( "loaded" );
-		this.elRoot.classList.remove( "unloaded" );
-		this.elIcon.remove();
-	},
 	withoutData: function() {
 		this.elIcon.classList.add( "question" );
 		this.elIcon.classList.remove( "ramload" );
@@ -101,7 +89,7 @@ Source.prototype = {
 		var that = this.that;
 
 		if ( that.isLoaded ) {
-			gs.file.play( that );
+			waFwk.do.playSource( this.srcObj );
 		} else if ( !that.file ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
 				"<code>" + this.name + "</code> is missing...<br/>" +
@@ -114,7 +102,10 @@ Source.prototype = {
 				}
 			} );
 		} else if ( !that.isLoading ) {
-			gs.file.load( that, gs.file.play );
+			that.isLoading = true;
+			that.source.loading();
+			waFwk.do.loadSource( this.srcObj )
+				.then( waFwk.do.playSource );
 		}
 	},
 	dragstart: function( e ) {
