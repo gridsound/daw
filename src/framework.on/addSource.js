@@ -22,7 +22,7 @@ waFwk.on.addSource = function( srcObj ) {
 	source.that = that;
 	source.setName( that.fullname.replace( /\.[^.]+$/, "" ) );
 	ui.dom.filesList.appendChild( source.elRoot );
-	that.wbuff.sample.onended( gs.file.stop );
+	// that.wbuff.sample.onended( gs.file.stop );
 	gs.files.push( that );
 	if ( srcObj.data ) {
 		source.unloaded();
@@ -75,7 +75,7 @@ Source.prototype = {
 	},
 	mousedown: function( e ) {
 		if ( e.button !== 0 ) {
-			gs.file.stop();
+			waFwk.do.stopAllSources();
 		}
 		if ( e.ctrlKey ) {
 			gs.file.delete( this );
@@ -84,6 +84,7 @@ Source.prototype = {
 	click: function( e ) {
 		var that = this.that;
 
+		waFwk.do.stopAllSources();
 		if ( that.isLoaded ) {
 			waFwk.do.playSource( this.srcObj );
 		} else if ( !that.file ) {

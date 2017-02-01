@@ -63,8 +63,6 @@ JS = \
 	gs/file/create.js                 \
 	gs/file/delete.js                 \
 	gs/file/joinFile.js               \
-	gs/file/play.js                   \
-	gs/file/stop.js                   \
 	gs/history/history.js             \
 	gs/history/actions.js             \
 	                                  \
@@ -75,7 +73,6 @@ JS = \
 	ui/clock.js                       \
 	ui/currentTimeCursor.js           \
 	ui/exportToWaveFile.js            \
-	ui/filesCursor.js                 \
 	ui/filesInput.js                  \
 	ui/historyList.js                 \
 	ui/save.js                        \
@@ -89,10 +86,13 @@ JS = \
 	src/init.js                       \
 	src/framework.on.js               \
 	src/framework.on/addSource.js     \
-	src/framework.on/loadSource.js    \
-	src/framework.on/loadingSource.js \
 	src/framework.on/addTrack.js      \
+	src/framework.on/loadingSource.js \
+	src/framework.on/loadSource.js    \
 	src/framework.on/playPauseStop.js \
+	src/framework.on/playSource.js    \
+	src/framework.on/stopSource.js    \
+	src/framework.on/stopAllSources.js\
 	src/framework.on/setBPM.js        \
 	                                  \
 	ui/cursor.js                      \
