@@ -58,10 +58,6 @@ Source.prototype = {
 		this.elIcon.classList.remove( "question" );
 		this.elRoot.classList.add( "unloaded" );
 	},
-	loading: function() {
-		this.elIcon.classList.add( "loading" );
-		this.elIcon.classList.remove( "ramload" );
-	},
 	withoutData: function() {
 		this.elIcon.classList.add( "question" );
 		this.elIcon.classList.remove( "ramload" );
@@ -102,8 +98,6 @@ Source.prototype = {
 				}
 			} );
 		} else if ( !that.isLoading ) {
-			that.isLoading = true;
-			that.source.loading();
 			waFwk.do.loadSource( this.srcObj )
 				.then( waFwk.do.playSource );
 		}
