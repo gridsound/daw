@@ -87,6 +87,7 @@ JS = \
 	src/framework.on.js               \
 	src/framework.on/addSource.js     \
 	src/framework.on/addTrack.js      \
+	src/framework.on/endedSource.js   \
 	src/framework.on/loadingSource.js \
 	src/framework.on/loadSource.js    \
 	src/framework.on/playPauseStop.js \
