@@ -22,7 +22,6 @@ waFwk.on.addSource = function( srcObj ) {
 	source.that = that;
 	source.setName( that.fullname.replace( /\.[^.]+$/, "" ) );
 	ui.dom.filesList.appendChild( source.elRoot );
-	// that.wbuff.sample.onended( gs.file.stop );
 	gs.files.push( that );
 	if ( srcObj.data ) {
 		source.unloaded();
