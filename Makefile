@@ -62,7 +62,6 @@ JS = \
 	gs/playPauseStop.js               \
 	gs/file/create.js                 \
 	gs/file/delete.js                 \
-	gs/file/joinFile.js               \
 	gs/history/history.js             \
 	gs/history/actions.js             \
 	                                  \
@@ -87,6 +86,7 @@ JS = \
 	src/on/addSource.js               \
 	src/on/addTrack.js                \
 	src/on/endedSource.js             \
+	src/on/fillSource.js              \
 	src/on/loadingSource.js           \
 	src/on/loadSource.js              \
 	src/on/playPauseStop.js           \

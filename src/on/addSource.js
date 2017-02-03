@@ -16,19 +16,14 @@ waFwk.on.addSource = function( srcObj ) {
 			file: srcObj.data,
 			bufferDuration: srcObj.data ? null : file[ 3 ],
 			fullname: file.name || file[ 1 ],
+			size: file[ 2 ]
 		};
 
+	gs.files.push( that );
 	source.srcObj = srcObj;
 	source.that = that;
-	source.setName( that.fullname.replace( /\.[^.]+$/, "" ) );
+	source.setName( that.fullname );
 	ui.dom.filesList.appendChild( source.elRoot );
-	gs.files.push( that );
-	if ( srcObj.data ) {
-		source.unloaded();
-	} else {
-		that.size = file[ 2 ];
-		source.withoutData();
-	}
 	return source;
 };
 
@@ -47,20 +42,8 @@ function Source() {
 };
 
 Source.prototype = {
-	setName: function( name ) {
-		this.elName.textContent =
-		this.name = name;
-		this.that.name = name;
-	},
-	unloaded: function() {
-		this.elIcon.classList.add( "ramload" );
-		this.elIcon.classList.remove( "question" );
-		this.elRoot.classList.add( "unloaded" );
-	},
-	withoutData: function() {
-		this.elIcon.classList.add( "question" );
-		this.elIcon.classList.remove( "ramload" );
-		this.elRoot.classList.add( "unloaded" );
+	setName: function( filename ) {
+		this.elName.textContent = filename.replace( /\.[^.]+$/, "" );
 	},
 	error: function() {
 		this.elIcon.classList.add( "cross" );
@@ -81,32 +64,25 @@ Source.prototype = {
 		}
 	},
 	click: function( e ) {
-		var that = this.that;
-
 		waFwk.do.stopAllSources();
-		if ( that.isLoaded ) {
+		if ( this.that.isLoaded ) {
 			waFwk.do.playSource( this.srcObj );
-		} else if ( !that.file ) {
+		} else if ( !this.srcObj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
-				"<code>" + this.name + "</code> is missing...<br/>" +
+				"<code>" + this.srcObj.metadata.name + "</code> is missing...<br/>" +
 				"Do you want to browse your files to find it ?" )
 			.then( function( b ) {
-				if ( b ) {
-					ui.filesInput.getFile( function( file ) {
-						gs.file.joinFile( that, file );
-					} );
-				}
+				b && ui.filesInput.getFile(
+					waFwk.do.fillSource.bind( this.srcObj ) );
 			} );
-		} else if ( !that.isLoading ) {
+		} else if ( !this.that.isLoading ) {
 			waFwk.do.loadSource( this.srcObj )
 				.then( waFwk.do.playSource );
 		}
 	},
 	dragstart: function( e ) {
-		var that = this.that;
-
-		if ( that.isLoaded && !gsfileDragging ) {
-			gsfileDragging = that;
+		if ( this.that.isLoaded && !gsfileDragging ) {
+			gsfileDragging = this.that;
 			elItemDragging = this.elRoot.cloneNode( true );
 			elItemDragging.style.left = e.pageX + "px";
 			elItemDragging.style.top = e.pageY + "px";

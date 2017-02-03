@@ -22,28 +22,27 @@ document.body.ondrop = function( e ) {
 		while ( file = data.files[ i++ ] ) {
 			pushFile( file );
 		}
-		gs.compositions.readFile( saveFile ).then( function() {
-			loadFiles();
-		} );
+		gs.compositions.readFile( saveFile ).then( loadFiles );
 	}
 	return false;
 };
 
 function loadFiles() {
 	arrFiles.forEach( function( file ) {
-		if ( !gs.files.some( function( f ) {
-			var size = f.file ? f.file.size : f.size;
-
-			if ( f.fullname === file.name && size === file.size ) {
-				if ( !f.file ) {
-					gs.file.joinFile( f, file );
-				}
-				return true;
-			}
-		} ) ) {
-			gs.file.create( file );
-		}
+		waFwk.sources.some( some.bind( null, file ) )
+			|| gs.file.create( file );
 	} );
+
+	function some( file, scrObj ) {
+		var usrDat = scrObj.userData;
+
+		if ( usrDat.that.fullname === file.name &&
+			( scrObj.data ? scrObj.data.size : usrDat.that.size ) === file.size
+		) {
+			scrObj.data || waFwk.do.fillSource( scrObj, file );
+			return true;
+		}
+	}
 }
 
 function dataItems( droppedItems ) {
@@ -60,9 +59,7 @@ function dataItems( droppedItems ) {
 		}
 	}
 	Promise.all( arrayPromises ).then( function() {
-		gs.compositions.readFile( saveFile ).then( function() {
-			loadFiles();
-		} );
+		gs.compositions.readFile( saveFile ).then( loadFiles );
 	} );
 }
 
