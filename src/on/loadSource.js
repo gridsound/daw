@@ -7,8 +7,8 @@ waFwk.on.loadSource = function( srcObj ) {
 		bufData0 = buf.getChannelData( 0 ),
 		bufData1 = buf.numberOfChannels < 2 ? bufData0 : buf.getChannelData( 1 );
 
-	usrDat.that.isLoaded = true;
-	usrDat.that.isLoading = false;
+	usrDat.isLoaded = true;
+	usrDat.isLoading = false;
 	usrDat.uiWaveform = new gsuiWaveform( usrDat.elWave );
 	usrDat.uiWaveform.setResolution( 250, 40 );
 	usrDat.uiWaveform.draw( bufData0, bufData1, bufDur, 0, bufDur );

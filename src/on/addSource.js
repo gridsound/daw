@@ -3,47 +3,34 @@
 ( function() {
 
 waFwk.on.addSource = function( srcObj ) {
-	var source = new Source(),
-		file = srcObj.metadata._file,
-		that = {
-			source: source,
-			id: gs.files.length,
-			wbuff: gs.wctx.createBuffer(),
-			isLoaded: false,
-			isLoading: false,
-			nbSamples: 0,
-			samplesToSet: [],
-			file: srcObj.data,
-			bufferDuration: srcObj.data ? null : file[ 3 ],
-			fullname: file.name || file[ 1 ],
-			size: file[ 2 ]
-		};
+	var usrDat = new Source();
 
-	gs.files.push( that );
-	source.srcObj = srcObj;
-	source.that = that;
-	source.setName( that.fullname );
-	ui.dom.filesList.appendChild( source.elRoot );
-	return source;
+	usrDat.srcObj = srcObj;
+	usrDat.setName( srcObj.metadata.name );
+	ui.dom.filesList.appendChild( usrDat.elRoot );
+	return usrDat;
 };
 
-var gsfileDragging,
-	elItemDragging;
+var srcDragging, srcCloned;
 
 function Source() {
 	this.elRoot = ui.createHTML( Handlebars.templates.itemBuffer() )[ 0 ];
 	this.elName = this.elRoot.querySelector( ".name" );
 	this.elIcon = this.elRoot.querySelector( ".icon" );
 	this.elWave = this.elRoot.querySelector( ".gsuiWaveform" );
+
 	this.elRoot.onmousedown = this.mousedown.bind( this );
 	this.elRoot.onclick = this.click.bind( this );
 	this.elRoot.ondragstart = this.dragstart.bind( this );
 	this.elRoot.oncontextmenu = function() { return false; };
+
+	this.isLoading =
+	this.isLoaded = false;
 };
 
 Source.prototype = {
-	setName: function( filename ) {
-		this.elName.textContent = filename.replace( /\.[^.]+$/, "" );
+	setName: function( name ) {
+		this.elName.textContent = name;
 	},
 	error: function() {
 		this.elIcon.classList.add( "cross" );
@@ -65,7 +52,7 @@ Source.prototype = {
 	},
 	click: function( e ) {
 		waFwk.do.stopAllSources();
-		if ( this.that.isLoaded ) {
+		if ( this.isLoaded ) {
 			waFwk.do.playSource( this.srcObj );
 		} else if ( !this.srcObj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
@@ -75,19 +62,19 @@ Source.prototype = {
 				b && ui.filesInput.getFile(
 					waFwk.do.fillSource.bind( this.srcObj ) );
 			} );
-		} else if ( !this.that.isLoading ) {
+		} else if ( !this.isLoading ) {
 			waFwk.do.loadSource( this.srcObj )
 				.then( waFwk.do.playSource );
 		}
 	},
 	dragstart: function( e ) {
-		if ( this.that.isLoaded && !gsfileDragging ) {
-			gsfileDragging = this.that;
-			elItemDragging = this.elRoot.cloneNode( true );
-			elItemDragging.style.left = e.pageX + "px";
-			elItemDragging.style.top = e.pageY + "px";
-			elItemDragging.classList.add( "dragging" );
-			ui.dom.app.appendChild( elItemDragging );
+		if ( this.isLoaded && !srcDragging ) {
+			srcDragging = this;
+			srcCloned = this.elRoot.cloneNode( true );
+			srcCloned.style.left = e.pageX + "px";
+			srcCloned.style.top = e.pageY + "px";
+			srcCloned.classList.add( "dragging" );
+			ui.dom.app.appendChild( srcCloned );
 			ui.cursor( "app", "grabbing" );
 		}
 		return false;
@@ -95,24 +82,24 @@ Source.prototype = {
 };
 
 document.body.addEventListener( "mousemove", function( e ) {
-	if ( gsfileDragging ) {
-		elItemDragging.style.left = e.pageX + "px";
-		elItemDragging.style.top = e.pageY + "px";
+	if ( srcDragging ) {
+		srcCloned.style.left = e.pageX + "px";
+		srcCloned.style.top = e.pageY + "px";
 	}
 } );
 
 document.body.addEventListener( "mouseup", function( e ) {
-	if ( gsfileDragging ) {
-		elItemDragging.remove();
-		gsfileDragging = null;
+	if ( srcDragging ) {
+		srcCloned.remove();
+		srcDragging = null;
 		ui.cursor( "app", null );
 	}
 } );
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
-	if ( gsfileDragging ) {
+	if ( srcDragging ) {
 		gs.history.pushExec( "create", {
-			sample: gs.sample.create( gsfileDragging ),
+			sample: gs.sample.create( srcDragging ),
 			track: ui.getTrackFromPageY( e.pageY ),
 			when: ui.getGridSec( e.pageX )
 		} );
