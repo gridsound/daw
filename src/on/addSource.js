@@ -69,11 +69,15 @@ Source.prototype = {
 	},
 	dragstart: function( e ) {
 		if ( this.isLoaded && !srcDragging ) {
+			var elCursor;
+
 			srcDragging = this;
 			srcCloned = this.elRoot.cloneNode( true );
 			srcCloned.style.left = e.pageX + "px";
 			srcCloned.style.top = e.pageY + "px";
 			srcCloned.classList.add( "dragging" );
+			elCursor = srcCloned.querySelector( "#filesCursor" );
+			elCursor && elCursor.remove();
 			ui.dom.app.appendChild( srcCloned );
 			ui.cursor( "app", "grabbing" );
 		}
