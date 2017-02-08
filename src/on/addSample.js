@@ -1,5 +1,23 @@
 "use strict";
 
+( function() {
+
+waFwk.on.addSample = function( smpObj ) {
+	var usrDat = new SampleHTML();
+
+	lg( "addSample", smpObj );
+	return usrDat;
+};
+
+function SampleHTML() {
+}
+
+SampleHTML.prototype = {
+};
+
+} )();
+
+/*
 gs.sample.create = function( gsfile ) {
 	var smp = gs.wctx.createSample( gsfile.wbuff );
 
@@ -16,3 +34,4 @@ gs.sample.create = function( gsfile ) {
 	ui.sample.duration( smp );
 	return smp;
 };
+*/

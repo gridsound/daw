@@ -83,6 +83,7 @@ JS = \
 	ui/_init.js                       \
 	                                  \
 	src/init.js                       \
+	src/on/addSample.js               \
 	src/on/addSource.js               \
 	src/on/addTrack.js                \
 	src/on/endedSource.js             \
@@ -117,7 +118,6 @@ JS = \
 	gs/compositions/save.js           \
 	gs/compositions/serialize.js      \
 	gs/compositions/store.js          \
-	gs/sample/create.js               \
 	gs/sample/delete.js               \
 	gs/sample/duration.js             \
 	gs/sample/inTrack.js              \

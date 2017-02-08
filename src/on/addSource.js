@@ -102,13 +102,11 @@ document.body.addEventListener( "mouseup", function( e ) {
 } );
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
-	if ( srcDragging ) {
-		gs.history.pushExec( "create", {
-			sample: gs.sample.create( srcDragging ),
-			track: ui.getTrackFromPageY( e.pageY ),
-			when: ui.getGridSec( e.pageX )
-		} );
-	}
+	srcDragging && waFwk.do.addSample( {
+		source: srcDragging,
+		track: ui.getTrackFromPageY( e.pageY ),
+		when: ui.getGridSec( e.pageX )
+	} );
 } );
 
 } )();
