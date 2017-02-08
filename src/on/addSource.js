@@ -11,7 +11,8 @@ waFwk.on.addSource = function( srcObj ) {
 	return usrDat;
 };
 
-var srcDragging, srcCloned;
+var srcobjDragging,
+	srchtmlCloned;
 
 function SourceHTML() {
 	this.elRoot = ui.createHTML( Handlebars.templates.itemBuffer() )[ 0 ];
@@ -68,17 +69,17 @@ SourceHTML.prototype = {
 		}
 	},
 	dragstart: function( e ) {
-		if ( this.isLoaded && !srcDragging ) {
+		if ( this.isLoaded && !srcobjDragging ) {
 			var elCursor;
 
-			srcDragging = this.srcObj;
-			srcCloned = this.elRoot.cloneNode( true );
-			srcCloned.style.left = e.pageX + "px";
-			srcCloned.style.top = e.pageY + "px";
-			srcCloned.classList.add( "dragging" );
-			elCursor = srcCloned.querySelector( "#filesCursor" );
+			srcobjDragging = this.srcObj;
+			srchtmlCloned = this.elRoot.cloneNode( true );
+			srchtmlCloned.style.left = e.pageX + "px";
+			srchtmlCloned.style.top = e.pageY + "px";
+			srchtmlCloned.classList.add( "dragging" );
+			elCursor = srchtmlCloned.querySelector( "#filesCursor" );
 			elCursor && elCursor.remove();
-			ui.dom.app.appendChild( srcCloned );
+			ui.dom.app.appendChild( srchtmlCloned );
 			ui.cursor( "app", "grabbing" );
 		}
 		return false;
@@ -86,25 +87,25 @@ SourceHTML.prototype = {
 };
 
 document.body.addEventListener( "mousemove", function( e ) {
-	if ( srcDragging ) {
-		srcCloned.style.left = e.pageX + "px";
-		srcCloned.style.top = e.pageY + "px";
+	if ( srcobjDragging ) {
+		srchtmlCloned.style.left = e.pageX + "px";
+		srchtmlCloned.style.top = e.pageY + "px";
 	}
 } );
 
 document.body.addEventListener( "mouseup", function( e ) {
-	if ( srcDragging ) {
-		srcCloned.remove();
-		srcCloned =
-		srcDragging = null;
+	if ( srcobjDragging ) {
+		srchtmlCloned.remove();
+		srchtmlCloned =
+		srcobjDragging = null;
 		ui.cursor( "app", null );
 	}
 } );
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
-	srcDragging && waFwk.do.addSample( {
-		source: srcDragging,
-		track: ui.getTrackFromPageY( e.pageY ),
+	srcobjDragging && waFwk.do.addSample( {
+		srcobj: srcobjDragging,
+		trkobj: ui.getTrackFromPageY( e.pageY ),
 		when: ui.getGridSec( e.pageX )
 	} );
 } );
