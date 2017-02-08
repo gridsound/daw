@@ -6,8 +6,8 @@ ui.initElement( "visual", function( el ) {
 	uiOsc.setResolution( 256, el.clientHeight );
 	uiOsc.setPinch( 1 );
 	uiOsc.dataFunction( function() {
-		gs.analyserNode.getByteTimeDomainData( gs.analyserData );
-		return gs.analyserData;
+		waFwk.analyser.getByteTimeDomainData( waFwk.analyserData );
+		return waFwk.analyserData;
 	} );
 	uiOsc.drawBegin( function( ctx, max, w, h ) {
 		ctx.globalCompositeOperation = "source-in";
