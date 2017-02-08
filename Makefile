@@ -92,6 +92,7 @@ JS = \
 	src/on/loadSource.js              \
 	src/on/playPauseStop.js           \
 	src/on/playSource.js              \
+	src/on/removeSample.js            \
 	src/on/setBPM.js                  \
 	src/on/stopAllSources.js          \
 	                                  \
