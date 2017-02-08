@@ -3,7 +3,7 @@
 ( function() {
 
 waFwk.on.addSource = function( srcObj ) {
-	var usrDat = new Source();
+	var usrDat = new SourceHTML();
 
 	usrDat.srcObj = srcObj;
 	usrDat.setName( srcObj.metadata.name );
@@ -13,7 +13,7 @@ waFwk.on.addSource = function( srcObj ) {
 
 var srcDragging, srcCloned;
 
-function Source() {
+function SourceHTML() {
 	this.elRoot = ui.createHTML( Handlebars.templates.itemBuffer() )[ 0 ];
 	this.elName = this.elRoot.querySelector( ".name" );
 	this.elIcon = this.elRoot.querySelector( ".icon" );
@@ -28,7 +28,7 @@ function Source() {
 	this.isLoaded = false;
 };
 
-Source.prototype = {
+SourceHTML.prototype = {
 	setName: function( name ) {
 		this.elName.textContent = name;
 	},
@@ -71,7 +71,7 @@ Source.prototype = {
 		if ( this.isLoaded && !srcDragging ) {
 			var elCursor;
 
-			srcDragging = this;
+			srcDragging = this.srcObj;
 			srcCloned = this.elRoot.cloneNode( true );
 			srcCloned.style.left = e.pageX + "px";
 			srcCloned.style.top = e.pageY + "px";
@@ -95,6 +95,7 @@ document.body.addEventListener( "mousemove", function( e ) {
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( srcDragging ) {
 		srcCloned.remove();
+		srcCloned =
 		srcDragging = null;
 		ui.cursor( "app", null );
 	}
