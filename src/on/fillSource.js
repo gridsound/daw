@@ -1,14 +1,10 @@
 "use strict";
 
-waFwk.on.fillSource = function( srcObj ) {
-	var usrDat = srcObj.userData,
-		name = srcObj.data.name;
+waFwk.on.fillSource = function( srcobj ) {
+	var dom = srcobj.userData;
 
-	if ( name ) {
-		srcObj.metadata.name = name;
-		usrDat.setName( name );
-	}
-	usrDat.elIcon.classList.remove( "question" );
-	usrDat.elIcon.classList.add( "ramload" );
-	usrDat.elRoot.classList.add( "unloaded" );
+	dom.elName.textContent = srcobj.metadata.name;
+	dom.elIcon.classList.remove( "question" );
+	dom.elIcon.classList.add( "ramload" );
+	dom.elRoot.classList.add( "unloaded" );
 };

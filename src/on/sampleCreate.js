@@ -15,6 +15,8 @@ function SampleHTML( smpobj ) {
 	this.elCropStart = elRoot.querySelector( ".crop.start" );
 	this.elCropEnd = elRoot.querySelector( ".crop.end" );
 	this.uiWaveform = new gsuiWaveform( this.elWave );
+
+	this.elName.textContent = smpobj.srcobj.metadata.name;
 	Array.from( elRoot.querySelectorAll( "*" ) ).forEach( function( el ) {
 		el.smpobj = smpobj;
 	} );

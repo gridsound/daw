@@ -2,11 +2,11 @@
 
 ( function() {
 
-waFwk.on.addSource = function( srcObj ) {
+waFwk.on.addSource = function( srcobj ) {
 	var usrDat = new SourceHTML();
 
-	usrDat.srcObj = srcObj;
-	usrDat.setName( srcObj.metadata.name );
+	usrDat.srcobj = srcobj;
+	usrDat.elName.textContent = srcobj.metadata.name;
 	ui.dom.filesList.appendChild( usrDat.elRoot );
 	return usrDat;
 };
@@ -30,9 +30,6 @@ function SourceHTML() {
 };
 
 SourceHTML.prototype = {
-	setName: function( name ) {
-		this.elName.textContent = name;
-	},
 	error: function() {
 		this.elIcon.classList.add( "cross" );
 		this.elIcon.classList.remove( "loading" );
@@ -54,17 +51,17 @@ SourceHTML.prototype = {
 	click: function( e ) {
 		waFwk.do.stopAllSources();
 		if ( this.isLoaded ) {
-			waFwk.do.playSource( this.srcObj );
-		} else if ( !this.srcObj.data ) {
+			waFwk.do.playSource( this.srcobj );
+		} else if ( !this.srcobj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
-				"<code>" + this.srcObj.metadata.name + "</code> is missing...<br/>" +
+				"<code>" + this.srcobj.metadata.name + "</code> is missing...<br/>" +
 				"Do you want to browse your files to find it ?" )
 			.then( function( b ) {
 				b && ui.filesInput.getFile(
-					waFwk.do.fillSource.bind( this.srcObj ) );
+					waFwk.do.fillSource.bind( this.srcobj ) );
 			} );
 		} else if ( !this.isLoading ) {
-			waFwk.do.loadSource( this.srcObj )
+			waFwk.do.loadSource( this.srcobj )
 				.then( waFwk.do.playSource );
 		}
 	},
@@ -72,7 +69,7 @@ SourceHTML.prototype = {
 		if ( this.isLoaded && !srcobjDragging ) {
 			var elCursor;
 
-			srcobjDragging = this.srcObj;
+			srcobjDragging = this.srcobj;
 			srchtmlCloned = this.elRoot.cloneNode( true );
 			srchtmlCloned.style.left = e.pageX + "px";
 			srchtmlCloned.style.top = e.pageY + "px";
@@ -104,11 +101,11 @@ document.body.addEventListener( "mouseup", function( e ) {
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( srcobjDragging ) {
-		var smpobj = waFwk.do.sampleCreate( srcobjDragging );
-
-		waFwk.do.sampleWhen( smpobj, ui.getGridSec( e.pageX ) );
-		waFwk.do.sampleDuration( smpobj, srcobjDragging.metadata.duration );
-		waFwk.do.sampleInTrack( smpobj, ui.getTrackFromPageY( e.pageY ) );
+		waFwk.do.sampleCreate( {
+			srcobj: srcobjDragging,
+			trkobj: ui.getTrackFromPageY( e.pageY ),
+			when: ui.getGridSec( e.pageX )
+		} );
 	}
 } );
 
