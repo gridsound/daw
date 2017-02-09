@@ -83,7 +83,6 @@ JS = \
 	ui/_init.js                       \
 	                                  \
 	src/init.js                       \
-	src/on/addSample.js               \
 	src/on/addSource.js               \
 	src/on/addTrack.js                \
 	src/on/endedSource.js             \
@@ -93,6 +92,7 @@ JS = \
 	src/on/playPauseStop.js           \
 	src/on/playSource.js              \
 	src/on/removeSample.js            \
+	src/on/sampleCreate.js            \
 	src/on/sampleDuration.js          \
 	src/on/sampleInTrack.js           \
 	src/on/sampleWhen.js              \

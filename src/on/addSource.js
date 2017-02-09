@@ -103,11 +103,13 @@ document.body.addEventListener( "mouseup", function( e ) {
 } );
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
-	srcobjDragging && waFwk.do.addSample( {
-		srcobj: srcobjDragging,
-		trkobj: ui.getTrackFromPageY( e.pageY ),
-		when: ui.getGridSec( e.pageX )
-	} );
+	if ( srcobjDragging ) {
+		var smpobj = waFwk.do.sampleCreate( srcobjDragging );
+
+		waFwk.do.sampleWhen( smpobj, ui.getGridSec( e.pageX ) );
+		waFwk.do.sampleDuration( smpobj, srcobjDragging.metadata.duration );
+		waFwk.do.sampleInTrack( smpobj, ui.getTrackFromPageY( e.pageY ) );
+	}
 } );
 
 } )();
