@@ -25,21 +25,21 @@ js:
 css:
 	@echo -n "* CSS ................ "
 	@cp src/dep/gs-ui-components.min.css src/dep/gs-ui-components.min.scss
-	@sass -I src/ui/css src/ui/css/style.scss bin/gs-daw.min.css --style compressed
+	@cd bin/; sass -I ../src/ui/css ../src/ui/css/style.scss gs-daw.min.css --style compressed
 	@rm src/dep/gs-ui-components.min.scss
 	@echo gs-daw.min.css
 
 wafwk:
 	@$(MAKE) -C ../gs-webaudio-framework/
-	@cp ../gs-webaudio-framework/bin/* dep
+	@cp ../gs-webaudio-framework/bin/* src/dep
 
 walib:
 	@$(MAKE) -C ../gs-webaudio-library/
-	@cp ../gs-webaudio-library/bin/* dep
+	@cp ../gs-webaudio-library/bin/* src/dep
 
 uicmp:
 	@$(MAKE) -C ../gs-ui-components/
-	@cp ../gs-ui-components/bin/gs-* dep
+	@cp ../gs-ui-components/bin/gs-* src/dep
 
 .PHONY: all html css js wafwk walib uicmp
 
