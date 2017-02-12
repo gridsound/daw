@@ -1,5 +1,0 @@
-sass:
-  sass_dir: css
-  style: compressed
-
-include: [ "__precompiled.js", "_app.handlebars" ]
