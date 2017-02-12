@@ -33,13 +33,11 @@ function loadFiles() {
 			|| gs.file.create( file );
 	} );
 
-	function some( file, scrObj ) {
-		var usrDat = scrObj.userData;
-
-		if ( usrDat.that.fullname === file.name &&
-			( scrObj.data ? scrObj.data.size : usrDat.that.size ) === file.size
+	function some( file, scrobj ) {
+		if ( scrobj.metadata.filename === file.name &&
+			( scrobj.data ? scrobj.data.size : scrobj.userData.that.size ) === file.size
 		) {
-			scrObj.data || waFwk.do.fillSource( scrObj, file );
+			scrobj.data || waFwk.do.fillSource( scrobj, file );
 			return true;
 		}
 	}
