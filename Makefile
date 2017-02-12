@@ -61,30 +61,30 @@ JS = \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
 	                                            \
-	src/ui/js/gs/_init.js                       \
-	src/ui/js/gs/loop.js                        \
-	src/ui/js/gs/playPauseStop.js               \
-	src/ui/js/gs/file/create.js                 \
-	src/ui/js/gs/file/delete.js                 \
-	src/ui/js/gs/history/history.js             \
-	src/ui/js/gs/history/actions.js             \
-	                                            \
-	src/ui/js/ui.js                             \
-	src/ui/js/btnMagnet.js                      \
-	src/ui/js/btnUndo.js                        \
-	src/ui/js/btnRedo.js                        \
-	src/ui/js/clock.js                          \
-	src/ui/js/currentTimeCursor.js              \
-	src/ui/js/exportToWaveFile.js               \
-	src/ui/js/filesInput.js                     \
-	src/ui/js/historyList.js                    \
-	src/ui/js/save.js                           \
-	src/ui/js/timeline.js                       \
-	src/ui/js/timelineBeats.js                  \
-	src/ui/js/timelineLoop.js                   \
-	src/ui/js/tracksBg.js                       \
-	src/ui/js/visual.js                         \
-	src/ui/js/_init.js                          \
+	src/ui/js/old/gs/_init.js                       \
+	src/ui/js/old/gs/loop.js                        \
+	src/ui/js/old/gs/playPauseStop.js               \
+	src/ui/js/old/gs/file/create.js                 \
+	src/ui/js/old/gs/file/delete.js                 \
+	src/ui/js/old/gs/history/history.js             \
+	src/ui/js/old/gs/history/actions.js             \
+	                                                \
+	src/ui/js/old/ui.js                             \
+	src/ui/js/old/btnMagnet.js                      \
+	src/ui/js/old/btnUndo.js                        \
+	src/ui/js/old/btnRedo.js                        \
+	src/ui/js/old/clock.js                          \
+	src/ui/js/old/currentTimeCursor.js              \
+	src/ui/js/old/exportToWaveFile.js               \
+	src/ui/js/old/filesInput.js                     \
+	src/ui/js/old/historyList.js                    \
+	src/ui/js/old/save.js                           \
+	src/ui/js/old/timeline.js                       \
+	src/ui/js/old/timelineBeats.js                  \
+	src/ui/js/old/timelineLoop.js                   \
+	src/ui/js/old/tracksBg.js                       \
+	src/ui/js/old/visual.js                         \
+	src/ui/js/old/_init.js                          \
 	                                            \
 	src/init.js                                 \
 	src/on/addSource.js                         \
@@ -103,66 +103,66 @@ JS = \
 	src/on/setBPM.js                            \
 	src/on/stopAllSources.js                    \
 	                                            \
-	src/ui/js/cursor.js                         \
-	src/ui/js/getGridSec.js                     \
-	src/ui/js/getTrackFromPageY.js              \
-	src/ui/js/panelSection.js                   \
-	src/ui/js/resize.js                         \
-	src/ui/js/sample.js                         \
-	src/ui/js/selectTool.js                     \
-	src/ui/js/setFilesWidth.js                  \
-	src/ui/js/setGridScrollTop.js               \
-	src/ui/js/setGridZoom.js                    \
-	src/ui/js/setTrackLinesLeft.js              \
-	src/ui/js/setTrackNamesWidth.js             \
-	src/ui/js/updateGridShadows.js              \
-	                                            \
-	src/ui/js/gs/currentTime.js                 \
-	src/ui/js/gs/reset.js                       \
-	                                            \
-	src/ui/js/gs/compositions/init.js           \
-	src/ui/js/gs/compositions/load.js           \
-	src/ui/js/gs/compositions/readFile.js       \
-	src/ui/js/gs/compositions/save.js           \
-	src/ui/js/gs/compositions/serialize.js      \
-	src/ui/js/gs/compositions/store.js          \
-	src/ui/js/gs/sample/delete.js               \
-	src/ui/js/gs/sample/duration.js             \
-	src/ui/js/gs/sample/inTrack.js              \
-	src/ui/js/gs/sample/mute.js                 \
-	src/ui/js/gs/sample/select.js               \
-	src/ui/js/gs/sample/slip.js                 \
-	src/ui/js/gs/sample/when.js                 \
-	src/ui/js/gs/samples/selected/do.js         \
-	src/ui/js/gs/samples/selected/min.js        \
-	src/ui/js/gs/samples/selected/max.js        \
-	src/ui/js/gs/samples/selected/copyPaste.js  \
-	src/ui/js/gs/samples/selected/cut.js        \
-	src/ui/js/gs/samples/selected/delete.js     \
-	src/ui/js/gs/samples/selected/duration.js   \
-	src/ui/js/gs/samples/selected/when.js       \
-	src/ui/js/gs/samples/selected/slip.js       \
-	src/ui/js/gs/samples/selected/crop.js       \
-	src/ui/js/gs/samples/selected/unselect.js   \
-	                                            \
-	src/ui/js/gs/events/bodyClick.js            \
-	src/ui/js/gs/events/clockUnits.js           \
-	src/ui/js/gs/events/divExtend.js            \
-	src/ui/js/gs/events/dropFiles.js            \
-	src/ui/js/gs/events/fileFilters.js          \
-	src/ui/js/gs/events/gridMouse.js            \
-	src/ui/js/gs/events/keyboard.js             \
-	src/ui/js/gs/events/panelMenu.js            \
-	src/ui/js/gs/events/resize.js               \
-	src/ui/js/gs/events/tools.js                \
-	src/ui/js/gs/events/toolCut.js              \
-	src/ui/js/gs/events/toolDelete.js           \
-	src/ui/js/gs/events/toolHand.js             \
-	src/ui/js/gs/events/toolMute.js             \
-	src/ui/js/gs/events/toolPaint.js            \
-	src/ui/js/gs/events/toolSelect.js           \
-	src/ui/js/gs/events/toolSlip.js             \
-	src/ui/js/gs/events/toolZoom.js             \
+	src/ui/js/old/cursor.js                         \
+	src/ui/js/old/getGridSec.js                     \
+	src/ui/js/old/getTrackFromPageY.js              \
+	src/ui/js/old/panelSection.js                   \
+	src/ui/js/old/resize.js                         \
+	src/ui/js/old/sample.js                         \
+	src/ui/js/old/selectTool.js                     \
+	src/ui/js/old/setFilesWidth.js                  \
+	src/ui/js/old/setGridScrollTop.js               \
+	src/ui/js/old/setGridZoom.js                    \
+	src/ui/js/old/setTrackLinesLeft.js              \
+	src/ui/js/old/setTrackNamesWidth.js             \
+	src/ui/js/old/updateGridShadows.js              \
+	                                                \
+	src/ui/js/old/gs/currentTime.js                 \
+	src/ui/js/old/gs/reset.js                       \
+	                                                \
+	src/ui/js/old/gs/compositions/init.js           \
+	src/ui/js/old/gs/compositions/load.js           \
+	src/ui/js/old/gs/compositions/readFile.js       \
+	src/ui/js/old/gs/compositions/save.js           \
+	src/ui/js/old/gs/compositions/serialize.js      \
+	src/ui/js/old/gs/compositions/store.js          \
+	src/ui/js/old/gs/sample/delete.js               \
+	src/ui/js/old/gs/sample/duration.js             \
+	src/ui/js/old/gs/sample/inTrack.js              \
+	src/ui/js/old/gs/sample/mute.js                 \
+	src/ui/js/old/gs/sample/select.js               \
+	src/ui/js/old/gs/sample/slip.js                 \
+	src/ui/js/old/gs/sample/when.js                 \
+	src/ui/js/old/gs/samples/selected/do.js         \
+	src/ui/js/old/gs/samples/selected/min.js        \
+	src/ui/js/old/gs/samples/selected/max.js        \
+	src/ui/js/old/gs/samples/selected/copyPaste.js  \
+	src/ui/js/old/gs/samples/selected/cut.js        \
+	src/ui/js/old/gs/samples/selected/delete.js     \
+	src/ui/js/old/gs/samples/selected/duration.js   \
+	src/ui/js/old/gs/samples/selected/when.js       \
+	src/ui/js/old/gs/samples/selected/slip.js       \
+	src/ui/js/old/gs/samples/selected/crop.js       \
+	src/ui/js/old/gs/samples/selected/unselect.js   \
+	                                                \
+	src/ui/js/old/gs/events/bodyClick.js            \
+	src/ui/js/old/gs/events/clockUnits.js           \
+	src/ui/js/old/gs/events/divExtend.js            \
+	src/ui/js/old/gs/events/dropFiles.js            \
+	src/ui/js/old/gs/events/fileFilters.js          \
+	src/ui/js/old/gs/events/gridMouse.js            \
+	src/ui/js/old/gs/events/keyboard.js             \
+	src/ui/js/old/gs/events/panelMenu.js            \
+	src/ui/js/old/gs/events/resize.js               \
+	src/ui/js/old/gs/events/tools.js                \
+	src/ui/js/old/gs/events/toolCut.js              \
+	src/ui/js/old/gs/events/toolDelete.js           \
+	src/ui/js/old/gs/events/toolHand.js             \
+	src/ui/js/old/gs/events/toolMute.js             \
+	src/ui/js/old/gs/events/toolPaint.js            \
+	src/ui/js/old/gs/events/toolSelect.js           \
+	src/ui/js/old/gs/events/toolSlip.js             \
+	src/ui/js/old/gs/events/toolZoom.js             \
 	                                            \
 	init.js                                     \
 	src/run.js                                  \
