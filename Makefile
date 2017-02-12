@@ -13,7 +13,11 @@ all:
 
 html:
 	@echo -n "* HTML ............... "
-	@handlebars src/ui/html src/ui/html/partials -f bin/__templates.js
+	@handlebars               \
+		src/ui/html           \
+		src/ui/html/partials  \
+		src/ui/html/templates \
+		-f bin/__templates.js
 	@echo __templates.js
 	@$(MAKE) js
 

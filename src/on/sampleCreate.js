@@ -7,9 +7,9 @@ waFwk.on.sampleCreate = function( smpobj ) {
 };
 
 function SampleHTML( smpobj ) {
-	var elRoot = ui.createHTML( Handlebars.templates.gridBlockSample() )[ 0 ];
+	var tmp = document.querySelector( "#gridBlockSample" ).content,
+		elRoot = document.importNode( tmp, true );
 
-	this.elRoot = elRoot;
 	this.elWave = elRoot.querySelector( ".gsuiWaveform" );
 	this.elName = elRoot.querySelector( ".name" );
 	this.elCropStart = elRoot.querySelector( ".crop.start" );
@@ -20,16 +20,10 @@ function SampleHTML( smpobj ) {
 	Array.from( elRoot.querySelectorAll( "*" ) ).forEach( function( el ) {
 		el.smpobj = smpobj;
 	} );
-}
 
-// gs.sample.create = function( gsfile ) {
-	// var smp = gs.wctx.createSample( gsfile.wbuff );
-	// smp.data = {
-	// 	selected: false,
-	// 	gsfile: gsfile,
-	// };
-	// gsfile.source.used();
-	// ui.sample.create( smp );
-// };
+	ui.dom.templateCloned.appendChild( elRoot );
+	this.elRoot = ui.dom.templateCloned.querySelector( ".gridBlock" );
+	this.elRoot.remove();
+}
 
 } )();
