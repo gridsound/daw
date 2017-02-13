@@ -58,6 +58,9 @@ JS = \
 	bin/__templates.js                          \
 	                                            \
 	src/init.js                                 \
+	src/ui/js/partials/clock.js                 \
+	src/ui/js/partials/timeline.js              \
+	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
 	src/ui/js/templates/itemBuffer.js           \
 	src/ui/js/templates/gridBlockSample.js      \
@@ -91,16 +94,13 @@ JS = \
 	src/ui/js/old/btnMagnet.js                      \
 	src/ui/js/old/btnUndo.js                        \
 	src/ui/js/old/btnRedo.js                        \
-	src/ui/js/old/clock.js                          \
 	src/ui/js/old/currentTimeCursor.js              \
 	src/ui/js/old/exportToWaveFile.js               \
 	src/ui/js/old/filesInput.js                     \
 	src/ui/js/old/historyList.js                    \
 	src/ui/js/old/save.js                           \
-	src/ui/js/old/timeline.js                       \
 	src/ui/js/old/timelineBeats.js                  \
 	src/ui/js/old/timelineLoop.js                   \
-	src/ui/js/old/tracksBg.js                       \
 	src/ui/js/old/_init.js                          \
 	                                                \
 	src/ui/js/old/cursor.js                         \
@@ -146,7 +146,6 @@ JS = \
 	src/ui/js/old/gs/samples/selected/unselect.js   \
 	                                                \
 	src/ui/js/old/gs/events/bodyClick.js            \
-	src/ui/js/old/gs/events/clockUnits.js           \
 	src/ui/js/old/gs/events/divExtend.js            \
 	src/ui/js/old/gs/events/dropFiles.js            \
 	src/ui/js/old/gs/events/fileFilters.js          \

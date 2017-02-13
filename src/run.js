@@ -12,7 +12,6 @@ ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
 ui.setGridZoom( 1.5, 0 );
 ui.btnMagnet.toggle( true );
-ui.tracksBg.update();
 ui.timelineLoop.toggle( false );
 
 gs.history.reset();
@@ -20,7 +19,6 @@ gs.currentTime( 0 );
 gs.compositions.init();
 gs.composition.onended( gs.compositionStop );
 ui.dom.btnFiles.click();
-ui.dom.clockUnits.querySelector( ".s" ).click();
 ui.dom.menu.querySelector( "[data-tool='paint']" ).click();
 
 waFwk.analyser.fftSize = 256;
@@ -33,7 +31,12 @@ for ( var i = 0; i < 42; ++i ) {
 
 ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
 
+ui.clockInit();
 ui.visualInit();
+ui.timelineInit();
+
+ui.tracksBgUpdate();
 ui.visualOn();
+ui.clockInSeconds();
 
 } )();

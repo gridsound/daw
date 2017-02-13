@@ -13,6 +13,6 @@ ui.setGridZoom = function( zm, xpx ) {
 		ui.gridEm < 40 ? "small" :
 		ui.gridEm < 80 ? "medium" : "big";
 	ui.setTrackLinesLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
-	ui.timeline.update();
-	ui.tracksBg.update();
+	ui.timelineUpdate();
+	ui.tracksBgUpdate();
 };
