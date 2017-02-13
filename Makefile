@@ -87,6 +87,7 @@ JS = \
 	src/ui/js/old/_init.js                          \
 	                                            \
 	src/init.js                                 \
+	src/ui/js/itemBuffer.js                     \
 	src/ui/js/gridBlockSample.js                \
 	src/on/addSource.js                         \
 	src/on/addTrack.js                          \
