@@ -7,7 +7,9 @@
 window.waFwk = new gswaFramework();
 window.common = {};
 window.ui = {
-	dom: {}
+	dom: {},
+	tool: {},
+	BPMem: 1
 };
 window.gs = {
 	compositions: {},

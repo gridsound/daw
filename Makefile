@@ -163,8 +163,6 @@ JS = \
 	src/ui/js/old/gs/events/toolSelect.js           \
 	src/ui/js/old/gs/events/toolSlip.js             \
 	src/ui/js/old/gs/events/toolZoom.js             \
-	                                            \
-	init.js                                     \
-	src/run.js                                  \
-	                                            \
+	                                                \
+	src/run.js                                      \
 	src/analyticstracking.js
