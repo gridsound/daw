@@ -32,6 +32,8 @@ for ( var i = 0; i < 42; ++i ) {
 }
 
 ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
-ui.visual.on();
+
+ui.visualInit();
+ui.visualOn();
 
 } )();

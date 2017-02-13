@@ -58,6 +58,7 @@ JS = \
 	bin/__templates.js                          \
 	                                            \
 	src/init.js                                 \
+	src/ui/js/partials/visual.js                \
 	src/ui/js/itemBuffer.js                     \
 	src/ui/js/gridBlockSample.js                \
 	src/on/addSource.js                         \
@@ -100,7 +101,6 @@ JS = \
 	src/ui/js/old/timelineBeats.js                  \
 	src/ui/js/old/timelineLoop.js                   \
 	src/ui/js/old/tracksBg.js                       \
-	src/ui/js/old/visual.js                         \
 	src/ui/js/old/_init.js                          \
 	                                                \
 	src/ui/js/old/cursor.js                         \
