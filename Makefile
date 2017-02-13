@@ -57,11 +57,9 @@ JS = \
 	src/dep/gs-webaudio-framework.min.js        \
 	bin/__templates.js                          \
 	                                            \
-	src/common/_init.js                         \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
 	                                            \
-	src/ui/js/old/gs/_init.js                       \
 	src/ui/js/old/gs/loop.js                        \
 	src/ui/js/old/gs/playPauseStop.js               \
 	src/ui/js/old/gs/file/create.js                 \
