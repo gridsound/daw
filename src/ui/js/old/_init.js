@@ -1,7 +1,6 @@
 "use strict";
 
-ui.init( document.querySelector( "#app" ), "app", {} );
-
+ui.init();
 ui.BPMem = 1;
 ui.dom.toolBtns = Array.from( ui.dom.menu.querySelectorAll( ".btn[data-tool]" ) );
 ui.tool = {};

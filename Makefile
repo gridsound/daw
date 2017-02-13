@@ -57,6 +57,25 @@ JS = \
 	src/dep/gs-webaudio-framework.min.js        \
 	bin/__templates.js                          \
 	                                            \
+	src/init.js                                 \
+	src/ui/js/itemBuffer.js                     \
+	src/ui/js/gridBlockSample.js                \
+	src/on/addSource.js                         \
+	src/on/addTrack.js                          \
+	src/on/endedSource.js                       \
+	src/on/fillSource.js                        \
+	src/on/loadingSource.js                     \
+	src/on/loadSource.js                        \
+	src/on/playPauseStop.js                     \
+	src/on/playSource.js                        \
+	src/on/removeSample.js                      \
+	src/on/sampleCreate.js                      \
+	src/on/sampleDuration.js                    \
+	src/on/sampleInTrack.js                     \
+	src/on/sampleWhen.js                        \
+	src/on/setBPM.js                            \
+	src/on/stopAllSources.js                    \
+	                                            \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
 	                                            \
@@ -83,26 +102,7 @@ JS = \
 	src/ui/js/old/tracksBg.js                       \
 	src/ui/js/old/visual.js                         \
 	src/ui/js/old/_init.js                          \
-	                                            \
-	src/init.js                                 \
-	src/ui/js/itemBuffer.js                     \
-	src/ui/js/gridBlockSample.js                \
-	src/on/addSource.js                         \
-	src/on/addTrack.js                          \
-	src/on/endedSource.js                       \
-	src/on/fillSource.js                        \
-	src/on/loadingSource.js                     \
-	src/on/loadSource.js                        \
-	src/on/playPauseStop.js                     \
-	src/on/playSource.js                        \
-	src/on/removeSample.js                      \
-	src/on/sampleCreate.js                      \
-	src/on/sampleDuration.js                    \
-	src/on/sampleInTrack.js                     \
-	src/on/sampleWhen.js                        \
-	src/on/setBPM.js                            \
-	src/on/stopAllSources.js                    \
-	                                            \
+	                                                \
 	src/ui/js/old/cursor.js                         \
 	src/ui/js/old/getGridSec.js                     \
 	src/ui/js/old/getTrackFromPageY.js              \
