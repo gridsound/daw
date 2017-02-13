@@ -59,8 +59,8 @@ JS = \
 	                                            \
 	src/init.js                                 \
 	src/ui/js/partials/visual.js                \
-	src/ui/js/itemBuffer.js                     \
-	src/ui/js/gridBlockSample.js                \
+	src/ui/js/templates/itemBuffer.js           \
+	src/ui/js/templates/gridBlockSample.js      \
 	src/on/addSource.js                         \
 	src/on/addTrack.js                          \
 	src/on/endedSource.js                       \
