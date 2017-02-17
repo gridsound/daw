@@ -1,5 +1,8 @@
 "use strict";
 
 waFwk.on.sampleCreate = function( smpobj ) {
-	return new gridBlockSample( smpobj );
+	var usrdat = new gridBlockSample( smpobj );
+
+	usrdat.name( smpobj.srcobj.metadata.name );
+	return usrdat;
 };
