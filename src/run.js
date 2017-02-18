@@ -10,7 +10,6 @@ ui.resize();
 ui.setFilesWidth( 200 );
 ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
-ui.setGridZoom( 1.5, 0 );
 ui.btnMagnet.toggle( true );
 ui.timelineLoop.toggle( false );
 
@@ -32,9 +31,11 @@ for ( var i = 0; i < 42; ++i ) {
 ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
 
 ui.clockInit();
+ui.gridInit();
 ui.visualInit();
 ui.timelineInit();
 
+ui.gridZoom( 1.5, 0 );
 ui.tracksBgUpdate();
 ui.visualOn();
 ui.clockInSeconds();

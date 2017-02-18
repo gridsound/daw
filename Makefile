@@ -58,7 +58,11 @@ JS = \
 	bin/__templates.js                          \
 	                                            \
 	src/init.js                                 \
+	src/common/secCeilFloorRound.js             \
+	src/common/timestampText.js                 \
+	src/common/uuid.js                          \
 	src/ui/js/partials/clock.js                 \
+	src/ui/js/partials/grid.js                  \
 	src/ui/js/partials/timeline.js              \
 	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
@@ -79,9 +83,6 @@ JS = \
 	src/on/sampleWhen.js                        \
 	src/on/setBPM.js                            \
 	src/on/stopAllSources.js                    \
-	                                            \
-	src/common/timestampText.js                 \
-	src/common/uuid.js                          \
 	                                            \
 	src/ui/js/old/gs/loop.js                        \
 	src/ui/js/old/gs/playPauseStop.js               \
@@ -104,15 +105,11 @@ JS = \
 	src/ui/js/old/_init.js                          \
 	                                                \
 	src/ui/js/old/cursor.js                         \
-	src/ui/js/old/getGridSec.js                     \
-	src/ui/js/old/getTrackFromPageY.js              \
 	src/ui/js/old/panelSection.js                   \
 	src/ui/js/old/resize.js                         \
 	src/ui/js/old/sample.js                         \
 	src/ui/js/old/selectTool.js                     \
 	src/ui/js/old/setFilesWidth.js                  \
-	src/ui/js/old/setGridScrollTop.js               \
-	src/ui/js/old/setGridZoom.js                    \
 	src/ui/js/old/setTrackLinesLeft.js              \
 	src/ui/js/old/setTrackNamesWidth.js             \
 	src/ui/js/old/updateGridShadows.js              \

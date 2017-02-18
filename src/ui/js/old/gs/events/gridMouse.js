@@ -16,7 +16,7 @@ ui.dom.gridCols.onwheel = function( e ) {
 	}
 };
 ui.dom.gridCols.onscroll = function() {
-	ui.gridScrollTop = ui.dom.gridCols.scrollTop;
+	ui._gridScrollTop = ui.dom.gridCols.scrollTop;
 	ui.updateGridTopShadow();
 };
 
@@ -24,7 +24,7 @@ ui.dom.tracksLines.oncontextmenu = function() { return false; };
 ui.dom.tracksLines.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
 		mouseIsDown = true;
-		mousedownSec = ui.getGridSec( e.pageX );
+		mousedownSec = ui.gridGetWhen( e.pageX );
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
 		if ( e.button === 2 ) {
@@ -47,7 +47,7 @@ document.body.onwheel = function( e ) {
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( mouseIsDown ) {
 		var fn = ui.tool[ ui.currentTool ].mousemove,
-			secNew = ui.getGridSec( e.pageX );
+			secNew = ui.gridGetWhen( e.pageX );
 
 		ui.px_xRel = e.pageX - ui.px_x;
 		ui.px_yRel = e.pageY - ui.px_y;

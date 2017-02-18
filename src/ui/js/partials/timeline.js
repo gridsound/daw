@@ -9,7 +9,7 @@ ui.timelineInit = function() {
 
 		if ( now - firstClick < 250 ) {
 			gs.loop.stop();
-			gs.loop.timeA( ui.getGridSec( e.pageX ) );
+			gs.loop.timeA( ui.gridGetWhen( e.pageX ) );
 			ui.timelineLoop.clickTime( "b" );
 		}
 		firstClick = now;
@@ -17,7 +17,7 @@ ui.timelineInit = function() {
 
 	el.onmouseup = function( e ) {
 		if ( !ui.timelineLoop.dragging ) {
-			gs.currentTime( ui.getGridSec( e.pageX ) );
+			gs.currentTime( ui.gridGetWhen( e.pageX ) );
 		}
 	};
 };

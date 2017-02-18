@@ -3,7 +3,7 @@
 ( function() {
 
 function zoom( e, z ) {
-	ui.setGridZoom( ui.gridZoom * z,
+	ui.gridZoom( ui._gridZoom * z,
 		e.pageX - ui.filesWidth - ui.trackNamesWidth );
 }
 

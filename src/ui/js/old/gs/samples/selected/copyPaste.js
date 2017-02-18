@@ -12,8 +12,8 @@ gs.samples.selected.copy = function() {
 		return smp;
 	} );
 	if ( ui.isMagnetized ) {
-		min = ui.secFloor( min );
-		max = ui.secCeil( max );
+		min = common.secFloor( min );
+		max = common.secCeil( max );
 	}
 	allDuration = max - min;
 };
