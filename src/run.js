@@ -17,7 +17,6 @@ gs.currentTime( 0 );
 gs.compositions.init();
 gs.composition.onended( gs.compositionStop );
 ui.dom.btnFiles.click();
-ui.dom.menu.querySelector( "[data-tool='paint']" ).click();
 
 waFwk.analyser.fftSize = 256;
 waFwk.analyserData = new Uint8Array( waFwk.analyser.frequencyBinCount );
@@ -34,11 +33,13 @@ ui.gridInit();
 ui.gridcontentInit();
 ui.visualInit();
 ui.timelineInit();
+ui.toolsInit();
 
 ui.gridcontentLeft( 0 );
 ui.gridZoom( 1.5, 0 );
 ui.tracksBgUpdate();
 ui.visualOn();
 ui.clockInSeconds();
+ui.toolsSelect( "paint" );
 
 } )();

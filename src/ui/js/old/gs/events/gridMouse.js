@@ -29,7 +29,7 @@ ui.dom.gridcontent.onmousedown = function( e ) {
 		ui.px_y = e.pageY;
 		if ( e.button === 2 ) {
 			oldTool = ui.currentTool;
-			ui.selectTool( "delete" );
+			ui.toolsSelect( "delete" );
 		}
 		var fn = ui.tool[ ui.currentTool ].mousedown;
 		if ( fn ) {
@@ -76,7 +76,7 @@ var mouseIsDown,
 
 function setBackOldTool() {
 	if ( oldTool ) {
-		ui.selectTool( oldTool );
+		ui.toolsSelect( oldTool );
 		oldTool = null;
 	}
 	mouseIsDown = false;

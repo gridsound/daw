@@ -65,6 +65,7 @@ JS = \
 	src/ui/js/partials/grid.js                  \
 	src/ui/js/partials/gridcontent.js           \
 	src/ui/js/partials/timeline.js              \
+	src/ui/js/partials/tools.js                 \
 	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
 	src/ui/js/templates/itemBuffer.js           \
@@ -109,7 +110,6 @@ JS = \
 	src/ui/js/old/panelSection.js                   \
 	src/ui/js/old/resize.js                         \
 	src/ui/js/old/sample.js                         \
-	src/ui/js/old/selectTool.js                     \
 	src/ui/js/old/setFilesWidth.js                  \
 	src/ui/js/old/setTrackNamesWidth.js             \
 	src/ui/js/old/updateGridShadows.js              \
@@ -150,7 +150,6 @@ JS = \
 	src/ui/js/old/gs/events/keyboard.js             \
 	src/ui/js/old/gs/events/panelMenu.js            \
 	src/ui/js/old/gs/events/resize.js               \
-	src/ui/js/old/gs/events/tools.js                \
 	src/ui/js/old/gs/events/toolCut.js              \
 	src/ui/js/old/gs/events/toolDelete.js           \
 	src/ui/js/old/gs/events/toolHand.js             \
