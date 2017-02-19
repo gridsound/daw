@@ -35,21 +35,21 @@ $track_spanEditableEmpty: rgba( #fff, .2 );
 $track_backBg: $COLOR_MAIN;
 $track_backBgEven: darken( $track_backBg, 2 );
 
-// .gridBlock
-$gridBlock_bg: rgba( #000, .5 );
-$gridBlock_radius: 2px;
-$gridBlock_headHeight: 16px;
-$gridBlock_headPadding: .4em;
-$gridBlock_fontSize: 11px;
-$gridBlock_fontSize_small: 11px;
-$gridBlock_headBg: #667;
-$gridBlock_borderBottom: 2px solid $gridBlock_headBg;
-$gridBlock_cropWidth: 10px;
-$gridBlock_cropBg: rgba( #fff, .2 );
-$gridBlock_headBg_selected: #a93636;
-$gridBlock_opacity_mute: .5;
-$gridBlock_contentOpacity_small: .2;
-$gridBlock_waveformFill: #fff;
+// .gridblock
+$gridblock_bg: rgba( #000, .5 );
+$gridblock_radius: 2px;
+$gridblock_headHeight: 16px;
+$gridblock_headPadding: .4em;
+$gridblock_fontSize: 11px;
+$gridblock_fontSize_small: 11px;
+$gridblock_headBg: #667;
+$gridblock_borderBottom: 2px solid $gridblock_headBg;
+$gridblock_cropWidth: 10px;
+$gridblock_cropBg: rgba( #fff, .2 );
+$gridblock_headBg_selected: #a93636;
+$gridblock_opacity_mute: .5;
+$gridblock_contentOpacity_small: .2;
+$gridblock_waveformFill: #fff;
 
 // #timeline
 $timeline_bgColor: darken( $COLOR_MAIN, 10 );

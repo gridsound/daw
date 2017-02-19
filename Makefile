@@ -67,7 +67,7 @@ JS = \
 	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
 	src/ui/js/templates/itemBuffer.js           \
-	src/ui/js/templates/gridBlockSample.js      \
+	src/ui/js/templates/gridblockSample.js      \
 	src/on/addSource.js                         \
 	src/on/addTrack.js                          \
 	src/on/endedSource.js                       \

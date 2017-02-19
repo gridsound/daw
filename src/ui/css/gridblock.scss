@@ -1,14 +1,14 @@
-.gridBlock {
+.gridblock {
 	position: absolute;
 	height: 100%;
 	overflow: hidden;
-	border-radius: $gridBlock_radius;
+	border-radius: $gridblock_radius;
 	color: #111;
-	background: $gridBlock_bg;
+	background: $gridblock_bg;
 	transition: opacity .2s;
 
 	.track.off & {
-		opacity: $gridBlock_opacity_mute;
+		opacity: $gridblock_opacity_mute;
 	}
 
 	.header {
@@ -16,40 +16,40 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		height: $gridBlock_headHeight;
+		height: $gridblock_headHeight;
 		display: flex;
 		align-items: center;
-		padding: 0 $gridBlock_headPadding;
-		font-size: $gridBlock_fontSize;
+		padding: 0 $gridblock_headPadding;
+		font-size: $gridblock_fontSize;
 		font-weight: bold;
 		text-shadow: 1px 1px 0 rgba( #fff, .2 );
-		background: $gridBlock_headBg;
+		background: $gridblock_headBg;
 		transition: .2s;
 		transition-property: background, height;
 	}
 	.icon {
-		margin-right: $gridBlock_headPadding;
+		margin-right: $gridblock_headPadding;
 	}
 	.content {
 		position: absolute;
-		top: $gridBlock_headHeight;
+		top: $gridblock_headHeight;
 		bottom: 0;
 		width: 100%;
-		border-bottom: $gridBlock_borderBottom;
+		border-bottom: $gridblock_borderBottom;
 		transition: .2s;
 		transition-property: border-bottom-color, top, opacity;
 	}
 	.crop {
 		display: none;
 		position: absolute;
-		width: $gridBlock_cropWidth;
+		width: $gridblock_cropWidth;
 		max-width: 25%;
 		height: 100%;
 		cursor: ew-resize;
 		transition: background .2s;
 
 		&:hover, &.hover {
-			background: $gridBlock_cropBg;
+			background: $gridblock_cropBg;
 		}
 		&.end {
 			right: 0;
@@ -58,10 +58,10 @@
 
 	&.selected {
 		.header {
-			background: $gridBlock_headBg_selected;
+			background: $gridblock_headBg_selected;
 		}
 		.content {
-			border-bottom-color: $gridBlock_headBg_selected;
+			border-bottom-color: $gridblock_headBg_selected;
 		}
 	}
 
@@ -83,12 +83,12 @@
 	#grid[data-sample-size="small"] & {
 		.header {
 			height: 100%;
-			font-size: $gridBlock_fontSize_small;
+			font-size: $gridblock_fontSize_small;
 		}
 		.content {
 			z-index: 1;
 			top: 0;
-			opacity: $gridBlock_contentOpacity_small;
+			opacity: $gridblock_contentOpacity_small;
 		}
 	}
 }

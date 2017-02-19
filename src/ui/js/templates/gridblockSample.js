@@ -1,11 +1,11 @@
 "use strict";
 
-function gridBlockSample( smpobj ) {
-	var tpl = document.querySelector( "#gridBlockSample" ).content,
+function gridblockSample( smpobj ) {
+	var tpl = document.querySelector( "#gridblockSample" ).content,
 		elRoot = document.importNode( tpl, true );
 
 	ui.dom.templateCloned.appendChild( elRoot );
-	elRoot = ui.dom.templateCloned.querySelector( ".gridBlock" );
+	elRoot = ui.dom.templateCloned.querySelector( ".gridblock" );
 	elRoot.remove();
 
 	this.smpobj = smpobj;
@@ -20,7 +20,7 @@ function gridBlockSample( smpobj ) {
 	} );
 }
 
-gridBlockSample.prototype = {
+gridblockSample.prototype = {
 	remove: function() {
 		this.elRoot.remove();
 	},
