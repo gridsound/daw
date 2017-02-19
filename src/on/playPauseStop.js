@@ -24,14 +24,14 @@ waFwk.on.pause = function() {
 waFwk.on.stop = function() {
 	waFwk.on.pause();
 	ui.currentTimeCursor.at( 0 );
-	ui.clockSetTime( 0 );
+	ui.clock.setTime( 0 );
 };
 
 function frame() {
 	var sec = gs.composition.currentTime();
 
 	ui.currentTimeCursor.at( sec );
-	ui.clockSetTime( sec );
+	ui.clock.setTime( sec );
 	reqFrameId = requestAnimationFrame( frame );
 }
 

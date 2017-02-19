@@ -12,8 +12,8 @@ ui.updateGridLeftShadow = function() {
 };
 
 ui.updateGridTopShadow = function() {
-	ui.dom.gridHeader.style.boxShadow = !ui._gridScrollTop ? "none" :
-		"0px " + Math.min( 2 + ui._gridScrollTop / 8, 5 ) + css;
+	ui.dom.gridHeader.style.boxShadow = !ui.grid._scrollTop ? "none" :
+		"0px " + Math.min( 2 + ui.grid._scrollTop / 8, 5 ) + css;
 };
 
 } )();

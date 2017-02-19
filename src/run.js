@@ -28,18 +28,18 @@ for ( var i = 0; i < 42; ++i ) {
 
 ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
 
-ui.clockInit();
-ui.gridInit();
-ui.gridcontentInit();
-ui.visualInit();
-ui.timelineInit();
-ui.toolsInit();
+ui.clock.init();
+ui.grid.init();
+ui.gridcontent.init();
+ui.visual.init();
+ui.timeline.init();
+ui.tools.init();
 
-ui.gridcontentLeft( 0 );
-ui.gridZoom( 1.5, 0 );
-ui.tracksBgUpdate();
-ui.visualOn();
-ui.clockInSeconds();
-ui.toolsSelect( "paint" );
+ui.gridcontent.left( 0 );
+ui.grid.zoom( 1.5, 0 );
+ui.tracksBg.update();
+ui.visual.on();
+ui.clock.inSeconds();
+ui.tools.select( "paint" );
 
 } )();

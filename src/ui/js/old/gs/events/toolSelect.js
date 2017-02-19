@@ -43,18 +43,18 @@ ui.tool.select = {
 			if ( !dragging && Math.max( Math.abs( px - ax ), Math.abs( py - ay ) ) > 5 ) {
 				++selectionId;
 				dragging = true;
-				atrackId = ui.gridGetTrackByPageY( ay ).id;
-				asec = ui.gridGetWhen( ax );
+				atrackId = ui.grid.getTrackByPageY( ay ).id;
+				asec = ui.grid.getWhen( ax );
 				ui.dom.gridcontent.appendChild( elRect );
 			}
 
 			// TODO: optimize this part:
 			if ( dragging ) {
-				var track = ui.gridGetTrackByPageY( py ),
+				var track = ui.grid.getTrackByPageY( py ),
 					btrackId = track ? track.id : 0,
 					trackMin = Math.min( atrackId, btrackId ),
 					trackMax = Math.max( atrackId, btrackId ),
-					bsec = Math.max( 0, ui.gridGetWhen( px ) ),
+					bsec = Math.max( 0, ui.grid.getWhen( px ) ),
 					secMin = Math.min( asec, bsec ),
 					secMax = Math.max( asec, bsec );
 

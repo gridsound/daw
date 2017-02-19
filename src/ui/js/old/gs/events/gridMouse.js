@@ -16,7 +16,7 @@ ui.dom.gridCols.onwheel = function( e ) {
 	}
 };
 ui.dom.gridCols.onscroll = function() {
-	ui._gridScrollTop = ui.dom.gridCols.scrollTop;
+	ui.grid._scrollTop = ui.dom.gridCols.scrollTop;
 	ui.updateGridTopShadow();
 };
 
@@ -24,12 +24,12 @@ ui.dom.gridcontent.oncontextmenu = function() { return false; };
 ui.dom.gridcontent.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
 		mouseIsDown = true;
-		mousedownSec = ui.gridGetWhen( e.pageX );
+		mousedownSec = ui.grid.getWhen( e.pageX );
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
 		if ( e.button === 2 ) {
 			oldTool = ui.currentTool;
-			ui.toolsSelect( "delete" );
+			ui.tools.select( "delete" );
 		}
 		var fn = ui.tool[ ui.currentTool ].mousedown;
 		if ( fn ) {
@@ -47,7 +47,7 @@ document.body.onwheel = function( e ) {
 document.body.addEventListener( "mousemove", function( e ) {
 	if ( mouseIsDown ) {
 		var fn = ui.tool[ ui.currentTool ].mousemove,
-			secNew = ui.gridGetWhen( e.pageX );
+			secNew = ui.grid.getWhen( e.pageX );
 
 		ui.px_xRel = e.pageX - ui.px_x;
 		ui.px_yRel = e.pageY - ui.px_y;
@@ -76,7 +76,7 @@ var mouseIsDown,
 
 function setBackOldTool() {
 	if ( oldTool ) {
-		ui.toolsSelect( oldTool );
+		ui.tools.select( oldTool );
 		oldTool = null;
 	}
 	mouseIsDown = false;

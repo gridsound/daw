@@ -29,14 +29,14 @@ var oldTool;
 
 function keyTool( route ) {
 	oldTool = ui.currentTool;
-	ui.toolsSelect( route.name );
+	ui.tools.select( route.name );
 }
 
 function keyToolCAS( route, e ) {
 	if ( e.type === "keydown" ) {
 		keyTool( route );
 	} else if ( oldTool ) {
-		ui.toolsSelect( oldTool );
+		ui.tools.select( oldTool );
 		oldTool = null;
 	}
 };

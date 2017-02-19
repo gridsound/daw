@@ -100,8 +100,8 @@ ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( srcobjDragging ) {
 		waFwk.do.sampleCreate( {
 			srcobj: srcobjDragging,
-			trkobj: ui.gridGetTrackByPageY( e.pageY ),
-			when: ui.gridGetWhen( e.pageX )
+			trkobj: ui.grid.getTrackByPageY( e.pageY ),
+			when: ui.grid.getWhen( e.pageX )
 		} );
 	}
 } );

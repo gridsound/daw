@@ -14,9 +14,9 @@ ui.tool.hand = {
 		ui.cursor( "app", null );
 	},
 	mousemove: function( e ) {
-		ui.gridcontentLeft( ui.trackLinesLeft + ui.px_xRel );
-		ui.gridScrollTop( ui._gridScrollTop - ui.px_yRel );
-		ui.timelineUpdate();
-		ui.tracksBgUpdate();
+		ui.gridcontent.left( ui.trackLinesLeft + ui.px_xRel );
+		ui.grid.scrollTop( ui.grid._scrollTop - ui.px_yRel );
+		ui.timeline.update();
+		ui.tracksBg.update();
 	}
 };

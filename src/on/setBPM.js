@@ -14,7 +14,7 @@ waFwk.on.setBPMthen = function( bpm ) {
 	ui.BPMem = bpm / 60;
 	gs.composition.bpm( bpm );
 	gs.composition.samples.forEach( ui.sample.duration );
-	ui.clockSetTime( gs.currentTime() );
+	ui.clock.setTime( gs.currentTime() );
 };
 
 ui.dom.bpmInt.onwheel = wheel.bind( null, 1 );

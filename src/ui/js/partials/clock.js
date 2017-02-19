@@ -1,34 +1,32 @@
 "use strict";
 
-( function() {
+ui.clock = {
+	init: function() {
+		ui.dom.clockUnits.onclick = function( e ) {
+			var u = e.target.className;
 
-var unit;
+			if ( u === "b" || u === "s" ) {
+				ui.clock._setUnit( u );
+			}
+			return false;
+		};
+	},
+	setTime: function( sec ) {
+		var time = common.timestampText( sec,
+				ui.clock._unit === "s" ? false : waFwk.bpm );
 
-ui.clockInit = function() {
-	ui.dom.clockUnits.onclick = function( e ) {
-		var u = e.target.className;
+		ui.dom.clockMin.textContent = time.a;
+		ui.dom.clockSec.textContent = time.b;
+		ui.dom.clockMs.textContent = time.c;
+	},
 
-		if ( u === "b" || u === "s" ) {
-			setUnit( u );
-		}
-		return false;
-	};
+	// private:
+	_setUnit: function( u ) {
+		ui.dom.clockUnits.dataset.unit =
+			ui.clock._unit = u;
+		ui.clock.setTime( gs.currentTime() );
+	}
 };
 
-ui.clockSetTime = function( sec ) {
-	var time = common.timestampText( sec, unit === "s" ? false : waFwk.bpm );
-
-	ui.dom.clockMin.textContent = time.a;
-	ui.dom.clockSec.textContent = time.b;
-	ui.dom.clockMs.textContent = time.c;
-};
-
-ui.clockInBeats = setUnit.bind( null, "b" );
-ui.clockInSeconds = setUnit.bind( null, "s" );
-
-function setUnit( u ) {
-	ui.dom.clockUnits.dataset.unit = unit = u;
-	ui.clockSetTime( gs.currentTime() );
-}
-
-} )();
+ui.clock.inBeats = ui.clock._setUnit.bind( null, "b" );
+ui.clock.inSeconds = ui.clock._setUnit.bind( null, "s" );

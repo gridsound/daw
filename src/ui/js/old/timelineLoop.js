@@ -5,7 +5,7 @@ ui.initElement( "timelineLoop", function( el ) {
 
 	document.body.addEventListener( "mousemove", function( e ) {
 		if ( timeFn ) {
-			timeFn( ui.gridGetWhen( e.pageX ) );
+			timeFn( ui.grid.getWhen( e.pageX ) );
 		}
 	} );
 

@@ -8,6 +8,6 @@ ui.setFilesWidth = function( wpx ) {
 	ui.dom.grid.style.left = wpx + "px";
 	ui.dom.visual.style.width =
 	ui.dom.menu.style.left = wpx + ui.trackNamesWidth + "px";
-	ui.timelineUpdate();
-	ui.tracksBgUpdate();
+	ui.timeline.update();
+	ui.tracksBg.update();
 };

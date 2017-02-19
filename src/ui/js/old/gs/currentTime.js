@@ -7,5 +7,5 @@ gs.currentTime = function( sec ) {
 	gs.composition.currentTime( sec );
 	sec = gs.composition.currentTime();
 	ui.currentTimeCursor.at( sec );
-	ui.clockSetTime( sec );
+	ui.clock.setTime( sec );
 };

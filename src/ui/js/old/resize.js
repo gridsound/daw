@@ -6,6 +6,6 @@ ui.resize = function() {
 	ui.gridColsWidth = ui.dom.gridCols.getBoundingClientRect().width;
 	ui.gridColsHeight = ui.dom.tracks.clientHeight;
 	ui.trackLinesWidth = ui.gridColsWidth - ui.trackNamesWidth;
-	ui.timelineUpdate();
-	ui.tracksBgUpdate();
+	ui.timeline.update();
+	ui.tracksBg.update();
 };
