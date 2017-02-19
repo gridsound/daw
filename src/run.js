@@ -8,7 +8,6 @@ gs.composition = gs.wctx.createComposition();
 
 ui.resize();
 ui.setFilesWidth( 200 );
-ui.setTrackLinesLeft( 0 );
 ui.setTrackNamesWidth( 125 );
 ui.btnMagnet.toggle( true );
 ui.timelineLoop.toggle( false );
@@ -32,9 +31,11 @@ ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
 
 ui.clockInit();
 ui.gridInit();
+ui.gridcontentInit();
 ui.visualInit();
 ui.timelineInit();
 
+ui.gridcontentLeft( 0 );
 ui.gridZoom( 1.5, 0 );
 ui.tracksBgUpdate();
 ui.visualOn();

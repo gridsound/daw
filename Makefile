@@ -63,6 +63,7 @@ JS = \
 	src/common/uuid.js                          \
 	src/ui/js/partials/clock.js                 \
 	src/ui/js/partials/grid.js                  \
+	src/ui/js/partials/gridcontent.js           \
 	src/ui/js/partials/timeline.js              \
 	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
@@ -110,7 +111,6 @@ JS = \
 	src/ui/js/old/sample.js                         \
 	src/ui/js/old/selectTool.js                     \
 	src/ui/js/old/setFilesWidth.js                  \
-	src/ui/js/old/setTrackLinesLeft.js              \
 	src/ui/js/old/setTrackNamesWidth.js             \
 	src/ui/js/old/updateGridShadows.js              \
 	                                                \

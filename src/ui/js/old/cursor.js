@@ -15,9 +15,9 @@ function setCur( el, c ) {
 ui.cursor = function( el, cur ) {
 	if ( el === "app" ) {
 		setCur( ui.dom.app, cur );
-		setCur( ui.dom.tracksLines, cur ? null : gridsave );
+		setCur( ui.dom.gridcontent, cur ? null : gridsave );
 	} else {
-		setCur( ui.dom.tracksLines, gridsave = cur );
+		setCur( ui.dom.gridcontent, gridsave = cur );
 	}
 };
 

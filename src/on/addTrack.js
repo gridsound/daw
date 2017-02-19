@@ -19,7 +19,7 @@ function Track() {
 	this.wfilters = gs.wctx.createFilters();
 
 	ui.dom.tracksNames.appendChild( this.elColNamesTrack );
-	ui.dom.tracksLines.appendChild( this.elColLinesTrack );
+	ui.dom.gridcontent.appendChild( this.elColLinesTrack );
 
 	this.gsuiToggle = new gsuiToggle(
 		this.elColNamesTrack.querySelector( ".gsuiToggle" ), {

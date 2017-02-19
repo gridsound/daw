@@ -20,8 +20,8 @@ ui.dom.gridCols.onscroll = function() {
 	ui.updateGridTopShadow();
 };
 
-ui.dom.tracksLines.oncontextmenu = function() { return false; };
-ui.dom.tracksLines.onmousedown = function( e ) {
+ui.dom.gridcontent.oncontextmenu = function() { return false; };
+ui.dom.gridcontent.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
 		mouseIsDown = true;
 		mousedownSec = ui.gridGetWhen( e.pageX );

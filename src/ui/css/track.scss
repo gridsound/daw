@@ -6,7 +6,7 @@
 	transition-property: background, box-shadow;
 
 	#tracksNames .track + & { border-top: $track_namesBorder; }
-	#tracksLines .track + & { border-top: $track_linesBorder; }
+	#gridcontent .track + & { border-top: $track_linesBorder; }
 
 	:not(.track) + &:not(.off),
 	.track.off   + &:not(.off) {

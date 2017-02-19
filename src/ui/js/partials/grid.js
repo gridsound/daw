@@ -33,7 +33,7 @@ ui.gridZoom = function( zm, xpx ) {
 	ui.dom.grid.dataset.sampleSize =
 		ui.gridEm < 40 ? "small" :
 		ui.gridEm < 80 ? "medium" : "big";
-	ui.setTrackLinesLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
+	ui.gridcontentLeft( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
 	ui.timelineUpdate();
 	ui.tracksBgUpdate();
 };

@@ -45,7 +45,7 @@ ui.tool.select = {
 				dragging = true;
 				atrackId = ui.gridGetTrackByPageY( ay ).id;
 				asec = ui.gridGetWhen( ax );
-				ui.dom.tracksLines.appendChild( elRect );
+				ui.dom.gridcontent.appendChild( elRect );
 			}
 
 			// TODO: optimize this part:

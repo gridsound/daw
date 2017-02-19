@@ -15,7 +15,7 @@ ui.setTrackNamesWidth = function( wpx ) {
 	ui.dom.visual.style.width =
 	ui.dom.menu.style.left = visualWidth + "px";
 	if ( ui.trackLinesLeft < 0 ) {
-		ui.setTrackLinesLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
+		ui.gridcontentLeft( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}
 	ui.timelineUpdate();
 	ui.tracksBgUpdate();
