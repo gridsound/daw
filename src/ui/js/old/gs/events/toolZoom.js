@@ -9,19 +9,19 @@ function zoom( e, z ) {
 
 ui.tool.zoom = {
 	start: function() {
-		ui.cursor( "grid", "zoom-in" );
+		common.cursor( "grid", "zoom-in" );
 	},
 	end: function() {
-		ui.cursor( "grid", null );
+		common.cursor( "grid", null );
 	},
 	keydown: function( e ) {
 		if ( e.keyCode === 18 ) {
-			ui.cursor( "grid", "zoom-out" );
+			common.cursor( "grid", "zoom-out" );
 		}
 	},
 	keyup: function( e ) {
 		if ( e.keyCode === 18 ) {
-			ui.cursor( "grid", "zoom-in" );
+			common.cursor( "grid", "zoom-in" );
 		}
 	},
 	wheel: function( e ) {

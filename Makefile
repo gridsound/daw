@@ -58,6 +58,7 @@ JS = \
 	bin/__templates.js                          \
 	                                            \
 	src/init.js                                 \
+	src/common/cursor.js                        \
 	src/common/secCeilFloorRound.js             \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
@@ -106,7 +107,6 @@ JS = \
 	src/ui/js/old/timelineLoop.js                   \
 	src/ui/js/old/_init.js                          \
 	                                                \
-	src/ui/js/old/cursor.js                         \
 	src/ui/js/old/panelSection.js                   \
 	src/ui/js/old/resize.js                         \
 	src/ui/js/old/sample.js                         \

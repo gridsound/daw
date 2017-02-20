@@ -13,7 +13,7 @@ ui.initElement( "timelineLoop", function( el ) {
 		if ( timeFn ) {
 			timeFn = null;
 			that.dragging = false;
-			ui.cursor( "app", null );
+			common.cursor( "app", null );
 		}
 	} );
 
@@ -30,7 +30,7 @@ ui.initElement( "timelineLoop", function( el ) {
 			timeFn = time === "a" ? gs.loop.timeA : gs.loop.timeB;
 			gs.loop.reorderTimeAB();
 			that.dragging = true;
-			ui.cursor( "app", "w-resize" );
+			common.cursor( "app", "w-resize" );
 		},
 		toggle: function( b ) {
 			el.classList.toggle( "hidden", !b );

@@ -23,7 +23,7 @@ ui.tool.paint = {
 				actionName = "move";
 			}
 			_smp = smp;
-			ui.cursor( "app", !cropping ? "grabbing" :
+			common.cursor( "app", !cropping ? "grabbing" :
 				croppingStart ? "w-resize" : "e-resize" );
 		}
 	},
@@ -54,7 +54,7 @@ ui.tool.paint = {
 			_when =
 			_offset =
 			_duration = null;
-			ui.cursor( "app", null );
+			common.cursor( "app", null );
 		}
 	},
 	mousemove: function( e, secRel ) {

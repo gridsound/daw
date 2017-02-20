@@ -74,7 +74,7 @@ itemBuffer.prototype = {
 			elCursor = srchtmlCloned.querySelector( "#filesCursor" );
 			elCursor && elCursor.remove();
 			ui.dom.app.appendChild( srchtmlCloned );
-			ui.cursor( "app", "grabbing" );
+			common.cursor( "app", "grabbing" );
 		}
 		return false;
 	}
@@ -92,7 +92,7 @@ document.body.addEventListener( "mouseup", function( e ) {
 		srchtmlCloned.remove();
 		srchtmlCloned =
 		srcobjDragging = null;
-		ui.cursor( "app", null );
+		common.cursor( "app", null );
 	}
 } );
 

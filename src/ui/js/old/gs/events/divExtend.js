@@ -19,7 +19,7 @@ Array.from( document.querySelectorAll( ".extend" ) ).forEach( function( elExtend
 	elExtend.onmousedown = function( e ) {
 		if ( e.button === 0 ) {
 			mousemoving = true;
-			ui.cursor( "app", "col-resize" );
+			common.cursor( "app", "col-resize" );
 			fn = fns[ this.dataset.mousemoveFn ];
 		}
 	};
@@ -28,7 +28,7 @@ Array.from( document.querySelectorAll( ".extend" ) ).forEach( function( elExtend
 document.body.addEventListener( "mouseup", function( e ) {
 	if ( e.button === 0 && mousemoving ) {
 		mousemoving = false;
-		ui.cursor( "app", null );
+		common.cursor( "app", null );
 	}
 } );
 

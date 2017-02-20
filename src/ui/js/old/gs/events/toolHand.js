@@ -2,16 +2,16 @@
 
 ui.tool.hand = {
 	start: function() {
-		ui.cursor( "grid", "grab" );
+		common.cursor( "grid", "grab" );
 	},
 	end: function() {
-		ui.cursor( "grid", null );
+		common.cursor( "grid", null );
 	},
 	mousedown: function() {
-		ui.cursor( "app", "grabbing" );
+		common.cursor( "app", "grabbing" );
 	},
 	mouseup: function() {
-		ui.cursor( "app", null );
+		common.cursor( "app", null );
 	},
 	mousemove: function( e ) {
 		ui.gridcontent.left( ui.trackLinesLeft + ui.px_xRel );
