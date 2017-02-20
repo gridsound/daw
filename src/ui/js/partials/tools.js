@@ -9,6 +9,15 @@ ui.tools = {
 			btn.onclick = ui.tools.select.bind( null, btn.dataset.tool );
 		} );
 	},
+	save: function() {
+		ui.tools._saved = ui.currentTool;
+	},
+	restore: function() {
+		if ( ui.tools._saved ) {
+			ui.tools.select( ui.tools._saved );
+			ui.tools._saved = null;
+		}
+	},
 	select: function( strTool ) {
 		var uiTool, btn = ui.dom.toolBtns.tool[ strTool ];
 

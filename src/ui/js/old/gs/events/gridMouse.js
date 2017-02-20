@@ -7,8 +7,6 @@ ui.px_y =
 ui.px_xRel =
 ui.px_yRel = 0;
 
-window.addEventListener( "blur", setBackOldTool );
-
 ui.dom.gridCols.onwheel = function( e ) {
 	if ( ui.currentTool === "zoom" ) {
 		ui.tool.zoom.wheel( e );
@@ -23,18 +21,18 @@ ui.dom.gridCols.onscroll = function() {
 ui.dom.gridcontent.oncontextmenu = function() { return false; };
 ui.dom.gridcontent.onmousedown = function( e ) {
 	if ( !mouseIsDown ) {
+		var fn;
+
 		mouseIsDown = true;
 		mousedownSec = ui.grid.getWhen( e.pageX );
 		ui.px_x = e.pageX;
 		ui.px_y = e.pageY;
 		if ( e.button === 2 ) {
-			oldTool = ui.currentTool;
+			ui.tools.save();
 			ui.tools.select( "delete" );
 		}
-		var fn = ui.tool[ ui.currentTool ].mousedown;
-		if ( fn ) {
-			fn( e );
-		}
+		fn = ui.tool[ ui.currentTool ].mousedown;
+		fn && fn( e );
 	}
 };
 
@@ -63,22 +61,18 @@ document.body.addEventListener( "mouseup", function( e ) {
 	if ( mouseIsDown ) {
 		var fn = ui.tool[ ui.currentTool ].mouseup;
 
-		if ( fn ) {
-			fn( e );
-		}
+		fn && fn( e );
 		setBackOldTool();
 	}
 } );
 
+window.addEventListener( "blur", setBackOldTool );
+
 var mouseIsDown,
-	mousedownSec,
-	oldTool;
+	mousedownSec;
 
 function setBackOldTool() {
-	if ( oldTool ) {
-		ui.tools.select( oldTool );
-		oldTool = null;
-	}
+	ui.tools.restore();
 	mouseIsDown = false;
 }
 
