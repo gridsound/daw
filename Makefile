@@ -71,6 +71,7 @@ JS = \
 	src/ui/js/partials/visual.js                \
 	src/ui/js/templates/itemBuffer.js           \
 	src/ui/js/templates/gridblockSample.js      \
+	src/on/addSample.js                         \
 	src/on/addSource.js                         \
 	src/on/addTrack.js                          \
 	src/on/endedSource.js                       \
@@ -80,7 +81,6 @@ JS = \
 	src/on/playPauseStop.js                     \
 	src/on/playSource.js                        \
 	src/on/removeSample.js                      \
-	src/on/sampleCreate.js                      \
 	src/on/sampleDuration.js                    \
 	src/on/sampleInTrack.js                     \
 	src/on/sampleWhen.js                        \

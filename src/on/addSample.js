@@ -1,6 +1,6 @@
 "use strict";
 
-waFwk.on.sampleCreate = function( smpobj ) {
+waFwk.on.addSample = function( smpobj ) {
 	var usrdat = new gridblockSample( smpobj );
 
 	usrdat.name( smpobj.srcobj.metadata.name );

@@ -98,7 +98,7 @@ document.body.addEventListener( "mouseup", function( e ) {
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( srcobjDragging ) {
-		waFwk.do.sampleCreate( {
+		waFwk.do.addSample( {
 			srcobj: srcobjDragging,
 			trkobj: ui.grid.getTrackByPageY( e.pageY ),
 			when: ui.grid.getWhen( e.pageX )
