@@ -5,7 +5,7 @@
 var srcobjDragging,
 	srchtmlCloned;
 
-window.itemBuffer = function() {
+ui.itemBuffer = function() {
 	var tpl = document.querySelector( "#itemBuffer" ).content,
 		elRoot = document.importNode( tpl, true );
 
@@ -26,7 +26,7 @@ window.itemBuffer = function() {
 	elRoot.oncontextmenu = function() { return false; };
 };
 
-itemBuffer.prototype = {
+ui.itemBuffer.prototype = {
 	error: function() {
 		this.elIcon.classList.add( "cross" );
 		this.elIcon.classList.remove( "loading" );

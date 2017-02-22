@@ -1,6 +1,6 @@
 "use strict";
 
-window.historyAction = function( actobj ) {
+ui.historyAction = function( actobj ) {
 	var tpl = document.querySelector( "#historyAction" ).content,
 		elRoot = document.importNode( tpl, true );
 

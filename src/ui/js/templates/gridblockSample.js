@@ -1,6 +1,6 @@
 "use strict";
 
-function gridblockSample( smpobj ) {
+ui.gridblockSample = function( smpobj ) {
 	var tpl = document.querySelector( "#gridblockSample" ).content,
 		elRoot = document.importNode( tpl, true );
 
@@ -18,9 +18,9 @@ function gridblockSample( smpobj ) {
 	Array.from( elRoot.querySelectorAll( "*" ) ).forEach( function( el ) {
 		el.smpobj = smpobj;
 	} );
-}
+};
 
-gridblockSample.prototype = {
+ui.gridblockSample.prototype = {
 	remove: function() {
 		this.elRoot.remove();
 	},
