@@ -1,0 +1,53 @@
+.historyAction {
+	display: block;
+	box-sizing: border-box;
+	height: $historyAction_height;
+	line-height: $historyAction_height;
+	font-size: $historyAction_fontSize;
+	border-bottom: 1px solid #000;
+	background: $historyAction_bg;
+	color: #ddd;
+	transition: .2s;
+	transition-property: color, background;
+
+	.circle {
+		width: $history_btnSize;
+		vertical-align: middle;
+		line-height: $historyAction_height;
+		opacity: .5;
+		font-size: 6px;
+		transition: font-size .2s;
+	}
+	.type {
+		margin-right: 5px;
+		width: 16px;
+		height: 16px;
+		line-height: 16px;
+		border-radius: 2px;
+		padding: 1px;
+		background: $historyAction_typeBg;
+	}
+	.title {
+		font-family: monospace;
+		font-size: 11px;
+	}
+	&.undone {
+		border-bottom-style: dashed;
+		opacity: .4;
+
+		.circle {
+			&:after {
+				content: $icon-circle-o;
+			}
+		}
+	}
+	&:hover {
+		color: #fff;
+		background: $historyAction_bg_hover;
+		opacity: 1;
+
+		.circle {
+			font-size: 10px;
+		}
+	}
+}

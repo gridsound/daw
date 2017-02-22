@@ -70,6 +70,7 @@ JS = \
 	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
 	src/ui/js/templates/itemBuffer.js           \
+	src/ui/js/templates/historyAction.js        \
 	src/ui/js/templates/gridblockSample.js      \
 	src/on/addSample.js                         \
 	src/on/addSource.js                         \
@@ -80,12 +81,16 @@ JS = \
 	src/on/loadSource.js                        \
 	src/on/playPauseStop.js                     \
 	src/on/playSource.js                        \
+	src/on/pushAction.js                        \
+	src/on/popAction.js                         \
+	src/on/redo.js                              \
 	src/on/removeSample.js                      \
 	src/on/sampleDuration.js                    \
 	src/on/sampleInTrack.js                     \
 	src/on/sampleWhen.js                        \
 	src/on/setBPM.js                            \
 	src/on/stopAllSources.js                    \
+	src/on/undo.js                              \
 	                                            \
 	src/ui/js/old/gs/loop.js                        \
 	src/ui/js/old/gs/playPauseStop.js               \

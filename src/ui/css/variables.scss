@@ -51,6 +51,16 @@ $gridblock_opacity_mute: .5;
 $gridblock_contentOpacity_small: .2;
 $gridblock_waveformFill: #fff;
 
+// #history
+$history_btnSize: 18px;
+
+// .historyAction
+$historyAction_height: 26px;
+$historyAction_fontSize: 12px;
+$historyAction_bg: darken( $color_appBg, 10% );
+$historyAction_bg_hover: darken( $historyAction_bg, 10% );
+$historyAction_typeBg: #454545;
+
 // #timeline
 $timeline_bgColor: darken( $COLOR_MAIN, 10 );
 $timeline_border: 1px solid #000;
@@ -75,6 +85,8 @@ $save_dropdownWidth: 234px;
 $save_dropdownRadius: 4px;
 $save_dropdownShadow: 6px 6px 20px rgba( #000, .5 );
 
+// ---------------------------------------
+
 $color_panelNav: darken( $color_appBg, 5 );
 $color_visualBg: darken( $COLOR_MAIN, 6 );
 
@@ -90,9 +102,6 @@ $color_toolBorder: #1c1c27;
 
 $color_bpmBg: darken( $color_appBg, 6.2 );
 $color_bpmUnit: #666;
-
-$color_taskBg: darken( $color_appBg, 10% );
-$color_taskHoverBg: darken( $color_taskBg, 10% );
 
 $color_filesBg: #1c1c1c;
 $color_fileFiltersBg: rgba( #000, .35 );
