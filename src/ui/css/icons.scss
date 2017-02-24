@@ -48,19 +48,17 @@ $icon-stop             : "\f04d"; // fa-stop
 $icon-save             : "\f0a0"; // fa-hdd-o (f0c7 fa-floppy-o)
 $icon-magnet           : "\f076"; // fa-magnet
 
-$icon-tool-cut         : "\f0c4"; // fa-scissors
-$icon-tool-delete      : "\f12d"; // fa-eraser
-$icon-tool-hand        : "\f256"; // fa-hand-paper-o
-$icon-tool-mute        : "\f026"; // fa-volume-off
-$icon-tool-paint       : "\f1fc"; // fa-paint-brush
-	$icon-tool-move    : "\f047"; // fa-arrows
-	$icon-tool-crop    : "\f125"; // fa-crop
-	$icon-tool-cropEnd : "\f125"; // fa-crop
-$icon-tool-select      : "\f245"; // fa-mouse-pointer
-$icon-tool-slip        : "\f0ec"; // fa-exchange
-$icon-tool-zoom        : "\f002"; // fa-search
-
-$icon-clone: "\f24d"; // fa-clone
+$icon-paint            : "\f1fc"; // fa-paint-brush
+$icon-cut              : "\f0c4"; // fa-scissors
+$icon-delete           : "\f12d"; // fa-eraser
+$icon-hand             : "\f256"; // fa-hand-paper-o
+$icon-mute             : "\f026"; // fa-volume-off
+$icon-move             : "\f047"; // fa-arrows
+$icon-crop             : "\f125"; // fa-crop
+$icon-select           : "\f245"; // fa-mouse-pointer
+$icon-slip             : "\f0ec"; // fa-exchange
+$icon-zoom             : "\f002"; // fa-search
+$icon-clone            : "\f24d"; // fa-clone
 
 .icon {
 	display: inline-block;
@@ -113,17 +111,16 @@ $icon-clone: "\f24d"; // fa-clone
 	&.undo:after          { content: $icon-undo;          }
 	&.redo:after          { content: $icon-redo;          }
 
-	&.tool-create:after   { content: $icon-tool-paint;    }
-	&.tool-cut:after      { content: $icon-tool-cut;      }
-	&.tool-delete:after   { content: $icon-tool-delete;   }
-	&.tool-hand:after     { content: $icon-tool-hand;     }
-	&.tool-mute:after     { content: $icon-tool-mute;     }
-	&.tool-paint:after    { content: $icon-tool-paint;    }
-		&.tool-move:after    { content: $icon-tool-move;     }
-		&.tool-crop:after    { content: $icon-tool-crop;     }
-		&.tool-cropEnd:after { content: $icon-tool-cropEnd;  }
-	&.tool-select:after   { content: $icon-tool-select;   }
-	&.tool-slip:after     { content: $icon-tool-slip;     }
-	&.tool-zoom:after     { content: $icon-tool-zoom;     }
-	&.tool-paste:after    { content: $icon-clone;         }
+	&.paint:after         { content: $icon-paint;    }
+	&.cut:after           { content: $icon-cut;      }
+	&.delete:after        { content: $icon-delete;   }
+	&.hand:after          { content: $icon-hand;     }
+	&.mute:after          { content: $icon-mute;     }
+	&.move:after          { content: $icon-move;     }
+	&.crop:after,
+	&.cropEnd:after       { content: $icon-crop;     }
+	&.select:after        { content: $icon-select;   }
+	&.slip:after          { content: $icon-slip;     }
+	&.zoom:after          { content: $icon-zoom;     }
+	&.paste:after         { content: $icon-clone;    }
 }
