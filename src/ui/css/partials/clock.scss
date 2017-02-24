@@ -4,7 +4,11 @@
 	font-family: "LCDBOLD";
 	font-size: 38px;
 	color: $color_clock;
-	@include text-stroke( $color_clockStroke );
+	text-shadow:
+		-1px -1px 0 $color_clockStroke,
+		 1px -1px 0 $color_clockStroke,
+		 1px  1px 0 $color_clockStroke,
+		-1px  1px 0 $color_clockStroke;
 
 	&Sec {
 		&:before,
