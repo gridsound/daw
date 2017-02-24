@@ -29,7 +29,7 @@ js:
 css:
 	@echo -n "* CSS ................ "
 	@cp src/dep/gs-ui-components.min.css src/dep/gs-ui-components.min.scss
-	@cd bin/; sass -I ../src/ui/css ../src/ui/css/style.scss gs-daw.min.css --style compressed
+	@cd bin; sass -I ../src/ui/css ../src/ui/css/_main.scss gs-daw.min.css --style compressed
 	@rm src/dep/gs-ui-components.min.scss
 	@echo gs-daw.min.css
 
