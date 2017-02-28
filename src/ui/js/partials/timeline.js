@@ -2,25 +2,8 @@
 
 ui.timeline = {
 	init: function() {
-		var firstClick,
-			el = document.querySelector( "#timeline" );
-
-		el.onmousedown = function( e ) {
-			var now = Date.now();
-
-			if ( now - firstClick < 250 ) {
-				gs.loop.stop();
-				gs.loop.timeA( ui.grid.getWhen( e.pageX ) );
-				ui.timelineLoop.clickTime( "b" );
-			}
-			firstClick = now;
-		};
-
-		el.onmouseup = function( e ) {
-			if ( !ui.timelineLoop.dragging ) {
-				gs.currentTime( ui.grid.getWhen( e.pageX ) );
-			}
-		};
+		ui.dom.timeline.onmousedown = ui.timeline._mousedown;
+		ui.dom.timeline.onmouseup = ui.timeline._mouseup;
 	},
 	update: function() {
 		var leftEm = ui.trackLinesLeft / ui.gridEm,
@@ -30,5 +13,22 @@ ui.timeline = {
 		ui.dom.timelineBeats   .style.marginLeft = leftEm += "em";
 		ui.dom.currentTimeArrow.style.marginLeft = leftEm;
 		ui.dom.timelineLoop    .style.marginLeft = leftEm;
+	},
+
+	// private:
+	_mousedown: function( e ) {
+		var now = Date.now();
+
+		if ( now - ui.timeline.firstClick < 250 ) {
+			gs.loop.stop();
+			gs.loop.timeA( ui.grid.getWhen( e.pageX ) );
+			ui.timelineLoop.clickTime( "b" );
+		}
+		ui.timeline.firstClick = now;
+	},
+	_mouseup: function( e ) {
+		if ( !ui.timelineLoop.dragging ) {
+			gs.currentTime( ui.grid.getWhen( e.pageX ) );
+		}
 	}
 };

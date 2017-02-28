@@ -1,9 +1,6 @@
 "use strict";
 
 ui.grid = {
-	_scrollTop: 0,
-	_zoom: 1,
-
 	init: function() {
 	},
 	getWhen: function( px ) {
@@ -23,6 +20,7 @@ ui.grid = {
 	},
 	zoom: function( zm, xpx ) {
 		zm = Math.min( Math.max( 1, zm ), 8 );
+
 		var zmMul = zm / ui.grid._zoom;
 
 		ui.grid._zoom = zm;
@@ -34,5 +32,9 @@ ui.grid = {
 		ui.gridcontent.left( xpx - ( -ui.trackLinesLeft + xpx ) * zmMul );
 		ui.timeline.update();
 		ui.tracksBg.update();
-	}
+	},
+
+	// private:
+	_scrollTop: 0,
+	_zoom: 1
 };
