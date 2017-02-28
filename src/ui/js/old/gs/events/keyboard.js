@@ -20,8 +20,8 @@ keyboardRouter(
 	{ fn: ui.btnMagnet.toggle,        keys: [ "g" ] },
 	{ fn: gs.samples.selected.copy,   keys: [ "ctrl", "c" ] },
 	{ fn: gs.samples.selected.paste,  keys: [ "ctrl", "v" ] },
-	{ fn: gs.history.undo,            keys: [ "ctrl", "z" ] },
-	{ fn: gs.history.redo,            keys: [ "ctrl", "shift", "z" ] },
+	{ fn: waFwk.undo,                 keys: [ "ctrl", "z" ] },
+	{ fn: waFwk.redo,                 keys: [ "ctrl", "shift", "z" ] },
 	{ fn: gs.compositions.saveCurrent, keys: [ "ctrl", "s" ] }
 );
 

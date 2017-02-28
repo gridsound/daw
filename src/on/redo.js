@@ -1,5 +1,5 @@
 "use strict";
 
-waFwk.on.redo = function() {
-	lg( ">> on.redo" );
+waFwk.on.redo = function( actobj ) {
+	actobj.userData.elRoot.classList.remove( "undone" );
 };

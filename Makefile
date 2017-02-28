@@ -65,6 +65,7 @@ JS = \
 	src/ui/js/partials/clock.js                 \
 	src/ui/js/partials/grid.js                  \
 	src/ui/js/partials/gridcontent.js           \
+	src/ui/js/partials/history.js               \
 	src/ui/js/partials/timeline.js              \
 	src/ui/js/partials/tools.js                 \
 	src/ui/js/partials/tracksBg.js              \
@@ -81,8 +82,6 @@ JS = \
 	src/on/loadSource.js                        \
 	src/on/playPauseStop.js                     \
 	src/on/playSource.js                        \
-	src/on/pushAction.js                        \
-	src/on/popAction.js                         \
 	src/on/redo.js                              \
 	src/on/removeSample.js                      \
 	src/on/sampleDuration.js                    \
@@ -101,8 +100,6 @@ JS = \
 	                                                \
 	src/ui/js/old/ui.js                             \
 	src/ui/js/old/btnMagnet.js                      \
-	src/ui/js/old/btnUndo.js                        \
-	src/ui/js/old/btnRedo.js                        \
 	src/ui/js/old/currentTimeCursor.js              \
 	src/ui/js/old/exportToWaveFile.js               \
 	src/ui/js/old/filesInput.js                     \

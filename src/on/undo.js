@@ -1,5 +1,5 @@
 "use strict";
 
-waFwk.on.undo = function() {
-	lg( ">> on.undo" );
+waFwk.on.undo = function( actobj ) {
+	actobj.userData.elRoot.classList.add( "undone" );
 };

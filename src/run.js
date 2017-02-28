@@ -18,6 +18,9 @@ gs.compositions.init();
 gs.composition.onended( gs.compositionStop );
 ui.dom.btnFiles.click();
 
+waFwk.on.pushAction = ui.history.pushAction;
+waFwk.on.popAction = ui.history.popAction;
+
 waFwk.analyser.fftSize = 256;
 waFwk.analyserData = new Uint8Array( waFwk.analyser.frequencyBinCount );
 waFwk.do.setBPM( 120 );
@@ -28,6 +31,7 @@ for ( var i = 0; i < 42; ++i ) {
 
 ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
 
+ui.history.init();
 ui.clock.init();
 ui.grid.init();
 ui.gridcontent.init();
