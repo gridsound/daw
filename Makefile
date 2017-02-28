@@ -82,14 +82,12 @@ JS = \
 	src/on/loadSource.js                        \
 	src/on/playPauseStop.js                     \
 	src/on/playSource.js                        \
-	src/on/redo.js                              \
 	src/on/removeSample.js                      \
 	src/on/sampleDuration.js                    \
 	src/on/sampleInTrack.js                     \
 	src/on/sampleWhen.js                        \
 	src/on/setBPM.js                            \
 	src/on/stopAllSources.js                    \
-	src/on/undo.js                              \
 	                                            \
 	src/ui/js/old/gs/loop.js                        \
 	src/ui/js/old/gs/playPauseStop.js               \
@@ -103,7 +101,6 @@ JS = \
 	src/ui/js/old/currentTimeCursor.js              \
 	src/ui/js/old/exportToWaveFile.js               \
 	src/ui/js/old/filesInput.js                     \
-	src/ui/js/old/historyList.js                    \
 	src/ui/js/old/save.js                           \
 	src/ui/js/old/timelineBeats.js                  \
 	src/ui/js/old/timelineLoop.js                   \

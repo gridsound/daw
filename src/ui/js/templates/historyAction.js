@@ -24,4 +24,10 @@ ui.historyAction = function( actobj ) {
 	elRoot.querySelector( ".text" ).textContent = actobj.text;
 };
 
+ui.historyAction.prototype = {
+	done: function( b ) {
+		this.elRoot.classList.toggle( "undone", !b );
+	}
+};
+
 } )();

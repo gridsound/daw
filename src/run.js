@@ -12,14 +12,10 @@ ui.setTrackNamesWidth( 125 );
 ui.btnMagnet.toggle( true );
 ui.timelineLoop.toggle( false );
 
-gs.history.reset();
 gs.currentTime( 0 );
 gs.compositions.init();
 gs.composition.onended( gs.compositionStop );
 ui.dom.btnFiles.click();
-
-waFwk.on.pushAction = ui.history.pushAction;
-waFwk.on.popAction = ui.history.popAction;
 
 waFwk.analyser.fftSize = 256;
 waFwk.analyserData = new Uint8Array( waFwk.analyser.frequencyBinCount );
@@ -45,5 +41,11 @@ ui.tracksBg.update();
 ui.visual.on();
 ui.clock.inSeconds();
 ui.tools.select( "paint" );
+
+// on:
+waFwk.on.pushAction = ui.history.pushAction;
+waFwk.on.popAction = ui.history.popAction;
+waFwk.on.undo = function( actobj ) { actobj.userData.done( false ); };
+waFwk.on.redo = function( actobj ) { actobj.userData.done( true ); };
 
 } )();
