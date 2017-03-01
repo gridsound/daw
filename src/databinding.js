@@ -10,3 +10,9 @@ waFwk.on.redo = function( actobj ) { actobj.userData.done( true ); };
 waFwk.on.play = ui.controls.play;
 waFwk.on.pause = ui.controls.pause;
 waFwk.on.stop = ui.controls.stop;
+
+// samples:
+waFwk.on.sampleWhen = function( smpobj ) { smpobj.userData.when( smpobj.when ); };
+waFwk.on.sampleInTrack = function( smpobj ) { smpobj.userData.inTrack( smpobj.trkobj ); };
+waFwk.on.sampleDuration = function( smpobj ) { smpobj.userData.duration( smpobj.duration ); };
+waFwk.on.removeSample = function( smpobj ) { smpobj.userData.elRoot.remove(); };
