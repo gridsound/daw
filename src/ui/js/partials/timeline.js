@@ -14,6 +14,17 @@ ui.timeline = {
 		ui.dom.currentTimeArrow.style.marginLeft = leftEm;
 		ui.dom.timelineLoop    .style.marginLeft = leftEm;
 	},
+	currentTime: function( s ) {
+		var arrow = ui.dom.currentTimeArrow,
+			cursor = ui.dom.currentTimeCursor;
+
+		if ( s > 0 ) {
+			cursor.style.left =
+			arrow.style.left = s * ui.BPMem + "em";
+		}
+		cursor.classList.toggle( "visible", s > 0 );
+		arrow.classList.toggle( "visible", s > 0 );
+	},
 
 	// private:
 	_mousedown: function( e ) {

@@ -11,7 +11,7 @@ ui.clock = {
 			return false;
 		};
 	},
-	setTime: function( sec ) {
+	currentTime: function( sec ) {
 		var time = common.timestampText( sec,
 				ui.clock._unit === "s" ? false : waFwk.bpm );
 
@@ -24,7 +24,7 @@ ui.clock = {
 	_setUnit: function( u ) {
 		ui.dom.clockUnits.dataset.unit =
 			ui.clock._unit = u;
-		ui.clock.setTime( gs.currentTime() );
+		ui.clock.currentTime( gs.currentTime() );
 	}
 };
 

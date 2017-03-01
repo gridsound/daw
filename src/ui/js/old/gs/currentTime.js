@@ -6,6 +6,6 @@ gs.currentTime = function( sec ) {
 	}
 	gs.composition.currentTime( sec );
 	sec = gs.composition.currentTime();
-	ui.currentTimeCursor.at( sec );
-	ui.clock.setTime( sec );
+	ui.timeline.currentTime( sec );
+	ui.clock.currentTime( sec );
 };

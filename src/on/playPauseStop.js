@@ -23,15 +23,15 @@ waFwk.on.pause = function() {
 
 waFwk.on.stop = function() {
 	waFwk.on.pause();
-	ui.currentTimeCursor.at( 0 );
-	ui.clock.setTime( 0 );
+	ui.timeline.currentTime( 0 );
+	ui.clock.currentTime( 0 );
 };
 
 function frame() {
 	var sec = gs.composition.currentTime();
 
-	ui.currentTimeCursor.at( sec );
-	ui.clock.setTime( sec );
+	ui.timeline.currentTime( sec );
+	ui.clock.currentTime( sec );
 	reqFrameId = requestAnimationFrame( frame );
 }
 
