@@ -3,12 +3,12 @@
 	line-height: 60px;
 	font-family: "LCDBOLD";
 	font-size: 38px;
-	color: $color_clock;
+	color: $clock_color;
 	text-shadow:
-		-1px -1px 0 $color_clockStroke,
-		 1px -1px 0 $color_clockStroke,
-		 1px  1px 0 $color_clockStroke,
-		-1px  1px 0 $color_clockStroke;
+		-1px -1px 0 $clock_textShadow,
+		 1px -1px 0 $clock_textShadow,
+		 1px  1px 0 $clock_textShadow,
+		-1px  1px 0 $clock_textShadow;
 
 	&Sec {
 		&:before,

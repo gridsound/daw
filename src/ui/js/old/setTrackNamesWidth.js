@@ -13,7 +13,7 @@ ui.setTrackNamesWidth = function( wpx ) {
 	ui.dom.gridColB.style.left =
 	ui.dom.timeline.style.left = wpx + "px";
 	ui.dom.visual.style.width =
-	ui.dom.menu.style.left = visualWidth + "px";
+	ui.dom.controls.style.left = visualWidth + "px";
 	if ( ui.trackLinesLeft < 0 ) {
 		ui.gridcontent.left( ui.trackLinesLeft - ( wpx - oldWidth ) );
 	}

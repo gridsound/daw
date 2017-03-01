@@ -63,6 +63,7 @@ JS = \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
 	src/ui/js/partials/clock.js                 \
+	src/ui/js/partials/controls.js              \
 	src/ui/js/partials/grid.js                  \
 	src/ui/js/partials/gridcontent.js           \
 	src/ui/js/partials/history.js               \
@@ -80,7 +81,6 @@ JS = \
 	src/on/fillSource.js                        \
 	src/on/loadingSource.js                     \
 	src/on/loadSource.js                        \
-	src/on/playPauseStop.js                     \
 	src/on/playSource.js                        \
 	src/on/removeSample.js                      \
 	src/on/sampleDuration.js                    \

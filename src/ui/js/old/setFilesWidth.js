@@ -7,7 +7,7 @@ ui.setFilesWidth = function( wpx ) {
 	ui.trackLinesWidth = ui.gridColsWidth - ui.trackNamesWidth;
 	ui.dom.grid.style.left = wpx + "px";
 	ui.dom.visual.style.width =
-	ui.dom.menu.style.left = wpx + ui.trackNamesWidth + "px";
+	ui.dom.controls.style.left = wpx + ui.trackNamesWidth + "px";
 	ui.timeline.update();
 	ui.tracksBg.update();
 };

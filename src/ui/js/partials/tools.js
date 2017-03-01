@@ -2,7 +2,7 @@
 
 ui.tools = {
 	init: function() {
-		ui.dom.toolBtns = Array.from( ui.dom.menu.querySelectorAll( ".btn[data-tool]" ) );
+		ui.dom.toolBtns = Array.from( ui.dom.controls.querySelectorAll( ".btn[data-tool]" ) );
 		ui.dom.toolBtns.tool = {};
 		ui.dom.toolBtns.forEach( function( btn ) {
 			ui.dom.toolBtns.tool[ btn.dataset.tool ] = btn;

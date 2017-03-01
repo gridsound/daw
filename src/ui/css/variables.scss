@@ -78,6 +78,15 @@ $timelineLoop_widthCrop: 10px;
 $timelineLoop_borderColor: lighten( $COLOR_MAIN, 50 );
 $timelineLoop_bgColor: rgba( $timelineLoop_borderColor, .05 );
 
+// #clock
+$clock_color: #ccc;
+$clock_textShadow: #000;
+
+// #controls
+$controls_color: $clock_color;
+$controls_playBg: lighten( $COLOR_MAIN, 4 );
+$controls_stopBg: lighten( $color_appBg, 8 );
+
 // #save
 $save_dropdownPadding: 5px;
 $save_bg: lighten( adjust_hue( lighten( $COLOR_MAIN, 4 ), 170deg ), 10 );
@@ -90,12 +99,6 @@ $save_dropdownShadow: 6px 6px 20px rgba( #000, .5 );
 $color_panelNav: darken( $color_appBg, 5 );
 $color_visualBg: darken( $COLOR_MAIN, 6 );
 
-$color_clock: #ccc;
-$color_clockStroke: #000;
-
-$color_menuText: $color_clock;
-$color_playBtn: lighten( $COLOR_MAIN, 4 );
-$color_stopBtn: lighten( $color_appBg, 8 );
 $lighten_toolHover: 5%;
 $lighten_toolSelected: 10%;
 $color_toolBorder: #1c1c27;

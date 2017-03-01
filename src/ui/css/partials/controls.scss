@@ -1,5 +1,4 @@
-#menu {
-	$marginBetweenBtn: 5px;
+#controls {
 	@mixin writeBg( $c ) {
 		background: $c;
 		&:hover {
@@ -14,7 +13,7 @@
 	top: 0;
 	height: 40px;
 	line-height: 40px;
-	color: $color_menuText;
+	color: $controls_color;
 
 	.btn {
 		box-sizing: border-box;
@@ -33,25 +32,25 @@
 		&.small {
 			width: 35px;
 			font-size: 16px;
-			color: darken( $color_menuText, 30 );
+			color: darken( $controls_color, 30 );
 
 			&:hover {
-				color: darken( $color_menuText, 15 );
+				color: darken( $controls_color, 15 );
 			}
 			&.active {
-				color: $color_menuText;
+				color: $controls_color;
 			}
 		}
 	}
 	.play,
 	.pause {
-		@include writeBg( $color_playBtn );
+		@include writeBg( $controls_playBg );
 	}
 	.stop {
-		@include writeBg( $color_stopBtn );
+		@include writeBg( $controls_stopBg );
 	}
 	.btn.question {
-		margin-right: $marginBetweenBtn;
+		margin-right: 5px;
 		font-size: 32px;
 	}
 	#save {
