@@ -157,5 +157,6 @@ JS = \
 	src/ui/js/old/gs/events/toolSlip.js             \
 	src/ui/js/old/gs/events/toolZoom.js             \
 	                                                \
+	src/databinding.js                              \
 	src/run.js                                      \
 	src/analyticstracking.js
