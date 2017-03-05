@@ -1,12 +1,6 @@
 "use strict";
 
-( function() {
-
-waFwk.on.addTrack = function( trkObject ) {
-	return new Track();
-};
-
-function Track() {
+ui.track = function() {
 	var that = this;
 
 	this.id = waFwk.tracks.length - 1;
@@ -46,7 +40,7 @@ function Track() {
 	this.editName( "" );
 };
 
-Track.prototype = {
+ui.track.prototype = {
 	toggle: function( b ) {
 		this.gsuiToggle.toggle( b );
 	},
@@ -59,5 +53,3 @@ Track.prototype = {
 		ind > -1 && this.samples.splice( ind, 1 );
 	}
 };
-
-} )();
