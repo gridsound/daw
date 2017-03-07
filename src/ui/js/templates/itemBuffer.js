@@ -5,28 +5,63 @@
 var srcobjDragging,
 	srchtmlCloned;
 
-ui.itemBuffer = function() {
+ui.itemBuffer = function( srcobj ) {
 	var tpl = document.querySelector( "#itemBuffer" ).content,
 		elRoot = document.importNode( tpl, true );
 
 	ui.dom.templateCloned.appendChild( elRoot );
 	elRoot = ui.dom.templateCloned.querySelector( ".item.buffer" );
 	elRoot.remove();
-
-	this.isLoading =
-	this.isLoaded = false;
 	this.elRoot = elRoot;
 	this.elName = elRoot.querySelector( ".name" );
 	this.elIcon = elRoot.querySelector( ".icon" );
 	this.elWave = elRoot.querySelector( ".gsuiWaveform" );
 
+	this.isLoading =
+	this.isLoaded = false;
+	this.srcobj = srcobj;
 	elRoot.onmousedown = this.mousedown.bind( this );
 	elRoot.onclick = this.click.bind( this );
 	elRoot.ondragstart = this.dragstart.bind( this );
 	elRoot.oncontextmenu = function() { return false; };
+
+	this.elName.textContent = srcobj.metadata.name;
+	ui.dom.filesList.appendChild( elRoot );
 };
 
 ui.itemBuffer.prototype = {
+	filled: function() {
+		this.elName.textContent = this.srcobj.metadata.name;
+		this.elIcon.classList.remove( "question" );
+		this.elIcon.classList.add( "ramload" );
+		this.elRoot.classList.add( "unloaded" );
+	},
+	loading: function() {
+		this.isLoading = true;
+		this.elIcon.classList.add( "loading" );
+		this.elIcon.classList.remove( "ramload" );
+	},
+	loaded: function() {
+		var buf = this.srcobj.bufferSample.buffer,
+			bufDur = buf.duration,
+			bufData0 = buf.getChannelData( 0 ),
+			bufData1 = buf.numberOfChannels < 2 ? bufData0 : buf.getChannelData( 1 );
+
+		this.isLoaded = true;
+		this.isLoading = false;
+		this.uiWaveform = new gsuiWaveform( this.elWave );
+		this.uiWaveform.setResolution( 250, 40 );
+		this.uiWaveform.draw( bufData0, bufData1, bufDur, 0, bufDur );
+		this.elRoot.classList.add( "loaded" );
+		this.elRoot.classList.remove( "unloaded" );
+		this.elIcon.remove();
+	},
+	unloaded: function() {
+
+	},
+	remove: function() {
+		this.elRoot.remove();
+	},
 	error: function() {
 		this.elIcon.classList.add( "cross" );
 		this.elIcon.classList.remove( "loading" );
@@ -46,20 +81,22 @@ ui.itemBuffer.prototype = {
 		}
 	},
 	click: function( e ) {
-		waFwk.do.stopAllSources();
+		gswaFramework.actions.stopAllSources.call( waFwk );
 		if ( this.isLoaded ) {
-			waFwk.do.playSource( this.srcobj );
+			gswaFramework.actions.playSource.call( waFwk, this.srcobj );
 		} else if ( !this.srcobj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
 				"<code>" + this.srcobj.metadata.name + "</code> is missing...<br/>" +
 				"Do you want to browse your files to find it ?" )
 			.then( function( b ) {
-				b && ui.filesInput.getFile(
-					waFwk.do.fillSource.bind( this.srcobj ) );
+				if ( b ) {
+					ui.filesInput.getFile(
+						waFwk.do.bind( waFwk, "fillSource", this.srcobj ) );
+				}
 			} );
 		} else if ( !this.isLoading ) {
-			waFwk.do.loadSource( this.srcobj )
-				.then( waFwk.do.playSource );
+			waFwk.do( "loadSources", [ this.srcobj ] )
+				.then( gswaFramework.actions.playSource.bind( waFwk, this.srcobj ) );
 		}
 	},
 	dragstart: function( e ) {

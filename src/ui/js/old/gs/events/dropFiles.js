@@ -28,19 +28,17 @@ document.body.ondrop = function( e ) {
 };
 
 function loadFiles() {
-	arrFiles.forEach( function( file ) {
-		waFwk.sources.some( some.bind( null, file ) )
-			|| gs.file.create( file );
-	} );
+	waFwk.do( "addSources", arrFiles.filter( function( file ) {
+		return !waFwk.sources.some( function( srcobj ) {
+			var ret = file.name === srcobj.metadata.filename &&
+					file.size === srcobj.metadata.size;
 
-	function some( file, scrobj ) {
-		if ( scrobj.metadata.filename === file.name &&
-			( scrobj.data ? scrobj.data.size : scrobj.userData.that.size ) === file.size
-		) {
-			scrobj.data || waFwk.do.fillSource( scrobj, file );
-			return true;
-		}
-	}
+			if ( ret && !srcobj.data ) {
+				waFwk.do.fillSource( srcobj, file );
+			}
+			return ret;
+		} );
+	} ) );
 }
 
 function dataItems( droppedItems ) {

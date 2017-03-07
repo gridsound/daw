@@ -76,11 +76,7 @@ JS = \
 	src/ui/js/templates/gridblockSample.js      \
 	src/ui/js/templates/track.js                \
 	src/on/addSample.js                         \
-	src/on/addSource.js                         \
 	src/on/endedSource.js                       \
-	src/on/fillSource.js                        \
-	src/on/loadingSource.js                     \
-	src/on/loadSource.js                        \
 	src/on/playSource.js                        \
 	src/on/setBPM.js                            \
 	src/on/stopAllSources.js                    \
