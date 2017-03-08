@@ -1,0 +1,13 @@
+.hidden {
+	display: none !important;
+}
+
+.no-transition {
+	transition: none !important;
+}
+
+.text-overflow {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}

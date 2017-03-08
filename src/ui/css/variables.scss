@@ -3,10 +3,10 @@ $COLOR_SELECTION: #ff3636;
 
 // ---------------------------------------
 
-$color_appBg: lighten( grayscale( $COLOR_MAIN ), 10 );
-$width_scrollbarSize: 5px;
-$color_scrollbarBg: #222;
-$color_scrollbarThumb: #888;
+$app_bg: lighten( grayscale( $COLOR_MAIN ), 10 );
+$scrollbar_size: 5px;
+$scrollbar_bg: #222;
+$scrollbar_thumbBg: #888;
 
 // .item
 $item_height: 38px;
@@ -26,7 +26,7 @@ $track_height: 50px;
 $track_namesBorder: 1px solid #151515;
 $track_linesBorderColor: #090909;
 $track_linesBorder: 1px solid $track_linesBorderColor;
-$track_namesBg: darken( $color_appBg, 6.2 );
+$track_namesBg: darken( $app_bg, 6.2 );
 $track_bg_off: rgba( #000, .2 );
 $track_firstBorder: rgba( #fff, .05 );
 $track_firstBorder_off: rgba( #000, .2 );
@@ -57,7 +57,7 @@ $history_btnSize: 18px;
 // .historyAction
 $historyAction_height: 26px;
 $historyAction_fontSize: 12px;
-$historyAction_bg: darken( $color_appBg, 10% );
+$historyAction_bg: darken( $app_bg, 10% );
 $historyAction_bg_hover: darken( $historyAction_bg, 10% );
 $historyAction_typeBg: #454545;
 
@@ -85,7 +85,7 @@ $clock_textShadow: #000;
 // #controls
 $controls_color: $clock_color;
 $controls_playBg: lighten( $COLOR_MAIN, 4 );
-$controls_stopBg: lighten( $color_appBg, 8 );
+$controls_stopBg: lighten( $app_bg, 8 );
 
 // #save
 $save_dropdownPadding: 5px;
@@ -96,14 +96,14 @@ $save_dropdownShadow: 6px 6px 20px rgba( #000, .5 );
 
 // ---------------------------------------
 
-$color_panelNav: darken( $color_appBg, 5 );
+$color_panelNav: darken( $app_bg, 5 );
 $color_visualBg: darken( $COLOR_MAIN, 6 );
 
 $lighten_toolHover: 5%;
 $lighten_toolSelected: 10%;
 $color_toolBorder: #1c1c27;
 
-$color_bpmBg: darken( $color_appBg, 6.2 );
+$color_bpmBg: darken( $app_bg, 6.2 );
 $color_bpmUnit: #666;
 
 $color_filesBg: #1c1c1c;

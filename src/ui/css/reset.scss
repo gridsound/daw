@@ -18,28 +18,10 @@ input {
 	outline: 0;
 }
 
-.hidden {
-	display: none !important;
-}
-
-.no-transition {
-	transition: none !important;
-}
-
-.text-overflow {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
 ::-webkit-scrollbar {
-	width: $width_scrollbarSize;
-	height: $width_scrollbarSize;
+	width: $scrollbar_size;
+	height: $scrollbar_size;
 
-	&-thumb {
-		background: $color_scrollbarThumb;
-	}
-	&-track {
-		background: $color_scrollbarBg;
-	}
+	&-thumb { background: $scrollbar_thumbBg; }
+	&-track { background: $scrollbar_bg; }
 }
