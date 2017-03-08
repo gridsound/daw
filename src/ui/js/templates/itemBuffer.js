@@ -83,16 +83,16 @@ ui.itemBuffer.prototype = {
 	},
 	mousedown: function( e ) {
 		if ( e.button !== 0 ) {
-			waFwk.do.stopAllSources();
+			waFwk.do( "stopAllSources" );
 		}
 		if ( e.ctrlKey ) {
-			gs.file.delete( this );
+			// gs.file.delete( this );
 		}
 	},
 	click: function( e ) {
-		gswaFramework.actions.stopAllSources.call( waFwk );
+		waFwk.do( "stopAllSources" );
 		if ( this.isLoaded ) {
-			gswaFramework.actions.playSource.call( waFwk, this.srcobj );
+			waFwk.do( "playSource", this.srcobj );
 		} else if ( !this.srcobj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
 				"<code>" + this.srcobj.metadata.name + "</code> is missing...<br/>" +
@@ -144,11 +144,11 @@ document.body.addEventListener( "mouseup", function( e ) {
 
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( srcobjDragging ) {
-		waFwk.do.addSample( {
+		waFwk.do( "addSamples", [ {
 			srcobj: srcobjDragging,
 			trkobj: ui.grid.getTrackByPageY( e.pageY ),
 			when: ui.grid.getWhen( e.pageX )
-		} );
+		} ] );
 	}
 } );
 
