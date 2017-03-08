@@ -54,10 +54,19 @@ ui.itemBuffer.prototype = {
 		this.uiWaveform.draw( bufData0, bufData1, bufDur, 0, bufDur );
 		this.elRoot.classList.add( "loaded" );
 		this.elRoot.classList.remove( "unloaded" );
-		this.elIcon.remove();
+		this.elIcon.style.display = "none";
 	},
 	unloaded: function() {
-
+		this.isLoaded =
+		this.isLoading = false;
+		this.uiWaveform.clear();
+		delete this.uiWaveform;
+		this.elIcon.classList.remove( "loading" );
+		this.elIcon.classList.remove( "question" );
+		this.elIcon.classList.remove( "cross" );
+		this.elIcon.classList.add( "ramload" );
+		this.elIcon.style.display = "inline-block";
+		this.elRoot.classList.add( "unloaded" );
 	},
 	remove: function() {
 		this.elRoot.remove();
