@@ -48,6 +48,12 @@ $icon-slip             : "\f0ec"; // fa-exchange
 $icon-zoom             : "\f002"; // fa-search
 $icon-clone            : "\f24d"; // fa-clone
 
+// #history
+$fa-paint-brush        : "\f1fc";
+$fa-eraser             : "\f12d";
+$fa-download           : "\f019";
+$fa-file-audio-o       : "\f1c7";
+
 .icon {
 	display: inline-block;
 	font-family: "FontAwesome";
@@ -72,6 +78,12 @@ $icon-clone            : "\f24d"; // fa-clone
 		  0% { transform: rotate(   0deg ); }
 		100% { transform: rotate( 359deg ); }
 	}
+
+	&.addSources:after,
+	&.removeSources:after    { content: $fa-file-audio-o;   }
+	&.loadSources:after      { content: $fa-download;       }
+	&.addSamples:after       { content: $fa-paint-brush;    }
+	&.removeSamples:after    { content: $fa-eraser;         }
 
 	&.chrome:after        { content: $icon-chrome;        }
 	&.firefox:after       { content: $icon-firefox;       }
