@@ -21,6 +21,12 @@ ui.gridblockSample = function( smpobj ) {
 };
 
 ui.gridblockSample.prototype = {
+	show: function() {
+		this.elRoot.style.display = "block";
+	},
+	hide: function() {
+		this.elRoot.style.display = "none";
+	},
 	remove: function() {
 		this.elRoot.remove();
 	},
