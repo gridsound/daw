@@ -16,19 +16,18 @@ ui.gridcontent = {
 		return false;
 	},
 	_mousedown: function( e ) {
-		if ( !ui.mouseIsDown ) {
-			var fn;
-
-			ui.mouseIsDown = true;
-			ui.mousedownSec = ui.grid.getWhen( e.pageX );
-			ui.px_x = e.pageX;
-			ui.px_y = e.pageY;
-			if ( e.button === 2 ) {
-				ui.tools.save();
-				ui.tools.select( "delete" );
-			}
-			fn = ui.tool[ ui.currentTool ].mousedown;
-			fn && fn( e );
+		if ( e.button === 2 ) {
+			ui.tools.save();
+			ui.tools.select( "delete" );
 		}
+
+		var tool = ui.tool[ ui.currentTool ];
+
+		ui.mousedownBind = tool.mousedown;
+		ui.mousemoveBind = tool.mousemove;
+		ui.mouseupBind = function( e ) {
+			tool.mouseup && tool.mouseup( e );
+			ui.tools.restore();
+		};
 	}
 };

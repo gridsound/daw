@@ -62,6 +62,7 @@ JS = \
 	src/common/secCeilFloorRound.js             \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
+	src/ui/js/app.js                            \
 	src/ui/js/partials/clock.js                 \
 	src/ui/js/partials/controls.js              \
 	src/ui/js/partials/grid.js                  \
