@@ -48,11 +48,11 @@ $icon-slip             : "\f0ec"; // fa-exchange
 $icon-zoom             : "\f002"; // fa-search
 $icon-clone            : "\f24d"; // fa-clone
 
-// #history
 $fa-paint-brush        : "\f1fc";
 $fa-eraser             : "\f12d";
 $fa-download           : "\f019";
 $fa-file-audio-o       : "\f1c7";
+$fa-mouse-pointer      : "\f245";
 
 .icon {
 	display: inline-block;
@@ -80,10 +80,13 @@ $fa-file-audio-o       : "\f1c7";
 	}
 
 	&.addSources:after,
-	&.removeSources:after    { content: $fa-file-audio-o;   }
-	&.loadSources:after      { content: $fa-download;       }
-	&.addSamples:after       { content: $fa-paint-brush;    }
-	&.removeSamples:after    { content: $fa-eraser;         }
+	&.removeSources:after      { content: $fa-file-audio-o;   }
+	&.loadSources:after        { content: $fa-download;       }
+	&.addSamples:after         { content: $fa-paint-brush;    }
+	&.removeSamples:after      { content: $fa-eraser;         }
+	&.selectSamples:after,
+	&.unselectSamples:after,
+	&.unselectAllSamples:after { content: $fa-mouse-pointer;  }
 
 	&.chrome:after        { content: $icon-chrome;        }
 	&.firefox:after       { content: $icon-firefox;       }

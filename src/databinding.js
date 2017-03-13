@@ -23,7 +23,9 @@ waFwk.on.unloadSource = function( srcobj ) { srcobj.userData.unloaded(); };
 waFwk.on.addTrackBefore = function( trk, trkAfter ) { return new ui.track( trk, trkAfter ); };
 
 // samples:
+waFwk.on.removeSample = function( smpobj ) { smpobj.userData.remove(); };
+waFwk.on.selectSample = function( smpobj ) { smpobj.userData.select( true ); };
+waFwk.on.unselectSample = function( smpobj ) { smpobj.userData.select( false ); };
 waFwk.on.sampleWhen = function( smpobj ) { smpobj.userData.when( smpobj.when ); };
 waFwk.on.sampleInTrack = function( smpobj ) { smpobj.userData.inTrack( smpobj.trkobj ); };
 waFwk.on.sampleDuration = function( smpobj ) { smpobj.userData.duration( smpobj.duration ); };
-waFwk.on.removeSample = function( smpobj ) { smpobj.userData.elRoot.remove(); };

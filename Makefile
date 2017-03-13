@@ -69,7 +69,9 @@ JS = \
 	src/ui/js/partials/gridcontent.js           \
 	src/ui/js/partials/history.js               \
 	src/ui/js/partials/timeline.js              \
+	src/ui/js/partials/toolDelete.js            \
 	src/ui/js/partials/tools.js                 \
+	src/ui/js/partials/toolSelect.js            \
 	src/ui/js/partials/tracksBg.js              \
 	src/ui/js/partials/visual.js                \
 	src/ui/js/templates/itemBuffer.js           \
@@ -142,11 +144,9 @@ JS = \
 	src/ui/js/old/gs/events/panelMenu.js            \
 	src/ui/js/old/gs/events/resize.js               \
 	src/ui/js/old/gs/events/toolCut.js              \
-	src/ui/js/old/gs/events/toolDelete.js           \
 	src/ui/js/old/gs/events/toolHand.js             \
 	src/ui/js/old/gs/events/toolMute.js             \
 	src/ui/js/old/gs/events/toolPaint.js            \
-	src/ui/js/old/gs/events/toolSelect.js           \
 	src/ui/js/old/gs/events/toolSlip.js             \
 	src/ui/js/old/gs/events/toolZoom.js             \
 	                                                \

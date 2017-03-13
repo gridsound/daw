@@ -35,6 +35,7 @@ ui.gridcontent.init();
 ui.visual.init();
 ui.timeline.init();
 ui.tools.init();
+ui.tool.select.init();
 
 ui.gridcontent.left( 0 );
 ui.grid.zoom( 1.5, 0 );
