@@ -9,7 +9,7 @@ ui.dom.gridCols.onwheel = function( e ) {
 
 ui.dom.gridCols.onscroll = function() {
 	ui.grid._scrollTop = ui.dom.gridCols.scrollTop;
-	ui.updateGridTopShadow();
+	ui.grid.updateTopShadow();
 };
 
 document.body.onwheel = function( e ) {

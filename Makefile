@@ -105,7 +105,6 @@ JS = \
 	src/ui/js/old/sample.js                         \
 	src/ui/js/old/setFilesWidth.js                  \
 	src/ui/js/old/setTrackNamesWidth.js             \
-	src/ui/js/old/updateGridShadows.js              \
 	                                                \
 	src/ui/js/old/gs/currentTime.js                 \
 	src/ui/js/old/gs/reset.js                       \
