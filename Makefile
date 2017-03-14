@@ -140,7 +140,6 @@ JS = \
 	src/ui/js/old/gs/events/dropFiles.js            \
 	src/ui/js/old/gs/events/fileFilters.js          \
 	src/ui/js/old/gs/events/gridMouse.js            \
-	src/ui/js/old/gs/events/keyboard.js             \
 	src/ui/js/old/gs/events/panelMenu.js            \
 	src/ui/js/old/gs/events/resize.js               \
 	src/ui/js/old/gs/events/toolCut.js              \
@@ -151,5 +150,6 @@ JS = \
 	src/ui/js/old/gs/events/toolZoom.js             \
 	                                                \
 	src/databinding.js                              \
+	src/keybinding.js                               \
 	src/run.js                                      \
 	src/analyticstracking.js
