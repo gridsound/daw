@@ -20,9 +20,7 @@ ui.tool.select = {
 	mouseup: function( e ) {
 		var that = ui.tool.select;
 
-		lg("ui.tool.select.mouseup 1")
 		if ( that._smpMousedown ) {
-			lg("ui.tool.select.mouseup 2")
 			waFwk.do( that._smpMousedownIsSelected
 				? "selectSamples" : "unselectSamples",
 				[ that._smpMousedown ] );

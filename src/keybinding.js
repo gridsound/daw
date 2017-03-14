@@ -16,13 +16,16 @@ keyboardRouter(
 
 	{ fn: gs.playStop,                keys: [ " " ] },
 	{ fn: gs.playPause,               keys: [ "ctrl", " " ] },
-	{ fn: gs.samples.selected.delete, keys: [ "delete" ] },
 	{ fn: ui.btnMagnet.toggle,        keys: [ "g" ] },
 	{ fn: gs.samples.selected.copy,   keys: [ "ctrl", "c" ] },
 	{ fn: gs.samples.selected.paste,  keys: [ "ctrl", "v" ] },
-	{ fn: waFwk.undo,                 keys: [ "ctrl", "z" ] },
-	{ fn: waFwk.redo,                 keys: [ "ctrl", "shift", "z" ] },
-	{ fn: gs.compositions.saveCurrent, keys: [ "ctrl", "s" ] }
+	{ fn: gs.compositions.saveCurrent, keys: [ "ctrl", "s" ] },
+
+	{ keys: [ "ctrl", "z" ], fn: waFwk.undo },
+	{ keys: [ "ctrl", "shift", "z" ], fn: waFwk.redo },
+	{ keys: [ "delete" ], fn: function() {
+		waFwk.do( "removeSamples", waFwk.selectedSamples.slice() );
+	} }
 );
 
 var oldTool;
