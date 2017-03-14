@@ -86,7 +86,7 @@ ui.itemBuffer.prototype = {
 			waFwk.do( "stopAllSources" );
 		}
 		if ( e.ctrlKey ) {
-			// gs.file.delete( this );
+			waFwk.do( "removeSources", [ this.srcobj ] );
 		}
 	},
 	click: function( e ) {
