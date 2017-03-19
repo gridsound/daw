@@ -37,7 +37,7 @@ ui.gridblockSample.prototype = {
 		this.elName.textContent = name;
 	},
 	inTrack: function( trkobj ) {
-		trkobj.userData.elColLinesTrack.appendChild( this.smpobj.userData.elRoot );
+		trkobj.userData.elColLinesTrack.appendChild( this.elRoot );
 	},
 	when: function( sec ) {
 		this.elRoot.style.left = sec * ui.BPMem + "em";

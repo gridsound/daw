@@ -27,5 +27,5 @@ waFwk.on.removeSample = function( smpobj ) { smpobj.userData.remove(); };
 waFwk.on.selectSample = function( smpobj ) { smpobj.userData.select( true ); };
 waFwk.on.unselectSample = function( smpobj ) { smpobj.userData.select( false ); };
 waFwk.on.sampleWhen = function( smpobj ) { smpobj.userData.when( smpobj.when ); };
-waFwk.on.sampleInTrack = function( smpobj ) { smpobj.userData.inTrack( smpobj.trkobj ); };
+waFwk.on.moveSampleToTrack = function( smpobj, trkobj ) { smpobj.userData.inTrack( trkobj ); };
 waFwk.on.sampleDuration = function( smpobj ) { smpobj.userData.duration( smpobj.duration ); };
