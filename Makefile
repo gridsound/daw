@@ -86,10 +86,6 @@ JS = \
 	                                            \
 	src/ui/js/old/gs/loop.js                        \
 	src/ui/js/old/gs/playPauseStop.js               \
-	src/ui/js/old/gs/file/create.js                 \
-	src/ui/js/old/gs/file/delete.js                 \
-	src/ui/js/old/gs/history/history.js             \
-	src/ui/js/old/gs/history/actions.js             \
 	                                                \
 	src/ui/js/old/ui.js                             \
 	src/ui/js/old/btnMagnet.js                      \
@@ -115,24 +111,9 @@ JS = \
 	src/ui/js/old/gs/compositions/save.js           \
 	src/ui/js/old/gs/compositions/serialize.js      \
 	src/ui/js/old/gs/compositions/store.js          \
-	src/ui/js/old/gs/sample/delete.js               \
-	src/ui/js/old/gs/sample/duration.js             \
-	src/ui/js/old/gs/sample/inTrack.js              \
-	src/ui/js/old/gs/sample/mute.js                 \
-	src/ui/js/old/gs/sample/select.js               \
-	src/ui/js/old/gs/sample/slip.js                 \
-	src/ui/js/old/gs/sample/when.js                 \
-	src/ui/js/old/gs/samples/selected/do.js         \
-	src/ui/js/old/gs/samples/selected/min.js        \
-	src/ui/js/old/gs/samples/selected/max.js        \
 	src/ui/js/old/gs/samples/selected/copyPaste.js  \
 	src/ui/js/old/gs/samples/selected/cut.js        \
-	src/ui/js/old/gs/samples/selected/delete.js     \
-	src/ui/js/old/gs/samples/selected/duration.js   \
-	src/ui/js/old/gs/samples/selected/when.js       \
-	src/ui/js/old/gs/samples/selected/slip.js       \
 	src/ui/js/old/gs/samples/selected/crop.js       \
-	src/ui/js/old/gs/samples/selected/unselect.js   \
 	                                                \
 	src/ui/js/old/gs/events/bodyClick.js            \
 	src/ui/js/old/gs/events/divExtend.js            \
