@@ -79,7 +79,6 @@ JS = \
 	src/ui/js/templates/historyAction.js        \
 	src/ui/js/templates/gridblockSample.js      \
 	src/ui/js/templates/track.js                \
-	src/on/addSample.js                         \
 	src/on/endedSource.js                       \
 	src/on/playSource.js                        \
 	src/on/stopAllSources.js                    \

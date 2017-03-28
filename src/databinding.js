@@ -24,6 +24,7 @@ waFwk.on.unloadSource = function( srcobj ) { srcobj.userData.unloaded(); };
 waFwk.on.addTrackBefore = function( trk, trkAfter ) { return new ui.track( trk, trkAfter ); };
 
 // samples:
+waFwk.on.addSample = function( smpobj ) { return new ui.gridblockSample( smpobj ); };
 waFwk.on.removeSample = function( smpobj ) { smpobj.userData.remove(); };
 waFwk.on.selectSample = function( smpobj ) { smpobj.userData.select( true ); };
 waFwk.on.unselectSample = function( smpobj ) { smpobj.userData.select( false ); };

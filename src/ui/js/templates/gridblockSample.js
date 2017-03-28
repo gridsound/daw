@@ -18,6 +18,7 @@ ui.gridblockSample = function( smpobj ) {
 	Array.from( elRoot.querySelectorAll( "*" ) ).forEach( function( el ) {
 		el.smpobj = smpobj;
 	} );
+	this.name( smpobj.srcobj.metadata.name );
 };
 
 ui.gridblockSample.prototype = {
