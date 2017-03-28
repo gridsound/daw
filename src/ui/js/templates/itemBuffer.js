@@ -68,6 +68,21 @@ ui.itemBuffer.prototype = {
 		this.elIcon.style.display = "inline-block";
 		this.elRoot.classList.add( "unloaded" );
 	},
+	play: function() {
+		var elCursor = ui.dom.filesCursor,
+			dur = this.srcobj.bufferSample.duration;
+
+		elCursor.style.transitionDuration =
+		elCursor.style.left = 0;
+		this.elRoot.appendChild( elCursor );
+		setTimeout( function() {
+			elCursor.style.transitionDuration = dur + "s";
+			elCursor.style.left = "100%";
+		}, 20 );
+	},
+	stop: function() {
+		ui.dom.filesCursor.remove();
+	},
 	remove: function() {
 		this.elRoot.remove();
 	},

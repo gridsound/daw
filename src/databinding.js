@@ -20,19 +20,8 @@ waFwk.on.loadSource = function( srcobj ) { srcobj.userData.loaded(); };
 waFwk.on.loadingSource = function( srcobj ) { srcobj.userData.loading(); };
 waFwk.on.unloadSource = function( srcobj ) { srcobj.userData.unloaded(); };
 waFwk.on.endedSource =
-waFwk.on.stopSource =
-waFwk.on.stopAllSources = function() { ui.dom.filesCursor.remove(); };
-waFwk.on.playSource = function( srcobj ) {
-	var elCursor = ui.dom.filesCursor;
-
-	elCursor.style.transitionDuration =
-	elCursor.style.left = 0;
-	srcobj.userData.elRoot.appendChild( elCursor );
-	setTimeout( function() {
-		elCursor.style.transitionDuration = srcobj.bufferSample.duration + "s";
-		elCursor.style.left = "100%";
-	}, 20 );
-};
+waFwk.on.stopSource = function( srcobj ) { srcobj.userData.stop(); };
+waFwk.on.playSource = function( srcobj ) { srcobj.userData.play(); };
 
 // tracks:
 waFwk.on.addTrackBefore = function( trk, trkAfter ) { return new ui.track( trk, trkAfter ); };
