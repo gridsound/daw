@@ -63,6 +63,7 @@ JS = \
 	src/common/timestampText.js                 \
 	src/common/uuid.js                          \
 	src/ui/js/app.js                            \
+	src/ui/js/partials/bpm.js                   \
 	src/ui/js/partials/clock.js                 \
 	src/ui/js/partials/controls.js              \
 	src/ui/js/partials/grid.js                  \
@@ -81,7 +82,6 @@ JS = \
 	src/on/addSample.js                         \
 	src/on/endedSource.js                       \
 	src/on/playSource.js                        \
-	src/on/setBPM.js                            \
 	src/on/stopAllSources.js                    \
 	                                            \
 	src/ui/js/old/gs/loop.js                        \

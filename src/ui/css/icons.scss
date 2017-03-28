@@ -53,6 +53,7 @@ $fa-eraser             : "\f12d";
 $fa-download           : "\f019";
 $fa-file-audio-o       : "\f1c7";
 $fa-mouse-pointer      : "\f245";
+$fa-tachometer         : "\f0e4";
 
 .icon {
 	display: inline-block;
@@ -87,6 +88,7 @@ $fa-mouse-pointer      : "\f245";
 	&.selectSamples:after,
 	&.unselectSamples:after,
 	&.unselectAllSamples:after { content: $fa-mouse-pointer;  }
+	&.bpm:after                { content: $fa-tachometer;     }
 
 	&.chrome:after        { content: $icon-chrome;        }
 	&.firefox:after       { content: $icon-firefox;       }

@@ -10,6 +10,7 @@ waFwk.on.redo = function( actobj ) { actobj.userData.done( true ); };
 waFwk.on.play = ui.controls.play;
 waFwk.on.pause = ui.controls.pause;
 waFwk.on.stop = ui.controls.stop;
+waFwk.on.bpm = ui.bpm.set;
 
 // sources:
 waFwk.on.addSource = function( srcobj ) { return new ui.itemBuffer( srcobj ); };

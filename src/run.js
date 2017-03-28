@@ -19,7 +19,6 @@ ui.dom.btnFiles.click();
 
 waFwk.analyser.fftSize = 256;
 waFwk.analyserData = new Uint8Array( waFwk.analyser.frequencyBinCount );
-waFwk.do.setBPM( 120 );
 
 for ( var i = 0; i < 42; ++i ) {
 	gswaFramework.actions.addTrackBefore.call( waFwk, {}, null );
@@ -29,6 +28,7 @@ ui.trackHeight = waFwk.tracks[ 0 ].userData.elColNamesTrack.offsetHeight;
 
 ui.history.init();
 ui.clock.init();
+ui.bpm.init();
 ui.controls.init();
 ui.grid.init();
 ui.gridcontent.init();
@@ -43,5 +43,7 @@ ui.tracksBg.update();
 ui.visual.on();
 ui.clock.inSeconds();
 ui.tools.select( "paint" );
+
+waFwk.do( "bpm", 120 );
 
 } )();
