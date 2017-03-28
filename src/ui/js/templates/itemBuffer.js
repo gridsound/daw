@@ -83,16 +83,16 @@ ui.itemBuffer.prototype = {
 	},
 	mousedown: function( e ) {
 		if ( e.button !== 0 ) {
-			waFwk.do( "stopAllSources" );
+			waFwk.stopAllSources();
 		}
 		if ( e.ctrlKey ) {
 			waFwk.do( "removeSources", [ this.srcobj ] );
 		}
 	},
 	click: function( e ) {
-		waFwk.do( "stopAllSources" );
+		waFwk.stopAllSources();
 		if ( this.isLoaded ) {
-			waFwk.do( "playSource", this.srcobj );
+			waFwk.playSource( this.srcobj );
 		} else if ( !this.srcobj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
 				"<code>" + this.srcobj.metadata.name + "</code> is missing...<br/>" +
@@ -105,7 +105,7 @@ ui.itemBuffer.prototype = {
 			} );
 		} else if ( !this.isLoading ) {
 			waFwk.do( "loadSources", [ this.srcobj ] )
-				.then( gswaFramework.actions.playSource.bind( waFwk, this.srcobj ) );
+				.then( waFwk.playSource.bind( waFwk, this.srcobj ) );
 		}
 	},
 	dragstart: function( e ) {
