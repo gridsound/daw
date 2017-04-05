@@ -7,22 +7,15 @@ ui.visual = {
 		ui.visual._osc = osc;
 		osc.setResolution( 256, ui.dom.visual.clientHeight );
 		osc.setPinch( 1 );
-		osc.dataFunction( ui.visual._dataFunction );
 		osc.drawBegin( ui.visual._drawBegin );
 		osc.drawEnd( ui.visual._drawEnd );
 	},
-	on: function() {
-		ui.visual._osc.startAnimation();
-	},
-	off: function() {
-		ui.visual._osc.stopAnimation();
+	draw: function() {
+		waFwk.analyser.getByteTimeDomainData( waFwk.analyserData );
+		ui.visual._osc.draw( waFwk.analyserData );
 	},
 
 	// private:
-	_dataFunction: function() {
-		waFwk.analyser.getByteTimeDomainData( waFwk.analyserData );
-		return waFwk.analyserData;
-	},
 	_drawBegin: function( ctx, max, w, h ) {
 		ctx.globalCompositeOperation = "source-in";
 		ctx.fillStyle = "rgba(0,0,0,.8)";
