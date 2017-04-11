@@ -82,6 +82,7 @@ JS = \
 	                                            \
 	src/ui/js/old/gs/loop.js                        \
 	src/ui/js/old/gs/playPauseStop.js               \
+	src/ui/js/old/gs/reset.js                       \
 	                                                \
 	src/ui/js/old/ui.js                             \
 	src/ui/js/old/btnMagnet.js                      \
@@ -97,9 +98,6 @@ JS = \
 	src/ui/js/old/sample.js                         \
 	src/ui/js/old/setFilesWidth.js                  \
 	src/ui/js/old/setTrackNamesWidth.js             \
-	                                                \
-	src/ui/js/old/gs/currentTime.js                 \
-	src/ui/js/old/gs/reset.js                       \
 	                                                \
 	src/ui/js/old/gs/compositions/init.js           \
 	src/ui/js/old/gs/compositions/load.js           \

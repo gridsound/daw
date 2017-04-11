@@ -8,9 +8,10 @@ waFwk.on.redo = function( actobj ) { actobj.userData.done( true ); };
 
 // controls:
 waFwk.on.play = ui.controls.play;
-waFwk.on.pause = ui.controls.pause;
+waFwk.on.pause =
 waFwk.on.stop = ui.controls.stop;
 waFwk.on.bpm = ui.bpm.set;
+waFwk.on.currentTime = ui.timeline.currentTime;
 
 // sources:
 waFwk.on.addSource = function( srcobj ) { return new ui.itemBuffer( srcobj ); };

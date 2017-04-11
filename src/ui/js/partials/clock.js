@@ -22,9 +22,8 @@ ui.clock = {
 
 	// private:
 	_setUnit: function( u ) {
-		ui.dom.clockUnits.dataset.unit =
-			ui.clock._unit = u;
-		ui.clock.currentTime( gs.currentTime() );
+		ui.dom.clockUnits.dataset.unit = ui.clock._unit = u;
+		ui.clock.currentTime( waFwk.currentTime() );
 	}
 };
 

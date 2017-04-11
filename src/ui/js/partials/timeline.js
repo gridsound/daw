@@ -14,16 +14,17 @@ ui.timeline = {
 		ui.dom.currentTimeArrow.style.marginLeft = leftEm;
 		ui.dom.timelineLoop    .style.marginLeft = leftEm;
 	},
-	currentTime: function( s ) {
+	currentTime: function( sec ) {
 		var arrow = ui.dom.currentTimeArrow,
 			cursor = ui.dom.currentTimeCursor;
 
-		if ( s > 0 ) {
+		if ( sec > 0 ) {
 			cursor.style.left =
-			arrow.style.left = s * ui.BPMem + "em";
+			arrow.style.left = sec * ui.BPMem + "em";
 		}
-		cursor.classList.toggle( "visible", s > 0 );
-		arrow.classList.toggle( "visible", s > 0 );
+		cursor.classList.toggle( "visible", sec > 0 );
+		arrow.classList.toggle( "visible", sec > 0 );
+		ui.clock.currentTime( sec );
 	},
 
 	// private:
@@ -39,7 +40,7 @@ ui.timeline = {
 	},
 	_mouseup: function( e ) {
 		if ( !ui.timelineLoop.dragging ) {
-			gs.currentTime( ui.grid.getWhen( e.pageX ) );
+			waFwk.currentTime( ui.grid.getWhen( e.pageX ) );
 		}
 	}
 };
