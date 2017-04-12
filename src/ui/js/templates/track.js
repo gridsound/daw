@@ -10,7 +10,6 @@ ui.track = function() {
 	this.elColLinesTrack = ui.createHTML( "<div class='track'>" )[ 0 ];
 	this.elColNamesTrack.uitrack
 	this.elColLinesTrack.uitrack = this;
-	this.wfilters = gs.wctx.createFilters();
 
 	ui.dom.tracksNames.appendChild( this.elColNamesTrack );
 	ui.dom.gridcontent.appendChild( this.elColLinesTrack );
@@ -19,7 +18,6 @@ ui.track = function() {
 		this.elColNamesTrack.querySelector( ".gsuiToggle" ), {
 		onchange: function( b ) {
 			that.isOn = b;
-			that.wfilters.gain( +b );
 			that.elColNamesTrack.classList.toggle( "off", !b );
 			that.elColLinesTrack.classList.toggle( "off", !b );
 		}
