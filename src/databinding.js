@@ -28,10 +28,10 @@ waFwk.on.playSource = function( srcobj ) { srcobj.userData.play(); };
 waFwk.on.addTrackBefore = function( trk, trkAfter ) { return new ui.track( trk, trkAfter ); };
 
 // samples:
-waFwk.on.addSample = function( smpobj ) { return new ui.gridblockSample( smpobj ); };
-waFwk.on.removeSample = function( smpobj ) { smpobj.userData.remove(); };
-waFwk.on.selectSample = function( smpobj ) { smpobj.userData.select( true ); };
-waFwk.on.unselectSample = function( smpobj ) { smpobj.userData.select( false ); };
-waFwk.on.sampleWhen = function( smpobj ) { smpobj.userData.when( smpobj.when ); };
-waFwk.on.moveSampleToTrack = function( smpobj, trkobj ) { smpobj.userData.inTrack( trkobj ); };
-waFwk.on.sampleDuration = function( smpobj ) { smpobj.userData.duration( smpobj.duration ); };
+waFwk.on.addSample = function( smp ) { return new ui.gridblockSample( smp ); };
+waFwk.on.removeSample = function( smp ) { smp.userData.remove(); };
+waFwk.on.selectSample = function( smp ) { smp.userData.select( true ); };
+waFwk.on.unselectSample = function( smp ) { smp.userData.select( false ); };
+waFwk.on.sampleWhen = function( smp, when ) { smp.userData.when( when ); };
+waFwk.on.sampleOffsetDuration = function( smp, os, dr ) { smp.userData.offsetDuration( os, dr ); };
+waFwk.on.sampleToTrack = function( smp, trkobj ) { smp.userData.toTrack( trkobj ); };

@@ -25,13 +25,13 @@ ui.itemBuffer = function( srcobj ) {
 	elRoot.ondragstart = this.dragstart.bind( this );
 	elRoot.oncontextmenu = function() { return false; };
 
-	this.elName.textContent = srcobj.metadata.name;
+	this.elName.textContent = srcobj.name;
 	ui.dom.filesList.appendChild( elRoot );
 };
 
 ui.itemBuffer.prototype = {
 	filled: function() {
-		this.elName.textContent = this.srcobj.metadata.name;
+		this.elName.textContent = this.srcobj.name;
 		this.elIcon.classList.remove( "question" );
 		this.elIcon.classList.add( "ramload" );
 		this.elRoot.classList.add( "unloaded" );
@@ -42,7 +42,7 @@ ui.itemBuffer.prototype = {
 		this.elIcon.classList.remove( "ramload" );
 	},
 	loaded: function() {
-		var buf = this.srcobj.bufferSample.buffer,
+		var buf = this.srcobj.buffer,
 			bufDur = buf.duration,
 			bufData0 = buf.getChannelData( 0 ),
 			bufData1 = buf.numberOfChannels < 2 ? bufData0 : buf.getChannelData( 1 );
@@ -70,7 +70,7 @@ ui.itemBuffer.prototype = {
 	},
 	play: function() {
 		var elCursor = ui.dom.filesCursor,
-			dur = this.srcobj.bufferSample.duration;
+			dur = this.srcobj.duration;
 
 		elCursor.style.transitionDuration =
 		elCursor.style.left = 0;
@@ -110,7 +110,7 @@ ui.itemBuffer.prototype = {
 			waFwk.playSource( this.srcobj );
 		} else if ( !this.srcobj.data ) {
 			ui.gsuiPopup.open( "confirm", "Sample's data missing",
-				"<code>" + this.srcobj.metadata.name + "</code> is missing...<br/>" +
+				"<code>" + this.srcobj.name + "</code> is missing...<br/>" +
 				"Do you want to browse your files to find it ?" )
 			.then( function( b ) {
 				if ( b ) {
@@ -160,8 +160,8 @@ document.body.addEventListener( "mouseup", function( e ) {
 ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 	if ( srcobjDragging ) {
 		waFwk.do( "addSamples", [ {
-			srcobj: srcobjDragging,
-			trkobj: ui.grid.getTrackByPageY( e.pageY ),
+			source: srcobjDragging,
+			track: ui.grid.getTrackByPageY( e.pageY ),
 			when: ui.grid.getWhen( e.pageX )
 		} ] );
 	}

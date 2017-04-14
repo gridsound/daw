@@ -51,7 +51,7 @@ ui.tool.select = {
 				secMax = Math.max( ui.mousedownSec, sec );
 
 			waFwk.sampleGroup.samples.forEach( function( smp ) {
-				if ( trackMin <= smp.trkobj.id && smp.trkobj.id <= trackMax ) {
+				if ( trackMin <= smp.track.id && smp.track.id <= trackMax ) {
 					var secA = smp.when,
 						secB = secA + smp.duration;
 

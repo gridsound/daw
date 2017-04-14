@@ -18,7 +18,7 @@ ui.gridblockSample = function( smpobj ) {
 	Array.from( elRoot.querySelectorAll( "*" ) ).forEach( function( el ) {
 		el.smpobj = smpobj;
 	} );
-	this.name( smpobj.srcobj.metadata.name );
+	this.name( smpobj.source.name );
 };
 
 ui.gridblockSample.prototype = {
@@ -37,15 +37,15 @@ ui.gridblockSample.prototype = {
 	name: function( name ) {
 		this.elName.textContent = name;
 	},
-	inTrack: function( trkobj ) {
+	toTrack: function( trkobj ) {
 		trkobj.userData.elColLinesTrack.appendChild( this.elRoot );
 	},
 	when: function( sec ) {
 		this.elRoot.style.left = sec * ui.BPMem + "em";
 	},
-	duration: function( sec ) {
-		this.elRoot.style.width = sec * ui.BPMem + "em";
-		this._waveform( this.smpobj.offset, sec );
+	offsetDuration: function( offset, duration ) {
+		this.elRoot.style.width = duration * ui.BPMem + "em";
+		this._waveform( offset, duration );
 	},
 	slip: function( sec ) {
 		this._waveform( sec, this.smpobj.duration );
@@ -53,7 +53,7 @@ ui.gridblockSample.prototype = {
 	_waveform: function( off, dur ) {
 		var b0, b1,
 			smp = this.smpobj,
-			buf = smp.srcobj.bufferSample.buffer;
+			buf = smp.source.buffer;
 
 		if ( buf ) {
 			b0 = buf.getChannelData( 0 );

@@ -34,7 +34,7 @@ function loadFiles() {
 					file.size === srcobj.metadata.size;
 
 			if ( ret && !srcobj.data ) {
-				waFwk.do.fillSource( srcobj, file );
+				// waFwk.do.fillSource( srcobj, file );
 			}
 			return ret;
 		} );
