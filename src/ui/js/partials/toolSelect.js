@@ -53,7 +53,8 @@ ui.tool.select = {
 			waFwk.sampleGroup.samples.forEach( function( smp ) {
 				if ( trackMin <= smp.track.id && smp.track.id <= trackMax ) {
 					var secA = smp.when,
-						secB = secA + smp.duration;
+						secB = secA + ( Number.isFinite( smp.duration )
+							? smp.duration : smp.source.duration );
 
 					if ( ( secMin <= secA && secA < secMax ) ||
 						( secMin < secB && secB <= secMax ) ||
