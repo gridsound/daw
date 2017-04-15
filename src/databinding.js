@@ -26,6 +26,7 @@ waFwk.on.playSource = function( srcobj ) { srcobj.userData.play(); };
 
 // tracks:
 waFwk.on.addTrackBefore = function( trk, trkAfter ) { return new ui.track( trk, trkAfter ); };
+waFwk.on.nameTrack = function( trk, name ) { trk.userData.name( name ); };
 
 // samples:
 waFwk.on.addSample = function( smp ) { return new ui.gridblockSample( smp ); };
