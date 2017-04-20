@@ -1,6 +1,7 @@
 # [_**GridSound**_(.com)](http://gridsound.com)
 
 <img width="256" align="right" src="https://gridsound.github.io/assets/icon/black/256.png"/>
+
 GridSound is a (**work-in-progress**) free HTML5 DAW (Digital Audio Workstation) based on the new fresh Web Audio technology. If you are interested by this project, please read the [**Wiki**](https://github.com/GridSound/daw/wiki) to have a lot more informations :)
 
 ###### Screenshot :
@@ -15,7 +16,9 @@ GridSound is a (**work-in-progress**) free HTML5 DAW (Digital Audio Workstation)
 - [x] Possibility to export the composition in WAV.
 
 ## Dispatch the code into 3 other repositories
-- [ ] [gs-ui-components](https://github.com/GridSound/gs-ui-components), [gs-webaudio-framework](https://github.com/GridSound/gs-webaudio-framework), [gs-webaudio-library](https://github.com/GridSound/gs-webaudio-library)
+- [x] [gs-ui-components](https://github.com/GridSound/gs-ui-components).
+- [ ] [gs-webaudio-library](https://github.com/GridSound/gs-webaudio-library).
+- [ ] [gs-webaudio-framework](https://github.com/GridSound/gs-webaudio-framework).
 
 ## Alpha version
 - [ ] Creation of a minimap who will be the grid's horizontal scroll.
