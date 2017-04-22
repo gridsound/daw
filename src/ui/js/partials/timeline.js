@@ -34,14 +34,14 @@ ui.timeline = {
 
 		if ( now - ui.timeline.firstClick < 250 ) {
 			// gs.loop.stop();
-			// gs.loop.timeA( ui.grid.getWhen( e.pageX ) );
+			// gs.loop.timeA( ui.grid.getBeat( e.pageX ) );
 			ui.timelineLoop.clickTime( "b" );
 		}
 		ui.timeline.firstClick = now;
 	},
 	_mouseup: function( e ) {
 		if ( !ui.timelineLoop.dragging ) {
-			waFwk.currentTime( ui.grid.getWhen( e.pageX ) );
+			waFwk.currentTime( ui.grid.getBeat( e.pageX ) );
 		}
 	}
 };

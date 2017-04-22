@@ -46,9 +46,9 @@ ui.tool.select = {
 				trackId = track ? track.id : 0,
 				trackMin = Math.min( that._trackId, trackId ),
 				trackMax = Math.max( that._trackId, trackId ),
-				sec = Math.max( 0, ui.mousemoveSec ),
-				secMin = Math.min( ui.mousedownSec, sec ),
-				secMax = Math.max( ui.mousedownSec, sec );
+				sec = Math.max( 0, ui.mousemoveBeat ),
+				secMin = Math.min( ui.mousedownBeat, sec ),
+				secMax = Math.max( ui.mousedownBeat, sec );
 
 			waFwk.sampleGroup.samples.forEach( function( smp ) {
 				if ( trackMin <= smp.track.id && smp.track.id <= trackMax ) {

@@ -5,28 +5,28 @@
 var prec = 1 / 4,
 	prec2 = prec / 2;
 
-common.secRound = function( sec ) {
-	var rest = sec % prec;
+common.beatRound = function( beat ) {
+	var rest = beat % prec;
 
-	sec -= rest;
+	beat -= rest;
 	if ( rest > prec2 ) {
-		sec += prec;
+		beat += prec;
 	}
-	return sec;
-}
+	return beat;
+};
 
 common.secFloor = function( sec ) {
-	var xem = sec * ui.BPMem,
-		n = common.secRound( xem );
+	var beat = sec * ui.BPMem,
+		n = common.beatRound( beat );
 
-	return ( n < xem || eq( n, xem ) ? n : n - prec ) / ui.BPMem;
+	return ( n < beat || eq( n, beat ) ? n : n - prec ) / ui.BPMem;
 };
 
 common.secCeil = function( sec ) {
-	var xem = sec * ui.BPMem,
-		n = common.secRound( xem );
+	var beat = sec * ui.BPMem,
+		n = common.beatRound( beat );
 
-	return ( n > xem || eq( n, xem ) ? n : n + prec ) / ui.BPMem;
+	return ( n > beat || eq( n, beat ) ? n : n + prec ) / ui.BPMem;
 };
 
 function eq( x, y ) {

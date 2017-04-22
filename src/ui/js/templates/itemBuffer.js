@@ -162,7 +162,7 @@ ui.dom.gridColB.addEventListener( "mouseup", function( e ) {
 		waFwk.do( "addSamples", [ {
 			source: srcobjDragging,
 			track: ui.grid.getTrackByPageY( e.pageY ),
-			when: ui.grid.getWhen( e.pageX )
+			when: ui.grid.getBeat( e.pageX )
 		} ] );
 	}
 } );

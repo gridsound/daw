@@ -8,7 +8,7 @@ ui.tool.cut = {
 	},
 	mouseup: function( e ) {
 		if ( _smp ) {
-			gs.samples.selected.cut( _smp, ui.grid.getWhen( e.pageX ) );
+			gs.samples.selected.cut( _smp, ui.grid.getBeat( e.pageX ) );
 		}
 		_smp = null;
 	}

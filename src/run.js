@@ -14,7 +14,6 @@ ui.history.init();
 ui.clock.init();
 ui.bpm.init();
 ui.controls.init();
-ui.grid.init();
 ui.gridcontent.init();
 ui.visual.init();
 ui.timeline.init();

@@ -40,26 +40,19 @@ ui.gridblockSample.prototype = {
 	toTrack: function( trkobj ) {
 		trkobj.userData.elColLinesTrack.appendChild( this.elRoot );
 	},
-	when: function( sec ) {
-		this.elRoot.style.left = sec * ui.BPMem + "em";
+	when: function( when ) {
+		this.elRoot.style.left = when + "em";
 	},
-	offsetDuration: function( offset, duration ) {
-		this.elRoot.style.width = duration * ui.BPMem + "em";
-		this._waveform( offset, duration );
+	duration: function( dur ) {
+		this.elRoot.style.width = dur + "em";
 	},
-	slip: function( sec ) {
-		this._waveform( sec, this.smpobj.duration );
-	},
-	_waveform: function( off, dur ) {
-		var b0, b1,
-			smp = this.smpobj,
-			buf = smp.source.buffer;
-
-		if ( buf ) {
-			b0 = buf.getChannelData( 0 );
+	waveform: function( buf, offset, duration ) {
+		var b0 = buf.getChannelData( 0 ),
 			b1 = buf.numberOfChannels < 2 ? b0 : buf.getChannelData( 1 );
-			this.uiWaveform.setResolution( ~~( dur * 1024 ), 128 );
-			this.uiWaveform.draw( b0, b1, buf.duration, off, dur );
-		}
+
+		offset *= 60 / waFwk.bpm;
+		duration *= 60 / waFwk.bpm;
+		this.uiWaveform.setResolution( ~~( duration * 1024 ), 128 );
+		this.uiWaveform.draw( b0, b1, buf.duration, offset, duration );
 	}
 };

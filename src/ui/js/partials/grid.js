@@ -1,16 +1,14 @@
 "use strict";
 
 ui.grid = {
-	init: function() {
+	getBeat: function( pageX ) {
+		pageX -= ui.filesWidth + ui.trackNamesWidth + ui.trackLinesLeft;
+		pageX /= ui.gridEm;
+		return ui.isMagnetized ? common.beatRound( pageX ) : pageX;
 	},
-	getWhen: function( px ) {
-		var xem = ( px - ui.filesWidth - ui.trackNamesWidth - ui.trackLinesLeft ) / ui.gridEm;
-
-		return ( ui.isMagnetized ? common.secRound( xem ) : xem ) / ui.BPMem;
-	},
-	getTrackByPageY: function( py ) {
+	getTrackByPageY: function( pageY ) {
 		return waFwk.tracks[
-			Math.floor( ( py - ui.gridColsY + ui.grid._scrollTop ) / ui.trackHeight ) ];
+			Math.floor( ( pageY - ui.gridColsY + ui.grid._scrollTop ) / ui.trackHeight ) ];
 	},
 	scrollTop: function( ypx ) {
 		ui.dom.gridCols.scrollTop =
