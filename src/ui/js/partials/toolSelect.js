@@ -46,19 +46,24 @@ ui.tool.select = {
 				trackId = track ? track.id : 0,
 				trackMin = Math.min( that._trackId, trackId ),
 				trackMax = Math.max( that._trackId, trackId ),
-				sec = Math.max( 0, ui.mousemoveBeat ),
-				secMin = Math.min( ui.mousedownBeat, sec ),
-				secMax = Math.max( ui.mousedownBeat, sec );
+				beat = Math.max( 0, ui.mousemoveBeat ),
+				beatMin = Math.min( ui.mousedownBeat, beat ),
+				beatMax = Math.max( ui.mousedownBeat, beat );
 
 			waFwk.sampleGroup.samples.forEach( function( smp ) {
 				if ( trackMin <= smp.track.id && smp.track.id <= trackMax ) {
-					var secA = smp.when,
-						secB = secA + ( Number.isFinite( smp.duration )
-							? smp.duration : smp.source.duration );
+					var beatB,
+						beatA = smp.when,
+						src = smp.source,
+						dur = smp.duration != null ? smp.duration : src.duration;
 
-					if ( ( secMin <= secA && secA < secMax ) ||
-						( secMin < secB && secB <= secMax ) ||
-						( secA <= secMin && secMax <= secB )
+					if ( !src.samples ) {
+						dur *= waFwk.bpm / 60;
+					}
+					beatB = beatA + dur;
+					if ( ( beatMin <= beatA && beatA < beatMax ) ||
+						( beatMin < beatB && beatB <= beatMax ) ||
+						( beatA <= beatMin && beatMax <= beatB )
 					) {
 						if ( !smp.selected && !smp.userData._selectionId ) {
 							smp.userData._selectionId = that._selectionId;
@@ -74,9 +79,9 @@ ui.tool.select = {
 					that._smpSelected.splice( that._smpSelected.indexOf( smp ), 1 );
 				}
 			} );
-			elRect.style.width = ( secMax - secMin ) * ui.BPMem + "em";
+			elRect.style.width = ( beatMax - beatMin ) + "em";
 			elRect.style.height = ( trackMax - trackMin + 1 ) * ui.trackHeight + "px";
-			elRect.style.left = secMin * ui.BPMem + "em";
+			elRect.style.left = beatMin + "em";
 			elRect.style.top = trackMin * ui.trackHeight + "px";
 		} else if ( 5 < Math.max(
 			Math.abs( ui.mousemovePageX - ui.mousedownPageX ),
