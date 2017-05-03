@@ -18,20 +18,22 @@ html:
 		src/ui/html/partials  \
 		src/ui/html/templates \
 		-f bin/__templates.js
-	@echo __templates.js
+	@echo "__templates.js"
 	@$(MAKE) js
-
-js:
-	@echo -n "* JS .................. "
-	@uglifyjs $(JS) -o bin/gs-daw.min.js --compress --mangle
-	@echo gs-daw.min.js
 
 css:
 	@echo -n "* CSS ................ "
 	@cp src/dep/gs-ui-components.min.css src/dep/gs-ui-components.min.scss
-	@cd bin; sass -I ../src/ui/css ../src/ui/css/_main.scss gs-daw.min.css --style compressed
+	@cd bin; sass -I ../src/ui/css ../src/ui/css/_main.scss gs-daw.min.css --style compressed &> /dev/null
 	@rm src/dep/gs-ui-components.min.scss
-	@echo gs-daw.min.css
+	@echo "gs-daw.min.css"
+
+js:
+	@echo -n "* JS .................. "
+	@echo "\"use strict\";" > bin/gs-daw.min.js
+	@cat $(JS) | sed -e "s/\"use strict\";//g" >> bin/gs-daw.min.js
+	@babili bin/gs-daw.min.js -o bin/gs-daw.min.js
+	@echo "gs-daw.min.js"
 
 wafwk:
 	@$(MAKE) -C ../gs-webaudio-framework/
@@ -49,7 +51,7 @@ uicmp:
 	cat src/dep/gs-ui-components.min.html >> _html ;\
 	tail -n +$$((TMP+2)) index.html >> _html ;\
 	rm index.html ;\
-	mv _html index.html ;\
+	mv _html index.html
 
 .PHONY: all html css js wafwk walib uicmp
 
