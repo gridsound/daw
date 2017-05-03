@@ -10,11 +10,11 @@ ui.gridblockSample = function( smpobj ) {
 
 	this.smpobj = smpobj;
 	this.elRoot = elRoot;
-	this.elWave = elRoot.querySelector( ".gsuiWaveform" );
 	this.elName = elRoot.querySelector( ".name" );
 	this.elCropStart = elRoot.querySelector( ".crop.start" );
 	this.elCropEnd = elRoot.querySelector( ".crop.end" );
-	this.uiWaveform = new gsuiWaveform( this.elWave );
+	this.uiWaveform = new gsuiWaveform();
+	elRoot.querySelector( ".content" ).appendChild( this.uiWaveform.rootElement );
 	Array.from( elRoot.querySelectorAll( "*" ) ).forEach( function( el ) {
 		el.smpobj = smpobj;
 	} );

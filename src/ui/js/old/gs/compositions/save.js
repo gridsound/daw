@@ -8,7 +8,7 @@ gs.compositions.save = function( cmp ) {
 	if ( cmp ) {
 		_save( cmp );
 	} else {
-		ui.gsuiPopup.open( "prompt", "Composition's name",
+		gsuiPopup.prompt( "Composition's name",
 			"Please enter a name for your new composition :" )
 		.then( function( name ) {
 			name && _save( { name: name.trim() } );

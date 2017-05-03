@@ -15,7 +15,6 @@ ui.itemBuffer = function( srcobj ) {
 	this.elRoot = elRoot;
 	this.elName = elRoot.querySelector( ".name" );
 	this.elIcon = elRoot.querySelector( ".icon" );
-	this.elWave = elRoot.querySelector( ".gsuiWaveform" );
 
 	this.isLoading =
 	this.isLoaded = false;
@@ -49,7 +48,8 @@ ui.itemBuffer.prototype = {
 
 		this.isLoaded = true;
 		this.isLoading = false;
-		this.uiWaveform = new gsuiWaveform( this.elWave );
+		this.uiWaveform = new gsuiWaveform();
+		this.elRoot.prepend( this.uiWaveform.rootElement );
 		this.uiWaveform.setResolution( 250, 40 );
 		this.uiWaveform.draw( bufData0, bufData1, bufDur, 0, bufDur );
 		this.elRoot.classList.add( "loaded" );
@@ -109,7 +109,7 @@ ui.itemBuffer.prototype = {
 		if ( this.isLoaded ) {
 			waFwk.playSource( this.srcobj );
 		} else if ( !this.srcobj.data ) {
-			ui.gsuiPopup.open( "confirm", "Sample's data missing",
+			gsuiPopup.confirm( "Sample's data missing",
 				"<code>" + this.srcobj.name + "</code> is missing...<br/>" +
 				"Do you want to browse your files to find it ?" )
 			.then( function( b ) {

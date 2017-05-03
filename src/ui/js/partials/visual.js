@@ -2,7 +2,7 @@
 
 ui.visual = {
 	init: function() {
-		var osc = new gsuiOscilloscope( ui.dom.visual.querySelector( ".gsuiOscilloscope" ) );
+		var osc = new gsuiOscilloscope( ui.dom.visual.querySelector( "canvas" ) );
 
 		ui.visual._osc = osc;
 		osc.setResolution( 256, ui.dom.visual.clientHeight );

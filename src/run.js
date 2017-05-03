@@ -32,4 +32,10 @@ ui.tracksBg.update();
 ui.clock.inSeconds();
 ui.tools.select( "paint" );
 
+frame();
+function frame() {
+	ui.visual.draw();
+	requestAnimationFrame( frame );
+}
+
 } )();

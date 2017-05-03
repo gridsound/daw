@@ -15,7 +15,7 @@ ui.bpm = {
 
 	// private:
 	_click: function() {
-		ui.gsuiPopup.open( "prompt", "BPM", "Choose your BPM (between 1 and 1000) :", waFwk.bpm )
+		gsuiPopup.prompt( "BPM", "Choose your BPM (between 1 and 1000) :", waFwk.bpm )
 			.then( function( bpm ) {
 				+bpm && waFwk.do( "bpm", +bpm );
 			} );
