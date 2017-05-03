@@ -22,24 +22,10 @@ document.body.ondrop = function( e ) {
 		while ( file = data.files[ i++ ] ) {
 			pushFile( file );
 		}
-		gs.compositions.readFile( saveFile ).then( loadFiles );
+		loadFiles();
 	}
 	return false;
 };
-
-function loadFiles() {
-	waFwk.do( "addSources", arrFiles.filter( function( file ) {
-		return !waFwk.sources.some( function( srcobj ) {
-			var ret = file.name === srcobj.metadata.filename &&
-					file.size === srcobj.metadata.size;
-
-			if ( ret && !srcobj.data ) {
-				// waFwk.do.fillSource( srcobj, file );
-			}
-			return ret;
-		} );
-	} ) );
-}
 
 function dataItems( droppedItems ) {
 	var item, i = 0, arrayPromises = [];
@@ -54,8 +40,12 @@ function dataItems( droppedItems ) {
 			pushFile( item );
 		}
 	}
-	Promise.all( arrayPromises ).then( function() {
-		gs.compositions.readFile( saveFile ).then( loadFiles );
+	Promise.all( arrayPromises ).then( loadFiles );
+}
+
+function loadFiles() {
+	gs.compositions.readFile( saveFile ).then( function() {
+		waFwk.do( "addSources", arrFiles );
 	} );
 }
 
