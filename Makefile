@@ -43,7 +43,13 @@ walib:
 
 uicmp:
 	@$(MAKE) -C ../gs-ui-components/
-	@cp ../gs-ui-components/bin/gs-* src/dep
+	@cp ../gs-ui-components/bin/* src/dep
+	@TMP=`grep \<\!\-\-\ gs-ui-components -n index.html | cut -d':' -f1` ;\
+	head index.html -n $$TMP > _html ;\
+	cat src/dep/gs-ui-components.min.html >> _html ;\
+	tail -n +$$((TMP+2)) index.html >> _html ;\
+	rm index.html ;\
+	mv _html index.html ;\
 
 .PHONY: all html css js wafwk walib uicmp
 
