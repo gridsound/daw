@@ -1,5 +1,7 @@
 "use strict";
 
+window.onresize = ui.resize;
+
 // undo/redo:
 waFwk.on.pushAction = ui.history.pushAction;
 waFwk.on.popAction = ui.history.popAction;

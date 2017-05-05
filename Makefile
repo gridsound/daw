@@ -123,7 +123,6 @@ JS = \
 	src/ui/js/old/gs/events/fileFilters.js          \
 	src/ui/js/old/gs/events/gridMouse.js            \
 	src/ui/js/old/gs/events/panelMenu.js            \
-	src/ui/js/old/gs/events/resize.js               \
 	src/ui/js/old/gs/events/toolCut.js              \
 	src/ui/js/old/gs/events/toolHand.js             \
 	src/ui/js/old/gs/events/toolMute.js             \
