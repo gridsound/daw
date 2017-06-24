@@ -1,0 +1,69 @@
+#panelCmps {
+	padding: 0 10px 10px;
+	background-color: #444;
+}
+
+#title:before {
+	content: "GridSound";
+	font-family: "title";
+	font-size: 28px;
+	color: #fff;
+}
+
+#panelCmps .head {
+	display: flex;
+	align-items: center;
+	height: var( --ctrl-height );
+}
+
+#cmps {
+	flex: 1;
+	overflow: auto;
+	border-radius: var( --small-bd-radius );
+	background-color: #333;
+}
+
+.cmp {
+	box-sizing: border-box;
+	padding: 4px;
+	color: #bbb;
+	font-size: 11px;
+	cursor: pointer;
+	background-color: var( --color-light-blue );
+	filter: brightness( .8 );
+	transition: .2s;
+	transition-property: padding-left;
+}
+.cmp.loaded {
+	filter: none;
+}
+.cmp + .cmp {
+	border-top: 1px solid rgba( 0, 0, 0, .2 );
+}
+.cmp:hover {
+	padding-left: 8px;
+}
+.cmp .name {
+	overflow: hidden;
+	color: #ddd;
+	font-size: 13px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.cmp .name:empty {
+	font-style: italic;
+}
+.cmp .name:empty:before {
+	content: "Untitled";
+}
+.cmp .bpm {
+	margin-right: 1em;
+}
+.cmp .bpm:before,
+.cmp .duration:before {
+	font-family: "FontAwesome";
+	margin-right: .4em;
+}
+.cmp .bpm:before { content: "\f001"; }
+.cmp .duration:before { content: "\f017"; }

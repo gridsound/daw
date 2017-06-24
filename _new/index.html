@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GridSound</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="GridSound (an open-source digital audio workstation)"/>
+	<meta property="og:url" content="https://gridsound.github.io/"/>
+	<meta property="og:image" content="https://gridsound.github.io/assets/og-image.jpg"/>
+	<meta property="og:image:width" content="800"/>
+	<meta property="og:image:height" content="400"/>
+	<meta name="theme-color" content="#3a5158"/>
+	<link rel="manifest" href="manifest.json"/>
+	<link rel="shortcut icon" href="assets/favicon.png"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiPanels/gsuiPanels.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiBeatLines/gsuiBeatLines.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiGridSamples/gsuiGridSamples.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiKeys/gsuiKeys.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiPanels/gsuiPanels.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiSpanEditable/gsuiSpanEditable.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiTimeLine/gsuiTimeLine.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiToggle/gsuiToggle.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiTrack/gsuiTrack.css"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiTrackList/gsuiTrackList.css"/>
+	<link rel="stylesheet" href="src/css/fonts.css"/>
+	<link rel="stylesheet" href="src/css/app.css"/>
+	<link rel="stylesheet" href="src/css/panelLeft.css"/>
+	<link rel="stylesheet" href="src/css/panelCmps.css"/>
+	<link rel="stylesheet" href="src/css/panelRight.css"/>
+	<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
+</head>
+<body>
+
+<div id="app"></div>
+
+<template id="appContent">
+	<div data-panel="1" id="panelCmps" class="panel-content panel-left">
+		<div class="head">
+			<div id="title"></div>
+			<div id="username"></div>
+		</div>
+		<div id="cmps"></div>
+	</div>
+	<div data-panel="2" id="panelAssets" class="panel-content panel-left">
+		<div class="panel-title">Assets</div>
+		<!--<div class="panel-menu">menu</div>-->
+		<div id="assets"></div>
+	</div>
+	<div data-panel="4" id="panelMain" class="panel-content">
+		<div id="controlsWrap">
+			<a id="play" class="ctrl-item btn big"></a>
+			<a id="stop" class="ctrl-item btn big"></a>
+			<div id="clock" class="ctrl-item">
+				<div id="clockMin"></div>
+				<div id="clockSec"></div>
+				<div id="clockMs"></div>
+				<div id="clockUnits">
+					<span class="s"></span>
+					<span class="b"></span>
+				</div>
+			</div>
+			<div id="bpm" class="ctrl-item">
+				<span id="bpmNumber"></span>
+				<span id="bpmText"></span>
+			</div>
+			<a id="settings" class="ctrl-item btn big"></a>
+		</div>
+		<div id="maingridWrap"></div>
+	</div>
+	<div data-panel="5" id="panelKeys" class="panel-content">
+		<div id="gridKeysWrap"></div>
+	</div>
+</template>
+
+<template id="appCmp">
+	<div class="appCmp">
+		<span class="name"></span>
+		<span class="bpm"></span>
+		<span class="duration"></span>
+	</div>
+</template>
+
+<template id="gsuiGridSamples">
+	<div class="gsuiGridSamples">
+		<div class="gsui-panel">
+			<div class="gsui-extend"></div>
+			<div class="gsui-content"></div>
+		</div>
+		<div class="gsui-grid">
+			<div class="gsui-content"></div>
+		</div>
+	</div>
+</template>
+
+<template id="gsuiTimeLine">
+	<div class="gsuiTimeLine">
+		<div class="gsui-loopLine"></div>
+		<div class="gsui-loop">
+			<div class="gsui-loopExt gsui-loopA"></div>
+			<div class="gsui-loopExt gsui-loopB"></div>
+			<div class="gsui-loopBrd gsui-loopBrdA"></div>
+			<div class="gsui-loopBrd gsui-loopBrdB"></div>
+			<div class="gsui-loopBg"></div>
+		</div>
+		<svg class="gsui-cursor" width="20" height="10">
+			<polygon points="2,2 10,8 18,2"/>
+		</svg>
+		<div class="gsui-currentTime">
+			<div class="gsui-cursorLine"></div>
+		</div>
+	</div>
+</template>
+
+<template id="gsuiKeys-octave"
+	><div class="gsuiKey" data-key="b" ><div class="gsuiKey-row gsui-row"></div></div
+	><div class="gsuiKey" data-key="a#"><div class="gsuiKey-row gsui-row gsui-rowBlack"></div></div
+	><div class="gsuiKey" data-key="a" ><div class="gsuiKey-row gsui-row"></div></div
+	><div class="gsuiKey" data-key="g#"><div class="gsuiKey-row gsui-row gsui-rowBlack"></div></div
+	><div class="gsuiKey" data-key="g" ><div class="gsuiKey-row gsui-row"></div></div
+	><div class="gsuiKey" data-key="f#"><div class="gsuiKey-row gsui-row gsui-rowBlack"></div></div
+	><div class="gsuiKey" data-key="f" ><div class="gsuiKey-row gsui-row gsui-rowF"></div></div
+	><div class="gsuiKey" data-key="e" ><div class="gsuiKey-row gsui-row"></div></div
+	><div class="gsuiKey" data-key="d#"><div class="gsuiKey-row gsui-row gsui-rowBlack"></div></div
+	><div class="gsuiKey" data-key="d" ><div class="gsuiKey-row gsui-row"></div></div
+	><div class="gsuiKey" data-key="c#"><div class="gsuiKey-row gsui-row gsui-rowBlack"></div></div
+	><div class="gsuiKey" data-key="c" ><div class="gsuiKey-row gsui-row gsui-rowC"></div></div
+></template>
+
+<template id="gsuiTrackList">
+	<div class="gsuiTrackList"></div>
+</template>
+
+<template id="gsuiTrack">
+	<div class="gsuiTrack">
+		<div class="gsuiTrack-row gsui-row"></div>
+	</div>
+</template>
+
+<template id="gsuiToggle">
+	<div class="gsuiToggle">
+		<div class="gsui-circle"></div>
+	</div>
+</template>
+
+<template id="gsuiSpanEditable">
+	<div class="gsuiSpanEditable">
+		<span></span>
+		<input type="text"/>
+	</div>
+</template>
+
+<script src="../../gs-ui-components/src/gsuiBeatLines/gsuiBeatLines.js"></script>
+<script src="../../gs-ui-components/src/gsuiGridSamples/gsuiGridSamples.js"></script>
+<script src="../../gs-ui-components/src/gsuiKeys/gsuiKeys.js"></script>
+<script src="../../gs-ui-components/src/gsuiPanels/gsuiPanels.js"></script>
+<script src="../../gs-ui-components/src/gsuiSpanEditable/gsuiSpanEditable.js"></script>
+<script src="../../gs-ui-components/src/gsuiTimeLine/gsuiTimeLine.js"></script>
+<script src="../../gs-ui-components/src/gsuiToggle/gsuiToggle.js"></script>
+<script src="../../gs-ui-components/src/gsuiTrack/gsuiTrack.js"></script>
+<script src="../../gs-ui-components/src/gsuiTrackList/gsuiTrackList.js"></script>
+<script src="src/init.js"></script>
+<script src="src/common/uuid.js"></script>
+<script src="src/common/timestampText.js"></script>
+<script src="src/gs/init.js"></script>
+<script src="src/gs/newComposition.js"></script>
+<script src="src/gs/loadComposition.js"></script>
+<script src="src/gs/unloadComposition.js"></script>
+<script src="src/gs/saveCurrentComposition.js"></script>
+<script src="src/gs/pushChange.js"></script>
+<script src="src/gs/applyChange.js"></script>
+<script src="src/gs/undo.js"></script>
+<script src="src/gs/redo.js"></script>
+<script src="src/ui/init.js"></script>
+<script src="src/ui/controls.js"></script>
+<script src="src/ui/applyChange.js"></script>
+<script src="src/ui/createCompositionLink.js"></script>
+<script src="src/ui/newComposition.js"></script>
+<script src="src/ui/loadComposition.js"></script>
+<script src="src/ui/unloadComposition.js"></script>
+<script src="src/run.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+#panelsMain > .gsui-panel:last-child {
+	width: calc( 100% - 300px );
+}
+
+#panelsMain > .gsui-panel:last-child > .gsuiPanels > .gsui-panel:first-child {
+	min-height: 400px;
+	height: 0;
+}
+
+#panelsMain > .gsui-panel:last-child > .gsuiPanels > .gsui-panel:last-child {
+	height: calc( 100% - 400px );
+}
+
+#controlsWrap {
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	height: var( --ctrl-height );
+	padding: var( --ctrl-padding );
+	border-bottom: 1px solid #000;
+	background-color: #444;
+}
+
+#controlsWrap .ctrl-item {
+	box-sizing: border-box;
+	color: #ddd;
+	height: 100%;
+	border-radius: var( --small-bd-radius );
+}
+
+#controlsWrap .ctrl-item + .ctrl-item {
+	margin-left: 6px;
+}
+
+#controlsWrap .btn.big {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-family: "FontAwesome";
+	border: 1px solid rgba( 0, 0, 0, .8 );
+	width: calc( var( --ctrl-height ) - 2 * var( --ctrl-padding ) );
+}
+
+#controlsWrap .btn.big:active {
+	padding-top: 4px;
+	box-shadow: inset 0 3px 0px rgba( 0, 0, 0, .25 );
+}
+
+#play { background-color: var( --color-light-blue ); }
+#stop { background-color: #888; }
+
+#play:before { content: "\f04b"; }
+#play.pause:before { content: "\f04c"; }
+#stop:before { content: "\f04d"; }
+
+#bpm,
+#clock {
+	display: flex;
+	font-size: 30px;
+	font-family: consolas;
+	padding: 0 .3em;
+	border: 3px solid rgba( 0, 0, 0, .3 );
+	background-color: #222;
+}
+
+#bpm {
+	align-items: center;
+}
+
+#bpmText:before {
+	content: "bpm";
+	font-size: calc( 9px + .1em );
+	margin-left: .5em;
+	opacity: .5;
+}
+
+#clock {
+	align-items: center;
+}
+#clockSec:before { content: ":"; }
+#clockMs:before { content: "."; }
+#clockMs {
+	font-size: .5em;
+	align-self: flex-end;
+}
+
+#settings {
+	width: auto !important;
+	padding-left: .4em;
+	padding-right: .4em;
+	font-family: "FontAwesome";
+	background-color: #d44;
+}
+#settings:before { content: "\f001"; margin-right: .4em; }
+#settings:after { content: "\f013"; }
+
+#maingridWrap {
+	flex: 1;
+}
+
+#gridKeysWrap {
+	height: 100%;
+}
+
+.gsuiGridSamples {
+	background-color: #2f2f2f;
+}

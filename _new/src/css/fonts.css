@@ -1,0 +1,9 @@
+@font-face {
+	font-family: "FontAwesome";
+	src: url( "../../assets/fontawesome.woff?v=4.5.0" ) format( "woff" );
+}
+
+@font-face {
+	font-family: "title";
+	src: url( "../../assets/oswald-regular.ttf" );
+}
