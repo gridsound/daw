@@ -2,6 +2,7 @@
 
 ui.init = function() {
 	var elPanels,
+		tmpImported,
 		panelsMain = new gsuiPanels(),
 		panelsLeft = new gsuiPanels(),
 		panelsRight = new gsuiPanels(),
@@ -33,6 +34,7 @@ ui.init = function() {
 	panelsMain.panels[ 0 ].append( panelsLeft.rootElement );
 	panelsMain.panels[ 1 ].append( panelsRight.rootElement );
 	ui.idElements.app.append( panelsMain.rootElement );
+	elPanels = ui.idElements.app.querySelectorAll( ".gsui-panel" );
 	panelsMain.resized();
 	panelsLeft.resized();
 	panelsRight.resized();
@@ -41,11 +43,13 @@ ui.init = function() {
 	};
 
 	// Clone the whole app's content:
-	elPanels = ui.idElements.app.querySelectorAll( ".gsui-panel" );
-	document.importNode( ui.idElements.appContent.content, true )
-		.querySelectorAll( "[data-panel]" ).forEach( function( tmpPanel ) {
-			elPanels[ tmpPanel.dataset.panel ].append( tmpPanel );
-		} );
+	tmpImported = document.importNode( ui.idElements.appContent.content, true );
+	tmpImported.querySelectorAll( "[data-panel]" ).forEach( function( pan ) {
+		elPanels[ pan.dataset.panel ].append( pan );
+	} );
+
+	// Append the settings popup to the app:
+	ui.idElements.app.append( tmpImported.querySelector( "#settingsPopup" ) );
 
 	// Fill the idElements with each new [id] elements:
 	document.querySelectorAll( "[id]" ).forEach( function( el ) {
@@ -66,6 +70,9 @@ ui.init = function() {
 	ui.idElements.gridKeysWrap.append( sequGridSamples.rootElement );
 	mainGridSamples.resized();
 	sequGridSamples.resized();
+
+	// Initialisation of the rest of the app:
+	ui.settingsPopup.init();
 
 	// Fill the list of compositions:
 	gs.storedCmps.forEach( ui.newComposition );

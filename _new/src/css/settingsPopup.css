@@ -1,0 +1,86 @@
+#settingsPopup {
+	position: absolute;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: #ddd;
+	background-color: rgba( 0, 0, 0, .6 );
+	transition: .5s;
+	transition-property: opacity, visibility;
+}
+#settingsPopup.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+#settingsPopup .window {
+	width: 600px;
+	overflow: hidden;
+	border-radius: 4px;
+	background-color: #555;
+	box-shadow: 0 0 50px #000;
+}
+
+#settingsPopup .head,
+#settingsPopup .body {
+	padding: 10px;
+}
+
+#settingsPopup .head {
+	background: #333;
+}
+
+#settingsPopup .body {
+}
+
+#settingsPopup fieldset {
+	border: 2px solid #444;
+	border-radius: 4px;
+}
+
+#settingsPopup fieldset + fieldset {
+	margin-top: 10px;
+}
+
+#settingsPopup legend {
+	font-size: 11px;
+	font-weight: bold;
+	opacity: .5;
+}
+
+#settingsPopup .param {
+	display: flex;
+	align-items: center;
+}
+
+#settingsPopup .param + .param {
+	margin-top: 5px;
+}
+
+#settingsPopup .param-title {
+	flex: 1;
+}
+
+#settingsPopup .param-values {
+	flex: 1;
+	font-family: consolas;
+}
+
+#settingsPopup [type="radio"]:checked + label {
+	font-weight: bold;
+}
+
+#settingsPopup [type="number"] {
+	width: 50px;
+	padding: .2em .5em;
+	border: 0;
+	border-radius: 2px;
+	font-family: inherit;
+	color: inherit;
+	background: rgba( 255, 255, 255, .1 );
+}
