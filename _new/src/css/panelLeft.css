@@ -4,6 +4,11 @@
 	width: 300px;
 }
 
+#panelsLeft .gsui-panel {
+	min-height: 30px;
+	height: 0;
+}
+
 #panelsLeft .gsui-panel:first-child {
 	min-height: 91px;
 	max-height: 250px;
@@ -40,7 +45,7 @@
 	background-color: #505050;
 }
 
-#assets {
+.panel-body {
 	flex: 1;
 	background-color: #555;
 }

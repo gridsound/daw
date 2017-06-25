@@ -19,7 +19,7 @@ ui.init = function() {
 	panelsLeft.axe( "y" );
 	panelsRight.axe( "y" );
 	panelsMain.nbPanels( 2 );
-	panelsLeft.nbPanels( 2 );
+	panelsLeft.nbPanels( 3 );
 	panelsRight.nbPanels( 2 );
 	panelsMain.rootElement.id = "panelsMain";
 	panelsMain.panels[ 0 ].id = "panelsLeftWrap";

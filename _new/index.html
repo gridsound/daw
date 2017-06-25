@@ -13,7 +13,6 @@
 	<meta name="theme-color" content="#3a5158"/>
 	<link rel="manifest" href="manifest.json"/>
 	<link rel="shortcut icon" href="assets/favicon.png"/>
-	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiPanels/gsuiPanels.css"/>
 	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiBeatLines/gsuiBeatLines.css"/>
 	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiGridSamples/gsuiGridSamples.css"/>
 	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiKeys/gsuiKeys.css"/>
@@ -43,12 +42,17 @@
 		</div>
 		<div id="cmps"></div>
 	</div>
-	<div data-panel="2" id="panelAssets" class="panel-content panel-left">
+	<div data-panel="2" id="panelHistory" class="panel-content panel-left">
+		<div class="panel-title">History</div>
+		<!--<div class="panel-menu">menu</div>-->
+		<div id="history" class="panel-body"></div>
+	</div>
+	<div data-panel="3" id="panelAssets" class="panel-content panel-left">
 		<div class="panel-title">Assets</div>
 		<!--<div class="panel-menu">menu</div>-->
-		<div id="assets"></div>
+		<div id="assets" class="panel-body"></div>
 	</div>
-	<div data-panel="4" id="panelMain" class="panel-content">
+	<div data-panel="5" id="panelMain" class="panel-content">
 		<div id="controlsWrap">
 			<a id="play" class="ctrl-item btn big"></a>
 			<a id="stop" class="ctrl-item btn big"></a>
@@ -69,7 +73,7 @@
 		</div>
 		<div id="maingridWrap"></div>
 	</div>
-	<div data-panel="5" id="panelKeys" class="panel-content">
+	<div data-panel="6" id="panelKeys" class="panel-content">
 		<div id="gridKeysWrap"></div>
 	</div>
 	<div id="settingsPopupWrap" class="hidden">
