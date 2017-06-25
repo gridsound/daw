@@ -49,7 +49,7 @@ ui.init = function() {
 	} );
 
 	// Append the settings popup to the app:
-	ui.idElements.app.append( tmpImported.querySelector( "#settingsPopup" ) );
+	ui.idElements.app.append( tmpImported.querySelector( "#settingsPopupWrap" ) );
 
 	// Fill the idElements with each new [id] elements:
 	document.querySelectorAll( "[id]" ).forEach( function( el ) {

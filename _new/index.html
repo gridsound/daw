@@ -72,10 +72,10 @@
 	<div data-panel="5" id="panelKeys" class="panel-content">
 		<div id="gridKeysWrap"></div>
 	</div>
-	<div id="settingsPopup" class="hidden">
-		<div class="window">
-			<div class="head">Settings</div>
-			<div class="body">
+	<div id="settingsPopupWrap" class="hidden">
+		<div id="settingsPopup">
+			<header>Settings</header>
+			<form id="settingsPopupForm">
 				<fieldset>
 					<legend>GridSound's DAW settings</legend>
 					<div class="param">
@@ -89,19 +89,26 @@
 				<fieldset>
 					<legend>Composition settings</legend>
 					<div class="param">
+						<div class="param-title">Title</div>
+						<div class="param-values"><input type="text"/></div>
+					</div>
+					<div class="param">
 						<div class="param-title">BPM</div>
-						<div class="param-values"><label><input type="number"/></label></div>
+						<div class="param-values"><input type="number"/></div>
 					</div>
 					<div class="param">
 						<div class="param-title">Beats per measure</div>
-						<div class="param-values"><label><input type="number"/></label></div>
+						<div class="param-values"><input type="number"/></div>
 					</div>
 					<div class="param">
 						<div class="param-title">Steps per beat</div>
-						<div class="param-values"><label><input type="number"/></label></div>
+						<div class="param-values"><input type="number"/></div>
 					</div>
 				</fieldset>
-			</div>
+				<div class="submit-wrap">
+					<input type="submit" value="Save"/>
+				</div>
+			</form>
 		</div>
 	</div>
 </template>
@@ -200,6 +207,8 @@
 <script src="src/gs/loadComposition.js"></script>
 <script src="src/gs/unloadComposition.js"></script>
 <script src="src/gs/saveCurrentComposition.js"></script>
+<script src="src/gs/changeCompositionSettings.js"></script>
+<script src="src/gs/changeSettings.js"></script>
 <script src="src/gs/pushChange.js"></script>
 <script src="src/gs/applyChange.js"></script>
 <script src="src/gs/undo.js"></script>
