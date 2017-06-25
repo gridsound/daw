@@ -14,6 +14,6 @@ gs.newComposition = function() {
 			blocks: {}
 		};
 
-	ui.newComposition( cmp );
+	ui.cmpPreload( cmp );
 	return gs.loadComposition( cmp );
 };

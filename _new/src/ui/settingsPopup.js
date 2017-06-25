@@ -24,7 +24,7 @@ ui.settingsPopup = {
 
 	// private:
 	_onsubmit() {
-		var k, _daw = {}, _cmp = {},
+		var k, _daw = {}, _cmp = {}, _cmpRev = {},
 			inp = ui.settingsPopup.inputs;
 
 		inp[ +settings.clockSteps ].checked || ( _daw.clockSteps = !settings.clockSteps );
@@ -33,7 +33,7 @@ ui.settingsPopup = {
 		( k = +inp[ 4 ].value ) !== gs.currCmp.beatsPerMeasure && ( _cmp.beatsPerMeasure = k );
 		( k = +inp[ 5 ].value ) !== gs.currCmp.stepsPerBeat && ( _cmp.stepsPerBeat = k );
 		for ( k in _daw ) { gs.changeSettings( _daw ); break; }
-		for ( k in _cmp ) { gs.changeCompositionSettings( _cmp ); break; }
+		for ( k in _cmp ) { gs.pushCompositionChange( _cmp, _cmpRev ); break; }
 		ui.settingsPopup.hide();
 		return false;
 	}

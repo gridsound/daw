@@ -75,5 +75,5 @@ ui.init = function() {
 	ui.settingsPopup.init();
 
 	// Fill the list of compositions:
-	gs.storedCmps.forEach( ui.newComposition );
+	gs.storedCmps.forEach( ui.cmpPreload );
 };
