@@ -15,5 +15,6 @@ gs.newComposition = function() {
 		};
 
 	ui.cmpPreload( cmp );
+	ui.cmpSaved( cmp, false );
 	return gs.loadComposition( cmp );
 };

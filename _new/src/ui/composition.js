@@ -30,6 +30,10 @@ ui.cmpUnload = function( cmp ) {
 	cmp._html.root.classList.remove( "loaded" );
 };
 
+ui.cmpSaved = function( cmp, isSaved ) {
+	cmp._html.root.classList.toggle( "notSaved", !isSaved );
+};
+
 ui.cmpName = function( cmp, n ) {
 	cmp._html.name.textContent = n;
 };

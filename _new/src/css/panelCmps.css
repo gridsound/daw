@@ -51,10 +51,11 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.cmp .name:empty {
-	font-style: italic;
+.cmp.notSaved .name:before {
+	content: "*";
 }
-.cmp .name:empty:before {
+.cmp .name:empty:after {
+	font-style: italic;
 	content: "Untitled";
 }
 .cmp .bpm {

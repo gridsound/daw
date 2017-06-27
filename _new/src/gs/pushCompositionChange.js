@@ -13,4 +13,5 @@ gs.pushCompositionChange = function( objDo, objUndo ) {
 	gs.historyInd = gs.history.push( action );
 	gs.changeComposition( objDo );
 	ui.history.push( action );
+	ui.cmpSaved( gs.currCmp, false );
 };
