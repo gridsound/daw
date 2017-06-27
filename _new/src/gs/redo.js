@@ -2,6 +2,9 @@
 
 gs.redo = function() {
 	if ( gs.historyInd < gs.history.length ) {
-		gs.changeComposition( gs.history[ gs.historyInd++ ].redo );
+		var act = gs.history[ gs.historyInd++ ];
+
+		gs.changeComposition( act.redo );
+		ui.history.redo( act );
 	}
 };

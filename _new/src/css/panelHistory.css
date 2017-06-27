@@ -11,10 +11,13 @@
 	color: #bbb;
 	font-size: 13px;
 	background-color: #333;
+	transition: background-color .2s;
 }
-
 .action + .action {
 	border-top: 1px solid #222;
+}
+.action:hover {
+	background-color: #444;
 }
 
 .action:before {
@@ -23,8 +26,8 @@
 	width: 4px;
 	height: 100%;
 	background-color: var( --color-light-blue );
+	transition: inherit;
 }
-
 .action.undone:before {
 	background-color: #000;
 }
@@ -33,6 +36,11 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	transition-property: opacity;
+	transition-duration: inherit;
+}
+.action.undone .actionText {
+	opacity: .5;
 }
 
 .actionIcon {

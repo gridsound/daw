@@ -2,6 +2,9 @@
 
 gs.undo = function() {
 	if ( gs.historyInd > 0 ) {
-		gs.changeComposition( gs.history[ --gs.historyInd ].undo );
+		var act = gs.history[ --gs.historyInd ];
+
+		gs.changeComposition( act.undo );
+		ui.history.undo( act );
 	}
 };
