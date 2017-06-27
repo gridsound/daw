@@ -24,16 +24,20 @@ ui.settingsPopup = {
 
 	// private:
 	_onsubmit() {
-		var k, _daw = {}, _cmp = {}, _cmpRev = {},
-			inp = ui.settingsPopup.inputs;
+		var x, _daw = {}, _cmp = {}, _cmpRev = {},
+			inp = ui.settingsPopup.inputs,
+			bPM = +inp[ 4 ].value,
+			sPB = +inp[ 5 ].value;
 
 		inp[ +settings.clockSteps ].checked || ( _daw.clockSteps = !settings.clockSteps );
-		( k =  inp[ 2 ].value ) !== gs.currCmp.name && ( _cmp.name = k );
-		( k = +inp[ 3 ].value ) !== gs.currCmp.bpm && ( _cmp.bpm = k );
-		( k = +inp[ 4 ].value ) !== gs.currCmp.beatsPerMeasure && ( _cmp.beatsPerMeasure = k );
-		( k = +inp[ 5 ].value ) !== gs.currCmp.stepsPerBeat && ( _cmp.stepsPerBeat = k );
-		for ( k in _daw ) { gs.changeSettings( _daw ); break; }
-		for ( k in _cmp ) { gs.pushCompositionChange( _cmp, _cmpRev ); break; }
+		( x =  inp[ 2 ].value ) !== gs.currCmp.name && ( _cmp.name = x );
+		( x = +inp[ 3 ].value ) !== gs.currCmp.bpm && ( _cmp.bpm = x );
+		if ( bPM !== gs.currCmp.beatsPerMeasure || sPB !== gs.currCmp.stepsPerBeat ) {
+			_cmp.beatsPerMeasure = bPM;
+			_cmp.stepsPerBeat = sPB;
+		}
+		for ( x in _daw ) { gs.changeSettings( _daw ); break; }
+		for ( x in _cmp ) { gs.pushCompositionChange( _cmp, _cmpRev ); break; }
 		ui.settingsPopup.hide();
 		return false;
 	}
