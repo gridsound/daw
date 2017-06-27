@@ -1,0 +1,43 @@
+#panelHistory {
+}
+
+.action {
+	display: flex;
+	box-sizing: border-box;
+	align-items: center;
+	cursor: default;
+	height: 28px;
+	padding-right: .4em;
+	color: #bbb;
+	font-size: 13px;
+	background-color: #333;
+}
+
+.action + .action {
+	border-top: 1px solid #222;
+}
+
+.action:before {
+	content: "";
+	display: block;
+	width: 4px;
+	height: 100%;
+	background-color: var( --color-light-blue );
+}
+
+.action.undone:before {
+	background-color: #000;
+}
+
+.actionText {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.actionIcon {
+	margin: 0 .4em;
+	font-size: 14px;
+	font-family: "FontAwesome";
+}
+.actionIcon.music:before { content: "\f001"; }

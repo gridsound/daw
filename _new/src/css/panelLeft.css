@@ -31,7 +31,7 @@
 	padding: 4px 10px;
 	font-size: 13px;
 	color: #222;
-	border-bottom: 1px solid #333;
+	border-bottom: 1px solid #111;
 }
 
 .panel-title {
@@ -47,5 +47,6 @@
 
 .panel-body {
 	flex: 1;
+	overflow: auto;
 	background-color: #555;
 }
