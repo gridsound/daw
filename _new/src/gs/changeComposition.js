@@ -17,8 +17,13 @@ gs.changeComposition = function( obj ) {
 		// ...
 		delete obj.blocks;
 	}
+	if ( obj.name ) {
+		ui.cmpName( cmp, obj.name );
+	}
 	if ( obj.bpm ) {
-		gs.changeBPM( obj.bpm );
+		// gswa...()
+		ui.controls.bpm( obj.bpm );
+		ui.cmpBPM( cmp, obj.bpm );
 	}
 	if ( sPB ) {
 		ui.mainGridSamples.timeSignature( bPM, sPB );

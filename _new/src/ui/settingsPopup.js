@@ -25,19 +25,29 @@ ui.settingsPopup = {
 	// private:
 	_onsubmit() {
 		var x, _daw = {}, _cmp = {}, _cmpRev = {},
+			currCmp = gs.currCmp,
 			inp = ui.settingsPopup.inputs,
 			bPM = +inp[ 4 ].value,
 			sPB = +inp[ 5 ].value;
 
 		inp[ +settings.clockSteps ].checked || ( _daw.clockSteps = !settings.clockSteps );
-		( x =  inp[ 2 ].value ) !== gs.currCmp.name && ( _cmp.name = x );
-		( x = +inp[ 3 ].value ) !== gs.currCmp.bpm && ( _cmp.bpm = x );
-		if ( bPM !== gs.currCmp.beatsPerMeasure || sPB !== gs.currCmp.stepsPerBeat ) {
+		( x =  inp[ 2 ].value ) !== currCmp.name && ( _cmp.name = x );
+		( x = +inp[ 3 ].value ) !== currCmp.bpm && ( _cmp.bpm = x );
+		if ( bPM !== currCmp.beatsPerMeasure || sPB !== currCmp.stepsPerBeat ) {
 			_cmp.beatsPerMeasure = bPM;
 			_cmp.stepsPerBeat = sPB;
 		}
-		for ( x in _daw ) { gs.changeSettings( _daw ); break; }
-		for ( x in _cmp ) { gs.pushCompositionChange( _cmp, _cmpRev ); break; }
+		for ( x in _daw ) {
+			gs.changeSettings( _daw );
+			break;
+		}
+		for ( x in _cmp ) {
+			for ( x in _cmp ) {
+				_cmpRev[ x ] = currCmp[ x ];
+			}
+			gs.pushCompositionChange( _cmp, _cmpRev );
+			break;
+		}
 		ui.settingsPopup.hide();
 		return false;
 	}
