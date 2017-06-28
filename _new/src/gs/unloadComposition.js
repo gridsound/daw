@@ -9,7 +9,7 @@ gs.unloadComposition = function() {
 		if ( !cmp ) {
 			res();
 		} else {
-			if ( !gs.currCmpSaved && confirm( msg ) ) {
+			if ( !gs.currCmpSaved && ( !gs.history.length || confirm( msg ) ) ) {
 				gs.currCmpSaved = true;
 				cmpOrig = gs.localStorage.get( cmp.id );
 				if ( cmpOrig ) {

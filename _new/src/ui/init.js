@@ -42,7 +42,7 @@ ui.init = function() {
 		panelsMain.resized();
 	};
 	window.onbeforeunload = function() {
-		if ( !gs.currCmpSaved ) {
+		if ( !gs.currCmpSaved && gs.history.length ) {
 			return "Data unsaved";
 		}
 	};
