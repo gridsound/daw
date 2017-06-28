@@ -82,7 +82,4 @@ ui.init = function() {
 	// Initialisation of the rest of the app:
 	ui.history.init();
 	ui.settingsPopup.init();
-
-	// Fill the list of compositions:
-	gs.storedCmps.forEach( ui.cmpPreload );
 };

@@ -1,24 +1,22 @@
 "use strict";
 
-gs.loadComposition = function( cmp ) {
-	return gs.saveCurrentComposition().then( function() {
-		var i, id, tracks = new Array( cmp.nbTracks );
+gs.loadComposition = function( cmpId ) {
+	return gs.unloadComposition().then( function() {
+		var cmp = gs.localStorage.get( cmpId ),
+			newOne = !cmp;
 
-		gs.unloadComposition();
+		if ( newOne ) {
+			cmp = gs.newComposition();
+			cmpId = cmp.id;
+			ui.cmps.push( cmpId );
+			ui.cmps.update( cmpId, cmp );
+		}
 		gs.currCmp = cmp;
-		gs.currCmpSaved = true;
-		for ( id in cmp.tracks ) {
-			tracks[ cmp.tracks[ id ].order ] = true;
-		}
-		id = i = 0;
-		for ( ; i < cmp.nbTracks; ++i ) {
-			if ( !tracks[ i ] ) {
-				for ( ; cmp.tracks[ id ]; ++id ) {}
-				cmp.tracks[ id ] = { order: i, name: "", toggle: true };
-			}
-		}
-		ui.loadComposition( cmp );
-	} );
+		gs.currCmpSaved = !newOne;
+		ui.controls.currentTime( 0 );
+		ui.controls.bpm( cmp.bpm );
+		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		ui.cmps.load( cmpId );
+	}, function() {} );
 };
-
-// An issue could appear, if nbTracks < max(cmp.tracks[ ... ])

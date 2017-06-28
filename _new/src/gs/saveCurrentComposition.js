@@ -4,9 +4,11 @@ gs.saveCurrentComposition = function() {
 	return gs.currCmpSaved
 		? Promise.resolve()
 		: new Promise( function( res, rej ) {
-			// ...
+			var cmp = gs.currCmp;
+
+			cmp.savedAt = ~~( Date.now() / 1000 );
 			gs.currCmpSaved = true;
-			ui.cmpSaved( gs.currCmp, true );
+			ui.cmpSaved( cmp, true );
 			res();
 		} );
 };

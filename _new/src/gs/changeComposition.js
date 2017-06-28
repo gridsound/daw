@@ -17,17 +17,16 @@ gs.changeComposition = function( obj ) {
 		// ...
 		delete obj.blocks;
 	}
-	if ( obj.name ) {
-		ui.cmpName( cmp, obj.name );
-	}
 	if ( obj.bpm ) {
 		// gswa...()
 		ui.controls.bpm( obj.bpm );
-		ui.cmpBPM( cmp, obj.bpm );
 	}
 	if ( sPB ) {
 		ui.mainGridSamples.timeSignature( bPM, sPB );
 		ui.keysGridSamples.timeSignature( bPM, sPB );
 	}
 	Object.assign( cmp, obj );
+	if ( obj.name || obj.bpm ) {
+		ui.cmps.update( cmp.id, cmp );
+	}
 };

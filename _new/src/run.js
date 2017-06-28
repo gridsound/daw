@@ -1,6 +1,6 @@
 "use strict";
 
 gs.init();
-gs.newComposition().then( function() {
+gs.loadComposition( null ).then( function() {
 	// gs.currCmp;
 } );
