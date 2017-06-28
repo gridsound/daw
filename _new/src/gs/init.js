@@ -7,5 +7,6 @@ gs.init = function() {
 	gs.history = [];
 	gs.historyInd = 0;
 	gs.currCmp = null;
+	gs.currCmpSaved = true;
 	ui.init();
 };

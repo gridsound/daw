@@ -36,8 +36,15 @@ ui.init = function() {
 	panelsMain.resized();
 	panelsLeft.resized();
 	panelsRight.resized();
+
+	// window events:
 	window.onresize = function() {
 		panelsMain.resized();
+	};
+	window.onbeforeunload = function() {
+		if ( !gs.currCmpSaved ) {
+			return "Data unsaved";
+		}
 	};
 
 	// Clone the whole app's content:

@@ -1,7 +1,7 @@
 "use strict";
 
 gs.saveCurrentComposition = function() {
-	return !gs.currCmp || gs.currCmpSaved
+	return gs.currCmpSaved
 		? Promise.resolve()
 		: new Promise( function( res, rej ) {
 			// ...

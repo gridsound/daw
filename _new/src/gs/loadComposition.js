@@ -6,6 +6,7 @@ gs.loadComposition = function( cmp ) {
 
 		gs.unloadComposition();
 		gs.currCmp = cmp;
+		gs.currCmpSaved = true;
 		for ( id in cmp.tracks ) {
 			tracks[ cmp.tracks[ id ].order ] = true;
 		}
