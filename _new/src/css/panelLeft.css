@@ -28,6 +28,7 @@
 
 .panel-title,
 .panel-menu {
+	box-sizing: border-box;
 	padding: 4px 10px;
 	font-size: 13px;
 	color: #222;

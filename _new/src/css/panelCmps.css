@@ -1,6 +1,15 @@
 #panelCmps {
-	padding: 0 10px 10px;
 	background-color: #444;
+}
+
+#panelCmps .panel-title {
+	display: flex;
+	align-items: center;
+	height: var( --ctrl-height );
+	padding-top: 0;
+	padding-bottom: 0;
+	font-weight: normal;
+	background: none;
 }
 
 #title:before {
@@ -10,16 +19,7 @@
 	color: #fff;
 }
 
-#panelCmps .head {
-	display: flex;
-	align-items: center;
-	height: var( --ctrl-height );
-}
-
 #cmps {
-	flex: 1;
-	overflow: auto;
-	border-radius: var( --small-bd-radius );
 	background-color: #333;
 }
 
@@ -30,7 +30,7 @@
 	font-size: 11px;
 	cursor: pointer;
 	background-color: var( --color-light-blue );
-	filter: brightness( .8 );
+	filter: brightness( .86 );
 	transition: .2s;
 	transition-property: padding-left;
 }
