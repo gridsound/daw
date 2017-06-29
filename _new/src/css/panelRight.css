@@ -90,7 +90,7 @@
 	padding-left: .4em;
 	padding-right: .4em;
 	font-family: "FontAwesome";
-	background-color: #d44;
+	background-color: var( --color-light-red );
 }
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }

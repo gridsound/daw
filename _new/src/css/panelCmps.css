@@ -25,23 +25,42 @@
 
 .cmp {
 	box-sizing: border-box;
-	padding: 4px;
+	display: flex;
 	color: #bbb;
 	font-size: 11px;
 	cursor: pointer;
 	background-color: var( --color-light-blue );
 	filter: brightness( .86 );
-	transition: .2s;
-	transition-property: padding-left;
+}
+.cmp .save {
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	width: 0;
+	background-color: var( --color-light-red );
+}
+.cmp.notSaved .save {
+	width: 30px;
+}
+.cmp .save:before {
+	content: "\f0a0";
+	font: 20px "FontAwesome";
+	color: #ddd;
+}
+.cmp .info {
+	flex: 1;
+	padding: 4px;
+	transition: padding-left .2s;
+}
+.cmp .info:hover {
+	padding-left: 8px;
 }
 .cmp.loaded {
 	filter: none;
 }
 .cmp + .cmp {
 	border-top: 1px solid rgba( 0, 0, 0, .2 );
-}
-.cmp:hover {
-	padding-left: 8px;
 }
 .cmp .name {
 	overflow: hidden;

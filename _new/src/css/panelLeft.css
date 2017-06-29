@@ -10,9 +10,8 @@
 }
 
 #panelsLeft .gsui-panel:first-child {
-	min-height: 91px;
-	max-height: 250px;
-	height: 150px;
+	min-height: 81px;
+	height: 200px;
 }
 
 #panelsLeft .gsui-panel:last-child {

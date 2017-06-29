@@ -3,17 +3,23 @@
 ui.cmps = {
 	push( id ) {
 		var root = document.createElement( "div" ),
-			html = { root: root };
+			save = document.createElement( "div" ),
+			info = document.createElement( "div" ),
+			name = document.createElement( "div" ),
+			bpm = document.createElement( "span" ),
+			duration = document.createElement( "span" );
 
 		root.className = "cmp";
-		( html.name = document.createElement( "div" ) ).className = "name";
-		( html.bpm = document.createElement( "span" ) ).className = "bpm";
-		( html.duration = document.createElement( "span" ) ).className = "duration";
-		root.append( html.name );
-		root.append( html.bpm );
-		root.append( html.duration );
-		root.onclick = gs.loadComposition.bind( null, id );
-		ui.cmps._html[ id ] = html;
+		save.className = "save";
+		info.className = "info";
+		name.className = "name";
+		bpm.className = "bpm";
+		duration.className = "duration";
+		info.append( name, bpm, duration );
+		root.append( save, info );
+		save.onclick = gs.saveCurrentComposition;
+		info.onclick = gs.loadComposition.bind( null, id );
+		ui.cmps._html[ id ] = { root, name, bpm, duration };
 		ui.idElements.cmps.append( root );
 	},
 	remove( id ) {
