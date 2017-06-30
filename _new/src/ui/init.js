@@ -14,6 +14,7 @@ ui.init = function() {
 		};
 
 	// Init some gsuiPanels:
+	ui.panelsMain = panelsMain;
 	panelsLeft.axe( "y" );
 	panelsRight.axe( "y" );
 	panelsMain.nbPanels( 2 );
@@ -36,16 +37,6 @@ ui.init = function() {
 	panelsMain.resized();
 	panelsLeft.resized();
 	panelsRight.resized();
-
-	// window events:
-	window.onresize = function() {
-		panelsMain.resized();
-	};
-	window.onbeforeunload = function() {
-		if ( !gs.currCmpSaved && gs.history.length ) {
-			return "Data unsaved";
-		}
-	};
 
 	// Clone the whole app's content:
 	tmpImported = document.importNode( idEl.appContent.content, true );
@@ -82,4 +73,5 @@ ui.init = function() {
 	// Initialisation of the rest of the app:
 	ui.history.init();
 	ui.settingsPopup.init();
+	ui.windowEvents();
 };
