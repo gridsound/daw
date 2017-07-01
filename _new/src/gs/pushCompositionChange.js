@@ -1,10 +1,7 @@
 "use strict";
 
-gs.pushCompositionChange = function( objDo, objUndo ) {
-	var action = {
-			redo: objDo,
-			undo: objUndo
-		};
+gs.pushCompositionChange = function( redo, undo ) {
+	var action = { redo, undo };
 
 	if ( gs.historyInd < gs.history.length ) {
 		gs.history.length = gs.historyInd;
@@ -12,7 +9,7 @@ gs.pushCompositionChange = function( objDo, objUndo ) {
 	}
 	gs.historyInd = gs.history.push( action );
 	gs.currCmpSaved = false;
-	gs.changeComposition( objDo );
+	gs.changeComposition( redo );
 	ui.history.push( action );
 	ui.cmps.saved( false );
 };

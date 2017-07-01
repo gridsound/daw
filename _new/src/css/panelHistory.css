@@ -9,7 +9,7 @@
 	height: 28px;
 	padding-right: .4em;
 	color: #bbb;
-	font-size: 13px;
+	font: 13px consolas;
 	background-color: #333;
 	transition: background-color .2s;
 }
@@ -45,7 +45,6 @@
 
 .actionIcon {
 	margin: 0 .4em;
-	font-size: 14px;
-	font-family: "FontAwesome";
+	font: 14px "FontAwesome";
 }
 .actionIcon.music:before { content: "\f001"; }

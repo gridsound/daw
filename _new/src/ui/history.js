@@ -19,16 +19,16 @@ ui.history = {
 	push( action ) {
 		var div = document.createElement( "div" ),
 			icon = document.createElement( "span" ),
-			text = document.createElement( "span" );
+			text = document.createElement( "span" ),
+			desc = ui.history._nameAction( action );
 
-		div.className = "action";
-		icon.className = "actionIcon";
-		text.className = "actionText";
-		div.append( icon );
-		div.append( text );
-		text.textContent = "Lorem ipsum";
-		div.onclick = ui.history._onclick;
 		action._html = div;
+		div.className = "action";
+		icon.className = "actionIcon " + desc.i;
+		text.className = "actionText";
+		text.textContent = desc.t;
+		div.append( icon, text );
+		div.onclick = ui.history._onclick;
 		ui.idElements.history.append( div );
 	},
 
@@ -48,5 +48,16 @@ ui.history = {
 				gs.redo();
 			}
 		}
+	},
+	_nameAction( act ) {
+		var r = act.redo,
+			u = act.undo;
+
+		return (
+			r.name != null ? { i: "name",     t: `Name: "${ u.name }" -> "${ r.name }"` } :
+			r.bpm          ? { i: "bpm",      t: `BPM: ${ u.bpm } -> ${ r.bpm }` } :
+			r.stepsPerBeat ? { i: "timeSign", t: `Time signature: ${ u.beatsPerMeasure }/${ u.stepsPerBeat } -> ${ r.beatsPerMeasure }/${ r.stepsPerBeat }` } :
+			{ i: "", t: "" }
+		);
 	}
 };

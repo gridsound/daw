@@ -26,7 +26,7 @@ gs.changeComposition = function( obj ) {
 		ui.keysGridSamples.timeSignature( bPM, sPB );
 	}
 	Object.assign( cmp, obj );
-	if ( obj.name || obj.bpm ) {
+	if ( obj.name != null || obj.bpm ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
 };
