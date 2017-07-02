@@ -1,6 +1,12 @@
 "use strict";
 
 gs.localStorage = {
+	put( id, cmp ) {
+		localStorage[ id ] = JSON.stringify( cmp );
+	},
+	delete( id ) {
+		delete localStorage[ id ];
+	},
 	get( id ) {
 		try {
 			var cmp = JSON.parse( localStorage[ id ] );
@@ -19,8 +25,5 @@ gs.localStorage = {
 			}
 		}
 		return cmps;
-	},
-	put( id, cmp ) {
-		localStorage[ id ] = JSON.stringify( cmp );
 	}
 };
