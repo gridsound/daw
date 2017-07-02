@@ -24,6 +24,9 @@ gs.localStorage = {
 				cmps.push( cmp );
 			}
 		}
+		cmps.sort( function( a, b ) {
+			return a.savedAt < b.savedAt;
+		} );
 		return cmps;
 	}
 };
