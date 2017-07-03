@@ -71,7 +71,7 @@
 	background-color: var( --color-light-red );
 }
 .cmp.notSaved .save {
-	width: 30px;
+	min-width: 30px;
 }
 .cmp .save:before {
 	content: "\f0a0";
@@ -81,6 +81,7 @@
 .cmp .info {
 	flex: 1;
 	padding: 4px;
+	overflow: hidden;
 	transition: padding-left .2s;
 }
 .cmp .info:hover {
