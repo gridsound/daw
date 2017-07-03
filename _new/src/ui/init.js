@@ -71,6 +71,7 @@ ui.init = function() {
 	keysGridSamples.resized();
 
 	// Initialisation of the rest of the app:
+	ui.cmps.init();
 	ui.history.init();
 	ui.settingsPopup.init();
 	ui.windowEvents();

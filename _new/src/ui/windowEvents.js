@@ -26,4 +26,8 @@ ui.windowEvents = function() {
 			e.preventDefault();
 		}
 	};
+
+	document.body.onclick = function( e ) {
+		ui.cmps._hideMenu();
+	};
 };
