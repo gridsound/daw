@@ -1,22 +1,18 @@
 "use strict";
 
-gs.loadComposition = function( cmpId ) {
-	return gs.unloadComposition().then( function() {
-		var cmp = gs.localStorage.get( cmpId ),
-			newOne = !cmp;
+gs.loadComposition = function( cmp ) {
+	var cmpOrig = gs.localStorage.get( cmp.id );
 
-		if ( newOne ) {
-			cmp = gs.newComposition();
-			cmpId = cmp.id;
-			ui.cmps.push( cmpId );
-			ui.cmps.update( cmpId, cmp );
-		}
-		gs.currCmp = cmp;
-		gs.currCmpSaved = !newOne;
-		ui.controls.currentTime( 0 );
-		ui.controls.bpm( cmp.bpm );
-		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		ui.cmps.load( cmpId );
-	}, function() {} );
+	gs.currCmp = cmp;
+	gs.currCmpSaved = !!( cmp.savedAt && cmpOrig && cmpOrig.savedAt === cmp.savedAt );
+	if ( cmp.savedAt == null || !cmpOrig ) {
+		ui.cmps.push( cmp.id );
+		ui.cmps.update( cmp.id, cmp );
+	}
+	ui.controls.currentTime( 0 );
+	ui.controls.bpm( cmp.bpm );
+	ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+	ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+	ui.cmps.load( cmp.id );
+	ui.cmps.saved( gs.currCmpSaved || !cmp.savedAt );
 };

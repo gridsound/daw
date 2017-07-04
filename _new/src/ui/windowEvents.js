@@ -6,7 +6,7 @@ ui.windowEvents = function() {
 	};
 
 	window.onbeforeunload = function() {
-		if ( !gs.currCmpSaved && gs.history.length ) {
+		if ( !gs.currCmpSaved && gs.currCmp.savedAt ) {
 			return "Data unsaved";
 		}
 	};
@@ -29,5 +29,30 @@ ui.windowEvents = function() {
 
 	document.body.onclick = function( e ) {
 		ui.cmps._hideMenu();
+	};
+
+	document.body.ondrop = function( e ) {
+		var gsFile,
+			files = Array.from( e.dataTransfer.files ),
+			assetsFiles = files.filter( function( f ) {
+				var ext = f.name.substr( f.name.lastIndexOf( "." ) + 1 ).toLowerCase();
+
+				if ( ext === "gs" ) {
+					gsFile = f;
+				}
+				return settings.assetsExt.indexOf( ext ) > -1;
+			} );
+
+		if ( gsFile ) {
+			gs.loadCompositionByBlob( gsFile ).then(
+				gs.addAssets.bind( null, assetsFiles ),
+				function() {} );
+		} else {
+			gs.addAssets( assetsFiles );
+		}
+		return false;
+	};
+	document.body.ondragover = function() {
+		return false;
 	};
 };

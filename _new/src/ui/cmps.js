@@ -23,7 +23,7 @@ ui.cmps = {
 		info.append( name, bpm, duration );
 		root.append( save, info, menu );
 		save.onclick = gs.saveCurrentComposition;
-		info.onclick = gs.loadComposition.bind( null, id );
+		info.onclick = gs.loadCompositionById.bind( null, id );
 		menu.onclick = ui.cmps._showMenu.bind( null, id );
 		ui.cmps._html[ id ] = { root, name, bpm, duration };
 		ui.idElements.cmps.append( root );

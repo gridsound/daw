@@ -15,7 +15,7 @@ gs.deleteComposition = function( cmpId ) {
 		ui.cmps.remove( cmpId );
 		if ( isCurr ) {
 			cmps = gs.localStorage.getAll();
-			gs.loadComposition( cmps[ 0 ] ? cmps[ 0 ].id : null );
+			gs.loadCompositionById( cmps[ 0 ] ? cmps[ 0 ].id : null );
 		}
 	}
 };
