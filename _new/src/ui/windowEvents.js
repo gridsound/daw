@@ -6,7 +6,7 @@ ui.windowEvents = function() {
 	};
 
 	window.onbeforeunload = function() {
-		if ( !gs.currCmpSaved && gs.currCmp.savedAt ) {
+		if ( gs.isCompositionNeedSave() ) {
 			return "Data unsaved";
 		}
 	};
@@ -52,6 +52,7 @@ ui.windowEvents = function() {
 		}
 		return false;
 	};
+
 	document.body.ondragover = function() {
 		return false;
 	};

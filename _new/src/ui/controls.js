@@ -24,6 +24,6 @@ ui.controls = {
 		ui.idElements.clockMs.textContent = time.c;
 	},
 	title( s ) {
-		document.title = ( gs.currCmpSaved ? "" : "*" ) + ( s || "GridSound" );
+		document.title = ( gs.isCompositionNeedSave() ? "*" : "" ) + ( s || "GridSound" );
 	}
 };
