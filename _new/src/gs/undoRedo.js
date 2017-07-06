@@ -5,7 +5,10 @@ gs.undo = function() {
 		var act = gs.history[ --gs.historyInd ],
 			prevAct = gs.history[ gs.historyInd - 1 ];
 
-		gs.currCmpSaved = !!( prevAct && prevAct.saved );
+		gs.currCmpSaved = !!( prevAct
+			? prevAct.saved
+			: !gs.historyActionSaved &&
+				( gs.currCmp.savedAt || localStorage[ gs.currCmp.id ] ) );
 		gs.changeComposition( act.undo );
 		ui.history.undo( act );
 		ui.cmps.saved( gs.currCmpSaved );
