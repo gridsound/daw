@@ -37,6 +37,7 @@ ui.cmps = {
 			dur = common.timestampText( dat.duration );
 
 		html.name.textContent = dat.name;
+		ui.controls.title( dat.name );
 		html.bpm.textContent = dat.bpm;
 		html.duration.textContent = dur.a + ":" + dur.b;
 	},
@@ -45,9 +46,11 @@ ui.cmps = {
 
 		ui.cmps._loadOne = html;
 		html.root.classList.add( "loaded" );
+		ui.controls.title( gs.currCmp.name );
 		ui.idElements.cmps.prepend( html.root );
 	},
 	saved( saved ) {
+		ui.controls.title( gs.currCmp.name );
 		ui.cmps._loadOne.root.classList.toggle( "notSaved", !saved );
 	},
 	unload() {

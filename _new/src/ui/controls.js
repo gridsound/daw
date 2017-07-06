@@ -22,5 +22,8 @@ ui.controls = {
 		ui.idElements.clockMin.textContent = time.a;
 		ui.idElements.clockSec.textContent = time.b;
 		ui.idElements.clockMs.textContent = time.c;
+	},
+	title( s ) {
+		document.title = ( gs.currCmpSaved ? "" : "*" ) + ( s || "GridSound" );
 	}
 };
