@@ -20,10 +20,6 @@
 	color: #fff;
 }
 
-#cmps {
-	background-color: #333;
-}
-
 #cmpMenu {
 	position: absolute;
 	z-index: 2;
@@ -60,7 +56,7 @@
 	font-size: 12px;
 	cursor: pointer;
 	background-color: var( --color-light-blue );
-	filter: brightness( .86 );
+	filter: brightness( .9 );
 }
 .cmp .save {
 	display: flex;
