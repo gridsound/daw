@@ -24,6 +24,8 @@ ui.windowEvents = function() {
 					return;
 			}
 			e.preventDefault();
+		} else if ( e.code === "Escape" ) {
+			ui.settingsPopup.hide();
 		}
 	};
 
