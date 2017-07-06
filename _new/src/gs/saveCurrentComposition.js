@@ -9,6 +9,11 @@ gs.saveCurrentComposition = function() {
 			cmp.savedAt = ~~( Date.now() / 1000 );
 			gs.localStorage.put( cmp.id, cmp );
 			gs.currCmpSaved = true;
+			if ( gs.historyActionSaved ) {
+				delete gs.historyActionSaved.saved;
+			}
+			gs.historyActionSaved = gs.history[ gs.historyInd - 1 ];
+			gs.historyActionSaved.saved = true;
 			ui.cmps.saved( true );
 			res();
 		} );
