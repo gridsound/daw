@@ -11,6 +11,8 @@ gs.loadComposition = function( cmp ) {
 	}
 	ui.controls.currentTime( 0 );
 	ui.controls.bpm( cmp.bpm );
+	ui.mainGridSamples.empty();
+	ui.mainGridSamples.change( cmp );
 	ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 	ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 	ui.cmps.load( cmp.id );

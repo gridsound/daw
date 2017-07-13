@@ -50,9 +50,25 @@ ui.history = {
 		}
 	},
 	_nameAction( act ) {
-		var r = act.redo,
+		var obj, k,
+			i = 0,
+			r = act.redo,
 			u = act.undo;
 
+		if ( obj = r.tracks ) {
+			for ( k in obj ) {
+				if ( obj[ k ].name ) {
+					return { i: "name", t: `Name track: "${ u.tracks[ k ].name }" -> "${ obj[ k ].name }"` }
+				}
+				if ( i++ ) {
+					break;
+				}
+			}
+			return i > 1
+				? { i: "toggle", t: `Toggle several tracks` }
+				: { i: "toggle", t: ( obj[ k ].toggle ? "Enable" : "Disable" ) +
+					` "${ gs.currCmp.tracks[ k ].name }" track` }
+		}
 		return (
 			r.name != null ? { i: "name",     t: `Name: "${ u.name }" -> "${ r.name }"` } :
 			r.bpm          ? { i: "bpm",      t: `BPM: ${ u.bpm } -> ${ r.bpm }` } :

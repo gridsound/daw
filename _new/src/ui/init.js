@@ -57,10 +57,9 @@ ui.init = function() {
 	ui.mainGridSamples = mainGridSamples;
 	ui.keysGridSamples = keysGridSamples;
 	mainGridSamples.loadTrackList();
-	mainGridSamples.nbTracks( 42 );
 	mainGridSamples.offset( 0, 40 );
-	keysGridSamples.loadKeys();
-	keysGridSamples.nbOctaves( 4, 3 );
+	mainGridSamples.onchange = gs.pushCompositionChange;
+	keysGridSamples.loadKeys( 4, 3 );
 	keysGridSamples.offset( 0, 120 );
 	keysGridSamples.setFontSize( 20 );
 

@@ -45,7 +45,7 @@ ui.settingsPopup = {
 			for ( x in _cmp ) {
 				_cmpRev[ x ] = currCmp[ x ];
 			}
-			gs.pushCompositionChange( _cmp, _cmpRev );
+			gs.pushCompositionChange( { redo: _cmp, undo: _cmpRev } );
 			break;
 		}
 		ui.settingsPopup.hide();
