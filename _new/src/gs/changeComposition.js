@@ -30,7 +30,7 @@ gs.changeComposition = function( obj ) {
 	}
 	if ( obj.name != null || obj.bpm ) {
 		if ( obj.bpm ) { cmp.bpm = obj.bpm; }
-		if ( obj.name ) { cmp.name = obj.name; }
+		if ( obj.name != null ) { cmp.name = obj.name; }
 		ui.cmps.update( cmp.id, cmp );
 	}
 };
