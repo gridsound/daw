@@ -13,6 +13,7 @@
 	<meta name="theme-color" content="#3a5158"/>
 	<link rel="manifest" href="manifest.json"/>
 	<link rel="shortcut icon" href="assets/favicon.png"/>
+	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiAudioBlock/gsuiAudioBlock.css"/>
 	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiBeatLines/gsuiBeatLines.css"/>
 	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiGridSamples/gsuiGridSamples.css"/>
 	<link rel="stylesheet" href="../../gs-ui-components/src/gsuiKeys/gsuiKeys.css"/>
@@ -201,6 +202,19 @@
 	</div>
 </template>
 
+<template id="gsuiAudioBlock">
+	<div class="gsuiAudioBlock">
+		<div class="gsui-bg"></div>
+		<div class="gsui-head">
+			<span class="gsui-name"></span>
+		</div>
+		<div class="gsui-content"></div>
+		<div class="gsui-crop gsui-a"></div>
+		<div class="gsui-crop gsui-b"></div>
+	</div>
+</template>
+
+<script src="../../gs-ui-components/src/gsuiAudioBlock/gsuiAudioBlock.js"></script>
 <script src="../../gs-ui-components/src/gsuiBeatLines/gsuiBeatLines.js"></script>
 <script src="../../gs-ui-components/src/gsuiGridSamples/gsuiGridSamples.js"></script>
 <script src="../../gs-ui-components/src/gsuiKeys/gsuiKeys.js"></script>
