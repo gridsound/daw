@@ -6,13 +6,7 @@ gs.changeComposition = function( obj ) {
 		bPM = obj.beatsPerMeasure,
 		sPB = obj.stepsPerBeat;
 
-	if ( obj.data ) {
-		// ...
-	}
 	if ( obj.tracks ) {
-		for ( k in obj.tracks ) {
-			Object.assign( cmp.tracks[ k ], obj.tracks[ k ] );
-		}
 		ui.mainGridSamples.change( obj );
 	}
 	if ( obj.blocks ) {
@@ -22,15 +16,14 @@ gs.changeComposition = function( obj ) {
 		// gswa...()
 		ui.controls.bpm( obj.bpm );
 	}
-	if ( sPB ) {
-		cmp.beatsPerMeasure = obj.beatsPerMeasure,
-		cmp.stepsPerBeat = obj.stepsPerBeat;
+	if ( bPM || sPB ) {
+		bPM = bPM || cmp.beatsPerMeasure;
+		sPB = sPB || cmp.stepsPerBeat;
 		ui.mainGridSamples.timeSignature( bPM, sPB );
 		ui.keysGridSamples.timeSignature( bPM, sPB );
 	}
+	common.assignDeep( cmp, obj );
 	if ( obj.name != null || obj.bpm ) {
-		if ( obj.bpm ) { cmp.bpm = obj.bpm; }
-		if ( obj.name != null ) { cmp.name = obj.name; }
 		ui.cmps.update( cmp.id, cmp );
 	}
 };

@@ -66,13 +66,13 @@ ui.history = {
 			}
 			return i > 1
 				? { i: "toggle", t: `Toggle several tracks` }
-				: { i: "toggle", t: ( obj[ k ].toggle ? "Enable" : "Disable" ) +
+				: { i: "toggle", t: ( obj[ k ].toggle ? "Unmute" : "Mute" ) +
 					` "${ gs.currCmp.tracks[ k ].name }" track` }
 		}
 		return (
-			r.name != null ? { i: "name",     t: `Name: "${ u.name }" -> "${ r.name }"` } :
-			r.bpm          ? { i: "bpm",      t: `BPM: ${ u.bpm } -> ${ r.bpm }` } :
-			r.stepsPerBeat ? { i: "timeSign", t: `Time signature: ${ u.beatsPerMeasure }/${ u.stepsPerBeat } -> ${ r.beatsPerMeasure }/${ r.stepsPerBeat }` } :
+			r.name != null ? { i: "name", t: `Name, "${ u.name }" -> "${ r.name }"` } :
+			r.bpm          ? { i: "bpm",  t: `BPM, ${ u.bpm } -> ${ r.bpm }` } :
+			r.stepsPerBeat || r.beatsPerMeasure ? { i: "timeSign", t: `Time signature` } :
 			{ i: "", t: "" }
 		);
 	}

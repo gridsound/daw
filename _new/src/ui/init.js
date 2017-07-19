@@ -58,10 +58,17 @@ ui.init = function() {
 	ui.keysGridSamples = keysGridSamples;
 	mainGridSamples.loadTrackList();
 	mainGridSamples.offset( 0, 40 );
-	mainGridSamples.onchange = gs.pushCompositionChange;
 	keysGridSamples.loadKeys( 4, 3 );
 	keysGridSamples.offset( 0, 120 );
 	keysGridSamples.setFontSize( 20 );
+	keysGridSamples.onchange = function( obj ) {
+		console.log( "keysGridSamples.onchange", obj );
+	};
+	mainGridSamples.onchange = function( obj ) {
+		console.log( "mainGridSamples.onchange", obj );
+		gs.pushCompositionChange( obj );
+	};
+	gsuiGridSamples.getNewId = common.uuid;
 
 	// Add the gsuiGridSamples to the DOM:
 	idEl.mainGridWrap.append( mainGridSamples.rootElement );
