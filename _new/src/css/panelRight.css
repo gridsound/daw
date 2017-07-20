@@ -95,14 +95,39 @@
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }
 
-#mainGridWrap {
-	flex: 1;
-}
-
+#mainGridWrap,
 #keysGridWrap {
-	height: 100%;
+	flex: 1;
 }
 
 .gsuiGridSamples {
 	background-color: #2f2f2f;
+}
+
+#keysMenu {
+	box-sizing: border-box;
+	padding: 6px;
+	font-size: 12px;
+	color: #ddd;
+	border-bottom: 1px solid #111;
+	background-color: #444;
+}
+#keysMenu:before {
+	content: "Pattern :";
+	margin-right: .75em;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: 1px 1px 0 #000;
+	opacity: .35;
+}
+#keysName {
+	font-family: monospace;
+	padding: 1px 6px;
+	border-radius: 2px;
+	background-color: var( --color-light-blue );
+}
+#keysName:empty:before {
+	content: "Untitled";
+	font-style: italic;
 }
