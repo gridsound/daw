@@ -9,7 +9,8 @@
 	height: 28px;
 	padding-right: .4em;
 	color: #bbb;
-	font: 13px monospace;
+	font-size: 13px;
+	font-family: var( --monospace );
 	background-color: #333;
 	transition: background-color .2s;
 }

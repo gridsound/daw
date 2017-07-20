@@ -58,7 +58,7 @@
 #clock {
 	display: flex;
 	font-size: 30px;
-	font-family: monospace;
+	font-family: var( --monospace );
 	padding: 0 .3em;
 	border: 3px solid rgba( 0, 0, 0, .3 );
 	background-color: #222;
@@ -76,13 +76,13 @@
 }
 
 #clock {
-	align-items: center;
+	align-items: baseline;
+	line-height: 1em;
 }
 #clockSec:before { content: ":"; }
 #clockMs:before { content: "."; }
 #clockMs {
 	font-size: .5em;
-	align-self: flex-end;
 }
 
 #settings {

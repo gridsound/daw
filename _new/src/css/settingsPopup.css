@@ -62,7 +62,7 @@
 
 #settingsPopup .param-values {
 	flex: 1;
-	font-family: monospace;
+	font-family: var( --monospace );
 }
 
 #settingsPopup [type="radio"]:checked + label {

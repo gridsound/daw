@@ -17,6 +17,7 @@ html, body {
 	--ctrl-padding: 4px;
 	--color-light-blue: #67a;
 	--color-light-red: #d44;
+	--monospace: "Inconsolata", "consolas", monospace;
 
 	width: 100%;
 	height: 100%;

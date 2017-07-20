@@ -1,4 +1,9 @@
 @font-face {
+	font-family: "Inconsolata";
+	src: url( "../../assets/inconsolata-regular.ttf" );
+}
+
+@font-face {
 	font-family: "FontAwesome";
 	src: url( "../../assets/fontawesome.woff?v=4.5.0" ) format( "woff" );
 }
