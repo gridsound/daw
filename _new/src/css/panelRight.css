@@ -105,6 +105,7 @@
 }
 
 #keysMenu {
+	position: relative;
 	display: flex;
 	align-items: center;
 	padding: 4px 6px;
@@ -122,16 +123,20 @@
 	text-shadow: 1px 1px 0 #000;
 	opacity: .35;
 }
-#keysName,
-#keysSelectBtn {
-	padding: .15em .6em;
+
+#keySelect {
+	display: flex;
 	border-radius: 4px;
 	line-height: 1em;
+	overflow: hidden;
 	background-color: var( --color-light-blue );
 }
+
+#keysName,
+#keysListBtn {
+	padding: .15em .6em;
+}
 #keysName {
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
 	padding-right: .3em;
 	font-family: var( --monospace );
 }
@@ -139,12 +144,23 @@
 	content: "Untitled";
 	font-style: italic;
 }
-#keysSelectBtn {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
+#keysListBtn {
 	padding-left: .3em;
-}
-#keysSelectBtn:before {
-	content: "\f0d7";
 	font-family: "FontAwesome";
+	background-color: inherit;
+	filter: brightness( .9 );
+}
+#keysListBtn.close {
+	filter: none;
+}
+#keysListBtn:before { content: "\f0d8"; }
+#keysListBtn.close:before { content: "\f0d7"; }
+#keysList {
+	top: 100%;
+	margin-top: 6px;
+	min-width: 120px;
+}
+#keysListBtn.close + #keysList {
+	opacity: 0;
+	visibility: hidden;
 }
