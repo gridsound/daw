@@ -21,32 +21,8 @@
 }
 
 #cmpMenu {
-	position: absolute;
-	z-index: 2;
 	left: 100%;
 	margin-left: 5px;
-	color: #ddd;
-	border: 2px solid #111;
-	border-radius: 4px;
-	background-color: #333;
-	transition: .2s;
-	transition-property: opacity, visibility;
-}
-#cmpMenu.hidden {
-	opacity: 0;
-	visibility: hidden;
-}
-#cmpMenu a {
-	display: block;
-	white-space: nowrap;
-	font-size: 13px;
-	line-height: 2em;
-	padding: 0 .5em;
-	cursor: default;
-}
-#cmpMenu a:hover {
-	color: #fff;
-	background: #222;
 }
 
 .cmp {
