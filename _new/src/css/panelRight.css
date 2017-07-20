@@ -58,7 +58,7 @@
 #clock {
 	display: flex;
 	font-size: 30px;
-	font-family: consolas;
+	font-family: monospace;
 	padding: 0 .3em;
 	border: 3px solid rgba( 0, 0, 0, .3 );
 	background-color: #222;

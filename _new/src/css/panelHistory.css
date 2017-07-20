@@ -9,7 +9,7 @@
 	height: 28px;
 	padding-right: .4em;
 	color: #bbb;
-	font: 13px consolas;
+	font: 13px monospace;
 	background-color: #333;
 	transition: background-color .2s;
 }
