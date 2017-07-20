@@ -7,7 +7,6 @@ ui.init = function() {
 		panelsLeft = new gsuiPanels(),
 		panelsRight = new gsuiPanels(),
 		mainGridSamples = new gsuiGridSamples(),
-		keysGridSamples = new gsuiGridSamples(),
 		idEl = {
 			app: document.getElementById( "app" ),
 			appContent: document.getElementById( "appContent" )
@@ -24,10 +23,6 @@ ui.init = function() {
 	panelsMain.panels[ 0 ].id = "panelsLeftWrap";
 	panelsLeft.rootElement.id = "panelsLeft";
 	panelsRight.rootElement.id = "panelsRight";
-	panelsMain.panels[ 1 ].onresize = function( w, h ) {
-		mainGridSamples.resized();
-		keysGridSamples.resized();
-	};
 
 	// Insert the gsuiPanels to the DOM:
 	panelsMain.panels[ 0 ].append( panelsLeft.rootElement );
@@ -37,6 +32,10 @@ ui.init = function() {
 	panelsMain.resized();
 	panelsLeft.resized();
 	panelsRight.resized();
+	panelsMain.panels[ 1 ].onresize = function( w, h ) {
+		ui.mainGridSamples.resized();
+		ui.keysGridSamples.resized();
+	};
 
 	// Clone the whole app's content:
 	tmpImported = document.importNode( idEl.appContent.content, true );
@@ -54,30 +53,20 @@ ui.init = function() {
 	} );
 
 	// Init some gsuiGridSamples:
+	gsuiGridSamples.getNewId = common.uuid;
 	ui.mainGridSamples = mainGridSamples;
-	ui.keysGridSamples = keysGridSamples;
 	mainGridSamples.loadTrackList();
 	mainGridSamples.offset( 0, 40 );
-	keysGridSamples.loadKeys( 4, 3 );
-	keysGridSamples.offset( 0, 120 );
-	keysGridSamples.setFontSize( 20 );
-	keysGridSamples.onchange = function( obj ) {
-		console.log( "keysGridSamples.onchange", obj );
-	};
 	mainGridSamples.onchange = function( obj ) {
 		console.log( "mainGridSamples.onchange", obj );
 		gs.pushCompositionChange( obj );
 	};
-	gsuiGridSamples.getNewId = common.uuid;
-
-	// Add the gsuiGridSamples to the DOM:
 	idEl.mainGridWrap.append( mainGridSamples.rootElement );
-	idEl.keysGridWrap.append( keysGridSamples.rootElement );
 	mainGridSamples.resized();
-	keysGridSamples.resized();
 
 	// Initialisation of the rest of the app:
 	ui.cmps.init();
+	ui.keys.init();
 	ui.history.init();
 	ui.settingsPopup.init();
 	ui.windowEvents();
