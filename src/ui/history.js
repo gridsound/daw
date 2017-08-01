@@ -51,30 +51,72 @@ ui.history = {
 		}
 	},
 	_nameAction( act ) {
-		var obj, k,
-			i = 0,
+		var cmp = gs.currCmp,
 			r = act.redo,
 			u = act.undo;
 
-		if ( obj = r.tracks ) {
-			for ( k in obj ) {
-				if ( obj[ k ].name ) {
-					return { i: "name", t: `Name track: "${ u.tracks[ k ].name }" -> "${ obj[ k ].name }"` }
+		return (
+			ui.history.__tracks( cmp, r, u ) ||
+			ui.history.__keys( cmp, r, u ) ||
+			ui.history.__pattern( cmp, r, u ) ||
+			(
+				r.name != null ? { i: "name", t: `Name, "${ u.name }" -> "${ r.name }"` } :
+				r.bpm          ? { i: "bpm",  t: `BPM, ${ u.bpm } -> ${ r.bpm }` } :
+				r.stepsPerBeat || r.beatsPerMeasure ? { i: "timeSign", t: `Time signature` } :
+				{ i: "", t: "" }
+			)
+		);
+	},
+	__tracks( cmp, r, u ) {
+		var a,
+			i = 0,
+			o = r.tracks;
+
+		if ( o ) {
+			for ( a in o ) {
+				if ( o[ a ].name ) {
+					return { i: "name", t: `Name track: "${ u.tracks[ a ].name }" -> "${ o[ a ].name }"` }
 				}
 				if ( i++ ) {
 					break;
 				}
 			}
 			return i > 1
-				? { i: "toggle", t: `Toggle several tracks` }
-				: { i: "toggle", t: ( obj[ k ].toggle ? "Unmute" : "Mute" ) +
-					` "${ gs.currCmp.tracks[ k ].name }" track` }
+				? { i: "unmute", t: `Un/mute several tracks` }
+				: { i: o[ a ].toggle ? "unmute" : "mute",
+					t: ( o[ a ].toggle ? "Unmute" : "Mute" ) + ` "${ cmp.tracks[ a ].name }" track` }
 		}
-		return (
-			r.name != null ? { i: "name", t: `Name, "${ u.name }" -> "${ r.name }"` } :
-			r.bpm          ? { i: "bpm",  t: `BPM, ${ u.bpm } -> ${ r.bpm }` } :
-			r.stepsPerBeat || r.beatsPerMeasure ? { i: "timeSign", t: `Time signature` } :
-			{ i: "", t: "" }
-		);
+	},
+	__pattern( cmp, r, u ) {
+		var a, o, msgPat;
+
+		for ( a in r.assets ) {
+			o = r.assets[ a ];
+			msgPat = u.assets[ a ].name + ": ";
+			if ( "name" in o ) {
+				return { i: "name", t: msgPat + `rename to "${ o.name }"` };
+			}
+		}
+	},
+	__keys( cmp, r, u ) {
+		var o, a, b, arrK, msgSmp, msgPat;
+
+		for ( a in r.keys ) {
+			o = r.keys[ a ];
+			for ( b in o ) {
+				arrK = Object.keys( o );
+				msgPat = cmp.assets[ cmp.patternOpened ].name + ": ";
+				msgSmp = " " + arrK.length + " sample" + ( arrK.length > 1 ? "s" : "" );
+				o = o[ b ];
+				return (
+					( !o && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
+					( !u.keys[ a ][ b ] && { i: "add", t: msgPat + "add" + msgSmp } ) ||
+					( "selected" in o && ( o.selected
+						? { i: "selection plus",  t: msgPat + "select" + msgSmp }
+						: { i: "selection minus", t: msgPat + "unselect" + msgSmp }
+					) )
+				);
+			}
+		}
 	}
 };
