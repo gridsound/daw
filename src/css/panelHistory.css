@@ -46,7 +46,26 @@
 }
 
 .actionIcon {
+	position: relative;
+	width: 16px;
 	margin: 0 .4em;
 	font: 14px "FontAwesome";
+	text-align: center;
 }
-.actionIcon.music:before { content: "\f001"; }
+.actionIcon:after {
+	position: absolute;
+	left: 10px;
+	top: -3px;
+	font-size: 8px;
+}
+.actionIcon.plus:after { content: "\f067"; }
+.actionIcon.minus:after { content: "\f068"; }
+
+.actionIcon.name:before { content: "\f040"; }
+.actionIcon.mute:before { content: "\f026"; }
+.actionIcon.unmute:before { content: "\f028"; }
+.actionIcon.toggle-off:before { content: "\f204"; }
+.actionIcon.toggle-on:before { content: "\f205"; }
+.actionIcon.add:before { content: "\f1fc"; }
+.actionIcon.erase:before { content: "\f12d"; }
+.actionIcon.selection:before { content: "\f245"; }
