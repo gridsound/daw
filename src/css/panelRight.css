@@ -131,10 +131,14 @@
 	overflow: hidden;
 	background-color: var( --color-light-blue );
 }
-
 #keysName,
 #keysListBtn {
 	padding: .15em .6em;
+}
+#keysName:hover,
+#keysListBtn:hover {
+	color: #fff;
+	text-shadow: 0 0 10px #fff;
 }
 #keysName {
 	padding-right: .3em;
