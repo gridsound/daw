@@ -30,6 +30,7 @@ ui.history = {
 		div.append( icon, text );
 		div.onclick = ui.history._onclick;
 		ui.idElements.history.append( div );
+		ui.idElements.history.scrollTop = 10000000;
 	},
 
 	// private:
