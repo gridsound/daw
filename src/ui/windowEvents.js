@@ -31,7 +31,7 @@ ui.windowEvents = function() {
 
 	document.body.onclick = function( e ) {
 		ui.cmps._hideMenu();
-		ui.keys.toggleList( false );
+		ui.gridKeys.toggleList( false );
 	};
 
 	document.body.ondrop = function( e ) {

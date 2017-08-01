@@ -66,7 +66,8 @@ ui.init = function() {
 
 	// Initialisation of the rest of the app:
 	ui.cmps.init();
-	ui.keys.init();
+	ui.assets.init();
+	ui.gridKeys.init();
 	ui.history.init();
 	ui.settingsPopup.init();
 	ui.windowEvents();
