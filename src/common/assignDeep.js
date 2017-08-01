@@ -2,8 +2,15 @@
 
 common.assignDeep = function( data, add ) {
 	if ( data && add && typeof data === "object" && typeof add === "object" ) {
-		for ( var k in add ) {
-			data[ k ] = common.assignDeep( data[ k ], add[ k ] );
+		var k, val;
+
+		for ( k in add ) {
+			val = common.assignDeep( data[ k ], add[ k ] );
+			if ( val !== null ) {
+				data[ k ] = val;
+			} else {
+				delete data[ k ];
+			}
 		}
 		return data;
 	}
