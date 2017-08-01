@@ -6,7 +6,7 @@ common.assignDeep = function( data, add ) {
 
 		for ( k in add ) {
 			val = common.assignDeep( data[ k ], add[ k ] );
-			if ( val !== null ) {
+			if ( val != null ) {
 				data[ k ] = val;
 			} else {
 				delete data[ k ];
