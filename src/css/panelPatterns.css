@@ -16,3 +16,6 @@
 #patterns .gsuiAudioBlock:hover {
 	/*background-color: #444;*/
 }
+#patterns .gsuiAudioBlock.selected {
+	background-color: var( --color-light-blue );
+}

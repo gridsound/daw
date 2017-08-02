@@ -4,6 +4,7 @@ gs.openPattern = function( id ) {
 	var pat = gs.currCmp.patterns[ id ];
 
 	gs.currCmp.patternOpened = id;
+	ui.patterns.select( id );
 	ui.pattern.name( pat.name );
 	ui.pattern.load( gs.currCmp.keys[ pat.keys ] );
 };

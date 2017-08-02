@@ -17,6 +17,16 @@ ui.patterns = {
 		ui.patterns.audioBlocks[ id ].rootElement.remove();
 		delete ui.patterns.audioBlocks[ id ];
 	},
+	select( id ) {
+		var patSel = ui.patterns._selectedPattern,
+			pat = ui.patterns.audioBlocks[ id ];
+
+		if ( patSel ) {
+			patSel.rootElement.classList.remove( "selected" );
+		}
+		ui.patterns._selectedPattern = pat;
+		pat.rootElement.classList.add( "selected" );
+	},
 	name( id, n ) {
 		ui.patterns.audioBlocks[ id ].name( n );
 	},
