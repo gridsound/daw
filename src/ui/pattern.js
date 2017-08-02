@@ -1,6 +1,6 @@
 "use strict";
 
-ui.gridKeys = {
+ui.pattern = {
 	init() {
 		var grid = new gsuiGridSamples();
 
@@ -8,33 +8,29 @@ ui.gridKeys = {
 		grid.offset( 0, 120 );
 		grid.setFontSize( 20 );
 		ui.idElements.keysGridWrap.append( grid.rootElement );
-		ui.idElements.keysName.ondblclick = ui.gridKeys._evocKeysName;
-		ui.idElements.keysListBtn.onclick = ui.gridKeys._evocKeysListBtn;
-		grid.onchange = ui.gridKeys._evocGrid;
+		ui.idElements.patternName.ondblclick = ui.pattern._ondblclickPatternName;
+		grid.onchange = ui.pattern._onchangeGrid;
 		grid.resized();
 		ui.keysGridSamples = grid;
 	},
 	empty() {
+		ui.pattern.name( "" );
 		ui.keysGridSamples.empty();
-		ui.gridKeys.updateName( "" );
 	},
-	updateName( name ) {
-		ui.idElements.keysName.textContent = name;
+	name( name ) {
+		ui.idElements.patternName.textContent = name;
 	},
 	load( keys ) {
 		ui.keysGridSamples.change( keys );
 	},
-	toggleList( b ) {
-		ui.idElements.keysListBtn.classList.toggle( "close", !b );
-	},
 
 	// private:
-	_evocGrid( obj ) {
+	_onchangeGrid( obj ) {
 		gs.pushCompositionChange( { keys: {
 			[ gs.currCmp.patterns[ gs.currCmp.patternOpened ].keys ]: obj
 		} } );
 	},
-	_evocKeysName() {
+	_ondblclickPatternName() {
 		var patId = gs.currCmp.patternOpened,
 			pat = gs.currCmp.patterns[ patId ],
 			n = prompt( "Name pattern :", pat.name );
@@ -44,9 +40,5 @@ ui.gridKeys = {
 				[ patId ]: { name: n }
 			} } );
 		}
-	},
-	_evocKeysListBtn( e ) {
-		ui.gridKeys.toggleList( true );
-		e.stopPropagation();
 	}
 };

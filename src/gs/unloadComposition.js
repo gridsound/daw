@@ -27,7 +27,7 @@ gs.unloadComposition = function() {
 				ui.controls.currentTime( 0 );
 				ui.cmps.unload();
 				ui.patterns.empty();
-				ui.gridKeys.empty();
+				ui.pattern.empty();
 				res();
 			} else {
 				rej();

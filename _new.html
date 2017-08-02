@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="src/css/panelHistory.css"/>
 	<link rel="stylesheet" href="src/css/panelPatterns.css"/>
 	<link rel="stylesheet" href="src/css/panelRight.css"/>
-	<link rel="stylesheet" href="src/css/keysMenu.css"/>
+	<link rel="stylesheet" href="src/css/patternMenu.css"/>
 	<link rel="stylesheet" href="src/css/settingsPopup.css"/>
 	<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
 </head>
@@ -83,14 +83,8 @@
 		<div id="mainGridWrap"></div>
 	</div>
 	<div data-panel="6" id="panelKeys" class="panel-content">
-		<div id="keysMenu">
-			<div id="keysSelect">
-				<div id="keysName"></div>
-				<div id="keysListBtn" class="close"></div>
-				<div id="keysList" class="absoluteMenu">
-					<a>keysList...</a>
-				</div>
-			</div>
+		<div id="patternMenu">
+			<div id="patternName"></div>
 		</div>
 		<div id="keysGridWrap"></div>
 	</div>
@@ -273,7 +267,7 @@
 <script src="src/ui/controls.js"></script>
 <script src="src/ui/cmps.js"></script>
 <script src="src/ui/patterns.js"></script>
-<script src="src/ui/gridKeys.js"></script>
+<script src="src/ui/pattern.js"></script>
 <script src="src/ui/settingsPopup.js"></script>
 
 <script src="src/run.js"></script>

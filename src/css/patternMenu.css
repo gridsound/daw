@@ -1,0 +1,36 @@
+#patternMenu {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 4px 6px;
+	font-size: 12px;
+	color: #ddd;
+	border-bottom: 1px solid #111;
+	background-color: #444;
+}
+#patternMenu:before {
+	content: "Pattern :";
+	font-style: italic;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: 1px 1px 0 #000;
+	opacity: .35;
+}
+
+#patternName {
+	margin-left: .75em;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-family: var( --monospace );
+	cursor: default;
+	background-color: var( --color-light-blue );
+	transition: filter .2s;
+}
+#patternName:empty:before {
+	content: "Untitled";
+	font-style: italic;
+}
+#patternName:hover {
+	color: #fff;
+	filter: brightness( 1.1 );
+}
