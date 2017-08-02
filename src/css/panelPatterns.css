@@ -2,6 +2,9 @@
 	position: relative;
 }
 
+#patNew:before { content: "\f067"; }
+#patDelete:before { content: "\f1f8"; }
+
 #patterns .gsuiAudioBlock {
 	width: 100%;
 	height: 64px;

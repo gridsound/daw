@@ -45,6 +45,24 @@
 	background-color: #505050;
 }
 
+.panel-btn {
+	display: inline-block;
+	width: 16px;
+	padding: 4px;
+	font-size: 14px;
+	font-family: "FontAwesome";
+	color: #ddd;
+	text-align: center;
+	border-radius: 2px;
+	transition: background .2s;
+}
+.panel-btn + .panel-btn {
+	margin-left: .5em;
+}
+.panel-btn:hover {
+	background-color: rgba( 0, 0, 0, .2 );
+}
+
 .panel-body {
 	flex: 1;
 	overflow: auto;
