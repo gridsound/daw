@@ -5,6 +5,7 @@ gs.updatePatternContent = function( id ) {
 		keyObj,
 		row,
 		nbRows,
+		dur = 0,
 		cmp = gs.currCmp,
 		minrow = Infinity,
 		maxrow = -Infinity,
@@ -14,8 +15,9 @@ gs.updatePatternContent = function( id ) {
 	for ( keyId in keys ) {
 		keyObj = keys[ keyId ];
 		row = ui.keysGridSamples.uiKeys.keyToIndex( keyObj.key );
-		minrow = Math.min( row, minrow );
-		maxrow = Math.max( row, maxrow );
+		minrow = Math.min( minrow, row );
+		maxrow = Math.max( maxrow, row );
+		dur = Math.max( dur, keyObj.when + keyObj.duration );
 		samples.push( {
 			row: row,
 			when: keyObj.when,
@@ -28,7 +30,7 @@ gs.updatePatternContent = function( id ) {
 	} );
 	ui.patterns.updateData( id, {
 		nbRows: nbRows + 1,
-		duration: 4, // !!!!!!!!!!!!!!!!!!!
-		samples: samples
+		samples: samples,
+		duration: Math.ceil( dur / cmp.beatsPerMeasure ) * cmp.beatsPerMeasure
 	} );
 };

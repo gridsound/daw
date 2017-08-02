@@ -32,6 +32,9 @@ gs.changeComposition = function( obj ) {
 	if ( bPM || sPB ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		for ( patId in cmp.patterns ) {
+			gs.updatePatternContent( patId );
+		}
 	}
 	if ( obj.name != null || obj.bpm ) {
 		ui.cmps.update( cmp.id, cmp );
