@@ -1,15 +1,15 @@
-#assets {
+#patterns {
 	position: relative;
 }
 
-#assets .gsuiAudioBlock {
+#patterns .gsuiAudioBlock {
 	width: 100%;
 	height: 64px;
 	--bd-radius: 0;
 }
-#assets .gsuiAudioBlock + .gsuiAudioBlock {
+#patterns .gsuiAudioBlock + .gsuiAudioBlock {
 	/*border-top: 1px solid #222;*/
 }
-#assets .gsuiAudioBlock:hover {
+#patterns .gsuiAudioBlock:hover {
 	/*background-color: #444;*/
 }

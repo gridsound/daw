@@ -2,7 +2,7 @@
 
 gs.changeComposition = function( obj ) {
 	var keysId,
-		assetId,
+		patId,
 		cmp = gs.currCmp,
 		bPM = obj.beatsPerMeasure,
 		sPB = obj.stepsPerBeat;
@@ -11,14 +11,14 @@ gs.changeComposition = function( obj ) {
 	if ( obj.tracks ) {
 		ui.mainGridSamples.change( obj );
 	}
-	for ( assetId in obj.assets ) {
-		gs.updatePattern( assetId, obj.assets[ assetId ] );
+	for ( patId in obj.patterns ) {
+		gs.updatePattern( patId, obj.patterns[ patId ] );
 	}
 	for ( keysId in obj.keys ) {
-		for ( assetId in cmp.assets ) {
-			if ( cmp.assets[ assetId ].keys === keysId ) {
-				gs.updatePatternContent( assetId );
-				if ( assetId === cmp.patternOpened ) {
+		for ( patId in cmp.patterns ) {
+			if ( cmp.patterns[ patId ].keys === keysId ) {
+				gs.updatePatternContent( patId );
+				if ( patId === cmp.patternOpened ) {
 					ui.keysGridSamples.change( obj.keys[ keysId ] );
 				}
 				break;

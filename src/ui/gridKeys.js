@@ -31,17 +31,17 @@ ui.gridKeys = {
 	// private:
 	_evocGrid( obj ) {
 		gs.pushCompositionChange( { keys: {
-			[ gs.currCmp.assets[ gs.currCmp.patternOpened ].keys ]: obj
+			[ gs.currCmp.patterns[ gs.currCmp.patternOpened ].keys ]: obj
 		} } );
 	},
 	_evocKeysName() {
-		var assetId = gs.currCmp.patternOpened,
-			asset = gs.currCmp.assets[ assetId ],
-			name = ( prompt( "Name asset :", asset.name ) || "" ).trim();
+		var patId = gs.currCmp.patternOpened,
+			pat = gs.currCmp.patterns[ patId ],
+			name = ( prompt( "Name pattern :", pat.name ) || "" ).trim();
 
-		if ( name !== asset.name ) {
+		if ( name !== pat.name ) {
 			gs.pushCompositionChange( {
-				assets: { [ assetId ]: { name: name } } } );
+				patterns: { [ patId ]: { name: name } } } );
 		}
 	},
 	_evocKeysListBtn( e ) {

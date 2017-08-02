@@ -18,7 +18,7 @@ gs.newComposition = function() {
 		duration: 0,
 		tracks: trks,
 		patternOpened: patId,
-		assets: {
+		patterns: {
 			[ patId ]: { name: "pat 1", type: "keys", keys: keysId, duration: 0 }
 		},
 		keys: {

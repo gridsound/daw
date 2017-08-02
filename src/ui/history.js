@@ -90,9 +90,9 @@ ui.history = {
 	__pattern( cmp, r, u ) {
 		var a, o, msgPat;
 
-		for ( a in r.assets ) {
-			o = r.assets[ a ];
-			msgPat = u.assets[ a ].name + ": ";
+		for ( a in r.patterns ) {
+			o = r.patterns[ a ];
+			msgPat = u.patterns[ a ].name + ": ";
 			if ( "name" in o ) {
 				return { i: "name", t: msgPat + `rename to "${ o.name }"` };
 			}
@@ -105,7 +105,7 @@ ui.history = {
 			o = r.keys[ a ];
 			for ( b in o ) {
 				arrK = Object.keys( o );
-				msgPat = cmp.assets[ cmp.patternOpened ].name + ": ";
+				msgPat = cmp.patterns[ cmp.patternOpened ].name + ": ";
 				msgSmp = " " + arrK.length + " sample" + ( arrK.length > 1 ? "s" : "" );
 				o = o[ b ];
 				return (

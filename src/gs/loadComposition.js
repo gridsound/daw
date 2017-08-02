@@ -9,8 +9,8 @@ gs.loadComposition = function( cmp ) {
 		ui.cmps.push( cmp.id );
 		ui.cmps.update( cmp.id, cmp );
 	}
-	for ( id in cmp.assets ) {
-		gs.addPattern( id, cmp.assets[ id ] );
+	for ( id in cmp.patterns ) {
+		gs.addPattern( id, cmp.patterns[ id ] );
 		gs.updatePatternContent( id );
 	}
 	ui.controls.currentTime( 0 );

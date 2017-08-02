@@ -7,5 +7,5 @@ gs.addPattern = function( id, data ) {
 	audioBlock.data = data;
 	audioBlock.name( data.name );
 	audioBlock.datatype( "keys" );
-	ui.assets.add( id, audioBlock );
+	ui.patterns.add( id, audioBlock );
 };

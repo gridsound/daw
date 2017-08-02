@@ -37,21 +37,21 @@ ui.windowEvents = function() {
 	document.body.ondrop = function( e ) {
 		var gsFile,
 			files = Array.from( e.dataTransfer.files ),
-			assetsFiles = files.filter( function( f ) {
+			audioFiles = files.filter( function( f ) {
 				var ext = f.name.substr( f.name.lastIndexOf( "." ) + 1 ).toLowerCase();
 
 				if ( ext === "gs" ) {
 					gsFile = f;
 				}
-				return settings.assetsExt.indexOf( ext ) > -1;
+				return settings.audioFileExt.indexOf( ext ) > -1;
 			} );
 
 		if ( gsFile ) {
 			gs.loadCompositionByBlob( gsFile ).then(
-				gs.addAssets.bind( null, assetsFiles ),
+				gs.addAudioFiles.bind( null, audioFiles ),
 				function() {} );
 		} else {
-			gs.addAssets( assetsFiles );
+			gs.addAudioFiles( audioFiles );
 		}
 		return false;
 	};

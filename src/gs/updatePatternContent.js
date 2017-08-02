@@ -9,7 +9,7 @@ gs.updatePatternContent = function( id ) {
 		minrow = Infinity,
 		maxrow = -Infinity,
 		samples = [],
-		keys = cmp.keys[ cmp.assets[ id ].keys ];
+		keys = cmp.keys[ cmp.patterns[ id ].keys ];
 
 	for ( keyId in keys ) {
 		keyObj = keys[ keyId ];
@@ -26,7 +26,7 @@ gs.updatePatternContent = function( id ) {
 	samples.forEach( function( smp ) {
 		smp.row = nbRows - ( smp.row - minrow );
 	} );
-	ui.assets.updateData( id, {
+	ui.patterns.updateData( id, {
 		nbRows: nbRows + 1,
 		duration: 4, // !!!!!!!!!!!!!!!!!!!
 		samples: samples
