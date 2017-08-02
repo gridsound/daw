@@ -1,0 +1,99 @@
+/* --- #keysMenu ----------------------------------------------------------- */
+#keysMenu {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 6px;
+	font-size: 12px;
+	color: #ddd;
+	border-bottom: 1px solid #111;
+	background-color: #444;
+}
+#keysMenu:before {
+	content: "Pattern :";
+	font-style: italic;
+	font-weight: bold;
+	font-size: 11px;
+	text-shadow: 1px 1px 0 #000;
+	opacity: .35;
+}
+
+/* --- padding:; ----------------------------------------------------------- */
+#keysName {    padding: 4px 4px 4px 8px; }
+#keysListBtn { padding: 4px 8px 4px 4px; }
+#keysNew,
+#keysDelete { padding: 4px 8px; }
+
+
+/* --- #keysMenu > * ------------------------------------------------------- */
+#keysSelect,
+#keysNew,
+#keysDelete {
+	margin-left: .75em;
+	border-radius: 4px;
+	line-height: 1em;
+	cursor: default;
+}
+
+/* --- #keysSelect --------------------------------------------------------- */
+#keysSelect {
+	display: flex;
+	overflow: hidden;
+	background-color: var( --color-light-blue );
+}
+#keysName:hover,
+#keysListBtn:hover {
+	color: #fff;
+	text-shadow: 0 0 10px #fff;
+}
+#keysName {
+	font-family: var( --monospace );
+}
+#keysName:empty:before {
+	content: "Untitled";
+	font-style: italic;
+}
+#keysListBtn {
+	font-family: "FontAwesome";
+	background-color: inherit;
+	filter: brightness( .9 );
+}
+#keysListBtn.close {
+	filter: none;
+}
+#keysListBtn:before { content: "\f0d8"; }
+#keysListBtn.close:before { content: "\f0d7"; }
+#keysList {
+	top: 100%;
+	margin-top: 6px;
+	min-width: 120px;
+}
+#keysListBtn.close + #keysList {
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* --- #keysSelect ~ * ----------------------------------------------------- */
+#keysNew,
+#keysDelete {
+	background-color: rgba( 0, 0, 0, .2 );
+	transition: .1s;
+	transition-property: background-color, color;
+}
+#keysNew {
+	margin-left: 28px;
+}
+#keysNew:hover {
+	color: #333;
+	background-color: rgba( 255, 255, 115, .7 );
+}
+#keysDelete:hover {
+	background-color: rgba( 220, 100, 100, .7 );
+}
+#keysNew:before,
+#keysDelete:before {
+	font-family: "FontAwesome";
+	margin-right: .4em;
+}
+#keysNew:before { content: "\f055"; }
+#keysDelete:before { content: "\f1f8"; }
