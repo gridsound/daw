@@ -37,11 +37,12 @@ ui.gridKeys = {
 	_evocKeysName() {
 		var patId = gs.currCmp.patternOpened,
 			pat = gs.currCmp.patterns[ patId ],
-			name = ( prompt( "Name pattern :", pat.name ) || "" ).trim();
+			n = prompt( "Name pattern :", pat.name );
 
-		if ( name !== pat.name ) {
-			gs.pushCompositionChange( {
-				patterns: { [ patId ]: { name: name } } } );
+		if ( n != null && ( n = n.trim() ) !== pat.name ) {
+			gs.pushCompositionChange( { patterns: {
+				[ patId ]: { name: n }
+			} } );
 		}
 	},
 	_evocKeysListBtn( e ) {
