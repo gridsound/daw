@@ -9,9 +9,14 @@ ui.patterns = {
 			ui.patterns.remove( id );
 		}
 	},
-	add( id, audioBlock ) {
-		ui.patterns.audioBlocks[ id ] = audioBlock;
-		ui.idElements.patterns.append( audioBlock.rootElement );
+	add( id, data ) {
+		var pat = new gsuiAudioBlock();
+
+		pat.data = data;
+		pat.name( data.name );
+		pat.datatype( "keys" );
+		ui.patterns.audioBlocks[ id ] = pat;
+		ui.idElements.patterns.append( pat.rootElement );
 	},
 	remove( id ) {
 		ui.patterns.audioBlocks[ id ].rootElement.remove();
