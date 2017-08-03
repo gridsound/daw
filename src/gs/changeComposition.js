@@ -7,13 +7,17 @@ gs.changeComposition = function( obj ) {
 		bPM = obj.beatsPerMeasure,
 		sPB = obj.stepsPerBeat;
 
-	common.assignDeep( cmp, obj );
 	if ( obj.tracks ) {
 		ui.mainGridSamples.change( obj );
 	}
 	for ( patId in obj.patterns ) {
-		gs.updatePattern( patId, obj.patterns[ patId ] );
+		obj.patterns[ patId ]
+			? cmp.patterns[ patId ]
+				? gs.updatePattern( patId, obj.patterns[ patId ] )
+				: gs.addPattern( patId, obj.patterns[ patId ] )
+			: gs.removePattern( patId );
 	}
+	common.assignDeep( cmp, obj );
 	for ( keysId in obj.keys ) {
 		for ( patId in cmp.patterns ) {
 			if ( cmp.patterns[ patId ].keys === keysId ) {

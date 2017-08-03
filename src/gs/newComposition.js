@@ -1,10 +1,7 @@
 "use strict";
 
 gs.newComposition = function() {
-	var i = 0,
-		trks = {},
-		patId = common.uuid(),
-		keysId = common.uuid();
+	var i = 0, trks = {};
 
 	for ( ; i < settings.def_nbTracks; ++i ) {
 		trks[ common.uuid() ] = { order: i, toggle: true, name: "" };
@@ -17,13 +14,7 @@ gs.newComposition = function() {
 		name: "",
 		duration: 0,
 		tracks: trks,
-		patternOpened: patId,
-		patterns: {
-			[ patId ]: { name: "pat 1", type: "keys", keys: keysId, duration: 0 }
-		},
-		keys: {
-			[ keysId ]: {}
-		},
-		blocks: {}
+		patterns: {},
+		keys: {}
 	};
 };
