@@ -66,6 +66,8 @@
 .actionIcon.unmute:before { content: "\f028"; }
 .actionIcon.toggle-off:before { content: "\f204"; }
 .actionIcon.toggle-on:before { content: "\f205"; }
-.actionIcon.add:before { content: "\f1fc"; }
+.actionIcon.paint:before { content: "\f1fc"; }
+.actionIcon.add:before { content: "\f067"; }
+.actionIcon.remove:before { content: "\f1f8"; }
 .actionIcon.erase:before { content: "\f12d"; }
 .actionIcon.selection:before { content: "\f245"; }

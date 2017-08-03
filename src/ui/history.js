@@ -88,13 +88,18 @@ ui.history = {
 		}
 	},
 	__pattern( cmp, r, u ) {
-		var a, o, msgPat;
+		var id, pat, undoPat;
 
-		for ( a in r.patterns ) {
-			o = r.patterns[ a ];
-			msgPat = u.patterns[ a ].name + ": ";
-			if ( "name" in o ) {
-				return { i: "name", t: msgPat + `rename to "${ o.name }"` };
+		for ( id in r.patterns ) {
+			pat = r.patterns[ id ];
+			undoPat = u.patterns[ id ];
+			if ( !pat || !undoPat ) {
+				return pat
+					? { i: "add", t: `New pattern "${ pat.name }"` }
+					: { i: "remove", t: `Remove pattern "${ undoPat.name }"` };
+			}
+			if ( "name" in pat ) {
+				return { i: "name", t: `${ undoPat.name }: rename to "${ pat.name }"` };
 			}
 		}
 	},
@@ -110,7 +115,7 @@ ui.history = {
 				o = o[ b ];
 				return (
 					( !o && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
-					( !u.keys[ a ][ b ] && { i: "add", t: msgPat + "add" + msgSmp } ) ||
+					( !u.keys[ a ][ b ] && { i: "paint", t: msgPat + "add" + msgSmp } ) ||
 					( "selected" in o && ( o.selected
 						? { i: "selection plus",  t: msgPat + "select" + msgSmp }
 						: { i: "selection minus", t: msgPat + "unselect" + msgSmp }

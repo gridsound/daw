@@ -3,6 +3,7 @@
 ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
+		ui.idElements.patNew.onclick = gs.newPattern;
 	},
 	empty() {
 		for ( var id in ui.patterns.audioBlocks ) {
@@ -16,7 +17,7 @@ ui.patterns = {
 		pat.name( data.name );
 		pat.datatype( "keys" );
 		ui.patterns.audioBlocks[ id ] = pat;
-		ui.idElements.patterns.append( pat.rootElement );
+		ui.idElements.patterns.prepend( pat.rootElement );
 	},
 	remove( id ) {
 		ui.patterns.audioBlocks[ id ].rootElement.remove();

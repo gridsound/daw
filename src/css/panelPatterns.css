@@ -6,6 +6,7 @@
 #patDelete:before { content: "\f1f8"; }
 
 #patterns .gsuiAudioBlock {
+	position: relative;
 	width: 100%;
 	height: 64px;
 	--bd-radius: 0;
