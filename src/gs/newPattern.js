@@ -13,10 +13,10 @@ gs.newPattern = function( pushToHist ) {
 			}
 		};
 
-	if ( pushToHist ) {
-		gs.pushCompositionChange( obj );
-	} else {
+	if ( pushToHist === false ) {
 		gs.changeComposition( obj );
+	} else {
+		gs.pushCompositionChange( obj );
 	}
 	return patId;
 };
