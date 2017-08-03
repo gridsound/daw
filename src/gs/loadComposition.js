@@ -21,5 +21,7 @@ gs.loadComposition = function( cmp ) {
 	ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 	ui.cmps.load( cmp.id );
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
-	gs.openPattern( cmp.patternOpened );
+	if ( cmp.patternOpened ) {
+		gs.openPattern( cmp.patternOpened );
+	}
 };
