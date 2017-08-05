@@ -20,7 +20,6 @@ gs.unloadComposition = function() {
 				}
 			}
 			if ( gs.currCmpSaved ) {
-				gs.currCmp = null;
 				gs.historyInd = 0;
 				gs.history.length = 0;
 				ui.history.cut( 0 );
@@ -28,6 +27,7 @@ gs.unloadComposition = function() {
 				ui.cmps.unload();
 				ui.patterns.empty();
 				ui.pattern.empty();
+				gs.currCmp = null;
 				res();
 			} else {
 				rej();

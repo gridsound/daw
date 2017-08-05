@@ -27,7 +27,9 @@ ui.patterns = {
 
 		if ( id === gs.currCmp.patternOpened ) {
 			delete gs.currCmp.patternOpened;
-			ui.patterns.open( blockRoot.nextSibling._patId );
+			if ( blockRoot.nextSibling ) { // tmp...
+				ui.patterns.open( blockRoot.nextSibling._patId );
+			}
 		}
 		blockRoot.remove();
 		delete ui.patterns.audioBlocks[ id ];
