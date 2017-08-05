@@ -11,8 +11,8 @@ gs.loadComposition = function( cmp ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
 	for ( id in cmp.patterns ) {
-		gs.addPattern( id, cmp.patterns[ id ] );
-		gs.updatePatternContent( id );
+		ui.patterns.add( id, cmp.patterns[ id ] );
+		ui.patterns.updatePreview( id );
 	}
 	ui.controls.currentTime( 0 );
 	ui.controls.bpm( cmp.bpm );
@@ -23,6 +23,6 @@ gs.loadComposition = function( cmp ) {
 	ui.cmps.load( cmp.id );
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
 	if ( cmp.patternOpened ) {
-		gs.openPattern( cmp.patternOpened );
+		ui.patterns.open( cmp.patternOpened );
 	}
 };

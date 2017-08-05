@@ -17,13 +17,21 @@ ui.patterns = {
 		pat.name( data.name );
 		pat.datatype( "keys" );
 		pat.ondrag = function() {};
-		pat.rootElement.ondblclick = gs.openPattern.bind( null, id );
+		pat.rootElement.ondblclick = ui.patterns.open.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.idElements.patterns.prepend( pat.rootElement );
 	},
 	remove( id ) {
 		ui.patterns.audioBlocks[ id ].rootElement.remove();
 		delete ui.patterns.audioBlocks[ id ];
+	},
+	open( id ) {
+		var pat = gs.currCmp.patterns[ id ];
+
+		gs.currCmp.patternOpened = id;
+		ui.patterns.select( id );
+		ui.pattern.name( pat.name );
+		ui.pattern.load( gs.currCmp.keys[ pat.keys ] );
 	},
 	select( id ) {
 		var patSel = ui.patterns._selectedPattern,
@@ -38,7 +46,46 @@ ui.patterns = {
 	name( id, n ) {
 		ui.patterns.audioBlocks[ id ].name( n );
 	},
-	updateData( id, data ) {
-		ui.patterns.audioBlocks[ id ].updateData( data );
+	update( id, dataChange ) {
+		if ( "name" in dataChange ) {
+			ui.patterns.name( id, dataChange.name )
+			if ( id === gs.currCmp.patternOpened ) {
+				ui.pattern.name( dataChange.name );
+			}
+		}
+	},
+	updatePreview( id ) {
+		var keyId,
+			keyObj,
+			row,
+			nbRows,
+			minrow = Infinity,
+			maxrow = -Infinity,
+			dur = 0,
+			samples = [],
+			cmp = gs.currCmp,
+			keys = cmp.keys[ cmp.patterns[ id ].keys ];
+
+		for ( keyId in keys ) {
+			keyObj = keys[ keyId ];
+			row = ui.keysGridSamples.uiKeys.keyToIndex( keyObj.key );
+			minrow = Math.min( minrow, row );
+			maxrow = Math.max( maxrow, row );
+			dur = Math.max( dur, keyObj.when + keyObj.duration );
+			samples.push( {
+				row: row,
+				when: keyObj.when,
+				duration: keyObj.duration,
+			} );
+		}
+		nbRows = maxrow - minrow;
+		samples.forEach( function( smp ) {
+			smp.row = nbRows - ( smp.row - minrow );
+		} );
+		ui.patterns.audioBlocks[ id ].updateData( {
+			nbRows: nbRows + 1,
+			samples: samples,
+			duration: Math.ceil( dur / cmp.beatsPerMeasure ) * cmp.beatsPerMeasure
+		} );
 	}
 };

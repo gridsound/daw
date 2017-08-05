@@ -13,15 +13,15 @@ gs.changeComposition = function( obj ) {
 	for ( patId in obj.patterns ) {
 		obj.patterns[ patId ]
 			? cmp.patterns[ patId ]
-				? gs.updatePattern( patId, obj.patterns[ patId ] )
-				: gs.addPattern( patId, obj.patterns[ patId ] )
-			: gs.removePattern( patId );
+				? ui.patterns.update( patId, obj.patterns[ patId ] )
+				: ui.patterns.add( patId, obj.patterns[ patId ] )
+			: ui.patterns.remove( patId );
 	}
 	common.assignDeep( cmp, obj );
 	for ( keysId in obj.keys ) {
 		for ( patId in cmp.patterns ) {
 			if ( cmp.patterns[ patId ].keys === keysId ) {
-				gs.updatePatternContent( patId );
+				ui.patterns.updatePreview( patId );
 				if ( patId === cmp.patternOpened ) {
 					ui.keysGridSamples.change( obj.keys[ keysId ] );
 				}
@@ -37,7 +37,7 @@ gs.changeComposition = function( obj ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		for ( patId in cmp.patterns ) {
-			gs.updatePatternContent( patId );
+			ui.patterns.updatePreview( patId );
 		}
 	}
 	if ( obj.name != null || obj.bpm ) {

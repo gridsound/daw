@@ -6,7 +6,7 @@ gs.loadCompositionById = function( cmpId ) {
 
 		gs.loadComposition( cmp || gs.newComposition() );
 		if ( !cmp ) {
-			gs.openPattern( gs.newPattern( false ) );
+			ui.patterns.open( gs.newPattern( false ) );
 		}
 	}, function() {} );
 };
