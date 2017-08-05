@@ -17,21 +17,31 @@ ui.patterns = {
 		pat.name( data.name );
 		pat.datatype( "keys" );
 		pat.ondrag = function() {};
+		pat.rootElement._patId = id;
 		pat.rootElement.ondblclick = ui.patterns.open.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.idElements.patterns.prepend( pat.rootElement );
 	},
 	remove( id ) {
-		ui.patterns.audioBlocks[ id ].rootElement.remove();
+		var blockRoot = ui.patterns.audioBlocks[ id ].rootElement;
+
+		if ( id === gs.currCmp.patternOpened ) {
+			delete gs.currCmp.patternOpened;
+			ui.patterns.open( blockRoot.nextSibling._patId );
+		}
+		blockRoot.remove();
 		delete ui.patterns.audioBlocks[ id ];
 	},
 	open( id ) {
-		var pat = gs.currCmp.patterns[ id ];
+		var pat, cmp = gs.currCmp;
 
-		gs.currCmp.patternOpened = id;
-		ui.patterns.select( id );
-		ui.pattern.name( pat.name );
-		ui.pattern.load( gs.currCmp.keys[ pat.keys ] );
+		if ( id !== cmp.patternOpened ) {
+			cmp.patternOpened = id;
+			pat = cmp.patterns[ id ];
+			ui.patterns.select( id );
+			ui.pattern.name( pat.name );
+			ui.pattern.load( cmp.keys[ pat.keys ] );
+		}
 	},
 	select( id ) {
 		var patSel = ui.patterns._selectedPattern,
