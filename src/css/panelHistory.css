@@ -61,6 +61,7 @@
 .actionIcon.plus:after { content: "\f067"; }
 .actionIcon.minus:after { content: "\f068"; }
 
+.actionIcon.clock:before { content: "\f017"; }
 .actionIcon.name:before { content: "\f040"; }
 .actionIcon.mute:before { content: "\f026"; }
 .actionIcon.unmute:before { content: "\f028"; }

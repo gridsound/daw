@@ -60,9 +60,9 @@ ui.history = {
 			ui.history.__keys( cmp, r, u ) ||
 			ui.history.__pattern( cmp, r, u ) ||
 			(
-				r.name != null ? { i: "name", t: `Name, "${ u.name }" -> "${ r.name }"` } :
-				r.bpm          ? { i: "bpm",  t: `BPM, ${ u.bpm } -> ${ r.bpm }` } :
-				r.stepsPerBeat || r.beatsPerMeasure ? { i: "timeSign", t: `Time signature` } :
+				r.name != null ? { i: "name", t: `Name: "${ r.name }"` } :
+				r.bpm          ? { i: "clock", t: `BPM: ${ r.bpm }` } :
+				r.beatsPerMeasure || r.stepsPerBeat ? { i: "clock", t: `Time signature: ${ cmp.beatsPerMeasure }/${ cmp.stepsPerBeat }` } :
 				{ i: "", t: "" }
 			)
 		);
