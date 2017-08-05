@@ -21,6 +21,7 @@ ui.pattern = {
 		ui.idElements.patternName.textContent = name;
 	},
 	load( keys ) {
+		ui.keysGridSamples.empty();
 		ui.keysGridSamples.change( keys );
 	},
 

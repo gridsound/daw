@@ -16,6 +16,8 @@ ui.patterns = {
 		pat.data = data;
 		pat.name( data.name );
 		pat.datatype( "keys" );
+		pat.ondrag = function() {};
+		pat.rootElement.ondblclick = gs.openPattern.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.idElements.patterns.prepend( pat.rootElement );
 	},
