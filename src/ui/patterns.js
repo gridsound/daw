@@ -18,7 +18,7 @@ ui.patterns = {
 		pat.datatype( "keys" );
 		pat.ondrag = function() {};
 		pat.rootElement._patId = id;
-		pat.rootElement.ondblclick = ui.patterns.open.bind( null, id );
+		pat.rootElement.ondblclick = ui.patterns._ondblclick.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.idElements.patterns.prepend( pat.rootElement );
 	},
@@ -37,13 +37,11 @@ ui.patterns = {
 	open( id ) {
 		var pat, cmp = gs.currCmp;
 
-		if ( id !== cmp.patternOpened ) {
-			cmp.patternOpened = id;
-			pat = cmp.patterns[ id ];
-			ui.patterns.select( id );
-			ui.pattern.name( pat.name );
-			ui.pattern.load( cmp.keys[ pat.keys ] );
-		}
+		cmp.patternOpened = id;
+		pat = cmp.patterns[ id ];
+		ui.patterns.select( id );
+		ui.pattern.name( pat.name );
+		ui.pattern.load( cmp.keys[ pat.keys ] );
 	},
 	select( id ) {
 		var patSel = ui.patterns._selectedPattern,
@@ -99,5 +97,12 @@ ui.patterns = {
 			samples: samples,
 			duration: Math.ceil( dur / cmp.beatsPerMeasure ) * cmp.beatsPerMeasure
 		} );
+	},
+
+	// events:
+	_ondblclick( id ) {
+		if ( id !== gs.currCmp.patternOpened ) {
+			ui.patterns.open( id );
+		}
 	}
 };
