@@ -11,10 +11,7 @@ gs.loadCompositionByBlob = function( blob ) {
 				rej();
 				return;
 			}
-			gs.unloadComposition().then( function() {
-				gs.loadComposition( cmp );
-				res();
-			}, rej );
+			gs.loadComposition( cmp ).then( res, rej );
 		};
 		reader.readAsText( blob );
 	} );

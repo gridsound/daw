@@ -1,12 +1,12 @@
 "use strict";
 
-gs.newComposition = function() {
+gs.loadNewComposition = function() {
 	var i = 0, trks = {};
 
 	for ( ; i < settings.def_nbTracks; ++i ) {
 		trks[ common.uuid() ] = { order: i, toggle: true, name: "" };
 	}
-	return {
+	return gs.loadComposition( {
 		id: common.uuid(),
 		bpm: settings.def_bpm,
 		stepsPerBeat: settings.def_stepsPerBeat,
@@ -16,5 +16,7 @@ gs.newComposition = function() {
 		tracks: trks,
 		patterns: {},
 		keys: {}
-	};
+	} ).then( function() {
+		ui.patterns.open( gs.newPattern( false ) );
+	}, function() {} );
 };
