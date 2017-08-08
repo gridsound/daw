@@ -31,7 +31,7 @@
 	color: #bbb;
 	font-size: 12px;
 	cursor: pointer;
-	background-color: var( --color-light-blue );
+	background-color: var( --col1-middle );
 	filter: brightness( .9 );
 }
 .cmp .save {
@@ -40,7 +40,7 @@
 	align-items: center;
 	justify-content: center;
 	width: 0;
-	background-color: var( --color-light-red );
+	background-color: var( --col2-middle );
 }
 .cmp.notSaved .save {
 	min-width: 30px;

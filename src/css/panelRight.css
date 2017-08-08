@@ -47,7 +47,7 @@
 	box-shadow: inset 0 3px 0px rgba( 0, 0, 0, .25 );
 }
 
-#play { background-color: var( --color-light-blue ); }
+#play { background-color: var( --col1-middle ); }
 #stop { background-color: #888; }
 
 #play:before { content: "\f04b"; }
@@ -90,7 +90,7 @@
 	padding-left: .4em;
 	padding-right: .4em;
 	font-family: "FontAwesome";
-	background-color: var( --color-light-red );
+	background-color: var( --col2-middle );
 }
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }

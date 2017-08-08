@@ -15,8 +15,9 @@ html, body {
 	--small-bd-radius: 2px;
 	--ctrl-height: 44px;
 	--ctrl-padding: 4px;
-	--color-light-blue: #67a;
-	--color-light-red: #d44;
+	--col1-high: #bbf;
+	--col1-middle: #67a;
+	--col2-middle: #d44;
 	--monospace: "Inconsolata", "consolas", monospace;
 
 	width: 100%;

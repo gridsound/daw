@@ -23,7 +23,7 @@
 	border-radius: 4px;
 	font-family: var( --monospace );
 	cursor: default;
-	background-color: var( --color-light-blue );
+	background-color: var( --col1-middle );
 	transition: filter .2s;
 }
 #patternName:empty:before {
