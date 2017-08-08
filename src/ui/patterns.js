@@ -24,16 +24,20 @@ ui.patterns = {
 		ui.idElements.patterns.prepend( pat.rootElement );
 	},
 	remove( id ) {
-		var blockRoot = ui.patterns.audioBlocks[ id ].rootElement;
+		var sibling,
+			patRoot = ui.patterns.audioBlocks[ id ].rootElement;
 
 		if ( id === gs.currCmp.patternOpened ) {
 			delete gs.currCmp.patternOpened;
-			if ( blockRoot.nextSibling ) { // tmp...
-				ui.patterns.open( blockRoot.nextSibling._patId );
+
+			// .2
+			sibling = patRoot.nextSibling || patRoot.previousSibling;
+			if ( sibling ) {
+				ui.patterns.open( sibling._patId );
 			}
 		}
-		blockRoot.remove();
 		delete ui.patterns.audioBlocks[ id ];
+		patRoot.remove();
 	},
 	open( id ) {
 		var pat, cmp = gs.currCmp;
@@ -107,6 +111,24 @@ ui.patterns = {
 		}
 	},
 	_onclickRemove() {
-		gs.removePattern( gs.currCmp.patternOpened );
+		var patId = gs.currCmp.patternOpened,
+			patRoot = ui.patterns.audioBlocks[ patId ].rootElement;
+
+		// .1
+		if ( patRoot.nextSibling || patRoot.previousSibling ) {
+			gs.removePattern( patId );
+		}
 	}
 };
+
+/*
+.1 : Why the UI choose to block the deletion of the last pattern?
+	The logic code can handle the deletion of all the pattern, but the UI not.
+	Currently the UI need a pattern opened everytime.
+	Because of this, the `if` is not in the logic code.
+
+.2 : Why is there *another* sibling check in the ui.remove() function?
+	The UI doesn't allow the deletion of the last pattern, but there is still
+	another check in the simple `ui.remove()` function. This is because when
+	a composition is unload (to load another one) ALL the patterns are removed.
+*/
