@@ -11,33 +11,12 @@ ui.patterns = {
 			ui.patterns.remove( id );
 		}
 	},
-	add( id, data ) {
-		var pat = new gsuiAudioBlock();
-
-		pat.data = data;
-		pat.name( data.name );
-		pat.datatype( "keys" );
-		pat.ondrag = function() {};
-		pat.rootElement._patId = id;
-		pat.rootElement.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
-		ui.patterns.audioBlocks[ id ] = pat;
-		ui.idElements.patterns.prepend( pat.rootElement );
-	},
-	remove( id ) {
-		var sibling,
-			patRoot = ui.patterns.audioBlocks[ id ].rootElement;
-
-		if ( id === gs.currCmp.patternOpened ) {
-			delete gs.currCmp.patternOpened;
-
-			// .2
-			sibling = patRoot.nextSibling || patRoot.previousSibling;
-			if ( sibling ) {
-				ui.patterns.open( sibling._patId );
-			}
-		}
-		delete ui.patterns.audioBlocks[ id ];
-		patRoot.remove();
+	change( id, data ) {
+		data
+			? ui.patterns.audioBlocks[ id ]
+				? ui.patterns._update( id, data )
+				: ui.patterns._add( id, data )
+			: ui.patterns._remove( id );
 	},
 	open( id ) {
 		var pat, cmp = gs.currCmp;
@@ -60,14 +39,6 @@ ui.patterns = {
 	},
 	name( id, n ) {
 		ui.patterns.audioBlocks[ id ].name( n );
-	},
-	update( id, dataChange ) {
-		if ( "name" in dataChange ) {
-			ui.patterns.name( id, dataChange.name )
-			if ( id === gs.currCmp.patternOpened ) {
-				ui.pattern.name( dataChange.name );
-			}
-		}
 	},
 	updatePreview( id ) {
 		var keyId,
@@ -102,6 +73,45 @@ ui.patterns = {
 			samples: samples,
 			duration: Math.ceil( dur / cmp.beatsPerMeasure ) * cmp.beatsPerMeasure
 		} );
+	},
+
+	// private:
+	_add( id, data ) {
+		var pat = new gsuiAudioBlock();
+
+		pat.data = data;
+		pat.name( data.name );
+		pat.datatype( "keys" );
+		pat.ondrag = function() {};
+		pat.rootElement._patId = id;
+		pat.rootElement.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
+		ui.patterns.audioBlocks[ id ] = pat;
+		ui.idElements.patterns.prepend( pat.rootElement );
+		ui.patterns.open( id );
+	},
+	_remove( id ) {
+		var sibling,
+			patRoot = ui.patterns.audioBlocks[ id ].rootElement;
+
+		if ( id === gs.currCmp.patternOpened ) {
+			delete gs.currCmp.patternOpened;
+
+			// .2
+			sibling = patRoot.nextSibling || patRoot.previousSibling;
+			if ( sibling ) {
+				ui.patterns.open( sibling._patId );
+			}
+		}
+		delete ui.patterns.audioBlocks[ id ];
+		patRoot.remove();
+	},
+	_update( id, dataChange ) {
+		if ( "name" in dataChange ) {
+			ui.patterns.name( id, dataChange.name )
+			if ( id === gs.currCmp.patternOpened ) {
+				ui.pattern.name( dataChange.name );
+			}
+		}
 	},
 
 	// events:

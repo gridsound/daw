@@ -16,7 +16,11 @@ gs.loadNewComposition = function() {
 		tracks: trks,
 		patterns: {},
 		keys: {}
-	} ).then( function() {
-		ui.patterns.open( gs.newPattern( false ) );
-	}, function() {} );
+	} ).then(
+		function() {
+			ui.patterns.open( gs.newPattern( false ) );
+		},
+		function() {
+			console.log( arguments );
+		} );
 };

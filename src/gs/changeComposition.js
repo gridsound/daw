@@ -10,14 +10,10 @@ gs.changeComposition = function( obj ) {
 	if ( obj.tracks ) {
 		ui.mainGridSamples.change( obj );
 	}
-	for ( patId in obj.patterns ) {
-		obj.patterns[ patId ]
-			? cmp.patterns[ patId ]
-				? ui.patterns.update( patId, obj.patterns[ patId ] )
-				: ui.patterns.add( patId, obj.patterns[ patId ] )
-			: ui.patterns.remove( patId );
-	}
 	common.assignDeep( cmp, obj );
+	for ( patId in obj.patterns ) {
+		ui.patterns.change( patId, obj.patterns[ patId ] );
+	}
 	for ( keysId in obj.keys ) {
 		for ( patId in cmp.patterns ) {
 			if ( cmp.patterns[ patId ].keys === keysId ) {
