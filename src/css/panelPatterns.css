@@ -3,7 +3,7 @@
 }
 
 #patNew:before { content: "\f067"; }
-#patDelete:before { content: "\f1f8"; }
+#patRemove:before { content: "\f1f8"; }
 
 #patterns .gsuiAudioBlock {
 	position: relative;

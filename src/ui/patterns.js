@@ -4,6 +4,7 @@ ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
 		ui.idElements.patNew.onclick = gs.newPattern;
+		ui.idElements.patRemove.onclick = ui.patterns._onclickRemove;
 	},
 	empty() {
 		for ( var id in ui.patterns.audioBlocks ) {
@@ -18,7 +19,7 @@ ui.patterns = {
 		pat.datatype( "keys" );
 		pat.ondrag = function() {};
 		pat.rootElement._patId = id;
-		pat.rootElement.ondblclick = ui.patterns._ondblclick.bind( null, id );
+		pat.rootElement.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.idElements.patterns.prepend( pat.rootElement );
 	},
@@ -100,9 +101,12 @@ ui.patterns = {
 	},
 
 	// events:
-	_ondblclick( id ) {
+	_ondblclickPattern( id ) {
 		if ( id !== gs.currCmp.patternOpened ) {
 			ui.patterns.open( id );
 		}
+	},
+	_onclickRemove() {
+		gs.removePattern( gs.currCmp.patternOpened );
 	}
 };
