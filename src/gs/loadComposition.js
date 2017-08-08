@@ -12,7 +12,7 @@ gs.loadComposition = function( cmp ) {
 			ui.cmps.update( cmp.id, cmp );
 		}
 		for ( id in cmp.patterns ) {
-			ui.patterns.add( id, cmp.patterns[ id ] );
+			ui.patterns.change( id, cmp.patterns[ id ] );
 			ui.patterns.updatePreview( id );
 		}
 		ui.controls.currentTime( 0 );

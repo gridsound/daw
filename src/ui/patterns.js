@@ -8,7 +8,7 @@ ui.patterns = {
 	},
 	empty() {
 		for ( var id in ui.patterns.audioBlocks ) {
-			ui.patterns.remove( id );
+			ui.patterns._remove( id );
 		}
 	},
 	change( id, data ) {
