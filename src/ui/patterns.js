@@ -40,40 +40,6 @@ ui.patterns = {
 	name( id, n ) {
 		ui.patterns.audioBlocks[ id ].name( n );
 	},
-	updatePreview( id ) {
-		var keyId,
-			keyObj,
-			row,
-			nbRows,
-			minrow = Infinity,
-			maxrow = -Infinity,
-			dur = 0,
-			samples = [],
-			cmp = gs.currCmp,
-			keys = cmp.keys[ cmp.patterns[ id ].keys ];
-
-		for ( keyId in keys ) {
-			keyObj = keys[ keyId ];
-			row = ui.keysGridSamples.uiKeys.keyToIndex( keyObj.key );
-			minrow = Math.min( minrow, row );
-			maxrow = Math.max( maxrow, row );
-			dur = Math.max( dur, keyObj.when + keyObj.duration );
-			samples.push( {
-				row: row,
-				when: keyObj.when,
-				duration: keyObj.duration,
-			} );
-		}
-		nbRows = maxrow - minrow;
-		samples.forEach( function( smp ) {
-			smp.row = nbRows - ( smp.row - minrow );
-		} );
-		ui.patterns.audioBlocks[ id ].updateData( {
-			nbRows: nbRows + 1,
-			samples: samples,
-			duration: Math.ceil( dur / cmp.beatsPerMeasure ) * cmp.beatsPerMeasure
-		} );
-	},
 
 	// private:
 	_add( id, data ) {

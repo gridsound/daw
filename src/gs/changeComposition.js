@@ -17,7 +17,7 @@ gs.changeComposition = function( obj ) {
 	for ( keysId in obj.keys ) {
 		for ( patId in cmp.patterns ) {
 			if ( cmp.patterns[ patId ].keys === keysId ) {
-				ui.patterns.updatePreview( patId );
+				gs.updatePatternContent( patId );
 				if ( patId === cmp.patternOpened ) {
 					ui.keysGridSamples.change( obj.keys[ keysId ] );
 				}
@@ -33,7 +33,7 @@ gs.changeComposition = function( obj ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		for ( patId in cmp.patterns ) {
-			ui.patterns.updatePreview( patId );
+			gs.updatePatternContent( patId );
 		}
 	}
 	if ( obj.name != null || obj.bpm ) {
