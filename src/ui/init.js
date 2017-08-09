@@ -70,5 +70,6 @@ ui.init = function() {
 	ui.pattern.init();
 	ui.history.init();
 	ui.settingsPopup.init();
+	ui.mainGrid.init();
 	ui.windowEvents();
 };

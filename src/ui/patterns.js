@@ -43,16 +43,19 @@ ui.patterns = {
 
 	// private:
 	_add( id, data ) {
-		var pat = new gsuiAudioBlock();
+		var pat = new gsuiAudioBlock(),
+			patRoot = pat.rootElement;
 
 		pat.data = data;
 		pat.name( data.name );
 		pat.datatype( "keys" );
-		pat.ondrag = function() {};
-		pat.rootElement._patId = id;
-		pat.rootElement.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
+		pat.ondrag = function() {}; // !!!
+		patRoot._patId = id;
+		patRoot.setAttribute( "draggable", "true" );
+		patRoot.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
+		patRoot.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
-		ui.idElements.patterns.prepend( pat.rootElement );
+		ui.idElements.patterns.prepend( patRoot );
 		ui.patterns.open( id );
 	},
 	_remove( id ) {
@@ -81,11 +84,6 @@ ui.patterns = {
 	},
 
 	// events:
-	_ondblclickPattern( id ) {
-		if ( id !== gs.currCmp.patternOpened ) {
-			ui.patterns.open( id );
-		}
-	},
 	_onclickRemove() {
 		var patId = gs.currCmp.patternOpened,
 			patRoot = ui.patterns.audioBlocks[ patId ].rootElement;
@@ -94,6 +92,14 @@ ui.patterns = {
 		if ( patRoot.nextSibling || patRoot.previousSibling ) {
 			gs.removePattern( patId );
 		}
+	},
+	_ondblclickPattern( id ) {
+		if ( id !== gs.currCmp.patternOpened ) {
+			ui.patterns.open( id );
+		}
+	},
+	_ondragstartPattern( id, e ) {
+		e.dataTransfer.setData( "text", id );
 	}
 };
 
