@@ -8,7 +8,7 @@ ui.pattern = {
 		grid.offset( 0, 120 );
 		grid.setFontSize( 20 );
 		ui.idElements.keysGridWrap.append( grid.rootElement );
-		ui.idElements.patternName.ondblclick = ui.pattern._ondblclickPatternName;
+		ui.idElements.patternName.onclick = ui.pattern._onclickPatternName;
 		grid.onchange = ui.pattern._onchangeGrid;
 		grid.resized();
 		ui.keysGridSamples = grid;
@@ -31,7 +31,7 @@ ui.pattern = {
 			[ gs.currCmp.patterns[ gs.currCmp.patternOpened ].keys ]: obj
 		} } );
 	},
-	_ondblclickPatternName() {
+	_onclickPatternName() {
 		var patId = gs.currCmp.patternOpened,
 			pat = gs.currCmp.patterns[ patId ],
 			n = prompt( "Name pattern :", pat.name );
