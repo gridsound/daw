@@ -1,7 +1,7 @@
 "use strict";
 
 common.nameUnique = function( name, arr ) {
-	var reg, nb;
+	var reg, res, nb;
 
 	name = common.trim2( name );
 	if ( arr.indexOf( name ) > -1 ) {
