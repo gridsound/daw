@@ -2,16 +2,18 @@
 
 gs.newPattern = function( pushToHist ) {
 	var keysId = common.uuid(),
-		patId = common.uuid(),
-		patName = "pat " + ++gs.patternIdAbs;
+		patId = common.uuid();
 
 	( pushToHist === false
 		? gs.changeComposition
 		: gs.pushCompositionChange )( {
 			keys: { [ keysId ]: {} },
-			patterns: {
-				[ patId ]: { name: patName, type: "keys", keys: keysId, duration: 0 }
-			}
+			patterns: { [ patId ]: {
+				name: gs.namePattern( "pat" ),
+				type: "keys",
+				keys: keysId,
+				duration: 0
+			} }
 		} );
 	return patId;
 };

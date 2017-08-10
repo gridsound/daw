@@ -6,7 +6,6 @@ gs.loadComposition = function( cmp ) {
 
 		gs.currCmp = cmp;
 		gs.currCmpSaved = !!( cmp.savedAt && cmpOrig && cmpOrig.savedAt === cmp.savedAt );
-		gs.patternIdAbs = 0;
 		if ( cmp.savedAt == null || !cmpOrig ) {
 			ui.cmps.push( cmp.id );
 			ui.cmps.update( cmp.id, cmp );
