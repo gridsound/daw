@@ -6,11 +6,12 @@ ui.init = function() {
 		panelsMain = new gsuiPanels(),
 		panelsLeft = new gsuiPanels(),
 		panelsRight = new gsuiPanels(),
-		mainGridSamples = new gsuiGridSamples(),
 		idEl = {
 			app: document.getElementById( "app" ),
 			appContent: document.getElementById( "appContent" )
 		};
+
+	gsuiGridSamples.getNewId = common.uuid;
 
 	// Init some gsuiPanels:
 	ui.panelsMain = panelsMain;
@@ -52,24 +53,12 @@ ui.init = function() {
 		idEl[ el.id ] = el;
 	} );
 
-	// Init some gsuiGridSamples:
-	gsuiGridSamples.getNewId = common.uuid;
-	ui.mainGridSamples = mainGridSamples;
-	mainGridSamples.loadTrackList();
-	mainGridSamples.offset( 0, 40 );
-	mainGridSamples.onchange = function( obj ) {
-		console.log( "mainGridSamples.onchange", obj );
-		gs.pushCompositionChange( obj );
-	};
-	idEl.mainGridWrap.append( mainGridSamples.rootElement );
-	mainGridSamples.resized();
-
 	// Initialisation of the rest of the app:
 	ui.cmps.init();
+	ui.history.init();
 	ui.patterns.init();
 	ui.pattern.init();
-	ui.history.init();
-	ui.settingsPopup.init();
 	ui.mainGrid.init();
+	ui.settingsPopup.init();
 	ui.windowEvents();
 };
