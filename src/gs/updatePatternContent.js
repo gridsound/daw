@@ -5,5 +5,5 @@ gs.updatePatternContent = function( id ) {
 		data = gs.keysToRects( gs.currCmp.keys[ pat.keys ] );
 
 	pat.duration = data.duration;
-	ui.patterns.audioBlocks[ id ].updateData( data );
+	ui.patterns.updateContent( id, data );
 };

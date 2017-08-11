@@ -40,6 +40,9 @@ ui.patterns = {
 	name( id, n ) {
 		ui.patterns.audioBlocks[ id ].name( n );
 	},
+	updateContent( id, data ) {
+		ui.patterns.audioBlocks[ id ].updateData( data );
+	},
 
 	// private:
 	_add( id, data ) {
