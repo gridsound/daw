@@ -30,6 +30,6 @@ gs.keysToRects = function( keys ) {
 	return {
 		nbRows: nbRows + 1,
 		samples: samples,
-		duration: Math.ceil( dur / cmp.beatsPerMeasure ) * cmp.beatsPerMeasure
+		duration: Math.max( 1, Math.ceil( dur / cmp.beatsPerMeasure ) ) * cmp.beatsPerMeasure
 	};
 };

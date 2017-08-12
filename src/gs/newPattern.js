@@ -12,7 +12,7 @@ gs.newPattern = function( pushToHist ) {
 				name: gs.namePattern( "pat" ),
 				type: "keys",
 				keys: keysId,
-				duration: 0
+				duration: gs.currCmp.beatsPerMeasure
 			} }
 		} );
 	return patId;
