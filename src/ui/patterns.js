@@ -78,10 +78,15 @@ ui.patterns = {
 		patRoot.remove();
 	},
 	_update( id, dataChange ) {
+		var val,
+			blocks = ui.mainGrid.getPatternBlocks( id );
+
 		if ( "name" in dataChange ) {
-			ui.patterns.name( id, dataChange.name )
+			val = dataChange.name;
+			ui.patterns.name( id, val );
+			ui.mainGrid.updatePatternName( id, val );
 			if ( id === gs.currCmp.patternOpened ) {
-				ui.pattern.name( dataChange.name );
+				ui.pattern.name( val );
 			}
 		}
 	},

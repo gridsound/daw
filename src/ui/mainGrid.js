@@ -33,6 +33,21 @@ ui.mainGrid = {
 	},
 	change( data ) {
 	},
+	getPatternBlocks( patId ) {
+		var id, res = [], blocks = ui.mainGrid.blocks;
+
+		for ( id in blocks ) {
+			if ( blocks[ id ].data.pattern === patId ) {
+				res.push( blocks[ id ] );
+			}
+		}
+		return res;
+	},
+	updatePatternName( id, name ) {
+		ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
+			uiBlock.name( name );
+		} );
+	},
 
 	// events:
 	_ondrop( e ) {
