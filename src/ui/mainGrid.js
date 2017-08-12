@@ -3,7 +3,7 @@
 ui.mainGrid = {
 	init() {
 		var grid = new gsuiGridSamples(),
-			elGridCnt = grid.rootElement.querySelector( ".gsui-grid .gsui-content" );
+			elGridCnt = grid.rootElement.querySelector( ".gsuigs-grid .gsuigs-content" );
 
 		grid.loadTrackList();
 		grid.offset( 0, 40 );
