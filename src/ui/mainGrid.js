@@ -12,7 +12,12 @@ ui.mainGrid = {
 			gs.pushCompositionChange( obj );
 		};
 		grid.fnSampleCreate = function( id, uiBlock ) {
+			var cmp = gs.currCmp,
+				pat = cmp.patterns[ uiBlock.data.pattern ];
+
 			ui.mainGrid.blocks[ id ] = uiBlock;
+			uiBlock.name( pat.name );
+			uiBlock.updateData( gs.keysToRects( cmp.keys[ pat.keys ] ) );
 		};
 		grid.fnSampleDelete = function( id, uiBlock ) {
 			delete ui.mainGrid.blocks[ id ];
@@ -32,6 +37,7 @@ ui.mainGrid = {
 		// ui.mainGrid.uiBlocks = {};
 	},
 	change( data ) {
+		ui.mainGridSamples.change( data );
 	},
 	getPatternBlocks( patId ) {
 		var id, res = [], blocks = ui.mainGrid.blocks;
@@ -42,11 +48,6 @@ ui.mainGrid = {
 			}
 		}
 		return res;
-	},
-	updatePatternName( id, name ) {
-		ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
-			uiBlock.name( name );
-		} );
 	},
 
 	// events:

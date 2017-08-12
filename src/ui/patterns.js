@@ -37,11 +37,11 @@ ui.patterns = {
 		ui.patterns._selectedPattern = pat;
 		pat.rootElement.classList.add( "selected" );
 	},
-	name( id, n ) {
-		ui.patterns.audioBlocks[ id ].name( n );
-	},
 	updateContent( id, data ) {
 		ui.patterns.audioBlocks[ id ].updateData( data );
+		ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
+			uiBlock.updateData( data );
+		} );
 	},
 
 	// private:
@@ -83,8 +83,10 @@ ui.patterns = {
 
 		if ( "name" in dataChange ) {
 			val = dataChange.name;
-			ui.patterns.name( id, val );
-			ui.mainGrid.updatePatternName( id, val );
+			ui.patterns.audioBlocks[ id ].name( val );
+			ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
+				uiBlock.name( val );
+			} );
 			if ( id === gs.currCmp.patternOpened ) {
 				ui.pattern.name( val );
 			}
