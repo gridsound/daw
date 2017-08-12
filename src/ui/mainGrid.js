@@ -36,10 +36,19 @@ ui.mainGrid = {
 
 	// events:
 	_ondrop( e ) {
-		var patId = e.dataTransfer.getData( "text" );
+		var row = e.target,
+			patId = e.dataTransfer.getData( "text" ),
+			grid = ui.mainGridSamples,
+			gridBCR = grid.rootElement.getBoundingClientRect();
 
-		console.log( "Drop in #mainGrid", patId );
 		e.stopPropagation();
+		while ( !row.classList.contains( "gsui-row" ) ) {
+			row = row.parentNode;
+		}
+		gs.dropPattern(
+			e.dataTransfer.getData( "text" ),
+			row.dataset.track,
+			( e.pageX - gridBCR.left - grid._panelWidth ) / grid._pxPerBeat + grid._timeOffset );
 		return false;
 	}
 };
