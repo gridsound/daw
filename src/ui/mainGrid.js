@@ -11,9 +11,16 @@ ui.mainGrid = {
 			// console.log( "grid.onchange", obj );
 			gs.pushCompositionChange( obj );
 		};
+		grid.fnSampleCreate = function( id, uiBlock ) {
+			ui.mainGrid.blocks[ id ] = uiBlock;
+		};
+		grid.fnSampleDelete = function( id, uiBlock ) {
+			delete ui.mainGrid.blocks[ id ];
+		};
 		ui.idElements.mainGridWrap.append( grid.rootElement );
 		ui.mainGridSamples = grid;
 		ui.mainGrid.elGridCnt = elGridCnt;
+		ui.mainGrid.blocks = {};
 		elGridCnt.ondrop = ui.mainGrid._ondrop;
 		elGridCnt.ondragenter = function( e ) {
 			e.dataTransfer.dropEffect = "copy";
@@ -22,6 +29,7 @@ ui.mainGrid = {
 		grid.resized();
 	},
 	empty() {
+		// ui.mainGrid.uiBlocks = {};
 	},
 	change( data ) {
 	},
