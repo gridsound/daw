@@ -1,9 +1,20 @@
 "use strict";
 
 gs.updatePatternContent = function( id ) {
-	var pat = gs.currCmp.patterns[ id ],
-		data = gs.keysToRects( gs.currCmp.keys[ pat.keys ] );
+	var blocks, block, bId,
+		pat = gs.currCmp.patterns[ id ],
+		data = gs.keysToRects( gs.currCmp.keys[ pat.keys ] ),
+		dur = data.duration;
 
-	pat.duration = data.duration;
+	if ( pat.duration !== dur ) {
+		pat.duration = dur;
+		blocks = gs.currCmp.blocks;
+		for ( bId in blocks ) {
+			block = blocks[ bId ];
+			if ( !block.durationEdited ) {
+				block.duration = dur;
+			}
+		}
+	}
 	ui.patterns.updateContent( id, data );
 };
