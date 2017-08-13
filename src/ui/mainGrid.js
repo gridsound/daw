@@ -57,7 +57,8 @@ ui.mainGrid = {
 		var row = e.target,
 			patId = e.dataTransfer.getData( "text" ),
 			grid = ui.mainGridSamples,
-			gridBCR = grid.rootElement.getBoundingClientRect();
+			gridBCR = grid.rootElement.getBoundingClientRect(),
+			pageX = e.pageX - gridBCR.left - grid._panelWidth;
 
 		e.stopPropagation();
 		while ( !row.classList.contains( "gsui-row" ) ) {
@@ -66,7 +67,7 @@ ui.mainGrid = {
 		gs.dropPattern(
 			e.dataTransfer.getData( "text" ),
 			row.dataset.track,
-			( e.pageX - gridBCR.left - grid._panelWidth ) / grid._pxPerBeat + grid._timeOffset );
+			grid.uiTimeLine._round( pageX / grid._pxPerBeat + grid._timeOffset ) );
 		return false;
 	}
 };
