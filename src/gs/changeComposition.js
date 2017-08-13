@@ -7,10 +7,8 @@ gs.changeComposition = function( obj ) {
 		bPM = obj.beatsPerMeasure,
 		sPB = obj.stepsPerBeat;
 
-	if ( obj.blocks || obj.tracks ) {
-		ui.mainGrid.change( obj.blocks || obj ); // ???
-	}
 	common.assignDeep( cmp, obj );
+	ui.mainGrid.change( obj );
 	for ( patId in obj.patterns ) {
 		ui.patterns.change( patId, obj.patterns[ patId ] );
 	}

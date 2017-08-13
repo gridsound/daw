@@ -8,7 +8,6 @@ ui.mainGrid = {
 		grid.loadTrackList();
 		grid.offset( 0, 40 );
 		grid.onchange = function( obj ) {
-			// console.log( "grid.onchange", obj );
 			gs.pushCompositionChange( obj );
 		};
 		grid.fnSampleCreate = function( id, uiBlock ) {
@@ -34,10 +33,12 @@ ui.mainGrid = {
 		grid.resized();
 	},
 	empty() {
-		// ui.mainGrid.uiBlocks = {};
+		ui.mainGridSamples.empty();
+		ui.mainGrid.uiBlocks = {};
 	},
 	change( data ) {
-		ui.mainGridSamples.change( data );
+		if ( data.tracks ) { ui.mainGridSamples.change( data ); }
+		if ( data.blocks ) { ui.mainGridSamples.change( data.blocks ); }
 	},
 	getPatternBlocks( patId ) {
 		var id, res = [], blocks = ui.mainGrid.blocks;

@@ -15,6 +15,7 @@ gs.loadNewComposition = function() {
 		duration: 0,
 		tracks: trks,
 		patterns: {},
+		blocks: {},
 		keys: {}
 	} ).then(
 		function() {

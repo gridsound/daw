@@ -56,6 +56,7 @@ ui.history = {
 			u = act.undo;
 
 		return (
+			ui.history.__blocks( cmp, r, u ) ||
 			ui.history.__tracks( cmp, r, u ) ||
 			ui.history.__keys( cmp, r, u ) ||
 			ui.history.__pattern( cmp, r, u ) ||
@@ -66,6 +67,22 @@ ui.history = {
 				{ i: "", t: "" }
 			)
 		);
+	},
+	__blocks( cmp, r, u ) {
+		var id, msg, arrK, rBlocks = r.blocks;
+
+		for ( id in rBlocks ) {
+			arrK = Object.keys( rBlocks );
+			msg = " " + arrK.length + " sample" + ( arrK.length > 1 ? "s" : "" );
+
+			return (
+				rBlocks[ id ]
+					? u.blocks[ id ]
+						? { i: "name", t: "edit" + msg }
+						: { i: "paint", t: "add" + msg }
+					: { i: "erase", t: "remove" + msg }
+			);
+		}
 	},
 	__tracks( cmp, r, u ) {
 		var a,
