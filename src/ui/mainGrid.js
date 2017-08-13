@@ -7,9 +7,7 @@ ui.mainGrid = {
 
 		grid.loadTrackList();
 		grid.offset( 0, 40 );
-		grid.onchange = function( obj ) {
-			gs.pushCompositionChange( obj );
-		};
+		grid.onchange = ui.mainGrid._onchangeGrid;
 		grid.fnSampleCreate = function( id, uiBlock ) {
 			var cmp = gs.currCmp,
 				pat = cmp.patterns[ uiBlock.data.pattern ];
@@ -52,6 +50,9 @@ ui.mainGrid = {
 	},
 
 	// events:
+	_onchangeGrid( obj ) {
+		gs.pushCompositionChange( { blocks: obj } );
+	},
 	_ondrop( e ) {
 		var row = e.target,
 			patId = e.dataTransfer.getData( "text" ),
