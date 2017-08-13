@@ -56,10 +56,10 @@ ui.history = {
 			u = act.undo;
 
 		return (
-			ui.history.__blocks( cmp, r, u ) ||
-			ui.history.__tracks( cmp, r, u ) ||
-			ui.history.__keys( cmp, r, u ) ||
 			ui.history.__pattern( cmp, r, u ) ||
+			ui.history.__tracks( cmp, r, u ) ||
+			ui.history.__blocks( cmp, r, u ) ||
+			ui.history.__keys( cmp, r, u ) ||
 			(
 				r.name != null ? { i: "name", t: `Name: "${ r.name }"` } :
 				r.bpm          ? { i: "clock", t: `BPM: ${ r.bpm }` } :
