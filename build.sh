@@ -72,6 +72,7 @@ declare -a JSfiles=(
 	"src/gs/deleteComposition.js"
 	"src/gs/isCompositionNeedSave.js"
 	"src/gs/saveCurrentComposition.js"
+	"src/gs/currentTime.js"
 	"src/gs/exportCompositionJSON.js"
 	"src/gs/exportCompositionWAV.js"
 	"src/gs/newPattern.js"
