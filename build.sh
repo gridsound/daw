@@ -159,7 +159,7 @@ buildMaster() {
 
 if [ $# -gt 0 ] && [ $1 = "master" ]
 then
-	buildDev
-else
 	buildMaster
+else
+	buildDev
 fi
