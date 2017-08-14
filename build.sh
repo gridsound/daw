@@ -107,6 +107,7 @@ buildDev() {
 		echo "<link rel='stylesheet' href='"$i"'/>" >> $filename
 	done
 	HTMLbody
+	echo "<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>" >> $filename
 	for i in "${JSfiles[@]}"
 	do
 		echo "<script src='"$i"'></script>" >> $filename
