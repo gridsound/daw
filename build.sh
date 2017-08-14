@@ -97,44 +97,10 @@ declare -a JSfiles=(
 	"src/run.js"
 )
 
-
-buildDev() {
-	filename="index-dev.html"
-	echo "Build $filename"
-	HTMLheader
-	for i in "${CSSfiles[@]}"
-	do
-		echo "<link rel='stylesheet' href='"$i"'/>" >> $filename
-	done
-	HTMLbody
-	echo "<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>" >> $filename
-	for i in "${JSfiles[@]}"
-	do
-		echo "<script src='"$i"'></script>" >> $filename
-	done
-	echo "</html>" >> $filename
-}
-
-build() {
-	filename="index-prod.html"
-	echo "Build $filename"
-	HTMLheader
-	echo "<style>" >> $filename
-	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso | sed "s/..\/..\/assets/assets/g"  >> $filename
-	echo "</style>" >> $filename
-	HTMLbody
-	echo "<script>" >> $filename
-	uglifyjs `for i in ${JSfiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
-	# TODO: use the `--mangle-props` option
-	echo "</script>" >> $filename
-	echo "</html>" >> $filename
-}
-
 HTMLheader() {
 	echo -en \
 "<!DOCTYPE html>\n\
-<html>\n\
-<head>\n\
+<html><head>\n\
 <title>GridSound</title>\n\
 <meta charset='UTF-8'/>\n\
 <meta name='viewport' content='width=device-width, user-scalable=no'/>\n\
@@ -152,9 +118,7 @@ HTMLheader() {
 }
 
 HTMLbody() {
-	echo -en \
-"</head>\n\
-<body>\n\
+	echo -en "</head><body>\n\
 <div id='app'></div>\n" >> $filename
 	for i in "${HTMLfiles[@]}"
 	do
@@ -162,5 +126,40 @@ HTMLbody() {
 	done
 }
 
-buildDev
-build
+buildDev() {
+	filename="index-dev.html"
+	echo "Build $filename"
+	HTMLheader
+	for i in "${CSSfiles[@]}"
+	do
+		echo "<link rel='stylesheet' href='"$i"'/>" >> $filename
+	done
+	HTMLbody
+	echo "<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>" >> $filename
+	for i in "${JSfiles[@]}"
+	do
+		echo "<script src='"$i"'></script>" >> $filename
+	done
+	echo "</body></html>" >> $filename
+}
+
+buildMaster() {
+	filename="index-prod.html"
+	echo "Build $filename"
+	HTMLheader
+	echo "<style>" >> $filename
+	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso | sed "s/..\/..\/assets/assets/g"  >> $filename
+	echo "</style>" >> $filename
+	HTMLbody
+	echo "<script>" >> $filename
+	uglifyjs `for i in ${JSfiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
+	# TODO: use the `--mangle-props` option
+	echo "</script></body></html>" >> $filename
+}
+
+if [ $# -gt 0 ] && [ $1 = "master" ]
+then
+	buildDev
+else
+	buildMaster
+fi
