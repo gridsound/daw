@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GridSound</title>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, user-scalable=no"/>
-	<meta property="og:type" content="website"/>
-	<meta property="og:title" content="GridSound (an open-source digital audio workstation)"/>
-	<meta property="og:url" content="https://gridsound.github.io/"/>
-	<meta property="og:image" content="https://gridsound.github.io/assets/og-image.jpg"/>
-	<meta property="og:image:width" content="800"/>
-	<meta property="og:image:height" content="400"/>
-	<meta name="theme-color" content="#3a5158"/>
-	<link rel="manifest" href="manifest.json"/>
-	<link rel="shortcut icon" href="assets/favicon.png"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiBeatLines/gsuiBeatLines.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiKeys/gsuiKeys.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiPanels/gsuiPanels.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiTimeLine/gsuiTimeLine.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiToggle/gsuiToggle.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiTrack/gsuiTrack.css"/>
-	<link rel="stylesheet" href="../gs-ui-components/gsuiTrackList/gsuiTrackList.css"/>
-	<link rel="stylesheet" href="src/css/fonts.css"/>
-	<link rel="stylesheet" href="src/css/app.css"/>
-	<link rel="stylesheet" href="src/css/absoluteMenu.css"/>
-	<link rel="stylesheet" href="src/css/panelLeft.css"/>
-	<link rel="stylesheet" href="src/css/panelCmps.css"/>
-	<link rel="stylesheet" href="src/css/panelHistory.css"/>
-	<link rel="stylesheet" href="src/css/panelPatterns.css"/>
-	<link rel="stylesheet" href="src/css/panelRight.css"/>
-	<link rel="stylesheet" href="src/css/patternMenu.css"/>
-	<link rel="stylesheet" href="src/css/settingsPopup.css"/>
-	<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
+<title>GridSound</title>
+<meta charset='UTF-8'/>
+<meta name='viewport' content='width=device-width, user-scalable=no'/>
+<meta property='og:type' content='website'/>
+<meta property='og:title' content='GridSound (an open-source digital audio workstation)'/>
+<meta property='og:url' content='https://gridsound.github.io/'/>
+<meta property='og:image' content='https://gridsound.github.io/assets/og-image.jpg'/>
+<meta property='og:image:width' content='800'/>
+<meta property='og:image:height' content='400'/>
+<meta name='theme-color' content='#3a5158'/>
+<link rel='manifest' href='manifest.json'/>
+<link rel='shortcut icon' href='assets/favicon.png'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiBeatLines/gsuiBeatLines.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiKeys/gsuiKeys.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiPanels/gsuiPanels.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiTimeLine/gsuiTimeLine.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiToggle/gsuiToggle.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiTrack/gsuiTrack.css'/>
+<link rel='stylesheet' href='../gs-ui-components/gsuiTrackList/gsuiTrackList.css'/>
+<link rel='stylesheet' href='src/css/fonts.css'/>
+<link rel='stylesheet' href='src/css/app.css'/>
+<link rel='stylesheet' href='src/css/absoluteMenu.css'/>
+<link rel='stylesheet' href='src/css/panelLeft.css'/>
+<link rel='stylesheet' href='src/css/panelCmps.css'/>
+<link rel='stylesheet' href='src/css/panelHistory.css'/>
+<link rel='stylesheet' href='src/css/panelPatterns.css'/>
+<link rel='stylesheet' href='src/css/panelRight.css'/>
+<link rel='stylesheet' href='src/css/patternMenu.css'/>
+<link rel='stylesheet' href='src/css/settingsPopup.css'/>
 </head>
 <body>
-
-<div id="app"></div>
-
+<div id='app'></div>
 <template id="appContent">
 	<div data-panel="1" id="panelCmps" class="panel-content panel-left">
 		<div class="panel-title">
@@ -128,7 +125,6 @@
 		</div>
 	</div>
 </template>
-
 <template id="appCmp">
 	<div class="appCmp">
 		<span class="name"></span>
@@ -136,7 +132,6 @@
 		<span class="duration"></span>
 	</div>
 </template>
-
 <template id="gsuiGridSamples">
 	<div class="gsuiGridSamples" tabindex="1">
 		<div class="gsuigs-panel">
@@ -149,7 +144,6 @@
 		</div>
 	</div>
 </template>
-
 <template id="gsuiTimeLine">
 	<div class="gsuiTimeLine">
 		<div class="gsui-loopLine"></div>
@@ -168,7 +162,6 @@
 		</div>
 	</div>
 </template>
-
 <template id="gsuiKeys-octave"
 	><div class="gsuiKey" data-key="b" ><div data-key="b"  class="gsui-row gsuiKey-row"><div></div></div></div
 	><div class="gsuiKey" data-key="a#"><div data-key="a#" class="gsui-row gsuiKey-row"><div></div></div></div
@@ -183,30 +176,25 @@
 	><div class="gsuiKey" data-key="c#"><div data-key="c#" class="gsui-row gsuiKey-row"><div></div></div></div
 	><div class="gsuiKey" data-key="c" ><div data-key="c"  class="gsui-row gsuiKey-row"><div></div></div></div
 ></template>
-
 <template id="gsuiTrackList">
 	<div class="gsuiTrackList"></div>
 </template>
-
 <template id="gsuiTrack">
 	<div class="gsuiTrack">
 		<div class="gsui-row gsuiTrack-row"><div></div></div>
 	</div>
 </template>
-
 <template id="gsuiToggle">
 	<div class="gsuiToggle">
 		<div class="gsui-circle"></div>
 	</div>
 </template>
-
 <template id="gsuiSpanEditable">
 	<div class="gsuiSpanEditable">
 		<span></span>
 		<input type="text"/>
 	</div>
 </template>
-
 <template id="gsuiAudioBlock">
 	<div class="gsuiAudioBlock">
 		<div class="gsui-bg"></div>
@@ -218,64 +206,56 @@
 		<div class="gsui-crop gsui-b"></div>
 	</div>
 </template>
-
-<script src="../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"></script>
-<script src="../gs-ui-components/gsuiBeatLines/gsuiBeatLines.js"></script>
-<script src="../gs-ui-components/gsuiGridSamples/gsuiGridSamples.js"></script>
-<script src="../gs-ui-components/gsuiKeys/gsuiKeys.js"></script>
-<script src="../gs-ui-components/gsuiPanels/gsuiPanels.js"></script>
-<script src="../gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js"></script>
-<script src="../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.js"></script>
-<script src="../gs-ui-components/gsuiTimeLine/gsuiTimeLine.js"></script>
-<script src="../gs-ui-components/gsuiToggle/gsuiToggle.js"></script>
-<script src="../gs-ui-components/gsuiTrack/gsuiTrack.js"></script>
-<script src="../gs-ui-components/gsuiTrackList/gsuiTrackList.js"></script>
-
-<script src="src/init.js"></script>
-
-<script src="src/common/uuid.js"></script>
-<script src="src/common/trim2.js"></script>
-<script src="src/common/nameUnique.js"></script>
-<script src="src/common/timestampText.js"></script>
-<script src="src/common/composeUndo.js"></script>
-<script src="src/common/assignDeep.js"></script>
-
-<script src="src/gs/init.js"></script>
-<script src="src/gs/undoRedo.js"></script>
-<script src="src/gs/localStorage.js"></script>
-<script src="src/gs/changeSettings.js"></script>
-<script src="src/gs/loadComposition.js"></script>
-<script src="src/gs/loadNewComposition.js"></script>
-<script src="src/gs/loadCompositionById.js"></script>
-<script src="src/gs/loadCompositionByBlob.js"></script>
-<script src="src/gs/pushCompositionChange.js"></script>
-<script src="src/gs/changeComposition.js"></script>
-<script src="src/gs/unloadComposition.js"></script>
-<script src="src/gs/deleteComposition.js"></script>
-<script src="src/gs/isCompositionNeedSave.js"></script>
-<script src="src/gs/saveCurrentComposition.js"></script>
-<script src="src/gs/exportCompositionJSON.js"></script>
-<script src="src/gs/exportCompositionWAV.js"></script>
-<script src="src/gs/newPattern.js"></script>
-<script src="src/gs/removePattern.js"></script>
-<script src="src/gs/namePattern.js"></script>
-<script src="src/gs/dropPattern.js"></script>
-<script src="src/gs/updatePatternContent.js"></script>
-<script src="src/gs/addAudioFiles.js"></script>
-<script src="src/gs/keysToRects.js"></script>
-
-<script src="src/ui/init.js"></script>
-<script src="src/ui/downloadBlob.js"></script>
-<script src="src/ui/windowEvents.js"></script>
-<script src="src/ui/history.js"></script>
-<script src="src/ui/controls.js"></script>
-<script src="src/ui/mainGrid.js"></script>
-<script src="src/ui/cmps.js"></script>
-<script src="src/ui/patterns.js"></script>
-<script src="src/ui/pattern.js"></script>
-<script src="src/ui/settingsPopup.js"></script>
-
-<script src="src/run.js"></script>
-
-</body>
+<script src='../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js'></script>
+<script src='../gs-ui-components/gsuiBeatLines/gsuiBeatLines.js'></script>
+<script src='../gs-ui-components/gsuiGridSamples/gsuiGridSamples.js'></script>
+<script src='../gs-ui-components/gsuiKeys/gsuiKeys.js'></script>
+<script src='../gs-ui-components/gsuiPanels/gsuiPanels.js'></script>
+<script src='../gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js'></script>
+<script src='../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.js'></script>
+<script src='../gs-ui-components/gsuiTimeLine/gsuiTimeLine.js'></script>
+<script src='../gs-ui-components/gsuiToggle/gsuiToggle.js'></script>
+<script src='../gs-ui-components/gsuiTrack/gsuiTrack.js'></script>
+<script src='../gs-ui-components/gsuiTrackList/gsuiTrackList.js'></script>
+<script src='src/init.js'></script>
+<script src='src/common/uuid.js'></script>
+<script src='src/common/trim2.js'></script>
+<script src='src/common/nameUnique.js'></script>
+<script src='src/common/timestampText.js'></script>
+<script src='src/common/composeUndo.js'></script>
+<script src='src/common/assignDeep.js'></script>
+<script src='src/gs/init.js'></script>
+<script src='src/gs/undoRedo.js'></script>
+<script src='src/gs/localStorage.js'></script>
+<script src='src/gs/changeSettings.js'></script>
+<script src='src/gs/loadComposition.js'></script>
+<script src='src/gs/loadNewComposition.js'></script>
+<script src='src/gs/loadCompositionById.js'></script>
+<script src='src/gs/loadCompositionByBlob.js'></script>
+<script src='src/gs/pushCompositionChange.js'></script>
+<script src='src/gs/changeComposition.js'></script>
+<script src='src/gs/unloadComposition.js'></script>
+<script src='src/gs/deleteComposition.js'></script>
+<script src='src/gs/isCompositionNeedSave.js'></script>
+<script src='src/gs/saveCurrentComposition.js'></script>
+<script src='src/gs/exportCompositionJSON.js'></script>
+<script src='src/gs/exportCompositionWAV.js'></script>
+<script src='src/gs/newPattern.js'></script>
+<script src='src/gs/removePattern.js'></script>
+<script src='src/gs/namePattern.js'></script>
+<script src='src/gs/dropPattern.js'></script>
+<script src='src/gs/updatePatternContent.js'></script>
+<script src='src/gs/addAudioFiles.js'></script>
+<script src='src/gs/keysToRects.js'></script>
+<script src='src/ui/init.js'></script>
+<script src='src/ui/downloadBlob.js'></script>
+<script src='src/ui/windowEvents.js'></script>
+<script src='src/ui/history.js'></script>
+<script src='src/ui/controls.js'></script>
+<script src='src/ui/mainGrid.js'></script>
+<script src='src/ui/cmps.js'></script>
+<script src='src/ui/patterns.js'></script>
+<script src='src/ui/pattern.js'></script>
+<script src='src/ui/settingsPopup.js'></script>
+<script src='src/run.js'></script>
 </html>
