@@ -123,6 +123,7 @@ build() {
 	HTMLbody
 	echo "<script>" >> $filename
 	uglifyjs `for i in ${JSfiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
+	# TODO: use the `--mangle-props` option
 	echo "</script>" >> $filename
 	echo "</html>" >> $filename
 }
@@ -135,6 +136,8 @@ HTMLheader() {
 <title>GridSound</title>\n\
 <meta charset='UTF-8'/>\n\
 <meta name='viewport' content='width=device-width, user-scalable=no'/>\n\
+<meta name='description' content='A free and Open-Source DAW (digital audio workstation)'/>\n\
+<meta name='google' content='notranslate'/>\n\
 <meta property='og:type' content='website'/>\n\
 <meta property='og:title' content='GridSound (an open-source digital audio workstation)'/>\n\
 <meta property='og:url' content='https://gridsound.github.io/'/>\n\
