@@ -26,8 +26,10 @@
 
 .ico-play:before { content: "\f04b"; }
 .ico-pause:before { content: "\f04c"; }
+.ico-undo:before { content: "\f2ea"; } /* f0e2 f2ea */
+.ico-redo:before { content: "\f2f9"; } /* f01e f2f9 */
 .ico-stop:before { content: "\f04d"; }
 .ico-history:before { content: "\f1da"; }
 .ico-pattern:before { content: "\f386"; } /* f385 f386 */
 .ico-new:before { content: "\f067"; }
-.ico-remove:before { content: "\f1f8"; } /* f2ed */
+.ico-remove:before { content: "\f1f8"; } /* f1f8 f2ed */

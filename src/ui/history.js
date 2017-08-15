@@ -2,6 +2,8 @@
 
 ui.history = {
 	init() {
+		ui.idElements.undo.onclick = gs.undo;
+		ui.idElements.redo.onclick = gs.redo;
 	},
 	undo( action ) {
 		action._html.classList.add( "undone" );
