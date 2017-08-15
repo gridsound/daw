@@ -135,6 +135,7 @@ ui.history = {
 				return (
 					( !o && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
 					( !u.keys[ a ][ b ] && { i: "paint", t: msgPat + "add" + msgSmp } ) ||
+					( "duration" in o && { i: "crop", t: msgPat + "crop" + msgSmp } ) ||
 					( "selected" in o && ( o.selected
 						? { i: "selection plus",  t: msgPat + "select" + msgSmp }
 						: { i: "selection minus", t: msgPat + "unselect" + msgSmp }

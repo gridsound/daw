@@ -72,3 +72,4 @@
 .actionIcon.remove:before { content: "\f1f8"; }
 .actionIcon.erase:before { content: "\f12d"; }
 .actionIcon.selection:before { content: "\f245"; }
+.actionIcon.crop:before { content: "\f125"; }
