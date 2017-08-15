@@ -35,8 +35,10 @@
 
 .panel-title {
 	display: flex;
-	font-weight: bold;
+	align-items: center;
+	min-height: 24px;
 	color: #222;
+	font-weight: bold;
 	background-color: #666;
 }
 
