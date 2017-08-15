@@ -26,7 +26,7 @@ ui.history = {
 
 		action._html = div;
 		div.className = "action";
-		icon.className = "actionIcon " + desc.i;
+		icon.className = "actionIcon icon ico-" + desc.i;
 		text.className = "actionText";
 		text.textContent = desc.t;
 		div.append( icon, text );
@@ -137,8 +137,8 @@ ui.history = {
 					( !u.keys[ a ][ b ] && { i: "paint", t: msgPat + "add" + msgSmp } ) ||
 					( "duration" in o && { i: "crop", t: msgPat + "crop" + msgSmp } ) ||
 					( "selected" in o && ( o.selected
-						? { i: "selection plus",  t: msgPat + "select" + msgSmp }
-						: { i: "selection minus", t: msgPat + "unselect" + msgSmp }
+						? { i: "selection ico--plus",  t: msgPat + "select" + msgSmp }
+						: { i: "selection ico--minus", t: msgPat + "unselect" + msgSmp }
 					) )
 				);
 			}

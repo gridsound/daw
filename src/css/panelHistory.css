@@ -33,6 +33,9 @@
 	background-color: #000;
 }
 
+.actionIcon {
+	margin: 0 .4em;
+}
 .actionText {
 	flex: 1;
 	overflow: hidden;
@@ -44,32 +47,3 @@
 .action.undone .actionText {
 	opacity: .5;
 }
-
-.actionIcon {
-	position: relative;
-	width: 16px;
-	margin: 0 .4em;
-	font: 14px "FontAwesome";
-	text-align: center;
-}
-.actionIcon:after {
-	position: absolute;
-	left: 10px;
-	top: -3px;
-	font-size: 8px;
-}
-.actionIcon.plus:after { content: "\f067"; }
-.actionIcon.minus:after { content: "\f068"; }
-
-.actionIcon.clock:before { content: "\f017"; }
-.actionIcon.name:before { content: "\f040"; }
-.actionIcon.mute:before { content: "\f026"; }
-.actionIcon.unmute:before { content: "\f028"; }
-.actionIcon.toggle-off:before { content: "\f204"; }
-.actionIcon.toggle-on:before { content: "\f205"; }
-.actionIcon.paint:before { content: "\f1fc"; }
-.actionIcon.add:before { content: "\f067"; }
-.actionIcon.remove:before { content: "\f1f8"; }
-.actionIcon.erase:before { content: "\f12d"; }
-.actionIcon.selection:before { content: "\f245"; }
-.actionIcon.crop:before { content: "\f125"; }
