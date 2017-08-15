@@ -30,29 +30,28 @@
 	box-sizing: border-box;
 	padding: 4px 10px;
 	font-size: 13px;
-	color: #222;
 	border-bottom: 1px solid #111;
 }
 
 .panel-title {
+	display: flex;
 	font-weight: bold;
 	color: #222;
 	background-color: #666;
 }
 
+.panel-title .icon {
+	margin-right: 4px;
+}
+
 .panel-menu {
-	color: #222;
+	color: #ddd;
 	background-color: #505050;
 }
 
 .panel-btn {
-	display: inline-block;
-	width: 16px;
 	padding: 4px;
 	font-size: 14px;
-	font-family: "FontAwesome";
-	color: #ddd;
-	text-align: center;
 	border-radius: 2px;
 	transition: background .2s;
 }

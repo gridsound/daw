@@ -5,10 +5,29 @@
 
 @font-face {
 	font-family: "FontAwesome";
-	src: url( "../../assets/fontawesome.woff?v=4.5.0" ) format( "woff" );
+	src: url( "../../assets/fontawesome-solid-900.woff" ) format( "woff" );
+	/*src: url( "../../assets/fontawesome-regular-400.woff" ) format( "woff" );*/
+	/*src: url( "../../assets/fontawesome-light-300.woff" ) format( "woff" );*/
 }
 
 @font-face {
 	font-family: "title";
 	src: url( "../../assets/oswald-regular.ttf" );
 }
+
+.icon {
+	display: inline-block;
+	font-family: "FontAwesome";
+	font-weight: normal;
+	text-align: center;
+	text-indent: 0;
+	width: 1.25em;
+}
+
+.ico-play:before { content: "\f04b"; }
+.ico-pause:before { content: "\f04c"; }
+.ico-stop:before { content: "\f04d"; }
+.ico-history:before { content: "\f1da"; }
+.ico-pattern:before { content: "\f386"; } /* f385 f386 */
+.ico-new:before { content: "\f067"; }
+.ico-remove:before { content: "\f1f8"; } /* f2ed */

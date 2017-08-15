@@ -2,10 +2,10 @@
 
 ui.controls = {
 	play() {
-		ui.idElements.play.classList.remove( "pause" );
+		ui.idElements.play.classList.remove( "ico-pause" );
 	},
 	pause() {
-		ui.idElements.play.classList.add( "pause" );
+		ui.idElements.play.classList.add( "ico-pause" );
 	},
 	stop() {
 		ui.controls.play();

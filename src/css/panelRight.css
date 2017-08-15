@@ -37,7 +37,6 @@
 	align-items: center;
 	justify-content: center;
 	font-size: 14px;
-	font-family: "FontAwesome";
 	border: 1px solid rgba( 0, 0, 0, .8 );
 	width: calc( var( --ctrl-height ) - 2 * var( --ctrl-padding ) );
 }
@@ -49,10 +48,6 @@
 
 #play { background-color: var( --col1-middle ); }
 #stop { background-color: #888; }
-
-#play:before { content: "\f04b"; }
-#play.pause:before { content: "\f04c"; }
-#stop:before { content: "\f04d"; }
 
 #bpm,
 #clock {

@@ -2,9 +2,6 @@
 	position: relative;
 }
 
-#patNew:before { content: "\f067"; }
-#patRemove:before { content: "\f1f8"; }
-
 #patterns .gsuiAudioBlock {
 	position: relative;
 	width: 100%;
@@ -16,7 +13,7 @@
 	color: var( --col1-high );
 }
 #patterns .gsuiAudioBlock.selected .gsui-head:before {
-	content: "\f115";
+	content: "\f07c";
 	font-family: "FontAwesome";
 	font-weight: normal;
 }
