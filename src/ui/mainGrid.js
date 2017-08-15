@@ -51,7 +51,10 @@ ui.mainGrid = {
 
 	// events:
 	_onchangeGrid( obj ) {
-		gs.pushCompositionChange( { blocks: obj } );
+		if ( !obj.tracks ) {
+			obj = { blocks: obj };
+		}
+		gs.pushCompositionChange( obj );
 	},
 	_ondrop( e ) {
 		var row = e.target,
