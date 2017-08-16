@@ -16,6 +16,13 @@ ui.mainGrid = {
 			uiBlock.name( pat.name );
 			uiBlock.updateData( gs.keysToRects( cmp.keys[ pat.keys ] ) );
 		};
+		grid.fnSampleUpdate = function( id, uiBlock ) {
+			var cmp = gs.currCmp,
+				blc = cmp.blocks[ id ],
+				keys = cmp.keys[ cmp.patterns[ blc.pattern ].keys ];
+
+			uiBlock.updateData( gs.keysToRects( keys ), blc.offset, blc.duration );
+		};
 		grid.fnSampleDelete = function( id, uiBlock ) {
 			delete ui.mainGrid.blocks[ id ];
 		};

@@ -40,10 +40,13 @@ ui.patterns = {
 	updateContent( id, data ) {
 		ui.patterns.audioBlocks[ id ].updateData( data );
 		ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
-			if ( !gs.currCmp.blocks[ uiBlock.id ].durationEdited ) {
-				uiBlock.duration( data.duration );
+			var blc = gs.currCmp.blocks[ uiBlock.id ];
+
+			if ( !blc.durationEdited ) {
+				uiBlock.duration( blc.duration );
+				uiBlock.contentWidthFixed();
 			}
-			uiBlock.updateData( data );
+			uiBlock.updateData( data, blc.offset, blc.duration );
 		} );
 	},
 
