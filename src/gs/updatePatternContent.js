@@ -11,7 +11,7 @@ gs.updatePatternContent = function( id ) {
 		blocks = gs.currCmp.blocks;
 		for ( bId in blocks ) {
 			block = blocks[ bId ];
-			if ( !block.durationEdited ) {
+			if ( block.pattern === id && !block.durationEdited ) {
 				block.duration = dur;
 			}
 		}
