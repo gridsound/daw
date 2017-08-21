@@ -12,7 +12,7 @@
 #patterns .gsuiAudioBlock.selected {
 	color: var( --col1-high );
 }
-#patterns .gsuiAudioBlock.selected .gsui-head:before {
+#patterns .gsuiAudioBlock.selected .gsuiab-head:before {
 	content: "\f07c";
 	font-family: "FontAwesome";
 	font-weight: normal;
