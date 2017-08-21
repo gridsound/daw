@@ -58,7 +58,6 @@ ui.patterns = {
 		pat.data = data;
 		pat.name( data.name );
 		pat.datatype( "keys" );
-		pat.ondrag = function() {}; // !!!
 		patRoot._patId = id;
 		patRoot.setAttribute( "draggable", "true" );
 		patRoot.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
@@ -84,11 +83,9 @@ ui.patterns = {
 		patRoot.remove();
 	},
 	_update( id, dataChange ) {
-		var val,
-			blocks = ui.mainGrid.getPatternBlocks( id );
-
 		if ( "name" in dataChange ) {
-			val = dataChange.name;
+			var val = dataChange.name;
+
 			ui.patterns.audioBlocks[ id ].name( val );
 			ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
 				uiBlock.name( val );
@@ -107,6 +104,8 @@ ui.patterns = {
 		// .1
 		if ( patRoot.nextSibling || patRoot.previousSibling ) {
 			gs.removePattern( patId );
+		} else {
+			alert( "You can not delete the only pattern" );
 		}
 	},
 	_ondblclickPattern( id ) {
