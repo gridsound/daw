@@ -54,3 +54,5 @@
 .ico-toggle-on:before { content: "\f205"; }
 .ico-add:before { content: "\f067"; }
 .ico-selection:before { content: "\f245"; }
+
+.ico-pattern { transform: scale( -1, 1 ); }
