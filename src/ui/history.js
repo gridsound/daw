@@ -71,19 +71,19 @@ ui.history = {
 		);
 	},
 	__blocks( cmp, r, u ) {
-		var id, msg, arrK, rBlocks = r.blocks;
+		var id, msg, arrK, rBlc = r.blocks;
 
-		for ( id in rBlocks ) {
-			arrK = Object.keys( rBlocks );
+		for ( id in rBlc ) {
+			arrK = Object.keys( rBlc );
 			msg = " " + arrK.length + " sample" + ( arrK.length > 1 ? "s" : "" );
-
-			return (
-				rBlocks[ id ]
-					? u.blocks[ id ]
-						? { i: "name", t: "edit" + msg }
-						: { i: "paint", t: "add" + msg }
-					: { i: "erase", t: "remove" + msg }
-			);
+			rBlc = rBlc[ id ];
+			if ( !rBlc )              { return { i: "erase", t: "Remove" + msg }; }
+			if ( !u.blocks[ id ] )    { return { i: "paint", t: "Add" + msg }; }
+			if ( "duration" in rBlc ) { return { i: "crop", t: "Crop" + msg }; }
+			if ( "selected" in rBlc ) { return rBlc.selected
+				? { i: "selection ico--plus", t: "Select" + msg }
+				: { i: "selection ico--minus", t: "Unselect" + msg };
+			}
 		}
 	},
 	__tracks( cmp, r, u ) {
