@@ -97,6 +97,10 @@ declare -a JSfiles=(
 	"src/run.js"
 )
 
+declare -a JSfilesProd=(
+	"src/initServiceWorker.js"
+)
+
 HTMLheader() {
 	echo -en \
 "<!DOCTYPE html>\n\
@@ -152,8 +156,9 @@ buildMaster() {
 	echo "</style>" >> $filename
 	HTMLbody
 	echo "<script>" >> $filename
-	uglifyjs `for i in ${JSfiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
 	# TODO: use the `--mangle-props` option
+	jsProdFiles=( "${JSfiles[@]}" "${JSfilesProd[@]}" )
+	uglifyjs `for i in ${jsProdFiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
 	echo "</script></body></html>" >> $filename
 }
 
