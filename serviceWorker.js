@@ -12,7 +12,12 @@ self.addEventListener( "install", function( e ) {
 } );
 
 self.addEventListener( "fetch", function( e ) {
-	e.respondWith( caches.match( e.request ).then( function( res ) {
-		return res || fetch( e.request );
+	e.respondWith( fetch( e.request ).catch( function() {
+		return caches.match( e.request );
 	} ) );
+
+	// Todo: add a system to check if the user has the most up to date vertsion.
+	// e.respondWith( caches.match( e.request ).then( function( res ) {
+	// 	return res || fetch( e.request );
+	// } ) );
 } );
