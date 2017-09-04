@@ -101,6 +101,7 @@ declare -a JSfiles=(
 
 declare -a JSfilesProd=(
 	"src/initServiceWorker.js"
+	"src/gAnalytics.js"
 )
 
 HTMLheader() {
