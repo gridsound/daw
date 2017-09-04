@@ -1,13 +1,13 @@
 {
 	"name": "GridSound",
 	"short_name": "GS",
-	"description": "A free HTML5 DAW (digital audio workstation).",
-	"start_url": "/",
-	"scope": "/",
+	"description": "An open source digital audio workstation",
+	"start_url": "/daw/",
+	"scope": "/daw/",
 	"display": "standalone",
 	"orientation": "landscape",
-	"background_color": "#4b4b4b",
-	"theme_color": "#508ea9",
+	"background_color": "#222",
+	"theme_color": "#3a5158",
 	"icons": [
 		{ "type": "image/png", "sizes":   "16x16", "src": "../assets/icon/black/16.png" },
 		{ "type": "image/png", "sizes":   "32x32", "src": "../assets/icon/black/32.png" },
