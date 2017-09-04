@@ -40,6 +40,8 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.js"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.js"
+	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-selection.js"
+	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-deletion.js"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.js"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.js"
 	"../gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js"
