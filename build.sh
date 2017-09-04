@@ -134,7 +134,7 @@ HTMLbody() {
 }
 
 buildDev() {
-	filename="index-dev.html"
+	filename="index.html"
 	echo "Build $filename"
 	HTMLheader
 	for i in "${CSSfiles[@]}"
@@ -151,7 +151,7 @@ buildDev() {
 }
 
 buildMaster() {
-	filename="index-prod.html"
+	filename="index-gh-pages.html"
 	echo "Build $filename"
 	HTMLheader
 	echo "<style>" >> $filename
@@ -165,7 +165,7 @@ buildMaster() {
 	echo "</script></body></html>" >> $filename
 }
 
-if [ $# -gt 0 ] && [ $1 = "master" ]
+if [ $# -gt 0 ] && [ $1 = "gh-pages" ]
 then
 	buildMaster
 else
