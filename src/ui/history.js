@@ -80,6 +80,7 @@ ui.history = {
 			if ( !rBlc )              { return { i: "erase", t: "Remove" + msg }; }
 			if ( !u.blocks[ id ] )    { return { i: "paint", t: "Add" + msg }; }
 			if ( "duration" in rBlc ) { return { i: "crop", t: "Crop" + msg }; }
+			if ( "when" in rBlc )     { return { i: "move", t: "Move" + msg }; }
 			if ( "selected" in rBlc ) { return rBlc.selected
 				? { i: "selection ico--plus", t: "Select" + msg }
 				: { i: "selection ico--minus", t: "Unselect" + msg };
