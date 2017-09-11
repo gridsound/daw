@@ -1,7 +1,6 @@
 "use strict";
 
 gs.init = function() {
-	ui.init();
 	gs.history = [];
 	gs.historyInd = 0;
 	gs.currCmp = null;
