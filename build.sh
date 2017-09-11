@@ -113,30 +113,29 @@ declare -a JSfilesProd=(
 
 HTMLheader() {
 	echo -en \
-"<!DOCTYPE html>\n\
-<html><head>\n\
-<title>GridSound</title>\n\
-<meta charset='UTF-8'/>\n\
-<meta name='viewport' content='width=device-width, user-scalable=no'/>\n\
-<meta name='description' content='A free and Open-Source DAW (digital audio workstation)'/>\n\
-<meta name='google' content='notranslate'/>\n\
-<meta property='og:type' content='website'/>\n\
-<meta property='og:title' content='GridSound (an open-source digital audio workstation)'/>\n\
-<meta property='og:url' content='https://gridsound.github.io/'/>\n\
-<meta property='og:image' content='https://gridsound.github.io/assets/og-image.jpg'/>\n\
-<meta property='og:image:width' content='800'/>\n\
-<meta property='og:image:height' content='400'/>\n\
-<meta name='theme-color' content='#3a5158'/>\n\
-<link rel='manifest' href='manifest.json'/>\n\
-<link rel='shortcut icon' href='assets/favicon.png'/>\n" > $filename
+"<!DOCTYPE html>\
+<html><head>\
+<title>GridSound</title>\
+<meta charset='UTF-8'/>\
+<meta name='viewport' content='width=device-width, user-scalable=no'/>\
+<meta name='description' content='A free and Open-Source DAW (digital audio workstation)'/>\
+<meta name='google' content='notranslate'/>\
+<meta property='og:type' content='website'/>\
+<meta property='og:title' content='GridSound (an open-source digital audio workstation)'/>\
+<meta property='og:url' content='https://gridsound.github.io/'/>\
+<meta property='og:image' content='https://gridsound.github.io/assets/og-image.jpg'/>\
+<meta property='og:image:width' content='800'/>\
+<meta property='og:image:height' content='400'/>\
+<meta name='theme-color' content='#3a5158'/>\
+<link rel='manifest' href='manifest.json'/>\
+<link rel='shortcut icon' href='assets/favicon.png'/>" > $filename
 }
 
 HTMLbody() {
-	echo -en "</head><body>\n\
-<div id='app'></div>\n" >> $filename
+	echo -n "</head><body><div id='app'></div>" >> $filename
 	for i in "${HTMLfiles[@]}"
 	do
-		cat $i >> $filename
+		cat $i | tr -d '\t\n\r' >> $filename
 	done
 }
 
@@ -146,13 +145,13 @@ buildDev() {
 	HTMLheader
 	for i in "${CSSfiles[@]}"
 	do
-		echo "<link rel='stylesheet' href='"$i"'/>" >> $filename
+		echo -n "<link rel='stylesheet' href='$i'/>" >> $filename
 	done
 	HTMLbody
-	echo "<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>" >> $filename
+	echo -n "<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>" >> $filename
 	for i in "${JSfiles[@]}"
 	do
-		echo "<script src='"$i"'></script>" >> $filename
+		echo -n "<script src='$i'></script>" >> $filename
 	done
 	echo "</body></html>" >> $filename
 }
@@ -161,11 +160,11 @@ buildMaster() {
 	filename="index-gh-pages.html"
 	echo "Build $filename"
 	HTMLheader
-	echo "<style>" >> $filename
-	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso | sed "s/..\/..\/assets/assets/g"  >> $filename
-	echo "</style>" >> $filename
+	echo -n "<style>" >> $filename
+	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso | sed "s/..\/..\/assets/assets/g" >> $filename
+	echo -n "</style>" >> $filename
 	HTMLbody
-	echo "<script>" >> $filename
+	echo -n "<script>" >> $filename
 	# TODO: use the `--mangle-props` option
 	jsProdFiles=( "${JSfiles[@]}" "${JSfilesProd[@]}" )
 	uglifyjs `for i in ${jsProdFiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
