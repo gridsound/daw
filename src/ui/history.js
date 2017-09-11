@@ -75,12 +75,12 @@ ui.history = {
 
 		for ( id in rBlc ) {
 			arrK = Object.keys( rBlc );
-			msg = " " + arrK.length + " sample" + ( arrK.length > 1 ? "s" : "" );
+			msg = " " + arrK.length + " block" + ( arrK.length > 1 ? "s" : "" );
 			rBlc = rBlc[ id ];
 			if ( !rBlc )              { return { i: "erase", t: "Remove" + msg }; }
 			if ( !u.blocks[ id ] )    { return { i: "paint", t: "Add" + msg }; }
 			if ( "duration" in rBlc ) { return { i: "crop", t: "Crop" + msg }; }
-			if ( "when" in rBlc )     { return { i: "move", t: "Move" + msg }; }
+			if ( "when" in rBlc || "track" in rBlc ) { return { i: "move", t: "Move" + msg }; }
 			if ( "selected" in rBlc ) { return rBlc.selected
 				? { i: "selection ico--plus", t: "Select" + msg }
 				: { i: "selection ico--minus", t: "Unselect" + msg };
@@ -131,12 +131,13 @@ ui.history = {
 			for ( b in o ) {
 				arrK = Object.keys( o );
 				msgPat = cmp.patterns[ cmp.patternOpened ].name + ": ";
-				msgSmp = " " + arrK.length + " sample" + ( arrK.length > 1 ? "s" : "" );
+				msgSmp = " " + arrK.length + " key" + ( arrK.length > 1 ? "s" : "" );
 				o = o[ b ];
 				return (
 					( !o && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
 					( !u.keys[ a ][ b ] && { i: "paint", t: msgPat + "add" + msgSmp } ) ||
 					( "duration" in o && { i: "crop", t: msgPat + "crop" + msgSmp } ) ||
+					( ( "when" in o || "key" in o ) && { i: "move", t: msgPat + "move" + msgSmp } ) ||
 					( "selected" in o && ( o.selected
 						? { i: "selection ico--plus",  t: msgPat + "select" + msgSmp }
 						: { i: "selection ico--minus", t: msgPat + "unselect" + msgSmp }
