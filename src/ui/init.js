@@ -11,7 +11,7 @@ ui.init = function() {
 			appContent: document.getElementById( "appContent" )
 		};
 
-	gsuiGridSamples.getNewId = common.uuid;
+	gsuiGridSamples.getNewId = common.smallId;
 
 	// Init some gsuiPanels:
 	ui.panelsMain = panelsMain;

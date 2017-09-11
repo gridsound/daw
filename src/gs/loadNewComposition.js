@@ -4,7 +4,7 @@ gs.loadNewComposition = function() {
 	var i = 0, trks = {};
 
 	for ( ; i < settings.def_nbTracks; ++i ) {
-		trks[ common.uuid() ] = { order: i, toggle: true, name: "" };
+		trks[ common.smallId() ] = { order: i, toggle: true, name: "" };
 	}
 	return gs.loadComposition( {
 		id: common.uuid(),

@@ -56,6 +56,7 @@ declare -a JSfiles=(
 	"src/init.js"
 
 	"src/common/uuid.js"
+	"src/common/smallId.js"
 	"src/common/trim2.js"
 	"src/common/nameUnique.js"
 	"src/common/timestampText.js"

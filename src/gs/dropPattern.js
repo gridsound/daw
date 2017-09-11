@@ -4,7 +4,7 @@ gs.dropPattern = function( patId, trkId, when ) {
 	var cmp = gs.currCmp;
 
 	gs.pushCompositionChange( {
-		blocks: { [ common.uuid() ]: {
+		blocks: { [ common.smallId() ]: {
 			pattern: patId,
 			track: trkId,
 			when: when,
