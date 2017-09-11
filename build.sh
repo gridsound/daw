@@ -88,6 +88,8 @@ declare -a JSfiles=(
 	"src/gs/keysToRects.js"
 
 	"src/wa/init.js"
+	"src/wa/playPattern.js"
+	"src/wa/stopPlayingPattern.js"
 
 	"src/ui/init.js"
 	"src/ui/downloadBlob.js"
