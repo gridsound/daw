@@ -2,6 +2,7 @@
 
 window.common = {};
 window.gs = {};
+window.wa = {};
 window.ui = {};
 window.settings = {
 	def_bpm: 120,

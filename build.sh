@@ -85,6 +85,8 @@ declare -a JSfiles=(
 	"src/gs/addAudioFiles.js"
 	"src/gs/keysToRects.js"
 
+	"src/wa/init.js"
+
 	"src/ui/init.js"
 	"src/ui/downloadBlob.js"
 	"src/ui/windowEvents.js"
