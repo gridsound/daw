@@ -114,7 +114,7 @@ declare -a JSfilesProd=(
 HTMLheader() {
 	echo -en \
 "<!DOCTYPE html>\
-<html><head>\
+<html lang='en'><head>\
 <title>GridSound</title>\
 <meta charset='UTF-8'/>\
 <meta name='viewport' content='width=device-width, user-scalable=no'/>\
@@ -132,7 +132,10 @@ HTMLheader() {
 }
 
 HTMLbody() {
-	echo -n "</head><body><div id='app'></div>" >> $filename
+	echo -en \
+"</head><body>\
+<noscript>GridSound needs JavaScript to run</noscript>\
+<div id='app'></div>" >> $filename
 	for i in "${HTMLfiles[@]}"
 	do
 		cat $i | tr -d '\t\n\r' >> $filename
