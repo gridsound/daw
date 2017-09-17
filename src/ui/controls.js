@@ -1,6 +1,12 @@
 "use strict";
 
 ui.controls = {
+	init() {
+		ui.idElements.togglePlay.onclick = ui.controls._onclickTogglePlay;
+	},
+	togglePlay( b ) {
+		ui.idElements.togglePlay.classList.toggle( "up", b );
+	},
 	play() {
 		ui.idElements.play.classList.remove( "ico-pause" );
 	},
@@ -25,5 +31,10 @@ ui.controls = {
 	},
 	title( s ) {
 		document.title = ( gs.isCompositionNeedSave() ? "*" : "" ) + ( s || "GridSound" );
+	},
+
+	// private:
+	_onclickTogglePlay() {
+		lg( "_onclickTogglePlay" );
 	}
 };

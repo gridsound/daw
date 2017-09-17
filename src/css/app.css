@@ -15,8 +15,9 @@ html, body {
 	--small-bd-radius: 2px;
 	--ctrl-height: 44px;
 	--ctrl-padding: 4px;
-	--col1-high: #bbf;
+	--col1-low: #345;
 	--col1-middle: #67a;
+	--col1-high: #bbf;
 	--col2-middle: #d44;
 	--monospace: "Inconsolata", "consolas", monospace;
 

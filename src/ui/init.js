@@ -54,6 +54,7 @@ ui.init = function() {
 	} );
 
 	// Initialisation of the rest of the app:
+	ui.controls.init();
 	ui.cmps.init();
 	ui.history.init();
 	ui.patterns.init();
