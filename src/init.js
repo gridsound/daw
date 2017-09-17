@@ -4,6 +4,7 @@ window.common = {};
 window.gs = {};
 window.wa = {};
 window.ui = {};
+window.dom = {};
 window.settings = {
 	def_bpm: 120,
 	def_beatsPerMeasure: 4,

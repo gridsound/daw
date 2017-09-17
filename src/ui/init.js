@@ -1,15 +1,12 @@
 "use strict";
 
 ui.init = function() {
-	var elPanels,
-		tmpImported,
+	var tmpImported,
+		elPanels,
+		elApp = document.getElementById( "app" ),
 		panelsMain = new gsuiPanels(),
 		panelsLeft = new gsuiPanels(),
-		panelsRight = new gsuiPanels(),
-		idEl = {
-			app: document.getElementById( "app" ),
-			appContent: document.getElementById( "appContent" )
-		};
+		panelsRight = new gsuiPanels();
 
 	gsuiGridSamples.getNewId = common.smallId;
 
@@ -28,8 +25,8 @@ ui.init = function() {
 	// Insert the gsuiPanels to the DOM:
 	panelsMain.panels[ 0 ].append( panelsLeft.rootElement );
 	panelsMain.panels[ 1 ].append( panelsRight.rootElement );
-	idEl.app.append( panelsMain.rootElement );
-	elPanels = idEl.app.querySelectorAll( ".gsui-panel" );
+	elApp.append( panelsMain.rootElement );
+	elPanels = elApp.querySelectorAll( ".gsui-panel" );
 	panelsMain.resized();
 	panelsLeft.resized();
 	panelsRight.resized();
@@ -39,18 +36,17 @@ ui.init = function() {
 	};
 
 	// Clone the whole app's content:
-	tmpImported = document.importNode( idEl.appContent.content, true );
+	tmpImported = document.importNode( document.getElementById( "appContent" ).content, true );
 	tmpImported.querySelectorAll( "[data-panel]" ).forEach( function( pan ) {
 		elPanels[ pan.dataset.panel ].append( pan );
 	} );
 
 	// Append the settings popup to the app:
-	idEl.app.append( tmpImported.querySelector( "#settingsPopupWrap" ) );
+	elApp.append( tmpImported.querySelector( "#settingsPopupWrap" ) );
 
-	// Fill the idElements with each new [id] elements:
-	ui.idElements = idEl;
+	// Fill the window.dom object with each [id] elements:
 	document.querySelectorAll( "[id]" ).forEach( function( el ) {
-		idEl[ el.id ] = el;
+		dom[ el.id ] = el;
 	} );
 
 	// Initialisation of the rest of the app:

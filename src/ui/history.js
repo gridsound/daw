@@ -2,8 +2,8 @@
 
 ui.history = {
 	init() {
-		ui.idElements.undo.onclick = gs.undo;
-		ui.idElements.redo.onclick = gs.redo;
+		dom.undo.onclick = gs.undo;
+		dom.redo.onclick = gs.redo;
 	},
 	undo( action ) {
 		action._html.classList.add( "undone" );
@@ -12,7 +12,7 @@ ui.history = {
 		action._html.classList.remove( "undone" );
 	},
 	cut( len ) {
-		var nodes = ui.idElements.history.childNodes;
+		var nodes = dom.history.childNodes;
 
 		while ( len < nodes.length ) {
 			nodes[ nodes.length - 1 ].remove();
@@ -31,15 +31,15 @@ ui.history = {
 		text.textContent = desc.t;
 		div.append( icon, text );
 		div.onclick = ui.history._onclick;
-		ui.idElements.history.append( div );
-		ui.idElements.history.scrollTop = 10000000;
+		dom.history.append( div );
+		dom.history.scrollTop = 10000000;
 	},
 
 	// private:
 	_onclick( e ) {
 		var targ = e.target,
 			elAct = targ.classList.contains( "action" ) ? targ : targ.parentNode,
-			nodes = Array.from( ui.idElements.history.childNodes ),
+			nodes = Array.from( dom.history.childNodes ),
 			nbActs = nodes.lastIndexOf( elAct ) - gs.historyInd + 1;
 
 		if ( nbActs < 0 ) {

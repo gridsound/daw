@@ -2,7 +2,7 @@
 
 ui.cmps = {
 	init() {
-		ui.idElements.cmpMenu.onclick = ui.cmps._clickMenu;
+		dom.cmpMenu.onclick = ui.cmps._clickMenu;
 	},
 	push( id ) {
 		var root = document.createElement( "div" ),
@@ -26,7 +26,7 @@ ui.cmps = {
 		info.onclick = gs.loadCompositionById.bind( null, id );
 		menu.onclick = ui.cmps._showMenu.bind( null, id );
 		ui.cmps._html[ id ] = { root, name, bpm, duration };
-		ui.idElements.cmps.append( root );
+		dom.cmps.append( root );
 	},
 	remove( id ) {
 		ui.cmps._html[ id ].root.remove();
@@ -47,7 +47,7 @@ ui.cmps = {
 		ui.cmps._loadOne = html;
 		html.root.classList.add( "loaded" );
 		ui.controls.title( gs.currCmp.name );
-		ui.idElements.cmps.prepend( html.root );
+		dom.cmps.prepend( html.root );
 	},
 	saved( saved ) {
 		ui.controls.title( gs.currCmp.name );
@@ -64,13 +64,13 @@ ui.cmps = {
 		var gBCR = e.target.parentNode.getBoundingClientRect();
 
 		ui.cmps._cmpId = id;
-		ui.idElements.cmpMenu.style.top = gBCR.top + ( gBCR.bottom - gBCR.top ) / 2 + "px";
-		ui.idElements.cmpMenu.classList.remove( "hidden" );
+		dom.cmpMenu.style.top = gBCR.top + ( gBCR.bottom - gBCR.top ) / 2 + "px";
+		dom.cmpMenu.classList.remove( "hidden" );
 		e.stopPropagation();
 	},
 	_hideMenu() {
 		delete ui.cmps._cmpId;
-		ui.idElements.cmpMenu.classList.add( "hidden" );
+		dom.cmpMenu.classList.add( "hidden" );
 	},
 	_clickMenu( e ) {
 		gs[ e.target.id ]( ui.cmps._cmpId );

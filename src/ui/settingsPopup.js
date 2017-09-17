@@ -2,11 +2,11 @@
 
 ui.settingsPopup = {
 	init() {
-		ui.idElements.settings.onclick = ui.settingsPopup.show;
-		ui.idElements.settingsPopupWrap.onclick = ui.settingsPopup.hide;
-		ui.idElements.settingsPopupForm.onsubmit = ui.settingsPopup._onsubmit;
-		ui.idElements.settingsPopup.onclick = function( e ) { e.stopPropagation(); };
-		ui.settingsPopup.inputs = ui.idElements.settingsPopupForm.querySelectorAll( "input" );
+		dom.settings.onclick = ui.settingsPopup.show;
+		dom.settingsPopupWrap.onclick = ui.settingsPopup.hide;
+		dom.settingsPopupForm.onsubmit = ui.settingsPopup._onsubmit;
+		dom.settingsPopup.onclick = function( e ) { e.stopPropagation(); };
+		ui.settingsPopup.inputs = dom.settingsPopupForm.querySelectorAll( "input" );
 	},
 	show() {
 		var inp = ui.settingsPopup.inputs;
@@ -16,10 +16,10 @@ ui.settingsPopup = {
 		inp[ 3 ].value = gs.currCmp.bpm;
 		inp[ 4 ].value = gs.currCmp.beatsPerMeasure;
 		inp[ 5 ].value = gs.currCmp.stepsPerBeat;
-		ui.idElements.settingsPopupWrap.classList.remove( "hidden" );
+		dom.settingsPopupWrap.classList.remove( "hidden" );
 	},
 	hide() {
-		ui.idElements.settingsPopupWrap.classList.add( "hidden" );
+		dom.settingsPopupWrap.classList.add( "hidden" );
 	},
 
 	// private:

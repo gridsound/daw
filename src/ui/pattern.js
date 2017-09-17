@@ -8,8 +8,8 @@ ui.pattern = {
 		grid.offset( 0, 120 );
 		grid.setFontSize( 20 );
 		ui.keysGridSamples = grid;
-		ui.idElements.keysGridWrap.append( grid.rootElement );
-		ui.idElements.patternName.onclick = ui.pattern._onclickPatternName;
+		dom.keysGridWrap.append( grid.rootElement );
+		dom.patternName.onclick = ui.pattern._onclickPatternName;
 		grid.onchange = ui.pattern._onchangeGrid;
 		grid.uiKeys.onkeydown = ui.pattern._onkeydown;
 		grid.uiKeys.onkeyup = ui.pattern._onkeyup;
@@ -20,7 +20,7 @@ ui.pattern = {
 		ui.keysGridSamples.empty();
 	},
 	name( name ) {
-		ui.idElements.patternName.textContent = name;
+		dom.patternName.textContent = name;
 	},
 	load( keys ) {
 		ui.keysGridSamples.empty();

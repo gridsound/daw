@@ -3,9 +3,9 @@
 ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
-		ui.idElements.patNew.onclick = gs.newPattern;
-		ui.idElements.patRemove.onclick = ui.patterns._onclickRemove;
-		ui.idElements.patterns.oncontextmenu = ui.patterns._oncontextmenu;
+		dom.patNew.onclick = gs.newPattern;
+		dom.patRemove.onclick = ui.patterns._onclickRemove;
+		dom.patterns.oncontextmenu = ui.patterns._oncontextmenu;
 	},
 	empty() {
 		for ( var id in ui.patterns.audioBlocks ) {
@@ -65,7 +65,7 @@ ui.patterns = {
 		patRoot.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
 		patRoot.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
-		ui.idElements.patterns.prepend( patRoot );
+		dom.patterns.prepend( patRoot );
 		ui.patterns.open( id );
 	},
 	_remove( id ) {
@@ -100,7 +100,7 @@ ui.patterns = {
 
 	// events:
 	_oncontextmenu( e ) {
-		if ( !e || e.target !== ui.idElements.patterns ) {
+		if ( !e || e.target !== dom.patterns ) {
 			if ( ui.patterns._uiBlockPlaying ) {
 				wa.stopPlayingPattern();
 				ui.patterns._uiBlockPlaying.stop();

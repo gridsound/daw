@@ -27,7 +27,7 @@ ui.mainGrid = {
 		grid.fnSampleDelete = function( id, uiBlock ) {
 			delete ui.mainGrid.blocks[ id ];
 		};
-		ui.idElements.mainGridWrap.append( grid.rootElement );
+		dom.mainGridWrap.append( grid.rootElement );
 		ui.mainGridSamples = grid;
 		ui.mainGrid.elGridCnt = elGridCnt;
 		ui.mainGrid.blocks = {};
