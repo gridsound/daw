@@ -9,4 +9,5 @@ gs.init = function() {
 		ui.cmps.push( cmp.id );
 		ui.cmps.update( cmp.id, cmp );
 	} );
+	gs.controls.togglePlay( env.togglePlay );
 };
