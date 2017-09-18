@@ -42,7 +42,7 @@ ui.windowEvents = function() {
 				if ( ext === "gs" ) {
 					gsFile = f;
 				}
-				return settings.audioFileExt.indexOf( ext ) > -1;
+				return env.audioFileExt.indexOf( ext ) > -1;
 			} );
 
 		if ( gsFile ) {

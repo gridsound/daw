@@ -23,7 +23,7 @@ ui.controls = {
 		ui.controls.clock( sec );
 	},
 	clock( sec ) {
-		var time = common.timestampText( sec, settings.clockSteps && gs.currCmp.bpm );
+		var time = common.timestampText( sec, env.clockSteps && gs.currCmp.bpm );
 
 		dom.clockMin.textContent = time.a;
 		dom.clockSec.textContent = time.b;

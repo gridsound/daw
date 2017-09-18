@@ -5,7 +5,7 @@ window.gs = {};
 window.wa = {};
 window.ui = {};
 window.dom = {};
-window.settings = {
+window.env = {
 	def_bpm: 120,
 	def_beatsPerMeasure: 4,
 	def_stepsPerBeat: 4,

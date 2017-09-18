@@ -11,7 +11,7 @@ ui.settingsPopup = {
 	show() {
 		var inp = ui.settingsPopup.inputs;
 
-		inp[ +settings.clockSteps ].checked = true;
+		inp[ +env.clockSteps ].checked = true;
 		inp[ 2 ].value = gs.currCmp.name;
 		inp[ 3 ].value = gs.currCmp.bpm;
 		inp[ 4 ].value = gs.currCmp.beatsPerMeasure;
@@ -30,7 +30,7 @@ ui.settingsPopup = {
 			cmp = gs.currCmp,
 			inp = ui.settingsPopup.inputs;
 
-		inp[ +settings.clockSteps ].checked || ( dawChange.clockSteps = !settings.clockSteps );
+		inp[ +env.clockSteps ].checked || ( dawChange.clockSteps = !env.clockSteps );
 		( x =  inp[ 2 ].value ) !== cmp.name && ( cmpChange.name = x );
 		( x = +inp[ 3 ].value ) !== cmp.bpm && ( cmpChange.bpm = x );
 		( x = +inp[ 4 ].value ) !== cmp.beatsPerMeasure && ( cmpChange.beatsPerMeasure = x );
