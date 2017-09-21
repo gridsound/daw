@@ -11,6 +11,7 @@ gs.changeComposition = function( obj ) {
 	ui.mainGrid.change( obj );
 	for ( patId in obj.patterns ) {
 		ui.patterns.change( patId, obj.patterns[ patId ] );
+		wa.patterns.change( patId, obj.patterns[ patId ] );
 	}
 	for ( keysId in obj.keys ) {
 		for ( patId in cmp.patterns ) {

@@ -102,7 +102,7 @@ ui.patterns = {
 	_oncontextmenu( e ) {
 		if ( !e || e.target !== dom.patterns ) {
 			if ( ui.patterns._uiBlockPlaying ) {
-				wa.stopPlayingPattern();
+				wa.patterns.stop();
 				ui.patterns._uiBlockPlaying.stop();
 				delete ui.patterns._uiBlockPlaying;
 			}
@@ -126,7 +126,7 @@ ui.patterns = {
 		ui.patterns._oncontextmenu();
 		ui.patterns._uiBlockPlaying = uiBlock;
 		uiBlock.start( gs.currCmp.bpm );
-		wa.playPattern( id );
+		wa.patterns.play( id );
 	},
 	_ondblclickPattern( id ) {
 		if ( id !== gs.currCmp.patternOpened ) {
