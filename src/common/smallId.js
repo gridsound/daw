@@ -7,3 +7,7 @@ common.smallId = function() {
 	++common.smallId_i;
 	return id;
 };
+
+common.smallIdParse = function( id ) {
+	return parseInt( id.substr( 1 ), 16 );
+};

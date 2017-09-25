@@ -71,6 +71,7 @@ declare -a JSfiles=(
 	"src/gs/loadNewComposition.js"
 	"src/gs/loadCompositionById.js"
 	"src/gs/loadCompositionByBlob.js"
+	"src/gs/getMaxCompositionInnerId.js"
 	"src/gs/pushCompositionChange.js"
 	"src/gs/changeComposition.js"
 	"src/gs/unloadComposition.js"
