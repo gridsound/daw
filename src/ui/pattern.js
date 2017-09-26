@@ -10,6 +10,7 @@ ui.pattern = {
 		ui.keysGridSamples = grid;
 		dom.keysGridWrap.append( grid.rootElement );
 		dom.patternName.onclick = ui.pattern._onclickPatternName;
+		grid.onchangeCurrentTime = gs.controls.patternTime;
 		grid.onchange = ui.pattern._onchangeGrid;
 		grid.uiKeys.onkeydown = ui.pattern._onkeydown;
 		grid.uiKeys.onkeyup = ui.pattern._onkeyup;

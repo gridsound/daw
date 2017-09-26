@@ -1,6 +1,8 @@
 "use strict";
 
 gs.changeSettings = function( obj ) {
-	env.clockSteps = obj.clockSteps;
-	ui.controls.clock( gs.controls.currentTime() );
+	if ( "clockSteps" in obj ) {
+		env.clockSteps = obj.clockSteps;
+		ui.controls.switchClock();
+	}
 };

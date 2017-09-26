@@ -6,6 +6,9 @@ ui.controls = {
 	},
 	togglePlay( b ) {
 		dom.togglePlay.classList.toggle( "after", !b );
+		ui.controls.clock( ( env.togglePlay
+			? gs.controls.mainTime
+			: gs.controls.patternTime )() );
 	},
 	play() {
 		dom.play.classList.remove( "ico-pause" );
@@ -19,15 +22,24 @@ ui.controls = {
 	bpm( bpm ) {
 		dom.bpmNumber.textContent = bpm;
 	},
-	currentTime( sec ) {
-		ui.controls.clock( sec );
+	mainTime( beat ) {
+		if ( env.togglePlay ) {
+			ui.controls.clock( beat );
+		}
+		ui.mainGridSamples.currentTime( beat );
 	},
-	clock( sec ) {
-		var time = common.timestampText( sec, env.clockSteps && gs.currCmp.bpm );
-
-		dom.clockMin.textContent = time.a;
-		dom.clockSec.textContent = time.b;
-		dom.clockMs.textContent = time.c;
+	patternTime( beat ) {
+		if ( !env.togglePlay ) {
+			ui.controls.clock( beat );
+		}
+		ui.keysGridSamples.currentTime( beat );
+	},
+	switchClock() {
+		ui.controls.clock( ui.controls._beat );
+	},
+	clock( beat ) {
+		ui.controls._beat = beat;
+		( env.clockSteps ? ui.controls._clockBeat : ui.controls._clockSec )( beat );
 	},
 	title( s ) {
 		document.title = ( gs.isCompositionNeedSave() ? "*" : "" ) + ( s || "GridSound" );
@@ -36,5 +48,16 @@ ui.controls = {
 	// private:
 	_onclickTogglePlay() {
 		gs.controls.togglePlay( !env.togglePlay );
-	}
+	},
+	_clockSec( beat ) {
+		beat = beat * 60 / gs.currCmp.bpm;
+		dom.clockMin.textContent = common.time.secToMin( beat );
+		dom.clockSec.textContent = common.time.secToSec( beat );
+		dom.clockMs.textContent  = common.time.secToMs( beat );
+	},
+	_clockBeat( beat ) {
+		dom.clockMin.textContent = common.time.beatToBeat( beat );
+		dom.clockSec.textContent = common.time.beatToStep( beat, gs.currCmp.stepsPerBeat );
+		dom.clockMs.textContent  = common.time.beatToMStep( beat, gs.currCmp.stepsPerBeat );
+	},
 };

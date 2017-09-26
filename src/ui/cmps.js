@@ -33,13 +33,13 @@ ui.cmps = {
 		delete ui.cmps._html[ id ];
 	},
 	update( id, dat ) {
-		var html = ui.cmps._html[ id ],
-			dur = common.timestampText( dat.duration );
+		var html = ui.cmps._html[ id ];
 
 		html.name.textContent = dat.name;
 		ui.controls.title( dat.name );
 		html.bpm.textContent = dat.bpm;
-		html.duration.textContent = dur.a + ":" + dur.b;
+		html.duration.textContent = common.time.secToMin( dat.duration ) +
+			":" + common.time.secToSec( dat.duration );
 	},
 	load( id ) {
 		var html = ui.cmps._html[ id ];

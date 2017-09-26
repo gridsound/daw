@@ -59,7 +59,7 @@ declare -a JSfiles=(
 	"src/common/smallId.js"
 	"src/common/trim2.js"
 	"src/common/nameUnique.js"
-	"src/common/timestampText.js"
+	"src/common/time.js"
 	"src/common/composeUndo.js"
 	"src/common/assignDeep.js"
 
