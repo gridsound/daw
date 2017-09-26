@@ -5,6 +5,9 @@ ui.mainGrid = {
 		var grid = new gsuiGridSamples(),
 			elGridCnt = grid.rootElement.querySelector( ".gsuigs-grid .gsuigs-content" );
 
+		ui.mainGridSamples = grid;
+		ui.mainGrid.elGridCnt = elGridCnt;
+		ui.mainGrid.blocks = {};
 		grid.loadTrackList();
 		grid.offset( 0, 40 );
 		grid.onchange = ui.mainGrid._onchangeGrid;
@@ -29,19 +32,15 @@ ui.mainGrid = {
 			delete ui.mainGrid.blocks[ id ];
 		};
 		dom.mainGridWrap.append( grid.rootElement );
-		ui.mainGridSamples = grid;
-		ui.mainGrid.elGridCnt = elGridCnt;
-		ui.mainGrid.blocks = {};
 		elGridCnt.ondrop = ui.mainGrid._ondrop;
 		elGridCnt.ondragenter = function( e ) {
 			e.dataTransfer.dropEffect = "copy";
 		};
-		ui.mainGrid.uiBlocks = {};
 		grid.resized();
 	},
 	empty() {
 		ui.mainGridSamples.empty();
-		ui.mainGrid.uiBlocks = {};
+		ui.mainGrid.blocks = {};
 	},
 	change( data ) {
 		if ( data.tracks ) { ui.mainGridSamples.change( data ); }
