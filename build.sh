@@ -51,6 +51,7 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"../gs-ui-components/gsuiTrackList/gsuiTrackList.js"
 
+	"../gs-webaudio-library/gswaScheduler/gswaScheduler.js"
 	"../gs-webaudio-library/gswaSynth/gswaSynth.js"
 
 	"src/init.js"
