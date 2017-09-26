@@ -108,6 +108,7 @@ declare -a JSfiles=(
 
 declare -a JSfilesProd=(
 	"src/initServiceWorker.js"
+	"src/checkNewVersion.js"
 	"src/gAnalytics.js"
 )
 
