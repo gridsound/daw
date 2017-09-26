@@ -1,9 +1,11 @@
 "use strict";
 
 gs.changeComposition = function( obj ) {
-	var keysId,
-		patId,
+	var keysId, patId, blcId,
+		blc,
 		cmp = gs.currCmp,
+		dur = 0,
+		currDur = cmp.duration,
 		bPM = obj.beatsPerMeasure,
 		sPB = obj.stepsPerBeat;
 
@@ -25,7 +27,6 @@ gs.changeComposition = function( obj ) {
 		}
 	}
 	if ( obj.bpm ) {
-		// gswa...()
 		ui.controls.bpm( obj.bpm );
 	}
 	if ( bPM || sPB ) {
@@ -35,7 +36,12 @@ gs.changeComposition = function( obj ) {
 			gs.updatePatternContent( patId );
 		}
 	}
-	if ( obj.name != null || obj.bpm ) {
+	for ( blcId in cmp.blocks ) {
+		blc = cmp.blocks[ blcId ];
+		dur = Math.max( dur, blc.when + blc.duration );
+	}
+	cmp.duration = dur;
+	if ( obj.name != null || obj.bpm || Math.ceil( dur ) !== Math.ceil( currDur ) ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
 };

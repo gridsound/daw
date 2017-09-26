@@ -32,14 +32,14 @@ ui.cmps = {
 		ui.cmps._html[ id ].root.remove();
 		delete ui.cmps._html[ id ];
 	},
-	update( id, dat ) {
+	update( id, cmp ) {
 		var html = ui.cmps._html[ id ];
 
-		html.name.textContent = dat.name;
-		ui.controls.title( dat.name );
-		html.bpm.textContent = dat.bpm;
-		html.duration.textContent = common.time.secToMin( dat.duration ) +
-			":" + common.time.secToSec( dat.duration );
+		html.name.textContent = cmp.name;
+		ui.controls.title( cmp.name );
+		html.bpm.textContent = cmp.bpm;
+		html.duration.textContent = common.time.beatToMin( cmp.duration, cmp.bpm ) +
+			":" + common.time.beatToSec( cmp.duration, cmp.bpm );
 	},
 	load( id ) {
 		var html = ui.cmps._html[ id ];
