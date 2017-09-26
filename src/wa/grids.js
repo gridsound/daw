@@ -34,10 +34,12 @@ wa.grids = {
 			sched.start();
 		},
 		stop() {
-			wa._schedulerPattern.stop();
-			wa._synthPattern.stop();
-			delete wa._schedulerPattern;
-			delete wa._synthPattern;
+			if ( wa._synthPattern ) {
+				wa._synthPattern.stop();
+				wa._schedulerPattern.stop();
+				delete wa._synthPattern;
+				delete wa._schedulerPattern;
+			}
 		}
 	}
 };
