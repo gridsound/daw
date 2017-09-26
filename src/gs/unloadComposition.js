@@ -26,6 +26,7 @@ gs.unloadComposition = function() {
 				ui.controls.mainTime( 0 );
 				ui.controls.patternTime( 0 );
 				ui.cmps.unload();
+				ui.mainGrid.empty();
 				ui.patterns.empty();
 				ui.pattern.empty();
 				gs.currCmp = null;
