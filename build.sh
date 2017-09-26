@@ -90,6 +90,7 @@ declare -a JSfiles=(
 	"src/gs/keysToRects.js"
 
 	"src/wa/init.js"
+	"src/wa/grids.js"
 	"src/wa/patterns.js"
 
 	"src/ui/init.js"

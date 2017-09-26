@@ -3,6 +3,8 @@
 ui.controls = {
 	init() {
 		dom.togglePlay.onclick = ui.controls._onclickTogglePlay;
+		dom.play.onclick = ui.controls._onclickPlay;
+		dom.stop.onclick = ui.controls._onclickStop;
 	},
 	togglePlay( b ) {
 		dom.togglePlay.classList.toggle( "after", !b );
@@ -11,13 +13,13 @@ ui.controls = {
 			: gs.controls.patternTime )() );
 	},
 	play() {
-		dom.play.classList.remove( "ico-pause" );
-	},
-	pause() {
 		dom.play.classList.add( "ico-pause" );
 	},
+	pause() {
+		dom.play.classList.remove( "ico-pause" );
+	},
 	stop() {
-		ui.controls.play();
+		ui.controls.pause();
 	},
 	bpm( bpm ) {
 		dom.bpmNumber.textContent = bpm;
@@ -46,9 +48,6 @@ ui.controls = {
 	},
 
 	// private:
-	_onclickTogglePlay() {
-		gs.controls.togglePlay( !env.togglePlay );
-	},
 	_clockSec( beat ) {
 		beat = beat * 60 / gs.currCmp.bpm;
 		dom.clockMin.textContent = common.time.secToMin( beat );
@@ -60,4 +59,17 @@ ui.controls = {
 		dom.clockSec.textContent = common.time.beatToStep( beat, gs.currCmp.stepsPerBeat );
 		dom.clockMs.textContent  = common.time.beatToMStep( beat, gs.currCmp.stepsPerBeat );
 	},
+
+	// events:
+	_onclickTogglePlay() {
+		gs.controls.togglePlay();
+	},
+	_onclickPlay() {
+		gs.controls.status === "playing"
+			? gs.controls.pause()
+			: gs.controls.play();
+	},
+	_onclickStop() {
+		gs.controls.stop();
+	}
 };
