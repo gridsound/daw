@@ -29,7 +29,7 @@ wa.grids = {
 			synth.start( smp.key.toUpperCase(), wa.ctx.currentTime + when, offset, duration );
 		};
 		sched.onended = function( data ) {
-			gs.controls.stop();
+			gs.controls.ended();
 		};
 		sched.start();
 	},

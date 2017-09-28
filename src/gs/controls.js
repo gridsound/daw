@@ -30,6 +30,12 @@ gs.controls = {
 			gs.controls._loopOff();
 		}
 	},
+	ended() {
+		gs.controls.stop();
+		( env.togglePlay
+			? gs.controls.mainTime
+			: gs.controls.patternTime )( 0 );
+	},
 	togglePlay() {
 		ui.controls.togglePlay( env.togglePlay = !env.togglePlay );
 		if ( gs.controls.status === "playing" ) {
