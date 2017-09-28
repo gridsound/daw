@@ -1,6 +1,11 @@
 "use strict";
 
 wa.grids = {
+	currentTime() {
+		if ( wa._scheduler ) {
+			return wa._scheduler.currentTime();
+		}
+	},
 	playMain() {
 		console.log( "wa.grids.main.play()" );
 	},
@@ -17,6 +22,7 @@ wa.grids = {
 		synth.change( { oscillators: {
 			"osc1": { type: "sine", detune: 0 }
 		} } );
+		sched.setContext( wa.ctx );
 		sched.setData( wa.keysToScheduleData( cmp.keys[ pat.keys ] ) );
 		sched.setBPM( cmp.bpm );
 		sched.onstart = function( smp, when, offset, duration ) {
