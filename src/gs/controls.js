@@ -62,12 +62,17 @@ gs.controls = {
 
 	// private:
 	_loopOn() {
-
+		gs.controls._loop();
 	},
 	_loopOff() {
-
+		cancelAnimationFrame( gs.controls._frameId );
 	},
 	_loop() {
+		var beat = wa.grids.currentTime();
 
+		( env.togglePlay
+			? ui.controls.mainTime
+			: ui.controls.patternTime )( beat );
+		gs.controls._frameId = requestAnimationFrame( gs.controls._loop );
 	}
 };
