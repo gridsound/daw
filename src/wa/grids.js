@@ -29,14 +29,15 @@ wa.grids = {
 			synth.start( smp.key.toUpperCase(), wa.ctx.currentTime + when, offset, duration );
 		};
 		sched.onended = function( data ) {
-			gs.controls.ended();
+			gs.controls.stop();
 		};
 		sched.start();
 	},
 	stop() {
 		if ( wa._synth ) {
-			wa._synth.stop();
+			delete wa._scheduler.onended;
 			wa._scheduler.stop();
+			wa._synth.stop();
 			delete wa._synth;
 			delete wa._scheduler;
 		}

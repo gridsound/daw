@@ -28,13 +28,10 @@ gs.controls = {
 			wa.grids.stop();
 			ui.controls.stop();
 			gs.controls._loopOff();
+			( env.togglePlay
+				? gs.controls.mainTime
+				: gs.controls.patternTime )( 0 );
 		}
-	},
-	ended() {
-		gs.controls.stop();
-		( env.togglePlay
-			? gs.controls.mainTime
-			: gs.controls.patternTime )( 0 );
 	},
 	togglePlay() {
 		ui.controls.togglePlay( env.togglePlay = !env.togglePlay );
