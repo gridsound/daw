@@ -73,8 +73,28 @@ ui.cmps = {
 		dom.cmpMenu.classList.add( "hidden" );
 	},
 	_clickMenu( e ) {
-		gs[ e.target.id ]( ui.cmps._cmpId );
-		ui.cmps._hideMenu();
+		var a = e.target,
+			id = ui.cmps._cmpId,
+			currCmp = gs.currCmp,
+			cmp = id === currCmp.id ? currCmp : gs.localStorage.get( id );
+
+		switch ( a.id ) {
+			case "deleteComposition":
+				gs.deleteComposition( id );
+				break;
+			case "exportCompositionJSON":
+				if ( a.href ) {
+					URL.revokeObjectURL( a.href );
+				}
+				a.download = ( cmp.name || "untitled" ) + ".gs";
+				a.href = URL.createObjectURL( new Blob( [
+					JSON.stringify( cmp, null, '\t' ) ] ) );
+				break;
+			case "exportCompositionWAV":
+				// ...
+				break;
+		}
 		e.stopPropagation();
+		ui.cmps._hideMenu();
 	}
 };

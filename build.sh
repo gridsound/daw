@@ -90,8 +90,6 @@ declare -a JSfiles=(
 	"src/gs/isCompositionNeedSave.js"
 	"src/gs/saveCurrentComposition.js"
 	"src/gs/controls.js"
-	"src/gs/exportCompositionJSON.js"
-	"src/gs/exportCompositionWAV.js"
 	"src/gs/newPattern.js"
 	"src/gs/removePattern.js"
 	"src/gs/namePattern.js"
@@ -107,7 +105,6 @@ declare -a JSfiles=(
 	"src/wa/blocksToScheduleData.js"
 
 	"src/ui/init.js"
-	"src/ui/downloadBlob.js"
 	"src/ui/windowEvents.js"
 	"src/ui/history.js"
 	"src/ui/controls.js"
