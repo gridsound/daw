@@ -26,7 +26,7 @@ wa.grids = {
 		sched.setData( wa.keysToScheduleData( cmp.keys[ pat.keys ] ) );
 		sched.setBPM( cmp.bpm );
 		sched.onstart = function( smp, when, offset, duration ) {
-			synth.start( smp.key.toUpperCase(), wa.ctx.currentTime + when, offset, duration );
+			synth.start( smp.key, wa.ctx.currentTime + when, offset, duration );
 		};
 		sched.onended = function( data ) {
 			gs.controls.stop();
