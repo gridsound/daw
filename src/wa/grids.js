@@ -43,7 +43,7 @@ wa.grids = {
 			"osc1": { type: "sine", detune: 0 }
 		} } );
 		sched.setContext( wa.ctx );
-		sched.setData( wa.keysToScheduleData( cmp.keys[ pat.keys ] ) );
+		sched.setData( wa.keysToScheduleData( cmp.keys[ pat.keys ], 0, 0, pat.duration ) );
 		sched.setBPM( cmp.bpm );
 		sched.onstart = function( smp, when, offset, duration ) {
 			synth.start( smp.key, wa.ctx.currentTime + when, offset, duration );

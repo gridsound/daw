@@ -8,6 +8,7 @@ wa.blocksToScheduleData = function() {
 		Object.keys( blocks ).map( function( blc ) {
 			blc = blocks[ blc ];
 			return wa.keysToScheduleData(
-				cmp.keys[ cmp.patterns[ blc.pattern ].keys ], blc.when );
+				cmp.keys[ cmp.patterns[ blc.pattern ].keys ],
+				blc.when, blc.offset, blc.duration );
 		} ) );
 };

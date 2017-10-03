@@ -1,14 +1,16 @@
 "use strict";
 
-wa.keysToScheduleData = function( keys, whenBeat ) {
-	whenBeat = whenBeat || 0;
-	return Object.keys( keys ).map( function( key ) {
+wa.keysToScheduleData = function( keys, when, offset, duration ) {
+	return Object.keys( keys ).reduce( function( arr, key ) {
 		key = keys[ key ];
-		return {
-			key: key.key.toUpperCase(),
-			whenBeat: key.when + whenBeat,
-			offsetBeat: key.offset,
-			durationBeat: key.duration
-		};
-	} );
+		if ( offset < key.when + key.duration && key.when < offset + duration ) {
+			arr.push( {
+				key: key.key.toUpperCase(),
+				whenBeat: when + key.when - offset,
+				offsetBeat: key.offset,
+				durationBeat: key.duration
+			} );
+		}
+		return arr;
+	}, [] );
 };
