@@ -11,6 +11,11 @@
 }
 
 @font-face {
+	font-family: "FontAwesomeBrands";
+	src: url( "../../assets/fontawesome-brands-900.ttf" ) format( "woff" );
+}
+
+@font-face {
 	font-family: "title";
 	src: url( "../../assets/oswald-regular.ttf" );
 }
@@ -55,5 +60,18 @@
 .ico-toggle-on:before { content: "\f205"; }
 .ico-add:before { content: "\f067"; }
 .ico-selection:before { content: "\f245"; }
+
+.ico-chrome:before { content: "\f268"; }
+.ico-edge:before { content: "\f282"; }
+.ico-firefox:before { content: "\f269"; }
+.ico-iexplorer:before { content: "\f26b"; }
+.ico-opera:before { content: "\f26a"; }
+.ico-safari:before { content: "\f267"; }
+
+.ico-facebook:before { content: "\f09a"; }
+.ico-github:before { content: "\f09b"; } /* f113 */
+.ico-gratipay:before { content: "\f184"; }
+.ico-twitter:before { content: "\f099"; }
+.ico-youtube:before { content: "\f167"; }
 
 .ico-pattern { transform: scale( -1, 1 ); }

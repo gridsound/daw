@@ -18,9 +18,14 @@
 	color: #ddd;
 	height: 100%;
 	border-radius: var( --small-bd-radius );
+	cursor: default;
+	transition: filter .1s;
 }
 .ctrl-item + .ctrl-item {
 	margin-left: 6px;
+}
+.ctrl-item:hover {
+	filter: brightness( 1.2 );
 }
 
 /* .ctrl-btn */
@@ -72,6 +77,7 @@
 	padding: 0 .3em;
 	border: 3px solid rgba( 0, 0, 0, .3 );
 	background-color: #222;
+	filter: none;
 }
 #bpmText:before {
 	content: "bpm";
@@ -98,3 +104,15 @@
 }
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }
+
+/* #about */
+/* -------------------------------------------------------------------------- */
+#about {
+	font-size: 24px;
+	margin-left: 1em;
+	border: 2px dashed;
+	color: #e78;
+}
+#about:before {
+	transform: translate( 0, -3px );
+}

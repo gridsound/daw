@@ -9,6 +9,10 @@ html, body {
 ::-webkit-scrollbar-track { background-color: #555; }
 ::-webkit-scrollbar-thumb { background-color: #888; }
 
+a {
+	text-decoration: none;
+}
+
 #app {
 	--gsuiPanels-bdSize: 2px;
 	--gsuiPanels-extendSize: 4px;
