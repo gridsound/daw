@@ -49,6 +49,8 @@ ui.init = function() {
 		dom[ el.id ] = el;
 	} );
 
+	dom.version.textContent = env.version;
+
 	// Initialisation of the rest of the app:
 	ui.controls.init();
 	ui.cmps.init();

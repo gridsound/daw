@@ -4,10 +4,11 @@ setTimeout( function() {
 	fetch( "https://gridsound.github.io/daw/VERSION" )
 		.then( res => res.text() )
 		.then( res => {
-			if ( res !== env.version ) {
-				if ( confirm( `GridSound v${ res } is ready.\nDo you want to refresh your tab?` ) ) {
-					location.reload( true );
-				}
-			}
+			var status = res === env.version ? "ok" : "ko";
+
+			dom.version.classList.add( status );
+			dom.version.title = status === "ok"
+				? "GridSound is up to date :)"
+				: "Clear your cache for the version " + res;
 		} );
 }, 2000 );
