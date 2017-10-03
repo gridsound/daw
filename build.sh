@@ -36,6 +36,12 @@ declare -a HTMLfiles=(
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
 )
 
+declare -a JSfilesProd=(
+	"src/initServiceWorker.js"
+	"src/checkNewVersion.js"
+	"src/gAnalytics.js"
+)
+
 declare -a JSfiles=(
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.js"
@@ -108,12 +114,6 @@ declare -a JSfiles=(
 	"src/ui/settingsPopup.js"
 
 	"src/run.js"
-)
-
-declare -a JSfilesProd=(
-	"src/initServiceWorker.js"
-	"src/checkNewVersion.js"
-	"src/gAnalytics.js"
 )
 
 HTMLheader() {
