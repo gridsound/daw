@@ -1,7 +1,7 @@
 "use strict";
 
 setTimeout( function() {
-	fetch( "https://gridsound.github.io/daw/VERSION" )
+	fetch( "https://gridsound.github.io/daw/VERSION?" + Math.random() )
 		.then( res => res.text() )
 		.then( res => {
 			var status = res === env.version ? "ok" : "ko";
