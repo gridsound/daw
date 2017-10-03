@@ -8,29 +8,29 @@
 	background-color: #444;
 }
 
-/* #controls .ctrl-item */
+/* .ctrl-item */
 /* -------------------------------------------------------------------------- */
-#controls .ctrl-item {
+.ctrl-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	box-sizing: border-box;
 	color: #ddd;
 	height: 100%;
 	border-radius: var( --small-bd-radius );
 }
-#controls .ctrl-item + .ctrl-item {
+.ctrl-item + .ctrl-item {
 	margin-left: 6px;
 }
 
-/* #controls .btn.big */
+/* .ctrl-btn */
 /* -------------------------------------------------------------------------- */
-#controls .btn.big {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.ctrl-btn {
 	font-size: 14px;
-	border: 1px solid rgba( 0, 0, 0, .8 );
-	width: calc( var( --ctrl-height ) - 2 * var( --ctrl-padding ) );
+	border: 1px solid rgba( 0, 0, 0, .7 );
+	min-width: calc( var( --ctrl-height ) - 2 * var( --ctrl-padding ) );
 }
-#controls .btn.big:active {
+.ctrl-btn:active {
 	padding-top: 4px;
 	box-shadow: inset 0 3px 0px rgba( 0, 0, 0, .25 );
 }
@@ -38,18 +38,18 @@
 /* #togglePlay */
 /* -------------------------------------------------------------------------- */
 #togglePlay {
-	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 8px;
+	min-width: 8px;
 	height: 100%;
-	margin-right: 3px;
 }
 #togglePlay::before,
 #togglePlay::after {
+	box-sizing: border-box;
 	content: "";
-	height: 35%;
-	border: 1px solid rgba( 0, 0, 0, .8 );
+	width: 100%;
+	height: 40%;
+	border: 1px solid rgba( 0, 0, 0, .7 );
 	border-radius: 2px;
 	background-color: var( --col1-low );
 }
@@ -67,15 +67,11 @@
 /* -------------------------------------------------------------------------- */
 #bpm,
 #clock {
-	display: flex;
 	font-size: 30px;
 	font-family: var( --monospace );
 	padding: 0 .3em;
 	border: 3px solid rgba( 0, 0, 0, .3 );
 	background-color: #222;
-}
-#bpm {
-	align-items: center;
 }
 #bpmText:before {
 	content: "bpm";
@@ -96,9 +92,7 @@
 /* #settings */
 /* -------------------------------------------------------------------------- */
 #settings {
-	width: auto !important;
-	padding-left: .4em;
-	padding-right: .4em;
+	min-width: 46px;
 	font-family: "FontAwesome";
 	background-color: var( --col2-middle );
 }
