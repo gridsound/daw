@@ -1,0 +1,88 @@
+.cmp {
+	box-sizing: border-box;
+	display: flex;
+	color: #bbb;
+	font-size: 12px;
+	cursor: pointer;
+	background-color: var( --col1-middle );
+	filter: brightness( .9 );
+}
+.cmp + .cmp {
+	border-top: 1px solid rgba( 0, 0, 0, .2 );
+}
+.cmp.loaded {
+	filter: none;
+}
+
+/* -------------------------------------------------------------------------- */
+.cmp .save {
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	width: 0;
+	background-color: var( --col2-middle );
+}
+.cmp.notSaved .save {
+	min-width: 30px;
+}
+.cmp .save:before {
+	content: "\f0a0";
+	font: 20px "FontAwesome";
+	color: #ddd;
+}
+
+/* -------------------------------------------------------------------------- */
+.cmp .info {
+	flex: 1;
+	padding: 4px;
+	overflow: hidden;
+	transition: padding-left .2s;
+}
+.cmp .info:hover {
+	padding-left: 8px;
+}
+
+/* -------------------------------------------------------------------------- */
+.cmp .menu {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 20px;
+}
+.cmp .menu:before {
+	content: "\f142";
+	font: 18px "FontAwesome";
+}
+.cmp .menu:hover {
+	color: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+.cmp .name {
+	overflow: hidden;
+	color: #ddd;
+	font-size: 13px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.cmp.notSaved .name:before {
+	content: "*";
+}
+.cmp .name:empty:after {
+	font-style: italic;
+	content: "Untitled";
+}
+
+/* -------------------------------------------------------------------------- */
+.cmp .bpm {
+	margin-right: 1em;
+}
+.cmp .bpm:before,
+.cmp .duration:before {
+	font-family: "FontAwesome";
+	margin-right: .4em;
+}
+.cmp .bpm:before { content: "\f001"; }
+.cmp .duration:before { content: "\f017"; }

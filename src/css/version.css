@@ -1,0 +1,28 @@
+#version {
+	display: flex;
+	align-items: center;
+	margin-left: .8em;
+	font-family: "Inconsolata";
+	font-style: italic;
+	opacity: .5;
+}
+
+/* -------------------------------------------------------------------------- */
+#version.ko { color: #f94; }
+#version.ok { color: #8fb; }
+#version.ko,
+#version.ok {
+	font-weight: bold;
+	font-style: normal;
+	opacity: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+#version.ko:after { content: "\f071"; }
+#version.ok:after { content: "\f00c"; }
+#version:after {
+	font-size: 11px;
+	font-weight: normal;
+	font-family: "FontAwesome";
+	margin-left: 4px;
+}

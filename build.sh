@@ -16,9 +16,12 @@ declare -a CSSfiles=(
 	"src/css/absoluteMenu.css"
 	"src/css/panelLeft.css"
 	"src/css/panelCmps.css"
-	"src/css/panelHistory.css"
+	"src/css/cmp.css"
+	"src/css/version.css"
+	"src/css/action.css"
 	"src/css/panelPatterns.css"
 	"src/css/panelRight.css"
+	"src/css/controls.css"
 	"src/css/patternMenu.css"
 	"src/css/settingsPopup.css"
 )
