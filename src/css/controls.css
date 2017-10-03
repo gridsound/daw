@@ -113,6 +113,3 @@
 	border: 2px dashed;
 	color: #e78;
 }
-#about:before {
-	transform: translate( 0, -3px );
-}

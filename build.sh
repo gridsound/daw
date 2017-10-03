@@ -12,6 +12,7 @@ declare -a CSSfiles=(
 	"../gs-ui-components/gsuiTrack/gsuiTrack.css"
 	"../gs-ui-components/gsuiTrackList/gsuiTrackList.css"
 	"src/css/fonts.css"
+	"src/css/icon.css"
 	"src/css/app.css"
 	"src/css/absoluteMenu.css"
 	"src/css/panelLeft.css"
