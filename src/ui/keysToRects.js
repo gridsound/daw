@@ -23,6 +23,8 @@ ui.keysToRects = function( keys ) {
 			duration: keyObj.duration,
 		} );
 	}
+	minrow -= minrow % 12;
+	maxrow += 11 - maxrow % 12;
 	nbRows = maxrow - minrow;
 	samples.forEach( function( smp ) {
 		smp.row = nbRows - ( smp.row - minrow );
