@@ -96,7 +96,6 @@ declare -a JSfiles=(
 	"src/gs/dropPattern.js"
 	"src/gs/updatePatternContent.js"
 	"src/gs/addAudioFiles.js"
-	"src/gs/keysToRects.js"
 
 	"src/wa/init.js"
 	"src/wa/grids.js"
@@ -105,6 +104,7 @@ declare -a JSfiles=(
 	"src/wa/blocksToScheduleData.js"
 
 	"src/ui/init.js"
+	"src/ui/keysToRects.js"
 	"src/ui/windowEvents.js"
 	"src/ui/history.js"
 	"src/ui/controls.js"

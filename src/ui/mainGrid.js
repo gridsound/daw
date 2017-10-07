@@ -18,7 +18,7 @@ ui.mainGrid = {
 
 			ui.mainGrid.blocks[ id ] = uiBlock;
 			uiBlock.name( pat.name );
-			uiBlock.updateData( gs.keysToRects( cmp.keys[ pat.keys ] ) );
+			uiBlock.updateData( ui.keysToRects( cmp.keys[ pat.keys ] ) );
 			uiBlock.rootElement.ondblclick = ui.patterns.open.bind( null, uiBlock.data.pattern );
 		};
 		grid.fnSampleUpdate = function( id, uiBlock ) {
@@ -26,7 +26,7 @@ ui.mainGrid = {
 				blc = cmp.blocks[ id ],
 				keys = cmp.keys[ cmp.patterns[ blc.pattern ].keys ];
 
-			uiBlock.updateData( gs.keysToRects( keys ), blc.offset, blc.duration );
+			uiBlock.updateData( ui.keysToRects( keys ), blc.offset, blc.duration );
 		};
 		grid.fnSampleDelete = function( id, uiBlock ) {
 			delete ui.mainGrid.blocks[ id ];

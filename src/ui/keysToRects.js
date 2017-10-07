@@ -1,6 +1,6 @@
 "use strict";
 
-gs.keysToRects = function( keys ) {
+ui.keysToRects = function( keys ) {
 	var keyId,
 		keyObj,
 		row,
