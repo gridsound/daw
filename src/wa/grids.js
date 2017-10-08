@@ -6,11 +6,11 @@ wa.grids = {
 			return wa._scheduler.currentTime();
 		}
 	},
-	playMain() {
-		wa.grids._play()
+	playMain( offset ) {
+		wa.grids._play( offset );
 	},
-	playPattern( id ) {
-		wa.grids._play( id )
+	playPattern( offset, id ) {
+		wa.grids._play( offset, id );
 	},
 	stop() {
 		if ( wa._synth ) {
@@ -23,7 +23,7 @@ wa.grids = {
 	},
 
 	// private:
-	_play( id ) {
+	_play( offset, id ) {
 		var cmp = gs.currCmp,
 			pat = cmp.patterns[ id ],
 			synth = new gswaSynth(),
@@ -47,6 +47,6 @@ wa.grids = {
 		sched.onended = function( data ) {
 			gs.controls.stop();
 		};
-		sched.start();
+		sched.start( 0, offset );
 	}
 };

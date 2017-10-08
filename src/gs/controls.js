@@ -8,8 +8,8 @@ gs.controls = {
 		if ( gs.controls.status !== "playing" ) {
 			gs.controls.status = "playing";
 			env.togglePlay
-				? wa.grids.playMain()
-				: wa.grids.playPattern( gs.currCmp.patternOpened );
+				? wa.grids.playMain( 0 )
+				: wa.grids.playPattern( 0, gs.currCmp.patternOpened );
 			ui.controls.play();
 			gs.controls._loopOn();
 		}
@@ -38,8 +38,8 @@ gs.controls = {
 		if ( gs.controls.status === "playing" ) {
 			wa.grids.stop();
 			env.togglePlay
-				? wa.grids.playMain()
-				: wa.grids.playPattern();
+				? wa.grids.playMain( 0 )
+				: wa.grids.playPattern( 0 );
 		}
 	},
 	mainTime( beat ) {
