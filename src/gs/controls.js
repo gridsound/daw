@@ -3,13 +3,15 @@
 gs.controls = {
 	init() {
 		gs.controls.status = "stopped";
+		gs.controls._mainTime =
+		gs.controls._patternTime = 0;
 	},
 	play() {
 		if ( gs.controls.status !== "playing" ) {
 			gs.controls.status = "playing";
 			env.togglePlay
-				? wa.grids.playMain( 0 )
-				: wa.grids.playPattern( 0, gs.currCmp.patternOpened );
+				? wa.grids.playMain( gs.controls._mainTime )
+				: wa.grids.playPattern( gs.controls._patternTime, gs.currCmp.patternOpened );
 			ui.controls.play();
 			gs.controls._loopOn();
 		}
@@ -17,6 +19,7 @@ gs.controls = {
 	pause() {
 		if ( gs.controls.status === "playing" ) {
 			gs.controls.status = "paused";
+			gs.controls[ env.togglePlay ? "_mainTime" : "_patternTime" ] = wa.grids.currentTime();
 			wa.grids.stop();
 			ui.controls.pause();
 			gs.controls._loopOff();
@@ -34,26 +37,33 @@ gs.controls = {
 		}
 	},
 	togglePlay() {
-		ui.controls.togglePlay( env.togglePlay = !env.togglePlay );
-		if ( gs.controls.status === "playing" ) {
+		var tplay = !env.togglePlay,
+			wasPlaying = gs.controls.status === "playing";
+
+		if ( wasPlaying ) {
+			gs.controls[ env.togglePlay ? "_mainTime" : "_patternTime" ] = wa.grids.currentTime();
 			wa.grids.stop();
-			env.togglePlay
-				? wa.grids.playMain( 0 )
-				: wa.grids.playPattern( 0 );
 		}
+		env.togglePlay = tplay;
+		if ( wasPlaying ) {
+			tplay
+				? wa.grids.playMain( gs.controls._mainTime )
+				: wa.grids.playPattern( gs.controls._patternTime, gs.currCmp.patternOpened );
+		}
+		ui.controls.togglePlay( tplay );
 	},
 	mainTime( beat ) {
 		if ( beat == null ) {
-			return gs.controls._tmpMainTime || 0;
+			return gs.controls._mainTime;
 		}
-		gs.controls._tmpMainTime = beat;
+		gs.controls._mainTime = beat;
 		ui.controls.mainTime( beat );
 	},
 	patternTime( beat ) {
 		if ( beat == null ) {
-			return gs.controls._tmpPatternTime || 0;
+			return gs.controls._patternTime;
 		}
-		gs.controls._tmpPatternTime = beat;
+		gs.controls._patternTime = beat;
 		ui.controls.patternTime( beat );
 	},
 

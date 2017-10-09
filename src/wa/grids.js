@@ -47,6 +47,6 @@ wa.grids = {
 		sched.onended = function( data ) {
 			gs.controls.stop();
 		};
-		sched.start( 0, offset );
+		sched.startBeat( 0, offset );
 	}
 };
