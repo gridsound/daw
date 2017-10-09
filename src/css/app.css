@@ -10,6 +10,7 @@ html, body {
 ::-webkit-scrollbar-thumb { background-color: #888; }
 
 a {
+	color: inherit;
 	text-decoration: none;
 }
 

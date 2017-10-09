@@ -1,7 +1,6 @@
 .absoluteMenu {
 	position: absolute;
 	z-index: 2;
-	color: #ddd;
 	border: 2px solid #111;
 	border-radius: 4px;
 	background-color: #333;
@@ -18,9 +17,12 @@
 	font-size: 13px;
 	line-height: 2em;
 	padding: 0 .5em;
+	color: #ddd;
 	cursor: default;
+	transition: .2s;
+	transition-property: color, background-color;
 }
 .absoluteMenu a:hover {
 	color: #fff;
-	background: #222;
+	background-color: #222;
 }
