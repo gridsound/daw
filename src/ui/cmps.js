@@ -83,12 +83,21 @@ ui.cmps = {
 				gs.deleteComposition( id );
 				break;
 			case "exportCompositionJSON":
+				var del = '\t"keys": {',
+					s = JSON.stringify( cmp, null, "\t" ).split( del ),
+					cmpOther = s[ 0 ],
+					cmpKeys = s[ 1 ];
+
 				if ( a.href ) {
 					URL.revokeObjectURL( a.href );
 				}
+				cmpOther = cmpOther.replace( /\n\t{3}/g, " " );
+				cmpOther = cmpOther.replace( /\n\t{2}}/g, " }" );
+				cmpKeys = cmpKeys.replace( /\n\t{4}/g, " " );
+				cmpKeys = cmpKeys.replace( /\n\t{3}}/g, " }" );
 				a.download = ( cmp.name || "untitled" ) + ".gs";
 				a.href = URL.createObjectURL( new Blob( [
-					JSON.stringify( cmp, null, '\t' ) ] ) );
+					cmpOther + del + cmpKeys ] ) );
 				break;
 			case "exportCompositionWAV":
 				// ...
