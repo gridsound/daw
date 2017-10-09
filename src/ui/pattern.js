@@ -26,6 +26,7 @@ ui.pattern = {
 	load( keys ) {
 		ui.keysGridSamples.empty();
 		ui.keysGridSamples.change( keys );
+		ui.keysGridSamples.scrollToSamples();
 	},
 
 	// private:
