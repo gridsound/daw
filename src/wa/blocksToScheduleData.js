@@ -5,10 +5,13 @@ wa.blocksToScheduleData = function() {
 		blocks = cmp.blocks;
 
 	return Array.prototype.concat.apply( [],
-		Object.keys( blocks ).map( function( blc ) {
+		Object.keys( blocks ).reduce( function( res, blc ) {
 			blc = blocks[ blc ];
-			return wa.keysToScheduleData(
-				cmp.keys[ cmp.patterns[ blc.pattern ].keys ],
-				blc.when, blc.offset, blc.duration );
-		} ) );
+			if ( cmp.tracks[ blc.track ].toggle ) {
+				res.push( wa.keysToScheduleData(
+					cmp.keys[ cmp.patterns[ blc.pattern ].keys ],
+					blc.when, blc.offset, blc.duration ) );
+			}
+			return res;
+		}, [] ) );
 };
