@@ -72,6 +72,7 @@ ui.cmps = {
 	_hideMenu() {
 		if ( ui.cmps._cmpId ) {
 			delete ui.cmps._cmpId;
+			delete ui.cmps._wavReady;
 			dom.exportCompositionWAV.textContent = ui.cmps._exportTextWAV;
 			dom.exportCompositionWAV.download =
 			dom.exportCompositionWAV.href = "";
@@ -86,6 +87,7 @@ ui.cmps = {
 			a = e.target,
 			closeMenu = true;
 
+		e.stopPropagation();
 		if ( a.id === "deleteComposition" ) {
 			gs.deleteComposition( id );
 		} else if ( a.id === "exportCompositionJSON" || a.id === "exportCompositionWAV" ) {
@@ -105,18 +107,15 @@ ui.cmps = {
 						a.href = url;
 						a.textContent = ui.cmps._exportTextWAV + " (ready)";
 					} );
-				} else  {
-					a.textContent = ui.cmps._exportTextWAV;
-					delete ui.cmps._wavReady;
 				}
 			} else {
 				alert( `You have to open "${ name }" before exporting it in WAV.` );
 			}
 		}
-		e.stopPropagation();
 		if ( closeMenu ) {
 			setTimeout( ui.cmps._hideMenu, 200 );
-		} else if ( ui.cmps._wavReady === 1 ) {
+		}
+		if ( !a.download || ui.cmps._wavReady === 1 ) {
 			return false;
 		}
 	}
