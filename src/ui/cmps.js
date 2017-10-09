@@ -3,6 +3,7 @@
 ui.cmps = {
 	init() {
 		dom.cmpMenu.onclick = ui.cmps._clickMenu;
+		ui.cmps._exportTextWAV = dom.exportCompositionWAV.textContent;
 	},
 	push( id ) {
 		var root = document.createElement( "div" ),
@@ -69,28 +70,54 @@ ui.cmps = {
 		e.stopPropagation();
 	},
 	_hideMenu() {
-		delete ui.cmps._cmpId;
-		dom.cmpMenu.classList.add( "hidden" );
+		if ( ui.cmps._cmpId ) {
+			delete ui.cmps._cmpId;
+			dom.exportCompositionWAV.textContent = ui.cmps._exportTextWAV;
+			dom.exportCompositionWAV.download =
+			dom.exportCompositionWAV.href = "";
+			dom.cmpMenu.classList.add( "hidden" );
+		}
 	},
 	_clickMenu( e ) {
-		var a = e.target,
+		var name,
 			id = ui.cmps._cmpId,
-			currCmp = gs.currCmp,
-			cmp = id === currCmp.id ? currCmp : gs.localStorage.get( id );
+			cmp = gs.currCmp,
+			cmpLoaded = id === cmp.id,
+			a = e.target,
+			closeMenu = true;
 
-		switch ( a.id ) {
-			case "deleteComposition":
-				gs.deleteComposition( id );
-				break;
-			case "exportCompositionJSON":
-				a.download = ( cmp.name || "untitled" ) + ".gs";
+		if ( a.id === "deleteComposition" ) {
+			gs.deleteComposition( id );
+		} else if ( a.id === "exportCompositionJSON" || a.id === "exportCompositionWAV" ) {
+			cmp = cmpLoaded ? cmp : gs.localStorage.get( id );
+			name = cmp.name || "untitled";
+			if ( a.id === "exportCompositionJSON" ) {
+				a.download = name + ".gs";
 				a.href = gs.exportCompositionToJSON( cmp );
-				break;
-			case "exportCompositionWAV":
-				// ...
-				break;
+			} else if ( cmpLoaded ) {
+				closeMenu = ui.cmps._wavReady === 2;
+				if ( !ui.cmps._wavReady ) {
+					ui.cmps._wavReady = 1;
+					a.download = name + ".wav";
+					a.textContent += "...";
+					gs.exportCurrentCompositionToWAV().then( function( url ) {
+						ui.cmps._wavReady = 2;
+						a.href = url;
+						a.textContent = ui.cmps._exportTextWAV + " (ready)";
+					} );
+				} else  {
+					a.textContent = ui.cmps._exportTextWAV;
+					delete ui.cmps._wavReady;
+				}
+			} else {
+				alert( `You have to open "${ name }" before exporting it in WAV.` );
+			}
 		}
 		e.stopPropagation();
-		ui.cmps._hideMenu();
+		if ( closeMenu ) {
+			setTimeout( ui.cmps._hideMenu, 200 );
+		} else if ( ui.cmps._wavReady === 1 ) {
+			return false;
+		}
 	}
 };
