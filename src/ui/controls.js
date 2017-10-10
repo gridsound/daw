@@ -6,11 +6,9 @@ ui.controls = {
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;
 	},
-	togglePlay( b ) {
-		dom.togglePlay.classList.toggle( "after", !b );
-		ui.controls.clock( ( env.togglePlay
-			? gs.controls.mainTime
-			: gs.controls.patternTime )() );
+	focusOn( grid ) {
+		dom.togglePlay.classList.toggle( "after", grid !== "main" );
+		ui.controls.clock( gs.controls.currentTime( grid ) );
 	},
 	play() {
 		dom.play.classList.add( "ico-pause" );
@@ -24,17 +22,15 @@ ui.controls = {
 	bpm( bpm ) {
 		dom.bpmNumber.textContent = bpm;
 	},
-	mainTime( beat ) {
-		if ( env.togglePlay ) {
+	currentTime( grid, beat ) {
+		if ( gs.controls._grid === grid ) {
 			ui.controls.clock( beat );
 		}
-		ui.mainGridSamples.currentTime( beat );
-	},
-	patternTime( beat ) {
-		if ( !env.togglePlay ) {
-			ui.controls.clock( beat );
+		if ( grid === "main" ) {
+			ui.mainGridSamples.currentTime( beat );
+		} else {
+			ui.keysGridSamples.currentTime( beat );
 		}
-		ui.keysGridSamples.currentTime( beat );
 	},
 	switchClock() {
 		ui.controls.clock( ui.controls._beat );
@@ -62,7 +58,7 @@ ui.controls = {
 
 	// events:
 	_onclickTogglePlay() {
-		gs.controls.togglePlay();
+		gs.controls.focusOn( gs.controls._grid === "main" ? "pattern" : "main" );
 	},
 	_onclickPlay() {
 		gs.controls.status === "playing"

@@ -5,7 +5,7 @@ gs.exportCurrentCompositionToWAV = function() {
 
 	gs._blobDL && URL.revokeObjectURL( gs._blobDL );
 	wa.toggleRender( true );
-	wa.grids.playMain( 0 );
+	wa.grids.play( "main", 0 );
 	return wa.ctx.startRendering().then( function( buffer ) {
 		wa.toggleRender( false );
 		return gs._blobDL = URL.createObjectURL( new Blob( [ gswaEncodeWAV( buffer ) ] ) );

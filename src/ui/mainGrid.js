@@ -11,7 +11,7 @@ ui.mainGrid = {
 		grid.loadTrackList();
 		grid.offset( 0, 40 );
 		grid.onchange = ui.mainGrid._onchangeGrid;
-		grid.onchangeCurrentTime = gs.controls.mainTime;
+		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "main" );
 		grid.fnSampleCreate = function( id, uiBlock ) {
 			var cmp = gs.currCmp,
 				pat = cmp.patterns[ uiBlock.data.pattern ];

@@ -23,8 +23,8 @@ gs.unloadComposition = function() {
 				gs.historyInd = 0;
 				gs.history.length = 0;
 				ui.history.cut( 0 );
-				ui.controls.mainTime( 0 );
-				ui.controls.patternTime( 0 );
+				ui.controls.currentTime( "main", 0 );
+				ui.controls.currentTime( "pattern", 0 );
 				ui.cmps.unload();
 				ui.mainGrid.empty();
 				ui.patterns.empty();

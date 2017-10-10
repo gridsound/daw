@@ -6,12 +6,6 @@ wa.grids = {
 			return wa._scheduler.currentTime();
 		}
 	},
-	playMain( offset ) {
-		wa.grids._play( offset );
-	},
-	playPattern( offset, id ) {
-		wa.grids._play( offset, id );
-	},
 	stop() {
 		if ( wa._synth ) {
 			delete wa._scheduler.onended;
@@ -21,12 +15,10 @@ wa.grids = {
 			delete wa._scheduler;
 		}
 	},
-
-	// private:
-	_play( offset, id ) {
-		var cmp = gs.currCmp,
+	play( grid, offset ) {
+		var pat,
+			cmp = gs.currCmp,
 			ctx = wa.ctx,
-			pat = cmp.patterns[ id ],
 			synth = new gswaSynth(),
 			sched = new gswaScheduler();
 
@@ -38,9 +30,12 @@ wa.grids = {
 			"osc1": { type: "sine", detune: 0 }
 		} } );
 		sched.setContext( ctx );
-		sched.setData( pat
-			? wa.keysToScheduleData( cmp.keys[ pat.keys ], 0, 0, pat.duration )
-			: wa.blocksToScheduleData() );
+		if ( grid === "main" ) {
+			sched.setData( wa.blocksToScheduleData() );
+		} else {
+			pat = cmp.patterns[ gs.currCmp.patternOpened ];
+			sched.setData( wa.keysToScheduleData( cmp.keys[ pat.keys ], 0, 0, pat.duration ) );
+		}
 		sched.setBPM( cmp.bpm );
 		sched.onstart = function( smp, when, offset, duration ) {
 			synth.start( smp.key, ctx.currentTime + when, offset, duration );

@@ -3,15 +3,27 @@
 gs.controls = {
 	init() {
 		gs.controls.status = "stopped";
-		gs.controls._mainTime =
-		gs.controls._patternTime = 0;
+		gs.controls.times = {
+			main: 0,
+			pattern: 0
+		};
+		gs.controls._grid = "main";
+	},
+	currentTime( grid, beat ) {
+		if ( beat == null ) {
+			return gs.controls.times[ grid ];
+		}
+		gs.controls.times[ grid ] = beat;
+		ui.controls.currentTime( grid, beat );
+		if ( gs.controls.status === "playing" ) {
+			wa.grids.stop();
+			wa.grids.play( grid, beat );
+		}
 	},
 	play() {
 		if ( gs.controls.status !== "playing" ) {
 			gs.controls.status = "playing";
-			env.togglePlay
-				? wa.grids.playMain( gs.controls._mainTime )
-				: wa.grids.playPattern( gs.controls._patternTime, gs.currCmp.patternOpened );
+			wa.grids.play( gs.controls._grid, gs.controls.times[ gs.controls._grid ] )
 			ui.controls.play();
 			gs.controls._loopOn();
 		}
@@ -19,7 +31,7 @@ gs.controls = {
 	pause() {
 		if ( gs.controls.status === "playing" ) {
 			gs.controls.status = "paused";
-			gs.controls[ env.togglePlay ? "_mainTime" : "_patternTime" ] = wa.grids.currentTime();
+			gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
 			wa.grids.stop();
 			ui.controls.pause();
 			gs.controls._loopOff();
@@ -31,47 +43,20 @@ gs.controls = {
 			wa.grids.stop();
 			ui.controls.stop();
 			gs.controls._loopOff();
-			( env.togglePlay
-				? gs.controls.mainTime
-				: gs.controls.patternTime )( 0 );
+			gs.controls.currentTime( gs.controls._grid, 0 );
 		}
 	},
-	togglePlay() {
-		var tplay = !env.togglePlay,
-			wasPlaying = gs.controls.status === "playing";
+	focusOn( grid ) {
+		var wasPlaying = gs.controls.status === "playing";
 
 		if ( wasPlaying ) {
-			gs.controls[ env.togglePlay ? "_mainTime" : "_patternTime" ] = wa.grids.currentTime();
+			gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
 			wa.grids.stop();
 		}
-		env.togglePlay = tplay;
+		gs.controls._grid = grid;
+		ui.controls.focusOn( grid );
 		if ( wasPlaying ) {
-			tplay
-				? wa.grids.playMain( gs.controls._mainTime )
-				: wa.grids.playPattern( gs.controls._patternTime, gs.currCmp.patternOpened );
-		}
-		ui.controls.togglePlay( tplay );
-	},
-	mainTime( beat ) {
-		if ( beat == null ) {
-			return gs.controls._mainTime;
-		}
-		gs.controls._mainTime = beat;
-		ui.controls.mainTime( beat );
-		if ( gs.controls.status === "playing" ) {
-			wa.grids.stop();
-			wa.grids.playMain( beat );
-		}
-	},
-	patternTime( beat ) {
-		if ( beat == null ) {
-			return gs.controls._patternTime;
-		}
-		gs.controls._patternTime = beat;
-		ui.controls.patternTime( beat );
-		if ( gs.controls.status === "playing" ) {
-			wa.grids.stop();
-			wa.grids.playPattern( beat, gs.currCmp.patternOpened );
+			wa.grids.play( grid, gs.controls.times[ grid ] );
 		}
 	},
 
@@ -83,11 +68,7 @@ gs.controls = {
 		cancelAnimationFrame( gs.controls._frameId );
 	},
 	_loop() {
-		var beat = wa.grids.currentTime();
-
-		( env.togglePlay
-			? ui.controls.mainTime
-			: ui.controls.patternTime )( beat );
+		ui.controls.currentTime( gs.controls._grid, wa.grids.currentTime() );
 		gs.controls._frameId = requestAnimationFrame( gs.controls._loop );
 	}
 };

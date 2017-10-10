@@ -15,8 +15,8 @@ gs.loadComposition = function( cmp ) {
 			ui.patterns.change( id, cmp.patterns[ id ] );
 			gs.updatePatternContent( id );
 		}
-		ui.controls.mainTime( 0 );
-		ui.controls.patternTime( 0 );
+		ui.controls.currentTime( "main", 0 );
+		ui.controls.currentTime( "pattern", 0 );
 		ui.controls.bpm( cmp.bpm );
 		ui.mainGrid.empty();
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
