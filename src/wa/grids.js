@@ -15,6 +15,13 @@ wa.grids = {
 			delete wa._scheduler;
 		}
 	},
+	replay( beat ) {
+		if ( gs.controls.status === "playing" ) {
+			beat = beat != null ? beat : wa.grids.currentTime();
+			wa.grids.stop();
+			wa.grids.play( gs.controls._grid, beat );
+		}
+	},
 	play( grid, offset ) {
 		var pat,
 			cmp = gs.currCmp,

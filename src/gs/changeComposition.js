@@ -44,4 +44,5 @@ gs.changeComposition = function( obj ) {
 	if ( obj.name != null || obj.bpm || Math.ceil( dur ) !== Math.ceil( currDur ) ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
+	wa.grids.replay();
 };

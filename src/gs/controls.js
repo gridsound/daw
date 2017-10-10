@@ -15,10 +15,7 @@ gs.controls = {
 		}
 		gs.controls.times[ grid ] = beat;
 		ui.controls.currentTime( grid, beat );
-		if ( gs.controls.status === "playing" ) {
-			wa.grids.stop();
-			wa.grids.play( grid, beat );
-		}
+		wa.grids.replay( beat );
 	},
 	play() {
 		if ( gs.controls.status !== "playing" ) {
@@ -47,17 +44,12 @@ gs.controls = {
 		}
 	},
 	focusOn( grid ) {
-		var wasPlaying = gs.controls.status === "playing";
-
-		if ( wasPlaying ) {
+		if ( gs.controls.status === "playing" ) {
 			gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
-			wa.grids.stop();
 		}
 		gs.controls._grid = grid;
 		ui.controls.focusOn( grid );
-		if ( wasPlaying ) {
-			wa.grids.play( grid, gs.controls.times[ grid ] );
-		}
+		wa.grids.replay( gs.controls.times[ grid ] );
 	},
 
 	// private:
