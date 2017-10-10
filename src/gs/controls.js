@@ -58,6 +58,10 @@ gs.controls = {
 		}
 		gs.controls._mainTime = beat;
 		ui.controls.mainTime( beat );
+		if ( gs.controls.status === "playing" ) {
+			wa.grids.stop();
+			wa.grids.playMain( beat );
+		}
 	},
 	patternTime( beat ) {
 		if ( beat == null ) {
@@ -65,6 +69,10 @@ gs.controls = {
 		}
 		gs.controls._patternTime = beat;
 		ui.controls.patternTime( beat );
+		if ( gs.controls.status === "playing" ) {
+			wa.grids.stop();
+			wa.grids.playPattern( beat, gs.currCmp.patternOpened );
+		}
 	},
 
 	// private:
