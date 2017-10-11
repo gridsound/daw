@@ -23,33 +23,51 @@ wa.grids = {
 		}
 	},
 	play( grid, offset ) {
-		var pat,
-			cmp = gs.currCmp,
-			ctx = wa.ctx,
+		var cmp = gs.currCmp,
 			synth = new gswaSynth(),
 			sched = new gswaScheduler();
 
 		wa._synth = synth;
 		wa._scheduler = sched;
-		synth.setContext( ctx );
-		synth.connect( ctx.destination );
+		sched.onstart = wa.grids._onstartBlock;
+		sched.onstop = wa.grids._onstopBlock;
+		sched.onended = wa.grids._onendedBlocks;
+		sched.setContext( wa.ctx );
+		synth.setContext( wa.ctx );
+		synth.connect( wa.ctx.destination );
 		synth.change( { oscillators: {
 			"osc1": { type: "sine", detune: 0 }
 		} } );
-		sched.setContext( ctx );
-		if ( grid === "main" ) {
-			sched.setData( wa.blocksToScheduleData() );
-		} else {
-			pat = cmp.patterns[ gs.currCmp.patternOpened ];
-			sched.setData( wa.keysToScheduleData( cmp.keys[ pat.keys ], 0, 0, pat.duration ) );
-		}
+		sched.setData( grid === "main"
+			? wa.blocksToScheduleData( cmp.blocks )
+			: wa.blocksToScheduleData( { "_": {
+				pattern: cmp.patternOpened,
+				when: 0,
+				offset: 0,
+				duration: cmp.patterns[ cmp.patternOpened ].duration
+			} } ) );
 		sched.setBPM( cmp.bpm );
-		sched.onstart = function( smp, when, offset, duration ) {
-			synth.start( smp.key, ctx.currentTime + when, offset, duration );
-		};
-		sched.onended = function( data ) {
-			gs.controls.stop();
-		};
 		sched.startBeat( 0, offset );
+	},
+
+	// private:
+	_onstartKey( smp, when, offset, dur ) {
+		wa._synth.start( smp.key, when, offset, dur );
+	},
+	_onstartBlock( smp, when, offset, dur ) {
+		var sched = new gswaScheduler();
+
+		smp.scheduler = sched;
+		sched.onstart = wa.grids._onstartKey;
+		sched.setContext( wa.ctx );
+		sched.setData( wa.keysToScheduleData( smp.keys ) );
+		sched.setBPM( gs.currCmp.bpm );
+		sched.start( when, offset, dur );
+	},
+	_onstopBlock( smp ) {
+		smp.scheduler.stop();
+	},
+	_onendedBlocks( data ) {
+		gs.controls.stop();
 	}
 };
