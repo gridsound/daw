@@ -3,7 +3,7 @@
 self.addEventListener( "install", function( e ) {
 	e.waitUntil( caches.open( "daw" ).then( function( cache ) {
 		return cache.addAll( [
-			"/daw/index-prod.html",
+			"/daw/index.html",
 			"/daw/assets/oswald-regular.ttf",
 			"/daw/assets/inconsolata-regular.ttf",
 			"/daw/assets/fontawesome-solid-900.woff"
