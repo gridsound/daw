@@ -4,6 +4,7 @@ ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
 		dom.patNew.onclick = gs.newPattern;
+		dom.patClone.onclick = ui.patterns._onclickClone;
 		dom.patRemove.onclick = ui.patterns._onclickRemove;
 		dom.patterns.oncontextmenu = ui.patterns._oncontextmenu;
 	},
@@ -108,6 +109,9 @@ ui.patterns = {
 			}
 		}
 		return false;
+	},
+	_onclickClone() {
+		gs.clonePattern( gs.currCmp.patternOpened );
 	},
 	_onclickRemove() {
 		var patId = gs.currCmp.patternOpened,

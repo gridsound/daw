@@ -36,6 +36,7 @@
 .ico-history:before { content: "\f1da"; }
 .ico-pattern:before { content: "\f386"; } /* f385 f386 */
 .ico-new:before { content: "\f067"; }
+.ico-clone:before { content: "\f24d"; }
 .ico-remove:before { content: "\f1f8"; } /* f1f8 f2ed */
 .ico-erase:before { content: "\f12d"; }
 .ico-toggle-off:before { content: "\f204"; }
