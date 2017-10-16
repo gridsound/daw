@@ -8,6 +8,7 @@ gs.exportCurrentCompositionToWAV = function() {
 	wa.grids.play( "main", 0 );
 	return wa.ctx.startRendering().then( function( buffer ) {
 		wa.toggleRender( false );
-		return gs._blobDL = URL.createObjectURL( new Blob( [ gswaEncodeWAV( buffer ) ] ) );
+		return gs._blobDL = URL.createObjectURL( new Blob( [
+			gswaEncodeWAV( buffer, { float32: true } ) ] ) );
 	} ).catch( console.error.bind( console ) );
 };
