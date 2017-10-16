@@ -36,9 +36,9 @@
 	</div>
 	<div data-panel="5" id="panelMain" class="panel-content">
 		<div id="controls">
-			<a id="togglePlay" class="ctrl-item" title=""></a>
-			<a id="play" class="ctrl-item ctrl-btn icon ico-play"></a>
-			<a id="stop" class="ctrl-item ctrl-btn icon ico-stop"></a>
+			<a tabindex="2" href id="togglePlay" aria-label="Switch grid focus" class="ctrl-item"></a>
+			<a tabindex="3" href id="play" aria-label="Play" class="ctrl-item ctrl-btn icon ico-play"></a>
+			<a tabindex="4" href id="stop" aria-label="Stop" class="ctrl-item ctrl-btn icon ico-stop"></a>
 			<div id="clock" class="ctrl-item">
 				<div id="clockMin"></div>
 				<div id="clockSec"></div>
@@ -48,8 +48,8 @@
 				<span id="bpmNumber"></span>
 				<span id="bpmText"></span>
 			</div>
-			<a id="settings" class="ctrl-item ctrl-btn"></a>
-			<a id="about" class="ctrl-item ctrl-btn icon ico-brand ico-gratipay" href="https://gratipay.com/gridsound/" target="_blank"></a>
+			<a tabindex="5" href id="settings" aria-label="Settings" class="ctrl-item ctrl-btn"></a>
+			<a tabindex="6" href="https://gratipay.com/gridsound/" id="donate" aria-label="Donate" target="_blank" rel="noopener" class="ctrl-item ctrl-btn icon ico-brand ico-gratipay"></a>
 		</div>
 		<div id="mainGridWrap"></div>
 	</div>

@@ -17,6 +17,7 @@ ui.settingsPopup = {
 		inp[ 4 ].value = gs.currCmp.beatsPerMeasure;
 		inp[ 5 ].value = gs.currCmp.stepsPerBeat;
 		dom.settingsPopupWrap.classList.remove( "hidden" );
+		return false;
 	},
 	hide() {
 		dom.settingsPopupWrap.classList.add( "hidden" );

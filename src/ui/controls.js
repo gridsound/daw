@@ -59,13 +59,16 @@ ui.controls = {
 	// events:
 	_onclickTogglePlay() {
 		gs.controls.focusOn( gs.controls._grid === "main" ? "pattern" : "main" );
+		return false;
 	},
 	_onclickPlay() {
 		gs.controls.status === "playing"
 			? gs.controls.pause()
 			: gs.controls.play();
+		return false;
 	},
 	_onclickStop() {
 		gs.controls.stop();
+		return false;
 	}
 };

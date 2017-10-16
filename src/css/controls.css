@@ -105,9 +105,9 @@
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }
 
-/* #about */
+/* #donate */
 /* -------------------------------------------------------------------------- */
-#about {
+#donate {
 	font-size: 24px;
 	margin-left: 1em;
 	border: 2px dashed;
