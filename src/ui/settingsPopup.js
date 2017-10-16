@@ -7,6 +7,9 @@ ui.settingsPopup = {
 		dom.settingsPopupForm.onsubmit = ui.settingsPopup._onsubmit;
 		dom.settingsPopup.onclick = function( e ) { e.stopPropagation(); };
 		ui.settingsPopup.inputs = dom.settingsPopupForm.querySelectorAll( "input" );
+		ui.settingsPopup.inputs[ 2 ].onkeydown = function( e ) {
+			e.key === "Escape" || e.stopPropagation();
+		};
 	},
 	show() {
 		var inp = ui.settingsPopup.inputs;
