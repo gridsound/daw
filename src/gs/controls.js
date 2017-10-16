@@ -41,15 +41,27 @@ gs.controls = {
 			ui.controls.stop();
 			gs.controls._loopOff();
 			gs.controls.currentTime( gs.controls._grid, 0 );
+			switch ( document.activeElement ) {
+				case ui.mainGridSamples.rootElement: gs.controls.focusOn( "main" ); break;
+				case ui.keysGridSamples.rootElement: gs.controls.focusOn( "pattern" ); break;
+			}
 		}
 	},
 	focusOn( grid ) {
-		if ( gs.controls.status === "playing" ) {
-			gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
+		if ( grid !== gs.controls._grid ) {
+			if ( gs.controls.status === "playing" ) {
+				gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
+			}
+			gs.controls._grid = grid;
+			ui.controls.focusOn( grid );
+			ui.controls.clock( gs.controls.currentTime( grid ) );
+			wa.grids.replay( gs.controls.times[ grid ] );
 		}
-		gs.controls._grid = grid;
-		ui.controls.focusOn( grid );
-		wa.grids.replay( gs.controls.times[ grid ] );
+	},
+	askFocusOn( grid ) {
+		if ( gs.controls.status !== "playing" && gs.controls._grid !== grid ) {
+			gs.controls.focusOn( grid );
+		}
 	},
 
 	// private:

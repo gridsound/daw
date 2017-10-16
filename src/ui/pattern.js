@@ -10,8 +10,9 @@ ui.pattern = {
 		ui.keysGridSamples = grid;
 		dom.keysGridWrap.append( grid.rootElement );
 		dom.patternName.onclick = ui.pattern._onclickPatternName;
-		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
 		grid.onchange = ui.pattern._onchangeGrid;
+		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
+		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
 		grid.uiKeys.onkeydown = ui.pattern._onkeydown;
 		grid.uiKeys.onkeyup = ui.pattern._onkeyup;
 		grid.resized();

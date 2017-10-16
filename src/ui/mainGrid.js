@@ -12,6 +12,7 @@ ui.mainGrid = {
 		grid.offset( 0, 40 );
 		grid.onchange = ui.mainGrid._onchangeGrid;
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "main" );
+		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "main" );
 		grid.fnSampleCreate = function( id, uiBlock ) {
 			var cmp = gs.currCmp,
 				pat = cmp.patterns[ uiBlock.data.pattern ];
