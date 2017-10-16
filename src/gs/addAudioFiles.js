@@ -1,7 +1,7 @@
 "use strict";
 
 gs.addAudioFiles = function( files ) {
-	lg( "addAudioFiles()", files );
+	console.log( "addAudioFiles(), files: ", files );
 	files.forEach( function( f ) {
 
 	} );
