@@ -5,12 +5,13 @@ ui.controls = {
 		dom.togglePlay.onclick = ui.controls._onclickTogglePlay;
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;
-		ui.controls.focusOn( "main" );
 	},
 	focusOn( grid ) {
 		dom.togglePlay.classList.toggle( "after", grid !== "main" );
 		dom.mainGridWrap.classList.toggle( "focus", grid === "main" );
 		dom.keysGridWrap.classList.toggle( "focus", grid === "pattern" );
+		( grid === "main" ? ui.mainGridSamples : ui.keysGridSamples )
+			.rootElement.focus();
 	},
 	play() {
 		dom.play.classList.add( "ico-pause" );
