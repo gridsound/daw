@@ -4,7 +4,7 @@ ui.pattern = {
 	init() {
 		var grid = new gsuiGridSamples();
 
-		grid.loadKeys( 3, 5 );
+		grid.loadKeys( 1, 7 );
 		grid.offset( 0, 120 );
 		grid.setFontSize( 20 );
 		ui.keysGridSamples = grid;
