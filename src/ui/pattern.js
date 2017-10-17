@@ -4,11 +4,12 @@ ui.pattern = {
 	init() {
 		var grid = new gsuiGridSamples();
 
+		ui.keysGridSamples = grid;
 		grid.loadKeys( 1, 7 );
 		grid.offset( 0, 120 );
 		grid.setFontSize( 20 );
-		ui.keysGridSamples = grid;
 		dom.keysGridWrap.append( grid.rootElement );
+		grid.contentY( 2 * 12 );
 		dom.patternName.onclick = ui.pattern._onclickPatternName;
 		grid.onchange = ui.pattern._onchangeGrid;
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
