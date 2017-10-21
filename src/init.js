@@ -6,7 +6,7 @@ window.wa = {};
 window.ui = {};
 window.dom = {};
 window.env = {
-	version: "0.7.2",
+	version: "0.8.0",
 	def_bpm: 120,
 	def_beatsPerMeasure: 4,
 	def_stepsPerBeat: 4,

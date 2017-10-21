@@ -7,6 +7,9 @@ gs.controls = {
 			main: 0,
 			pattern: 0
 		};
+		gs.controls.loopA = {};
+		gs.controls.loopB = {};
+		gs.controls.isLoop = false;
 		gs.controls._grid = "main";
 	},
 	currentTime( grid, beat ) {
@@ -16,6 +19,12 @@ gs.controls = {
 		gs.controls.times[ grid ] = beat;
 		ui.controls.currentTime( grid, beat );
 		wa.grids.replay( beat );
+	},
+	loop( grid, isLoop, loopA, loopB ) {
+		gs.controls.loopA[ grid ] = isLoop ? loopA : null;
+		gs.controls.loopB[ grid ] = isLoop ? loopB : null;
+		ui.controls.loop( grid, isLoop, loopA, loopB );
+		wa.grids.replay();
 	},
 	play() {
 		if ( gs.controls.status !== "playing" ) {

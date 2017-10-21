@@ -35,6 +35,13 @@ ui.controls = {
 			ui.keysGridSamples.currentTime( beat );
 		}
 	},
+	loop( grid, isLoop, loopA, loopB ) {
+		if ( grid === "main" ) {
+			ui.mainGridSamples.loop( isLoop && loopA, loopB );
+		} else {
+			ui.keysGridSamples.loop( isLoop && loopA, loopB );
+		}
+	},
 	switchClock() {
 		ui.controls.clock( ui.controls._beat );
 	},
