@@ -9,7 +9,6 @@ gs.controls = {
 		};
 		gs.controls.loopA = {};
 		gs.controls.loopB = {};
-		gs.controls.isLoop = false;
 		gs.controls._grid = "main";
 	},
 	currentTime( grid, beat ) {
@@ -44,12 +43,15 @@ gs.controls = {
 		}
 	},
 	stop() {
-		if ( gs.controls.status !== "stopped" ) {
+		if ( gs.controls.status === "stopped" ) {
+			gs.controls.currentTime( gs.controls._grid, 0 );
+		} else {
 			gs.controls.status = "stopped";
 			wa.grids.stop();
 			ui.controls.stop();
 			gs.controls._loopOff();
-			gs.controls.currentTime( gs.controls._grid, 0 );
+			gs.controls.currentTime( gs.controls._grid,
+				gs.controls.loopA[ gs.controls._grid ] || 0 );
 			switch ( document.activeElement ) {
 				case ui.mainGridSamples.rootElement: gs.controls.focusOn( "main" ); break;
 				case ui.keysGridSamples.rootElement: gs.controls.focusOn( "pattern" ); break;
