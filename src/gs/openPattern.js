@@ -6,6 +6,7 @@ gs.openPattern = function( id ) {
 
 	cmp.patternOpened = id;
 	gs.controls.focusOn( "pattern" );
+	wa.grids.replay();
 	ui.patterns.select( id );
 	ui.pattern.name( pat.name );
 	ui.pattern.load( cmp.keys[ pat.keys ] );
