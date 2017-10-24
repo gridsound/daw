@@ -21,7 +21,7 @@ ui.mainGrid = {
 			ui.mainGrid.blocks[ id ] = uiBlock;
 			uiBlock.name( pat.name );
 			uiBlock.updateData( ui.keysToRects( cmp.keys[ pat.keys ] ) );
-			uiBlock.rootElement.ondblclick = ui.patterns.open.bind( null, uiBlock.data.pattern );
+			uiBlock.rootElement.ondblclick = gs.openPattern.bind( null, uiBlock.data.pattern );
 		};
 		grid.fnSampleUpdate = function( id, uiBlock ) {
 			var cmp = gs.currCmp,

@@ -19,7 +19,7 @@ gs.loadNewComposition = function() {
 		keys: {}
 	} ).then(
 		function() {
-			ui.patterns.open( gs.newPattern( false ) );
+			gs.openPattern( gs.newPattern( false ) );
 		},
 		function() {
 			console.log( arguments );

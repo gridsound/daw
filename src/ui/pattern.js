@@ -27,7 +27,6 @@ ui.pattern = {
 		dom.patternName.textContent = name;
 	},
 	load( keys ) {
-		gs.controls.focusOn( "pattern" );
 		ui.keysGridSamples.empty();
 		ui.keysGridSamples.change( keys );
 		ui.keysGridSamples.scrollToSamples();

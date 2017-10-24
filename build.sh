@@ -95,6 +95,7 @@ declare -a JSfiles=(
 	"src/gs/saveCurrentComposition.js"
 	"src/gs/controls.js"
 	"src/gs/newPattern.js"
+	"src/gs/openPattern.js"
 	"src/gs/clonePattern.js"
 	"src/gs/removePattern.js"
 	"src/gs/namePattern.js"

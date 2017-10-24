@@ -25,7 +25,7 @@ gs.loadComposition = function( cmp ) {
 		ui.cmps.load( cmp.id );
 		ui.cmps.saved( !gs.isCompositionNeedSave() );
 		if ( cmp.patternOpened ) {
-			ui.patterns.open( cmp.patternOpened );
+			gs.openPattern( cmp.patternOpened );
 		}
 	} );
 };
