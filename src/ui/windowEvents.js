@@ -47,7 +47,7 @@ ui.windowEvents = function() {
 			audioFiles = files.filter( function( f ) {
 				var ext = f.name.substr( f.name.lastIndexOf( "." ) + 1 ).toLowerCase();
 
-				if ( ext === "gs" ) {
+				if ( ext === "gs" || ext === "txt" || ext === "json" ) {
 					gsFile = f;
 				}
 				return env.audioFileExt.indexOf( ext ) > -1;
