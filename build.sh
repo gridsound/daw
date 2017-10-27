@@ -84,6 +84,7 @@ declare -a JSfiles=(
 	"src/gs/loadNewComposition.js"
 	"src/gs/loadCompositionById.js"
 	"src/gs/loadCompositionByBlob.js"
+	"src/gs/loadCompositionByURL.js"
 	"src/gs/exportCompositionToJSON.js"
 	"src/gs/exportCurrentCompositionToWAV.js"
 	"src/gs/getMaxCompositionInnerId.js"
