@@ -68,19 +68,21 @@ ui.mainGrid = {
 	},
 	_ondrop( e ) {
 		var row = e.target,
-			patId = e.dataTransfer.getData( "text" ),
 			grid = ui.mainGridSamples,
+			patId = e.dataTransfer.getData( "text" ),
 			gridBCR = grid.rootElement.getBoundingClientRect(),
 			pageX = e.pageX - gridBCR.left - grid._panelWidth;
 
-		e.stopPropagation();
-		while ( !row.classList.contains( "gsui-row" ) ) {
-			row = row.parentNode;
+		if ( patId ) {
+			e.stopPropagation();
+			while ( !row.classList.contains( "gsui-row" ) ) {
+				row = row.parentNode;
+			}
+			gs.dropPattern(
+				e.dataTransfer.getData( "text" ),
+				row.dataset.track,
+				grid.uiTimeLine._round( pageX / grid._pxPerBeat + grid._timeOffset ) );
+			return false;
 		}
-		gs.dropPattern(
-			e.dataTransfer.getData( "text" ),
-			row.dataset.track,
-			grid.uiTimeLine._round( pageX / grid._pxPerBeat + grid._timeOffset ) );
-		return false;
 	}
 };
