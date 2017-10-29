@@ -25,3 +25,34 @@
 	left: 100%;
 	margin-left: 5px;
 }
+
+#panelCmps .panel-btn {
+	display: inline-flex;
+	box-sizing: border-box;
+	align-items: center;
+	padding: 0 6px;
+	border: 1px solid rgba( 255, 255, 153, .2 );
+	border-radius: 8px;
+	font-size: 11px;
+	color: #ff9;
+	height: 24px;
+	transition: .5s;
+	transition-property: background-color;
+}
+
+#panelCmps .panel-btn::before {
+	margin-right: 4px;
+	font-family: "FontAwesome";
+}
+
+#panelCmps .panel-btn:hover {
+	color: #505050;
+	background-color: #ff9;
+}
+
+#panelCmps #newComposition {
+	border-style: dashed;
+}
+
+#newComposition::before { content: "\f067"; }
+#openComposition::before { content: "\f019"; }

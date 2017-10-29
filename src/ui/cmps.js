@@ -2,6 +2,7 @@
 
 ui.cmps = {
 	init() {
+		dom.newComposition.onclick = gs.loadNewComposition;
 		dom.cmpMenu.onclick = ui.cmps._clickMenu;
 		ui.cmps._exportTextWAV = dom.exportCompositionWAV.textContent;
 	},
