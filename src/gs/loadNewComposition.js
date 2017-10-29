@@ -6,7 +6,7 @@ gs.loadNewComposition = function() {
 	for ( ; i < env.def_nbTracks; ++i ) {
 		trks[ common.smallId() ] = { order: i, toggle: true, name: "" };
 	}
-	return gs.loadComposition( {
+	gs.loadComposition( {
 		id: common.uuid(),
 		bpm: env.def_bpm,
 		stepsPerBeat: env.def_stepsPerBeat,
@@ -21,7 +21,7 @@ gs.loadNewComposition = function() {
 		function() {
 			gs.openPattern( gs.newPattern( false ) );
 		},
-		function() {
-			console.log( arguments );
-		} );
+		console.log.bind( console )
+	);
+	return false;
 };
