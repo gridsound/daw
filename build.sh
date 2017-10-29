@@ -1,6 +1,7 @@
 #!/bin/bash
 
 declare -a CSSfiles=(
+	"../gs-ui-components/gsuiPopup/gsuiPopup.css"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css"
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.css"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css"
@@ -30,6 +31,7 @@ declare -a CSSfiles=(
 declare -a HTMLfiles=(
 	"src/html/appContent.html"
 	"src/html/appCmp.html"
+	"../gs-ui-components/gsuiPopup/gsuiPopup.html"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
 	"../gs-ui-components/gsuiTimeLine/gsuiTimeLine.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
@@ -47,6 +49,7 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
+	"../gs-ui-components/gsuiPopup/gsuiPopup.js"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.js"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.js"
