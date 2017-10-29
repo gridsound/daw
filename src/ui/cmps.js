@@ -31,8 +31,12 @@ ui.cmps = {
 		dom.cmps.append( root );
 	},
 	remove( id ) {
-		ui.cmps._html[ id ].root.remove();
-		delete ui.cmps._html[ id ];
+		var cmps = ui.cmps._html;
+
+		if ( cmps[ id ] ) {
+			cmps[ id ].root.remove();
+			delete cmps[ id ];
+		}
 	},
 	update( id, cmp ) {
 		var html = ui.cmps._html[ id ];
@@ -90,7 +94,12 @@ ui.cmps = {
 
 		e.stopPropagation();
 		if ( a.id === "deleteComposition" ) {
-			gs.deleteComposition( id );
+			cmp = cmpLoaded ? cmp : gs.localStorage.get( id );
+			gsuiPopup.confirm( "Warning",
+				`Are you sure you want to delete "${ cmp.name }" ? (no undo possible)`
+			).then( function( b ) {
+				b && gs.deleteComposition( id );
+			} );
 		} else if ( a.id === "exportCompositionJSON" || a.id === "exportCompositionWAV" ) {
 			cmp = cmpLoaded ? cmp : gs.localStorage.get( id );
 			name = cmp.name || "untitled";
@@ -110,7 +119,7 @@ ui.cmps = {
 					} );
 				}
 			} else {
-				alert( `You have to open "${ name }" before exporting it in WAV.` );
+				gsuiPopup.alert( "Error", `You have to open "${ name }" before exporting it in WAV.` );
 			}
 		}
 		if ( closeMenu ) {

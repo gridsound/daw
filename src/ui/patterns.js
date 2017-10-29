@@ -112,7 +112,7 @@ ui.patterns = {
 		if ( patRoot.nextSibling || patRoot.previousSibling ) {
 			gs.removePattern( patId );
 		} else {
-			alert( "You can not delete the only pattern" );
+			gsuiPopup.alert( "Error", "You can not delete the only pattern" );
 		}
 	},
 	_onclickPattern( id, e ) {
