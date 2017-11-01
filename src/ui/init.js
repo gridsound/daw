@@ -42,7 +42,9 @@ ui.init = function() {
 	} );
 
 	// Append the settings popup to the app:
-	elApp.append( tmpImported.querySelector( "#settingsPopupContent" ) );
+	elApp.append(
+		tmpImported.querySelector( "#settingsPopupContent" ),
+		tmpImported.querySelector( "#openPopupContent" ) );
 
 	// Fill the window.dom object with each [id] elements:
 	document.querySelectorAll( "[id]" ).forEach( function( el ) {
@@ -58,6 +60,7 @@ ui.init = function() {
 	ui.patterns.init();
 	ui.pattern.init();
 	ui.mainGrid.init();
+	ui.openPopup.init();
 	ui.settingsPopup.init();
 	ui.windowEvents();
 };

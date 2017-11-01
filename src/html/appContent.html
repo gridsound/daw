@@ -6,7 +6,7 @@
 		</div>
 		<div class="panel-menu">
 			<a href id="newComposition" class="panel-btn" title="Create a new composition">New</a
-			><!--<a href id="openComposition" class="panel-btn" title="Open a new composition">Open</a>-->
+			><a href id="openComposition" class="panel-btn" title="Open a composition">Open</a>
 		</div>
 		<div id="cmps" class="panel-body"></div>
 		<div id="cmpMenu" class="absoluteMenu hidden">
@@ -63,7 +63,23 @@
 		</div>
 		<div id="keysGridWrap"></div>
 	</div>
-	<div id="settingsPopupContent">
+	<div class="popup" id="openPopupContent">
+		<fieldset>
+			<legend>Open and load a new composition</legend>
+			<div class="param">
+				<div class="param-title">With an URL</div>
+				<div class="param-values"><input type="url" placeholder="http://"/></div>
+			</div>
+			<div class="param">
+				<div class="param-title">
+					With a local file<br/>
+					<small>(Please notice that you can also drop a file into the app)</small>
+				</div>
+				<div class="param-values"><input type="file"/></div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="popup" id="settingsPopupContent">
 		<fieldset>
 			<legend>GridSound's DAW settings</legend>
 			<div class="param">

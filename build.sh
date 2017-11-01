@@ -15,6 +15,7 @@ declare -a CSSfiles=(
 	"src/css/fonts.css"
 	"src/css/icon.css"
 	"src/css/app.css"
+	"src/css/popup.css"
 	"src/css/absoluteMenu.css"
 	"src/css/panelLeft.css"
 	"src/css/panelCmps.css"
@@ -25,7 +26,6 @@ declare -a CSSfiles=(
 	"src/css/panelRight.css"
 	"src/css/controls.css"
 	"src/css/patternMenu.css"
-	"src/css/settingsPopup.css"
 )
 
 declare -a HTMLfiles=(
@@ -123,6 +123,7 @@ declare -a JSfiles=(
 	"src/ui/cmps.js"
 	"src/ui/patterns.js"
 	"src/ui/pattern.js"
+	"src/ui/openPopup.js"
 	"src/ui/settingsPopup.js"
 
 	"src/run.js"

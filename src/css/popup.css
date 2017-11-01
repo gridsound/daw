@@ -1,55 +1,61 @@
-#settingsPopupContent {
+.popup {
 	width: 500px;
 }
 
-#settingsPopupContent fieldset {
+.popup fieldset {
 	border: 2px solid #444;
 	border-radius: 4px;
 	margin-bottom: 10px;
 }
 
-#settingsPopupContent legend {
+.popup legend {
 	font-size: 11px;
 	font-weight: bold;
 	opacity: .5;
 }
 
-#settingsPopupContent .param {
+.popup .param {
 	display: flex;
 	align-items: center;
 }
 
-#settingsPopupContent .param + .param {
+.popup .param + .param {
 	margin-top: 5px;
 }
 
-#settingsPopupContent .param-title {
+.popup .param-title {
 	flex: 1;
 }
 
-#settingsPopupContent .param-values {
+.popup .param-values {
 	flex: 1;
 	font-family: var( --monospace );
 }
 
-#settingsPopupContent [type="radio"]:checked + label {
+.popup [type="radio"]:checked + label {
 	font-weight: bold;
 }
 
-#settingsPopupContent input {
+.popup input {
 	border-radius: 2px;
 	border: 0;
 	color: inherit;
 }
-#settingsPopupContent input::placeholder {
+.popup input::placeholder {
 	color: #aaa;
 	font-style: italic;
 }
 
-#settingsPopupContent input[type="number"],
-#settingsPopupContent input[type="text"] {
+.popup input[type="number"],
+.popup input[type="text"],
+.popup input[type="url"],
+.popup input[type="file"] {
 	width: 150px;
 	padding: .2em .5em;
 	font-family: inherit;
 	background: rgba( 255, 255, 255, .1 );
+}
+
+.popup input[type="file"] {
+	width: 200px;
 }
