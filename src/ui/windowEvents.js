@@ -12,26 +12,31 @@ ui.windowEvents = function() {
 	};
 
 	window.onkeydown = function( e ) {
-		switch ( e.code ) {
-			case "KeyS":
-				if ( e.ctrlKey ) {
-					gs.saveCurrentComposition();
-				}
-				break;
-			case "KeyZ":
-				if ( e.ctrlKey ) {
-					e.shiftKey ? gs.redo() : gs.undo();
-				}
-				break;
-			case "Space":
-				gs.controls.status === "playing"
-					? gs.controls.stop()
-					: gs.controls.play();
-				break;
-			default:
-				return;
+		var prevent = true;
+
+		if ( e.ctrlKey ) {
+			switch ( e.code ) {
+				case "KeyO": ui.openPopup.show(); break;
+				case "KeyS": gs.saveCurrentComposition(); break;
+				case "KeyZ": e.shiftKey ? gs.redo() : gs.undo(); break;
+				default: prevent = false;
 			}
-		e.preventDefault();
+		} else if ( e.altKey ) {
+			switch ( e.code ) {
+				case "KeyN": gs.loadNewComposition(); break;
+				default: prevent = false;
+			}
+		} else {
+			switch ( e.code ) {
+				case "Space":
+					gs.controls.status === "playing"
+						? gs.controls.stop()
+						: gs.controls.play();
+					break;
+				default: prevent = false;
+			}
+		}
+		prevent && e.preventDefault();
 	};
 
 	document.body.onclick = function( e ) {
