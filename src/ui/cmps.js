@@ -112,11 +112,11 @@ ui.cmps = {
 				if ( !ui.cmps._wavReady ) {
 					ui.cmps._wavReady = 1;
 					a.download = name + ".wav";
-					a.textContent += "...";
+					a.textContent += " (please wait...)";
 					gs.exportCurrentCompositionToWAV().then( function( url ) {
 						ui.cmps._wavReady = 2;
 						a.href = url;
-						a.textContent = ui.cmps._exportTextWAV + " (ready)";
+						a.textContent = ui.cmps._exportTextWAV + " (re-click to download)";
 					} );
 				}
 			} else {
