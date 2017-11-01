@@ -42,7 +42,7 @@ ui.init = function() {
 	} );
 
 	// Append the settings popup to the app:
-	elApp.append( tmpImported.querySelector( "#settingsPopupWrap" ) );
+	elApp.append( tmpImported.querySelector( "#settingsPopupContent" ) );
 
 	// Fill the window.dom object with each [id] elements:
 	document.querySelectorAll( "[id]" ).forEach( function( el ) {

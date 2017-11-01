@@ -1,96 +1,55 @@
-#settingsPopupWrap {
-	position: absolute;
-	z-index: 5;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	color: #ddd;
-	background-color: rgba( 0, 0, 0, .6 );
-	transition: .5s;
-	transition-property: opacity, visibility;
-}
-#settingsPopupWrap.hidden {
-	opacity: 0;
-	visibility: hidden;
+#settingsPopupContent {
+	width: 500px;
 }
 
-#settingsPopup {
-	width: 600px;
-	overflow: hidden;
-	border-radius: 4px;
-	background-color: #555;
-	box-shadow: 0 0 50px #000;
-}
-
-#settingsPopup header,
-#settingsPopup form {
-	padding: 10px;
-}
-
-#settingsPopup header {
-	background: #333;
-}
-
-#settingsPopup fieldset {
+#settingsPopupContent fieldset {
 	border: 2px solid #444;
 	border-radius: 4px;
 	margin-bottom: 10px;
 }
 
-#settingsPopup legend {
+#settingsPopupContent legend {
 	font-size: 11px;
 	font-weight: bold;
 	opacity: .5;
 }
 
-#settingsPopup .param {
+#settingsPopupContent .param {
 	display: flex;
 	align-items: center;
 }
 
-#settingsPopup .param + .param {
+#settingsPopupContent .param + .param {
 	margin-top: 5px;
 }
 
-#settingsPopup .param-title {
+#settingsPopupContent .param-title {
 	flex: 1;
 }
 
-#settingsPopup .param-values {
+#settingsPopupContent .param-values {
 	flex: 1;
 	font-family: var( --monospace );
 }
 
-#settingsPopup [type="radio"]:checked + label {
+#settingsPopupContent [type="radio"]:checked + label {
 	font-weight: bold;
 }
 
-#settingsPopup input {
+#settingsPopupContent input {
 	border-radius: 2px;
 	border: 0;
 	color: inherit;
 }
+#settingsPopupContent input::placeholder {
+	color: #aaa;
+	font-style: italic;
+}
 
-#settingsPopup input[type="number"],
-#settingsPopup input[type="text"] {
+#settingsPopupContent input[type="number"],
+#settingsPopupContent input[type="text"] {
 	width: 150px;
 	padding: .2em .5em;
 	font-family: inherit;
 	background: rgba( 255, 255, 255, .1 );
-}
-
-#settingsPopup .submit-wrap {
-	text-align: center;
-}
-
-#settingsPopup input[type="submit"] {
-	padding: .5em 1em;
-	font-size: 14px;
-	font-weight: bold;
-	color: #fff;
-	background-color: var( --col1-middle );
 }

@@ -3,27 +3,19 @@
 ui.settingsPopup = {
 	init() {
 		dom.settings.onclick = ui.settingsPopup.show;
-		dom.settingsPopupWrap.onclick = ui.settingsPopup.hide;
-		dom.settingsPopupForm.onsubmit = ui.settingsPopup._onsubmit;
-		dom.settingsPopup.onclick = function( e ) { e.stopPropagation(); };
-		ui.settingsPopup.inputs = dom.settingsPopupForm.querySelectorAll( "input" );
-		ui.settingsPopup.inputs[ 2 ].onkeydown = function( e ) {
-			e.key === "Escape" || e.stopPropagation();
-		};
+		ui.settingsPopup.inputs = dom.settingsPopupContent.querySelectorAll( "input" );
 	},
 	show() {
-		var inp = ui.settingsPopup.inputs;
+		var cmp = gs.currCmp,
+			inp = ui.settingsPopup.inputs;
 
 		inp[ +env.clockSteps ].checked = true;
-		inp[ 2 ].value = gs.currCmp.name;
-		inp[ 3 ].value = gs.currCmp.bpm;
-		inp[ 4 ].value = gs.currCmp.beatsPerMeasure;
-		inp[ 5 ].value = gs.currCmp.stepsPerBeat;
-		dom.settingsPopupWrap.classList.remove( "hidden" );
+		inp[ 2 ].value = cmp.name;
+		inp[ 3 ].value = cmp.bpm;
+		inp[ 4 ].value = cmp.beatsPerMeasure;
+		inp[ 5 ].value = cmp.stepsPerBeat;
+		gsuiPopup.custom( "Settings", dom.settingsPopupContent, ui.settingsPopup._onsubmit );
 		return false;
-	},
-	hide() {
-		dom.settingsPopupWrap.classList.add( "hidden" );
 	},
 
 	// private:
@@ -41,7 +33,5 @@ ui.settingsPopup = {
 		( x = +inp[ 5 ].value ) !== cmp.stepsPerBeat && ( cmpChange.stepsPerBeat = x );
 		for ( x in dawChange ) { gs.changeSettings( dawChange ); break; }
 		for ( x in cmpChange ) { gs.pushCompositionChange( cmpChange ); break; }
-		ui.settingsPopup.hide();
-		return false;
 	}
 };

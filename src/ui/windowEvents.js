@@ -28,9 +28,6 @@ ui.windowEvents = function() {
 					? gs.controls.stop()
 					: gs.controls.play();
 				break;
-			case "Escape":
-				ui.settingsPopup.hide();
-				break;
 			default:
 				return;
 			}
