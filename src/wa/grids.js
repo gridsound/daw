@@ -34,7 +34,7 @@ wa.grids = {
 		sched.onended = wa.grids._onendedBlocks;
 		sched.setContext( wa.ctx );
 		synth.setContext( wa.ctx );
-		synth.connect( wa.ctx.destination );
+		synth.connect( wa.destination.get() );
 		synth.change( { oscillators: {
 			"osc1": { type: "sine", detune: 0 }
 		} } );
