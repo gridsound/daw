@@ -2,9 +2,24 @@
 
 ui.controls = {
 	init() {
+		var slider = new gsuiSlider();
+
 		dom.togglePlay.onclick = ui.controls._onclickTogglePlay;
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;
+
+		slider.linear( "y" );
+		slider.resize( 4, 35 );
+		slider.oninput = v => wa.destination.gain( v * v );
+		slider.options( {
+			min: 0,
+			max: 1.5,
+			step: .01,
+			scrollStep: .1,
+			value: 1,
+			startFrom: 0,
+		} );
+		dom.appGainWrap.append( slider.rootElement );
 	},
 	focusOn( grid ) {
 		dom.togglePlay.classList.toggle( "after", grid !== "main" );

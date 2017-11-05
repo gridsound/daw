@@ -16,9 +16,24 @@
 }
 
 #title:before {
+	display: block;
+	margin-top: 3px;
 	content: "GridSound";
 	font-family: "Oswald";
 	font-size: 28px;
+}
+
+#appGainWrap {
+	align-self: flex-end;
+	margin: 0 0 4px auto;
+}
+#appGainWrap .gsuiSlider {
+	width: 100%;
+	height: 100%;
+	--color: #ff9;
+}
+#appGainWrap .gsuiSlider .gsui-thumb {
+	display: none;
 }
 
 #cmpMenu {

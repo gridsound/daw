@@ -1,12 +1,13 @@
 #!/bin/bash
 
 declare -a CSSfiles=(
-	"../gs-ui-components/gsuiPopup/gsuiPopup.css"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css"
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.css"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.css"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.css"
+	"../gs-ui-components/gsuiPopup/gsuiPopup.css"
+	"../gs-ui-components/gsuiSlider/gsuiSlider.css"
 	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.css"
 	"../gs-ui-components/gsuiTimeLine/gsuiTimeLine.css"
 	"../gs-ui-components/gsuiToggle/gsuiToggle.css"
@@ -31,15 +32,16 @@ declare -a CSSfiles=(
 declare -a HTMLfiles=(
 	"src/html/appContent.html"
 	"src/html/appCmp.html"
-	"../gs-ui-components/gsuiPopup/gsuiPopup.html"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
-	"../gs-ui-components/gsuiTimeLine/gsuiTimeLine.html"
-	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
-	"../gs-ui-components/gsuiTrackList/gsuiTrackList.html"
-	"../gs-ui-components/gsuiTrack/gsuiTrack.html"
-	"../gs-ui-components/gsuiToggle/gsuiToggle.html"
-	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.html"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
+	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
+	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
+	"../gs-ui-components/gsuiPopup/gsuiPopup.html"
+	"../gs-ui-components/gsuiSlider/gsuiSlider.html"
+	"../gs-ui-components/gsuiTimeLine/gsuiTimeLine.html"
+	"../gs-ui-components/gsuiToggle/gsuiToggle.html"
+	"../gs-ui-components/gsuiTrack/gsuiTrack.html"
+	"../gs-ui-components/gsuiTrackList/gsuiTrackList.html"
+	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.html"
 )
 
 declare -a JSfilesProd=(
@@ -49,16 +51,17 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
-	"../gs-ui-components/gsuiPopup/gsuiPopup.js"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.js"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.js"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-blocks.js"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-selection.js"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-deletion.js"
+	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-selection.js"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.js"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.js"
+	"../gs-ui-components/gsuiPopup/gsuiPopup.js"
 	"../gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js"
+	"../gs-ui-components/gsuiSlider/gsuiSlider.js"
 	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.js"
 	"../gs-ui-components/gsuiTimeLine/gsuiTimeLine.js"
 	"../gs-ui-components/gsuiToggle/gsuiToggle.js"
