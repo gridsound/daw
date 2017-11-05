@@ -51,9 +51,9 @@
 .ico-opera:before { content: "\f26a"; }
 .ico-safari:before { content: "\f267"; }
 
+/* .ico-gratipay:before { content: "\f184"; } RIP */
 .ico-facebook:before { content: "\f09a"; }
 .ico-github:before { content: "\f09b"; } /* f113 */
-.ico-gratipay:before { content: "\f184"; }
 .ico-twitter:before { content: "\f099"; }
 .ico-youtube:before { content: "\f167"; }
 
