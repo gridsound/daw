@@ -30,7 +30,8 @@
 #appGainWrap .gsuiSlider {
 	width: 100%;
 	height: 100%;
-	--color: #ff9;
+	--line: #ff9;
+	--line-bg: #222;
 }
 #appGainWrap .gsuiSlider .gsui-thumb {
 	display: none;
