@@ -52,6 +52,7 @@
 .ico-safari:before { content: "\f267"; }
 
 /* .ico-gratipay:before { content: "\f184"; } RIP */
+.ico-patreon:before { content: "\f3d9"; }
 .ico-facebook:before { content: "\f09a"; }
 .ico-github:before { content: "\f09b"; } /* f113 */
 .ico-twitter:before { content: "\f099"; }

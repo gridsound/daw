@@ -105,11 +105,11 @@
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }
 
-/* #donate */
+/* #patreon */
 /* -------------------------------------------------------------------------- */
-#donate {
-	font-size: 24px;
-	margin-left: 1em;
-	border: 2px dashed;
-	color: #e78;
+#patreon {
+	border: 2px solid #f6685275;
+	color: #f66852;
+	font-size: 20px;
+	margin-left: 39px;
 }
