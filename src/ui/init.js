@@ -11,6 +11,15 @@ ui.init = function() {
 		div.append.apply( div, pan.children );
 	} );
 
+<<<<<<< HEAD
+=======
+	// Append the settings popup to the app:
+	elApp.append(
+		tmpImported.querySelector( "#settingsPopupContent" ),
+		tmpImported.querySelector( "#shortcutsPopupContent" ),
+		tmpImported.querySelector( "#openPopupContent" ) );
+
+>>>>>>> ShortcutsPopup : add some keyboard shortcut in popup helper
 	// Fill the window.dom object with each [id] elements:
 	document.querySelectorAll( "[id]" ).forEach( function( el ) {
 		dom[ el.id ] = el;
@@ -32,6 +41,7 @@ ui.init = function() {
 	ui.pattern.init();
 	ui.openPopup.init();
 	ui.settingsPopup.init();
+	ui.shortcutsPopup.init();
 	ui.windowEvents();
 
 	window.onresize();

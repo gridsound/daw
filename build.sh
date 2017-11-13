@@ -27,6 +27,11 @@ declare -a CSSfiles=(
 	"src/css/cmp.css"
 	"src/css/version.css"
 	"src/css/controls.css"
+<<<<<<< HEAD
+=======
+	"src/css/patternMenu.css"
+	"src/css/shortcuts.css"
+>>>>>>> ShortcutsPopup : add some keyboard shortcut in popup helper
 )
 
 declare -a HTMLfiles=(
@@ -135,6 +140,7 @@ declare -a JSfiles=(
 	"src/ui/pattern.js"
 	"src/ui/openPopup.js"
 	"src/ui/settingsPopup.js"
+	"src/ui/shortcutsPopup.js"
 
 	"src/run.js"
 )
