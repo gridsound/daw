@@ -110,6 +110,7 @@
 #shortcuts {
 	border: 0;
 	font-size: 21px;
+	margin-left: auto;
 	background-color: rgba( 255, 255, 255, .1 );
 }
 
@@ -119,5 +120,4 @@
 	border: 2px solid #f6685275;
 	color: #f66852;
 	font-size: 20px;
-	margin-left: 39px;
 }
