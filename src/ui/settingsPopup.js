@@ -2,6 +2,7 @@
 
 ui.settingsPopup = {
 	init() {
+		dom.settingsPopupContent.remove();
 		dom.settings.onclick = ui.settingsPopup.show;
 		ui.settingsPopup.inputs = dom.settingsPopupContent.querySelectorAll( "input" );
 	},

@@ -1,0 +1,19 @@
+<div data-panel="pan-cmps">
+	<div class="panel-title">
+		<div id="title"></div>
+		<a tabindex="1" id="version" aria-label="Read the changelog"
+			href="https://github.com/gridsound/daw/wiki/changelog" target="_blank" rel="noopener"
+			title="Click to see the changelog"></a>
+		<div id="appGainWrap" title="Main app volume (this parameter will not affect the rendering)"></div>
+	</div>
+	<div class="panel-menu">
+		<a href id="newComposition" class="panel-btn" title="Create a new composition (Alt + N)">New</a
+		><a href id="openComposition" class="panel-btn" title="Open a composition (Ctrl + O)">Open</a>
+	</div>
+	<div id="cmps" class="panel-body"></div>
+	<div id="cmpMenu" class="absoluteMenu hidden">
+		<a href id="exportCompositionJSON">Export to JSON</a>
+		<a href id="exportCompositionWAV">Export to WAV</a>
+		<a href id="deleteComposition">Delete</a>
+	</div>
+</div>

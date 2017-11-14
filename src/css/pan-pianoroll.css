@@ -1,4 +1,4 @@
-#patternMenu {
+#pianorollMenu {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -8,7 +8,7 @@
 	border-bottom: 1px solid #111;
 	background-color: #444;
 }
-#patternMenu:before {
+#pianorollMenu:before {
 	content: "Pattern :";
 	font-style: italic;
 	font-weight: bold;
@@ -17,7 +17,7 @@
 	opacity: .35;
 }
 
-#patternName {
+#pianorollName {
 	margin-left: .75em;
 	padding: 4px 8px;
 	border-radius: 4px;
@@ -26,11 +26,11 @@
 	background-color: var( --col1-middle );
 	transition: filter .2s;
 }
-#patternName:empty:before {
+#pianorollName:empty:before {
 	content: "Untitled";
 	font-style: italic;
 }
-#patternName:hover {
+#pianorollName:hover {
 	color: #fff;
 	filter: brightness( 1.1 );
 }

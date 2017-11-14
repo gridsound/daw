@@ -1,28 +1,13 @@
-#panelsLeftWrap {
-	min-width: 200px;
+#pan-leftside {
+	min-width: 250px;
 	max-width: 400px;
 	width: 300px;
+	flex: none;
 }
 
-#panelsLeft .gsui-panel {
-	min-height: 30px;
-	height: 0;
-}
-
-#panelsLeft .gsui-panel:first-child {
-	min-height: 115px;
-	height: 200px;
-}
-
-#panelsLeft .gsui-panel:last-child {
-	height: calc( 100% - 150px );
-}
-
-.panel-content {
+.panel-left {
 	display: flex;
 	flex-direction: column;
-	box-sizing: border-box;
-	height: 100%;
 }
 
 .panel-title,

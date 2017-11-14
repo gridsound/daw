@@ -10,7 +10,7 @@ ui.pattern = {
 		grid.setFontSize( 20 );
 		dom.keysGridWrap.append( grid.rootElement );
 		grid.contentY( 2 * 12 );
-		dom.patternName.onclick = ui.pattern._onclickPatternName;
+		dom.pianorollName.onclick = ui.pattern._onclickName;
 		grid.onchange = ui.pattern._onchangeGrid;
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
 		grid.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
@@ -24,7 +24,7 @@ ui.pattern = {
 		ui.keysGridSamples.empty();
 	},
 	name( name ) {
-		dom.patternName.textContent = name;
+		dom.pianorollName.textContent = name;
 	},
 	load( keys ) {
 		ui.keysGridSamples.empty();
@@ -44,7 +44,7 @@ ui.pattern = {
 			[ gs.currCmp.patterns[ gs.currCmp.patternOpened ].keys ]: obj
 		} } );
 	},
-	_onclickPatternName() {
+	_onclickName() {
 		var patId = gs.currCmp.patternOpened,
 			pat = gs.currCmp.patterns[ patId ],
 			n = prompt( "Name pattern :", pat.name );

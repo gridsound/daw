@@ -1,3 +1,9 @@
+#pan-history {
+	min-height: 57px;
+	height: 65px;
+	flex: none;
+}
+
 .action {
 	display: flex;
 	box-sizing: border-box;

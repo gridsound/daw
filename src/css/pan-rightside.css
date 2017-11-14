@@ -1,0 +1,32 @@
+#pan-maingrid,
+#pan-pianoroll {
+	display: flex;
+	flex-direction: column;
+}
+
+#pan-maingrid {
+	min-height: 150px;
+	height: 215px;
+	flex: none;
+}
+
+#mainGridWrap,
+#keysGridWrap {
+	flex: 1;
+}
+
+#mainGridWrap .gsuiTrack-row > div {
+	top: -1px;
+}
+
+.gsuiGridSamples {
+	background-color: #2f2f2f;
+}
+
+.gsuiBeatLines {
+	filter: brightness( .9 );
+	transition: filter .2s;
+}
+.focus .gsuiBeatLines {
+	filter: brightness( 1.1 );
+}

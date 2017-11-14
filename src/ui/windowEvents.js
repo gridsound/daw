@@ -2,7 +2,7 @@
 
 ui.windowEvents = function() {
 	window.onresize = function() {
-		ui.panelsMain.resized();
+		dom[ "pan-rightside" ].onresizing();
 	};
 
 	window.onbeforeunload = function() {

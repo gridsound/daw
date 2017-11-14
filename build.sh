@@ -18,20 +18,26 @@ declare -a CSSfiles=(
 	"src/css/app.css"
 	"src/css/popup.css"
 	"src/css/absoluteMenu.css"
-	"src/css/panelLeft.css"
-	"src/css/panelCmps.css"
+	"src/css/pan-leftside.css"
+	"src/css/pan-rightside.css"
+	"src/css/pan-cmps.css"
+	"src/css/pan-history.css"
+	"src/css/pan-patterns.css"
+	"src/css/pan-pianoroll.css"
 	"src/css/cmp.css"
 	"src/css/version.css"
-	"src/css/action.css"
-	"src/css/panelPatterns.css"
-	"src/css/panelRight.css"
 	"src/css/controls.css"
-	"src/css/patternMenu.css"
 )
 
 declare -a HTMLfiles=(
-	"src/html/appContent.html"
-	"src/html/appCmp.html"
+	"src/html/_panels.html"
+	"src/html/pan-cmps.html"
+	"src/html/pan-history.html"
+	"src/html/pan-patterns.html"
+	"src/html/pan-maingrid.html"
+	"src/html/pan-pianoroll.html"
+	"src/html/popup-open.html"
+	"src/html/popup-settings.html"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
@@ -156,8 +162,7 @@ HTMLheader() {
 HTMLbody() {
 	echo -en \
 "</head><body>\
-<noscript>GridSound needs JavaScript to run</noscript>\
-<div id='app'></div>" >> $filename
+<noscript>GridSound needs JavaScript to run</noscript>" >> $filename
 	for i in "${HTMLfiles[@]}"
 	do
 		cat $i | tr -d '\t\n\r' >> $filename

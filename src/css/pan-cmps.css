@@ -1,9 +1,11 @@
-#panelCmps {
+#pan-cmps {
+	min-height: 114px;
+	height: 200px;
+	flex: none;	
 	position: relative;
-	background-color: #444;
 }
 
-#panelCmps .panel-title {
+#pan-cmps .panel-title {
 	display: flex;
 	align-items: baseline;
 	height: var( --ctrl-height );
@@ -12,7 +14,7 @@
 	color: #fff;
 	font-weight: normal;
 	cursor: default;
-	background: none;
+	background-color: #444;
 }
 
 #title:before {
@@ -42,7 +44,7 @@
 	margin-left: 5px;
 }
 
-#panelCmps .panel-btn {
+#pan-cmps .panel-btn {
 	display: inline-flex;
 	box-sizing: border-box;
 	align-items: center;
@@ -56,17 +58,17 @@
 	transition-property: background-color;
 }
 
-#panelCmps .panel-btn::before {
+#pan-cmps .panel-btn::before {
 	margin-right: 4px;
 	font-family: "FontAwesome";
 }
 
-#panelCmps .panel-btn:hover {
+#pan-cmps .panel-btn:hover {
 	color: #505050;
 	background-color: #ff9;
 }
 
-#panelCmps #newComposition {
+#pan-cmps #newComposition {
 	border-style: dashed;
 }
 

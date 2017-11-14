@@ -15,7 +15,7 @@ a {
 }
 
 #app {
-	--gsuiPanels-bdSize: 2px;
+	--gsuiPanels-bd: 2px solid #222;
 	--gsuiPanels-extendSize: 4px;
 	--small-bd-radius: 2px;
 	--ctrl-height: 44px;

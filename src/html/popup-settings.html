@@ -1,0 +1,31 @@
+<div class="popup" id="settingsPopupContent">
+	<fieldset>
+		<legend>GridSound's DAW settings</legend>
+		<div class="param">
+			<div class="param-title">Clock display</div>
+			<div class="param-values">
+				<input id="radioClSec" name="clock" type="radio"/> <label for="radioClSec">min:sec.ms</label><br/>
+				<input id="radioClBeat" name="clock" type="radio"/> <label for="radioClBeat">beats:steps.milisteps</label>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Composition settings</legend>
+		<div class="param">
+			<div class="param-title">Title</div>
+			<div class="param-values"><input type="text" placeholder="untitled"/></div>
+		</div>
+		<div class="param">
+			<div class="param-title">BPM</div>
+			<div class="param-values"><input type="number" min="1" max="999"/></div>
+		</div>
+		<div class="param">
+			<div class="param-title">Beats per measure</div>
+			<div class="param-values"><input type="number" min="1" max="16"/></div>
+		</div>
+		<div class="param">
+			<div class="param-title">Steps per beat</div>
+			<div class="param-values"><input type="number" min="1" max="16"/></div>
+		</div>
+	</fieldset>
+</div>
