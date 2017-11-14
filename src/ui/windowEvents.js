@@ -14,15 +14,11 @@ ui.windowEvents = function() {
 	window.onkeydown = function( e ) {
 		var prevent = true;
 
-		if ( e.ctrlKey ) {
+		if ( e.altKey ){
 			switch ( e.code ) {
 				case "KeyO": ui.openPopup.show(); break;
 				case "KeyS": gs.saveCurrentComposition(); break;
 				case "KeyZ": e.shiftKey ? gs.redo() : gs.undo(); break;
-				default: prevent = false;
-			}
-		} else if ( e.altKey ) {
-			switch ( e.code ) {
 				case "KeyN": gs.loadNewComposition(); break;
 				default: prevent = false;
 			}
