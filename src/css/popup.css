@@ -2,6 +2,7 @@
 	width: 500px;
 }
 
+/* .popup *content* --------------------------------------------------------- */
 .popup fieldset {
 	border: 2px solid #444;
 	border-radius: 4px;
@@ -58,4 +59,27 @@
 
 .popup input[type="file"] {
 	width: 200px;
+}
+
+/* .shortcuts --------------------------------------------------------------- */
+.shortcuts {
+	padding: .3em .5em;
+	margin: 7px;
+	border-radius: 4px;
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 2em;
+}
+
+.shortcuts-light {
+	background-color: #eee;
+	box-shadow: 0 3px 0 0 rgba( 255, 255, 255, .1 );
+	color: #000;
+}
+
+.shortcuts-dark {
+	background-color: #444;
+	box-shadow: 0 3px 0 0 rgba( 0, 0, 0, .4 );
+	color: #fff;
 }

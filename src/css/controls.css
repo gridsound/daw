@@ -105,6 +105,14 @@
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }
 
+/* #shortcuts */
+/* -------------------------------------------------------------------------- */
+#shortcuts {
+	border: 0;
+	font-size: 21px;
+	background-color: rgba( 255, 255, 255, .1 );
+}
+
 /* #patreon */
 /* -------------------------------------------------------------------------- */
 #patreon {
