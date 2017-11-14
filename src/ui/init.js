@@ -32,6 +32,7 @@ ui.init = function() {
 	ui.pattern.init();
 	ui.openPopup.init();
 	ui.settingsPopup.init();
+	ui.shortcutsPopup.init();
 	ui.windowEvents();
 
 	window.onresize();
