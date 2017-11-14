@@ -38,3 +38,6 @@ a {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 }
+
+.ico-goutte::before { content:"\f21e"; }
+#settingsPopupContent span { margin-left: 10px; }
