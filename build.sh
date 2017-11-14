@@ -17,6 +17,7 @@ declare -a CSSfiles=(
 	"src/css/icon.css"
 	"src/css/app.css"
 	"src/css/popup.css"
+	"src/css/shortcuts.css"
 	"src/css/absoluteMenu.css"
 	"src/css/pan-leftside.css"
 	"src/css/pan-rightside.css"
@@ -38,6 +39,7 @@ declare -a HTMLfiles=(
 	"src/html/pan-pianoroll.html"
 	"src/html/popup-open.html"
 	"src/html/popup-settings.html"
+	"src/html/popup-shortcuts.html"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
@@ -135,6 +137,7 @@ declare -a JSfiles=(
 	"src/ui/pattern.js"
 	"src/ui/openPopup.js"
 	"src/ui/settingsPopup.js"
+	"src/ui/shortcutsPopup.js"
 
 	"src/run.js"
 )

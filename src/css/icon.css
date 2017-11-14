@@ -43,6 +43,7 @@
 .ico-toggle-on:before { content: "\f205"; }
 .ico-add:before { content: "\f067"; }
 .ico-selection:before { content: "\f245"; }
+.ico-keyboard:before { content: "\f11c"; }
 
 .ico-chrome:before { content: "\f268"; }
 .ico-edge:before { content: "\f282"; }
