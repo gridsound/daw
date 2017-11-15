@@ -1,5 +1,6 @@
 #pan-maingrid,
-#pan-pianoroll {
+#pan-pianoroll,
+#pan-synth {
 	display: flex;
 	flex-direction: column;
 }
@@ -11,7 +12,8 @@
 }
 
 #mainGridWrap,
-#keysGridWrap {
+#keysGridWrap,
+#synthOscs {
 	flex: 1;
 }
 

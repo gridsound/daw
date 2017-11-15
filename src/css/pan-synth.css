@@ -1,0 +1,48 @@
+#pan-synth .pan-menu::before {
+	content: "Synthesizer\A0:";
+}
+
+#synthName {
+	background-color: #696;
+}
+
+#synthOscs {
+	counter-reset: count-osc;
+}
+
+/* #synthOcsAdd ------------------------------------------------------------- */
+#synthOcsAdd {
+	display: block;
+	margin: 10px;
+	padding: 1em;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: bold;
+	color: var( --app-bg );
+	text-align: center;
+	background-color: rgba( 255, 255, 255, .4 );
+	opacity: .3;
+	transition: opacity .2s;
+}
+#synthOcsAdd:hover {
+	opacity: .6;
+}
+
+/* .synth-osc --------------------------------------------------------------- */
+.synth-osc {
+	position: relative;
+	border-bottom: 1px solid #111;
+	padding: 15px;
+	color: #ddd;
+	background-color: #333;
+}
+.synth-osc::before {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	counter-increment: count-osc;
+	content: counter( count-osc ) "\A0.";
+	font-size: 11px;
+	font-weight: bold;
+	opacity: .2;
+}
