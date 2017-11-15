@@ -41,6 +41,7 @@
 	border-radius: 2px;
 	border: 0;
 	color: inherit;
+	font-size: inherit;
 }
 .popup input::placeholder {
 	color: #aaa;
@@ -61,7 +62,26 @@
 	width: 200px;
 }
 
-/* .shortcuts --------------------------------------------------------------- */
+/* #settingsPopupContent ---------------------------------------------------- */
+#settingsPopupContent fieldset:nth-child( 2 ) .param-values {
+	display: flex;
+	align-items: center;
+}
+
+#settingsPopupContent .btn {
+	padding: .2em;
+	margin-left: 10px;
+	border: 0;
+	border-radius: 2px;
+	font-size: inherit;
+	background-color: rgba( 255, 255, 255, .1 )
+}
+
+#settingsPopupContent .btn:hover {
+	background-color: rgba( 255, 255, 255, .2 )
+}
+
+/* #shortcutsPopupContent --------------------------------------------------- */
 .shortcuts {
 	padding: .3em .5em;
 	margin: 7px;

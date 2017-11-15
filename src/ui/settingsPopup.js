@@ -5,12 +5,11 @@ ui.settingsPopup = {
 		dom.settingsPopupContent.remove();
 		dom.settings.onclick = ui.settingsPopup.show;
 		ui.settingsPopup.inputs = dom.settingsPopupContent.querySelectorAll( "input" );
-		ui.settingsPopup.elBpmTap = dom.settingsPopupContent.querySelectorAll( "span" );
 	},
 	show() {
 		var cmp = gs.currCmp,
 			inp = ui.settingsPopup.inputs,
-			bpmTap = ui.settingsPopup.elBpmTap[ 0 ];
+			bpmTap = dom.bpmTap;
 
 		inp[ +env.clockSteps ].checked = true;
 		inp[ 2 ].value = cmp.name;
@@ -18,11 +17,10 @@ ui.settingsPopup = {
 		inp[ 4 ].value = cmp.beatsPerMeasure;
 		inp[ 5 ].value = cmp.stepsPerBeat;
 
-		// BpmTap 
 		bpmTap.timeBefore = 0;
 		bpmTap.bpmStack = [];
 		bpmTap.nbBpmToAverage = 10;
-		bpmTap.onclick = ui.settingsPopup.bpmTap.bind( null, inp[ 3 ], bpmTap );
+		bpmTap.onclick = ui.settingsPopup._bpmTap.bind( null, inp[ 3 ], bpmTap );
 
 		gsuiPopup.custom( "Settings", dom.settingsPopupContent, ui.settingsPopup._onsubmit );
 		return false;
@@ -39,14 +37,12 @@ ui.settingsPopup = {
 		inp[ +env.clockSteps ].checked || ( dawChange.clockSteps = !env.clockSteps );
 		( x =  inp[ 2 ].value ) !== cmp.name && ( cmpChange.name = x );
 		( x = +inp[ 3 ].value ) !== cmp.bpm && ( cmpChange.bpm = x );
-		( x = +inp[ 5 ].value ) !== cmp.beatsPerMeasure && ( cmpChange.beatsPerMeasure = x );
-		( x = +inp[ 6 ].value ) !== cmp.stepsPerBeat && ( cmpChange.stepsPerBeat = x );
+		( x = +inp[ 4 ].value ) !== cmp.beatsPerMeasure && ( cmpChange.beatsPerMeasure = x );
+		( x = +inp[ 5 ].value ) !== cmp.stepsPerBeat && ( cmpChange.stepsPerBeat = x );
 		for ( x in dawChange ) { gs.changeSettings( dawChange ); break; }
 		for ( x in cmpChange ) { gs.pushCompositionChange( cmpChange ); break; }
 	},
-
-	bpmTap( inputBpm, bpmTap ) {
-		lg( 1);
+	_bpmTap( inputBpm, bpmTap ) {
 		var time = (new Date()).getTime();
 
 		if ( bpmTap.timeBefore ) {
