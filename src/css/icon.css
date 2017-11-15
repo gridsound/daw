@@ -3,6 +3,7 @@
 	display: inline-block;
 	font-family: "FontAwesome";
 	font-weight: normal;
+	font-style: normal;
 	text-align: center;
 	text-indent: 0;
 	width: 1.25em;
@@ -44,6 +45,7 @@
 .ico-add:before { content: "\f067"; }
 .ico-selection:before { content: "\f245"; }
 .ico-keyboard:before { content: "\f11c"; }
+.ico-arrows-v:before { content: "\f338"; }
 
 .ico-chrome:before { content: "\f268"; }
 .ico-edge:before { content: "\f282"; }

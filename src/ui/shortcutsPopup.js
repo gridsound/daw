@@ -6,7 +6,7 @@ ui.shortcutsPopup = {
 		dom.shortcuts.onclick = ui.shortcutsPopup.show;
 	},
 	show() {
-		gsuiPopup.custom( "Shortcuts", dom.shortcutsPopupContent );
+		gsuiPopup.custom( "Keyboard / mouse shortcuts", dom.shortcutsPopupContent );
 		return false;
 	}
 };
