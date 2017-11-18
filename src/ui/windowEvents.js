@@ -15,16 +15,16 @@ ui.windowEvents = function() {
 		var prevent = true;
 
 		if ( e.altKey ){
-			switch ( e.code ) {
-				case "KeyO": ui.openPopup.show(); break;
-				case "KeyS": gs.saveCurrentComposition(); break;
-				case "KeyZ": e.shiftKey ? gs.redo() : gs.undo(); break;
-				case "KeyN": gs.loadNewComposition(); break;
+			switch ( e.keyCode ) {
+				case 79: ui.openPopup.show(); break;
+				case 83: gs.saveCurrentComposition(); break;
+				case 90: e.shiftKey ? gs.redo() : gs.undo(); break;
+				case 78: gs.loadNewComposition(); break;
 				default: prevent = false;
 			}
 		} else {
-			switch ( e.code ) {
-				case "Space":
+			switch ( e.keyCode ) {
+				case 32:
 					gs.controls.status === "playing"
 						? gs.controls.stop()
 						: gs.controls.play();
