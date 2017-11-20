@@ -1,0 +1,93 @@
+.synthOsc {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	border-bottom: 1px solid #111;
+	padding: 8px;
+	padding-right: 12px;
+	color: #ddd;
+	background-color: #3a3a3a;
+}
+.synthOsc-order {
+	display: flex;
+	align-items: center;
+}
+.synthOsc-order::before {
+	counter-increment: count-osc;
+	content: counter( count-osc );
+	font-size: 11px;
+	font-weight: bold;
+	opacity: .2;
+}
+.synthOsc-attr {
+	position: relative;
+	width: 40px;
+	margin-left: 14px;
+}
+.synthOsc-sliderWrap {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	--gsuiSlider-lineBgColor: #555;
+}
+.synthOsc-sliderWrap .gsuiSlider {
+	margin: auto;
+}
+
+.synthOsc-detune { --gsuiSlider-lineColor: #f9f; }
+.synthOsc-gain   { --gsuiSlider-lineColor: #ff9; }
+
+.synthOsc-sliderValue {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	font: 10px "inconsolata";
+	color: var( --gsuiSlider-lineColor );
+}
+
+.synthOsc-curve {
+	flex: 1;
+	position: relative;
+}
+.synthOsc-curve .gsuiWave {
+	width: 100%;
+	height: 100%;
+}
+.synthOsc-curve .gsuiWave polyline {
+	stroke: #555;
+	stroke-width: 2px;
+	fill: none;
+}
+.synthOsc-curveValue {
+	position: absolute;
+	display: flex;
+	height: 100%;
+	left: 6px;
+	top: 0;
+	align-items: center;
+	text-transform: capitalize;
+	text-align: center;
+	text-shadow: 0 0 2px #000;
+	font: 12px "inconsolata";
+	opacity: .8;
+}
+
+.synthOsc-remove {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: auto;
+	opacity: .1;
+	font-size: 12px;
+	transition: opacity .2s;
+}
+.synthOsc:only-child .synthOsc-remove {
+	display: none;
+}
+.synthOsc-remove:hover {
+	opacity: .8;
+}

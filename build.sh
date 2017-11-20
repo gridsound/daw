@@ -29,6 +29,7 @@ declare -a CSSfiles=(
 	"src/css/cmp.css"
 	"src/css/version.css"
 	"src/css/controls.css"
+	"src/css/synthOsc.css"
 )
 
 declare -a HTMLfiles=(
@@ -37,11 +38,12 @@ declare -a HTMLfiles=(
 	"src/html/pan-history.html"
 	"src/html/pan-patterns.html"
 	"src/html/pan-maingrid.html"
-	# "src/html/pan-synth.html"
+	"src/html/pan-synth.html"
 	"src/html/pan-pianoroll.html"
 	"src/html/popup-open.html"
 	"src/html/popup-settings.html"
 	"src/html/popup-shortcuts.html"
+	"src/html/synthOsc.html"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"

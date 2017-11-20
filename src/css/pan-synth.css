@@ -1,3 +1,10 @@
+#pan-synth {
+	min-width: 280px;
+	max-width: 400px;
+	width: 350px;
+	flex: none;	
+}
+
 #pan-synth .pan-menu::before {
 	content: "Synthesizer\A0:";
 }
@@ -7,11 +14,39 @@
 }
 
 #synthOscs {
+	overflow: auto;
 	counter-reset: count-osc;
 }
 
-/* #synthOcsAdd ------------------------------------------------------------- */
-#synthOcsAdd {
+#synthOscsHead {
+	display: flex;
+	justify-content: space-between;
+	padding: 4px 8px;
+	padding-right: 12px;
+	font-size: 11px;
+	font-family: "inconsolata";
+	color: #aaa;
+	border-bottom: 1px solid #111;
+	background-color: #444;
+}
+#synthOscsHead div {
+	width: 40px;
+	margin-left: 14px;
+	text-align: center;
+	text-transform: capitalize;
+}
+#synthOscsHead div:first-child {
+	width: auto;
+	opacity: .5;
+	margin-left: 0;
+	text-align: left;
+}
+#synthOscsHeadCurve {
+	flex: 1;
+}
+
+/* #synthOscAdd ------------------------------------------------------------- */
+#synthOscAdd {
 	display: block;
 	margin: 10px;
 	padding: 1em;
@@ -24,25 +59,6 @@
 	opacity: .3;
 	transition: opacity .2s;
 }
-#synthOcsAdd:hover {
+#synthOscAdd:hover {
 	opacity: .6;
-}
-
-/* .synth-osc --------------------------------------------------------------- */
-.synth-osc {
-	position: relative;
-	border-bottom: 1px solid #111;
-	padding: 15px;
-	color: #ddd;
-	background-color: #333;
-}
-.synth-osc::before {
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	counter-increment: count-osc;
-	content: counter( count-osc ) "\A0.";
-	font-size: 11px;
-	font-weight: bold;
-	opacity: .2;
 }

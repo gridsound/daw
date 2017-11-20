@@ -18,8 +18,11 @@ ui.init = function() {
 
 	dom.version.textContent = env.version;
 
-	dom[ "pan-rightside" ].onresizing = function( pan ) {
+	dom[ "pan-rightside" ].onresizing = function() {
 		ui.mainGridSamples.resized();
+		ui.keysGridSamples.resized();
+	};
+	dom[ "pan-pianoroll" ].onresizing = function() {
 		ui.keysGridSamples.resized();
 	};
 
@@ -27,8 +30,9 @@ ui.init = function() {
 	ui.cmps.init();
 	ui.history.init();
 	ui.patterns.init();
-	ui.mainGrid.init();
 	ui.controls.init();
+	ui.mainGrid.init();
+	ui.synth.init();
 	ui.pattern.init();
 	ui.openPopup.init();
 	ui.settingsPopup.init();

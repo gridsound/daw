@@ -22,6 +22,7 @@
 .ico--plus:after { content: "\f067"; }
 .ico--minus:after { content: "\f068"; }
 
+.ico-times:before { content: "\f2d3"; }
 .ico-play:before { content: "\f04b"; }
 .ico-pause:before { content: "\f04c"; }
 .ico-stop:before { content: "\f04d"; }
