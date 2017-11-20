@@ -8,10 +8,9 @@ ui.controls = {
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;
 
-		slider.linear( "y" );
-		slider.resize( 4, 35 );
 		slider.oninput = v => wa.destination.gain( v * v );
 		slider.options( {
+			type: "linear-y",
 			min: 0,
 			max: 1.5,
 			step: .01,
@@ -20,6 +19,7 @@ ui.controls = {
 			startFrom: 0,
 		} );
 		dom.appGainWrap.append( slider.rootElement );
+		slider.resized();
 	},
 	focusOn( grid ) {
 		dom.togglePlay.classList.toggle( "after", grid !== "main" );

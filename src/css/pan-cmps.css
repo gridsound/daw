@@ -26,17 +26,12 @@
 }
 
 #appGainWrap {
+	width: 4px;
+	height: 35px;
 	align-self: flex-end;
 	margin: 0 0 4px auto;
-}
-#appGainWrap .gsuiSlider {
-	width: 100%;
-	height: 100%;
-	--line: #ff9;
-	--line-bg: #222;
-}
-#appGainWrap .gsuiSlider .gsui-thumb {
-	display: none;
+	--gsuiSlider-lineColor: #ff9;
+	--gsuiSlider-lineBgColor: #222;
 }
 
 #cmpMenu {
