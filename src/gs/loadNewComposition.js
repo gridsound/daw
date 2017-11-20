@@ -1,7 +1,9 @@
 "use strict";
 
 gs.loadNewComposition = function() {
-	var i = 0, trks = {};
+	var i = 0, trks = {},
+		patId = common.uuid(),
+		keysId = common.uuid();
 
 	for ( ; i < env.def_nbTracks; ++i ) {
 		trks[ common.smallId() ] = { order: i, toggle: true, name: "" };
@@ -13,15 +15,21 @@ gs.loadNewComposition = function() {
 		beatsPerMeasure: env.def_beatsPerMeasure,
 		name: "",
 		duration: 0,
-		tracks: trks,
-		patterns: {},
-		blocks: {},
-		keys: {}
-	} ).then(
-		function() {
-			gs.openPattern( gs.newPattern( false ) );
+		patterns: {
+			[ patId ]: {
+				name: "pat",
+				type: "keys",
+				keys: keysId,
+				duration: env.def_beatsPerMeasure
+			}
 		},
-		console.log.bind( console )
-	);
+		tracks: trks,
+		blocks: {},
+		keys: {
+			[ keysId ]: {}
+		}
+	} ).then( function() {
+		gs.openPattern( patId );
+	}, console.log.bind( console ) );
 	return false;
 };
