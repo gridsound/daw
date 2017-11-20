@@ -77,6 +77,7 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiToggle/gsuiToggle.js"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"../gs-ui-components/gsuiTrackList/gsuiTrackList.js"
+	"../gs-ui-components/gsuiWave/gsuiWave.js"
 
 	"../gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"
 	"../gs-webaudio-library/gswaScheduler/gswaScheduler.js"
