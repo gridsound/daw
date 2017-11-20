@@ -8,7 +8,7 @@ ui.init = function() {
 
 	document.querySelectorAll( "div[data-panel]" ).forEach( function( pan ) {
 		div = document.getElementById( pan.dataset.panel );
-		div.append.apply( div, pan.children );
+		div && div.append.apply( div, pan.children );
 	} );
 
 	// Fill the window.dom object with each [id] elements:
