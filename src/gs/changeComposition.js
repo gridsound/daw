@@ -1,7 +1,7 @@
 "use strict";
 
 gs.changeComposition = function( obj ) {
-	var keysId, patId, blcId,
+	var keysId, patId, blcId, synthId,
 		blc,
 		cmp = gs.currCmp,
 		dur = 0,
@@ -11,6 +11,9 @@ gs.changeComposition = function( obj ) {
 
 	common.assignDeep( cmp, obj );
 	ui.mainGrid.change( obj );
+	if ( obj.synths ) {
+		ui.synth.change( obj.synths[ cmp.synthOpened ] );
+	}
 	for ( patId in obj.patterns ) {
 		ui.patterns.change( patId, obj.patterns[ patId ] );
 		wa.patterns.change( patId, obj.patterns[ patId ] );
