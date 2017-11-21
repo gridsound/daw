@@ -3,6 +3,7 @@
 ui.synth = {
 	init() {
 		dom.synthOsc.remove();
+		dom.synthName.onclick = ui.synth._onclickName;
 		dom.synthOscAdd.onclick = ui.synth._onclickAddOsc;
 		ui.synth._oscHTML = {};
 	},
@@ -17,12 +18,14 @@ ui.synth = {
 		dom.synthName.textContent = name;
 	},
 	change( obj ) {
-		Object.entries( obj.oscillators ).forEach( function( [ id, osc ] ) {
-			osc ? this._oscHTML[ id ]
-				? this._updateOsc( id, osc )
-				: this._createOsc( id, osc )
-				: this._deleteOsc( id );
-		}, ui.synth );
+		"name" in obj && ui.synth.name( obj.name );
+		"oscillators" in obj && Object.entries( obj.oscillators )
+			.forEach( function( [ id, osc ] ) {
+				osc ? this._oscHTML[ id ]
+					? this._updateOsc( id, osc )
+					: this._createOsc( id, osc )
+					: this._deleteOsc( id );
+			}, ui.synth );
 	},
 
 	// private:
@@ -108,7 +111,7 @@ ui.synth = {
 	_onclickAddOsc() {
 		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ common.uuid() ]: {
-				curve: "sine",
+				type: "sine",
 				detune: 0,
 				gain: 1,
 				pan: 0
