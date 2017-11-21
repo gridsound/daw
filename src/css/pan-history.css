@@ -49,6 +49,7 @@
 	transition-property: opacity;
 	transition-duration: inherit;
 }
-.action.undone .actionText {
+.action:not(:hover).undone .actionIcon,
+.action:not(:hover).undone .actionText {
 	opacity: .5;
 }
