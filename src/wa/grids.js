@@ -47,7 +47,7 @@ wa.grids = {
 				duration: cmp.patterns[ cmp.patternOpened ].duration
 			} } ) );
 		sched.setBPM( cmp.bpm );
-		if ( wa.rendering ) {
+		if ( wa.render.isOn ) {
 			sched.startBeat( 0 );
 		} else {
 			sched.startBeat( 0, offset, null, gs.controls.loopA[ grid ], gs.controls.loopB[ grid ] );

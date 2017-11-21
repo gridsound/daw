@@ -125,13 +125,13 @@ declare -a JSfiles=(
 	"src/gs/addAudioFiles.js"
 
 	"src/wa/init.js"
+	"src/wa/render.js"
 	"src/wa/blocksToScheduleData.js"
 	"src/wa/destination.js"
 	"src/wa/grids.js"
 	"src/wa/keysToScheduleData.js"
 	"src/wa/patterns.js"
 	"src/wa/patternKeys.js"
-	"src/wa/toggleRender.js"
 
 	"src/ui/init.js"
 	"src/ui/keysToRects.js"
