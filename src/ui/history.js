@@ -58,6 +58,7 @@ ui.history = {
 			u = act.undo;
 
 		return (
+			ui.history.__synth( cmp, r, u ) ||
 			ui.history.__pattern( cmp, r, u ) ||
 			ui.history.__tracks( cmp, r, u ) ||
 			ui.history.__blocks( cmp, r, u ) ||
@@ -69,6 +70,39 @@ ui.history = {
 				{ i: "", t: "" }
 			)
 		);
+	},
+	__synth( cmp, r, u ) {
+		if ( r.synths ) {
+			var idSynth = Object.keys( r.synths )[ 0 ],
+				rSyn = r.synths[ idSynth ],
+				uSyn = u.synths[ idSynth ],
+				synName = cmp.synths[ idSynth ].name;
+
+			if ( !rSyn || !uSyn ) {
+				return rSyn
+					? { i: "add", t: `New synthesizer "${ rSyn.name }"` }
+					: { i: "remove", t: `Remove synthesizer "${ uSyn.name }"` };
+			}
+			if ( "name" in rSyn ) {
+				synName = rSyn.name;
+				return { i: "name", t: `${ uSyn.name }: rename to "${ synName }"` };
+			}
+			if ( rSyn.oscillators ) {
+				var param,
+					idOsc = Object.keys( rSyn.oscillators )[ 0 ],
+					rOsc = rSyn.oscillators[ idOsc ],
+					uOsc = uSyn.oscillators[ idOsc ],
+					msg = synName + ": ";
+
+				if ( !rOsc || !uOsc ) {
+					return rOsc
+						? { i: "add", t: msg + "New oscillator" }
+						: { i: "remove", t: msg + "Remove oscillator" };
+				}
+				param = Object.entries( rOsc )[ 0 ];
+				return { i: "param", t: msg + `set ${ param[ 0 ] } to "${ param[ 1 ] }"` };
+			}
+		}
 	},
 	__blocks( cmp, r, u ) {
 		var id, msg, arrK, rBlc = r.blocks;
