@@ -15,8 +15,8 @@ ui.pattern = {
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
 		grid.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
 		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
-		grid.uiKeys.onkeydown = ui.pattern._onkeydown;
-		grid.uiKeys.onkeyup = ui.pattern._onkeyup;
+		grid.uiKeys.onkeydown = wa.patternKeys.start;
+		grid.uiKeys.onkeyup = wa.patternKeys.stop;
 		grid.resized();
 	},
 	empty() {
@@ -32,13 +32,7 @@ ui.pattern = {
 		ui.keysGridSamples.scrollToSamples();
 	},
 
-	// private:
-	_onkeydown( key, oct ) {
-		wa.synth.simpleStart( ( key + oct ).toUpperCase() );
-	},
-	_onkeyup() {
-		wa.synth.stop();
-	},
+	// events:
 	_onchangeGrid( obj ) {
 		gs.pushCompositionChange( { keys: {
 			[ gs.currCmp.patterns[ gs.currCmp.patternOpened ].keys ]: obj

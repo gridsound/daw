@@ -130,6 +130,7 @@ declare -a JSfiles=(
 	"src/wa/grids.js"
 	"src/wa/keysToScheduleData.js"
 	"src/wa/patterns.js"
+	"src/wa/patternKeys.js"
 	"src/wa/toggleRender.js"
 
 	"src/ui/init.js"
