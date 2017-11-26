@@ -33,10 +33,12 @@ ui.synth = {
 	_createOsc( id, osc ) {
 		var root = dom.synthOsc.cloneNode( true ),
 			fn = ui.synth._sliderInit.bind( null, id, osc, root ),
-			curveWave = new gsuiWave();
+			curveWave = new gsuiWave(),
+			curveSelect = root.querySelector( ".synthOsc-curveSelect" );
 
 		root.removeAttribute( "id" );
 		root.querySelector( ".synthOsc-curve" ).prepend( curveWave.rootElement );
+		curveSelect.onchange = ui.synth._onchangeCurve.bind( null, id );
 		root.querySelector( ".synthOsc-remove" ).onclick =
 			ui.synth._onclickRemoveOsc.bind( null, id );
 		dom.synthOscsList.append( root );
@@ -46,7 +48,7 @@ ui.synth = {
 		ui.synth._oscHTML[ id ] = {
 			root,
 			curveWave,
-			curveType: root.querySelector( ".synthOsc-curveValue" ),
+			curveSelect,
 			detune: fn( { min: -100, max: 100, step: 5,   scrollStep: 10  }, "detune" ),
 			gain:   fn( { min:    0, max:   1, step: .01, scrollStep: .05 }, "gain" ),
 			pan:    fn( { min:   -1, max:   1, step: .01, scrollStep: .1  }, "pan" ),
@@ -61,7 +63,7 @@ ui.synth = {
 		var html = ui.synth._oscHTML[ id ];
 
 		if ( osc.type ) {
-			html.curveType.textContent = osc.type;
+			html.curveSelect.value =
 			html.curveWave.type = osc.type;
 			html.curveWave.draw();
 		}
@@ -100,6 +102,11 @@ ui.synth = {
 				name: n
 			} } } );
 		}
+	},
+	_onchangeCurve( id, e ) {
+		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
+			oscillators: { [ id ]: { type: e.target.value } }
+		} } } );
 	},
 	_oninputSlider( id, slider, val ) {
 		slider.rootElement.parentNode.previousElementSibling.textContent = val;

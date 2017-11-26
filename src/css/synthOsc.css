@@ -58,22 +58,55 @@
 	height: 100%;
 }
 .synthOsc-curve .gsuiWave polyline {
-	stroke: #555;
+	stroke: #fff;
 	stroke-width: 2px;
+	stroke-opacity: .1;
 	fill: none;
+	transition: stroke-opacity .2s;
+}
+.synthOsc-curve:hover .gsuiWave polyline {
+	stroke-opacity: .2;
 }
 .synthOsc-curveValue {
 	position: absolute;
 	display: flex;
+	width: 100%;
 	height: 100%;
 	left: 6px;
 	top: 0;
 	align-items: center;
 	text-transform: capitalize;
 	text-align: center;
-	text-shadow: 0 0 2px #000;
 	font: 12px "inconsolata";
 	opacity: .8;
+	transition: .2s;
+	transition-property: color, opacity;
+}
+.synthOsc-curve:hover .synthOsc-curveValue {
+	opacity: 1;
+	color: #fff;
+}
+.synthOsc-curveValue::before {
+	content: "\f0d7\A0";
+	font-family: "FontAwesome";
+	opacity: .5;
+}
+.synthOsc-curveSelect {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	color: inherit;
+	font-size: 12px;
+	font-family: "inconsolata";
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: none;
+}
+.synthOsc-curveSelect:focus {
+	outline: 0;
+}
+.synthOsc-curveSelect option {
+	background: #444;
 }
 
 .synthOsc-remove {
