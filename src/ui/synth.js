@@ -47,9 +47,9 @@ ui.synth = {
 			root,
 			curveWave,
 			curveType: root.querySelector( ".synthOsc-curveValue" ),
-			detune: fn( { min: -100, max: 100, step: .01, scrollStep: 1   }, "detune" ),
-			gain:   fn( { min:    0, max:   1, step: .01, scrollStep: .03 }, "gain" ),
-			pan:    fn( { min:   -1, max:   1, step: .01, scrollStep: .03 }, "pan" ),
+			detune: fn( { min: -100, max: 100, step: 5,   scrollStep: 10  }, "detune" ),
+			gain:   fn( { min:    0, max:   1, step: .01, scrollStep: .05 }, "gain" ),
+			pan:    fn( { min:   -1, max:   1, step: .01, scrollStep: .1  }, "pan" ),
 		};
 		ui.synth._updateOsc( id, osc );
 	},
