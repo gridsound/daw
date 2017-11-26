@@ -1,17 +1,9 @@
 "use strict";
 
 gs.getMaxCompositionInnerId = function( cmp ) {
-	var keysKeys = Object.keys( cmp.keys );
+	return common.deepKeys( cmp ).reduce( ( n, key ) => {
+		var id = common.smallIdParse( key );
 
-	return Object.keys( cmp.patterns )
-		.concat(
-			keysKeys,
-			keysKeys.reduce( function( arr, keyId ) {
-				return arr.concat( Object.keys( cmp.keys[ keyId ] ) );
-			}, [] ),
-			Object.keys( cmp.blocks ),
-			Object.keys( cmp.tracks ) )
-		.reduce( function( n, key ) {
-			return Math.max( n, common.smallIdParse( key ) );
-		}, 0 );
+		return id < 0 ? n : Math.max( n, id );
+	}, 0 );
 };
