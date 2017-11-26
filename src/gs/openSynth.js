@@ -5,6 +5,5 @@ gs.openSynth = function( id ) {
 		synth = cmp.synths[ id ];
 
 	cmp.synthOpened = id;
-	// ui.synths.select( id );
 	ui.synth.open( synth );
 };

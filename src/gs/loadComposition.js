@@ -16,6 +16,7 @@ gs.loadComposition = function( cmp ) {
 			ui.patterns.change( id, cmp.patterns[ id ] );
 			gs.updatePatternContent( id );
 		}
+		wa.synths.change( cmp.synths );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );
 		ui.controls.bpm( cmp.bpm );

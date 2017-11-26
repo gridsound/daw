@@ -2,9 +2,9 @@
 
 wa.patternKeys = {
 	start( key, oct ) {
-		wa.synth.simpleStart( ( key + oct ).toUpperCase() );
+		wa.synths.current.simpleStart( ( key + oct ).toUpperCase() );
 	},
 	stop() {
-		wa.synth.stop();
+		wa.synths.current.stop();
 	}
 };
