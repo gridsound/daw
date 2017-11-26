@@ -1,13 +1,17 @@
 "use strict";
 
 gs.changeComposition = function( obj ) {
-	var cmp = gs.currCmp,
+	var currSynth,
+		cmp = gs.currCmp,
 		currDur = cmp.duration;
 
 	common.assignDeep( cmp, obj );
 	ui.mainGrid.change( obj );
 	if ( obj.synths ) {
-		ui.synth.change( obj.synths[ cmp.synthOpened ] );
+		wa.synths.change( obj.synths );
+		if ( currSynth = obj.synths[ cmp.synthOpened ] ) {
+			ui.synth.change( currSynth );
+		}
 	}
 	obj.patterns && Object.entries( obj.patterns ).forEach( function( [ id, obj ] ) {
 		ui.patterns.change( id, obj );

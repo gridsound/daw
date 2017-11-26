@@ -34,6 +34,7 @@ gs._unloadCmp = function( b, res, rej ) {
 	if ( gs.currCmpSaved ) {
 		gs.historyInd = 0;
 		gs.history.length = 0;
+		wa.synths.empty();
 		ui.history.cut( 0 );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );

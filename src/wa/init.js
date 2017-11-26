@@ -5,6 +5,7 @@ wa.init = function() {
 	wa.ctx = new AudioContext();
 	wa.synth = new gswaSynth();
 	wa.destination.init( wa.ctx );
+	wa.synths.init();
 	wa.synth.setContext( wa.ctx );
 	wa.synth.connect( wa.ctx.destination );
 	wa.synth.change( {
