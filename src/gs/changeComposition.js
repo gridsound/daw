@@ -11,7 +11,6 @@ gs.changeComposition = function( obj ) {
 	}
 	obj.patterns && Object.entries( obj.patterns ).forEach( function( [ id, obj ] ) {
 		ui.patterns.change( id, obj );
-		wa.patterns.change( id, obj );
 	} );
 	obj.keys && Object.entries( obj.keys ).forEach( function( [ keysId, keysObj ] ) {
 		Object.entries( cmp.patterns ).some( function( [ patId, pat ] ) {

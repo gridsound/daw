@@ -1,16 +1,6 @@
 "use strict";
 
 wa.patterns = {
-	init() {
-		wa.patterns.list = {};
-	},
-	change( id, data ) {
-		data
-			? wa.patterns.list[ id ]
-				? wa.patterns._update( id, data )
-				: wa.patterns._add( id, data )
-			: wa.patterns._remove( id );
-	},
 	stop() {
 		wa.synth.stop();
 	},
@@ -28,13 +18,5 @@ wa.patterns = {
 				0,
 				key.duration / bps );
 		}
-	},
-
-	// private:
-	_add( id, data ) {
-	},
-	_update( id, data ) {
-	},
-	_remove( id ) {
-	},
+	}
 };
