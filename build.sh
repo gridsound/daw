@@ -87,6 +87,7 @@ declare -a JSfiles=(
 
 	"src/init.js"
 
+	"src/common/deepKeys.js"
 	"src/common/uuid.js"
 	"src/common/smallId.js"
 	"src/common/trim2.js"
