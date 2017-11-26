@@ -101,6 +101,7 @@ declare -a JSfiles=(
 	"src/gs/localStorage.js"
 	"src/gs/changeSettings.js"
 	"src/gs/loadComposition.js"
+	"src/gs/handleOldComposition.js"
 	"src/gs/loadNewComposition.js"
 	"src/gs/loadCompositionById.js"
 	"src/gs/loadCompositionByBlob.js"
