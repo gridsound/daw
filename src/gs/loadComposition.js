@@ -28,5 +28,8 @@ gs.loadComposition = function( cmp ) {
 		if ( cmp.patternOpened ) {
 			gs.openPattern( cmp.patternOpened );
 		}
+		if ( cmp.synthOpened ) {
+			gs.openSynth( cmp.synthOpened );
+		}
 	}, function() {} );
 };

@@ -10,7 +10,7 @@ wa.init = function() {
 	wa.synth.connect( wa.ctx.destination );
 	wa.synth.change( {
 		oscillators: {
-			"osc1": { type: "sine", detune: 0 }
+			"osc1": { type: "sine", detune: 0, pan: 0, gain: 1 }
 		}
 	} );
 };

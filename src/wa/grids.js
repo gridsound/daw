@@ -35,9 +35,7 @@ wa.grids = {
 		sched.setContext( wa.ctx );
 		synth.setContext( wa.ctx );
 		synth.connect( wa.destination.get() );
-		synth.change( { oscillators: {
-			"osc1": { type: "sine", detune: 0 }
-		} } );
+		synth.change( cmp.synths[ cmp.synthOpened ] );
 		sched.setData( grid === "main"
 			? wa.blocksToScheduleData( cmp.blocks )
 			: wa.blocksToScheduleData( { "_": {

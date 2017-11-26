@@ -8,6 +8,7 @@ ui.synth = {
 		ui.synth._oscHTML = {};
 	},
 	empty() {
+		Object.keys( ui.synth._oscHTML ).forEach( this._deleteOsc );
 	},
 	open( synth ) {
 		ui.synth.empty();

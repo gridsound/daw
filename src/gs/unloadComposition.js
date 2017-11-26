@@ -41,6 +41,7 @@ gs._unloadCmp = function( b, res, rej ) {
 		ui.mainGrid.empty();
 		ui.patterns.empty();
 		ui.pattern.empty();
+		ui.synth.empty();
 		gs.currCmp = null;
 		res();
 	} else {
