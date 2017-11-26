@@ -8,6 +8,9 @@ common.smallId = function() {
 	return id;
 };
 
+common.smallIdRegex = /^i[\da-fA-F]+$/;
 common.smallIdParse = function( id ) {
-	return parseInt( id.substr( 1 ), 16 );
+	return common.smallIdRegex.test( id )
+		? parseInt( id.substr( 1 ), 16 )
+		: -1;
 };
