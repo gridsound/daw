@@ -1,11 +1,14 @@
 "use strict";
 
 gs.loadNewComposition = function() {
-	var i = 0, trks = {},
-		synthId = common.uuid(),
-		patId = common.uuid(),
-		keysId = common.uuid();
+	var i = 0,
+		trks = {},
+		synthId, patId, keysId;
 
+	common.smallId_i = 0;
+	synthId = common.smallId();
+	patId = common.smallId();
+	keysId = common.smallId();
 	for ( ; i < env.def_nbTracks; ++i ) {
 		trks[ common.smallId() ] = { order: i, toggle: true, name: "" };
 	}
@@ -29,9 +32,9 @@ gs.loadNewComposition = function() {
 			[ synthId ]: {
 				name: "synth",
 				oscillators: {
-					[ common.uuid() ]: { type: "sine",     detune:   0, gain: 1, pan:   0 },
-					[ common.uuid() ]: { type: "triangle", detune: -50, gain: 1, pan: -.2 },
-					[ common.uuid() ]: { type: "square",   detune: +50, gain: 1, pan: +.2 }
+					[ common.smallId() ]: { type: "sine",     detune:   0, gain: 1, pan:   0 },
+					[ common.smallId() ]: { type: "triangle", detune: -50, gain: 1, pan: -.2 },
+					[ common.smallId() ]: { type: "square",   detune: +50, gain: 1, pan: +.2 }
 				}
 			}
 		},
