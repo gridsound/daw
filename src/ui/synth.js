@@ -37,14 +37,22 @@ ui.synth = {
 			curveSelect = root.querySelector( ".synthOsc-curveSelect" );
 
 		root.removeAttribute( "id" );
+		root.dataset.order = osc.order || 0;
 		root.querySelector( ".synthOsc-curve" ).prepend( curveWave.rootElement );
 		curveSelect.onchange = ui.synth._onchangeCurve.bind( null, id );
 		root.querySelector( ".synthOsc-remove" ).onclick =
 			ui.synth._onclickRemoveOsc.bind( null, id );
-		dom.synthOscsList.append( root );
 		curveWave.setResolution( 150, 20 );
 		curveWave.amplitude = .5;
 		curveWave.frequency = 2;
+		if ( !Array.from( dom.synthOscsList.children ).some( elOsc => {
+			if ( osc.order <= +elOsc.dataset.order ) {
+				dom.synthOscsList.insertBefore( root, elOsc );
+				return true;
+			}
+		} ) ) {
+			dom.synthOscsList.append( root );
+		}
 		ui.synth._oscHTML[ id ] = {
 			root,
 			curveWave,
