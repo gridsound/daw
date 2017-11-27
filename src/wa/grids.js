@@ -7,11 +7,10 @@ wa.grids = {
 		}
 	},
 	stop() {
-		if ( wa._synth ) {
+		if ( wa._scheduler ) {
 			delete wa._scheduler.onended;
 			wa._scheduler.stop();
-			wa._synth.stop();
-			delete wa._synth;
+			wa.synths.stop();
 			delete wa._scheduler;
 		}
 	},
@@ -24,18 +23,13 @@ wa.grids = {
 	},
 	play( grid, offset ) {
 		var cmp = gs.currCmp,
-			synth = new gswaSynth(),
 			sched = new gswaScheduler();
 
-		wa._synth = synth;
 		wa._scheduler = sched;
 		sched.onstart = wa.grids._onstartBlock;
 		sched.onstop = wa.grids._onstopBlock;
 		sched.onended = wa.grids._onendedBlocks;
 		sched.setContext( wa.ctx );
-		synth.setContext( wa.ctx );
-		synth.connect( wa.destination.get() );
-		synth.change( cmp.synths[ cmp.synthOpened ] );
 		sched.setData( grid === "main"
 			? wa.blocksToScheduleData( cmp.blocks )
 			: wa.blocksToScheduleData( { "_": {
@@ -54,16 +48,13 @@ wa.grids = {
 	},
 
 	// private:
-	_onstartKey( smp, when, offset, dur ) {
-		wa._synth.start( smp.key, when, offset, dur );
-	},
 	_onstartBlock( smp, when, offset, dur ) {
 		var sched = new gswaScheduler();
 
 		smp.scheduler = sched;
-		sched.onstart = wa.grids._onstartKey;
+		sched.onstart = wa.synths.start;
 		sched.setContext( wa.ctx );
-		sched.setData( wa.keysToScheduleData( smp.keys ) );
+		sched.setData( wa.keysToScheduleData( smp.pattern ) );
 		sched.setBPM( gs.currCmp.bpm );
 		sched.start( when, offset, dur );
 	},
