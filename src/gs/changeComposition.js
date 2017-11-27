@@ -3,32 +3,43 @@
 gs.changeComposition = function( obj ) {
 	var currSynth,
 		cmp = gs.currCmp,
-		currDur = cmp.duration;
+		currDur = cmp.duration,
+		replay = false;
 
 	common.assignDeep( cmp, obj );
-	ui.mainGrid.change( obj );
+	if ( obj.tracks || obj.blocks ) {
+		ui.mainGrid.change( obj );
+		replay = true;
+	}
 	if ( obj.synths ) {
 		wa.synths.change( obj.synths );
 		if ( currSynth = obj.synths[ cmp.synthOpened ] ) {
 			ui.synth.change( currSynth );
 		}
 	}
-	obj.patterns && Object.entries( obj.patterns ).forEach( function( [ id, obj ] ) {
-		ui.patterns.change( id, obj );
-	} );
-	obj.keys && Object.entries( obj.keys ).forEach( function( [ keysId, keysObj ] ) {
-		Object.entries( cmp.patterns ).some( function( [ patId, pat ] ) {
-			if ( pat.keys === keysId ) {
-				gs.updatePatternContent( patId );
-				if ( patId === cmp.patternOpened ) {
-					ui.keysGridSamples.change( keysObj );
-				}
-				return true;
-			}
+	if ( obj.patterns ) {
+		Object.entries( obj.patterns ).forEach( function( [ id, obj ] ) {
+			ui.patterns.change( id, obj );
 		} );
-	} );
+		replay = true;
+	}
+	if ( obj.keys ) {
+		Object.entries( obj.keys ).forEach( function( [ keysId, keysObj ] ) {
+			Object.entries( cmp.patterns ).some( function( [ patId, pat ] ) {
+				if ( pat.keys === keysId ) {
+					gs.updatePatternContent( patId );
+					if ( patId === cmp.patternOpened ) {
+						ui.keysGridSamples.change( keysObj );
+					}
+					return true;
+				}
+			} );
+		} );
+		replay = true;
+	}
 	if ( obj.bpm ) {
 		ui.controls.bpm( obj.bpm );
+		replay = true;
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
@@ -41,5 +52,5 @@ gs.changeComposition = function( obj ) {
 	if ( obj.name != null || obj.bpm || Math.ceil( cmp.duration ) !== Math.ceil( currDur ) ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
-	wa.grids.replay();
+	replay && wa.grids.replay();
 };
