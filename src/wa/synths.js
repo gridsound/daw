@@ -19,6 +19,18 @@ wa.synths = {
 				: this._delete( id );
 		}, wa.synths );
 	},
+	setContext( ctx ) {
+		Object.values( wa.synths._synths ).forEach( syn => {
+			syn.setContext( ctx );
+			syn.connect( wa.destination.get() );
+		} );
+	},
+	start( smp, when, offset, dur ) {
+		wa.synths._synths[ smp.synthId ].start( smp.key, when, offset, dur );
+	},
+	stop() {
+		Object.values( wa.synths._synths ).forEach( syn => syn.stop() );
+	},
 
 	// private:
 	_create( id, obj ) {
