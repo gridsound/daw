@@ -72,15 +72,18 @@ ui.synth = {
 		"pan" in osc && ui.synth._sliderSetValue( id, "pan", osc.pan );
 	},
 	_sliderInit( id, osc, oscRoot, obj, attr ) {
-		var slider = new gsuiSlider();
+		var slider = new gsuiSlider(),
+			sliderPar = oscRoot.querySelector( `.synthOsc-${ attr }` ),
+			valElem = sliderPar.querySelector( ".synthOsc-sliderValue" );
 
 		obj.type = "circular";
 		obj.value = osc[ attr ];
 		slider.options( obj );
-		oscRoot.querySelector( `.synthOsc-${ attr } .synthOsc-sliderWrap` ).append( slider.rootElement );
-		slider.oninput = ui.synth._oninputSlider.bind( null, id, slider );
+		sliderPar.querySelector( ".synthOsc-sliderWrap" ).append( slider.rootElement );
+		slider.oninput = ui.synth._oninputSlider.bind( null, id, attr, slider );
 		slider.onchange = ui.synth._onchangeSlider.bind( null, id, attr );
-		slider.oninput( obj.value );
+		slider._valueElement = valElem;
+		valElem.textContent = obj.value;
 		slider.resized();
 		return slider;
 	},
@@ -88,7 +91,7 @@ ui.synth = {
 		var slider = ui.synth._oscHTML[ oscId ][ attr ];
 
 		slider.setValue( val );
-		slider.oninput( val );
+		slider._valueElement.textContent = val;
 	},
 
 	// events:
@@ -108,8 +111,11 @@ ui.synth = {
 			oscillators: { [ id ]: { type: e.target.value } }
 		} } } );
 	},
-	_oninputSlider( id, slider, val ) {
-		slider.rootElement.parentNode.previousElementSibling.textContent = val;
+	_oninputSlider( id, attr, slider, val ) {
+		wa.synths.change( { [ gs.currCmp.synthOpened ]: {
+			oscillators: { [ id ]: { [ attr ]: val } }
+		} } );
+		slider._valueElement.textContent = val;
 	},
 	_onchangeSlider( id, attr, val ) {
 		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
