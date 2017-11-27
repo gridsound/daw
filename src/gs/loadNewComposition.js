@@ -32,9 +32,9 @@ gs.loadNewComposition = function() {
 			[ synthId ]: {
 				name: "synth",
 				oscillators: {
-					[ common.smallId() ]: { type: "sine",     detune:   0, gain: 1, pan:   0 },
-					[ common.smallId() ]: { type: "triangle", detune: -50, gain: 1, pan: -.2 },
-					[ common.smallId() ]: { type: "square",   detune: +50, gain: 1, pan: +.2 }
+					[ common.smallId() ]: { type: "sine",     detune:   0, pan:   0, gain: 1 },
+					[ common.smallId() ]: { type: "triangle", detune: -15, pan: -.2, gain: .75 },
+					[ common.smallId() ]: { type: "square",   detune: +15, pan: +.2, gain: .33 }
 				}
 			}
 		},
