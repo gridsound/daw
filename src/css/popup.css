@@ -18,8 +18,8 @@
 .popup .param {
 	display: flex;
 	align-items: center;
+	font-size: 14px;
 }
-
 .popup .param + .param {
 	margin-top: 5px;
 }
@@ -82,18 +82,36 @@
 }
 
 /* #shortcutsPopupContent --------------------------------------------------- */
-.shortcuts {
-	padding: .3em .5em;
-	margin: 7px;
-	border-radius: 4px;
-	font-weight: bold;
-	font-size: 14px;
-	line-height: 2em;
-	background-color: #444;
-	box-shadow: 0 3px 0 0 rgba( 0, 0, 0, .4 );
-	color: #fff;
+#shortcutsPopupContent {
+	width: 540px;
 }
 
-.shortcuts .icon {
+#shortcutsPopupContent .param {
+	padding: 4px;
+}
+#shortcutsPopupContent .param:nth-child( even ) {
+	background-color: rgba( 255, 255, 255, .05 );
+}
+
+#shortcutsPopupContent .param-values {
+	max-width: 190px;
+}
+
+#shortcutsPopupContent .param-title {
+	font-size: 13px;
+}
+
+#shortcutsPopupContent .shortcuts {
+	display: inline-block;
+	margin: 0 6px;
+	border-radius: 4px;
+	border-bottom: 3px solid #333;
+	padding: .3em .5em;
+	font-weight: bold;
+	white-space: nowrap;
+	color: #fff;
+	background-color: #444;
+}
+#shortcutsPopupContent .shortcuts .icon {
 	width: auto;
 }
