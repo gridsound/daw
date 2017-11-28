@@ -3,6 +3,7 @@
 gs.exportCurrentCompositionToWAV = function() {
 	var cmp = gs.currCmp;
 
+	gs.controls.stop();
 	gs._blobDL && URL.revokeObjectURL( gs._blobDL );
 	wa.render.on();
 	wa.grids.play( "main", 0 );
