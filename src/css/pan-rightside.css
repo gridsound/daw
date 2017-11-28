@@ -24,11 +24,14 @@
 .gsuiGridSamples {
 	background-color: #2f2f2f;
 }
-
 .gsuiBeatLines {
-	filter: brightness( .9 );
-	transition: filter .2s;
+	transition: background-color .2s;
 }
 .focus .gsuiBeatLines {
-	filter: brightness( 1.1 );
+	background-color: #456168;
+}
+
+#mainGridWrap .gsuiAudioBlock,
+#keysGridWrap .gsuiAudioBlock {
+	border-radius: 2px;
 }

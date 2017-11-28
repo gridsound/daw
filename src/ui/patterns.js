@@ -25,10 +25,10 @@ ui.patterns = {
 			pat = ui.patterns.audioBlocks[ id ];
 
 		if ( patSel ) {
-			patSel.rootElement.classList.remove( "selected" );
+			patSel.rootElement.classList.remove( "selected", "gsuiAudioBlock-reversedColors" );
 		}
 		ui.patterns._selectedPattern = pat;
-		pat.rootElement.classList.add( "selected" );
+		pat.rootElement.classList.add( "selected", "gsuiAudioBlock-reversedColors" );
 	},
 	updateContent( id, data ) {
 		ui.patterns.audioBlocks[ id ].updateData( data );

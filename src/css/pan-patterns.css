@@ -6,11 +6,6 @@
 	position: relative;
 	width: 100%;
 	height: 64px;
-	color: #bbb;
-	--bd-radius: 0;
-}
-#patterns .gsuiAudioBlock.selected {
-	color: var( --col1-high );
 }
 #patterns .gsuiAudioBlock.selected .gsuiab-head:before {
 	content: "\f07c";
