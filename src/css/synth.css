@@ -1,0 +1,68 @@
+.synth {
+	display: flex;
+	flex-direction: column;
+	color: #232;
+	background-color: #696;
+}
+.synth-open {
+}
+
+.synth-head {
+	display: flex;
+	padding: 10px;
+	padding-right: 0;
+	font-size: 14px;
+}
+
+.synth-name {
+	flex: 1;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+.synth-name::before {
+	content: "\f3f1";
+	margin-right: 6px;
+	font-weight: normal;
+	font-family: "FontAwesome";
+}
+
+.synth-menuBtn {
+	font-size: 16px;
+	opacity: .4;
+}
+.synth-menuBtn:hover {
+	opacity: 1;
+}
+
+.synth-bottomMenu {
+}
+
+.synth-patterns {
+	flex: 1;
+	overflow: auto;
+	padding-left: 10px;
+	background-color: rgba( 0, 0, 0, .5 );
+}
+
+.synth-bottomMenu {
+	padding: 4px;
+	text-align: right;
+}
+
+.synth-bottomMenu a {
+	margin-left: 6px;
+	opacity: .3;
+}
+.synth-bottomMenu a:hover {
+	opacity: .6;
+}
+
+.synth-patterns .gsuiAudioBlock {
+	margin-bottom: 4px;
+	border-radius: 4px 0 0 4px;
+}
+.synth-patterns .gsuiAudioBlock:first-child {
+	margin-top: 4px;
+}
