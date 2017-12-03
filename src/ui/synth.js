@@ -120,9 +120,9 @@ ui.synth = {
 		} } } );
 	},
 	_oninputSlider( id, attr, slider, val ) {
-		wa.synths.change( { [ gs.currCmp.synthOpened ]: {
+		wa.synths.update( gs.currCmp.synthOpened, {
 			oscillators: { [ id ]: { [ attr ]: val } }
-		} } );
+		} );
 		slider._valueElement.textContent = val;
 	},
 	_onchangeSlider( id, attr, val ) {

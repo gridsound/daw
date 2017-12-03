@@ -9,47 +9,14 @@ ui.patterns = {
 		dom.patterns.oncontextmenu = ui.patterns._oncontextmenu;
 	},
 	empty() {
-		for ( var id in ui.patterns.audioBlocks ) {
-			ui.patterns._remove( id );
-		}
+		Object.keys( ui.patterns.audioBlocks ).forEach( ui.patterns.delete );
 	},
-	change( id, data ) {
-		data
-			? ui.patterns.audioBlocks[ id ]
-				? ui.patterns._update( id, data )
-				: ui.patterns._add( id, data )
-			: ui.patterns._remove( id );
-	},
-	select( id ) {
-		var patSel = ui.patterns._selectedPattern,
-			pat = ui.patterns.audioBlocks[ id ];
-
-		if ( patSel ) {
-			patSel.rootElement.classList.remove( "selected", "gsuiAudioBlock-reversedColors" );
-		}
-		ui.patterns._selectedPattern = pat;
-		pat.rootElement.classList.add( "selected", "gsuiAudioBlock-reversedColors" );
-	},
-	updateContent( id, data ) {
-		ui.patterns.audioBlocks[ id ].updateData( data );
-		ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
-			var blc = gs.currCmp.blocks[ uiBlock.id ];
-
-			if ( !blc.durationEdited ) {
-				uiBlock.duration( blc.duration );
-				uiBlock.contentWidthFixed();
-			}
-			uiBlock.updateData( data, blc.offset, blc.duration );
-		} );
-	},
-
-	// private:
-	_add( id, data ) {
+	create( id, obj ) {
 		var pat = new gsuiAudioBlock(),
 			patRoot = pat.rootElement;
 
-		pat.data = data;
-		pat.name( data.name );
+		pat.data = obj;
+		pat.name( obj.name );
 		pat.datatype( "keys" );
 		patRoot._patId = id;
 		patRoot.setAttribute( "draggable", "true" );
@@ -60,7 +27,20 @@ ui.patterns = {
 		dom.patterns.prepend( patRoot );
 		gs.openPattern( id );
 	},
-	_remove( id ) {
+	update( id, obj ) {
+		if ( "name" in obj ) {
+			var val = obj.name;
+
+			ui.patterns.audioBlocks[ id ].name( val );
+			ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
+				uiBlock.name( val );
+			} );
+			if ( id === gs.currCmp.patternOpened ) {
+				ui.pattern.name( val );
+			}
+		}
+	},
+	delete( id ) {
 		var sibling,
 			patRoot = ui.patterns.audioBlocks[ id ].rootElement;
 
@@ -76,18 +56,25 @@ ui.patterns = {
 		delete ui.patterns.audioBlocks[ id ];
 		patRoot.remove();
 	},
-	_update( id, dataChange ) {
-		if ( "name" in dataChange ) {
-			var val = dataChange.name;
+	select( id ) {
+		var patSel = ui.patterns._selectedPattern,
+			pat = ui.patterns.audioBlocks[ id ];
 
-			ui.patterns.audioBlocks[ id ].name( val );
-			ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
-				uiBlock.name( val );
-			} );
-			if ( id === gs.currCmp.patternOpened ) {
-				ui.pattern.name( val );
+		ui.patterns._selectedPattern = pat;
+		patSel && patSel.rootElement.classList.remove( "selected", "gsuiAudioBlock-reversedColors" );
+		pat.rootElement.classList.add( "selected", "gsuiAudioBlock-reversedColors" );
+	},
+	updateContent( id, data ) {
+		ui.patterns.audioBlocks[ id ].updateData( data );
+		ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
+			var blc = gs.currCmp.blocks[ uiBlock.id ];
+
+			if ( !blc.durationEdited ) {
+				uiBlock.duration( blc.duration );
+				uiBlock.contentWidthFixed();
 			}
-		}
+			uiBlock.updateData( data, blc.offset, blc.duration );
+		} );
 	},
 
 	// events:

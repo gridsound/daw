@@ -2,7 +2,7 @@
 
 gs.loadComposition = function( cmp ) {
 	return gs.unloadComposition().then( function() {
-		var id, cmpOrig = gs.localStorage.get( cmp.id );
+		var cmpOrig = gs.localStorage.get( cmp.id );
 
 		common.smallId_i = gs.getMaxCompositionInnerId( cmp ) + 1;
 		gs.handleOldComposition( cmp );
@@ -12,11 +12,13 @@ gs.loadComposition = function( cmp ) {
 			ui.cmps.push( cmp.id );
 			ui.cmps.update( cmp.id, cmp );
 		}
-		for ( id in cmp.patterns ) {
-			ui.patterns.change( id, cmp.patterns[ id ] );
+		Object.entries( cmp.patterns ).forEach( ( [ id, pat ] ) => {
+			ui.patterns.create( id, pat );
 			gs.updatePatternContent( id );
-		}
-		wa.synths.change( cmp.synths );
+		} );
+		Object.entries( cmp.synths ).forEach( ( [ id, syn ] ) => {
+			wa.synths.create( id, syn );
+		} );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );
 		ui.controls.bpm( cmp.bpm );

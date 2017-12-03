@@ -1,7 +1,8 @@
 "use strict";
 
 gs.changeComposition = function( obj ) {
-	var currSynth,
+	var crudAct,
+		objOpened,
 		cmp = gs.currCmp,
 		currDur = cmp.duration,
 		replay = false;
@@ -12,14 +13,19 @@ gs.changeComposition = function( obj ) {
 		replay = true;
 	}
 	if ( obj.synths ) {
-		wa.synths.change( obj.synths );
-		if ( currSynth = obj.synths[ cmp.synthOpened ] ) {
-			ui.synth.change( currSynth );
+		Object.entries( obj.synths ).forEach( ( [ id, obj ] ) => {
+			crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
+			wa.synths[ crudAct ]( id, obj );
+			// ui.synths[ crudAct ]( id, obj );
+		} );
+		if ( objOpened = obj.synths[ cmp.synthOpened ] ) {
+			ui.synth.change( objOpened );
 		}
 	}
 	if ( obj.patterns ) {
 		Object.entries( obj.patterns ).forEach( function( [ id, obj ] ) {
-			ui.patterns.change( id, obj );
+			crudAct = obj ? ui.patterns.audioBlocks[ id ] ? "update" : "create" : "delete";
+			ui.patterns[ crudAct ]( id, obj );
 		} );
 		replay = true;
 	}
