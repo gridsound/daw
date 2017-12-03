@@ -1,21 +1,22 @@
 .synth {
 	display: flex;
 	flex-direction: column;
-	color: #232;
-	background-color: #696;
+	border-bottom: 1px solid;
+	color: #333;
+	background-color: #666;
 }
 .synth-open {
 }
 
 .synth-head {
 	display: flex;
-	padding: 10px;
-	padding-right: 0;
+	height: 36px;
 	font-size: 14px;
 }
 
 .synth-name {
 	flex: 1;
+	padding-left: 6px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -27,23 +28,39 @@
 	font-weight: normal;
 	font-family: "FontAwesome";
 }
+.synth-name,
+.synth-menuBtn {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
 
 .synth-menuBtn {
+	justify-content: center;
 	font-size: 16px;
-	opacity: .4;
 }
 .synth-menuBtn:hover {
 	opacity: 1;
 }
 
-.synth-bottomMenu {
-}
-
 .synth-patterns {
 	flex: 1;
 	overflow: auto;
+	border: dashed rgba( 0, 0, 0, .2 );
+	border-width: 1px 0;
 	padding-left: 10px;
-	background-color: rgba( 0, 0, 0, .5 );
+	background-color: rgba( 0, 0, 0, .1 );
+}
+.synth-patterns:empty {
+	padding: 0;
+}
+.synth-patterns:empty::before {
+	content: "This synthesizer contains no pattern yet...";
+	display: block;
+	padding: 10px;
+	font-size: 11px;
+	font-style: italic;
+	text-align: center;
 }
 
 .synth-bottomMenu {
@@ -51,12 +68,16 @@
 	text-align: right;
 }
 
+.synth a {
+	opacity: .3;
+	transition: opacity .1s;
+}
+.synth a:hover {
+	opacity: .6;
+}
+
 .synth-bottomMenu a {
 	margin-left: 6px;
-	opacity: .3;
-}
-.synth-bottomMenu a:hover {
-	opacity: .6;
 }
 
 .synth-patterns .gsuiAudioBlock {
