@@ -46,8 +46,7 @@
 .synth-patterns {
 	flex: 1;
 	overflow: auto;
-	border: dashed rgba( 0, 0, 0, .2 );
-	border-width: 1px 0;
+	border-top: 1px dashed rgba( 0, 0, 0, .2 );
 	padding-left: 10px;
 	background-color: rgba( 0, 0, 0, .1 );
 }
@@ -63,21 +62,12 @@
 	text-align: center;
 }
 
-.synth-bottomMenu {
-	padding: 4px;
-	text-align: right;
-}
-
 .synth a {
-	opacity: .3;
+	opacity: .5;
 	transition: opacity .1s;
 }
 .synth a:hover {
-	opacity: .6;
-}
-
-.synth-bottomMenu a {
-	margin-left: 6px;
+	opacity: 1;
 }
 
 .synth-patterns .gsuiAudioBlock {

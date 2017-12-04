@@ -1,7 +1,3 @@
-#patterns {
-	position: relative;
-}
-
 #patterns .gsuiAudioBlock {
 	position: relative;
 	width: 100%;
@@ -12,4 +8,9 @@
 	font-family: "FontAwesome";
 	font-weight: normal;
 	margin-right: .5em;
+}
+
+#synthMenu {
+	left: 100%;
+	margin-left: 5px;
 }

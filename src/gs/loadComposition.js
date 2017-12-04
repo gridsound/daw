@@ -12,12 +12,13 @@ gs.loadComposition = function( cmp ) {
 			ui.cmps.push( cmp.id );
 			ui.cmps.update( cmp.id, cmp );
 		}
+		Object.entries( cmp.synths ).forEach( ( [ id, syn ] ) => {
+			wa.synths.create( id, syn );
+			ui.synths.create( id, syn );
+		} );
 		Object.entries( cmp.patterns ).forEach( ( [ id, pat ] ) => {
 			ui.patterns.create( id, pat );
 			gs.updatePatternContent( id );
-		} );
-		Object.entries( cmp.synths ).forEach( ( [ id, syn ] ) => {
-			wa.synths.create( id, syn );
 		} );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );

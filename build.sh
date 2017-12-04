@@ -148,6 +148,7 @@ declare -a JSfiles=(
 	"src/ui/patterns.js"
 	"src/ui/pattern.js"
 	"src/ui/synth.js"
+	"src/ui/synths.js"
 	"src/ui/openPopup.js"
 	"src/ui/settingsPopup.js"
 	"src/ui/shortcutsPopup.js"

@@ -29,6 +29,7 @@ ui.init = function() {
 	// Initialisation of the rest of the app:
 	ui.cmps.init();
 	ui.history.init();
+	ui.synths.init();
 	ui.patterns.init();
 	ui.controls.init();
 	ui.mainGrid.init();

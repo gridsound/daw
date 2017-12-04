@@ -16,7 +16,7 @@ gs.changeComposition = function( obj ) {
 		Object.entries( obj.synths ).forEach( ( [ id, obj ] ) => {
 			crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
 			wa.synths[ crudAct ]( id, obj );
-			// ui.synths[ crudAct ]( id, obj );
+			ui.synths[ crudAct ]( id, obj );
 		} );
 		if ( objOpened = obj.synths[ cmp.synthOpened ] ) {
 			ui.synth.change( objOpened );

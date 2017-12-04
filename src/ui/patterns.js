@@ -24,7 +24,7 @@ ui.patterns = {
 		patRoot.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
 		patRoot.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
 		ui.patterns.audioBlocks[ id ] = pat;
-		dom.patterns.prepend( patRoot );
+		ui.synths.addPattern( obj.synth, patRoot );
 		gs.openPattern( id );
 	},
 	update( id, obj ) {
