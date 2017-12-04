@@ -6,6 +6,9 @@ ui.synths = {
 		dom.synth.remove();
 		dom.synth.removeAttribute( "id" );
 	},
+	empty() {
+		Object.keys( ui.synths.elements ).forEach( ui.synths.delete );
+	},
 	create( id, obj ) {
 		var root = dom.synth.cloneNode( true );
 
