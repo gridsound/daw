@@ -1,11 +1,8 @@
 .synth {
 	display: flex;
 	flex-direction: column;
-	border-bottom: 1px solid;
 	color: #333;
 	background-color: #666;
-}
-.synth-open {
 }
 
 .synth-head {
@@ -16,23 +13,37 @@
 
 .synth-name {
 	flex: 1;
-	padding-left: 6px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: bold;
 }
-.synth-name::before {
+.synth-head::before {
 	content: "\f3f1";
-	margin-right: 6px;
+	padding-left: 6px;
 	font-weight: normal;
 	font-family: "FontAwesome";
 }
+.synth-name:empty::after {
+	content: "Untitled";
+	font-style: italic;
+	opacity: .5;
+}
+
+.synth-head::before,
+.synth-caret,
 .synth-name,
 .synth-menuBtn {
 	display: flex;
 	align-items: center;
-	height: 100%;
+}
+
+.synth-caret {
+	justify-content: center;
+	transition: transform .2s;
+}
+.synth-open .synth-caret {
+	transform: rotate( 90deg );
 }
 
 .synth-menuBtn {
@@ -46,20 +57,31 @@
 .synth-patterns {
 	flex: 1;
 	overflow: auto;
-	border-top: 1px dashed rgba( 0, 0, 0, .2 );
+	max-height: 250px;
+	border-bottom: 4px solid transparent;
 	padding-left: 10px;
-	background-color: rgba( 0, 0, 0, .1 );
+	background-color: rgba( 0, 0, 0, .4 );
 }
 .synth-patterns:empty {
 	padding: 0;
 }
 .synth-patterns:empty::before {
 	content: "This synthesizer contains no pattern yet...";
-	display: block;
-	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 220px;
+	height: 24px;
+	margin: -24px auto 0;
+	border-radius: 4px;
 	font-size: 11px;
 	font-style: italic;
 	text-align: center;
+	white-space: nowrap;
+	background-color: rgba( 255, 255, 255, .1 );
+}
+.synth-open .synth-patterns:empty::before {
+	margin-top: 4px;
 }
 
 .synth a {
@@ -70,10 +92,23 @@
 	opacity: 1;
 }
 
+.synth-patterns:empty::before,
 .synth-patterns .gsuiAudioBlock {
-	margin-bottom: 4px;
+	transition: margin-top .4s;
+}
+.synth-patterns .gsuiAudioBlock {
+	position: relative;
+	width: 100%;
+	height: 64px;
+	margin-top: -64px;
 	border-radius: 4px 0 0 4px;
 }
-.synth-patterns .gsuiAudioBlock:first-child {
+.synth-open .gsuiAudioBlock {
 	margin-top: 4px;
+}
+.synth-patterns .gsuiAudioBlock.selected .gsuiab-head::before {
+	content: "\f07c";
+	font-family: "FontAwesome";
+	font-weight: normal;
+	margin-right: .5em;
 }

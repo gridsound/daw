@@ -23,6 +23,10 @@
 .ico--minus:after { content: "\f068"; }
 
 .ico-times:before { content: "\f2d3"; }
+.ico-caret-up:before { content: "\f0d8"; }
+.ico-caret-down:before { content: "\f0d7"; }
+.ico-caret-left:before { content: "\f0d9"; }
+.ico-caret-right:before { content: "\f0da"; }
 .ico-3dots:before { content: "\f142"; }
 .ico-play:before { content: "\f04b"; }
 .ico-pause:before { content: "\f04c"; }

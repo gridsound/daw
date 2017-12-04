@@ -13,7 +13,8 @@ ui.synths = {
 		var root = dom.synth.cloneNode( true );
 
 		ui.synths.elements[ id ] = root;
-		root.querySelector( ".synth-menuBtn" ).onclick = ui.synths._openMenu.bind( null, id );
+		root.querySelector( ".synth-head" ).onclick = ui.synths._onclickHead.bind( null, id, root );
+		root.querySelector( ".synth-menuBtn" ).onclick = ui.synths._onclickMenuBtn.bind( null, id );
 		ui.synths.update( id, obj );
 		dom.patterns.prepend( root );
 	}, 
@@ -32,8 +33,11 @@ ui.synths = {
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
 	},
 
-	// private:
-	_openMenu( id, e ) {
+	// events:
+	_onclickHead( id, root ) {
+		root.classList.toggle( "synth-open" );
+	},
+	_onclickMenuBtn( id, e ) {
 		var gBCR = e.target.parentNode.getBoundingClientRect(),
 			patternsBCR = dom[ "pan-patterns" ].getBoundingClientRect();
 

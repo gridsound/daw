@@ -1,15 +1,3 @@
-#patterns .gsuiAudioBlock {
-	position: relative;
-	width: 100%;
-	height: 64px;
-}
-#patterns .gsuiAudioBlock.selected .gsuiab-head:before {
-	content: "\f07c";
-	font-family: "FontAwesome";
-	font-weight: normal;
-	margin-right: .5em;
-}
-
 #synthMenu {
 	left: 100%;
 	margin-left: 5px;
