@@ -13,7 +13,7 @@ gs.clonePattern = function( patId ) {
 	gs.pushCompositionChange( {
 		keys: { [ nkeysId ]: nKeys },
 		patterns: { [ common.smallId() ]: {
-			name: gs.namePattern( pat.name ),
+			name: gs.nameUniqueFrom( pat.name, "patterns" ),
 			type: "keys",
 			keys: nkeysId,
 			synth: pat.synth,

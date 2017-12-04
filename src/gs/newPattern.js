@@ -6,7 +6,7 @@ gs.newPattern = function() {
 	gs.pushCompositionChange( {
 		keys: { [ keysId ]: {} },
 		patterns: { [ common.smallId() ]: {
-			name: gs.namePattern( "pat" ),
+			name: gs.nameUniqueFrom( "pat", "patterns" ),
 			type: "keys",
 			keys: keysId,
 			synth: gs.currCmp.synthOpened,
