@@ -118,6 +118,7 @@ declare -a JSfiles=(
 	"src/gs/isCompositionNeedSave.js"
 	"src/gs/saveCurrentComposition.js"
 	"src/gs/controls.js"
+	"src/gs/newSynth.js"
 	"src/gs/newPattern.js"
 	"src/gs/openPattern.js"
 	"src/gs/openSynth.js"

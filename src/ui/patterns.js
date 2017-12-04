@@ -3,9 +3,7 @@
 ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
-		dom.patNew.onclick = gs.newPattern;
-		dom.patClone.onclick = ui.patterns._onclickClone;
-		dom.patRemove.onclick = ui.patterns._onclickRemove;
+		dom.synthNew.onclick = gs.newSynth;
 		dom.patterns.oncontextmenu = ui.patterns._oncontextmenu;
 	},
 	empty() {
