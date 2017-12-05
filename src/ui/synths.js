@@ -13,6 +13,7 @@ ui.synths = {
 		var root = dom.synth.cloneNode( true );
 
 		ui.synths.elements[ id ] = root;
+		root.dataset.id = id;
 		root.querySelector( ".synth-name" ).onclick = gs.openSynth.bind( null, id );
 		root.querySelector( ".synth-showBtn" ).onclick = ui.synths.show.bind( null, id, undefined );
 		root.querySelector( ".synth-menuBtn" ).onclick = ui.synths._onclickMenuBtn.bind( null, id );
@@ -27,8 +28,14 @@ ui.synths = {
 		}
 	},
 	delete( id ) {
-		ui.synths.elements[ id ].remove();
+		var toSel, toDel = ui.synths.elements[ id ];
+
+		if ( id === ui.synths._selected.dataset.id ) {
+			toSel = toDel.nextElementSibling || toDel.previousElementSibling;
+		}
 		delete ui.synths.elements[ id ];
+		toDel.remove();
+		toSel && gs.openSynth( toSel.dataset.id );
 	},
 	show( id, b ) {
 		ui.synths.elements[ id ].classList.toggle( "synth-show", b );
