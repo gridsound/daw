@@ -34,6 +34,7 @@ gs.loadComposition = function( cmp ) {
 		}
 		if ( cmp.synthOpened ) {
 			gs.openSynth( cmp.synthOpened );
+			ui.synths.show( cmp.synthOpened, true );
 		}
 	}, console.log.bind( console ) );
 };

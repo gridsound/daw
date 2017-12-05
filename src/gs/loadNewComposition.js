@@ -44,8 +44,9 @@ gs.loadNewComposition = function() {
 			[ keysId ]: {}
 		}
 	} ).then( function() {
-		gs.openSynth( synthId );
 		gs.openPattern( patId );
+		gs.openSynth( synthId );
+		ui.synths.show( synthId, true );
 	}, console.log.bind( console ) );
 	return false;
 };

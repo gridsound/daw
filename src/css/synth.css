@@ -42,7 +42,7 @@
 	justify-content: center;
 	transition: transform .2s;
 }
-.synth-open .synth-caret {
+.synth-show .synth-caret {
 	transform: rotate( 90deg );
 }
 
@@ -80,7 +80,7 @@
 	white-space: nowrap;
 	background-color: rgba( 255, 255, 255, .1 );
 }
-.synth-open .synth-patterns:empty::before {
+.synth-show .synth-patterns:empty::before {
 	margin-top: 4px;
 }
 
@@ -103,7 +103,7 @@
 	margin-top: -64px;
 	border-radius: 4px 0 0 4px;
 }
-.synth-open .gsuiAudioBlock {
+.synth-show .gsuiAudioBlock {
 	margin-top: 4px;
 }
 .synth-patterns .gsuiAudioBlock.selected .gsuiab-head::before {
