@@ -5,6 +5,8 @@ ui.synths = {
 		ui.synths.elements = {};
 		dom.synth.remove();
 		dom.synth.removeAttribute( "id" );
+		dom.synthNew.onclick = ui.synths._onclickNew;
+		dom.synthMenu.onclick = ui.synths._onclickMenu;
 	},
 	empty() {
 		Object.keys( ui.synths.elements ).forEach( ui.synths.delete );
@@ -53,6 +55,10 @@ ui.synths = {
 	},
 
 	// events:
+	_onclickNew() {
+		gs.pushCompositionChange( jsonActions.newSynth() );
+		return false;
+	},
 	_onclickMenuBtn( id, e ) {
 		var gBCR = e.target.parentNode.getBoundingClientRect(),
 			patternsBCR = dom[ "pan-patterns" ].getBoundingClientRect();
@@ -61,6 +67,17 @@ ui.synths = {
 		ui.synths._menuId = id;
 		dom.synthMenu.style.top = gBCR.top + gBCR.height / 2 - patternsBCR.top + "px";
 		dom.synthMenu.classList.remove( "hidden" );
+		return false;
+	},
+	_onclickMenu( e ) {
+		var data,
+			id = ui.synths._menuId;
+
+		switch ( e.target.id ) {
+			case "synthCreatePat": data = jsonActions.newPattern( id ); break;
+			case "synthDelete":    data = jsonActions.removeSynth( id ); break;
+		}
+		gs.pushCompositionChange( data );
 		return false;
 	}
 };

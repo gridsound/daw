@@ -3,7 +3,6 @@
 ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
-		dom.synthNew.onclick = gs.newSynth;
 		dom.patterns.oncontextmenu = ui.patterns._oncontextmenu;
 	},
 	empty() {
@@ -16,7 +15,7 @@ ui.patterns = {
 		pat.data = obj;
 		pat.name( obj.name );
 		pat.datatype( "keys" );
-		patRoot._patId = id;
+		patRoot.dataset.id = id;
 		patRoot.setAttribute( "draggable", "true" );
 		patRoot.onclick = ui.patterns._onclickPattern.bind( null, id );
 		patRoot.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
@@ -48,7 +47,7 @@ ui.patterns = {
 			// .2
 			sibling = patRoot.nextSibling || patRoot.previousSibling;
 			if ( sibling ) {
-				gs.openPattern( sibling._patId );
+				gs.openPattern( sibling.dataset.id );
 			}
 		}
 		delete ui.patterns.audioBlocks[ id ];
