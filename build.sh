@@ -89,6 +89,12 @@ declare -a JSfiles=(
 
 	"src/init.js"
 
+	"src/jsonActions/newSynth.js"
+	"src/jsonActions/removeSynth.js"
+	"src/jsonActions/newPattern.js"
+	"src/jsonActions/clonePattern.js"
+	"src/jsonActions/removePattern.js"
+
 	"src/common/deepKeys.js"
 	"src/common/uuid.js"
 	"src/common/smallId.js"
@@ -118,12 +124,8 @@ declare -a JSfiles=(
 	"src/gs/isCompositionNeedSave.js"
 	"src/gs/saveCurrentComposition.js"
 	"src/gs/controls.js"
-	"src/gs/newSynth.js"
-	"src/gs/newPattern.js"
 	"src/gs/openPattern.js"
 	"src/gs/openSynth.js"
-	"src/gs/clonePattern.js"
-	"src/gs/removePattern.js"
 	"src/gs/nameUniqueFrom.js"
 	"src/gs/dropPattern.js"
 	"src/gs/updatePatternContent.js"

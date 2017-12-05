@@ -1,16 +1,16 @@
 "use strict";
 
-gs.newPattern = function() {
+jsonActions.newPattern = function( synthId ) {
 	var keysId = common.smallId();
 
-	gs.pushCompositionChange( {
+	return {
 		keys: { [ keysId ]: {} },
 		patterns: { [ common.smallId() ]: {
 			name: gs.nameUniqueFrom( "pat", "patterns" ),
 			type: "keys",
 			keys: keysId,
-			synth: gs.currCmp.synthOpened,
+			synth: synthId,
 			duration: gs.currCmp.beatsPerMeasure
 		} }
-	} );
+	};
 };

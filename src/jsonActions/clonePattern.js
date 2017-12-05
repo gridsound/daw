@@ -1,16 +1,15 @@
 "use strict";
 
-gs.clonePattern = function( patId ) {
+jsonActions.clonePattern = function( patId ) {
 	var nKeys = {},
 		nkeysId = common.smallId(),
-		cmp = gs.currCmp,
-		pat = cmp.patterns[ patId ],
-		keys = cmp.keys[ pat.keys ];
+		pat = gs.currCmp.patterns[ patId ],
+		keys = gs.currCmp.keys[ pat.keys ];
 
 	Object.keys( keys ).forEach( function( k ) {
 		nKeys[ common.smallId() ] = Object.assign( {}, keys[ k ] );
 	} );
-	gs.pushCompositionChange( {
+	return {
 		keys: { [ nkeysId ]: nKeys },
 		patterns: { [ common.smallId() ]: {
 			name: gs.nameUniqueFrom( pat.name, "patterns" ),
@@ -19,5 +18,5 @@ gs.clonePattern = function( patId ) {
 			synth: pat.synth,
 			duration: pat.duration
 		} }
-	} );
+	};
 };

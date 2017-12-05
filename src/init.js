@@ -1,5 +1,6 @@
 "use strict";
 
+window.jsonActions = {};
 window.common = {};
 window.gs = {};
 window.wa = {};
