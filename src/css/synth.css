@@ -2,7 +2,22 @@
 	display: flex;
 	flex-direction: column;
 	color: #333;
-	background-color: #666;
+	border-bottom: 1px solid rgba( 0, 0, 0, .3 );
+	background-color: #777;
+	opacity: .9;
+	transition: .2s;
+	transition-property:
+		border-bottom-color,
+		background-color,
+		opacity;
+}
+.synth-show {
+	opacity: 1;
+	border-bottom-width: 2px;
+	border-bottom-color: rgba( 255, 255, 255, .1 );
+}
+.synth-selected {
+	background-color: #696;
 }
 
 .synth-head {
@@ -70,7 +85,6 @@
 	flex: 1;
 	overflow: auto;
 	max-height: 250px;
-	border-bottom: 4px solid transparent;
 	padding-left: 10px;
 	background-color: rgba( 0, 0, 0, .4 );
 }
@@ -93,12 +107,13 @@
 	background-color: rgba( 255, 255, 255, .1 );
 }
 .synth-show .synth-patterns:empty::before {
-	margin-top: 4px;
+	margin: 4px auto;
 }
 
 .synth-patterns:empty::before,
 .synth-patterns .gsuiAudioBlock {
-	transition: margin-top .4s;
+	transition: .4s;
+	transition-property: margin-top, margin-bottom;
 }
 .synth-patterns .gsuiAudioBlock {
 	position: relative;
@@ -108,7 +123,7 @@
 	border-radius: 4px 0 0 4px;
 }
 .synth-show .gsuiAudioBlock {
-	margin-top: 4px;
+	margin: 4px 0;
 }
 .synth-patterns .gsuiAudioBlock.selected .gsuiab-head::before {
 	content: "\f07c";
