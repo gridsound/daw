@@ -73,10 +73,9 @@ ui.history = {
 	},
 	__synth( cmp, r, u ) {
 		if ( r.synths ) {
-			var idSynth = Object.keys( r.synths )[ 0 ],
-				rSyn = r.synths[ idSynth ],
-				uSyn = u.synths[ idSynth ],
-				synName = cmp.synths[ idSynth ].name;
+			var synthId = Object.keys( r.synths )[ 0 ],
+				rSyn = r.synths[ synthId ],
+				uSyn = u.synths[ synthId ];
 
 			if ( !rSyn || !uSyn ) {
 				return rSyn
@@ -84,15 +83,14 @@ ui.history = {
 					: { i: "remove", t: `Remove synthesizer "${ uSyn.name }"` };
 			}
 			if ( "name" in rSyn ) {
-				synName = rSyn.name;
-				return { i: "name", t: `${ uSyn.name }: rename to "${ synName }"` };
+				return { i: "name", t: `${ uSyn.name }: rename to "${ rSyn.name }"` };
 			}
 			if ( rSyn.oscillators ) {
 				var param,
 					idOsc = Object.keys( rSyn.oscillators )[ 0 ],
 					rOsc = rSyn.oscillators[ idOsc ],
 					uOsc = uSyn.oscillators[ idOsc ],
-					msg = synName + ": ";
+					msg = cmp.synths[ synthId ].name + ": ";
 
 				if ( !rOsc || !uOsc ) {
 					return rOsc
