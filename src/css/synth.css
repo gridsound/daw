@@ -18,37 +18,49 @@
 	text-overflow: ellipsis;
 	font-weight: bold;
 }
-.synth-head::before {
+.synth-name::before {
 	content: "\f3f1";
-	padding-left: 6px;
+	padding: 0 6px;
 	font-weight: normal;
 	font-family: "FontAwesome";
 }
 .synth-name:empty::after {
 	content: "Untitled";
 	font-style: italic;
-	opacity: .5;
+	opacity: .8;
 }
 
 .synth-head::before,
-.synth-caret,
+.synth-showBtn,
 .synth-name,
 .synth-menuBtn {
 	display: flex;
 	align-items: center;
 }
 
-.synth-caret {
+.synth-showBtn {
 	justify-content: center;
-	transition: transform .2s;
+	border-right: 1px dashed;
+	color: rgba( 0, 0, 0, .25 );
+	background-color: rgba( 0, 0, 0, .1 );
+	transition: color .2s;
 }
-.synth-show .synth-caret {
+.synth-show .synth-showBtn {
+	color: rgba( 0, 0, 0, .6 );
+}
+.synth-showBtn::before {
+	transition: inherit;
+	transition-property: transform;
+}
+.synth-show .synth-showBtn::before {
 	transform: rotate( 90deg );
 }
 
 .synth-menuBtn {
 	justify-content: center;
 	font-size: 16px;
+	opacity: .5;
+	transition: opacity .1s;
 }
 .synth-menuBtn:hover {
 	opacity: 1;
@@ -82,14 +94,6 @@
 }
 .synth-show .synth-patterns:empty::before {
 	margin-top: 4px;
-}
-
-.synth a {
-	opacity: .5;
-	transition: opacity .1s;
-}
-.synth a:hover {
-	opacity: 1;
 }
 
 .synth-patterns:empty::before,

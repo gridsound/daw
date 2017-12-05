@@ -13,7 +13,7 @@ ui.synths = {
 		var root = dom.synth.cloneNode( true );
 
 		ui.synths.elements[ id ] = root;
-		root.querySelector( ".synth-head" ).onclick = ui.synths.show.bind( null, id, undefined );
+		root.querySelector( ".synth-showBtn" ).onclick = ui.synths.show.bind( null, id, undefined );
 		root.querySelector( ".synth-menuBtn" ).onclick = ui.synths._onclickMenuBtn.bind( null, id );
 		ui.synths.update( id, obj );
 		dom.patterns.prepend( root );
@@ -31,6 +31,7 @@ ui.synths = {
 	},
 	show( id, b ) {
 		ui.synths.elements[ id ].classList.toggle( "synth-show", b );
+		return false;
 	},
 	addPattern( synthId, patElement ) {
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
