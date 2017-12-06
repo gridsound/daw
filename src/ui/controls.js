@@ -7,7 +7,6 @@ ui.controls = {
 		dom.togglePlay.onclick = ui.controls._onclickTogglePlay;
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;
-
 		slider.oninput = v => wa.destination.gain( v * v );
 		slider.options( {
 			type: "linear-y",
@@ -22,10 +21,12 @@ ui.controls = {
 		slider.resized();
 	},
 	focusOn( grid ) {
-		dom.togglePlay.classList.toggle( "after", grid !== "main" );
-		dom.mainGridWrap.classList.toggle( "focus", grid === "main" );
-		dom.keysGridWrap.classList.toggle( "focus", grid === "pattern" );
-		( grid === "main" ? ui.mainGridSamples : ui.keysGridSamples )
+		var main = grid === "main";
+
+		dom.togglePlay.classList.toggle( "after", !main );
+		dom.mainGridWrap.classList.toggle( "focus", main );
+		dom.keysGridWrap.classList.toggle( "focus", !main );
+		( main ? ui.mainGridSamples : ui.keysGridSamples )
 			.rootElement.focus();
 	},
 	play() {

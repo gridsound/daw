@@ -59,7 +59,10 @@ gs.controls = {
 		}
 	},
 	focusOn( grid ) {
-		if ( grid !== gs.controls._grid ) {
+		if ( grid !== gs.controls._grid && (
+			grid === "main" ||
+			gs.currCmp.patternOpened )
+		) {
 			if ( gs.controls.status === "playing" ) {
 				gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
 			}
