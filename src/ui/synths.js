@@ -50,6 +50,11 @@ ui.synths = {
 		ui.synths._selected = ui.synths.elements[ id ];
 		ui.synths._selected.classList.add( "synth-selected" );
 	},
+	getFirstPattern( synthId ) {
+		var pat = ui.synths.elements[ synthId ].querySelector( ".gsuiAudioBlock" );
+
+		return pat && pat.dataset.id;
+	},
 	addPattern( synthId, patElement ) {
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
 	},
