@@ -42,7 +42,7 @@ gs._unloadCmp = function( b, res, rej ) {
 		ui.cmps.unload();
 		ui.mainGrid.empty();
 		ui.patterns.empty();
-		ui.pattern.empty();
+		ui.pattern.open( null );
 		ui.synth.empty();
 		gs.currCmp = null;
 		res();

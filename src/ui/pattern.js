@@ -19,14 +19,24 @@ ui.pattern = {
 		grid.uiKeys.onkeyup = wa.patternKeys.stop;
 		grid.resized();
 	},
-	empty() {
-		ui.pattern.name( "" );
-		ui.keysGridSamples.empty();
+	open( id ) {
+		if ( id ) {
+			var pat = gs.currCmp.patterns[ id ];
+
+			ui.pattern._name( pat.name );
+			ui.pattern._load( gs.currCmp.keys[ pat.keys ] );
+		} else {
+			ui.pattern._name( "" );
+			ui.keysGridSamples.empty();
+		}
+		dom.pianorollBlock.classList.toggle( "show", !id );
 	},
-	name( name ) {
+
+	// private:
+	_name( name ) {
 		dom.pianorollName.textContent = name;
 	},
-	load( keys ) {
+	_load( keys ) {
 		ui.keysGridSamples.empty();
 		ui.keysGridSamples.change( keys );
 		ui.keysGridSamples.scrollToSamples();

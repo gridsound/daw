@@ -7,4 +7,5 @@ gs.openSynth = function( id ) {
 	cmp.synthOpened = id;
 	ui.synths.select( id );
 	ui.synth.open( synth );
+	gs.openPattern( ui.synths.getFirstPattern( id ) );
 };

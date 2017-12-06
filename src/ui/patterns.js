@@ -57,9 +57,14 @@ ui.patterns = {
 		var patSel = ui.patterns._selectedPattern,
 			pat = ui.patterns.audioBlocks[ id ];
 
-		ui.patterns._selectedPattern = pat;
-		patSel && patSel.rootElement.classList.remove( "selected", "gsuiAudioBlock-reversedColors" );
-		pat.rootElement.classList.add( "selected", "gsuiAudioBlock-reversedColors" );
+		if ( patSel ) {
+			patSel.rootElement.classList.remove( "selected", "gsuiAudioBlock-reversedColors" );
+			delete ui.patterns._selectedPattern;
+		}
+		if ( pat ) {
+			ui.patterns._selectedPattern = pat;
+			pat.rootElement.classList.add( "selected", "gsuiAudioBlock-reversedColors" );
+		}
 	},
 	updateContent( id, data ) {
 		ui.patterns.audioBlocks[ id ].updateData( data );
