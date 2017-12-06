@@ -7,7 +7,7 @@ window.wa = {};
 window.ui = {};
 window.dom = {};
 window.env = {
-	version: "0.12.3",
+	version: "0.13.0",
 	def_appGain: 1,
 	def_bpm: 120,
 	def_beatsPerMeasure: 4,

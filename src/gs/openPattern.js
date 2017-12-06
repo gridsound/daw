@@ -5,20 +5,18 @@ gs.openPattern = function( id ) {
 		cmp = gs.currCmp;
 
 	id = id || null;
-	if ( id !== cmp.patternOpened ) {
-		cmp.patternOpened = id;
-		if ( id ) {
-			synthId = cmp.patterns[ id ].synth;
-			gs.controls.focusOn( "pattern" );
-			wa.grids.replay();
-			wa.synths.select( synthId );
-			if ( synthId !== cmp.synthOpened ) {
-				gs.openSynth( synthId );
-			}
-		} else {
-			gs.controls.focusOn( "main" );
+	cmp.patternOpened = id;
+	if ( id ) {
+		synthId = cmp.patterns[ id ].synth;
+		gs.controls.focusOn( "pattern" );
+		wa.grids.replay();
+		wa.synths.select( synthId );
+		if ( synthId !== cmp.synthOpened ) {
+			gs.openSynth( synthId );
 		}
-		ui.patterns.select( id );
-		ui.pattern.open( id );
+	} else {
+		gs.controls.focusOn( "main" );
 	}
+	ui.patterns.select( id );
+	ui.pattern.open( id );
 };
