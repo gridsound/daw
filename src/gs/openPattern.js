@@ -1,13 +1,20 @@
 "use strict";
 
 gs.openPattern = function( id ) {
+	var synthId,
+		cmp = gs.currCmp;
+
 	id = id || null;
-	if ( id !== gs.currCmp.patternOpened ) {
-		gs.currCmp.patternOpened = id;
+	if ( id !== cmp.patternOpened ) {
+		cmp.patternOpened = id;
 		if ( id ) {
+			synthId = cmp.patterns[ id ].synth;
 			gs.controls.focusOn( "pattern" );
 			wa.grids.replay();
-			wa.synths.select( gs.currCmp.patterns[ id ].synth );
+			wa.synths.select( synthId );
+			if ( synthId !== cmp.synthOpened ) {
+				gs.openSynth( synthId );
+			}
 		} else {
 			gs.controls.focusOn( "main" );
 		}
