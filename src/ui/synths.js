@@ -61,7 +61,10 @@ ui.synths = {
 
 	// events:
 	_onclickNew() {
-		gs.pushCompositionChange( jsonActions.newSynth() );
+		var obj = jsonActions.newSynth();
+
+		gs.pushCompositionChange( obj );
+		gs.openSynth( Object.keys( obj.synths )[ 0 ] );
 		return false;
 	},
 	_onclickMenuBtn( id, e ) {
