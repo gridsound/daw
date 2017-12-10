@@ -6,7 +6,6 @@ ui.synths = {
 		dom.synth.remove();
 		dom.synth.removeAttribute( "id" );
 		dom.synthNew.onclick = ui.synths._onclickNew;
-		dom.synthMenu.onclick = ui.synths._onclickMenu;
 	},
 	empty() {
 		Object.keys( ui.synths.elements ).forEach( ui.synths.delete );
@@ -18,7 +17,8 @@ ui.synths = {
 		root.dataset.id = id;
 		root.querySelector( ".synth-name" ).onclick = gs.openSynth.bind( null, id );
 		root.querySelector( ".synth-showBtn" ).onclick = ui.synths.show.bind( null, id, undefined );
-		root.querySelector( ".synth-menuBtn" ).onclick = ui.synths._onclickMenuBtn.bind( null, id );
+		root.querySelector( ".synth-deleteBtn" ).onclick = ui.synths._onclickDelete.bind( null, id );
+		root.querySelector( ".synth-newPatternBtn" ).onclick = ui.synths._onclickNewPattern.bind( null, id );
 		ui.synths.update( id, obj );
 		dom.patterns.prepend( root );
 	}, 
@@ -67,14 +67,12 @@ ui.synths = {
 		gs.openSynth( Object.keys( obj.synths )[ 0 ] );
 		return false;
 	},
-	_onclickMenuBtn( id, e ) {
-		var gBCR = e.target.parentNode.getBoundingClientRect(),
-			patternsBCR = dom[ "pan-patterns" ].getBoundingClientRect();
-
-		e.stopPropagation();
-		ui.synths._menuId = id;
-		dom.synthMenu.style.top = gBCR.top + gBCR.height / 2 - patternsBCR.top + "px";
-		dom.synthMenu.classList.remove( "hidden" );
+	_onclickDelete( synthId ) {
+		gs.pushCompositionChange( jsonActions.removeSynth( synthId ) );
+		return false;
+	},
+	_onclickNewPattern( synthId ) {
+		gs.pushCompositionChange( jsonActions.newPattern( synthId ) );
 		return false;
 	},
 	_onclickMenu( e ) {

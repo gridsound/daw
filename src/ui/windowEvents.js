@@ -37,7 +37,6 @@ ui.windowEvents = function() {
 
 	document.body.onclick = function( e ) {
 		ui.cmps._hideMenu();
-		dom.synthMenu.classList.add( "hidden" );
 	};
 
 	document.body.ondrop = function( e ) {

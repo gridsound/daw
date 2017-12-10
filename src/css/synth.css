@@ -17,6 +17,7 @@
 	border-bottom-color: rgba( 255, 255, 255, .1 );
 }
 .synth-selected {
+	color: #333;
 	background-color: #696;
 }
 
@@ -26,19 +27,26 @@
 	line-height: 36px;
 	font-size: 14px;
 }
+.synth-head a {
+	opacity: .5;
+	transition: .1s;
+	transition-property: width, color, opacity;
+}
+.synth-head a:hover {
+	opacity: 1;
+}
+.synth:not(.synth-selected) .synth-head a:hover {
+	color: #7b7;
+}
 
-.synth-name {
+a.synth-name {
 	flex: 1;
+	opacity: 1;
 	overflow: hidden;
+	padding-left: 8px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: bold;
-}
-.synth-name::before {
-	content: "\f3f1";
-	padding: 0 6px;
-	font-weight: normal;
-	font-family: "FontAwesome";
 }
 .synth-name:empty::after {
 	content: "Untitled";
@@ -46,31 +54,26 @@
 	opacity: .8;
 }
 
+.synth-hoverBtn {
+	width: 0;
+}
+.synth:hover .synth-hoverBtn {
+	width: 24px;
+}
+
 .synth-showBtn {
-	border-right: 1px dashed;
-	color: rgba( 0, 0, 0, .25 );
 	background-color: rgba( 0, 0, 0, .1 );
-	transition: color .2s;
 }
 .synth-show .synth-showBtn {
-	color: rgba( 0, 0, 0, .6 );
+	opacity: 1;
 }
 .synth-showBtn::before {
 	display: block;
-	transition: inherit;
+	transition: .2s;
 	transition-property: transform;
 }
 .synth-show .synth-showBtn::before {
 	transform: rotate( 90deg );
-}
-
-.synth-menuBtn {
-	font-size: 16px;
-	opacity: .5;
-	transition: opacity .1s;
-}
-.synth-menuBtn:hover {
-	opacity: 1;
 }
 
 .synth-patterns {
@@ -84,7 +87,7 @@
 	padding: 0;
 }
 .synth-patterns:empty::before {
-	content: "This synthesizer contains no pattern yet...";
+	content: "This synthesizer contains no pattern";
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -104,7 +107,7 @@
 
 .synth-patterns:empty::before,
 .synth-patterns .gsuiAudioBlock {
-	transition: .4s;
+	transition: .3s;
 	transition-property: margin-top, margin-bottom;
 }
 .synth-patterns .gsuiAudioBlock {

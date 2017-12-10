@@ -41,7 +41,8 @@
 .ico-move:before { content: "\f0b2"; }
 .ico-crop:before { content: "\f125"; }
 .ico-history:before { content: "\f1da"; }
-.ico-pattern:before { content: "\f38a"; } /* f389 */
+.ico-synth:before { content: "\f3f1"; }
+.ico-pattern:before { content: "\f38a"; }
 .ico-new:before { content: "\f067"; }
 .ico-clone:before { content: "\f24d"; }
 .ico-remove:before { content: "\f1f8"; } /* f1f8 f2ed */
