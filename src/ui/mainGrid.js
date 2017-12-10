@@ -81,7 +81,7 @@ ui.mainGrid = {
 			gs.dropPattern(
 				e.dataTransfer.getData( "text" ),
 				row.dataset.track,
-				grid.uiTimeLine._round( pageX / grid._pxPerBeat + grid._timeOffset ) );
+				grid.uiTimeLine.beatFloor( pageX / grid._pxPerBeat + grid._timeOffset ) );
 			return false;
 		}
 	}
