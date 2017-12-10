@@ -19,23 +19,23 @@ ui.pattern = {
 		grid.uiKeys.onkeyup = wa.patternKeys.stop;
 		grid.resized();
 	},
+	name( name ) {
+		dom.pianorollName.textContent = name;
+	},
 	open( id ) {
 		if ( id ) {
 			var pat = gs.currCmp.patterns[ id ];
 
-			ui.pattern._name( pat.name );
+			ui.pattern.name( pat.name );
 			ui.pattern._load( gs.currCmp.keys[ pat.keys ] );
 		} else {
-			ui.pattern._name( "" );
+			ui.pattern.name( "" );
 			ui.keysGridSamples.empty();
 		}
 		dom.pianorollBlock.classList.toggle( "show", !id );
 	},
 
 	// private:
-	_name( name ) {
-		dom.pianorollName.textContent = name;
-	},
 	_load( keys ) {
 		ui.keysGridSamples.empty();
 		ui.keysGridSamples.change( keys );
