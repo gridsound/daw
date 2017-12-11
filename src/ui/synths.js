@@ -69,7 +69,11 @@ ui.synths = {
 		return false;
 	},
 	_onclickDelete( synthId ) {
-		gs.pushCompositionChange( jsonActions.removeSynth( synthId ) );
+		if ( Object.keys( gs.currCmp.synths ).length > 1 ) {
+			gs.pushCompositionChange( jsonActions.removeSynth( synthId ) );
+		} else {
+			gsuiPopup.alert( "Error", "You can not delete the last synthesizer" );
+		}
 		return false;
 	},
 	_onclickNewPattern( synthId ) {
