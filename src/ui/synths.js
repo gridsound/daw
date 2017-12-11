@@ -57,6 +57,7 @@ ui.synths = {
 	},
 	addPattern( synthId, patElement ) {
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
+		ui.synths.show( synthId, true );
 	},
 
 	// events:
@@ -73,17 +74,6 @@ ui.synths = {
 	},
 	_onclickNewPattern( synthId ) {
 		gs.pushCompositionChange( jsonActions.newPattern( synthId ) );
-		return false;
-	},
-	_onclickMenu( e ) {
-		var data,
-			id = ui.synths._menuId;
-
-		switch ( e.target.id ) {
-			case "synthCreatePat": data = jsonActions.newPattern( id ); break;
-			case "synthDelete":    data = jsonActions.removeSynth( id ); break;
-		}
-		gs.pushCompositionChange( data );
 		return false;
 	}
 };
