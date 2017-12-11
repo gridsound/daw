@@ -28,6 +28,7 @@
 	font-size: 14px;
 }
 .synth-head a {
+	overflow: hidden;
 	opacity: .5;
 	transition: .1s;
 	transition-property: width, color, opacity;
