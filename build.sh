@@ -94,6 +94,7 @@ declare -a JSfiles=(
 	"src/jsonActions/newPattern.js"
 	"src/jsonActions/clonePattern.js"
 	"src/jsonActions/removePattern.js"
+	"src/jsonActions/patternChangeSynth.js"
 
 	"src/common/deepKeys.js"
 	"src/common/uuid.js"
