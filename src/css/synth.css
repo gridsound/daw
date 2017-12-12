@@ -124,6 +124,18 @@ a.synth-name {
 .synth-patterns .gsuiAudioBlock.selected .gsuiab-head::before {
 	content: "\f07c";
 	font-family: "FontAwesome";
-	font-weight: normal;
 	margin-right: .5em;
+}
+.synth-patterns .gsuiAudioBlock .gsuiab-head a {
+	width: 0;
+	opacity: .5;
+	overflow: hidden;
+	transition: .1s;
+	transition-property: width, opacity;
+}
+.synth-patterns .gsuiAudioBlock:hover .gsuiab-head a {
+	width: 20px;
+}
+.synth-patterns .gsuiAudioBlock .gsuiab-head a:hover {
+	opacity: 1;
 }

@@ -10,7 +10,9 @@ ui.patterns = {
 	},
 	create( id, obj ) {
 		var pat = new gsuiAudioBlock(),
-			patRoot = pat.rootElement;
+			patRoot = pat.rootElement,
+			cloneBtn = document.createElement( "a" ),
+			removeBtn = document.createElement( "a" );
 
 		pat.data = obj;
 		pat.name( obj.name );
@@ -20,6 +22,14 @@ ui.patterns = {
 		patRoot.onclick = ui.patterns._onclickPattern.bind( null, id );
 		patRoot.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
 		patRoot.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
+		cloneBtn.onclick = ui.patterns._onclickClone.bind( null, id );
+		removeBtn.onclick = ui.patterns._onclickRemove.bind( null, id );
+		cloneBtn.className = "icon ico-clone";
+		removeBtn.className = "icon ico-remove";
+		cloneBtn.title = "Clone this pattern";
+		removeBtn.title = "Delete this pattern";
+		patRoot.querySelector( ".gsuiab-head" ).append( cloneBtn, removeBtn );
+
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.synths.addPattern( obj.synth, patRoot );
 		gs.openPattern( id );
@@ -90,19 +100,22 @@ ui.patterns = {
 		}
 		return false;
 	},
-	_onclickClone() {
-		gs.clonePattern( gs.currCmp.patternOpened );
+	_onclickClone( id, e ) {
+		e.stopPropagation();
+		gs.pushCompositionChange( jsonActions.clonePattern( id ) );
+		return false;
 	},
-	_onclickRemove() {
-		var patId = gs.currCmp.patternOpened,
-			patRoot = ui.patterns.audioBlocks[ patId ].rootElement;
+	_onclickRemove( id, e ) {
+		var patRoot = ui.patterns.audioBlocks[ id ].rootElement;
 
+		e.stopPropagation();
 		// .1
 		if ( patRoot.nextSibling || patRoot.previousSibling ) {
-			gs.removePattern( patId );
+			gs.pushCompositionChange( jsonActions.removePattern( id ) );
 		} else {
-			gsuiPopup.alert( "Error", "You can not delete the only pattern" );
+			gsuiPopup.alert( "Error", "You can not delete the last pattern" );
 		}
+		return false;
 	},
 	_onclickPattern( id, e ) {
 		var uiBlock = ui.patterns.audioBlocks[ id ];
