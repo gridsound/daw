@@ -6,7 +6,7 @@ gs.openPattern = function( id ) {
 
 	cmp.patternOpened =
 	id = pat ? id : null;
-	gs.controls.focusOn( pat ? "pattern" : "main" );
+	gs.controls.askFocusOn( pat ? "pattern" : "main" );
 	if ( pat ) {
 		wa.grids.replay();
 		wa.synths.select( pat.synth );
