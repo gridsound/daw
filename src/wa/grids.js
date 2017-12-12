@@ -22,7 +22,9 @@ wa.grids = {
 		}
 	},
 	play( grid, offset ) {
-		var cmp = gs.currCmp,
+		var a, b,
+			cmp = gs.currCmp,
+			pat = cmp.patterns[ cmp.patternOpened ],
 			sched = new gswaScheduler();
 
 		wa._scheduler = sched;
@@ -36,13 +38,20 @@ wa.grids = {
 				pattern: cmp.patternOpened,
 				when: 0,
 				offset: 0,
-				duration: cmp.patterns[ cmp.patternOpened ].duration
+				duration: pat.duration
 			} } ) );
 		sched.setBPM( cmp.bpm );
 		if ( wa.render.isOn ) {
 			sched.startBeat( 0 );
 		} else {
-			sched.startBeat( 0, offset, null, gs.controls.loopA[ grid ], gs.controls.loopB[ grid ] );
+			a = gs.controls.loopA[ grid ];
+			b = gs.controls.loopB[ grid ];
+			if ( a == null ) {
+				a = 0;
+				b = grid === "main" ? cmp.duration : pat.duration;
+				b = Math.max( 1, Math.ceil( b / cmp.beatsPerMeasure ) ) * cmp.beatsPerMeasure;
+			}
+			sched.startBeat( 0, offset, null, a, b );
 		}
 		sched.setBPM( cmp.bpm );
 	},
