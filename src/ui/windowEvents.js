@@ -12,27 +12,24 @@ ui.windowEvents = function() {
 	};
 
 	window.onkeydown = function( e ) {
-		var prevent = true;
+		var prev,
+			ctrlAlt = e.ctrlKey || e.altKey;
 
-		if ( e.altKey ){
-			switch ( e.keyCode ) {
-				case 79: ui.openPopup.show(); break;
-				case 83: gs.saveCurrentComposition(); break;
-				case 90: e.shiftKey ? gs.redo() : gs.undo(); break;
-				case 78: gs.loadNewComposition(); break;
-				default: prevent = false;
-			}
-		} else {
-			switch ( e.keyCode ) {
-				case 32:
-					gs.controls.status === "playing"
-						? gs.controls.stop()
-						: gs.controls.play();
-					break;
-				default: prevent = false;
-			}
+		// console.log( e.key, e.shiftKey );
+		switch ( e.key ) {
+			case "o": if ( ctrlAlt )  { prev = true; ui.openPopup.show();         } break;
+			case "s": if ( ctrlAlt )  { prev = true; gs.saveCurrentComposition(); } break;
+			case "z": if ( ctrlAlt )  { prev = true; gs.undo();                   } break;
+			case "Z": if ( ctrlAlt )  { prev = true; gs.redo();                   } break;
+			case "n": if ( e.altKey ) { prev = true; gs.loadNewComposition();     } break;
+			case " ":
+				prev = true;
+				gs.controls.status === "playing"
+					? gs.controls.stop()
+					: gs.controls.play();
+				break;
 		}
-		prevent && e.preventDefault();
+		prev && e.preventDefault();
 	};
 
 	document.body.onclick = function( e ) {
