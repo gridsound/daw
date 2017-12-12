@@ -140,18 +140,22 @@ ui.history = {
 		}
 	},
 	__pattern( cmp, r, u ) {
-		var id, pat, undoPat;
+		var id, pat, rpat, upat;
 
 		for ( id in r.patterns ) {
-			pat = r.patterns[ id ];
-			undoPat = u.patterns[ id ];
-			if ( !pat || !undoPat ) {
-				return pat
-					? { i: "add", t: `New pattern "${ pat.name }"` }
-					: { i: "remove", t: `Remove pattern "${ undoPat.name }"` };
+			pat = cmp.patterns[ id ];
+			rpat = r.patterns[ id ];
+			upat = u.patterns[ id ];
+			if ( !rpat || !upat ) {
+				return rpat
+					? { i: "add", t: `New pattern "${ rpat.name }"` }
+					: { i: "remove", t: `Remove pattern "${ upat.name }"` };
 			}
-			if ( "name" in pat ) {
-				return { i: "name", t: `${ undoPat.name }: rename to "${ pat.name }"` };
+			if ( rpat.synth ) {
+				return { i: "param", t: `${ pat.name }: change its synthesizer` };
+			}
+			if ( "name" in rpat ) {
+				return { i: "name", t: `${ upat.name }: rename to "${ rpat.name }"` };
 			}
 		}
 	},

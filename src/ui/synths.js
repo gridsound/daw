@@ -15,6 +15,7 @@ ui.synths = {
 
 		ui.synths.elements[ id ] = root;
 		root.dataset.id = id;
+		root.ondrop = ui.synths._ondrop.bind( null, id );
 		root.querySelector( ".synth-name" ).onclick = gs.openSynth.bind( null, id );
 		root.querySelector( ".synth-showBtn" ).onclick = ui.synths.show.bind( null, id, undefined );
 		root.querySelector( ".synth-deleteBtn" ).onclick = ui.synths._onclickDelete.bind( null, id );
@@ -58,9 +59,20 @@ ui.synths = {
 	addPattern( synthId, patElement ) {
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
 		ui.synths.show( synthId, true );
+		if ( patElement.dataset.id === gs.currCmp.patternOpened ) {
+			gs.openSynth( synthId );
+		}
 	},
 
 	// events:
+	_ondrop( synthId, e ) {
+		var patId = e.dataTransfer.getData( "text" ),
+			pat = gs.currCmp.patterns[ patId ];
+
+		if ( pat && pat.synth !== synthId ) {
+			gs.pushCompositionChange( jsonActions.patternChangeSynth( patId, synthId ) );
+		}
+	},
 	_onclickNew() {
 		var obj = jsonActions.newSynth();
 

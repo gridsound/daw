@@ -35,10 +35,15 @@ ui.patterns = {
 		gs.openPattern( id );
 	},
 	update( id, obj ) {
-		if ( "name" in obj ) {
-			var val = obj.name;
+		var val,
+			audioBlc = ui.patterns.audioBlocks[ id ];
 
-			ui.patterns.audioBlocks[ id ].name( val );
+		if ( obj.synth ) {
+			ui.synths.addPattern( obj.synth, audioBlc.rootElement );
+		}
+		if ( "name" in obj ) {
+			val = obj.name;
+			audioBlc.name( val );
 			ui.mainGrid.getPatternBlocks( id ).forEach( function( uiBlock ) {
 				uiBlock.name( val );
 			} );
