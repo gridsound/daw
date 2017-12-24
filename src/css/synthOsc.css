@@ -75,7 +75,6 @@
 	left: 6px;
 	top: 0;
 	align-items: center;
-	text-transform: capitalize;
 	text-align: center;
 	font: 12px "inconsolata";
 	opacity: .8;
@@ -98,6 +97,7 @@
 	color: inherit;
 	font-size: 12px;
 	font-family: "inconsolata";
+	text-transform: capitalize;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	background: none;
@@ -105,7 +105,8 @@
 .synthOsc-curveSelect:focus {
 	outline: 0;
 }
-.synthOsc-curveSelect option {
+.synthOsc-curveSelect option,
+.synthOsc-curveSelect optgroup {
 	background: #444;
 }
 

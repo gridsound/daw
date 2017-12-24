@@ -30,11 +30,20 @@ ui.synth = {
 	},
 
 	// private:
+	_createOption( type ) {
+		var opt = document.createElement( "option" );
+
+		opt.value = type;
+		opt.textContent = type.replace( /_/g, " " );
+		return opt;
+	},
 	_createOsc( id, osc ) {
 		var root = dom.synthOsc.cloneNode( true ),
 			fn = ui.synth._sliderInit.bind( null, id, osc, root ),
 			curveWave = new gsuiWave(),
-			curveSelect = root.querySelector( ".synthOsc-curveSelect" );
+			curveSelect = root.querySelector( ".synthOsc-curveSelect" ),
+			optgroupNative = root.querySelector( "optgroup[label='native']" ),
+			optgroupCustom = root.querySelector( "optgroup[label='custom']" );
 
 		root.removeAttribute( "id" );
 		root.dataset.order = osc.order || 0;
@@ -42,6 +51,8 @@ ui.synth = {
 		curveSelect.onchange = ui.synth._onchangeCurve.bind( null, id );
 		root.querySelector( ".synthOsc-remove" ).onclick =
 			ui.synth._onclickRemoveOsc.bind( null, id );
+		optgroupNative.append.apply( optgroupNative, gswaSynth.nativeTypes.map( this._createOption ) );
+		optgroupCustom.append.apply( optgroupCustom, gswaPeriodicWaves.keys.map( this._createOption ) );
 		curveWave.setResolution( 150, 20 );
 		curveWave.amplitude = .5;
 		curveWave.frequency = 2;
@@ -71,9 +82,13 @@ ui.synth = {
 		var html = ui.synth._oscHTML[ id ];
 
 		if ( osc.type ) {
-			html.curveSelect.value =
-			html.curveWave.type = osc.type;
-			html.curveWave.draw();
+			html.curveSelect.value = osc.type;
+			if ( gswaSynth.nativeTypes.indexOf( osc.type ) > -1 ) {
+				html.curveWave.type = osc.type;
+				html.curveWave.draw();
+			} else {
+				html.curveWave.polyline.setAttribute( "points", "" );
+			}
 		}
 		"detune" in osc && ui.synth._sliderSetValue( id, "detune", osc.detune );
 		"gain" in osc && ui.synth._sliderSetValue( id, "gain", osc.gain );

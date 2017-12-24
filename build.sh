@@ -86,6 +86,7 @@ declare -a JSfiles=(
 	"../gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"
 	"../gs-webaudio-library/gswaScheduler/gswaScheduler.js"
 	"../gs-webaudio-library/gswaSynth/gswaSynth.js"
+	"../gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"
 
 	"src/init.js"
 
