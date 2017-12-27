@@ -6,6 +6,7 @@ gs.loadComposition = function( cmp ) {
 
 		common.smallId_i = gs.getMaxCompositionInnerId( cmp ) + 1;
 		gs.handleOldComposition( cmp );
+		gs.undoredo.init( cmp );
 		gs.currCmp = cmp;
 		gs.currCmpSaved = !!( cmp.savedAt && cmpOrig && cmpOrig.savedAt === cmp.savedAt );
 		if ( cmp.savedAt == null || !cmpOrig ) {

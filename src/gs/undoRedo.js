@@ -1,7 +1,8 @@
 "use strict";
 
 gs.undo = function() {
-	if ( gs.historyInd > 0 ) {
+	// if ( gs.historyInd > 0 ) {
+	if ( gs.undoredo.undo() ) {
 		var act = gs.history[ --gs.historyInd ],
 			prevAct = gs.history[ gs.historyInd - 1 ];
 
@@ -16,7 +17,8 @@ gs.undo = function() {
 };
 
 gs.redo = function() {
-	if ( gs.historyInd < gs.history.length ) {
+	// if ( gs.historyInd < gs.history.length ) {
+	if ( gs.undoredo.redo() ) {
 		var act = gs.history[ gs.historyInd++ ];
 
 		gs.currCmpSaved = !!act.saved;

@@ -7,6 +7,7 @@ gs.changeComposition = function( obj ) {
 		currDur = cmp.duration,
 		replay = false;
 
+	gs.undoredo.change( obj );
 	common.assignDeep( cmp, obj );
 	if ( obj.tracks || obj.blocks ) {
 		ui.mainGrid.change( obj );
