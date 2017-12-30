@@ -6,29 +6,65 @@ function Undoredo() {
 
 Undoredo.prototype = {
 	init( obj ) {
-		this._store = obj || {};
+		if ( this._stack && this.onremoveAction ) {
+			this._stack.forEach( this.onremoveAction );
+		}
 		this._stack = [];
 		this._stackInd = 0;
+		this._store = obj || {};
 	},
 	change( obj ) {
-		if ( this._stackInd < this._stack.length ) {
-			this._stack.length = this._stackInd;
+		var act,
+			stack = this._stack,
+			stackInd = this._stackInd,
+			stackLen = stack.length;
+
+		if ( stackInd < stackLen ) {
+			if ( this.onremoveAction ) {
+				while ( stackInd < stackLen ) {
+					this.onremoveAction( this._stack[ --stackLen ] );
+				}
+			}
+			stack.length = stackInd;
 		}
-		this._stack.push( [ obj, this._composeUndo( this._store, obj ) ] );
-		++this._stackInd;
+		++this._stackInd
+		act = {
+			redo: obj,
+			undo: this._composeUndo( this._store, obj )
+		};
+		act.index = stack.push( act );
+		this.onnewAction && this.onnewAction( act );
 		this._assign( this._store, obj );
 	},
-	undo() {
-		var r = this._stackInd > 0;
+	goToAction( act ) {
+		var n = act.index - this._stackInd;
 
-		r && this._assign( this._store, this._stack[ --this._stackInd ][ 1 ] );
-		return r;
+		if ( n < 0 ) {
+			while ( n++ < 0 ) { this.undo(); }
+		} else if ( n > 0 ) {
+			while ( n-- > 0 ) { this.redo(); }
+		}
+	},
+	getCurrentAction() {
+		return this._stack[ this._stackInd - 1 ];
+	},
+	undo() {
+		if ( this._stackInd > 0 ) {
+			var act = this._stack[ --this._stackInd ];
+
+			this.onundoAction && this.onundoAction( act );
+			this._assign( this._store, act.undo );
+			return act.undo;
+		}
 	},
 	redo() {
-		var r = this._stackInd < this._stack.length;
+		if ( this._stackInd < this._stack.length ) {
+			var act = this._stack[ this._stackInd++ ];
 
-		r && this._assign( this._store, this._stack[ this._stackInd++ ][ 0 ] );
-		return r;
+			this.onredoAction && this.onredoAction( act );
+			this._assign( this._store, act.redo );
+			return act.redo;
+		}
 	},
 
 	// private:
