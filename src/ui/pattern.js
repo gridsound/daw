@@ -44,7 +44,7 @@ ui.pattern = {
 
 	// events:
 	_onchangeGrid( obj ) {
-		gs.pushCompositionChange( { keys: {
+		gs.undoredo.change( { keys: {
 			[ gs.currCmp.patterns[ gs.currCmp.patternOpened ].keys ]: obj
 		} } );
 	},
@@ -54,7 +54,7 @@ ui.pattern = {
 			n = prompt( "Name pattern :", pat.name );
 
 		if ( n != null && ( n = n.trim() ) !== pat.name ) {
-			gs.pushCompositionChange( { patterns: {
+			gs.undoredo.change( { patterns: {
 				[ patId ]: { name: n }
 			} } );
 		}

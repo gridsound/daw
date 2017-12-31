@@ -107,7 +107,7 @@ ui.patterns = {
 	},
 	_onclickClone( id, e ) {
 		e.stopPropagation();
-		gs.pushCompositionChange( jsonActions.clonePattern( id ) );
+		gs.undoredo.change( jsonActions.clonePattern( id ) );
 		return false;
 	},
 	_onclickRemove( id, e ) {
@@ -116,7 +116,7 @@ ui.patterns = {
 		e.stopPropagation();
 		// .1
 		if ( patRoot.nextSibling || patRoot.previousSibling ) {
-			gs.pushCompositionChange( jsonActions.removePattern( id ) );
+			gs.undoredo.change( jsonActions.removePattern( id ) );
 		} else {
 			gsuiPopup.alert( "Error", "You can not delete the last pattern" );
 		}

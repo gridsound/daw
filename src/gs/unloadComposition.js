@@ -4,7 +4,7 @@ gs.unloadComposition = function() {
 	return new Promise( function( res, rej ) {
 		if ( !gs.currCmp ) {
 			res();
-		} else if ( gs.currCmpSaved || !gs.history.length ) {
+		} else if ( gs.currCmpSaved || !gs.undoredo._stack.length ) {
 			gs._unloadCmp( true, res, rej );
 		} else {
 			gsuiPopup.confirm(
@@ -32,11 +32,8 @@ gs._unloadCmp = function( b, res, rej ) {
 		}
 	}
 	if ( gs.currCmpSaved ) {
-		gs.historyInd = 0;
-		gs.history.length = 0;
 		wa.synths.empty();
 		ui.synths.empty();
-		ui.history.cut( 0 );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );
 		ui.cmps.unload();

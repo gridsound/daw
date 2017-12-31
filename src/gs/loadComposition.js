@@ -9,6 +9,9 @@ gs.loadComposition = function( cmp ) {
 		gs.undoredo.init( cmp );
 		gs.currCmp = cmp;
 		gs.currCmpSaved = !!( cmp.savedAt && cmpOrig && cmpOrig.savedAt === cmp.savedAt );
+		if ( !gs.currCmpSaved ) {
+			gs.actionSaved = -1;
+		}
 		if ( cmp.savedAt == null || !cmpOrig ) {
 			ui.cmps.push( cmp.id );
 			ui.cmps.update( cmp.id, cmp );

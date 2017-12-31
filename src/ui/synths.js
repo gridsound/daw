@@ -70,26 +70,26 @@ ui.synths = {
 			pat = gs.currCmp.patterns[ patId ];
 
 		if ( pat && pat.synth !== synthId ) {
-			gs.pushCompositionChange( jsonActions.patternChangeSynth( patId, synthId ) );
+			gs.undoredo.change( jsonActions.patternChangeSynth( patId, synthId ) );
 		}
 	},
 	_onclickNew() {
 		var obj = jsonActions.newSynth();
 
-		gs.pushCompositionChange( obj );
+		gs.undoredo.change( obj );
 		gs.openSynth( Object.keys( obj.synths )[ 0 ] );
 		return false;
 	},
 	_onclickDelete( synthId ) {
 		if ( Object.keys( gs.currCmp.synths ).length > 1 ) {
-			gs.pushCompositionChange( jsonActions.removeSynth( synthId ) );
+			gs.undoredo.change( jsonActions.removeSynth( synthId ) );
 		} else {
 			gsuiPopup.alert( "Error", "You can not delete the last synthesizer" );
 		}
 		return false;
 	},
 	_onclickNewPattern( synthId ) {
-		gs.pushCompositionChange( jsonActions.newPattern( synthId ) );
+		gs.undoredo.change( jsonActions.newPattern( synthId ) );
 		return false;
 	}
 };

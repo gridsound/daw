@@ -40,7 +40,7 @@ ui.settingsPopup = {
 		( x = +inp[ 4 ].value ) !== cmp.beatsPerMeasure && ( cmpChange.beatsPerMeasure = x );
 		( x = +inp[ 5 ].value ) !== cmp.stepsPerBeat && ( cmpChange.stepsPerBeat = x );
 		for ( x in dawChange ) { gs.changeSettings( dawChange ); break; }
-		for ( x in cmpChange ) { gs.pushCompositionChange( cmpChange ); break; }
+		for ( x in cmpChange ) { gs.undoredo.change( cmpChange ); break; }
 	},
 	_bpmTap( inputBpm, bpmTap ) {
 		var time = (new Date()).getTime();

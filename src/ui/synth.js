@@ -124,13 +124,13 @@ ui.synth = {
 			n = prompt( "Name synthesizer :", synth.name );
 
 		if ( n != null && ( n = n.trim() ) !== synth.name ) {
-			gs.pushCompositionChange( { synths: { [ cmp.synthOpened ]: {
+			gs.undoredo.change( { synths: { [ cmp.synthOpened ]: {
 				name: n
 			} } } );
 		}
 	},
 	_onchangeCurve( id, e ) {
-		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
+		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ id ]: { type: e.target.value } }
 		} } } );
 	},
@@ -141,12 +141,12 @@ ui.synth = {
 		slider._valueElement.textContent = val;
 	},
 	_onchangeSlider( id, attr, val ) {
-		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
+		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ id ]: { [ attr ]: val } }
 		} } } );
 	},
 	_onclickAddOsc() {
-		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
+		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ common.uuid() ]: {
 				type: "sine",
 				detune: 0,
@@ -157,7 +157,7 @@ ui.synth = {
 		return false;
 	},
 	_onclickRemoveOsc( id ) {
-		gs.pushCompositionChange( { synths: { [ gs.currCmp.synthOpened ]: {
+		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ id ]: null }
 		} } } );
 		return false;

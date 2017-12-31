@@ -2,56 +2,33 @@
 
 ui.history = {
 	init() {
+		var undored = gs.undoredo;
+
+		undored.onnewAction = ui.history.push;
+		undored.onundoAction = act => act._html.classList.add( "undone" );
+		undored.onredoAction = act => act._html.classList.remove( "undone" );
+		undored.onremoveAction = act => act._html.remove();
 		dom.undo.onclick = gs.undo;
 		dom.redo.onclick = gs.redo;
 	},
-	undo( action ) {
-		action._html.classList.add( "undone" );
-	},
-	redo( action ) {
-		action._html.classList.remove( "undone" );
-	},
-	cut( len ) {
-		var nodes = dom.history.childNodes;
-
-		while ( len < nodes.length ) {
-			nodes[ nodes.length - 1 ].remove();
-		}
-	},
-	push( action ) {
+	push( act ) {
 		var div = document.createElement( "div" ),
 			icon = document.createElement( "span" ),
 			text = document.createElement( "span" ),
-			desc = ui.history._nameAction( action );
+			desc = ui.history._nameAction( act );
 
-		action._html = div;
+		act._html = div;
 		div.className = "action";
 		icon.className = "actionIcon icon ico-" + desc.i;
 		text.className = "actionText";
 		text.textContent = desc.t;
 		div.append( icon, text );
-		div.onclick = ui.history._onclick;
+		div.onclick = _ => ( gs.undoredo.goToAction( act ), false );
 		dom.history.append( div );
 		dom.history.scrollTop = 10000000;
 	},
 
 	// private:
-	_onclick( e ) {
-		var targ = e.target,
-			elAct = targ.classList.contains( "action" ) ? targ : targ.parentNode,
-			nodes = Array.from( dom.history.childNodes ),
-			nbActs = nodes.lastIndexOf( elAct ) - gs.historyInd + 1;
-
-		if ( nbActs < 0 ) {
-			while ( nbActs++ < 0 ) {
-				gs.undo();
-			}
-		} else if ( nbActs > 0 ) {
-			while ( nbActs-- > 0 ) {
-				gs.redo();
-			}
-		}
-	},
 	_nameAction( act ) {
 		var cmp = gs.currCmp,
 			r = act.redo,

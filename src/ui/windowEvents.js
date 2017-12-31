@@ -19,8 +19,8 @@ ui.windowEvents = function() {
 		switch ( e.key ) {
 			case "o": if ( ctrlAlt )  { prev = true; ui.openPopup.show();         } break;
 			case "s": if ( ctrlAlt )  { prev = true; gs.saveCurrentComposition(); } break;
-			case "z": if ( ctrlAlt )  { prev = true; gs.undo();                   } break;
-			case "Z": if ( ctrlAlt )  { prev = true; gs.redo();                   } break;
+			case "z": if ( ctrlAlt )  { prev = true; gs.undoredo.undo();          } break;
+			case "Z": if ( ctrlAlt )  { prev = true; gs.undoredo.redo();          } break;
 			case "n": if ( e.altKey ) { prev = true; gs.loadNewComposition();     } break;
 			case " ":
 				prev = true;
