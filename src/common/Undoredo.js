@@ -33,8 +33,7 @@ Undoredo.prototype = {
 			undo: this._composeUndo( this._store, obj )
 		};
 		act.index = stack.push( act );
-		this.onnewAction && this.onnewAction( act );
-		this._assign( this._store, obj );
+		this._change( act, "redo", this.onnewAction );
 	},
 	goToAction( act ) {
 		var n = act.index - this._stackInd;
@@ -50,24 +49,24 @@ Undoredo.prototype = {
 	},
 	undo() {
 		if ( this._stackInd > 0 ) {
-			var act = this._stack[ --this._stackInd ];
-
-			this.onundoAction && this.onundoAction( act );
-			this._assign( this._store, act.undo );
-			return act.undo;
+			return this._change( this._stack[ --this._stackInd ], "undo", this.onundoAction );
 		}
 	},
 	redo() {
 		if ( this._stackInd < this._stack.length ) {
-			var act = this._stack[ this._stackInd++ ];
-
-			this.onredoAction && this.onredoAction( act );
-			this._assign( this._store, act.redo );
-			return act.redo;
+			return this._change( this._stack[ this._stackInd++ ], "redo", this.onredoAction );
 		}
 	},
 
 	// private:
+	_change( act, dir, fn ) {
+		var obj = act[ dir ];
+
+		fn && fn( act );
+		this._assign( this._store, obj );
+		this.onchange && this.onchange( obj );
+		return obj;
+	},
 	_composeUndo( data, obj ) {
 		if ( data && obj && typeof data === "object" && typeof obj === "object" ) {
 			var k, undo = {};
@@ -81,22 +80,21 @@ Undoredo.prototype = {
 		}
 		return data;
 	},
-	_assign( data, obj, path, objSave ) {
+	_assign( data, obj, path ) {
 		if ( data && obj && typeof data === "object" && typeof obj === "object" ) {
 			var k, val, prev, npath;
 
-			objSave = objSave || obj;
 			for ( k in obj ) {
 				npath = path ? path + "." + k : k;
 				prev = data[ k ];
-				val = this._assign( prev, obj[ k ], npath, objSave );
+				val = this._assign( prev, obj[ k ], npath );
 				if ( val !== prev ) {
 					if ( val == null ) {
 						delete data[ k ];
 					} else {
 						data[ k ] = val;
 					}
-					this.onchange && this.onchange( objSave, npath, val, prev );
+					this.onassign && this.onassign( npath, val, prev );
 				}
 			}
 			return data;
