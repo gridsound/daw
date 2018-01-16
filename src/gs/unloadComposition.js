@@ -34,8 +34,8 @@ gs._unloadCmp = function( b, res, rej ) {
 	if ( gs.currCmpSaved ) {
 		wa.synths.empty();
 		ui.synths.empty();
-		ui.controls.currentTime( "main", 0 );
-		ui.controls.currentTime( "pattern", 0 );
+		gs.controls.currentTime( "main", 0 );
+		gs.controls.currentTime( "pattern", 0 );
 		ui.cmps.unload();
 		ui.mainGrid.empty();
 		ui.patterns.empty();
