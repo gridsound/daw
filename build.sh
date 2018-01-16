@@ -5,6 +5,7 @@ declare -a CSSfiles=(
 	"../gs-ui-components/gsuiBeatLines/gsuiBeatLines.css"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.css"
+	"../gs-ui-components/gsuiOscillator/gsuiOscillator.css"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.css"
 	"../gs-ui-components/gsuiPopup/gsuiPopup.css"
 	"../gs-ui-components/gsuiSlider/gsuiSlider.css"
@@ -30,7 +31,6 @@ declare -a CSSfiles=(
 	"src/css/synth.css"
 	"src/css/version.css"
 	"src/css/controls.css"
-	"src/css/synthOsc.css"
 )
 
 declare -a HTMLfiles=(
@@ -45,10 +45,10 @@ declare -a HTMLfiles=(
 	"src/html/popup-settings.html"
 	"src/html/popup-shortcuts.html"
 	"src/html/synth.html"
-	"src/html/synthOsc.html"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
+	"../gs-ui-components/gsuiOscillator/gsuiOscillator.html"
 	"../gs-ui-components/gsuiPopup/gsuiPopup.html"
 	"../gs-ui-components/gsuiSlider/gsuiSlider.html"
 	"../gs-ui-components/gsuiTimeLine/gsuiTimeLine.html"
@@ -72,6 +72,7 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-deletion.js"
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-selection.js"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.js"
+	"../gs-ui-components/gsuiOscillator/gsuiOscillator.js"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.js"
 	"../gs-ui-components/gsuiPopup/gsuiPopup.js"
 	"../gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js"

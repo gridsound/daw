@@ -2,13 +2,12 @@
 
 ui.synth = {
 	init() {
-		dom.synthOsc.remove();
 		dom.synthName.onclick = ui.synth._onclickName;
 		dom.synthOscAdd.onclick = ui.synth._onclickAddOsc;
-		ui.synth._oscHTML = {};
+		ui.synth._oscs = {};
 	},
 	empty() {
-		Object.keys( ui.synth._oscHTML ).forEach( this._deleteOsc );
+		Object.keys( ui.synth._oscs ).forEach( this._deleteOsc );
 	},
 	open( synth ) {
 		ui.synth.empty();
@@ -22,7 +21,7 @@ ui.synth = {
 		"name" in obj && ui.synth.name( obj.name );
 		"oscillators" in obj && Object.entries( obj.oscillators )
 			.forEach( function( [ id, osc ] ) {
-				osc ? this._oscHTML[ id ]
+				osc ? this._oscs[ id ]
 					? this._updateOsc( id, osc )
 					: this._createOsc( id, osc )
 					: this._deleteOsc( id );
@@ -38,83 +37,29 @@ ui.synth = {
 		return opt;
 	},
 	_createOsc( id, osc ) {
-		var root = dom.synthOsc.cloneNode( true ),
-			fn = ui.synth._sliderInit.bind( null, id, osc, root ),
-			curveWave = new gsuiWave(),
-			curveSelect = root.querySelector( ".synthOsc-curveSelect" ),
-			optgroupNative = root.querySelector( "optgroup[label='native']" ),
-			optgroupCustom = root.querySelector( "optgroup[label='custom']" );
+		var uiosc = new gsuiOscillator();
 
-		root.removeAttribute( "id" );
-		root.dataset.order = osc.order || 0;
-		root.querySelector( ".synthOsc-curve" ).prepend( curveWave.rootElement );
-		curveSelect.onchange = ui.synth._onchangeCurve.bind( null, id );
-		root.querySelector( ".synthOsc-remove" ).onclick =
-			ui.synth._onclickRemoveOsc.bind( null, id );
-		optgroupNative.append.apply( optgroupNative, gswaSynth.nativeTypes.map( this._createOption ) );
-		optgroupCustom.append.apply( optgroupCustom, gswaPeriodicWaves.keys.map( this._createOption ) );
-		curveWave.setResolution( 150, 20 );
-		curveWave.amplitude = .5;
-		curveWave.frequency = 2;
-		if ( !Array.from( dom.synthOscsList.children ).some( elOsc => {
-			if ( osc.order <= +elOsc.dataset.order ) {
-				dom.synthOscsList.insertBefore( root, elOsc );
+		ui.synth._oscs[ id ] = uiosc;
+		uiosc.oninput = ui.synth._oninputOsc.bind( null, id );
+		uiosc.onchange = ui.synth._onchangeOsc.bind( null, id );
+		uiosc.onremove = ui.synth._onremoveOsc.bind( null, id );
+		uiosc.change( osc );
+		uiosc.rootElement.dataset.order = osc.order;
+		if ( !Array.from( dom.synthOscsList.children ).some( el => {
+			if ( osc.order <= +el.dataset.order ) {
+				uiosc.attach( "before", el );
 				return true;
 			}
 		} ) ) {
-			dom.synthOscsList.append( root );
+			uiosc.attach( "append", dom.synthOscsList );
 		}
-		ui.synth._oscHTML[ id ] = {
-			root,
-			curveWave,
-			curveSelect,
-			detune: fn( { min: -100, max: 100, step: 5,   scrollStep: 10  }, "detune" ),
-			gain:   fn( { min:    0, max:   1, step: .01, scrollStep: .05 }, "gain" ),
-			pan:    fn( { min:   -1, max:   1, step: .01, scrollStep: .1  }, "pan" ),
-		};
-		ui.synth._updateOsc( id, osc );
-	},
-	_deleteOsc( id ) {
-		ui.synth._oscHTML[ id ].root.remove();
-		delete ui.synth._oscHTML[ id ];
 	},
 	_updateOsc( id, osc ) {
-		var html = ui.synth._oscHTML[ id ];
-
-		if ( osc.type ) {
-			html.curveSelect.value = osc.type;
-			if ( gswaSynth.nativeTypes.indexOf( osc.type ) > -1 ) {
-				html.curveWave.type = osc.type;
-				html.curveWave.draw();
-			} else {
-				html.curveWave.polyline.setAttribute( "points", "" );
-			}
-		}
-		"detune" in osc && ui.synth._sliderSetValue( id, "detune", osc.detune );
-		"gain" in osc && ui.synth._sliderSetValue( id, "gain", osc.gain );
-		"pan" in osc && ui.synth._sliderSetValue( id, "pan", osc.pan );
+		ui.synth._oscs[ id ].change( osc );
 	},
-	_sliderInit( id, osc, oscRoot, obj, attr ) {
-		var slider = new gsuiSlider(),
-			sliderPar = oscRoot.querySelector( `.synthOsc-${ attr }` ),
-			valElem = sliderPar.querySelector( ".synthOsc-sliderValue" );
-
-		obj.type = "circular";
-		obj.value = osc[ attr ];
-		slider.options( obj );
-		sliderPar.querySelector( ".synthOsc-sliderWrap" ).append( slider.rootElement );
-		slider.oninput = ui.synth._oninputSlider.bind( null, id, attr, slider );
-		slider.onchange = ui.synth._onchangeSlider.bind( null, id, attr );
-		slider._valueElement = valElem;
-		valElem.textContent = obj.value;
-		slider.resized();
-		return slider;
-	},
-	_sliderSetValue( oscId, attr, val ) {
-		var slider = ui.synth._oscHTML[ oscId ][ attr ];
-
-		slider.setValue( val );
-		slider._valueElement.textContent = val;
+	_deleteOsc( id ) {
+		ui.synth._oscs[ id ].remove();
+		delete ui.synth._oscs[ id ];
 	},
 
 	// events:
@@ -129,22 +74,6 @@ ui.synth = {
 			} } } );
 		}
 	},
-	_onchangeCurve( id, e ) {
-		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
-			oscillators: { [ id ]: { type: e.target.value } }
-		} } } );
-	},
-	_oninputSlider( id, attr, slider, val ) {
-		wa.synths.update( gs.currCmp.synthOpened, {
-			oscillators: { [ id ]: { [ attr ]: val } }
-		} );
-		slider._valueElement.textContent = val;
-	},
-	_onchangeSlider( id, attr, val ) {
-		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
-			oscillators: { [ id ]: { [ attr ]: val } }
-		} } } );
-	},
 	_onclickAddOsc() {
 		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ common.uuid() ]: {
@@ -156,10 +85,20 @@ ui.synth = {
 		} } } );
 		return false;
 	},
-	_onclickRemoveOsc( id ) {
+	_onremoveOsc( id ) {
 		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
 			oscillators: { [ id ]: null }
 		} } } );
 		return false;
+	},
+	_oninputOsc( id, attr, val ) {
+		wa.synths.update( gs.currCmp.synthOpened, {
+			oscillators: { [ id ]: { [ attr ]: val } }
+		} );
+	},
+	_onchangeOsc( id, obj ) {
+		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
+			oscillators: { [ id ]: obj }
+		} } } );
 	}
 };

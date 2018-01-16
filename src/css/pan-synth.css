@@ -45,6 +45,14 @@
 	flex: 1;
 }
 
+.gsuiOscillator {
+	height: 60px;
+	border-bottom: 1px solid #111;
+}
+.gsuiOscillator:only-child .gsuiOscillator-remove {
+	display: none;
+}
+
 /* #synthOscAdd ------------------------------------------------------------- */
 #synthOscAdd {
 	display: block;
