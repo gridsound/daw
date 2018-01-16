@@ -40,5 +40,6 @@ gs.loadComposition = function( cmp ) {
 			gs.openSynth( cmp.synthOpened );
 			ui.synths.show( cmp.synthOpened, true );
 		}
+		gs.controls.focusOn( "main" );
 	}, console.log.bind( console ) );
 };

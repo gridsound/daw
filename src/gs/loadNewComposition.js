@@ -47,6 +47,7 @@ gs.loadNewComposition = function() {
 		gs.openPattern( patId );
 		gs.openSynth( synthId );
 		ui.synths.show( synthId, true );
+		gs.controls.focusOn( "main" );
 	}, console.log.bind( console ) );
 	return false;
 };
