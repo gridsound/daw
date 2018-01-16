@@ -4,15 +4,18 @@ gs.unloadComposition = function() {
 	return new Promise( function( res, rej ) {
 		if ( !gs.currCmp ) {
 			res();
-		} else if ( gs.currCmpSaved || !gs.undoredo._stack.length ) {
-			gs._unloadCmp( true, res, rej );
 		} else {
-			gsuiPopup.confirm(
-				"Warning",
-				"Are you sure you want to discard the unsaved change ?"
-			).then( function( b ) {
-				gs._unloadCmp( b, res, rej );
-			} );
+			gs.controls.stop();
+			if ( gs.currCmpSaved || !gs.undoredo._stack.length ) {
+				gs._unloadCmp( true, res, rej );
+			} else {
+				gsuiPopup.confirm(
+					"Warning",
+					"Are you sure you want to discard the unsaved change ?"
+				).then( function( b ) {
+					gs._unloadCmp( b, res, rej );
+				} );
+			}
 		}
 	} );
 };
