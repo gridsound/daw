@@ -18,7 +18,7 @@ ui.controls = {
 			startFrom: 0,
 		} );
 		dom.appGainWrap.append( slider.rootElement );
-		slider.resized();
+		slider.attached();
 	},
 	focusOn( grid ) {
 		var main = grid === "main";

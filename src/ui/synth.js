@@ -47,12 +47,13 @@ ui.synth = {
 		uiosc.rootElement.dataset.order = osc.order;
 		if ( !Array.from( dom.synthOscsList.children ).some( el => {
 			if ( osc.order <= +el.dataset.order ) {
-				uiosc.attach( "before", el );
+				el.before( uiosc.rootElement );
 				return true;
 			}
 		} ) ) {
-			uiosc.attach( "append", dom.synthOscsList );
+			dom.synthOscsList.append( uiosc.rootElement );
 		}
+		uiosc.attached();
 	},
 	_updateOsc( id, osc ) {
 		ui.synth._oscs[ id ].change( osc );
