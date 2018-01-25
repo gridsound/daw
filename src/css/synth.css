@@ -23,9 +23,9 @@
 
 .synth-head {
 	display: flex;
-	height: 36px;
-	line-height: 36px;
-	font-size: 14px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
 }
 .synth-head a {
 	overflow: hidden;
@@ -59,7 +59,7 @@ a.synth-name {
 	width: 0;
 }
 .synth:hover .synth-hoverBtn {
-	width: 24px;
+	width: 20px;
 }
 
 .synth-showBtn {
