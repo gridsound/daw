@@ -13,60 +13,18 @@
 	background-color: #696;
 }
 
-#synthOscs {
-	overflow: auto;
-	counter-reset: count-osc;
-}
-
-#synthOscsHead {
-	display: flex;
-	justify-content: space-between;
-	padding: 4px 8px;
-	padding-right: 12px;
-	font-size: 11px;
-	font-family: "inconsolata";
-	color: #aaa;
-	border-bottom: 1px solid #111;
-	background-color: #444;
-}
-#synthOscsHead div {
-	width: 40px;
-	margin-left: 14px;
-	text-align: center;
-	text-transform: capitalize;
-}
-#synthOscsHead div:first-child {
-	width: auto;
-	opacity: .5;
-	margin-left: 0;
-	text-align: left;
-}
-#synthOscsHeadCurve {
+#synthWrapper {
+	position: relative;
 	flex: 1;
 }
 
-.gsuiOscillator {
-	height: 60px;
-	border-bottom: 1px solid #111;
-}
-.gsuiOscillator:only-child .gsuiOscillator-remove {
-	display: none;
+#synthWrapper2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
-/* #synthOscAdd ------------------------------------------------------------- */
-#synthOscAdd {
-	display: block;
-	margin: 10px;
-	padding: 1em;
-	border-radius: 4px;
-	font-size: 12px;
-	font-weight: bold;
-	color: var( --app-bg );
-	text-align: center;
-	background-color: rgba( 255, 255, 255, .4 );
-	opacity: .3;
-	transition: opacity .2s;
-}
-#synthOscAdd:hover {
-	opacity: .6;
+.gsuiSynthesizer {
+	height: 400px;
+	max-height: 100%;
 }

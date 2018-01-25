@@ -2,12 +2,19 @@
 
 ui.synth = {
 	init() {
+		var uisyn = new gsuiSynthesizer();
+
+		ui.synth._uisyn = uisyn;
+		uisyn.oninput = ui.synth._oninputSynth;
+		uisyn.onchange = ui.synth._onchangeSynth;
 		dom.synthName.onclick = ui.synth._onclickName;
-		dom.synthOscAdd.onclick = ui.synth._onclickAddOsc;
-		ui.synth._oscs = {};
+		uisyn.rootElement.querySelector( ".gsuiSynthesizer-title" ).remove();
+		uisyn.rootElement.querySelector( ".gsuiSynthesizer-envelopes" ).remove();
+		dom.synthWrapper2.append( uisyn.rootElement );
+		uisyn.attached();
 	},
 	empty() {
-		Object.keys( ui.synth._oscs ).forEach( this._deleteOsc );
+		ui.synth._uisyn.empty();
 	},
 	open( synth ) {
 		ui.synth.empty();
@@ -18,49 +25,10 @@ ui.synth = {
 		dom.synthName.textContent = name;
 	},
 	change( obj ) {
-		"name" in obj && ui.synth.name( obj.name );
-		"oscillators" in obj && Object.entries( obj.oscillators )
-			.forEach( function( [ id, osc ] ) {
-				osc ? this._oscs[ id ]
-					? this._updateOsc( id, osc )
-					: this._createOsc( id, osc )
-					: this._deleteOsc( id );
-			}, ui.synth );
-	},
-
-	// private:
-	_createOption( type ) {
-		var opt = document.createElement( "option" );
-
-		opt.value = type;
-		opt.textContent = type.replace( /_/g, " " );
-		return opt;
-	},
-	_createOsc( id, osc ) {
-		var uiosc = new gsuiOscillator();
-
-		ui.synth._oscs[ id ] = uiosc;
-		uiosc.oninput = ui.synth._oninputOsc.bind( null, id );
-		uiosc.onchange = ui.synth._onchangeOsc.bind( null, id );
-		uiosc.onremove = ui.synth._onremoveOsc.bind( null, id );
-		uiosc.change( osc );
-		uiosc.rootElement.dataset.order = osc.order;
-		if ( !Array.from( dom.synthOscsList.children ).some( el => {
-			if ( osc.order <= +el.dataset.order ) {
-				el.before( uiosc.rootElement );
-				return true;
-			}
-		} ) ) {
-			dom.synthOscsList.append( uiosc.rootElement );
+		if ( "name" in obj ) {
+			ui.synth.name( obj.name );
 		}
-		uiosc.attached();
-	},
-	_updateOsc( id, osc ) {
-		ui.synth._oscs[ id ].change( osc );
-	},
-	_deleteOsc( id ) {
-		ui.synth._oscs[ id ].remove();
-		delete ui.synth._oscs[ id ];
+		ui.synth._uisyn.change( obj );
 	},
 
 	// events:
@@ -75,31 +43,12 @@ ui.synth = {
 			} } } );
 		}
 	},
-	_onclickAddOsc() {
-		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
-			oscillators: { [ common.uuid() ]: {
-				type: "sine",
-				detune: 0,
-				gain: 1,
-				pan: 0
-			} }
-		} } } );
-		return false;
-	},
-	_onremoveOsc( id ) {
-		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
-			oscillators: { [ id ]: null }
-		} } } );
-		return false;
-	},
-	_oninputOsc( id, attr, val ) {
+	_oninputSynth( id, attr, val ) {
 		wa.synths.update( gs.currCmp.synthOpened, {
 			oscillators: { [ id ]: { [ attr ]: val } }
 		} );
 	},
-	_onchangeOsc( id, obj ) {
-		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: {
-			oscillators: { [ id ]: obj }
-		} } } );
+	_onchangeSynth( obj ) {
+		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: obj } } );
 	}
 };
