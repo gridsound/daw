@@ -8,8 +8,8 @@ ui.history = {
 		undored.onundoAction = act => act._html.classList.add( "undone" );
 		undored.onredoAction = act => act._html.classList.remove( "undone" );
 		undored.onremoveAction = act => act._html.remove();
-		dom.undo.onclick = gs.undo;
-		dom.redo.onclick = gs.redo;
+		dom.undo.onclick = undored.undo.bind( undored );
+		dom.redo.onclick = undored.redo.bind( undored );
 	},
 	push( act ) {
 		var div = document.createElement( "div" ),
