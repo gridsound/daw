@@ -40,6 +40,7 @@ ui.init = function() {
 	ui.synth.init();
 	ui.pattern.init();
 	ui.openPopup.init();
+	ui.aboutPopup.init();
 	ui.settingsPopup.init();
 	ui.shortcutsPopup.init();
 	ui.windowEvents();

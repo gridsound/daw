@@ -114,10 +114,15 @@
 	background-color: rgba( 255, 255, 255, .1 );
 }
 
-/* #patreon */
+/* #about */
 /* -------------------------------------------------------------------------- */
-#patreon {
-	border: 2px solid #f6685275;
-	color: #f66852;
-	font-size: 20px;
+#about {
+	border: 0;
+	color: #ff9;
+	font-size: 21px;
+	background-color: rgba( 255, 255, 255, .1 );
+}
+#about:hover {
+	color: #505050;
+	background-color: #ff9;
 }

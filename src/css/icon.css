@@ -56,6 +56,7 @@
 .ico-arrows-v:before { content: "\f338"; }
 .ico-tint:before { content:"\f043"; }
 .ico-cmd:before { content: "⌘"; font-family: sans-serif; }
+.ico-rocket:before { content: "\f135"; }
 
 .ico-chrome:before { content: "\f268"; }
 .ico-edge:before { content: "\f282"; }
@@ -68,7 +69,9 @@
 .ico-patreon:before { content: "\f3d9"; }
 .ico-facebook:before { content: "\f09a"; }
 .ico-github:before { content: "\f09b"; } /* f113 */
+.ico-github-alt:before { content: "\f113"; } /* f113 */
 .ico-twitter:before { content: "\f099"; }
 .ico-youtube:before { content: "\f167"; }
+.ico-codepen:before { content: "\f1cb"; }
 
 .ico-pattern { transform: scale( -1, 1 ); }
