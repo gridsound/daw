@@ -7,7 +7,9 @@ ui.synth = {
 		ui.synth._uisyn = uisyn;
 		uisyn.oninput = ui.synth._oninputSynth;
 		uisyn.onchange = ui.synth._onchangeSynth;
+		uisyn.setWaveList( Object.keys( gswaPeriodicWaves ) );
 		dom.synthName.onclick = ui.synth._onclickName;
+		uisyn.rootElement.querySelector( ".gsuiSynthesizer-title" ).remove();
 		uisyn.rootElement.querySelector( ".gsuiSynthesizer-title" ).remove();
 		uisyn.rootElement.querySelector( ".gsuiSynthesizer-envelopes" ).remove();
 		dom.synthWrapper2.append( uisyn.rootElement );

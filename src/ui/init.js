@@ -6,6 +6,10 @@ ui.init = function() {
 
 	gsuiGridSamples.getNewId = common.smallId;
 
+	Object.entries( gswaPeriodicWaves ).forEach( ( [ name, wave ] ) => {
+		gsuiPeriodicWave.addWave( name, wave.real, wave.imag );
+	} );
+
 	document.querySelectorAll( "div[data-panel]" ).forEach( function( pan ) {
 		div = document.getElementById( pan.dataset.panel );
 		div && div.append.apply( div, pan.children );

@@ -6,6 +6,7 @@ declare -a CSSfiles=(
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.css"
 	"../gs-ui-components/gsuiOscillator/gsuiOscillator.css"
+	"../gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"
 	"../gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.css"
 	"../gs-ui-components/gsuiPopup/gsuiPopup.css"
@@ -75,6 +76,7 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-selection.js"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.js"
 	"../gs-ui-components/gsuiOscillator/gsuiOscillator.js"
+	"../gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"
 	"../gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.js"
 	"../gs-ui-components/gsuiPanels/gsuiPanels.js"
 	"../gs-ui-components/gsuiPopup/gsuiPopup.js"
@@ -85,7 +87,6 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiToggle/gsuiToggle.js"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"../gs-ui-components/gsuiTrackList/gsuiTrackList.js"
-	"../gs-ui-components/gsuiWave/gsuiWave.js"
 
 	"../gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"
 	"../gs-webaudio-library/gswaScheduler/gswaScheduler.js"
