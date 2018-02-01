@@ -44,6 +44,7 @@ declare -a HTMLfiles=(
 	"src/html/pan-synth.html"
 	"src/html/pan-pianoroll.html"
 	"src/html/popup-open.html"
+	"src/html/popup-about.html"
 	"src/html/popup-settings.html"
 	"src/html/popup-shortcuts.html"
 	"src/html/synth.html"
@@ -146,6 +147,7 @@ declare -a JSfiles=(
 	"src/wa/patterns.js"
 	"src/wa/patternKeys.js"
 
+	"src/ui/aboutPopup.js"
 	"src/ui/init.js"
 	"src/ui/keysToRects.js"
 	"src/ui/windowEvents.js"

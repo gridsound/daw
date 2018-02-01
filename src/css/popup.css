@@ -115,3 +115,70 @@
 #shortcutsPopupContent .shortcuts .icon {
 	width: auto;
 }
+
+/* #aboutPopupContent ------------------------------------------------------- */
+#aboutPopupContent {
+	width: 450px;
+	text-align: center;
+}
+#aboutPopupContent > div {
+	margin-bottom: 16px;
+}
+
+#aboutPopupContent .title {
+	font-family: "Oswald";
+	font-size: 32px;
+}
+
+#aboutPopupContent .description a,
+#aboutPopupContent .donate a {
+	font-weight: bold;
+}
+#aboutPopupContent .description a::after,
+#aboutPopupContent .donate a::after {
+	font-family: "FontAwesomeBrands";
+	font-weight: normal;
+	margin-left: 6px;
+}
+#aboutPopupContent .description a::after {
+	content: "\f113";
+}
+#aboutPopupContent .donate a {
+	color: #f96854;
+	font-size: 1.12em;
+}
+#aboutPopupContent .donate a::after {
+	content: "\f3d9";
+}
+
+#aboutPopupContent .social-network {
+	display: flex;
+}
+
+#aboutPopupContent .social-network a {
+	flex: 1;
+	padding: 20px;
+	font-size: 36px;
+	opacity: .5;
+	transition: .4s;
+	transition-property: background-color, opacity;
+}
+#aboutPopupContent .social-network a:hover {
+	color: #fff;
+	opacity: 1;
+}
+#aboutPopupContent .social-network a:hover::before {
+	top: -4px;
+	left: 4px;
+	text-shadow: -4px 4px 2px rgba( 0, 0, 0, .2 );
+}
+#aboutPopupContent .social-network a::before {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	transition: .2s;
+	transition-property: top, left, text-shadow;
+}
+#aboutPopupContent .social-network:hover a:not(:hover) {
+	opacity: .3;
+}
