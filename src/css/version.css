@@ -1,9 +1,8 @@
 #version {
-	display: flex;
-	align-items: center;
-	margin-left: .8em;
+	margin-left: .5em;
 	font-family: "Inconsolata";
 	font-style: italic;
+	font-size: 18px;
 	opacity: .5;
 	transition: .2s;
 	transition-property: opacity, text-shadow;
