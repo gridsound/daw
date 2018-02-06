@@ -12,24 +12,28 @@ ui.windowEvents = function() {
 	};
 
 	window.onkeydown = function( e ) {
-		var prev,
-			ctrlAlt = e.ctrlKey || e.altKey;
+		var prev, key = e.key;
 
-		// console.log( e.key, e.shiftKey );
-		switch ( e.key ) {
-			case "o": if ( ctrlAlt )  { prev = true; ui.openPopup.show();         } break;
-			case "s": if ( ctrlAlt )  { prev = true; gs.saveCurrentComposition(); } break;
-			case "z": if ( ctrlAlt )  { prev = true; gs.undoredo.undo();          } break;
-			case "Z": if ( ctrlAlt )  { prev = true; gs.undoredo.redo();          } break;
-			case "n": if ( e.altKey ) { prev = true; gs.loadNewComposition();     } break;
-			case " ":
-				prev = true;
-				gs.controls.status === "playing"
-					? gs.controls.stop()
-					: gs.controls.play();
-				break;
+		if ( key === " " ) {
+			prev = true;
+			gs.controls.status === "playing"
+				? gs.controls.stop()
+				: gs.controls.play();
+		} else if ( e.ctrlKey || e.altKey ) {
+			prev = true;
+			     if ( key === "o" ) { ui.openPopup.show(); }
+			else if ( key === "s" ) { gs.saveCurrentComposition(); }
+			else if ( key === "z" ) { gs.undoredo.undo(); }
+			else if ( key === "Z" ) { gs.undoredo.redo(); }
+			else if ( key === "n" && e.altKey ) { gs.loadNewComposition(); }
+			else { prev = false; }
+		} else {
+			ui.pattern.keyboardEvent( true, e );
 		}
 		prev && e.preventDefault();
+	};
+	window.onkeyup = function( e ) {
+		ui.pattern.keyboardEvent( false, e );
 	};
 
 	document.body.onclick = function( e ) {

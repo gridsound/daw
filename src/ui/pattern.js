@@ -34,6 +34,21 @@ ui.pattern = {
 		}
 		dom.pianorollBlock.classList.toggle( "show", !id );
 	},
+	keyboardEvent( status, e ) {
+		var uiKeys = ui.keysGridSamples.uiKeys,
+			key = gsuiKeys.keyboardToKey[ e.code ];
+
+		if ( key ) {
+			if ( status ) {
+				wa.patternKeys.start( key[ 1 ], key[ 0 ] );
+				uiKeys.setKeyDown( key[ 1 ] + key[ 0 ] );
+			} else {
+				wa.patternKeys.stop( key[ 1 ], key[ 0 ] );
+				uiKeys.setKeyUp( key[ 1 ] + key[ 0 ] );
+			}
+			return true;
+		}
+	},
 
 	// private:
 	_load( keys ) {
