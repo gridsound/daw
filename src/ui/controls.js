@@ -4,6 +4,9 @@ ui.controls = {
 	init() {
 		var slider = new gsuiSlider();
 
+		ui.controls.spectrum = new gsuiSpectrum();
+		ui.controls.spectrum.setResolution( 512 );
+		document.querySelector( "#analyser" ).appendChild( ui.controls.spectrum.rootElement );
 		dom.togglePlay.onclick = ui.controls._onclickTogglePlay;
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;

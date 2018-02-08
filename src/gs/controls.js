@@ -10,6 +10,7 @@ gs.controls = {
 		gs.controls.loopA = {};
 		gs.controls.loopB = {};
 		gs.controls._grid = "main";
+		gs.controls._loopOn();
 	},
 	currentTime( grid, beat ) {
 		if ( beat == null ) {
@@ -30,7 +31,7 @@ gs.controls = {
 			gs.controls.status = "playing";
 			wa.grids.play( gs.controls._grid, gs.controls.times[ gs.controls._grid ] )
 			ui.controls.play();
-			gs.controls._loopOn();
+			// gs.controls._loopOn();
 		}
 	},
 	pause() {
@@ -39,7 +40,7 @@ gs.controls = {
 			gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
 			wa.grids.stop();
 			ui.controls.pause();
-			gs.controls._loopOff();
+			// gs.controls._loopOff();
 		}
 	},
 	stop() {
@@ -49,7 +50,7 @@ gs.controls = {
 			gs.controls.status = "stopped";
 			wa.grids.stop();
 			ui.controls.stop();
-			gs.controls._loopOff();
+			// gs.controls._loopOff();
 			gs.controls.currentTime( gs.controls._grid,
 				gs.controls.loopA[ gs.controls._grid ] || 0 );
 			switch ( document.activeElement ) {
@@ -86,7 +87,11 @@ gs.controls = {
 		cancelAnimationFrame( gs.controls._frameId );
 	},
 	_loop() {
-		ui.controls.currentTime( gs.controls._grid, wa.grids.currentTime() );
+		wa.analyser.getByteFrequencyData( wa.analyserData );
+		ui.controls.spectrum.draw( wa.analyserData );
+		if ( gs.controls.status === "playing" ) {
+			ui.controls.currentTime( gs.controls._grid, wa.grids.currentTime() );
+		}
 		gs.controls._frameId = requestAnimationFrame( gs.controls._loop );
 	}
 };

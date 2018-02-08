@@ -68,10 +68,11 @@
 #play { background-color: var( --col1-middle ); }
 #stop { background-color: #888; }
 
-/* #bpm, #clock */
+/* #bpm, #clock, #analyser */
 /* -------------------------------------------------------------------------- */
 #bpm,
-#clock {
+#clock,
+#analyser {
 	font-size: 30px;
 	font-family: var( --monospace );
 	padding: 0 .3em;
@@ -93,6 +94,14 @@
 #clockMs:before { content: "."; }
 #clockMs {
 	font-size: .5em;
+}
+#analyser {
+	width: 144px;
+	padding: 0;
+}
+#analyser .gsuiSpectrum {
+	width: 100%;
+	height: 100%;
 }
 
 /* #settings */
