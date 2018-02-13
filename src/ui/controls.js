@@ -10,14 +10,14 @@ ui.controls = {
 		dom.togglePlay.onclick = ui.controls._onclickTogglePlay;
 		dom.play.onclick = ui.controls._onclickPlay;
 		dom.stop.onclick = ui.controls._onclickStop;
-		slider.oninput = v => wa.destination.gain( v * v );
+		slider.oninput = v => wa.destination.gain( v );
 		slider.options( {
 			type: "linear-y",
 			min: 0,
 			max: 1.5,
 			step: .01,
 			scrollStep: .1,
-			value: 1,
+			value: env.def_appGain,
 			startFrom: 0,
 		} );
 		dom.appGainWrap.append( slider.rootElement );
