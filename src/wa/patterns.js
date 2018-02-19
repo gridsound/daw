@@ -21,7 +21,7 @@ wa.patterns = {
 		Object.values( keys ).forEach( key => {
 			wa.patterns._synth = waSynth;
 			waSynth.start(
-				key.key.toUpperCase(),
+				key.key,
 				wa.ctx.currentTime + key.when / bps,
 				0, key.duration / bps );
 		} );

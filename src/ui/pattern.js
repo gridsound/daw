@@ -36,15 +36,15 @@ ui.pattern = {
 	},
 	keyboardEvent( status, e ) {
 		var uiKeys = ui.keysGridSamples.uiKeys,
-			key = gsuiKeys.keyboardToKey[ e.code ];
+			midi = uiKeys.getMidiKeyFromKeyboard( e );
 
-		if ( key ) {
+		if ( midi ) {
 			if ( status ) {
-				wa.patternKeys.start( key[ 1 ], key[ 0 ] );
-				uiKeys.setKeyDown( key[ 1 ] + key[ 0 ] );
+				wa.patternKeys.start( midi );
+				uiKeys.midiKeyDown( midi );
 			} else {
-				wa.patternKeys.stop( key[ 1 ], key[ 0 ] );
-				uiKeys.setKeyUp( key[ 1 ] + key[ 0 ] );
+				wa.patternKeys.stop( midi );
+				uiKeys.midiKeyUp( midi );
 			}
 			return true;
 		}

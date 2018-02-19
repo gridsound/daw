@@ -13,4 +13,13 @@ gs.handleOldComposition = function( cmp ) {
 		cmp.synthOpened = synthId;
 		Object.values( cmp.patterns ).forEach( pat => pat.synth = synthId );
 	}
+	Object.values( cmp.keys ).forEach( keys => {
+		Object.values( keys ).forEach( k => {
+			var keyStr = k.key;
+
+			if ( typeof keyStr === "string" ) {
+				k.key = gsuiKeys.keyStrToMidi( keyStr );
+			}
+		} );
+	} );
 };

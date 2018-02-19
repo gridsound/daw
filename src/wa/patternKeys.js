@@ -1,10 +1,10 @@
 "use strict";
 
 wa.patternKeys = {
-	start( key, oct ) {
-		wa.synths.current.liveKeyStart( ( key + oct ).toUpperCase() );
+	start( midi ) {
+		wa.synths.current.liveMidiKeyStart( midi );
 	},
-	stop( key, oct ) {
-		wa.synths.current.liveKeyStop( ( key + oct ).toUpperCase() );
+	stop( midi ) {
+		wa.synths.current.liveMidiKeyStop( midi );
 	}
 };
