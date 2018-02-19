@@ -8,7 +8,7 @@ wa.destination = {
 		wa.analyser = ctx.createAnalyser();
 		wa.analyserData = new Uint8Array( 512 );
 		wa.analyser.fftSize = 1024;
-		wa.analyser.smoothingTimeConstant = .5; // default = .8
+		wa.analyser.smoothingTimeConstant = 0; // default = .8
 		wa.analyser.connect( this._appGain );
 		wa.destination.gain( env.def_appGain );
 	},
