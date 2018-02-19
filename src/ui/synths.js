@@ -58,7 +58,6 @@ ui.synths = {
 	},
 	addPattern( synthId, patElement ) {
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
-		ui.synths.show( synthId, true );
 		if ( patElement.dataset.id === gs.currCmp.patternOpened ) {
 			gs.openSynth( synthId );
 		}
@@ -90,6 +89,7 @@ ui.synths = {
 	},
 	_onclickNewPattern( synthId ) {
 		gs.undoredo.change( jsonActions.newPattern( synthId ) );
+		ui.synths.show( synthId, true );
 		return false;
 	}
 };
