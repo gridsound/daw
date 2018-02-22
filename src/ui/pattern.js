@@ -6,7 +6,7 @@ ui.pattern = {
 
 		ui.keysGridSamples = grid;
 		grid.loadKeys( 1, 7 );
-		grid.offset( 0, 120 );
+		grid.offset( 0, 90 );
 		grid.setFontSize( 20 );
 		dom.keysGridWrap.append( grid.rootElement );
 		grid.contentY( 2 * 12 );
@@ -19,6 +19,12 @@ ui.pattern = {
 		grid.uiKeys.onkeyup = wa.patternKeys.stop;
 		grid.resized();
 	},
+	empty() {
+		ui.pattern.name( "" );
+		ui.keysGridSamples.offset( 0, 90 );
+		ui.keysGridSamples.contentY( 0 );
+		ui.keysGridSamples.empty();
+	},
 	name( name ) {
 		dom.pianorollName.textContent = name;
 	},
@@ -29,8 +35,7 @@ ui.pattern = {
 			ui.pattern.name( pat.name );
 			ui.pattern._load( gs.currCmp.keys[ pat.keys ] );
 		} else {
-			ui.pattern.name( "" );
-			ui.keysGridSamples.empty();
+			ui.pattern.empty();
 		}
 		dom.pianorollBlock.classList.toggle( "show", !id );
 	},

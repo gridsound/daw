@@ -41,6 +41,8 @@ ui.mainGrid = {
 		grid.resized();
 	},
 	empty() {
+		ui.mainGridSamples.offset( 0, 40 );
+		ui.mainGridSamples.contentY( 0 );
 		ui.mainGridSamples.empty();
 		ui.mainGrid.blocks = {};
 	},
