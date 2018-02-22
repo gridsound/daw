@@ -3,7 +3,6 @@
 ui.patterns = {
 	init() {
 		ui.patterns.audioBlocks = {};
-		dom.patterns.oncontextmenu = ui.patterns._oncontextmenu;
 	},
 	empty() {
 		Object.keys( ui.patterns.audioBlocks ).forEach( ui.patterns.delete );
@@ -20,7 +19,6 @@ ui.patterns = {
 		patRoot.dataset.id = id;
 		patRoot.setAttribute( "draggable", "true" );
 		patRoot.onclick = ui.patterns._onclickPattern.bind( null, id );
-		patRoot.ondblclick = ui.patterns._ondblclickPattern.bind( null, id );
 		patRoot.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
 		cloneBtn.onclick = ui.patterns._onclickClone.bind( null, id );
 		removeBtn.onclick = ui.patterns._onclickRemove.bind( null, id );
@@ -29,7 +27,6 @@ ui.patterns = {
 		cloneBtn.title = "Clone this pattern";
 		removeBtn.title = "Delete this pattern";
 		patRoot.querySelector( ".gsuiab-head" ).append( cloneBtn, removeBtn );
-
 		ui.patterns.audioBlocks[ id ] = pat;
 		ui.synths.addPattern( obj.synth, patRoot );
 		gs.openPattern( id );
@@ -95,16 +92,6 @@ ui.patterns = {
 	},
 
 	// events:
-	_oncontextmenu( e ) {
-		if ( !e || e.target !== dom.patterns ) {
-			if ( ui.patterns._uiBlockPlaying ) {
-				wa.patterns.stop();
-				ui.patterns._uiBlockPlaying.stop();
-				delete ui.patterns._uiBlockPlaying;
-			}
-		}
-		return false;
-	},
 	_onclickClone( id, e ) {
 		e.stopPropagation();
 		gs.undoredo.change( jsonActions.clonePattern( id ) );
@@ -123,16 +110,7 @@ ui.patterns = {
 		return false;
 	},
 	_onclickPattern( id, e ) {
-		var uiBlock = ui.patterns.audioBlocks[ id ];
-
-		ui.patterns._oncontextmenu();
-		ui.patterns._uiBlockPlaying = uiBlock;
-		uiBlock.start( gs.currCmp.bpm );
-		wa.patterns.play( id );
-	},
-	_ondblclickPattern( id ) {
 		if ( id !== gs.currCmp.patternOpened ) {
-			ui.patterns._oncontextmenu();
 			gs.openPattern( id );
 		}
 	},
@@ -142,6 +120,24 @@ ui.patterns = {
 };
 
 /*
+var uiBlock = ui.patterns.audioBlocks[ id ];
+
+ui.patterns._oncontextmenu();
+ui.patterns._uiBlockPlaying = uiBlock;
+uiBlock.start( gs.currCmp.bpm );
+wa.patterns.play( id );
+
+_oncontextmenu( e ) {
+	if ( !e || e.target !== dom.patterns ) {
+		if ( ui.patterns._uiBlockPlaying ) {
+			wa.patterns.stop();
+			ui.patterns._uiBlockPlaying.stop();
+			delete ui.patterns._uiBlockPlaying;
+		}
+	}
+	return false;
+},
+
 .1 : Why the UI choose to block the deletion of the last pattern?
 	The logic code can handle the deletion of all the pattern, but the UI not.
 	Currently the UI need a pattern opened everytime.
