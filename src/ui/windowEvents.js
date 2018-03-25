@@ -11,6 +11,8 @@ ui.windowEvents = function() {
 		}
 	};
 
+	var keyPressed = {};
+
 	window.onkeydown = function( e ) {
 		var prev, key = e.key;
 
@@ -27,13 +29,17 @@ ui.windowEvents = function() {
 			else if ( key === "Z" ) { gs.undoredo.redo(); }
 			else if ( key === "n" && e.altKey ) { gs.loadNewComposition(); }
 			else { prev = false; }
+			keyPressed[ key ] = true;
 		} else {
 			ui.pattern.keyboardEvent( true, e );
 		}
 		prev && e.preventDefault();
 	};
 	window.onkeyup = function( e ) {
-		ui.pattern.keyboardEvent( false, e );
+		if ( !keyPressed[ e.key ] ) {
+			ui.pattern.keyboardEvent( false, e );
+		}
+		delete keyPressed[ e.key ];
 	};
 
 	document.body.onclick = function( e ) {
