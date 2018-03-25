@@ -1,18 +1,27 @@
 "use strict";
 
-common.assignDeep = function( data, add ) {
-	if ( data && add && typeof data === "object" && typeof add === "object" ) {
-		var k, val;
+common.assignDeep = ( a, b ) => {
+	const aFrozen = Object.isFrozen( a ),
+		aSealed = Object.isSealed( a );
 
-		for ( k in add ) {
-			val = common.assignDeep( data[ k ], add[ k ] );
-			if ( val != null ) {
-				data[ k ] = val;
+	Object.entries( b ).forEach( ( [ bKey, bVal ] ) => {
+		const aVal = a[ bKey ];
+
+		if ( aVal !== bVal ) {
+			if ( bVal == null ) {
+				aFrozen || aSealed || delete a[ bKey ];
+			} else if ( typeof bVal !== "object" ) {
+				aFrozen || ( a[ bKey ] = bVal );
 			} else {
-				delete data[ k ];
+				if ( typeof aVal !== "object" ) {
+					if ( aFrozen || aSealed ) {
+						return;
+					}
+					a[ bKey ] = {};
+				}
+				common.assignDeep( a[ bKey ], bVal );
 			}
 		}
-		return data;
-	}
-	return add;
+	} );
+	return a;
 };
