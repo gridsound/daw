@@ -15,8 +15,8 @@ ui.pattern = {
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
 		grid.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
 		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
-		grid.uiKeys.onkeydown = wa.patternKeys.start;
-		grid.uiKeys.onkeyup = wa.patternKeys.stop;
+		grid.uiKeys.onkeydown = wa.pianoroll.liveStartKey.bind( wa.pianoroll );
+		grid.uiKeys.onkeyup = wa.pianoroll.liveStopKey.bind( wa.pianoroll );
 		grid.resized();
 	},
 	empty() {
@@ -45,10 +45,10 @@ ui.pattern = {
 
 		if ( midi ) {
 			if ( status ) {
-				wa.patternKeys.start( midi );
+				wa.pianoroll.liveStartKey( midi );
 				uiKeys.midiKeyDown( midi );
 			} else {
-				wa.patternKeys.stop( midi );
+				wa.pianoroll.liveStopKey( midi );
 				uiKeys.midiKeyUp( midi );
 			}
 			return true;

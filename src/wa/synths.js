@@ -2,40 +2,35 @@
 
 wa.synths = {
 	init() {
-		wa.synths._synths = {};
+		this._synths = {};
 	},
+
 	empty() {
-		Object.keys( wa.synths._synths ).forEach( wa.synths.delete );
-		delete wa.synths.current;
+		Object.keys( this._synths ).forEach( this.delete, this );
+		delete this.current;
+	},
+	setContext( ctx ) {
+		Object.values( this._synths ).forEach( syn => {
+			syn.setContext( ctx );
+			syn.connect( wa.destination.get() );
+		} );
+	},
+	select( id ) {
+		this.current = this._synths[ id ];
 	},
 	create( id, obj ) {
 		var syn = new gswaSynth();
 
 		syn.setContext( wa.ctx );
 		syn.connect( wa.destination.get() );
-		syn.change( obj );
-		wa.synths._synths[ id ] = syn;
+		common.assignDeep( syn.data, obj );
+		this._synths[ id ] = syn;
 	},
 	update( id, obj ) {
-		wa.synths._synths[ id ].change( obj );
+		common.assignDeep( this._synths[ id ].data, obj );
 	},
 	delete( id ) {
-		wa.synths._synths[ id ].stop();
-		delete wa.synths._synths[ id ];
-	},
-	setContext( ctx ) {
-		Object.values( wa.synths._synths ).forEach( syn => {
-			syn.setContext( ctx );
-			syn.connect( wa.destination.get() );
-		} );
-	},
-	select( id ) {
-		wa.synths.current = wa.synths._synths[ id ];
-	},
-	start( smp, when, offset, dur ) {
-		wa.synths._synths[ smp.synthId ].start( smp.key, when, offset, dur );
-	},
-	stop() {
-		Object.values( wa.synths._synths ).forEach( syn => syn.stop() );
+		this._synths[ id ].stopAllKeys();
+		delete this._synths[ id ];
 	}
 };

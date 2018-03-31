@@ -8,7 +8,7 @@ gs.openPattern = function( id ) {
 	id = pat ? id : null;
 	gs.controls.askFocusOn( pat ? "pattern" : "main" );
 	if ( pat ) {
-		wa.grids.replay();
+		wa.pianoroll.assignPattern( id );
 		wa.synths.select( pat.synth );
 		if ( pat.synth !== cmp.synthOpened ) {
 			gs.openSynth( pat.synth );

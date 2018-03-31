@@ -1,21 +1,28 @@
 "use strict";
 
-gs.changeComposition = function( obj ) {
-	var crudAct,
-		objOpened,
-		cmp = gs.currCmp,
-		currDur = cmp.duration,
-		replay = false;
+gs.changeComposition = obj => {
+	const cmp = gs.currCmp,
+		currDur = cmp.duration;
 
 	gs.currCmpSaved = gs.undoredo.getCurrentAction() === gs.actionSaved;
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
+	lg(obj)
+	// les blocks ne sont pas update par gsuiGridSamples mais dune maniere assez sale...
+	// commoncons par rewrite gsuiTrackList et gsuiTrack
+	if ( obj.blocks ) {
+		wa.maingrid.assignChange( obj.blocks );
+		cmp.duration = wa.maingrid.scheduler.duration;
+		// lg(cmp.duration, Object.values( gs.currCmp.blocks )[ 0 ].duration)
+	}
 	if ( obj.tracks || obj.blocks ) {
 		ui.mainGrid.change( obj );
-		replay = true;
 	}
 	if ( obj.synths ) {
+		let objOpened;
+
 		Object.entries( obj.synths ).forEach( ( [ id, obj ] ) => {
-			crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
+			let crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
+
 			wa.synths[ crudAct ]( id, obj );
 			ui.synths[ crudAct ]( id, obj );
 		} );
@@ -24,40 +31,37 @@ gs.changeComposition = function( obj ) {
 		}
 	}
 	if ( obj.patterns ) {
-		Object.entries( obj.patterns ).forEach( function( [ id, obj ] ) {
-			crudAct = obj ? ui.patterns.audioBlocks[ id ] ? "update" : "create" : "delete";
+		Object.entries( obj.patterns ).forEach( ( [ id, obj ] ) => {
+			let crudAct = obj ? ui.patterns.audioBlocks[ id ] ? "update" : "create" : "delete";
+
 			ui.patterns[ crudAct ]( id, obj );
 		} );
-		replay = true;
 	}
 	if ( obj.keys ) {
-		Object.entries( obj.keys ).forEach( function( [ keysId, keysObj ] ) {
-			Object.entries( cmp.patterns ).some( function( [ patId, pat ] ) {
+		Object.entries( obj.keys ).forEach( ( [ keysId, keys ] ) => {
+			Object.entries( cmp.patterns ).some( ( [ patId, pat ] ) => {
 				if ( pat.keys === keysId ) {
 					gs.updatePatternContent( patId );
+					wa.maingrid.assignPatternChange( pat, keys );
 					if ( patId === cmp.patternOpened ) {
-						ui.keysGridSamples.change( keysObj );
+						wa.pianoroll.assignPatternChange( keys );
+						ui.keysGridSamples.change( keys );
 					}
 					return true;
 				}
 			} );
 		} );
-		replay = true;
 	}
 	if ( obj.bpm ) {
+		wa.controls.setBPM( obj.bpm );
 		ui.controls.bpm( obj.bpm );
-		replay = true;
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		Object.keys( cmp.patterns ).forEach( gs.updatePatternContent );
 	}
-	cmp.duration = Object.values( cmp.blocks ).reduce( function( dur, blc ) {
-		return Math.max( dur, blc.when + blc.duration );
-	}, 0 );
 	if ( obj.name != null || obj.bpm || Math.ceil( cmp.duration ) !== Math.ceil( currDur ) ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
-	replay && wa.grids.replay();
 };

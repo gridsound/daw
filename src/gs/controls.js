@@ -18,29 +18,27 @@ gs.controls = {
 		}
 		gs.controls.times[ grid ] = beat;
 		ui.controls.currentTime( grid, beat );
-		wa.grids.replay( beat );
+		wa.controls.setCurrentTime( beat );
 	},
 	loop( grid, isLoop, loopA, loopB ) {
 		gs.controls.loopA[ grid ] = isLoop ? loopA : null;
 		gs.controls.loopB[ grid ] = isLoop ? loopB : null;
 		ui.controls.loop( grid, isLoop, loopA, loopB );
-		wa.grids.replay();
+		wa.controls.setLoop( isLoop ? loopA : false, loopB );
 	},
 	play() {
 		if ( gs.controls.status !== "playing" ) {
 			gs.controls.status = "playing";
-			wa.grids.play( gs.controls._grid, gs.controls.times[ gs.controls._grid ] )
+			wa.controls.start( gs.controls.times[ gs.controls._grid ] );
 			ui.controls.play();
-			// gs.controls._loopOn();
 		}
 	},
 	pause() {
 		if ( gs.controls.status === "playing" ) {
 			gs.controls.status = "paused";
-			gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
-			wa.grids.stop();
+			gs.controls.times[ gs.controls._grid ] = wa.controls.getCurrentTime();
+			wa.controls.stop();
 			ui.controls.pause();
-			// gs.controls._loopOff();
 		}
 	},
 	stop() {
@@ -48,9 +46,8 @@ gs.controls = {
 			gs.controls.currentTime( gs.controls._grid, 0 );
 		} else {
 			gs.controls.status = "stopped";
-			wa.grids.stop();
+			wa.controls.stop();
 			ui.controls.stop();
-			// gs.controls._loopOff();
 			gs.controls.currentTime( gs.controls._grid,
 				gs.controls.loopA[ gs.controls._grid ] || 0 );
 			switch ( document.activeElement ) {
@@ -65,12 +62,12 @@ gs.controls = {
 			gs.currCmp.patternOpened )
 		) {
 			if ( gs.controls.status === "playing" ) {
-				gs.controls.times[ gs.controls._grid ] = wa.grids.currentTime();
+				gs.controls.times[ gs.controls._grid ] = wa.controls.getCurrentTime();
 			}
 			gs.controls._grid = grid;
 			ui.controls.focusOn( grid );
 			ui.controls.clock( gs.controls.currentTime( grid ) );
-			wa.grids.replay( gs.controls.times[ grid ] );
+			wa.controls.focusOn( grid );
 		}
 	},
 	askFocusOn( grid ) {
@@ -90,7 +87,7 @@ gs.controls = {
 		wa.analyser.getByteFrequencyData( wa.analyserData );
 		ui.controls.spectrum.draw( wa.analyserData );
 		if ( gs.controls.status === "playing" ) {
-			ui.controls.currentTime( gs.controls._grid, wa.grids.currentTime() );
+			ui.controls.currentTime( gs.controls._grid, wa.controls.getCurrentTime() );
 		}
 		gs.controls._frameId = requestAnimationFrame( gs.controls._loop );
 	}

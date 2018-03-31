@@ -35,6 +35,7 @@ gs._unloadCmp = function( b, res, rej ) {
 		}
 	}
 	if ( gs.currCmpSaved ) {
+		wa.maingrid.empty();
 		wa.synths.empty();
 		ui.synths.empty();
 		gs.controls.currentTime( "main", 0 );
