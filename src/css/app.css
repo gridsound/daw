@@ -15,6 +15,13 @@ a {
 	text-decoration: none;
 }
 
+.no-select {
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
 #app {
 	--app-bg: #555;
 	--gsuiPanels-bd: 2px solid #222;
@@ -32,9 +39,4 @@ a {
 	height: 100%;
 	overflow: hidden;
 	background-color: var( --app-bg );
-
-	user-select: none;
-	-ms-user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
 }
