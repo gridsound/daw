@@ -2,27 +2,27 @@
 
 ui.pattern = {
 	init() {
-		var grid = new gsuiGridSamples();
+		const piano = new gsuiPianoroll();
 
-		ui.keysGridSamples = grid;
-		grid.loadKeys( 1, 7 );
-		grid.offset( 0, 90 );
-		grid.setFontSize( 20 );
-		dom.keysGridWrap.append( grid.rootElement );
-		grid.contentY( 2 * 12 );
+		ui.keysGridSamples = piano;
+		piano.octaves( 1, 7 );
+		piano.setPxPerBeat( 90 );
+		piano.setFontSize( 20 );
+		dom.keysGridWrap.append( piano.rootElement );
 		dom.pianorollName.onclick = ui.pattern._onclickName;
-		grid.onchange = ui.pattern._onchangeGrid;
-		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
-		grid.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
-		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
-		grid.uiKeys.onkeydown = wa.pianoroll.liveStartKey.bind( wa.pianoroll );
-		grid.uiKeys.onkeyup = wa.pianoroll.liveStopKey.bind( wa.pianoroll );
-		grid.resized();
+		piano.onchange = ui.pattern._onchangeGrid;
+		piano.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
+		piano.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
+		piano.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
+		piano.uiKeys.onkeydown = wa.pianoroll.liveStartKey.bind( wa.pianoroll );
+		piano.uiKeys.onkeyup = wa.pianoroll.liveStopKey.bind( wa.pianoroll );
+		piano.attached();
 	},
 	empty() {
 		ui.pattern.name( "" );
-		ui.keysGridSamples.offset( 0, 90 );
-		ui.keysGridSamples.contentY( 0 );
+		// ui.keysGridSamples.contentY( 0 );
+		// ui.keysGridSamples.offset( 0, 90 );
+		ui.keysGridSamples.setPxPerBeat( 90 );
 		ui.keysGridSamples.empty();
 	},
 	name( name ) {
@@ -30,7 +30,7 @@ ui.pattern = {
 	},
 	open( id ) {
 		if ( id ) {
-			var pat = gs.currCmp.patterns[ id ];
+			const pat = gs.currCmp.patterns[ id ];
 
 			ui.pattern.name( pat.name );
 			ui.pattern._load( gs.currCmp.keys[ pat.keys ] );
@@ -40,7 +40,7 @@ ui.pattern = {
 		dom.pianorollBlock.classList.toggle( "show", !id );
 	},
 	keyboardEvent( status, e ) {
-		var uiKeys = ui.keysGridSamples.uiKeys,
+		const uiKeys = ui.keysGridSamples.uiKeys,
 			midi = uiKeys.getMidiKeyFromKeyboard( e );
 
 		if ( midi ) {
@@ -57,9 +57,11 @@ ui.pattern = {
 
 	// private:
 	_load( keys ) {
+		const pianoData = ui.keysGridSamples.data;
+
 		ui.keysGridSamples.empty();
-		ui.keysGridSamples.change( keys );
-		ui.keysGridSamples.scrollToSamples();
+		common.assignDeep( pianoData, keys );
+		// ui.keysGridSamples.scrollToSamples();
 	},
 
 	// events:
@@ -69,14 +71,13 @@ ui.pattern = {
 		} } );
 	},
 	_onclickName() {
-		var patId = gs.currCmp.patternOpened,
-			pat = gs.currCmp.patterns[ patId ],
-			n = prompt( "Name pattern :", pat.name );
+		const id = gs.currCmp.patternOpened,
+			oldName = gs.currCmp.patterns[ id ].name,
+			n = prompt( "Name pattern :", oldName ),
+			name = n != null && n.trim();
 
-		if ( n != null && ( n = n.trim() ) !== pat.name ) {
-			gs.undoredo.change( { patterns: {
-				[ patId ]: { name: n }
-			} } );
+		if ( name !== oldName ) {
+			gs.undoredo.change( { patterns: { [ id ]: { name } } } );
 		}
 	}
 };

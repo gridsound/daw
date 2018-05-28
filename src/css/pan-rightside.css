@@ -24,10 +24,10 @@
 .gsuiGridSamples {
 	background-color: #2f2f2f;
 }
-.gsuiBeatLines {
+.gsuiBeatlines {
 	transition: background-color .2s;
 }
-.focus .gsuiBeatLines {
+.focus .gsuiBeatlines {
 	background-color: #456168;
 }
 

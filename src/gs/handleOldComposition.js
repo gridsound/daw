@@ -17,6 +17,9 @@ gs.handleOldComposition = function( cmp ) {
 		Object.values( keys ).forEach( k => {
 			var keyStr = k.key;
 
+			if ( !( "selected" in k ) ) {
+				k.selected = false;
+			}
 			if ( typeof keyStr === "string" ) {
 				k.key = gsuiKeys.keyStrToMidi( keyStr );
 			}

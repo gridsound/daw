@@ -4,9 +4,9 @@ gs.changeComposition = obj => {
 	const cmp = gs.currCmp,
 		currDur = cmp.duration;
 
+	console.log( "changeComposition", obj );
 	gs.currCmpSaved = gs.undoredo.getCurrentAction() === gs.actionSaved;
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
-	lg(obj)
 	// les blocks ne sont pas update par gsuiGridSamples mais dune maniere assez sale...
 	// commoncons par rewrite gsuiTrackList et gsuiTrack
 	if ( obj.blocks ) {
@@ -45,7 +45,7 @@ gs.changeComposition = obj => {
 					wa.maingrid.assignPatternChange( pat, keys );
 					if ( patId === cmp.patternOpened ) {
 						wa.pianoroll.assignPatternChange( keys );
-						ui.keysGridSamples.change( keys );
+						common.assignDeep( ui.keysGridSamples.data, keys );
 					}
 					return true;
 				}
