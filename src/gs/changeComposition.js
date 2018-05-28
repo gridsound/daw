@@ -15,7 +15,7 @@ gs.changeComposition = obj => {
 		// lg(cmp.duration, Object.values( gs.currCmp.blocks )[ 0 ].duration)
 	}
 	if ( obj.tracks || obj.blocks ) {
-		ui.mainGrid.change( obj );
+		common.assignDeep( ui.mainGridSamples.data, obj );
 	}
 	if ( obj.synths ) {
 		let objOpened;

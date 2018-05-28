@@ -32,7 +32,7 @@ gs.loadComposition = function( cmp ) {
 		ui.mainGrid.empty();
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		ui.mainGrid.change( cmp );
+		common.assignDeep( ui.mainGridSamples.data, cmp );
 		ui.cmps.load( cmp.id );
 		ui.cmps.saved( !gs.isCompositionNeedSave() );
 		if ( cmp.patternOpened ) {

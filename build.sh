@@ -3,8 +3,8 @@
 declare -a CSSfiles=(
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css"
 	"../gs-ui-components/gsuiBeatlines/gsuiBeatlines.css"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.css"
 	"../gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
+	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"
 	"../gs-ui-components/gsuiPianoroll/gsuiPianoroll.css"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.css"
 	"../gs-ui-components/gsuiOscillator/gsuiOscillator.css"
@@ -17,7 +17,7 @@ declare -a CSSfiles=(
 	"../gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"../gs-ui-components/gsuiToggle/gsuiToggle.css"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.css"
-	"../gs-ui-components/gsuiTrackList/gsuiTrackList.css"
+	"../gs-ui-components/gsuiTracklist/gsuiTracklist.css"
 	"src/css/fonts.css"
 	"src/css/icon.css"
 	"src/css/app.css"
@@ -51,7 +51,7 @@ declare -a HTMLfiles=(
 	"src/html/popup-shortcuts.html"
 	"src/html/synth.html"
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.html"
+	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
 	"../gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
 	"../gs-ui-components/gsuiOscillator/gsuiOscillator.html"
@@ -61,7 +61,7 @@ declare -a HTMLfiles=(
 	"../gs-ui-components/gsuiTimeline/gsuiTimeline.html"
 	"../gs-ui-components/gsuiToggle/gsuiToggle.html"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.html"
-	"../gs-ui-components/gsuiTrackList/gsuiTrackList.html"
+	"../gs-ui-components/gsuiTracklist/gsuiTracklist.html"
 	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.html"
 )
 
@@ -74,11 +74,8 @@ declare -a JSfilesProd=(
 declare -a JSfiles=(
 	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"
 	"../gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples.js"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-blocks.js"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-deletion.js"
-	"../gs-ui-components/gsuiGridSamples/gsuiGridSamples-selection.js"
 	"../gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"
+	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.js"
 	"../gs-ui-components/gsuiPianoroll/gsuiPianoroll.js"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.js"
 	"../gs-ui-components/gsuiOscillator/gsuiOscillator.js"
@@ -92,7 +89,7 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiTimeline/gsuiTimeline.js"
 	"../gs-ui-components/gsuiToggle/gsuiToggle.js"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.js"
-	"../gs-ui-components/gsuiTrackList/gsuiTrackList.js"
+	"../gs-ui-components/gsuiTracklist/gsuiTracklist.js"
 	"../gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"
 
 	"../gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"

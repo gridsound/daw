@@ -1,36 +1,33 @@
 "use strict";
 
-ui.init = function() {
-	var div,
-		uipanels = new gsuiPanels( document.querySelector( "#app" ) );
+ui.init = () => {
+	const uipanels = new gsuiPanels( document.querySelector( "#app" ) );
 
-	gsuiGridSamples.getNewId = common.smallId;
+	uipanels.attached();
 
 	Object.entries( gswaPeriodicWaves ).forEach( ( [ name, wave ] ) => {
 		gsuiPeriodicWave.addWave( name, wave.real, wave.imag );
 	} );
 
-	document.querySelectorAll( "div[data-panel]" ).forEach( function( pan ) {
-		div = document.getElementById( pan.dataset.panel );
+	document.querySelectorAll( "div[data-panel]" ).forEach( pan => {
+		const div = document.getElementById( pan.dataset.panel );
+
 		div && div.append.apply( div, pan.children );
 	} );
 
 	// Fill the window.dom object with each [id] elements:
-	document.querySelectorAll( "[id]" ).forEach( function( el ) {
-		dom[ el.id ] = el;
-	} );
+	document.querySelectorAll( "[id]" ).forEach( el => dom[ el.id ] = el );
 
-	dom.version.textContent = env.version;
-
-	dom[ "pan-rightside" ].onresizing = function() {
+	dom[ "pan-rightside" ].onresizing = () => {
 		ui.mainGridSamples.resized();
 		ui.keysGridSamples.resized();
 	};
-	dom[ "pan-pianoroll" ].onresizing = function() {
+	dom[ "pan-pianoroll" ].onresizing = () => {
 		ui.keysGridSamples.resized();
 	};
 
 	// Initialisation of the rest of the app:
+	dom.version.textContent = env.version;
 	ui.cmps.init();
 	ui.history.init();
 	ui.synths.init();
