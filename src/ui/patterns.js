@@ -39,7 +39,7 @@ ui.patterns = {
 		}
 	},
 	delete( id ) {
-		const patRoot = ui.patterns.audioBlocks[ id ].rootElement;
+		const patRoot = ui.patterns.audioBlocks[ id ];
 
 		if ( id === gs.currCmp.patternOpened ) {
 			const sibling = patRoot.nextSibling || patRoot.previousSibling;
@@ -101,7 +101,7 @@ ui.patterns = {
 		return false;
 	},
 	_onclickRemove( id, e ) {
-		const patRoot = ui.patterns.audioBlocks[ id ].rootElement;
+		const patRoot = ui.patterns.audioBlocks[ id ];
 
 		e.stopPropagation();
 		// .1
