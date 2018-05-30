@@ -1,0 +1,81 @@
+.pattern {
+	display: flex;
+	overflow: hidden;
+	flex-direction: column;
+	box-sizing: border-box;
+	position: relative;
+	height: 64px;
+	color: var( --gsuiPianoroll-keyColor );
+	margin-top: -64px;
+	border-radius: 4px 0 0 4px;
+	background-color: #334;
+	transition: .3s;
+	transition-property: margin-top, margin-bottom, background-color;
+}
+.synth-show .pattern {
+	margin: 4px 0;
+}
+.pattern.selected {
+	color: #223;
+	background-color: var( --gsuiPianoroll-keyColor );
+}
+
+/* .......................................................................... */
+.pattern-head {
+	box-sizing: border-box;
+	display: flex;
+	padding: 2px 4px;
+	font-size: 12px;
+	background-color: rgba( 0, 0, 0, .2 );
+	transition: inherit;
+}
+.pattern.selected .pattern-head {
+	background-color: rgba( 255, 255, 255, .2 );
+}
+.pattern-name {
+	font-weight: bold;
+}
+.pattern-name:empty::after {
+	content: "Untitled";
+	font-style: italic;
+	opacity: .5;
+}
+.pattern.selected .pattern-name::before {
+	content: "\f07c";
+	font-family: "FontAwesome";
+	font-weight: normal;
+	margin-right: .4em;
+}
+
+/* .......................................................................... */
+.pattern-content {
+	flex: 1;
+	position: relative;
+}
+.pattern-content svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	fill: currentColor;
+	/*opacity: .8;*/
+}
+
+/* .......................................................................... */
+.pattern a {
+	width: 0;
+	opacity: .5;
+	overflow: hidden;
+	transition: .1s;
+	transition-property: width, opacity;
+}
+.pattern-clone {
+	margin-left: auto;
+}
+.pattern:hover a {
+	width: 20px;
+}
+.pattern a:hover {
+	opacity: 1;
+}

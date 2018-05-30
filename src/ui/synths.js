@@ -22,7 +22,7 @@ ui.synths = {
 		root.querySelector( ".synth-newPatternBtn" ).onclick = ui.synths._onclickNewPattern.bind( null, id );
 		ui.synths.update( id, obj );
 		dom.patterns.prepend( root );
-	}, 
+	},
 	update( id, obj ) {
 		var root = ui.synths.elements[ id ];
 
@@ -52,7 +52,7 @@ ui.synths = {
 		ui.synths._selected.classList.add( "synth-selected" );
 	},
 	getFirstPattern( synthId ) {
-		var pat = ui.synths.elements[ synthId ].querySelector( ".gsuiAudioBlock" );
+		var pat = ui.synths.elements[ synthId ].querySelector( ".pattern" );
 
 		return pat && pat.dataset.id;
 	},

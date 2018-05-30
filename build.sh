@@ -1,7 +1,6 @@
 #!/bin/bash
 
 declare -a CSSfiles=(
-	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.css"
 	"../gs-ui-components/gsuiBeatlines/gsuiBeatlines.css"
 	"../gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
 	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"
@@ -13,9 +12,7 @@ declare -a CSSfiles=(
 	"../gs-ui-components/gsuiPanels/gsuiPanels.css"
 	"../gs-ui-components/gsuiPopup/gsuiPopup.css"
 	"../gs-ui-components/gsuiSlider/gsuiSlider.css"
-	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.css"
 	"../gs-ui-components/gsuiTimeline/gsuiTimeline.css"
-	"../gs-ui-components/gsuiToggle/gsuiToggle.css"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.css"
 	"../gs-ui-components/gsuiTracklist/gsuiTracklist.css"
 	"src/css/fonts.css"
@@ -33,6 +30,7 @@ declare -a CSSfiles=(
 	"src/css/pan-pianoroll.css"
 	"src/css/cmp.css"
 	"src/css/synth.css"
+	"src/css/pattern.css"
 	"src/css/version.css"
 	"src/css/controls.css"
 )
@@ -50,7 +48,7 @@ declare -a HTMLfiles=(
 	"src/html/popup-settings.html"
 	"src/html/popup-shortcuts.html"
 	"src/html/synth.html"
-	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.html"
+	"src/html/pattern.html"
 	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
 	"../gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
@@ -59,10 +57,8 @@ declare -a HTMLfiles=(
 	"../gs-ui-components/gsuiPopup/gsuiPopup.html"
 	"../gs-ui-components/gsuiSlider/gsuiSlider.html"
 	"../gs-ui-components/gsuiTimeline/gsuiTimeline.html"
-	"../gs-ui-components/gsuiToggle/gsuiToggle.html"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.html"
 	"../gs-ui-components/gsuiTracklist/gsuiTracklist.html"
-	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.html"
 )
 
 declare -a JSfilesProd=(
@@ -72,7 +68,6 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
-	"../gs-ui-components/gsuiAudioBlock/gsuiAudioBlock.js"
 	"../gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"
 	"../gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"
 	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.js"
@@ -85,9 +80,7 @@ declare -a JSfiles=(
 	"../gs-ui-components/gsuiPopup/gsuiPopup.js"
 	"../gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js"
 	"../gs-ui-components/gsuiSlider/gsuiSlider.js"
-	"../gs-ui-components/gsuiSpanEditable/gsuiSpanEditable.js"
 	"../gs-ui-components/gsuiTimeline/gsuiTimeline.js"
-	"../gs-ui-components/gsuiToggle/gsuiToggle.js"
 	"../gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"../gs-ui-components/gsuiTracklist/gsuiTracklist.js"
 	"../gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"

@@ -2,7 +2,7 @@
 
 ui.synth = {
 	init() {
-		var uisyn = new gsuiSynthesizer();
+		const uisyn = new gsuiSynthesizer();
 
 		ui.synth._uisyn = uisyn;
 		uisyn.oninput = ui.synth._oninputSynth;
@@ -35,14 +35,18 @@ ui.synth = {
 
 	// events:
 	_onclickName() {
-		var cmp = gs.currCmp,
+		const cmp = gs.currCmp,
 			synth = cmp.synths[ cmp.synthOpened ],
 			n = prompt( "Name synthesizer :", synth.name );
 
-		if ( n != null && ( n = n.trim() ) !== synth.name ) {
-			gs.undoredo.change( { synths: { [ cmp.synthOpened ]: {
-				name: n
-			} } } );
+		if ( n !== null ) {
+			const name = n.trim();
+
+			if ( name !== synth.name ) {
+				gs.undoredo.change( { synths: {
+					[ cmp.synthOpened ]: { name }
+				} } );
+			}
 		}
 	},
 	_oninputSynth( id, attr, val ) {
