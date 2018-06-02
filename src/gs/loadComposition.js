@@ -31,7 +31,7 @@ gs.loadComposition = function( cmp ) {
 		ui.controls.bpm( cmp.bpm );
 		ui.mainGrid.empty();
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		common.assignDeep( ui.mainGridSamples.data, cmp );
 		ui.cmps.load( cmp.id );
 		ui.cmps.saved( !gs.isCompositionNeedSave() );

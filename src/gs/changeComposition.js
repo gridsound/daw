@@ -45,7 +45,7 @@ gs.changeComposition = obj => {
 					wa.maingrid.assignPatternChange( pat, keys );
 					if ( patId === cmp.patternOpened ) {
 						wa.pianoroll.assignPatternChange( keys );
-						common.assignDeep( ui.keysGridSamples.data, keys );
+						common.assignDeep( ui.pattern.pianoroll.data, keys );
 					}
 					return true;
 				}
@@ -58,7 +58,7 @@ gs.changeComposition = obj => {
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		ui.keysGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		Object.keys( cmp.patterns ).forEach( gs.updatePatternContent );
 	}
 	if ( obj.name != null || obj.bpm || Math.ceil( cmp.duration ) !== Math.ceil( currDur ) ) {

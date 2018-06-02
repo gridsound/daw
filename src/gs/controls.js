@@ -52,7 +52,7 @@ gs.controls = {
 				gs.controls.loopA[ gs.controls._grid ] || 0 );
 			switch ( document.activeElement ) {
 				case ui.mainGridSamples.rootElement: gs.controls.focusOn( "main" ); break;
-				case ui.keysGridSamples.rootElement: gs.controls.focusOn( "pattern" ); break;
+				case ui.pattern.pianoroll.rootElement: gs.controls.focusOn( "pattern" ); break;
 			}
 		}
 	},

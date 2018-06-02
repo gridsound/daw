@@ -29,7 +29,7 @@ ui.controls = {
 		dom.togglePlay.classList.toggle( "after", !main );
 		dom.mainGridWrap.classList.toggle( "focus", main );
 		dom.keysGridWrap.classList.toggle( "focus", !main );
-		( main ? ui.mainGridSamples : ui.keysGridSamples )
+		( main ? ui.mainGridSamples : ui.pattern.pianoroll )
 			.rootElement.focus();
 	},
 	play() {
@@ -51,14 +51,14 @@ ui.controls = {
 		if ( grid === "main" ) {
 			ui.mainGridSamples.currentTime( beat );
 		} else {
-			ui.keysGridSamples.currentTime( beat );
+			ui.pattern.pianoroll.currentTime( beat );
 		}
 	},
 	loop( grid, isLoop, loopA, loopB ) {
 		if ( grid === "main" ) {
 			ui.mainGridSamples.loop( isLoop && loopA, loopB );
 		} else {
-			ui.keysGridSamples.loop( isLoop && loopA, loopB );
+			ui.pattern.pianoroll.loop( isLoop && loopA, loopB );
 		}
 	},
 	switchClock() {

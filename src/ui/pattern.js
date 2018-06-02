@@ -4,13 +4,13 @@ ui.pattern = {
 	init() {
 		const piano = new gsuiPianoroll();
 
-		ui.keysGridSamples = piano;
+		this.pianoroll = piano;
 		piano.octaves( 1, 7 );
 		piano.setPxPerBeat( 90 );
 		piano.setFontSize( 20 );
 		dom.keysGridWrap.append( piano.rootElement );
-		dom.pianorollName.onclick = ui.pattern._onclickName;
-		piano.onchange = ui.pattern._onchangeGrid;
+		dom.pianorollName.onclick = this._onclickName;
+		piano.onchange = this._onchangeGrid;
 		piano.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
 		piano.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
 		piano.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
@@ -19,11 +19,11 @@ ui.pattern = {
 		piano.attached();
 	},
 	empty() {
-		ui.pattern.name( "" );
-		// ui.keysGridSamples.contentY( 0 );
-		// ui.keysGridSamples.offset( 0, 90 );
-		ui.keysGridSamples.setPxPerBeat( 90 );
-		ui.keysGridSamples.empty();
+		this.name( "" );
+		// this.pianoroll.contentY( 0 );
+		// this.pianoroll.offset( 0, 90 );
+		this.pianoroll.setPxPerBeat( 90 );
+		this.pianoroll.empty();
 	},
 	name( name ) {
 		dom.pianorollName.textContent = name;
@@ -32,15 +32,15 @@ ui.pattern = {
 		if ( id ) {
 			const pat = gs.currCmp.patterns[ id ];
 
-			ui.pattern.name( pat.name );
-			ui.pattern._load( gs.currCmp.keys[ pat.keys ] );
+			this.name( pat.name );
+			this._load( gs.currCmp.keys[ pat.keys ] );
 		} else {
-			ui.pattern.empty();
+			this.empty();
 		}
 		dom.pianorollBlock.classList.toggle( "show", !id );
 	},
 	keyboardEvent( status, e ) {
-		const uiKeys = ui.keysGridSamples.uiKeys,
+		const uiKeys = this.pianoroll.uiKeys,
 			midi = uiKeys.getMidiKeyFromKeyboard( e );
 
 		if ( midi ) {
@@ -57,11 +57,11 @@ ui.pattern = {
 
 	// private:
 	_load( keys ) {
-		const pianoData = ui.keysGridSamples.data;
+		const pianoData = this.pianoroll.data;
 
-		ui.keysGridSamples.empty();
+		this.pianoroll.empty();
 		common.assignDeep( pianoData, keys );
-		// ui.keysGridSamples.scrollToSamples();
+		// this.pianoroll.scrollToSamples();
 	},
 
 	// events:

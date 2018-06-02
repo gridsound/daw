@@ -20,10 +20,10 @@ ui.init = () => {
 
 	dom[ "pan-rightside" ].onresizing = () => {
 		ui.mainGridSamples.resized();
-		ui.keysGridSamples.resized();
+		ui.pattern.pianoroll.resized();
 	};
 	dom[ "pan-pianoroll" ].onresizing = () => {
-		ui.keysGridSamples.resized();
+		ui.pattern.pianoroll.resized();
 	};
 
 	// Initialisation of the rest of the app:
