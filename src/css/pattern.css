@@ -10,7 +10,7 @@
 	border-radius: 4px 0 0 4px;
 	background-color: #334;
 	transition: .3s;
-	transition-property: margin-top, margin-bottom, background-color;
+	transition-property: margin-top, margin-bottom;
 }
 .synth-show .pattern {
 	margin: 4px 0;

@@ -33,7 +33,9 @@ ui.pattern = {
 			const pat = gs.currCmp.patterns[ id ];
 
 			this.name( pat.name );
-			this._load( gs.currCmp.keys[ pat.keys ] );
+			this.pianoroll.empty();
+			common.assignDeep( this.pianoroll.data, gs.currCmp.keys[ pat.keys ] );
+			this.pianoroll.scrollToKeys();
 		} else {
 			this.empty();
 		}
@@ -53,15 +55,6 @@ ui.pattern = {
 			}
 			return true;
 		}
-	},
-
-	// private:
-	_load( keys ) {
-		const pianoData = this.pianoroll.data;
-
-		this.pianoroll.empty();
-		common.assignDeep( pianoData, keys );
-		// this.pianoroll.scrollToSamples();
 	},
 
 	// events:

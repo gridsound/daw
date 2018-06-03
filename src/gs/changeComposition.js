@@ -32,7 +32,7 @@ gs.changeComposition = obj => {
 	}
 	if ( obj.patterns ) {
 		Object.entries( obj.patterns ).forEach( ( [ id, obj ] ) => {
-			let crudAct = obj ? ui.patterns.audioBlocks[ id ] ? "update" : "create" : "delete";
+			let crudAct = obj ? ui.patterns.list.has( id ) ? "update" : "create" : "delete";
 
 			ui.patterns[ crudAct ]( id, obj );
 		} );

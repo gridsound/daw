@@ -4,26 +4,26 @@ ui.patterns = {
 	init() {
 		dom.pattern.remove();
 		dom.pattern.removeAttribute( "id" );
-		ui.patterns.audioBlocks = {};
+		this.list = new Map();
 	},
 	empty() {
-		Object.keys( ui.patterns.audioBlocks ).forEach( ui.patterns.delete );
+		this.list.forEach( ( val, id ) => this.delete( id ) );
 	},
 	create( id, obj ) {
 		const pat = dom.pattern.cloneNode( true );
 
 		this._renamePattern( pat, obj.name );
 		pat.dataset.id = id;
-		pat.onclick = ui.patterns._onclickPattern.bind( null, id );
-		pat.ondragstart = ui.patterns._ondragstartPattern.bind( null, id );
-		pat.querySelector( ".pattern-clone" ).onclick = ui.patterns._onclickClone.bind( null, id );
-		pat.querySelector( ".pattern-remove" ).onclick = ui.patterns._onclickRemove.bind( null, id );
-		ui.patterns.audioBlocks[ id ] = pat;
+		pat.onclick = this._onclickPattern.bind( this, id );
+		pat.ondragstart = this._ondragstartPattern.bind( this, id );
+		pat.querySelector( ".pattern-clone" ).onclick = this._onclickClone.bind( this, id );
+		pat.querySelector( ".pattern-remove" ).onclick = this._onclickRemove.bind( this, id );
+		this.list.set( id, pat );
 		ui.synths.addPattern( obj.synth, pat );
 		gs.openPattern( id );
 	},
 	update( id, obj ) {
-		const pat = ui.patterns.audioBlocks[ id ];
+		const pat = this.list.get( id );
 
 		if ( obj.synth ) {
 			ui.synths.addPattern( obj.synth, pat );
@@ -39,7 +39,7 @@ ui.patterns = {
 		}
 	},
 	delete( id ) {
-		const patRoot = ui.patterns.audioBlocks[ id ];
+		const patRoot = this.list.get( id );
 
 		if ( id === gs.currCmp.patternOpened ) {
 			const sibling = patRoot.nextSibling || patRoot.previousSibling;
@@ -50,24 +50,24 @@ ui.patterns = {
 				gs.openPattern( sibling.dataset.id );
 			}
 		}
-		delete ui.patterns.audioBlocks[ id ];
+		this.list.delete( id );
 		patRoot.remove();
 	},
 	select( id ) {
-		const patSel = ui.patterns._selectedPattern,
-			pat = ui.patterns.audioBlocks[ id ];
+		const patSel = this._selectedPattern,
+			pat = this.list.get( id );
 
 		if ( patSel ) {
 			patSel.classList.remove( "selected", "gsuiAudioBlock-reversedColors" );
-			delete ui.patterns._selectedPattern;
+			delete this._selectedPattern;
 		}
 		if ( pat ) {
-			ui.patterns._selectedPattern = pat;
+			this._selectedPattern = pat;
 			pat.classList.add( "selected", "gsuiAudioBlock-reversedColors" );
 		}
 	},
 	updateContent( id, data ) {
-		this._updatePatternData( ui.patterns.audioBlocks[ id ], data );
+		this._updatePatternData( this.list.get( id ), data );
 		ui.mainGrid.getPatternBlocks( id ).forEach( pat => {
 			const blc = gs.currCmp.blocks[ pat.id ];
 
@@ -101,7 +101,7 @@ ui.patterns = {
 		return false;
 	},
 	_onclickRemove( id, e ) {
-		const patRoot = ui.patterns.audioBlocks[ id ];
+		const patRoot = this.list.get( id );
 
 		e.stopPropagation();
 		// .1
@@ -123,19 +123,19 @@ ui.patterns = {
 };
 
 /*
-const uiBlock = ui.patterns.audioBlocks[ id ];
+const uiBlock = this.list.get( id );
 
-ui.patterns._oncontextmenu();
-ui.patterns._uiBlockPlaying = uiBlock;
+this._oncontextmenu();
+this._uiBlockPlaying = uiBlock;
 uiBlock.start( gs.currCmp.bpm );
 wa.patterns.play( id );
 
 _oncontextmenu( e ) {
 	if ( !e || e.target !== dom.patterns ) {
-		if ( ui.patterns._uiBlockPlaying ) {
+		if ( this._uiBlockPlaying ) {
 			wa.patterns.stop();
-			ui.patterns._uiBlockPlaying.stop();
-			delete ui.patterns._uiBlockPlaying;
+			this._uiBlockPlaying.stop();
+			delete this._uiBlockPlaying;
 		}
 	}
 	return false;
