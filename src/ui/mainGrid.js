@@ -2,14 +2,13 @@
 
 ui.mainGrid = {
 	init() {
-		const grid = new gsuiPatternroll(),
-			elGridCnt = grid.rootElement.querySelector( ".gsuiBlocksManager-rows" );
+		const grid = new gsuiPatternroll();
 
 		ui.mainGridSamples = grid;
 		ui.mainGrid.blocks = {};
 		grid.setFontSize( 32 );
 		grid.setPxPerBeat( 40 );
-		grid.onchange = ui.mainGrid._onchangeGrid;
+		grid.onchange = obj => gs.undoredo.change( obj );
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "main" );
 		grid.onchangeLoop = gs.controls.loop.bind( null, "main" );
 		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "main" );
@@ -33,8 +32,6 @@ ui.mainGrid = {
 			delete ui.mainGrid.blocks[ id ];
 		};
 		dom.mainGridWrap.append( grid.rootElement );
-		// elGridCnt.ondrop = ui.mainGrid._ondrop;
-		// elGridCnt.ondragenter = e => e.dataTransfer.dropEffect = "copy";
 		grid.attached();
 	},
 	empty() {
@@ -53,30 +50,5 @@ ui.mainGrid = {
 				}
 				return res;
 			}, [] );
-	},
-
-	// events:
-	_onchangeGrid( obj ) {
-		gs.undoredo.change( obj.tracks ? obj : { blocks: obj } );
-	},
-	_ondrop( e ) {
-		const grid = ui.mainGridSamples,
-			patId = e.dataTransfer.getData( "text" ),
-			gridBCR = grid.rootElement.getBoundingClientRect(),
-			pageX = e.pageX - gridBCR.left - grid._panelWidth;
-
-		if ( patId ) {
-			let row = e.target;
-
-			e.stopPropagation();
-			while ( !row.classList.contains( "gsui-row" ) ) {
-				row = row.parentNode;
-			}
-			gs.dropPattern(
-				patId,
-				row.dataset.track,
-				grid.uiTimeline.beatFloor( pageX / grid._pxPerBeat + grid._timeOffset ) );
-			return false;
-		}
 	}
 };

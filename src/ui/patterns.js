@@ -12,12 +12,13 @@ ui.patterns = {
 	create( id, obj ) {
 		const pat = dom.pattern.cloneNode( true );
 
-		this._renamePattern( pat, obj.name );
-		pat.dataset.id = id;
-		pat.onclick = this._onclickPattern.bind( this, id );
-		pat.ondragstart = this._ondragstartPattern.bind( this, id );
 		pat.querySelector( ".pattern-clone" ).onclick = this._onclickClone.bind( this, id );
 		pat.querySelector( ".pattern-remove" ).onclick = this._onclickRemove.bind( this, id );
+		pat.dataset.id = id;
+		pat.onclick = this._onclickPattern.bind( this, id );
+		pat.ondragstart = e => e.dataTransfer.setData( "text",
+			id + ":" + gs.currCmp.patterns[ id ].duration );
+		this._renamePattern( pat, obj.name );
 		this.list.set( id, pat );
 		ui.synths.addPattern( obj.synth, pat );
 		gs.openPattern( id );
@@ -116,9 +117,6 @@ ui.patterns = {
 		if ( id !== gs.currCmp.patternOpened ) {
 			gs.openPattern( id );
 		}
-	},
-	_ondragstartPattern( id, e ) {
-		e.dataTransfer.setData( "text", id );
 	}
 };
 
