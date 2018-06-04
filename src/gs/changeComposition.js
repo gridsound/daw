@@ -7,8 +7,6 @@ gs.changeComposition = obj => {
 	console.log( "changeComposition", obj );
 	gs.currCmpSaved = gs.undoredo.getCurrentAction() === gs.actionSaved;
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
-	// les blocks ne sont pas update par gsuiGridSamples mais dune maniere assez sale...
-	// commoncons par rewrite gsuiTrackList et gsuiTrack
 	if ( obj.blocks ) {
 		wa.maingrid.assignChange( obj.blocks );
 		cmp.duration = wa.maingrid.scheduler.duration;
@@ -18,21 +16,19 @@ gs.changeComposition = obj => {
 		common.assignDeep( ui.mainGridSamples.data, obj );
 	}
 	if ( obj.synths ) {
-		let objOpened;
-
 		Object.entries( obj.synths ).forEach( ( [ id, obj ] ) => {
-			let crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
+			const crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
 
 			wa.synths[ crudAct ]( id, obj );
 			ui.synths[ crudAct ]( id, obj );
 		} );
-		if ( objOpened = obj.synths[ cmp.synthOpened ] ) {
-			ui.synth.change( objOpened );
+		if ( cmp.synthOpened in obj.synths ) {
+			ui.synth.change( obj.synths[ cmp.synthOpened ] );
 		}
 	}
 	if ( obj.patterns ) {
 		Object.entries( obj.patterns ).forEach( ( [ id, obj ] ) => {
-			let crudAct = obj ? ui.patterns.list.has( id ) ? "update" : "create" : "delete";
+			const crudAct = obj ? ui.patterns.list.has( id ) ? "update" : "create" : "delete";
 
 			ui.patterns[ crudAct ]( id, obj );
 		} );
