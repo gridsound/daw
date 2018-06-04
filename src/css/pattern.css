@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 	position: relative;
 	height: 64px;
-	color: var( --gsuiPianoroll-keyColor );
+	color: #5ac;
 	margin-top: -64px;
 	border-radius: 4px 0 0 4px;
 	background-color: #334;
@@ -17,7 +17,7 @@
 }
 .pattern.selected {
 	color: #223;
-	background-color: var( --gsuiPianoroll-keyColor );
+	background-color: #5ac;
 }
 
 /* .......................................................................... */
