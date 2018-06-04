@@ -73,5 +73,6 @@
 .ico-twitter:before { content: "\f099"; }
 .ico-youtube:before { content: "\f167"; }
 .ico-codepen:before { content: "\f1cb"; }
+.ico-discord:before { content: "\f392"; }
 
 .ico-pattern { transform: scale( -1, 1 ); }
