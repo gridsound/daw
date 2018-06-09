@@ -56,7 +56,9 @@ ui.synths = {
 
 		return pat && pat.dataset.id;
 	},
-	addPattern( synthId, patElement ) {
+	addPattern( synthId, patId ) {
+		const patElement = ui.patterns.getPatternElement( patId );
+
 		ui.synths.elements[ synthId ].querySelector( ".synth-patterns" ).prepend( patElement );
 		if ( patElement.dataset.id === gs.currCmp.patternOpened ) {
 			gs.openSynth( synthId );

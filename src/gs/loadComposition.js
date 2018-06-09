@@ -22,7 +22,7 @@ gs.loadComposition = function( cmp ) {
 		} );
 		Object.entries( cmp.patterns ).forEach( ( [ id, pat ] ) => {
 			ui.patterns.create( id, pat );
-			gs.updatePatternContent( id );
+			ui.patterns.updateContent( id );
 		} );
 		wa.controls.setBPM( cmp.bpm );
 		wa.maingrid.assignChange( cmp.blocks );

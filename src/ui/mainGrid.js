@@ -4,33 +4,17 @@ ui.mainGrid = {
 	init() {
 		const grid = new gsuiPatternroll();
 
+		this._blocks = new Map();
 		ui.mainGridSamples = grid;
-		ui.mainGrid.blocks = {};
 		grid.setFontSize( 32 );
 		grid.setPxPerBeat( 40 );
 		grid.onchange = obj => gs.undoredo.change( obj );
-		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "main" );
 		grid.onchangeLoop = gs.controls.loop.bind( null, "main" );
+		grid.oneditBlock = this._oneditBlock.bind( this );
+		grid.onaddBlock = this._onaddBlock.bind( this );
+		grid.onremoveBlock = this._onremoveBlock.bind( this );
+		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "main" );
 		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "main" );
-		grid.fnSampleCreate = ( id, uiBlock ) => {
-			const cmp = gs.currCmp,
-				pat = cmp.patterns[ uiBlock.data.pattern ];
-
-			ui.mainGrid.blocks[ id ] = uiBlock;
-			uiBlock.name( pat.name );
-			uiBlock.updateData( ui.keysToRects( cmp.keys[ pat.keys ] ) );
-			uiBlock.rootElement.ondblclick = gs.openPattern.bind( null, uiBlock.data.pattern );
-		};
-		grid.fnSampleUpdate = ( id, uiBlock ) => {
-			const cmp = gs.currCmp,
-				blc = cmp.blocks[ id ],
-				keys = cmp.keys[ cmp.patterns[ blc.pattern ].keys ];
-
-			uiBlock.updateData( ui.keysToRects( keys ), blc.offset, blc.duration );
-		};
-		grid.fnSampleDelete = ( id, uiBlock ) => {
-			delete ui.mainGrid.blocks[ id ];
-		};
 		dom.mainGridWrap.append( grid.rootElement );
 		grid.attached();
 	},
@@ -40,15 +24,49 @@ ui.mainGrid = {
 		ui.mainGridSamples.setFontSize( 32 );
 		ui.mainGridSamples.setPxPerBeat( 40 );
 		ui.mainGridSamples.empty();
-		ui.mainGrid.blocks = {};
 	},
-	getPatternBlocks( patId ) {
-		return Object.values( ui.mainGrid.blocks )
-			.reduce( ( res, blc ) => {
-				if ( blc.data.pattern === patId ) {
-					res.push( blc );
-				}
-				return res;
-			}, [] );
+	updateName( id, name ) {
+		this._blocks.forEach( blc => {
+			if ( blc.pattern === id ) {
+				blc.children[ 2 ].textContent = name;
+			}
+		} );
+	},
+	updateContent( patId ) {
+		const { blocks, patterns } = gs.currCmp;
+
+		this._blocks.forEach( ( blc, blcId ) => {
+			const blcObj = blocks[ blcId ];
+
+			if ( blcObj.pattern === patId ) {
+				this._updatePatternContent( patterns[ blcObj.pattern ], blcObj, blc );
+			}
+		} );
+	},
+
+	// private:
+	_updatePatternContent( pat, obj, blc ) {
+		blc._gsuiRectMatrix.render(
+			ui.keysToRects( gs.currCmp.keys[ pat.keys ] ),
+			obj.offset,
+			obj.duration );
+	},
+	_oneditBlock( id, obj, blc ) {
+		this._updatePatternContent( gs.currCmp.patterns[ obj.pattern ], obj, blc );
+	},
+	_onremoveBlock( id ) {
+		this._blocks.delete( id );
+	},
+	_onaddBlock( id, obj, blc ) {
+		const pat = gs.currCmp.patterns[ obj.pattern ],
+			mat = new gsuiRectMatrix();
+
+		this._blocks.set( id, blc );
+		mat.setResolution( 200, 32 );
+		blc._gsuiRectMatrix = mat;
+		blc.ondblclick = gs.openPattern.bind( null, obj.pattern );
+		blc.children[ 2 ].textContent = pat.name;
+		blc.children[ 3 ].append( mat.rootElement );
+		this._updatePatternContent( pat, obj, blc );
 	}
 };

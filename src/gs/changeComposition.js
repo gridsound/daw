@@ -28,16 +28,29 @@ gs.changeComposition = obj => {
 	}
 	if ( obj.patterns ) {
 		Object.entries( obj.patterns ).forEach( ( [ id, obj ] ) => {
-			const crudAct = obj ? ui.patterns.list.has( id ) ? "update" : "create" : "delete";
+			if ( !obj ) {
+				ui.patterns.delete( id );
+			} else if ( !ui.patterns.list.has( id ) ) {
+				ui.patterns.create( id, obj );
+			} else if ( "synth" in obj ) {
+				ui.synths.addPattern( obj.synth, id );
+			} else if ( "name" in obj ) {
+				const name = obj.name;
 
-			ui.patterns[ crudAct ]( id, obj );
+				ui.patterns.updateName( id, name );
+				ui.mainGrid.updateName( id, name );
+				if ( id === gs.currCmp.patternOpened ) {
+					ui.pattern.updateName( name );
+				}
+			}
 		} );
 	}
 	if ( obj.keys ) {
 		Object.entries( obj.keys ).forEach( ( [ keysId, keys ] ) => {
 			Object.entries( cmp.patterns ).some( ( [ patId, pat ] ) => {
 				if ( pat.keys === keysId ) {
-					gs.updatePatternContent( patId );
+					ui.patterns.updateContent( patId );
+					ui.mainGrid.updateContent( patId );
 					wa.maingrid.assignPatternChange( pat, keys );
 					if ( patId === cmp.patternOpened ) {
 						wa.pianoroll.assignPatternChange( keys );
@@ -55,7 +68,7 @@ gs.changeComposition = obj => {
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		Object.keys( cmp.patterns ).forEach( gs.updatePatternContent );
+		Object.keys( cmp.patterns ).forEach( ui.patterns.updateContent.this( ui.patterns ) );
 	}
 	if ( obj.name != null || obj.bpm || Math.ceil( cmp.duration ) !== Math.ceil( currDur ) ) {
 		ui.cmps.update( cmp.id, cmp );
