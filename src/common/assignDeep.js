@@ -1,25 +1,23 @@
 "use strict";
 
+common.copyObject = obj => {
+	return JSON.parse( JSON.stringify( obj ) );
+};
+
 common.assignDeep = ( a, b ) => {
 	const aFrozen = Object.isFrozen( a ),
 		aSealed = Object.isSealed( a );
 
-	Object.entries( b ).forEach( ( [ bKey, bVal ] ) => {
-		const aVal = a[ bKey ];
-
-		if ( aVal !== bVal ) {
-			if ( bVal == null ) {
-				aFrozen || aSealed || delete a[ bKey ];
-			} else if ( typeof bVal !== "object" ) {
-				aFrozen || ( a[ bKey ] = bVal );
+	Object.entries( b ).forEach( ( [ k, val ] ) => {
+		if ( a[ k ] !== val ) {
+			if ( val == null ) {
+				aSealed || delete a[ k ];
+			} else if ( typeof val !== "object" ) {
+				aFrozen || ( a[ k ] = val );
+			} else if ( typeof a[ k ] !== "object" ) {
+				aFrozen || ( a[ k ] = common.copyObject( val ) );
 			} else {
-				if ( typeof aVal !== "object" ) {
-					if ( aFrozen || aSealed ) {
-						return;
-					}
-					a[ bKey ] = {};
-				}
-				common.assignDeep( a[ bKey ], bVal );
+				common.assignDeep( a[ k ], val );
 			}
 		}
 	} );

@@ -80,25 +80,26 @@ Undoredo.prototype = {
 		}
 		return data;
 	},
-	_assign( data, obj, path ) {
-		if ( data && obj && typeof data === "object" && typeof obj === "object" ) {
-			var k, val, prev, npath;
+	_copyObject( obj ) {
+		return JSON.parse( JSON.stringify( obj ) );
+	},
+	_assign( a, b ) {
+		const aFrozen = Object.isFrozen( a ),
+			aSealed = Object.isSealed( a );
 
-			for ( k in obj ) {
-				npath = path ? path + "." + k : k;
-				prev = data[ k ];
-				val = this._assign( prev, obj[ k ], npath );
-				if ( val !== prev ) {
-					if ( val == null ) {
-						delete data[ k ];
-					} else {
-						data[ k ] = val;
-					}
-					this.onassign && this.onassign( npath, val, prev );
+		Object.entries( b ).forEach( ( [ k, val ] ) => {
+			if ( a[ k ] !== val ) {
+				if ( val == null ) {
+					aSealed || delete a[ k ];
+				} else if ( typeof val !== "object" ) {
+					aFrozen || ( a[ k ] = val );
+				} else if ( typeof a[ k ] !== "object" ) {
+					aFrozen || ( a[ k ] = common.copyObject( val ) );
+				} else {
+					common.assignDeep( a[ k ], val );
 				}
 			}
-			return data;
-		}
-		return obj;
+		} );
+		return a;
 	}
 };
