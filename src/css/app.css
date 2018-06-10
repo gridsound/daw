@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
 	height: 100%;
 	margin: 0;
 	overflow: hidden;
@@ -6,14 +7,14 @@ html, body {
 	background-color: #555;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background-color: #555; }
-::-webkit-scrollbar-thumb { background-color: #888; }
-
 a {
 	color: inherit;
 	text-decoration: none;
 }
+
+.nice-scrollbar::-webkit-scrollbar { width: 6px; }
+.nice-scrollbar::-webkit-scrollbar-track { background-color: #555; }
+.nice-scrollbar::-webkit-scrollbar-thumb { background-color: #888; }
 
 .no-select {
 	user-select: none;
