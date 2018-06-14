@@ -1,7 +1,7 @@
 "use strict";
 
-ui.mainGrid = {
-	init() {
+class uiMainGrid {
+	constructor() {
 		const grid = new gsuiPatternroll();
 
 		this._blocks = new Map();
@@ -17,21 +17,22 @@ ui.mainGrid = {
 		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "main" );
 		dom.mainGridWrap.append( grid.rootElement );
 		grid.attached();
-	},
+	}
+
 	empty() {
 		// ui.mainGridSamples.offset( 0, 40 );
 		// ui.mainGridSamples.contentY( 0 );
 		ui.mainGridSamples.setFontSize( 32 );
 		ui.mainGridSamples.setPxPerBeat( 40 );
 		ui.mainGridSamples.empty();
-	},
+	}
 	updateName( id, name ) {
 		this._blocks.forEach( blc => {
-			if ( blc.pattern === id ) {
+			if ( blc.dataset.pattern === id ) {
 				blc.children[ 2 ].textContent = name;
 			}
 		} );
-	},
+	}
 	updateContent( patId ) {
 		const { blocks, patterns } = gs.currCmp;
 
@@ -42,7 +43,7 @@ ui.mainGrid = {
 				this._updatePatternContent( patterns[ blcObj.pattern ], blcObj, blc );
 			}
 		} );
-	},
+	}
 
 	// private:
 	_updatePatternContent( pat, obj, blc ) {
@@ -50,13 +51,13 @@ ui.mainGrid = {
 			ui.keysToRects( gs.currCmp.keys[ pat.keys ] ),
 			obj.offset,
 			obj.duration );
-	},
+	}
 	_oneditBlock( id, obj, blc ) {
 		this._updatePatternContent( gs.currCmp.patterns[ obj.pattern ], obj, blc );
-	},
+	}
 	_onremoveBlock( id ) {
 		this._blocks.delete( id );
-	},
+	}
 	_onaddBlock( id, obj, blc ) {
 		const pat = gs.currCmp.patterns[ obj.pattern ],
 			mat = new gsuiRectMatrix();
@@ -69,4 +70,4 @@ ui.mainGrid = {
 		blc.children[ 3 ].append( mat.rootElement );
 		this._updatePatternContent( pat, obj, blc );
 	}
-};
+}

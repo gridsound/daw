@@ -1,19 +1,19 @@
 "use strict";
 
-ui.windowEvents = function() {
-	window.onresize = function() {
+ui.windowEvents = () => {
+	window.onresize = () => {
 		dom[ "pan-rightside" ].onresizing();
 	};
 
-	window.onbeforeunload = function() {
+	window.onbeforeunload = () => {
 		if ( gs.isCompositionNeedSave() ) {
 			return "Data unsaved";
 		}
 	};
 
-	var keyPressed = {};
+	const keyPressed = {};
 
-	window.onkeydown = function( e ) {
+	window.onkeydown = e => {
 		var prev, key = e.key;
 
 		if ( key === " " ) {
@@ -35,40 +35,37 @@ ui.windowEvents = function() {
 		}
 		prev && e.preventDefault();
 	};
-	window.onkeyup = function( e ) {
+	window.onkeyup = e => {
 		if ( !keyPressed[ e.key ] ) {
 			ui.pattern.keyboardEvent( false, e );
 		}
 		delete keyPressed[ e.key ];
 	};
 
-	document.body.onclick = function( e ) {
+	document.body.onclick = e => {
 		ui.cmps._hideMenu();
 	};
 
-	document.body.ondrop = function( e ) {
-		var gsFile,
-			files = Array.from( e.dataTransfer.files ),
-			audioFiles = files.filter( function( f ) {
-				var ext = f.name.substr( f.name.lastIndexOf( "." ) + 1 ).toLowerCase();
+	document.body.ondragover = () => false;
+	document.body.ondrop = e => {
+		let gsFile;
+		const audioFiles = Array.from( e.dataTransfer.files )
+				.filter( f => {
+					const ext = f.name.substr( f.name.lastIndexOf( "." ) + 1 ).toLowerCase();
 
-				if ( ext === "gs" || ext === "txt" || ext === "json" ) {
-					gsFile = f;
-				}
-				return env.audioFileExt.indexOf( ext ) > -1;
-			} );
+					if ( ext === "gs" || ext === "txt" || ext === "json" ) {
+						gsFile = f;
+					}
+					return env.audioFileExt.indexOf( ext ) > -1;
+				} );
 
 		if ( gsFile ) {
 			gs.loadCompositionByBlob( gsFile ).then(
 				gs.addAudioFiles.bind( null, audioFiles ),
-				function() {} );
+				() => {} );
 		} else {
 			gs.addAudioFiles( audioFiles );
 		}
-		return false;
-	};
-
-	document.body.ondragover = function() {
 		return false;
 	};
 };

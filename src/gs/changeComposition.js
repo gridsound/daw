@@ -17,10 +17,18 @@ gs.changeComposition = obj => {
 	}
 	if ( obj.synths ) {
 		Object.entries( obj.synths ).forEach( ( [ id, obj ] ) => {
-			const crudAct = obj ? wa.synths._synths[ id ] ? "update" : "create" : "delete";
-
-			wa.synths[ crudAct ]( id, obj );
-			ui.synths[ crudAct ]( id, obj );
+			if ( !obj ) {
+				wa.synths.delete( id );
+				ui.synths.delete( id );
+			} else if ( !ui.synths.list.has( id ) ) {
+				wa.synths.create( id, obj );
+				ui.synths.create( id, obj );
+			} else {
+				wa.synths.update( id, obj );
+				if ( "name" in obj ) {
+					ui.synths.updateName( id, obj.name );
+				}
+			}
 		} );
 		if ( cmp.synthOpened in obj.synths ) {
 			ui.synth.change( obj.synths[ cmp.synthOpened ] );
@@ -32,15 +40,18 @@ gs.changeComposition = obj => {
 				ui.patterns.delete( id );
 			} else if ( !ui.patterns.list.has( id ) ) {
 				ui.patterns.create( id, obj );
-			} else if ( "synth" in obj ) {
-				ui.synths.addPattern( obj.synth, id );
-			} else if ( "name" in obj ) {
-				const name = obj.name;
+			} else {
+				if ( obj.synth ) {
+					ui.synths.addPattern( obj.synth, id );
+				}
+				if ( "name" in obj ) {
+					const name = obj.name;
 
-				ui.patterns.updateName( id, name );
-				ui.mainGrid.updateName( id, name );
-				if ( id === gs.currCmp.patternOpened ) {
-					ui.pattern.updateName( name );
+					ui.patterns.updateName( id, name );
+					ui.mainGrid.updateName( id, name );
+					if ( id === gs.currCmp.patternOpened ) {
+						ui.pattern.updateName( name );
+					}
 				}
 			}
 		} );
@@ -68,7 +79,7 @@ gs.changeComposition = obj => {
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		Object.keys( cmp.patterns ).forEach( ui.patterns.updateContent.this( ui.patterns ) );
+		Object.keys( cmp.patterns ).forEach( ui.patterns.updateContent.bind( ui.patterns ) );
 	}
 	if ( obj.name != null || obj.bpm || Math.ceil( cmp.duration ) !== Math.ceil( currDur ) ) {
 		ui.cmps.update( cmp.id, cmp );

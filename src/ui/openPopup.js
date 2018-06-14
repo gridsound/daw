@@ -1,24 +1,25 @@
 "use strict";
 
-ui.openPopup = {
-	init() {
-		var inp = dom.openPopupContent.querySelectorAll( "input" );
+class uiOpenPopup {
+	constructor() {
+		const inp = dom.openPopupContent.querySelectorAll( "input" );
 
 		dom.openPopupContent.remove();
-		ui.openPopup.inputURL = inp[ 0 ];
-		ui.openPopup.inputFile = inp[ 1 ];
-	},
+		this._inputURL = inp[ 0 ];
+		this._inputFile = inp[ 1 ];
+	}
+
 	show() {
-		ui.openPopup.inputFile.value =
-		ui.openPopup.inputURL.value = "";
-		gsuiPopup.custom( "Open", dom.openPopupContent, ui.openPopup._onsubmit );
+		this._inputFile.value =
+		this._inputURL.value = "";
+		gsuiPopup.custom( "Open", dom.openPopupContent, this._onsubmit.bind( this ) );
 		return false;
-	},
+	}
 
 	// private:
 	_onsubmit() {
-		var url = ui.openPopup.inputURL.value,
-			file = ui.openPopup.inputFile.files[ 0 ];
+		const url = this._inputURL.value,
+			file = this._inputFile.files[ 0 ];
 
 		if ( url ) {
 			gs.loadCompositionByURL( url );
@@ -26,4 +27,4 @@ ui.openPopup = {
 			gs.loadCompositionByBlob( file );
 		}
 	}
-};
+}

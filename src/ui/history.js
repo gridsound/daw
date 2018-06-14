@@ -1,21 +1,22 @@
 "use strict";
 
-ui.history = {
-	init() {
-		var undored = gs.undoredo;
+class uiHistory {
+	constructor() {
+		const undored = gs.undoredo;
 
-		undored.onnewAction = ui.history.push;
+		undored.onnewAction = this.push.bind( this );
 		undored.onundoAction = act => act._html.classList.add( "undone" );
 		undored.onredoAction = act => act._html.classList.remove( "undone" );
 		undored.onremoveAction = act => act._html.remove();
 		dom.undo.onclick = undored.undo.bind( undored );
 		dom.redo.onclick = undored.redo.bind( undored );
-	},
+	}
+
 	push( act ) {
-		var div = document.createElement( "div" ),
+		const div = document.createElement( "div" ),
 			icon = document.createElement( "span" ),
 			text = document.createElement( "span" ),
-			desc = ui.history._nameAction( act );
+			desc = this._nameAction( act );
 
 		act._html = div;
 		div.className = "action";
@@ -26,20 +27,20 @@ ui.history = {
 		div.onclick = _ => ( gs.undoredo.goToAction( act ), false );
 		dom.history.append( div );
 		dom.history.scrollTop = 10000000;
-	},
+	}
 
 	// private:
 	_nameAction( act ) {
-		var cmp = gs.currCmp,
+		const cmp = gs.currCmp,
 			r = act.redo,
 			u = act.undo;
 
 		return (
-			ui.history.__synth( cmp, r, u ) ||
-			ui.history.__pattern( cmp, r, u ) ||
-			ui.history.__tracks( cmp, r, u ) ||
-			ui.history.__blocks( cmp, r, u ) ||
-			ui.history.__keys( cmp, r, u ) ||
+			this.__synth( cmp, r, u ) ||
+			this.__pattern( cmp, r, u ) ||
+			this.__tracks( cmp, r, u ) ||
+			this.__blocks( cmp, r, u ) ||
+			this.__keys( cmp, r, u ) ||
 			(
 				r.name != null ? { i: "name", t: `Name: "${ r.name }"` } :
 				r.bpm          ? { i: "clock", t: `BPM: ${ r.bpm }` } :
@@ -47,10 +48,10 @@ ui.history = {
 				{ i: "", t: "" }
 			)
 		);
-	},
+	}
 	__synth( cmp, r, u ) {
 		if ( r.synths ) {
-			var synthId = Object.keys( r.synths )[ 0 ],
+			const synthId = Object.keys( r.synths )[ 0 ],
 				rSyn = r.synths[ synthId ],
 				uSyn = u.synths[ synthId ];
 
@@ -63,11 +64,11 @@ ui.history = {
 				return { i: "name", t: `${ uSyn.name }: rename to "${ rSyn.name }"` };
 			}
 			if ( rSyn.oscillators ) {
-				var param,
-					idOsc = Object.keys( rSyn.oscillators )[ 0 ],
+				const idOsc = Object.keys( rSyn.oscillators )[ 0 ],
 					rOsc = rSyn.oscillators[ idOsc ],
 					uOsc = uSyn.oscillators[ idOsc ],
 					msg = cmp.synths[ synthId ].name + ": ";
+				let param;
 
 				if ( !rOsc || !uOsc ) {
 					return rOsc
@@ -78,14 +79,15 @@ ui.history = {
 				return { i: "param", t: msg + `set ${ param[ 0 ] } to "${ param[ 1 ] }"` };
 			}
 		}
-	},
+	}
 	__blocks( cmp, r, u ) {
-		var id, msg, arrK, rBlc = r.blocks;
+		const rBlcs = r.blocks;
 
-		for ( id in rBlc ) {
-			arrK = Object.keys( rBlc );
-			msg = " " + arrK.length + " block" + ( arrK.length > 1 ? "s" : "" );
-			rBlc = rBlc[ id ];
+		for ( const id in rBlcs ) {
+			const arrK = Object.keys( rBlcs ),
+				msg = " " + arrK.length + " block" + ( arrK.length > 1 ? "s" : "" ),
+				rBlc = rBlcs[ id ];
+
 			if ( !rBlc )              { return { i: "erase", t: "Remove" + msg }; }
 			if ( !u.blocks[ id ] )    { return { i: "paint", t: "Add" + msg }; }
 			if ( "duration" in rBlc ) { return { i: "crop", t: "Crop" + msg }; }
@@ -95,13 +97,13 @@ ui.history = {
 				: { i: "selection ico--minus", t: "Unselect" + msg };
 			}
 		}
-	},
+	}
 	__tracks( cmp, r, u ) {
-		var a,
-			i = 0,
-			o = r.tracks;
+		const o = r.tracks;
 
 		if ( o ) {
+			let a, i = 0;
+
 			for ( a in o ) {
 				if ( o[ a ].name ) {
 					return { i: "name", t: `Name track: "${ u.tracks[ a ].name }" -> "${ o[ a ].name }"` }
@@ -115,14 +117,13 @@ ui.history = {
 				: { i: o[ a ].toggle ? "unmute" : "mute",
 					t: ( o[ a ].toggle ? "Unmute" : "Mute" ) + ` "${ cmp.tracks[ a ].name }" track` }
 		}
-	},
+	}
 	__pattern( cmp, r, u ) {
-		var id, pat, rpat, upat;
+		for ( const id in r.patterns ) {
+			const pat = cmp.patterns[ id ],
+				rpat = r.patterns[ id ],
+				upat = u.patterns[ id ];
 
-		for ( id in r.patterns ) {
-			pat = cmp.patterns[ id ];
-			rpat = r.patterns[ id ];
-			upat = u.patterns[ id ];
 			if ( !rpat || !upat ) {
 				return rpat
 					? { i: "add", t: `New pattern "${ rpat.name }"` }
@@ -135,23 +136,23 @@ ui.history = {
 				return { i: "name", t: `${ upat.name }: rename to "${ rpat.name }"` };
 			}
 		}
-	},
+	}
 	__keys( cmp, r, u ) {
-		var o, a, b, arrK, msgSmp, msgPat;
+		for ( const a in r.keys ) {
+			const o = r.keys[ a ];
 
-		for ( a in r.keys ) {
-			o = r.keys[ a ];
-			for ( b in o ) {
-				arrK = Object.keys( o );
-				msgPat = cmp.patterns[ cmp.patternOpened ].name + ": ";
-				msgSmp = " " + arrK.length + " key" + ( arrK.length > 1 ? "s" : "" );
-				o = o[ b ];
+			for ( const b in o ) {
+				const arrK = Object.keys( o ),
+					msgPat = cmp.patterns[ cmp.patternOpened ].name + ": ",
+					msgSmp = " " + arrK.length + " key" + ( arrK.length > 1 ? "s" : "" ),
+					oB = o[ b ];
+
 				return (
-					( !o && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
+					( !oB && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
 					( !u.keys[ a ][ b ] && { i: "paint", t: msgPat + "add" + msgSmp } ) ||
-					( "duration" in o && { i: "crop", t: msgPat + "crop" + msgSmp } ) ||
-					( ( "when" in o || "key" in o ) && { i: "move", t: msgPat + "move" + msgSmp } ) ||
-					( "selected" in o && ( o.selected
+					( "duration" in oB && { i: "crop", t: msgPat + "crop" + msgSmp } ) ||
+					( ( "when" in oB || "key" in oB ) && { i: "move", t: msgPat + "move" + msgSmp } ) ||
+					( "selected" in oB && ( oB.selected
 						? { i: "selection ico--plus",  t: msgPat + "select" + msgSmp }
 						: { i: "selection ico--minus", t: msgPat + "unselect" + msgSmp }
 					) )
@@ -159,4 +160,4 @@ ui.history = {
 			}
 		}
 	}
-};
+}

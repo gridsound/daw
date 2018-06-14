@@ -1,12 +1,13 @@
 "use strict";
 
-ui.shortcutsPopup = {
-	init() {
+class uiShortcutsPopup {
+	constructor() {
 		dom.shortcutsPopupContent.remove();
-		dom.shortcuts.onclick = ui.shortcutsPopup.show;
-	},
+		dom.shortcuts.onclick = this.show.bind( this );
+	}
+
 	show() {
 		gsuiPopup.custom( "Keyboard / mouse shortcuts", dom.shortcutsPopupContent );
 		return false;
 	}
-};
+}

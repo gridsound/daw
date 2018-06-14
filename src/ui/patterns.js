@@ -1,17 +1,18 @@
 "use strict";
 
-ui.patterns = {
-	init() {
+class uiPatterns {
+	constructor() {
 		dom.pattern.remove();
 		dom.pattern.removeAttribute( "id" );
 		this.list = new Map();
-	},
+	}
+
 	empty() {
 		this.list.forEach( ( val, id ) => this.delete( id ) );
-	},
+	}
 	getPatternElement( id ) {
 		return this.list.get( id );
-	},
+	}
 	create( id, obj ) {
 		const pat = dom.pattern.cloneNode( true );
 
@@ -25,7 +26,7 @@ ui.patterns = {
 		this.updateName( id, obj.name );
 		ui.synths.addPattern( obj.synth, id );
 		gs.openPattern( id );
-	},
+	}
 	delete( id ) {
 		const patRoot = this.getPatternElement( id );
 
@@ -40,7 +41,7 @@ ui.patterns = {
 		}
 		this.list.delete( id );
 		patRoot.remove();
-	},
+	}
 	select( id ) {
 		const patSel = this._selectedPattern,
 			pat = this.getPatternElement( id );
@@ -53,10 +54,10 @@ ui.patterns = {
 			this._selectedPattern = pat;
 			pat.classList.add( "selected" );
 		}
-	},
+	}
 	updateName( id, name ) {
 		this.getPatternElement( id ).querySelector( ".pattern-name" ).textContent = name;
-	},
+	}
 	updateContent( id ) {
 		const elPat = this.getPatternElement( id );
 
@@ -69,19 +70,19 @@ ui.patterns = {
 		}
 		elPat._gsuiRectMatrix.render(
 			ui.keysToRects( gs.currCmp.keys[ gs.currCmp.patterns[ id ].keys ] ) );
-	},
+	}
 
 	// events:
 	_onclickPattern( id, e ) {
 		if ( id !== gs.currCmp.patternOpened ) {
 			gs.openPattern( id );
 		}
-	},
+	}
 	_onclickClone( id, e ) {
 		e.stopPropagation();
 		gs.undoredo.change( jsonActions.clonePattern( id ) );
 		return false;
-	},
+	}
 	_onclickRemove( id, e ) {
 		const patRoot = this.getPatternElement( id );
 
@@ -94,7 +95,7 @@ ui.patterns = {
 		}
 		return false;
 	}
-};
+}
 
 /*
 .1 : Why the UI choose to block the deletion of the last pattern?

@@ -28,18 +28,18 @@ ui.init = () => {
 
 	// Initialisation of the rest of the app:
 	dom.version.textContent = env.version;
-	ui.cmps.init();
-	ui.history.init();
-	ui.synths.init();
-	ui.patterns.init();
-	ui.controls.init();
-	ui.mainGrid.init();
-	ui.synth.init();
-	ui.pattern.init();
-	ui.openPopup.init();
-	ui.aboutPopup.init();
-	ui.settingsPopup.init();
-	ui.shortcutsPopup.init();
+	ui.cmps = new uiCmps();
+	ui.history = new uiHistory();
+	ui.synths = new uiSynths();
+	ui.patterns = new uiPatterns();
+	ui.controls = new uiControls();
+	ui.mainGrid = new uiMainGrid();
+	ui.synth = new uiSynth();
+	ui.pattern = new uiPattern();
+	ui.openPopup = new uiOpenPopup();
+	ui.aboutPopup = new uiAboutPopup();
+	ui.settingsPopup = new uiSettingsPopup();
+	ui.shortcutsPopup = new uiShortcutsPopup();
 	ui.windowEvents();
 
 	window.onresize();

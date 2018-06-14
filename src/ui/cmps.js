@@ -1,12 +1,14 @@
 "use strict";
 
-ui.cmps = {
-	init() {
+class uiCmps {
+	constructor() {
 		dom.newComposition.onclick = gs.loadNewComposition;
-		dom.openComposition.onclick = ui.openPopup.show;
-		dom.cmpMenu.onclick = ui.cmps._clickMenu;
-		ui.cmps._exportTextWAV = dom.exportCompositionWAV.textContent;
-	},
+		dom.openComposition.onclick = () => ui.openPopup.show();
+		dom.cmpMenu.onclick = this._clickMenu.bind( this );
+		this._exportTextWAV = dom.exportCompositionWAV.textContent;
+		this._html = {};
+	}
+
 	push( id ) {
 		var root = document.createElement( "div" ),
 			save = document.createElement( "div" ),
@@ -27,96 +29,96 @@ ui.cmps = {
 		root.append( save, info, menu );
 		save.onclick = gs.saveCurrentComposition;
 		info.onclick = gs.loadCompositionById.bind( null, id );
-		menu.onclick = ui.cmps._showMenu.bind( null, id );
-		ui.cmps._html[ id ] = { root, name, bpm, duration };
+		menu.onclick = this._showMenu.bind( null, id );
+		this._html[ id ] = { root, name, bpm, duration };
 		dom.cmps.append( root );
-	},
+	}
 	remove( id ) {
-		var cmps = ui.cmps._html;
+		const cmps = this._html;
 
 		if ( cmps[ id ] ) {
 			cmps[ id ].root.remove();
 			delete cmps[ id ];
 		}
-	},
+	}
 	update( id, cmp ) {
-		var html = ui.cmps._html[ id ];
+		const html = this._html[ id ];
 
 		html.name.textContent = cmp.name;
 		ui.controls.title( cmp.name );
 		html.bpm.textContent = cmp.bpm;
 		html.duration.textContent = common.time.beatToMin( cmp.duration, cmp.bpm ) +
 			":" + common.time.beatToSec( cmp.duration, cmp.bpm );
-	},
+	}
 	load( id ) {
-		var html = ui.cmps._html[ id ];
+		const html = this._html[ id ];
 
-		ui.cmps._loadOne = html;
+		this._loadOne = html;
 		html.root.classList.add( "loaded" );
 		ui.controls.title( gs.currCmp.name );
 		dom.cmps.prepend( html.root );
-	},
+	}
 	saved( saved ) {
 		ui.controls.title( gs.currCmp.name );
-		ui.cmps._loadOne.root.classList.toggle( "notSaved", !saved );
-	},
+		this._loadOne.root.classList.toggle( "notSaved", !saved );
+	}
 	unload() {
-		ui.cmps._loadOne.root.classList.remove( "loaded" );
-		delete ui.cmps._loadOne;
-	},
+		this._loadOne.root.classList.remove( "loaded" );
+		delete this._loadOne;
+	}
 
 	// private:
-	_html: {},
 	_showMenu( id, e ) {
-		var gBCR = e.target.parentNode.getBoundingClientRect();
+		const gBCR = e.target.parentNode.getBoundingClientRect();
 
-		ui.cmps._cmpId = id;
+		this._cmpId = id;
 		dom.cmpMenu.style.top = gBCR.top + ( gBCR.bottom - gBCR.top ) / 2 + "px";
 		dom.cmpMenu.classList.remove( "hidden" );
 		e.stopPropagation();
-	},
+	}
 	_hideMenu() {
-		if ( ui.cmps._cmpId ) {
-			delete ui.cmps._cmpId;
-			delete ui.cmps._wavReady;
-			dom.exportCompositionWAV.textContent = ui.cmps._exportTextWAV;
+		if ( this._cmpId ) {
+			delete this._cmpId;
+			delete this._wavReady;
+			dom.exportCompositionWAV.textContent = this._exportTextWAV;
 			dom.exportCompositionWAV.download =
 			dom.exportCompositionWAV.href = "";
 			dom.cmpMenu.classList.add( "hidden" );
 		}
-	},
+	}
 	_clickMenu( e ) {
-		var name,
-			id = ui.cmps._cmpId,
-			cmp = gs.currCmp,
-			cmpLoaded = id === cmp.id,
-			a = e.target,
-			closeMenu = true;
+		const id = this._cmpId,
+			currCmp = gs.currCmp,
+			cmpLoaded = id === currCmp.id,
+			a = e.target;
+		let closeMenu = true;
 
 		e.stopPropagation();
 		if ( a.id === "deleteComposition" ) {
-			cmp = cmpLoaded ? cmp : gs.localStorage.get( id );
+			const cmp = cmpLoaded ? currCmp : gs.localStorage.get( id );
+
 			gsuiPopup.confirm( "Warning",
 				`Are you sure you want to delete "${ cmp.name }" ? (no undo possible)`
 			).then( function( b ) {
 				b && gs.deleteComposition( id );
 			} );
 		} else if ( a.id === "exportCompositionJSON" || a.id === "exportCompositionWAV" ) {
-			cmp = cmpLoaded ? cmp : gs.localStorage.get( id );
-			name = cmp.name || "untitled";
+			const cmp = cmpLoaded ? currCmp : gs.localStorage.get( id ),
+				name = cmp.name || "untitled";
+
 			if ( a.id === "exportCompositionJSON" ) {
 				a.download = name + ".gs";
 				a.href = gs.exportCompositionToJSON( cmp );
 			} else if ( cmpLoaded ) {
-				closeMenu = ui.cmps._wavReady === 2;
-				if ( !ui.cmps._wavReady ) {
-					ui.cmps._wavReady = 1;
+				closeMenu = this._wavReady === 2;
+				if ( !this._wavReady ) {
+					this._wavReady = 1;
 					a.download = name + ".wav";
 					a.textContent += " (please wait...)";
 					gs.exportCurrentCompositionToWAV().then( function( url ) {
-						ui.cmps._wavReady = 2;
+						this._wavReady = 2;
 						a.href = url;
-						a.textContent = ui.cmps._exportTextWAV + " (re-click to download)";
+						a.textContent = this._exportTextWAV + " (re-click to download)";
 					} );
 				}
 			} else {
@@ -124,10 +126,10 @@ ui.cmps = {
 			}
 		}
 		if ( closeMenu ) {
-			setTimeout( ui.cmps._hideMenu, 200 );
+			setTimeout( this._hideMenu, 200 );
 		}
-		if ( !a.download || ui.cmps._wavReady === 1 ) {
+		if ( !a.download || this._wavReady === 1 ) {
 			return false;
 		}
 	}
-};
+}

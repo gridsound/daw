@@ -1,7 +1,7 @@
 "use strict";
 
-ui.pattern = {
-	init() {
+class uiPattern {
+	constructor() {
 		const piano = new gsuiPianoroll();
 
 		this.pianoroll = piano;
@@ -17,17 +17,18 @@ ui.pattern = {
 		dom.pianorollName.onclick = this._onclickName.bind( this );
 		dom.keysGridWrap.append( piano.rootElement );
 		piano.attached();
-	},
+	}
+
 	empty() {
 		this.updateName( "" );
 		// this.pianoroll.contentY( 0 );
 		// this.pianoroll.offset( 0, 90 );
 		this.pianoroll.setPxPerBeat( 90 );
 		this.pianoroll.empty();
-	},
+	}
 	updateName( name ) {
 		dom.pianorollName.textContent = name;
-	},
+	}
 	open( id ) {
 		if ( id ) {
 			const pat = gs.currCmp.patterns[ id ];
@@ -40,7 +41,7 @@ ui.pattern = {
 			this.empty();
 		}
 		dom.pianorollBlock.classList.toggle( "show", !id );
-	},
+	}
 	keyboardEvent( status, e ) {
 		const uiKeys = this.pianoroll.uiKeys,
 			midi = uiKeys.getMidiKeyFromKeyboard( e );
@@ -55,7 +56,7 @@ ui.pattern = {
 			}
 			return true;
 		}
-	},
+	}
 
 	// events:
 	_onclickName() {
@@ -72,7 +73,7 @@ ui.pattern = {
 				} } );
 			}
 		}
-	},
+	}
 	_onchangeGrid( keysObj ) {
 		const cmp = gs.currCmp,
 			patId = cmp.patternOpened,
@@ -99,4 +100,4 @@ ui.pattern = {
 		}
 		gs.undoredo.change( obj );
 	}
-};
+}

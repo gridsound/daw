@@ -1,12 +1,13 @@
 "use strict";
 
-ui.aboutPopup = {
-	init() {
+class uiAboutPopup {
+	constructor() {
 		dom.aboutPopupContent.remove();
-		dom.about.onclick = ui.aboutPopup.show;
-	},
+		dom.about.onclick = this.show.bind( this );
+	}
+
 	show() {
 		gsuiPopup.custom( "About", dom.aboutPopupContent );
 		return false;
 	}
-};
+}

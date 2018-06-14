@@ -1,7 +1,6 @@
 #!/bin/bash
 
 declare -a CSSfiles=(
-	"../gs-ui-components/gsuiBeatlines/gsuiBeatlines.css"
 	"../gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
 	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"
 	"../gs-ui-components/gsuiPianoroll/gsuiPianoroll.css"

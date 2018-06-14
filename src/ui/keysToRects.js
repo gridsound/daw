@@ -1,11 +1,11 @@
 "use strict";
 
-ui.keysToRects = function( keys ) {
-	var nbRows,
+ui.keysToRects = keys => {
+	let nbRows,
 		minrow = Infinity,
 		maxrow = -Infinity,
-		dur = 0,
-		cmp = gs.currCmp,
+		dur = 0;
+	const cmp = gs.currCmp,
 		samples = Object.values( keys ).map( ( { key, when, duration } ) => {
 			minrow = Math.min( minrow, key );
 			maxrow = Math.max( maxrow, key );
