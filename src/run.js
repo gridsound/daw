@@ -13,6 +13,6 @@ wa.controls.init();
 wa.maingrid.init();
 wa.pianoroll.init();
 
-ui.init();
+uiInit();
 gs.init();
 gs.loadNewComposition();

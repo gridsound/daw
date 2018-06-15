@@ -1,6 +1,6 @@
 "use strict";
 
-ui.windowEvents = () => {
+function uiWindowEvents() {
 	window.onresize = () => {
 		dom[ "pan-rightside" ].onresizing();
 	};
@@ -68,4 +68,4 @@ ui.windowEvents = () => {
 		}
 		return false;
 	};
-};
+}

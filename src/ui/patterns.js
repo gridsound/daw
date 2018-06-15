@@ -69,7 +69,7 @@ class uiPatterns {
 			elPat.querySelector( ".pattern-content" ).append( mat.rootElement );
 		}
 		elPat._gsuiRectMatrix.render(
-			ui.keysToRects( gs.currCmp.keys[ gs.currCmp.patterns[ id ].keys ] ) );
+			uiKeysToRects( gs.currCmp.keys[ gs.currCmp.patterns[ id ].keys ] ) );
 	}
 
 	// events:

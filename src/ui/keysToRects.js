@@ -1,6 +1,6 @@
 "use strict";
 
-ui.keysToRects = keys => {
+function uiKeysToRects( keys ) {
 	let nbRows,
 		minrow = Infinity,
 		maxrow = -Infinity,
@@ -21,4 +21,4 @@ ui.keysToRects = keys => {
 	dur /= cmp.beatsPerMeasure;
 	dur = Math.max( 1, Math.ceil( dur ) );
 	return { nbRows, samples, duration: dur * cmp.beatsPerMeasure };
-};
+}

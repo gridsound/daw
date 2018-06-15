@@ -30,7 +30,7 @@ class uiControls {
 		dom.togglePlay.classList.toggle( "after", !main );
 		dom.mainGridWrap.classList.toggle( "focus", main );
 		dom.keysGridWrap.classList.toggle( "focus", !main );
-		( main ? ui.mainGridSamples : ui.pattern.pianoroll )
+		( main ? ui.mainGrid.patternroll : ui.pattern.pianoroll )
 			.rootElement.focus();
 	}
 	play() {
@@ -50,14 +50,14 @@ class uiControls {
 			this.clock( beat );
 		}
 		if ( grid === "main" ) {
-			ui.mainGridSamples.currentTime( beat );
+			ui.mainGrid.patternroll.currentTime( beat );
 		} else {
 			ui.pattern.pianoroll.currentTime( beat );
 		}
 	}
 	loop( grid, isLoop, loopA, loopB ) {
 		if ( grid === "main" ) {
-			ui.mainGridSamples.loop( isLoop && loopA, loopB );
+			ui.mainGrid.patternroll.loop( isLoop && loopA, loopB );
 		} else {
 			ui.pattern.pianoroll.loop( isLoop && loopA, loopB );
 		}

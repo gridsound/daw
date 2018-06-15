@@ -30,9 +30,9 @@ gs.loadComposition = function( cmp ) {
 		ui.controls.currentTime( "pattern", 0 );
 		ui.controls.bpm( cmp.bpm );
 		ui.mainGrid.empty();
-		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		ui.mainGrid.patternroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
-		common.assignDeep( ui.mainGridSamples.data, cmp );
+		common.assignDeep( ui.mainGrid.patternroll.data, cmp );
 		ui.cmps.load( cmp.id );
 		ui.cmps.saved( !gs.isCompositionNeedSave() );
 		if ( cmp.patternOpened ) {

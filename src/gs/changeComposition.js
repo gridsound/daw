@@ -13,7 +13,7 @@ gs.changeComposition = obj => {
 		// lg(cmp.duration, Object.values( gs.currCmp.blocks )[ 0 ].duration)
 	}
 	if ( obj.tracks || obj.blocks ) {
-		common.assignDeep( ui.mainGridSamples.data, obj );
+		common.assignDeep( ui.mainGrid.patternroll.data, obj );
 	}
 	if ( obj.synths ) {
 		Object.entries( obj.synths ).forEach( ( [ id, obj ] ) => {
@@ -77,7 +77,7 @@ gs.changeComposition = obj => {
 		ui.controls.bpm( obj.bpm );
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
-		ui.mainGridSamples.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
+		ui.mainGrid.patternroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		Object.keys( cmp.patterns ).forEach( ui.patterns.updateContent.bind( ui.patterns ) );
 	}

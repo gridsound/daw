@@ -5,7 +5,7 @@ class uiMainGrid {
 		const grid = new gsuiPatternroll();
 
 		this._blocks = new Map();
-		ui.mainGridSamples = grid;
+		this.patternroll = grid;
 		grid.setFontSize( 32 );
 		grid.setPxPerBeat( 40 );
 		grid.onchange = obj => gs.undoredo.change( obj );
@@ -20,11 +20,11 @@ class uiMainGrid {
 	}
 
 	empty() {
-		// ui.mainGridSamples.offset( 0, 40 );
-		// ui.mainGridSamples.contentY( 0 );
-		ui.mainGridSamples.setFontSize( 32 );
-		ui.mainGridSamples.setPxPerBeat( 40 );
-		ui.mainGridSamples.empty();
+		// this.patternroll.offset( 0, 40 );
+		// this.patternroll.contentY( 0 );
+		this.patternroll.setFontSize( 32 );
+		this.patternroll.setPxPerBeat( 40 );
+		this.patternroll.empty();
 	}
 	updateName( id, name ) {
 		this._blocks.forEach( blc => {
@@ -48,7 +48,7 @@ class uiMainGrid {
 	// private:
 	_updatePatternContent( pat, obj, blc ) {
 		blc._gsuiRectMatrix.render(
-			ui.keysToRects( gs.currCmp.keys[ pat.keys ] ),
+			uiKeysToRects( gs.currCmp.keys[ pat.keys ] ),
 			obj.offset,
 			obj.duration );
 	}

@@ -4,7 +4,6 @@ window.jsonActions = {};
 window.common = {};
 window.gs = {};
 window.wa = {};
-window.ui = {};
 window.dom = {};
 window.env = {
 	version: "0.14.0",
