@@ -1,6 +1,6 @@
 .absoluteMenu {
 	position: absolute;
-	z-index: 2;
+	z-index: 3;
 	border: 2px solid #111;
 	border-radius: 4px;
 	background-color: #333;

@@ -29,7 +29,7 @@ class uiCmps {
 		root.append( save, info, menu );
 		save.onclick = gs.saveCurrentComposition;
 		info.onclick = gs.loadCompositionById.bind( null, id );
-		menu.onclick = this._showMenu.bind( null, id );
+		menu.onclick = this._showMenu.bind( this, id );
 		this._html[ id ] = { root, name, bpm, duration };
 		dom.cmps.append( root );
 	}
