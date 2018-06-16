@@ -16,14 +16,13 @@ class uiAboutPopup {
 	_check() {
 		const cl = dom.version.classList;
 
+		cl.remove( "ok", "ko" );
 		cl.add( "searching" );
-		setTimeout( () => (
-			fetch( "https://gridsound.github.io/daw/VERSION?" + Math.random() )
-				.then( res => res.text() )
-				.then( res => {
-					cl.remove( "searching" );
-					cl.add( res === env.version ? "ok" : "ko" );
-				} )
-		), 2000 );
+		fetch( "https://gridsound.github.io/daw/VERSION?" + Math.random() )
+			.then( res => res.text() )
+			.then( res => {
+				cl.remove( "searching" );
+				cl.add( res === env.version ? "ok" : "ko" );
+			} );
 	}
 }
