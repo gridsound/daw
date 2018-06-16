@@ -62,7 +62,6 @@ declare -a HTMLfiles=(
 
 declare -a JSfilesProd=(
 	"src/initServiceWorker.js"
-	"src/checkNewVersion.js"
 	"src/gAnalytics.js"
 )
 

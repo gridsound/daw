@@ -130,25 +130,17 @@
 	font-size: 32px;
 }
 
-#aboutPopupContent .description a,
-#aboutPopupContent .donate a {
+#aboutPopupContent a {
+	color: #ccf;
 	font-weight: bold;
 }
-#aboutPopupContent .description a::after,
-#aboutPopupContent .donate a::after {
+#aboutPopupContent .info::after { content: "\f113"; }
+#aboutPopupContent .patreon::after { content: "\f3d9"; }
+#aboutPopupContent .info::after,
+#aboutPopupContent .patreon::after {
 	font-family: "FontAwesomeBrands";
 	font-weight: normal;
-	margin-left: 6px;
-}
-#aboutPopupContent .description a::after {
-	content: "\f113";
-}
-#aboutPopupContent .donate a {
-	color: #f96854;
-	font-size: 1.12em;
-}
-#aboutPopupContent .donate a::after {
-	content: "\f3d9";
+	margin-left: 4px;
 }
 
 #aboutPopupContent .social-network {
@@ -158,13 +150,13 @@
 #aboutPopupContent .social-network a {
 	flex: 1;
 	padding: 20px;
+	color: #fff;
 	font-size: 36px;
 	opacity: .5;
 	transition: .4s;
-	transition-property: background-color, opacity;
+	transition-property: opacity;
 }
 #aboutPopupContent .social-network a:hover {
-	color: #fff;
 	opacity: 1;
 }
 #aboutPopupContent .social-network a:hover::before {

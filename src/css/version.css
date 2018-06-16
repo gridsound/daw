@@ -1,33 +1,49 @@
 #version {
 	margin-left: .5em;
-	font-family: "Inconsolata";
-	font-style: italic;
 	font-size: 18px;
-	opacity: .5;
-	transition: .2s;
-	transition-property: opacity, text-shadow;
 }
-#version:hover {
+
+#versionNumber {
 	opacity: .8;
-	text-shadow: 0 0 10px;
+	font-family: "Inconsolata";
+}
+
+#versionCheck {
+	margin-left: .5em;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	font-family: sans-serif;
+	opacity: .4;
+	cursor: pointer;
+	transition: .2s opacity;
+}
+#versionCheck:hover {
+	opacity: 1;
 }
 
 /* -------------------------------------------------------------------------- */
-#version.ko { color: #f94; }
+#version.ko { color: #fda; }
 #version.ok { color: #8fb; }
 #version.ko,
 #version.ok {
 	font-weight: bold;
 	font-style: normal;
-	opacity: 1;
 }
 
 /* -------------------------------------------------------------------------- */
-#version.ko::after { content: "\f071"; }
-#version.ok::after { content: "\f00c"; }
-#version::after {
+#version.searching #versionNumber::after { content: "\f3f4"; animation: keyframe-rotate360 .6s linear infinite; }
+#version.ko #versionNumber::after { content: "\f071"; }
+#version.ok #versionNumber::after { content: "\f00c"; }
+#version #versionNumber::after {
+	display: inline-block;
 	font-size: 16px;
 	font-weight: normal;
 	font-family: "FontAwesome";
 	margin-left: 4px;
+}
+
+@keyframes keyframe-rotate360 {
+	  0% { transform: rotate(   0deg ); }
+	100% { transform: rotate( 360deg ); }
 }

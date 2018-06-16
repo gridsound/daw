@@ -18,7 +18,7 @@ function uiInit() {
 
 	// Fill the window.dom object with each [id] elements
 	document.querySelectorAll( "[id]" ).forEach( el => dom[ el.id ] = el );
-	dom.version.textContent = env.version;
+	dom.versionNumber.textContent = env.version;
 
 	// Panels resizing callbacks
 	dom[ "pan-rightside" ].onresizing = () => {
