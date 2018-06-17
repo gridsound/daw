@@ -23,6 +23,6 @@ class uiAboutPopup {
 			.then( res => {
 				cl.remove( "searching" );
 				cl.add( res === env.version ? "ok" : "ko" );
-			} );
+			}, () => cl.remove( "searching" ) );
 	}
 }
