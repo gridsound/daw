@@ -1,18 +1,26 @@
 "use strict";
 
+( function() {
+
+const ctx = new AudioContext();
+
 gs.undoredo = new Undoredo();
-gs.undoredo.onchange = function( obj, path, val, previousVal ) {
-	// lg( "onchange", path, val, previousVal );
+gs.undoredo.onchange = ( obj, path, val, previousVal ) => {
 	gs.changeComposition( obj );
 };
 
-wa.ctx = new AudioContext();
-wa.destination.init( wa.ctx );
-wa.synths.init();
-wa.controls.init();
-wa.maingrid.init();
-wa.pianoroll.init();
+window.wa = {
+	ctx,
+	render: new waRender(),
+	synths: new waSynths(),
+	controls: new waControls(),
+	mainGrid: new waMainGrid(),
+	pianoroll: new waPianoroll(),
+	destination: new waDestination( ctx ),
+};
 
 uiInit();
 gs.init();
 gs.loadNewComposition();
+
+} )();

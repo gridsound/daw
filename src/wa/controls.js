@@ -1,49 +1,44 @@
 "use strict";
 
-wa.controls = {
-	init() {
+class waControls {
+	constructor() {
 		this._times = {
 			main: {},
-			pattern: {}
+			pattern: {},
 		};
-	},
+	}
 
 	focusOn( grid ) {
-		const wasStarted = this._currSched && this._currSched.started;
+		const wasStarted = this._sch && this._sch.started;
 
 		wasStarted && this.stop();
 		this._currTimes = this._times[ grid ];
-		this._currSched = grid === "main"
-			? wa.maingrid.scheduler
-			: wa.pianoroll.scheduler;
+		this._currGrid = grid === "main" ? wa.mainGrid : wa.pianoroll;
+		this._sch = this._currGrid.scheduler;
 		wasStarted && this.start( this._currTimes.offset );
-	},
+	}
 	setLoop( a, b ) {
-		if ( a === false ) {
-			this._currSched.clearLoop();
-		} else {
-			this._currSched.setLoopBeat( a, b );
-		}
-	},
+		const sch = this._sch;
+
+		a === false
+			? sch.clearLoop()
+			: sch.setLoopBeat( a, b );
+	}
 	setBPM( bpm ) {
-		wa.maingrid.scheduler.setBPM( bpm );
+		wa.mainGrid.scheduler.setBPM( bpm );
 		wa.pianoroll.scheduler.setBPM( bpm );
-	},
+	}
 	getCurrentTime() {
-		return this._currTimes.offset = this._currSched.getCurrentOffsetBeat();
-	},
+		return this._currTimes.offset = this._sch.getCurrentOffsetBeat();
+	}
 	setCurrentTime( off ) {
 		this._currTimes.offset = off;
-		this._currSched.setCurrentOffsetBeat( off );
-	},
-	stop() {
-		this._currSched.stop();
-	},
-	start( off ) {
-		if ( this._currTimes === this._times.main ) {
-			wa.maingrid.start( off );
-		} else {
-			wa.pianoroll.start( off );
-		}
+		this._sch.setCurrentOffsetBeat( off );
 	}
-};
+	stop() {
+		this._sch.stop();
+	}
+	start( off ) {
+		this._currGrid.start( off );
+	}
+}

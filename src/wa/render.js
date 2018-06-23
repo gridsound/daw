@@ -1,19 +1,19 @@
 "use strict";
 
-wa.render = {
+class waRender {
+	constructor() {}
 	on() {
-		var cmp = gs.currCmp;
+		const dur = ~~Math.max( gs.currCmp.duration * env.sampleRate, 100 );
 
 		this.isOn = true;
 		this._ctx = wa.ctx;
-		wa.ctx = new OfflineAudioContext( 2,
-			~~Math.max( cmp.duration / ( cmp.bpm / 60 ) * env.sampleRate, 100 ), env.sampleRate );
+		wa.ctx = new OfflineAudioContext( 2, dur, env.sampleRate );
 		wa.synths.setContext( wa.ctx );
-	},
+	}
 	off() {
 		wa.ctx = this._ctx;
 		wa.synths.setContext( wa.ctx );
 		delete this._ctx;
 		delete this.isOn;
 	}
-};
+}

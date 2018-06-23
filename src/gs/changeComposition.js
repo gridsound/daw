@@ -8,8 +8,8 @@ gs.changeComposition = obj => {
 	gs.currCmpSaved = gs.undoredo.getCurrentAction() === gs.actionSaved;
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
 	if ( obj.blocks ) {
-		wa.maingrid.assignChange( obj.blocks );
-		cmp.duration = wa.maingrid.scheduler.duration;
+		wa.mainGrid.assignChange( obj.blocks );
+		cmp.duration = wa.mainGrid.scheduler.duration;
 		// lg(cmp.duration, Object.values( gs.currCmp.blocks )[ 0 ].duration)
 	}
 	if ( obj.tracks || obj.blocks ) {
@@ -62,7 +62,7 @@ gs.changeComposition = obj => {
 				if ( pat.keys === keysId ) {
 					ui.patterns.updateContent( patId );
 					ui.mainGrid.updateContent( patId );
-					wa.maingrid.assignPatternChange( pat, keys );
+					wa.mainGrid.assignPatternChange( pat, keys );
 					if ( patId === cmp.patternOpened ) {
 						wa.pianoroll.assignPatternChange( keys );
 						common.assignDeep( ui.pattern.pianoroll.data, keys );

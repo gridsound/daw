@@ -84,8 +84,8 @@ gs.controls = {
 		cancelAnimationFrame( gs.controls._frameId );
 	},
 	_loop() {
-		wa.analyser.getByteFrequencyData( wa.analyserData );
-		ui.controls.spectrum.draw( wa.analyserData );
+		wa.destination.analyser.getByteFrequencyData( wa.destination.analyserData );
+		ui.controls.spectrum.draw( wa.destination.analyserData );
 		if ( gs.controls.status === "playing" ) {
 			ui.controls.currentTime( gs.controls._grid, wa.controls.getCurrentTime() );
 		}

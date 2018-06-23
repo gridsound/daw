@@ -99,9 +99,7 @@ class uiCmps {
 
 			gsuiPopup.confirm( "Warning",
 				`Are you sure you want to delete "${ cmp.name }" ? (no undo possible)`
-			).then( function( b ) {
-				b && gs.deleteComposition( id );
-			} );
+			).then( b => b && gs.deleteComposition( id ) );
 		} else if ( a.id === "exportCompositionJSON" || a.id === "exportCompositionWAV" ) {
 			const cmp = cmpLoaded ? currCmp : gs.localStorage.get( id ),
 				name = cmp.name || "untitled";
@@ -115,7 +113,7 @@ class uiCmps {
 					this._wavReady = 1;
 					a.download = name + ".wav";
 					a.textContent += " (please wait...)";
-					gs.exportCurrentCompositionToWAV().then( function( url ) {
+					gs.exportCurrentCompositionToWAV().then( url => {
 						this._wavReady = 2;
 						a.href = url;
 						a.textContent = this._exportTextWAV + " (re-click to download)";

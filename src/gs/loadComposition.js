@@ -25,7 +25,7 @@ gs.loadComposition = function( cmp ) {
 			ui.patterns.updateContent( id );
 		} );
 		wa.controls.setBPM( cmp.bpm );
-		wa.maingrid.assignChange( cmp.blocks );
+		wa.mainGrid.assignChange( cmp.blocks );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );
 		ui.controls.bpm( cmp.bpm );
