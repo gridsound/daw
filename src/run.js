@@ -20,6 +20,23 @@ window.wa = {
 };
 
 uiInit();
+window.ui = {
+	cmps: new uiCmps(),
+	history: new uiHistory(),
+	synths: new uiSynths(),
+	patterns: new uiPatterns(),
+	controls: new uiControls(),
+	mainGrid: new uiMainGrid(),
+	synth: new uiSynth(),
+	pattern: new uiPattern(),
+	openPopup: new uiOpenPopup(),
+	aboutPopup: new uiAboutPopup(),
+	settingsPopup: new uiSettingsPopup(),
+	shortcutsPopup: new uiShortcutsPopup(),
+};
+uiWindowEvents();
+window.onresize();
+
 gs.init();
 gs.loadNewComposition();
 
