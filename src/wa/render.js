@@ -1,13 +1,12 @@
 "use strict";
 
 class waRender {
-	constructor() {}
 	on() {
-		const dur = ~~Math.max( gs.currCmp.duration * env.sampleRate, 100 );
+		const dur = Math.ceil( gs.currCmp.duration * 60 / gs.currCmp.bpm ) || 1;
 
 		this.isOn = true;
 		this._ctx = wa.ctx;
-		wa.ctx = new OfflineAudioContext( 2, dur, env.sampleRate );
+		wa.ctx = new OfflineAudioContext( 2, ~~( dur * env.sampleRate ), env.sampleRate );
 		wa.synths.setContext( wa.ctx );
 	}
 	off() {

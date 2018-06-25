@@ -76,7 +76,6 @@ class waMainGrid {
 		sch.start( when, off, dur );
 	}
 	_onstopBlock( startedId, blc ) {
-		lg("_onstopBlock", startedId, blc)
 		this._startedSched.get( startedId ).stop();
 		this._startedSched.delete( startedId );
 	}
@@ -90,7 +89,6 @@ class waMainGrid {
 			wa.synths._synths[ synthId ].startKey( blc.key, when, off, dur ) );
 	}
 	_onstopKey( synthId, startedId, blc ) {
-		lg("_onstopKey", synthId, startedId, blc)
 		wa.synths._synths[ synthId ].stopKey( this._startedKeys.get( startedId ) );
 		this._startedKeys.delete( startedId );
 	}

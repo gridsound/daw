@@ -18,11 +18,9 @@ class waControls {
 		wasStarted && this.start( this._currTimes.offset );
 	}
 	setLoop( a, b ) {
-		const sch = this._sch;
-
 		a === false
-			? sch.clearLoop()
-			: sch.setLoopBeat( a, b );
+			? this._sch.clearLoop()
+			: this._sch.setLoopBeat( a, b );
 	}
 	setBPM( bpm ) {
 		wa.mainGrid.scheduler.setBPM( bpm );

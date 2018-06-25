@@ -9,8 +9,7 @@ gs.changeComposition = obj => {
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
 	if ( obj.blocks ) {
 		wa.mainGrid.assignChange( obj.blocks );
-		cmp.duration = wa.mainGrid.scheduler.duration;
-		// lg(cmp.duration, Object.values( gs.currCmp.blocks )[ 0 ].duration)
+		cmp.duration = wa.mainGrid.scheduler.duration * cmp.bpm / 60;
 	}
 	if ( obj.tracks || obj.blocks ) {
 		common.assignDeep( ui.mainGrid.patternroll.data, obj );
@@ -75,6 +74,7 @@ gs.changeComposition = obj => {
 	if ( obj.bpm ) {
 		wa.controls.setBPM( obj.bpm );
 		ui.controls.bpm( obj.bpm );
+		cmp.duration = wa.mainGrid.scheduler.duration * obj.bpm / 60;
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGrid.patternroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
