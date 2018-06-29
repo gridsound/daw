@@ -1,23 +1,24 @@
 "use strict";
 
-gs.exportCompositionToJSON = function( cmp ) {
-	var res,
-		regTab,
-		regTa2,
-		delTabCurr,
-		delTabs = {
-			tracks: 3,
-			patterns: 3,
-			blocks: 3,
+gs.exportCompositionToJSON = cmp => {
+	const delTabs = {
 			keys: 4,
-			synths: 5
+			synths: 5,
+			tracks: 3,
+			blocks: 3,
+			patterns: 3,
 		},
 		reg = /^\t"(\w*)": {$/,
-		lines = JSON.stringify( cmp, null, "\t" ).split( "\n" );
+		lines = JSON.stringify( gs.epureComposition( cmp ), null, "\t" ).split( "\n" );
+	let regTab,
+		regTa2,
+		delTabCurr;
 
 	gs._blobDL && URL.revokeObjectURL( gs._blobDL );
 	lines.forEach( ( line, i ) => {
-		if ( res = reg.exec( line ) ) {
+		const res = reg.exec( line );
+
+		if ( res ) {
 			if ( delTabCurr = delTabs[ res[ 1 ] ] ) {
 				regTab = new RegExp( `^\\t{${ delTabCurr }}` );
 				regTa2 = new RegExp( `^\\t{${ delTabCurr - 1 }}\\}` );

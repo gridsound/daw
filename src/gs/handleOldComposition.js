@@ -1,28 +1,34 @@
 "use strict";
 
-gs.handleOldComposition = function( cmp ) {
+gs.handleOldComposition = cmp => {
 	if ( !cmp.synths ) {
-		var synthId = common.smallId();
+		const synthId = common.smallId();
 
+		Object.values( cmp.patterns ).forEach( pat => pat.synth = synthId );
+		cmp.synthOpened = synthId;
 		cmp.synths = { [ synthId ]: {
 			name: "synth",
 			oscillators: {
 				[ common.smallId() ]: { type: "sine", detune: 0, pan: 0, gain: 1 }
 			}
 		} };
-		cmp.synthOpened = synthId;
-		Object.values( cmp.patterns ).forEach( pat => pat.synth = synthId );
 	}
-	Object.values( cmp.keys ).forEach( keys => {
-		Object.values( keys ).forEach( k => {
-			var keyStr = k.key;
-
-			if ( !( "selected" in k ) ) {
-				k.selected = false;
-			}
-			if ( typeof keyStr === "string" ) {
-				k.key = gsuiKeys.keyStrToMidi( keyStr );
-			}
-		} );
+	Object.values( cmp.tracks ).forEach( tr => {
+		tr.name = tr.name || "";
+		tr.toggle = typeof tr.toggle === "boolean" ? tr.toggle : true;
 	} );
+	Object.values( cmp.blocks ).forEach( blc => {
+		blc.offset = blc.offset || 0;
+		blc.selected = !!blc.selected;
+		blc.durationEdited = !!blc.durationEdited;
+	} );
+	Object.values( cmp.keys ).forEach( keys => (
+		Object.values( keys ).forEach( k => {
+			k.selected = !!k.selected;
+			delete k.durationEdited;
+			if ( typeof k.key === "string" ) {
+				k.key = gsuiKeys.keyStrToMidi( k.key );
+			}
+		} )
+	) );
 };
