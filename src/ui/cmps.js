@@ -10,7 +10,7 @@ class uiCmps {
 	}
 
 	push( id ) {
-		var root = document.createElement( "div" ),
+		const root = document.createElement( "div" ),
 			save = document.createElement( "div" ),
 			info = document.createElement( "div" ),
 			menu = document.createElement( "div" ),
@@ -124,7 +124,7 @@ class uiCmps {
 			}
 		}
 		if ( closeMenu ) {
-			setTimeout( this._hideMenu, 200 );
+			setTimeout( this._hideMenu.bind( this ), 200 );
 		}
 		if ( !a.download || this._wavReady === 1 ) {
 			return false;
