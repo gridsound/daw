@@ -9,9 +9,6 @@ class uiSynth {
 		uisyn.onchange = this._onchangeSynth.bind( this );
 		uisyn.setWaveList( Object.keys( gswaPeriodicWaves ) );
 		dom.synthName.onclick = this._onclickName.bind( this );
-		uisyn.rootElement.querySelector( ".gsuiSynthesizer-title" ).remove();
-		uisyn.rootElement.querySelector( ".gsuiSynthesizer-title" ).remove();
-		uisyn.rootElement.querySelector( ".gsuiSynthesizer-envelopes" ).remove();
 		dom.synthWrapper2.append( uisyn.rootElement );
 		uisyn.attached();
 	}
