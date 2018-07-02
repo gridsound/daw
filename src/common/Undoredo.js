@@ -94,9 +94,9 @@ Undoredo.prototype = {
 				} else if ( typeof val !== "object" ) {
 					aFrozen || ( a[ k ] = val );
 				} else if ( typeof a[ k ] !== "object" ) {
-					aFrozen || ( a[ k ] = common.copyObject( val ) );
+					aFrozen || ( a[ k ] = this._copyObject( val ) );
 				} else {
-					common.assignDeep( a[ k ], val );
+					this._assign( a[ k ], val );
 				}
 			}
 		} );
