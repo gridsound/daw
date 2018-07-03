@@ -1,0 +1,49 @@
+.action {
+	display: flex;
+	box-sizing: border-box;
+	align-items: center;
+	cursor: default;
+	height: 28px;
+	padding-right: .4em;
+	color: #bbb;
+	font-size: 13px;
+	font-family: var( --monospace );
+	background-color: #333;
+	transition: background-color .2s;
+}
+.action + .action {
+	border-top: 1px solid #222;
+}
+.action:hover {
+	background-color: #444;
+}
+
+/* -------------------------------------------------------------------------- */
+.action::before {
+	content: "";
+	display: block;
+	width: 4px;
+	height: 100%;
+	background-color: var( --col1-middle );
+	transition: inherit;
+}
+.action-undone::before {
+	background-color: #000;
+}
+
+/* -------------------------------------------------------------------------- */
+.action-icon {
+	margin: 0 .4em;
+}
+.action-text {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	transition-duration: inherit;
+	transition-property: opacity;
+}
+.action-undone:not(:hover) .action-icon,
+.action-undone:not(:hover) .action-text {
+	opacity: .5;
+}

@@ -34,6 +34,7 @@ declare -a CSSfiles=(
 	"src/css/pattern.css"
 	"src/css/version.css"
 	"src/css/controls.css"
+	"src/css/history-action.css"
 )
 
 declare -a HTMLfiles=(
@@ -50,6 +51,7 @@ declare -a HTMLfiles=(
 	"src/html/popup-shortcuts.html"
 	"src/html/synth.html"
 	"src/html/pattern.html"
+	"src/html/history-action.html"
 	"../gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
 	"../gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
 	"../gs-ui-components/gsuiKeys/gsuiKeys.html"
@@ -147,6 +149,7 @@ declare -a JSfiles=(
 	"src/ui/keysToRects.js"
 	"src/ui/windowEvents.js"
 	"src/ui/history.js"
+	"src/ui/nameAction.js"
 	"src/ui/controls.js"
 	"src/ui/mainGrid.js"
 	"src/ui/cmps.js"
