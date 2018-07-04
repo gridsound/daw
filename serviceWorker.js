@@ -4,9 +4,10 @@ self.addEventListener( "install", function( e ) {
 	e.waitUntil( caches.open( "daw" ).then( function( cache ) {
 		return cache.addAll( [
 			"/daw/index.html",
+			"/daw/assets/fa-solid-900.woff",
+			"/daw/assets/fa-brands-400.woff",
 			"/daw/assets/oswald-regular.ttf",
 			"/daw/assets/inconsolata-regular.ttf",
-			"/daw/assets/fontawesome-solid-900.woff"
 		] );
 	} ) );
 } );
