@@ -50,6 +50,15 @@ class uiNameAction {
 				param = Object.entries( rOsc )[ 0 ];
 				return { i: "param", t: msg + `set ${ param[ 0 ] } to "${ param[ 1 ] }"` };
 			}
+			if ( rSyn.envelopes ) {
+				const [ envName, env ] = Object.entries( rSyn.envelopes )[ 0 ],
+					attRel = Object.keys( env )[ 0 ];
+
+				return {
+					i: "envelope",
+					t: cmp.synths[ synthId ].name + `: change ${ envName } ${ attRel } envelope`,
+				};
+			}
 		}
 	}
 	static __blocks( cmp, r, u ) {
