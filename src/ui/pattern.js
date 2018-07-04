@@ -61,18 +61,20 @@ class uiPattern {
 	// events:
 	_onclickName() {
 		const id = gs.currCmp.patternOpened,
-			oldName = gs.currCmp.patterns[ id ].name,
-			n = prompt( "Name pattern :", oldName );
+			oldName = gs.currCmp.patterns[ id ].name;
 
-		if ( n !== null ) {
-			const name = n.trim();
+		gsuiPopup.prompt( "Rename pattern", "", oldName )
+			.then( n => {
+				if ( n !== null ) {
+					const name = n.trim();
 
-			if ( name !== oldName ) {
-				gs.undoredo.change( { patterns: {
-					[ id ]: { name }
-				} } );
-			}
-		}
+					if ( name !== oldName ) {
+						gs.undoredo.change( { patterns: {
+							[ id ]: { name }
+						} } );
+					}
+				}
+			} );
 	}
 	_onchangeGrid( keysObj ) {
 		const cmp = gs.currCmp,

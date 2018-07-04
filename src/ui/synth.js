@@ -33,19 +33,21 @@ class uiSynth {
 
 	// events:
 	_onclickName() {
-		const cmp = gs.currCmp,
-			synth = cmp.synths[ cmp.synthOpened ],
-			n = prompt( "Name synthesizer :", synth.name );
+		const id = gs.currCmp.synthOpened,
+			oldName = gs.currCmp.synths[ id ].name;
 
-		if ( n !== null ) {
-			const name = n.trim();
+		gsuiPopup.prompt( "Rename synthesizer", "", oldName )
+			.then( n => {
+				if ( n !== null ) {
+					const name = n.trim();
 
-			if ( name !== synth.name ) {
-				gs.undoredo.change( { synths: {
-					[ cmp.synthOpened ]: { name }
-				} } );
-			}
-		}
+					if ( name !== oldName ) {
+						gs.undoredo.change( { synths: {
+							[ id ]: { name }
+						} } );
+					}
+				}
+			} );
 	}
 	_oninputSynth( id, attr, val ) {
 		wa.synths.update( gs.currCmp.synthOpened, {
