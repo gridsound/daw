@@ -20,10 +20,12 @@ class uiHistory {
 			desc = uiNameAction.name( act );
 
 		act._html = div;
-		div.children[ 0 ].classList.add( "ico-" + desc.i );
+		div.children[ 0 ].className += " ico-" + desc.i; // 1
 		div.children[ 1 ].textContent = desc.t;
 		div.onclick = () => ( gs.undoredo.goToAction( act ), false );
 		dom.history.append( div );
 		dom.history.scrollTop = 10000000;
 	}
 }
+
+// 1. `desc.i` may contains TWO classes to add, and so we can not use classList.add("a b")
