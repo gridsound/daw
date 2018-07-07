@@ -6,7 +6,7 @@ class uiCmps {
 		dom.openComposition.onclick = () => ui.openPopup.show();
 		dom.cmpMenu.onclick = this._clickMenu.bind( this );
 		this._exportTextWAV = dom.exportCompositionWAV.textContent;
-		this._html = {};
+		this._html = new Map();
 	}
 
 	push( id ) {
@@ -15,24 +15,24 @@ class uiCmps {
 		root.querySelector( ".save" ).onclick = gs.saveCurrentComposition;
 		root.querySelector( ".info" ).onclick = gs.loadCompositionById.bind( null, id );
 		root.querySelector( ".menu" ).onclick = this._showMenu.bind( this, id );
-		this._html[ id ] = {
+		this._html.set( id, {
 			root,
 			name: root.querySelector( ".name" ),
 			bpm: root.querySelector( ".bpm" ),
 			duration: root.querySelector( ".duration" ),
-		};
+		} );
 		dom.cmps.append( root );
 	}
 	remove( id ) {
 		const cmps = this._html;
 
-		if ( cmps[ id ] ) {
-			cmps[ id ].root.remove();
-			delete cmps[ id ];
+		if ( cmps.has( id ) ) {
+			cmps.get( id ).root.remove();
+			cmps.delete( id );
 		}
 	}
 	update( id, cmp ) {
-		const html = this._html[ id ];
+		const html = this._html.get( id );
 
 		html.name.textContent = cmp.name;
 		ui.controls.title( cmp.name );
@@ -41,7 +41,7 @@ class uiCmps {
 			":" + common.time.beatToSec( cmp.duration, cmp.bpm );
 	}
 	load( id ) {
-		const html = this._html[ id ];
+		const html = this._html.get( id );
 
 		this._loadOne = html;
 		html.root.classList.add( "loaded" );
