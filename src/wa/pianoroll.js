@@ -27,25 +27,25 @@ class waPianoroll {
 			this.scheduler.setLoopBeat( 0, Math.max( 1, b ) * beatPM );
 		}
 	}
-	start( off ) {
-		const cmp = gs.currCmp;
-		let a = gs.controls.loopA.pattern,
-			b = gs.controls.loopB.pattern;
-
-		if ( a == null ) {
+	setLoop( a, b ) {
+		if ( !Number.isFinite( a ) ) {
 			a = 0;
-			b = Math.ceil( this._pattern.duration / cmp.beatsPerMeasure );
-			b = Math.max( 1, b ) * cmp.beatsPerMeasure;
+			b = Math.ceil( this._pattern.duration / gs.currCmp.beatsPerMeasure );
+			b = Math.max( 1, b ) * gs.currCmp.beatsPerMeasure;
 		}
 		this.scheduler.setLoopBeat( a, b );
+	}
+	start( off ) {
+		this.setLoop( gs.controls.loopA.pattern, gs.controls.loopB.pattern );
 		if ( this._pattern ) {
 			this.scheduler.startBeat( 0, off );
 		}
 	}
+
+	// ........................................................................
 	liveStartKey( midi ) {
 		if ( !( midi in this._keysStartedLive ) ) {
-			this._keysStartedLive[ midi ] =
-				wa.synths.current.startKey( midi, 0, 0, Infinity );
+			this._keysStartedLive[ midi ] = wa.synths.current.startKey( midi, 0, 0, Infinity );
 		}
 	}
 	liveStopKey( midi ) {

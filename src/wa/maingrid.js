@@ -31,6 +31,13 @@ class waMainGrid {
 			}
 		} );
 	}
+	setLoop( a, b ) {
+		if ( !Number.isFinite( a ) ) {
+			a = 0;
+			b = this._getDurationBeat();
+		}
+		this.scheduler.setLoopBeat( a, b );
+	}
 	start( offset ) {
 		const sch = this.scheduler;
 
@@ -39,14 +46,7 @@ class waMainGrid {
 			sch.enableStreaming( false );
 			sch.startBeat( 0 );
 		} else {
-			let a = gs.controls.loopA.main,
-				b = gs.controls.loopB.main;
-
-			if ( a == null ) {
-				a = 0;
-				b = this._getDurationBeat();
-			}
-			sch.setLoopBeat( a, b );
+			this.setLoop( gs.controls.loopA.main, gs.controls.loopB.main );
 			sch.startBeat( 0, offset );
 		}
 	}

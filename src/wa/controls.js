@@ -18,16 +18,7 @@ class waControls {
 		wasStarted && this.start( this._currTimes.offset );
 	}
 	setLoop( a, b ) {
-		if ( a !== false ) { // to continue...
-			this._sch.setLoopBeat( a, b );
-		} else if ( this._currGrid === wa.mainGrid ) {
-			this._sch.setLoopBeat( 0, gs.currCmp.duration );
-		} else {
-			this._sch.setLoopBeat( 0, gs.currCmp.duration );
-		}
-		// a === false
-		// 	? this._sch.setLoopBeat( 0, gs.currCmp.duration )
-		// 	: this._sch.setLoopBeat( a, b );
+		this._currGrid.setLoop( a, b );
 	}
 	setBPM( bpm ) {
 		wa.mainGrid.scheduler.setBPM( bpm );
