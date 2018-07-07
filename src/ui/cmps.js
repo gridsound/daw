@@ -10,27 +10,17 @@ class uiCmps {
 	}
 
 	push( id ) {
-		const root = document.createElement( "div" ),
-			save = document.createElement( "div" ),
-			info = document.createElement( "div" ),
-			menu = document.createElement( "div" ),
-			name = document.createElement( "div" ),
-			bpm = document.createElement( "span" ),
-			duration = document.createElement( "span" );
+		const root = dom.cmp.cloneNode( true );
 
-		root.className = "cmp";
-		save.className = "save";
-		info.className = "info";
-		menu.className = "menu";
-		name.className = "name";
-		bpm.className = "bpm";
-		duration.className = "duration";
-		info.append( name, bpm, duration );
-		root.append( save, info, menu );
-		save.onclick = gs.saveCurrentComposition;
-		info.onclick = gs.loadCompositionById.bind( null, id );
-		menu.onclick = this._showMenu.bind( this, id );
-		this._html[ id ] = { root, name, bpm, duration };
+		root.querySelector( ".save" ).onclick = gs.saveCurrentComposition;
+		root.querySelector( ".info" ).onclick = gs.loadCompositionById.bind( null, id );
+		root.querySelector( ".menu" ).onclick = this._showMenu.bind( this, id );
+		this._html[ id ] = {
+			root,
+			name: root.querySelector( ".name" ),
+			bpm: root.querySelector( ".bpm" ),
+			duration: root.querySelector( ".duration" ),
+		};
 		dom.cmps.append( root );
 	}
 	remove( id ) {

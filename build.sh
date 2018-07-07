@@ -49,6 +49,7 @@ declare -a HTMLfiles=(
 	"src/html/popup-about.html"
 	"src/html/popup-settings.html"
 	"src/html/popup-shortcuts.html"
+	"src/html/cmp.html"
 	"src/html/synth.html"
 	"src/html/pattern.html"
 	"src/html/history-action.html"
