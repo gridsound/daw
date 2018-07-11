@@ -11,6 +11,6 @@ gs.exportCurrentCompositionToWAV = () => {
 		wa.mainGrid.scheduler.stop();
 		wa.render.off();
 		return gs._blobDL = URL.createObjectURL( new Blob( [
-			gswaEncodeWAV( buffer, { float32: true } ) ] ) );
+			gswaEncodeWAV.encode( buffer, { float32: true } ) ] ) );
 	} ).catch( console.error.bind( console ) );
 };

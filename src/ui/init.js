@@ -4,7 +4,7 @@ function uiInit() {
 	const uipanels = new gsuiPanels( document.querySelector( "#app" ) );
 
 	uipanels.attached();
-	Object.entries( gswaPeriodicWaves ).forEach( ( [ name, w ] ) => (
+	gswaPeriodicWaves.forEach( ( w, name ) => (
 		gsuiPeriodicWave.addWave( name, w.real, w.imag )
 	) );
 	document.querySelectorAll( "div[data-panel]" ).forEach( pan => {

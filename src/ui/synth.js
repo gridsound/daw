@@ -7,7 +7,7 @@ class uiSynth {
 		this._uisyn = uisyn;
 		uisyn.oninput = this._oninputSynth.bind( this );
 		uisyn.onchange = this._onchangeSynth.bind( this );
-		uisyn.setWaveList( Object.keys( gswaPeriodicWaves ) );
+		uisyn.setWaveList( Array.from( gswaPeriodicWaves.keys() ) );
 		dom.synthName.onclick = this._onclickName.bind( this );
 		dom.synthWrapper2.append( uisyn.rootElement );
 		uisyn.attached();
