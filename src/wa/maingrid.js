@@ -47,6 +47,7 @@ class waMainGrid {
 			sch.startBeat( 0 );
 		} else {
 			this.setLoop( gs.controls.loopA.main, gs.controls.loopB.main );
+			sch.enableStreaming( true );
 			sch.startBeat( 0, offset );
 		}
 	}
