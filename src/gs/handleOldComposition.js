@@ -8,16 +8,6 @@ gs.handleOldComposition = cmp => {
 		cmp.synthOpened = synthId;
 		cmp.synths = { [ synthId ]: {
 			name: "synth",
-			envelopes: {
-				gain: {
-					attack: { duration: .02, value: "" },
-					release: { duration: .02, value: "" }
-				},
-				pan: {
-					attack: { duration: .02, value: "" },
-					release: { duration: .02, value: "" }
-				}
-			},
 			oscillators: {
 				[ common.smallId() ]: { type: "sine", detune: 0, pan: 0, gain: 1 }
 			}
