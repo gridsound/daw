@@ -1,7 +1,7 @@
 "use strict";
 
-gs.openSynth = function( id ) {
-	var cmp = gs.currCmp,
+gs.openSynth = id => {
+	const cmp = gs.currCmp,
 		synth = cmp.synths[ id ];
 
 	cmp.synthOpened = id;

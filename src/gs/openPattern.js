@@ -1,11 +1,9 @@
 "use strict";
 
-gs.openPattern = function( id ) {
-	var cmp = gs.currCmp,
+gs.openPattern = id => {
+	const cmp = gs.currCmp,
 		pat = cmp.patterns[ id ];
 
-	cmp.patternOpened =
-	id = pat ? id : null;
 	gs.controls.askFocusOn( pat ? "pattern" : "main" );
 	if ( pat ) {
 		wa.pianoroll.assignPattern( id );
@@ -16,4 +14,5 @@ gs.openPattern = function( id ) {
 	}
 	ui.patterns.select( id );
 	ui.pattern.open( id );
+	cmp.patternOpened = id;
 };
