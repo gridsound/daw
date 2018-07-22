@@ -108,18 +108,43 @@
 /* -------------------------------------------------------------------------- */
 #settings {
 	min-width: 46px;
+	margin-right: auto;
 	font-family: "FontAwesome";
 	background-color: var( --col2-middle );
 }
 #settings:before { content: "\f001"; margin-right: .4em; }
 #settings:after { content: "\f013"; }
 
+/* #eatCookies */
+/* -------------------------------------------------------------------------- */
+#eatCookies {
+	padding-left: 6px;
+	padding-right: 6px;
+    color: #444;
+    background-color: #f0c67e;
+}
+#eatCookies .icon {
+	width: auto;
+	margin-right: 6px;
+	font-size: 20px;
+}
+#eatCookies .icon::before {
+	content: "\f563";
+	font-family: "FontAwesome";
+}
+#eatCookies:hover .icon::before {
+	content: "\f564";
+}
+#eatCookies span {
+	font-size: 11px;
+	font-weight: bold;
+}
+
 /* #shortcuts */
 /* -------------------------------------------------------------------------- */
 #shortcuts {
 	border: 0;
 	font-size: 21px;
-	margin-left: auto;
 	background-color: rgba( 255, 255, 255, .1 );
 }
 

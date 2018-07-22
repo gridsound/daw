@@ -10,6 +10,11 @@ class uiControls {
 		dom.togglePlay.onclick = this._onclickTogglePlay.bind( this );
 		dom.play.onclick = this._onclickPlay.bind( this );
 		dom.stop.onclick = this._onclickStop.bind( this );
+		if ( document.cookie === "cookieAccepted" ) {
+			dom.eatCookies.remove();
+		} else {
+			dom.eatCookies.onclick = this._onclickCookies.bind( this );
+		}
 		slider.oninput = v => wa.destination.gain( v );
 		slider.options( {
 			type: "linear-y",
@@ -99,6 +104,22 @@ class uiControls {
 	}
 	_onclickStop() {
 		gs.controls.stop();
+		return false;
+	}
+	_onclickCookies() {
+		gsuiPopup.confirm(
+			"Cookie law",
+			"By clicking <b>Ok</b> you accept to let the GridSound's DAW<br/>"
+			+ "using Cookies to offers you two features&nbsp;:<ul>"
+			+ "<li>Saving compositions locally (localStorage)</li>"
+			+ "<li>Offline mode (serviceWorker)</li>"
+			+ "</ul>"
+		).then( b => {
+			if ( b ) {
+				document.cookie = "cookieAccepted";
+				dom.eatCookies.remove();
+			}
+		} );
 		return false;
 	}
 }

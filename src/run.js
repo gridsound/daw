@@ -2,7 +2,8 @@
 
 ( function() {
 
-const ctx = new AudioContext();
+const ctx = new AudioContext(),
+	cookies = document.cookie;
 
 gs.undoredo = new Undoredo();
 gs.undoredo.onchange = ( obj, path, val, previousVal ) => {
@@ -36,6 +37,16 @@ window.ui = {
 };
 uiWindowEvents();
 window.onresize();
+
+// Delete all the cookies if it's not only accepted.
+if ( cookies && cookies !== "cookieAccepted" ) {
+	cookies.split( ";" ).forEach( c => {
+		const eq = c.indexOf( "=" );
+
+		document.cookie = ( eq < 0 ? c : c.substr( 0, eq ) )
+			+ "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+	} );
+}
 
 gs.init();
 gs.loadNewComposition();
