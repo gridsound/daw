@@ -15,6 +15,9 @@ class waSynths {
 			syn.connect( wa.destination.get() );
 		} );
 	}
+	setBPM( bpm ) {
+		Object.values( this._synths ).forEach( syn => syn.setBPM( bpm ) );
+	}
 	select( id ) {
 		this.current = this._synths[ id ];
 	}

@@ -23,6 +23,7 @@ class waControls {
 	setBPM( bpm ) {
 		wa.mainGrid.scheduler.setBPM( bpm );
 		wa.pianoroll.scheduler.setBPM( bpm );
+		wa.synths.setBPM( bpm );
 	}
 	getCurrentTime() {
 		return this._currTimes.offset = this._sch.getCurrentOffsetBeat();
