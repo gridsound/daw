@@ -1,8 +1,8 @@
 "use strict";
 
-gs.loadComposition = function( cmp ) {
-	return gs.unloadComposition().then( function() {
-		var cmpOrig = gs.localStorage.get( cmp.id );
+gs.loadComposition = cmp => {
+	return gs.unloadComposition().then( () => {
+		const cmpOrig = gs.localStorage.get( cmp.id );
 
 		common.smallId_i = gs.getMaxCompositionInnerId( cmp ) + 1;
 		gs.handleOldComposition( cmp );
@@ -43,5 +43,7 @@ gs.loadComposition = function( cmp ) {
 			ui.synths.show( cmp.synthOpened, true );
 		}
 		gs.controls.focusOn( "main" );
-	}, console.log.bind( console ) );
+	}, res => {
+		throw null;
+	} );
 };

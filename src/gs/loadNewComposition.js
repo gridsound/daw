@@ -1,18 +1,16 @@
 "use strict";
 
-gs.loadNewComposition = function() {
-	var i = 0,
-		tracks = {},
-		synthId, patId, keysId;
+gs.loadNewComposition = () => {
+	const tracks = {},
+		_ = ( common.smallId_i = 0 ),
+		synthId = common.smallId(),
+		patId = common.smallId(),
+		keysId = common.smallId();
 
-	common.smallId_i = 0;
-	synthId = common.smallId();
-	patId = common.smallId();
-	keysId = common.smallId();
-	for ( ; i < env.def_nbTracks; ++i ) {
+	for ( let i = 0; i < env.def_nbTracks; ++i ) {
 		tracks[ common.smallId() ] = { order: i, toggle: true, name: "" };
 	}
-	gs.loadComposition( {
+	return gs.loadComposition( {
 		id: common.uuid(),
 		bpm: env.def_bpm,
 		stepsPerBeat: env.def_stepsPerBeat,
@@ -47,5 +45,4 @@ gs.loadNewComposition = function() {
 		ui.synths.show( synthId, true );
 		gs.controls.focusOn( "main" );
 	}, console.log.bind( console ) );
-	return false;
 };

@@ -1,9 +1,9 @@
 "use strict";
 
-gs.loadCompositionById = function( cmpId ) {
-	var cmp = gs.localStorage.get( cmpId );
+gs.loadCompositionById = cmpId => {
+	const cmp = gs.localStorage.get( cmpId );
 
-	cmp ? gs.loadComposition( cmp )
+	return cmp
+		? gs.loadComposition( cmp )
 		: gs.loadNewComposition();
-	return false;
 };

@@ -1,7 +1,7 @@
 "use strict";
 
-gs.unloadComposition = function() {
-	return new Promise( function( res, rej ) {
+gs.unloadComposition = () => {
+	return new Promise( ( res, rej ) => {
 		if ( !gs.currCmp ) {
 			res();
 		} else {
@@ -12,7 +12,7 @@ gs.unloadComposition = function() {
 				gsuiPopup.confirm(
 					"Warning",
 					"Are you sure you want to discard the unsaved change ?"
-				).then( function( b ) {
+				).then( b => {
 					gs._unloadCmp( b, res, rej );
 				} );
 			}
@@ -20,13 +20,12 @@ gs.unloadComposition = function() {
 	} );
 };
 
-gs._unloadCmp = function( b, res, rej ) {
-	var cmpOrig,
-		cmp = gs.currCmp;
-
+gs._unloadCmp = ( b, res, rej ) => {
 	if ( b ) {
+		const cmp = gs.currCmp,
+			cmpOrig = gs.localStorage.get( cmp.id );
+
 		gs.currCmpSaved = true;
-		cmpOrig = gs.localStorage.get( cmp.id );
 		if ( cmpOrig ) {
 			ui.cmps.saved( true );
 			ui.cmps.update( cmp.id, cmpOrig );

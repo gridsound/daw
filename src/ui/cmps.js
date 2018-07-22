@@ -2,9 +2,9 @@
 
 class uiCmps {
 	constructor() {
-		dom.newComposition.onclick = gs.loadNewComposition;
-		dom.openComposition.onclick = () => ui.openPopup.show();
 		dom.cmpMenu.onclick = this._clickMenu.bind( this );
+		dom.openComposition.onclick = () => ui.openPopup.show();
+		dom.newComposition.onclick = () => ( gs.loadNewComposition(), false );
 		this._exportTextWAV = dom.exportCompositionWAV.textContent;
 		this._html = new Map();
 	}
@@ -13,7 +13,7 @@ class uiCmps {
 		const root = dom.cmp.cloneNode( true );
 
 		root.querySelector( ".save" ).onclick = gs.saveCurrentComposition;
-		root.querySelector( ".info" ).onclick = gs.loadCompositionById.bind( null, id );
+		root.querySelector( ".info" ).onclick = this._onclickLoadCmp.bind( this, id );
 		root.querySelector( ".menu" ).onclick = this._showMenu.bind( this, id );
 		this._html.set( id, {
 			root,
@@ -58,6 +58,12 @@ class uiCmps {
 	}
 
 	// private:
+	_onclickLoadCmp( id ) {
+		gs.loadCompositionById( id ).then( () => {
+			dom.cmps.scrollTop = 0;
+		}, () => {} );
+		return false;
+	}
 	_showMenu( id, e ) {
 		const gBCR = e.target.parentNode.getBoundingClientRect();
 
