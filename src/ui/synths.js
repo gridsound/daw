@@ -65,7 +65,7 @@ class uiSynths {
 
 	// events:
 	_ondrop( synthId, e ) {
-		const patId = e.dataTransfer.getData( "text" ),
+		const patId = e.dataTransfer.getData( "text" ).split( ":" )[ 0 ],
 			pat = gs.currCmp.patterns[ patId ];
 
 		if ( pat && pat.synth !== synthId ) {
