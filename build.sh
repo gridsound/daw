@@ -214,7 +214,7 @@ buildMaster() {
 	echo "Build $filename"
 	HTMLheader
 	echo -n "<style>" >> $filename
-	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso | sed "s/..\/..\/assets/assets/g" >> $filename
+	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso --restructure-off | sed "s/..\/..\/assets/assets/g" >> $filename
 	echo -n "</style>" >> $filename
 	HTMLbody
 	echo -n "<script>" >> $filename
