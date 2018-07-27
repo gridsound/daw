@@ -33,11 +33,8 @@ class uiPatterns {
 		if ( id === gs.currCmp.patternOpened ) {
 			const sibling = patRoot.nextSibling || patRoot.previousSibling;
 
-			// .2
 			delete gs.currCmp.patternOpened;
-			if ( sibling ) {
-				gs.openPattern( sibling.dataset.id );
-			}
+			gs.openPattern( sibling && sibling.dataset.id );
 		}
 		this.list.delete( id );
 		patRoot.remove();
@@ -87,24 +84,7 @@ class uiPatterns {
 		const patRoot = this.getPatternElement( id );
 
 		e.stopPropagation();
-		// .1
-		if ( patRoot.nextSibling || patRoot.previousSibling ) {
-			gs.undoredo.change( jsonActions.removePattern( id ) );
-		} else {
-			gsuiPopup.alert( "Error", "You can not delete the last pattern" );
-		}
+		gs.undoredo.change( jsonActions.removePattern( id ) );
 		return false;
 	}
 }
-
-/*
-.1 : Why the UI choose to block the deletion of the last pattern?
-	The logic code can handle the deletion of all the pattern, but the UI not.
-	Currently the UI need a pattern opened everytime.
-	Because of this, the `if` is not in the logic code.
-
-.2 : Why is there *another* sibling check in the ui.remove() function?
-	The UI doesn't allow the deletion of the last pattern, but there is still
-	another check in the simple `ui.remove()` function. This is because when
-	a composition is unload (to load another one) ALL the patterns are removed.
-*/
