@@ -24,8 +24,8 @@ gs.handleOldComposition = cmp => {
 	} );
 	Object.values( cmp.keys ).forEach( keys => (
 		Object.values( keys ).forEach( k => {
-			k.pan = castToNumber( -1, 1, 0, k.pan );
-			k.gain = castToNumber( 0, 1, .8, k.gain );
+			k.pan = +castToNumber( -1, 1, 0, k.pan ).toFixed( 2 );
+			k.gain = +castToNumber( 0, 1, .8, k.gain ).toFixed( 2 );
 			k.selected = !!k.selected;
 			delete k.durationEdited;
 			if ( typeof k.key === "string" ) {
