@@ -64,7 +64,7 @@ class waMainGrid {
 			pat = cmp.patterns[ blc.pattern ],
 			sch = new gswaScheduler();
 
-		this._startedSched.set( startedId + "", sch );
+		this._startedSched.set( startedId, sch );
 		sch.pattern = pat;
 		sch.currentTime = () => wa.ctx.currentTime;
 		sch.ondatastart = this._onstartKey.bind( this, pat.synth );
