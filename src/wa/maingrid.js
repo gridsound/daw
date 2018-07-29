@@ -87,7 +87,7 @@ class waMainGrid {
 	// ........................................................................
 	_onstartKey( synthId, startedId, blc, when, off, dur ) {
 		this._startedKeys.set( startedId,
-			wa.synths._synths[ synthId ].startKey( blc.key, when, off, dur ) );
+			wa.synths._synths[ synthId ].startKey( blc.key, when, off, dur, blc.gain, blc.pan ) );
 	}
 	_onstopKey( synthId, startedId, blc ) {
 		wa.synths._synths[ synthId ].stopKey( this._startedKeys.get( startedId ) );

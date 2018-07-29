@@ -45,8 +45,8 @@ class waPianoroll {
 	// ........................................................................
 	liveStartKey( midi ) {
 		if ( !( midi in this._keysStartedLive ) ) {
-			this._keysStartedLive[ midi ] =
-				wa.synths.current.startKey( midi, this.scheduler.currentTime(), 0, Infinity );
+			this._keysStartedLive[ midi ] = wa.synths.current.startKey(
+				midi, this.scheduler.currentTime(), 0, Infinity, .8, 0 );
 		}
 	}
 	liveStopKey( midi ) {
@@ -57,7 +57,7 @@ class waPianoroll {
 	// ........................................................................
 	_startKey( startedId, blc, when, off, dur ) {
 		this._keysStarted[ startedId ] =
-			wa.synths.current.startKey( blc.key, when, off, dur );
+			wa.synths.current.startKey( blc.key, when, off, dur, blc.gain, blc.pan );
 	}
 	_stopKey( startedId, blc ) {
 		wa.synths.current.stopKey( this._keysStarted[ startedId ] );
