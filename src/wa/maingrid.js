@@ -60,25 +60,31 @@ class waMainGrid {
 		return Math.max( 1, Math.ceil( b / beatPM ) ) * beatPM;
 	}
 	_onstartBlock( startedId, blc, when, off, dur ) {
-		const cmp = gs.currCmp,
-			pat = cmp.patterns[ blc.pattern ],
-			sch = new gswaScheduler();
+		if ( gs.currCmp.tracks[ blc.track ].toggle ) {
+			const cmp = gs.currCmp,
+				pat = cmp.patterns[ blc.pattern ],
+				sch = new gswaScheduler();
 
-		this._startedSched.set( startedId, sch );
-		sch.pattern = pat;
-		sch.currentTime = () => wa.ctx.currentTime;
-		sch.ondatastart = this._onstartKey.bind( this, pat.synth );
-		sch.ondatastop = this._onstopKey.bind( this, pat.synth );
-		sch.setBPM( cmp.bpm );
-		Object.assign( sch.data, cmp.keys[ pat.keys ] );
-		if ( wa.render.isOn ) {
-			sch.enableStreaming( false );
+			this._startedSched.set( startedId, sch );
+			sch.pattern = pat;
+			sch.currentTime = () => wa.ctx.currentTime;
+			sch.ondatastart = this._onstartKey.bind( this, pat.synth );
+			sch.ondatastop = this._onstopKey.bind( this, pat.synth );
+			sch.setBPM( cmp.bpm );
+			Object.assign( sch.data, cmp.keys[ pat.keys ] );
+			if ( wa.render.isOn ) {
+				sch.enableStreaming( false );
+			}
+			sch.start( when, off, dur );
 		}
-		sch.start( when, off, dur );
 	}
 	_onstopBlock( startedId, blc ) {
-		this._startedSched.get( startedId ).stop();
-		this._startedSched.delete( startedId );
+		const sch = this._startedSched.get( startedId );
+
+		if ( sch ) {
+			sch.stop();
+			this._startedSched.delete( startedId );
+		}
 	}
 	_onendedBlocks( data ) {
 		gs.controls.stop();
