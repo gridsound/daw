@@ -102,6 +102,7 @@ declare -a JSfiles=(
 	"src/jsonActions/patternChangeSynth.js"
 
 	"src/common/Undoredo.js"
+	"src/common/castToNumber.js"
 	"src/common/deepKeys.js"
 	"src/common/uuid.js"
 	"src/common/smallId.js"
