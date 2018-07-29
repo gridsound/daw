@@ -10,7 +10,7 @@ class uiControls {
 		dom.togglePlay.onclick = this._onclickTogglePlay.bind( this );
 		dom.play.onclick = this._onclickPlay.bind( this );
 		dom.stop.onclick = this._onclickStop.bind( this );
-		if ( document.cookie === "cookieAccepted" ) {
+		if ( document.cookie.indexOf( "cookieAccepted" ) > -1 ) {
 			dom.eatCookies.remove();
 		} else {
 			dom.eatCookies.onclick = this._onclickCookies.bind( this );
