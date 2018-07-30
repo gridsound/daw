@@ -132,6 +132,8 @@ class uiNameAction {
 					( !oB && { i: "erase", t: msgPat + "remove" + msgSmp } ) ||
 					( !u.keys[ a ][ b ] && { i: "paint", t: msgPat + "add" + msgSmp } ) ||
 					( "duration" in oB && { i: "crop", t: msgPat + "crop" + msgSmp } ) ||
+					( "gain" in oB && { i: "param", t: msgPat + "edit gain of" + msgSmp } ) ||
+					( "pan" in oB && { i: "param", t: msgPat + "edit pan of" + msgSmp } ) ||
 					( ( "when" in oB || "key" in oB ) && { i: "move", t: msgPat + "move" + msgSmp } ) ||
 					( "selected" in oB && ( oB.selected
 						? { i: "selection ico--plus",  t: msgPat + "select" + msgSmp }
