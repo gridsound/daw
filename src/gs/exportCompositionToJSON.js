@@ -9,7 +9,8 @@ gs.exportCompositionToJSON = cmp => {
 			patterns: 3,
 		},
 		reg = /^\t"(\w*)": {$/,
-		lines = JSON.stringify( gs.epureComposition( cmp ), null, "\t" ).split( "\n" );
+		cmpClean = gs.epureComposition( JSON.parse( JSON.stringify( cmp ) ) ),
+		lines = JSON.stringify( cmpClean, null, "\t" ).split( "\n" );
 	let regTab,
 		regTa2,
 		delTabCurr;
