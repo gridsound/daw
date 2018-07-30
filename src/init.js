@@ -6,7 +6,7 @@ window.dom = {};
 window.gs = {};
 window.env = {
 	version: "0.16.0",
-	def_appGain: .35,
+	def_appGain: .5,
 	def_bpm: 120,
 	def_beatsPerMeasure: 4,
 	def_stepsPerBeat: 4,
