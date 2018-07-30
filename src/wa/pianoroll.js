@@ -50,8 +50,10 @@ class waPianoroll {
 		}
 	}
 	liveStopKey( midi ) {
-		wa.synths.current.stopKey( this._keysStartedLive[ midi ] )
-		delete this._keysStartedLive[ midi ];
+		if ( this._keysStartedLive[ midi ] ) {
+			wa.synths.current.stopKey( this._keysStartedLive[ midi ] )
+			delete this._keysStartedLive[ midi ];
+		}
 	}
 
 	// ........................................................................
