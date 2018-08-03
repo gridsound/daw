@@ -69,11 +69,11 @@ class uiSynths {
 			pat = gs.currCmp.patterns[ patId ];
 
 		if ( pat && pat.synth !== synthId ) {
-			gs.undoredo.change( jsonActions.patternChangeSynth( patId, synthId ) );
+			gs.undoredo.change( json_patternChangeSynth( gs.currCmp, patId, synthId ) );
 		}
 	}
 	_onclickNew() {
-		const obj = jsonActions.newSynth();
+		const obj = json_newSynth( gs.currCmp );
 
 		gs.undoredo.change( obj );
 		gs.openSynth( Object.keys( obj.synths )[ 0 ] );
@@ -81,14 +81,14 @@ class uiSynths {
 	}
 	_onclickDelete( synthId ) {
 		if ( Object.keys( gs.currCmp.synths ).length > 1 ) {
-			gs.undoredo.change( jsonActions.removeSynth( synthId ) );
+			gs.undoredo.change( json_removeSynth( gs.currCmp, synthId ) );
 		} else {
 			gsuiPopup.alert( "Error", "You can not delete the last synthesizer" );
 		}
 		return false;
 	}
 	_onclickNewPattern( synthId ) {
-		gs.undoredo.change( jsonActions.newPattern( synthId ) );
+		gs.undoredo.change( json_newPattern( gs.currCmp, synthId ) );
 		this.show( synthId, true );
 		return false;
 	}

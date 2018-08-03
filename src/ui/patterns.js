@@ -77,14 +77,14 @@ class uiPatterns {
 	}
 	_onclickClone( id, e ) {
 		e.stopPropagation();
-		gs.undoredo.change( jsonActions.clonePattern( id ) );
+		gs.undoredo.change( json_clonePattern( gs.currCmp, id ) );
 		return false;
 	}
 	_onclickRemove( id, e ) {
 		const patRoot = this.getPatternElement( id );
 
 		e.stopPropagation();
-		gs.undoredo.change( jsonActions.removePattern( id ) );
+		gs.undoredo.change( json_removePattern( gs.currCmp, id ) );
 		return false;
 	}
 }

@@ -1,7 +1,9 @@
 "use strict";
 
-jsonActions.patternChangeSynth = function( patId, synthId ) {
-	return { patterns: { [ patId ]: {
-		synth: synthId
-	} } };
-};
+function json_patternChangeSynth( cmp, pat, synth ) {
+	return {
+		patterns: {
+			[ pat ]: { synth }
+		}
+	};
+}

@@ -1,34 +1,33 @@
 "use strict";
 
-jsonActions.removeSynth = function( synthId ) {
-	var nbPat = 0,
-		nbBlc = 0,
-		keys = {},
+function json_removeSynth( cmp, synthId ) {
+	const keys = {},
 		blocks = {},
 		patterns = {},
-		cmp = gs.currCmp,
 		cmpBlocks = Object.entries( cmp.blocks ),
 		data = { synths: { [ synthId ]: null } };
+	let filledPat,
+		filledBlcs;
 
 	Object.entries( cmp.patterns ).forEach( ( [ patId, pat ] ) => {
 		if ( pat.synth === synthId ) {
 			keys[ pat.keys ] =
 			patterns[ patId ] = null;
-			++nbPat;
+			filledPat = true;
 			cmpBlocks.forEach( ( [ blcId, blc ] ) => {
 				if ( blc.pattern === patId ) {
 					blocks[ blcId ] = null;
-					++nbBlc;
+					filledBlcs = true;
 				}
 			} );
 		}
 	} );
-	if ( nbPat ) {
+	if ( filledPat ) {
 		data.keys = keys;
 		data.patterns = patterns;
-		if ( nbBlc ) {
+		if ( filledBlcs ) {
 			data.blocks = blocks;
 		}
 	}
 	return data;
-};
+}

@@ -1,12 +1,12 @@
 "use strict";
 
-jsonActions.removePattern = patId => {
+function json_removePattern( cmp, patId ) {
 	let filled;
 	const data = {
-			keys: { [ gs.currCmp.patterns[ patId ].keys ]: null },
+			keys: { [ cmp.patterns[ patId ].keys ]: null },
 			patterns: { [ patId ]: null }
 		},
-		blocks = Object.entries( gs.currCmp.blocks ).reduce( ( obj, [ blcId, blc ] ) => {
+		blocks = Object.entries( cmp.blocks ).reduce( ( obj, [ blcId, blc ] ) => {
 			if ( blc.pattern === patId ) {
 				obj[ blcId ] = null;
 				filled = true;
@@ -18,5 +18,4 @@ jsonActions.removePattern = patId => {
 		data.blocks = blocks;
 	}
 	return data;
-};
-
+}

@@ -1,7 +1,7 @@
 "use strict";
 
-jsonActions.newPattern = function( synthId ) {
-	var keysId = common.smallId();
+function json_newPattern( cmp, synthId ) {
+	const keysId = common.smallId();
 
 	return {
 		keys: { [ keysId ]: {} },
@@ -10,7 +10,7 @@ jsonActions.newPattern = function( synthId ) {
 			type: "keys",
 			keys: keysId,
 			synth: synthId,
-			duration: gs.currCmp.beatsPerMeasure
+			duration: cmp.beatsPerMeasure,
 		} }
 	};
-};
+}

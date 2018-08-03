@@ -1,10 +1,10 @@
 "use strict";
 
-jsonActions.clonePattern = patId => {
-	var nKeys = {},
+function json_clonePattern( cmp, patId ) {
+	const nKeys = {},
 		nkeysId = common.smallId(),
-		pat = gs.currCmp.patterns[ patId ],
-		keys = gs.currCmp.keys[ pat.keys ];
+		pat = cmp.patterns[ patId ],
+		keys = cmp.keys[ pat.keys ];
 
 	Object.keys( keys ).forEach( ( k, i ) => {
 		nKeys[ i ] = Object.assign( {}, keys[ k ] );
@@ -16,7 +16,7 @@ jsonActions.clonePattern = patId => {
 			type: "keys",
 			keys: nkeysId,
 			synth: pat.synth,
-			duration: pat.duration
+			duration: pat.duration,
 		} }
 	};
-};
+}
