@@ -42,7 +42,7 @@ class uiSettingsPopup {
 		for ( x in cmpChange ) { gs.undoredo.change( cmpChange ); break; }
 	}
 	_bpmTap( inputBpm, bpmTap ) {
-		const time = (new Date()).getTime();
+		const time = Date.now();
 
 		if ( bpmTap.timeBefore ) {
 			const bpm = 60000 / ( time - bpmTap.timeBefore ),

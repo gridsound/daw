@@ -21,7 +21,7 @@ class waMainGrid {
 	assignChange( data ) {
 		common.assignDeep( this.scheduler.data, data );
 		if ( gs.controls.loopA.main == null ) {
-			this.scheduler.setLoopBeat( 0, this._getDurationBeat() );
+			this.scheduler.setLoopBeat( 0, gs.currCmp.duration );
 		}
 	}
 	assignPatternChange( pat, keys ) {
@@ -34,7 +34,7 @@ class waMainGrid {
 	setLoop( a, b ) {
 		if ( !Number.isFinite( a ) ) {
 			a = 0;
-			b = this._getDurationBeat();
+			b = gs.currCmp.duration;
 		}
 		this.scheduler.setLoopBeat( a, b );
 	}
@@ -53,12 +53,6 @@ class waMainGrid {
 	}
 
 	// ........................................................................
-	_getDurationBeat() {
-		const beatPM = gs.currCmp.beatsPerMeasure,
-			b = this.scheduler.duration * this.scheduler.bps;
-
-		return Math.max( 1, Math.ceil( b / beatPM ) ) * beatPM;
-	}
 	_onstartBlock( startedId, blc, when, off, dur ) {
 		if ( gs.currCmp.tracks[ blc.track ].toggle ) {
 			const cmp = gs.currCmp,

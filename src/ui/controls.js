@@ -67,7 +67,7 @@ class uiControls {
 			ui.pattern.pianoroll.loop( isLoop && loopA, loopB );
 		}
 	}
-	switchClock() {
+	updateClock() {
 		this.clock( this._beat );
 	}
 	clock( beat ) {

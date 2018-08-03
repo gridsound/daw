@@ -8,10 +8,10 @@ class uiMainGrid {
 		this.patternroll = grid;
 		grid.setFontSize( 32 );
 		grid.setPxPerBeat( 40 );
-		grid.onchange = obj => gs.undoredo.change( obj );
+		grid.onchange = this._onchangeGrid.bind( this );
 		grid.onchangeLoop = gs.controls.loop.bind( null, "main" );
-		grid.oneditBlock = this._oneditBlock.bind( this );
 		grid.onaddBlock = this._onaddBlock.bind( this );
+		grid.oneditBlock = this._oneditBlock.bind( this );
 		grid.onremoveBlock = this._onremoveBlock.bind( this );
 		grid.onchangeCurrentTime = gs.controls.currentTime.bind( null, "main" );
 		grid.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "main" );
@@ -20,8 +20,6 @@ class uiMainGrid {
 	}
 
 	empty() {
-		// this.patternroll.offset( 0, 40 );
-		// this.patternroll.contentY( 0 );
 		this.patternroll.setFontSize( 32 );
 		this.patternroll.setPxPerBeat( 40 );
 		this.patternroll.empty();
@@ -46,6 +44,15 @@ class uiMainGrid {
 	}
 
 	// private:
+	_onchangeGrid( obj ) {
+		const dur = this.patternroll.__blcs.size &&
+			this.patternroll.getDuration();
+
+		if ( dur !== gs.currCmp.duration ) {
+			obj.duration = dur;
+		}
+		gs.undoredo.change( obj );
+	}
 	_updatePatternContent( pat, obj, blc ) {
 		blc._gsuiRectMatrix.render(
 			uiKeysToRects( gs.currCmp.keys[ pat.keys ] ),

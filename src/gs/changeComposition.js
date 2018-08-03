@@ -1,15 +1,13 @@
 "use strict";
 
 gs.changeComposition = obj => {
-	const cmp = gs.currCmp,
-		currDur = cmp.duration;
+	const cmp = gs.currCmp;
 
 	console.log( "changeComposition", obj );
 	gs.currCmpSaved = gs.undoredo.getCurrentAction() === gs.actionSaved;
 	ui.cmps.saved( !gs.isCompositionNeedSave() );
 	if ( obj.blocks ) {
 		wa.mainGrid.assignChange( obj.blocks );
-		cmp.duration = wa.mainGrid.scheduler.duration * cmp.bpm / 60;
 	}
 	if ( obj.tracks || obj.blocks ) {
 		common.assignDeep( ui.mainGrid.patternroll.data, obj );
@@ -72,16 +70,16 @@ gs.changeComposition = obj => {
 		} );
 	}
 	if ( obj.bpm ) {
-		wa.controls.setBPM( obj.bpm );
 		ui.controls.bpm( obj.bpm );
-		cmp.duration = wa.mainGrid.scheduler.duration * obj.bpm / 60;
+		ui.controls.updateClock();
+		wa.controls.setBPM( obj.bpm );
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
 		ui.mainGrid.patternroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		ui.pattern.pianoroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );
 		Object.keys( cmp.patterns ).forEach( ui.patterns.updateContent.bind( ui.patterns ) );
 	}
-	if ( obj.name != null || obj.bpm || Math.ceil( cmp.duration ) !== Math.ceil( currDur ) ) {
+	if ( obj.bpm || obj.duration != null || obj.name != null ) {
 		ui.cmps.update( cmp.id, cmp );
 	}
 };

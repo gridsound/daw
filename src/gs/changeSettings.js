@@ -3,6 +3,6 @@
 gs.changeSettings = function( obj ) {
 	if ( "clockSteps" in obj ) {
 		env.clockSteps = obj.clockSteps;
-		ui.controls.switchClock();
+		ui.controls.updateClock();
 	}
 };

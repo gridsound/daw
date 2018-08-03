@@ -21,8 +21,6 @@ class uiPattern {
 
 	empty() {
 		this.updateName( "" );
-		// this.pianoroll.contentY( 0 );
-		// this.pianoroll.offset( 0, 90 );
 		this.pianoroll.setPxPerBeat( 90 );
 		this.pianoroll.empty();
 	}
