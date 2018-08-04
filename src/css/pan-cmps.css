@@ -7,22 +7,36 @@
 
 #pan-cmps .panel-title {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	height: var( --ctrl-height );
 	padding-top: 0;
 	padding-bottom: 0;
 	color: #fff;
+	font-size: 28px;
 	font-weight: normal;
 	cursor: default;
 	background-color: #444;
 }
 
-#title:before {
+#title::before {
 	display: block;
-	margin-top: 3px;
 	content: "GridSound";
 	font-family: "Oswald";
-	font-size: 28px;
+}
+
+#signup {
+	margin-left: 10px;
+	font-size: 24px;
+	font-family: "FontAwesome";
+}
+#signup::before {
+	content: "\f2bd";
+	opacity: .5;
+	transition: .2s opacity;
+}
+#signup:hover::before {
+	content: "\f4ff";
+	opacity: .8;
 }
 
 #appGainWrap {
