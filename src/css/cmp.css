@@ -1,88 +1,104 @@
 .cmp {
 	box-sizing: border-box;
 	display: flex;
-	color: #bbb;
-	font-size: 12px;
+	height: 42px;
+	line-height: 42px;
+	font-size: 18px;
+	color: #fff;
 	cursor: pointer;
 	background-color: var( --col1-middle );
 	filter: brightness( .9 );
 }
-.cmp + .cmp {
-	border-top: 1px solid rgba( 0, 0, 0, .2 );
+.cmp:nth-child( odd ) {
+	filter: brightness( .85 );
 }
-.cmp.loaded {
+.cmp.cmp-loaded {
 	filter: none;
 }
 
 /* -------------------------------------------------------------------------- */
-.cmp .save {
+.cmp-save {
+	width: 0;
 	display: flex;
 	overflow: hidden;
 	align-items: center;
 	justify-content: center;
-	width: 0;
 	background-color: var( --col2-middle );
+	transition: .2s;
+	transition-property: color, background-color;
 }
-.cmp.notSaved .save {
+.cmp-notSaved .cmp-save {
 	min-width: 30px;
 }
-.cmp .save:before {
+.cmp-save::before {
 	content: "\f0a0";
-	font: 20px "FontAwesome";
-	color: #ddd;
+	font-family: "FontAwesome";
+}
+.cmp-save:hover {
+	color: var( --col2-middle );
+	background-color: #fff;
 }
 
 /* -------------------------------------------------------------------------- */
-.cmp .info {
+.cmp-info {
 	flex: 1;
-	padding: 4px;
-	overflow: hidden;
-	transition: padding-left .2s;
-}
-.cmp .info:hover {
-	padding-left: 8px;
-}
-
-/* -------------------------------------------------------------------------- */
-.cmp .menu {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-width: 20px;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: .5em;
+	overflow: hidden;
+	font-size: 13px;
+	line-height: 1em;
+	transition: .2s;
+	transition-property: padding-left, opacity;
+	opacity: .7;
 }
-.cmp .menu:before {
-	content: "\f142";
-	font: 18px "FontAwesome";
-}
-.cmp .menu:hover {
-	color: #fff;
+.cmp-info:hover {
+	padding-left: 1em;
+	opacity: 1;
 }
 
 /* -------------------------------------------------------------------------- */
-.cmp .name {
+.cmp-name {
 	overflow: hidden;
-	color: #ddd;
-	font-size: 13px;
 	font-weight: bold;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.cmp.notSaved .name:before {
+.cmp-notSaved .cmp-name::before {
 	content: "*";
 }
-.cmp .name:empty:after {
+.cmp-name:empty::after {
 	font-style: italic;
 	content: "Untitled";
 }
 
 /* -------------------------------------------------------------------------- */
-.cmp .bpm {
+.cmp-bpm {
 	margin-right: 1em;
 }
-.cmp .bpm:before,
-.cmp .duration:before {
+.cmp-bpm::before,
+.cmp-duration::before {
 	font-family: "FontAwesome";
 	margin-right: .4em;
 }
-.cmp .bpm:before { content: "\f001"; }
-.cmp .duration:before { content: "\f017"; }
+.cmp-bpm::before { content: "\f001"; }
+.cmp-duration::before { content: "\f017"; }
+
+/* -------------------------------------------------------------------------- */
+.cmp-btn {
+	padding: 0 8px;
+	opacity: .3;
+	transition: .2s;
+	transition-property: opacity;
+}
+.cmp-btn:hover {
+	opacity: .8;
+}
+.cmp-btn::before {
+	content: "\f56e";
+	font-family: "FontAwesome";
+}
+.cmp-delete::before {
+	content: "\f308";
+}

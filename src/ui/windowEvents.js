@@ -42,10 +42,6 @@ function uiWindowEvents() {
 		delete keyPressed[ e.key ];
 	};
 
-	document.body.onclick = e => {
-		ui.cmps._hideMenu();
-	};
-
 	document.body.ondragover = () => false;
 	document.body.ondrop = e => {
 		let gsFile;
