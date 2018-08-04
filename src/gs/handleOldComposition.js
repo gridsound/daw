@@ -22,6 +22,9 @@ gs.handleOldComposition = cmp => {
 			}
 		} };
 	}
+	Object.values( cmp.synths ).forEach( syn => {
+		delete syn.envelopes;
+	} );
 	Object.values( cmp.tracks ).forEach( tr => {
 		tr.name = tr.name || "";
 		tr.toggle = typeof tr.toggle === "boolean" ? tr.toggle : true;
