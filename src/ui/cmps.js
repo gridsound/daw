@@ -61,6 +61,8 @@ class uiCmps {
 	_onclickLoadCmp( id ) {
 		gs.loadCompositionById( id ).then( () => {
 			dom.cmps.scrollTop = 0;
+		}, e => {
+			e && console.error( e );
 		} );
 		return false;
 	}

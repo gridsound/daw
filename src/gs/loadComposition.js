@@ -44,6 +44,6 @@ gs.loadComposition = cmp => {
 		}
 		gs.controls.focusOn( "main" );
 	}, res => {
-		throw null;
+		throw res;
 	} );
 };
