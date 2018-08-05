@@ -118,10 +118,11 @@
 /* #eatCookies */
 /* -------------------------------------------------------------------------- */
 #eatCookies {
+	color: #444;
+	border: 0;
 	padding-left: 6px;
 	padding-right: 6px;
-    color: #444;
-    background-color: #f0c67e;
+	background-color: #f0c67e;
 }
 #eatCookies .icon {
 	width: auto;

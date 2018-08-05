@@ -71,7 +71,8 @@ class uiCmps {
 		const cmp = id === gs.currCmp.id ? gs.currCmp : gs.localStorage.get( id );
 
 		gsuiPopup.confirm( "Warning",
-			`Are you sure you want to delete "${ cmp.name }" ? (no undo possible)`
+			`Are you sure you want to delete "${ cmp.name }" ? (no undo possible)`,
+			"Delete"
 		).then( b => b && gs.deleteComposition( id ) );
 	}
 	_onclickJsonExport( id, e ) {

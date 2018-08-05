@@ -113,7 +113,8 @@ class uiControls {
 			+ "using Cookies to offers you two features&nbsp;:<ul>"
 			+ "<li>Saving compositions locally (localStorage)</li>"
 			+ "<li>Offline mode (serviceWorker)</li>"
-			+ "</ul>"
+			+ "</ul>",
+			"Accept", "Decline"
 		).then( b => {
 			if ( b ) {
 				document.cookie = "cookieAccepted";

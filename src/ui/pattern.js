@@ -61,7 +61,7 @@ class uiPattern {
 		const id = gs.currCmp.patternOpened,
 			oldName = gs.currCmp.patterns[ id ].name;
 
-		gsuiPopup.prompt( "Rename pattern", "", oldName )
+		gsuiPopup.prompt( "Rename pattern", "", oldName, "Rename" )
 			.then( n => {
 				if ( n !== null ) {
 					const name = n.trim();

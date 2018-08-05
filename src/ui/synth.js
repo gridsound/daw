@@ -36,7 +36,7 @@ class uiSynth {
 		const id = gs.currCmp.synthOpened,
 			oldName = gs.currCmp.synths[ id ].name;
 
-		gsuiPopup.prompt( "Rename synthesizer", "", oldName )
+		gsuiPopup.prompt( "Rename synthesizer", "", oldName, "Rename" )
 			.then( n => {
 				if ( n !== null ) {
 					const name = n.trim();
