@@ -46,6 +46,7 @@ declare -a HTMLfiles=(
 	"src/html/pan-pianoroll.html"
 	"src/html/popup-open.html"
 	"src/html/popup-about.html"
+	"src/html/popup-render.html"
 	"src/html/popup-settings.html"
 	"src/html/popup-shortcuts.html"
 	"src/html/cmp.html"
@@ -142,7 +143,6 @@ declare -a JSfiles=(
 	"src/wa/render.js"
 	"src/wa/destination.js"
 
-	"src/ui/aboutPopup.js"
 	"src/ui/init.js"
 	"src/ui/keysToRects.js"
 	"src/ui/windowEvents.js"
@@ -156,6 +156,8 @@ declare -a JSfiles=(
 	"src/ui/synth.js"
 	"src/ui/synths.js"
 	"src/ui/openPopup.js"
+	"src/ui/aboutPopup.js"
+	"src/ui/renderPopup.js"
 	"src/ui/settingsPopup.js"
 	"src/ui/shortcutsPopup.js"
 

@@ -32,6 +32,7 @@ window.ui = {
 	pattern: new uiPattern(),
 	openPopup: new uiOpenPopup(),
 	aboutPopup: new uiAboutPopup(),
+	renderPopup: new uiRenderPopup(),
 	settingsPopup: new uiSettingsPopup(),
 	shortcutsPopup: new uiShortcutsPopup(),
 };

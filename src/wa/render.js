@@ -8,6 +8,7 @@ class waRender {
 		this._ctx = wa.ctx;
 		wa.ctx = new OfflineAudioContext( 2, ~~( dur * env.sampleRate ), env.sampleRate );
 		wa.synths.setContext( wa.ctx );
+		wa.renderStartTime = wa.ctx.currentTime;
 	}
 	off() {
 		wa.ctx = this._ctx;

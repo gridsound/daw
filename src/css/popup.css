@@ -116,6 +116,30 @@
 	width: auto;
 }
 
+/* #renderPopupContent ------------------------------------------------------- */
+#render-wrap {
+	display: flex;
+	padding: 10px 0;
+}
+#render-btn {
+	padding: 0 .8em;
+	border-radius: 2px;
+	margin-right: 10px;
+	color: #111;
+	font-size: 12px;
+	line-height: 28px;
+	font-weight: bold;
+	background-color: #ff9;
+}
+#render-btn span { display: none; }
+#render-btn[data-status="0"] span:nth-child(1) { display: inline; }
+#render-btn[data-status="1"] span:nth-child(2) { display: inline; }
+#render-btn[data-status="2"] span:nth-child(3) { display: inline; }
+#render-progress {
+	flex: 1;
+	height: 28px;
+}
+
 /* #aboutPopupContent ------------------------------------------------------- */
 #aboutPopupContent {
 	width: 450px;

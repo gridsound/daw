@@ -82,4 +82,5 @@
 }
 
 #newComposition::before { content: "\f067"; }
-#openComposition::before { content: "\f019"; }
+#openComposition::before { content: "\f07c"; }
+#renderComposition::before { content: "\f028"; }
