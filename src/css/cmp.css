@@ -89,6 +89,7 @@
 .cmp-btn {
 	padding: 0 8px;
 	opacity: .3;
+	font-size: 16px;
 	transition: .2s;
 	transition-property: opacity;
 }
