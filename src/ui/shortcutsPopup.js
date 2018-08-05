@@ -7,7 +7,10 @@ class uiShortcutsPopup {
 	}
 
 	show() {
-		gsuiPopup.custom( "Keyboard / mouse shortcuts", dom.shortcutsPopupContent );
+		gsuiPopup.custom( {
+			title: "Keyboard / mouse shortcuts",
+			element: dom.shortcutsPopupContent,
+		} );
 		return false;
 	}
 }

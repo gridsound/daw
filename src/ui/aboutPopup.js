@@ -8,7 +8,10 @@ class uiAboutPopup {
 	}
 
 	show() {
-		gsuiPopup.custom( "About", dom.aboutPopupContent );
+		gsuiPopup.custom( {
+			title: "About",
+			element: dom.aboutPopupContent,
+		} );
 		return false;
 	}
 

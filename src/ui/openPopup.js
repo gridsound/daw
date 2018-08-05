@@ -12,7 +12,11 @@ class uiOpenPopup {
 	show() {
 		this._inputFile.value =
 		this._inputURL.value = "";
-		gsuiPopup.custom( "Open", dom.openPopupContent, this._onsubmit.bind( this ) );
+		gsuiPopup.custom( {
+			title: "Open",
+			submit: this._onsubmit.bind( this ),
+			element: dom.openPopupContent,
+		} );
 		return false;
 	}
 

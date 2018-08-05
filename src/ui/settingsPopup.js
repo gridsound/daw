@@ -21,7 +21,11 @@ class uiSettingsPopup {
 		bpmTap.bpmStack = [];
 		bpmTap.nbBpmToAverage = 10;
 		bpmTap.onclick = this._bpmTap.bind( null, inp[ 3 ], bpmTap );
-		gsuiPopup.custom( "Settings", dom.settingsPopupContent, this._onsubmit.bind( this ) );
+		gsuiPopup.custom( {
+			title: "Settings",
+			submit: this._onsubmit.bind( this ),
+			element: dom.settingsPopupContent,
+		} );
 		return false;
 	}
 
