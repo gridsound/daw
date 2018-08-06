@@ -18,6 +18,10 @@ class uiRenderPopup {
 			ok: "Close",
 			title: "Render",
 			element: dom.renderPopupContent,
+		} ).then( () => {
+			if ( wa.render.isOn ) {
+				wa.mainGrid.scheduler.stop();
+			}
 		} );
 		return false;
 	}
