@@ -5,7 +5,6 @@ class uiCmps {
 		dom.newComposition.onclick = () => ( gs.loadNewComposition(), false );
 		dom.openComposition.onclick = () => ui.openPopup.show();
 		dom.renderComposition.onclick = () => ui.renderPopup.show();
-		this._exportTextWAV = dom.exportCompositionWAV.textContent;
 		this._html = new Map();
 	}
 

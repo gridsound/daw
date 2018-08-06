@@ -19,7 +19,6 @@ declare -a CSSfiles=(
 	"src/css/icon.css"
 	"src/css/app.css"
 	"src/css/popup.css"
-	"src/css/absoluteMenu.css"
 	"src/css/pan-leftside.css"
 	"src/css/pan-rightside.css"
 	"src/css/pan-cmps.css"
