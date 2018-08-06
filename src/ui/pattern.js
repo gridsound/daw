@@ -82,6 +82,7 @@ class uiPattern {
 			obj = { keys: {
 				[ pat.keys ]: keysObj
 			} };
+		let blcEndMax = 0;
 
 		if ( duration !== pat.duration ) {
 			const objBlocks = {};
@@ -89,6 +90,7 @@ class uiPattern {
 
 			obj.patterns = { [ patId ]: { duration } };
 			Object.entries( cmp.blocks ).forEach( ( [ id, blc ] ) => {
+				blcEndMax = Math.max( blcEndMax, blc.when + duration );
 				if ( blc.pattern === patId && !blc.durationEdited ) {
 					objBlocksFilled = true;
 					objBlocks[ id ] = { duration };
@@ -96,6 +98,11 @@ class uiPattern {
 			} );
 			if ( objBlocksFilled ) {
 				obj.blocks = objBlocks;
+			}
+			blcEndMax = Math.ceil( blcEndMax / cmp.beatsPerMeasure );
+			blcEndMax = Math.max( 1, blcEndMax ) * cmp.beatsPerMeasure;
+			if ( Math.abs( blcEndMax - cmp.duration ) > .001 ) {
+				obj.duration = blcEndMax;
 			}
 		}
 		gs.undoredo.change( obj );
