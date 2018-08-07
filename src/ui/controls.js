@@ -109,11 +109,13 @@ class uiControls {
 	_onclickCookies() {
 		gsuiPopup.confirm(
 			"Cookie law",
-			"By clicking <b>Ok</b> you accept to let the GridSound's DAW<br/>"
+			"Do you accept to let the GridSound's DAW<br/>"
 			+ "using Cookies to offers you two features&nbsp;:<ul>"
 			+ "<li>Saving compositions locally (localStorage)</li>"
 			+ "<li>Offline mode (serviceWorker)</li>"
-			+ "</ul>",
+			+ "</ul>"
+			+ "There are no tracker, analytics or adverts of any<br/>"
+			+ "kind on this webapp.",
 			"Accept", "Decline"
 		).then( b => {
 			if ( b ) {
