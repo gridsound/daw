@@ -3,7 +3,14 @@
 ( function() {
 
 const ctx = new AudioContext(),
-	cookies = document.cookie;
+	cookies = document.cookie,
+	hash = location.hash.substr( 1 ).split( "&" )
+		.reduce( ( obj, kv ) => {
+			const arr = kv.split( "=" );
+
+			obj[ arr[ 0 ] ] = arr[ 1 ];
+			return obj;
+		}, {} );
 
 gs.undoredo = new Undoredo();
 gs.undoredo.onchange = ( obj, path, val, previousVal ) => {
@@ -50,6 +57,15 @@ if ( cookies && cookies !== "cookieAccepted" ) {
 }
 
 gs.init();
-gs.loadNewComposition();
+
+if ( hash.cmp ) {
+	location.hash = "";
+	gs.loadCompositionByURL( hash.cmp ).catch( e => {
+		console.warn( e );
+		gs.loadNewComposition();
+	} );
+} else {
+	gs.loadNewComposition();
+}
 
 } )();
