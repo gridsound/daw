@@ -34,6 +34,7 @@ class uiPattern {
 			this.updateName( pat.name );
 			this.pianoroll.empty();
 			common.assignDeep( this.pianoroll.data, gs.currCmp.keys[ pat.keys ] );
+			this.pianoroll.resetKey();
 			this.pianoroll.scrollToKeys();
 		} else {
 			this.empty();
