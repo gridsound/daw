@@ -4,7 +4,7 @@ window.common = {};
 window.dom = {};
 window.gs = {};
 window.env = {
-	version: "0.17.1",
+	version: "0.17.2",
 	def_appGain: .5,
 	def_bpm: 120,
 	def_beatsPerMeasure: 4,

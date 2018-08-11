@@ -1,7 +1,13 @@
 "use strict";
 
-gs.saveCurrentComposition = () => (
-	gs.currCmpSaved
+gs.saveCurrentComposition = () => {
+	const saveKo = document.cookie.indexOf( "cookieAccepted" ) < 0;
+
+	if ( saveKo ) {
+		gsuiPopup.alert( "Error",
+			"You have to accept our cookies before saving locally your composition." );
+	}
+	return gs.currCmpSaved || saveKo
 		? Promise.resolve()
 		: new Promise( res => {
 			const cmp = gs.currCmp;
@@ -13,4 +19,4 @@ gs.saveCurrentComposition = () => (
 			ui.cmps.saved( true );
 			res();
 		} )
-);
+};
