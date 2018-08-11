@@ -133,7 +133,6 @@ declare -a JSfiles=(
 	"src/gs/openPattern.js"
 	"src/gs/openSynth.js"
 	"src/gs/nameUniqueFrom.js"
-	"src/gs/addAudioFiles.js"
 
 	"src/wa/controls.js"
 	"src/wa/synths.js"

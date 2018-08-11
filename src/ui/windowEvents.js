@@ -56,11 +56,7 @@ function uiWindowEvents() {
 				} );
 
 		if ( gsFile ) {
-			gs.loadCompositionByBlob( gsFile ).then(
-				gs.addAudioFiles.bind( null, audioFiles ),
-				() => {} );
-		} else {
-			gs.addAudioFiles( audioFiles );
+			gs.loadCompositionByBlob( gsFile );
 		}
 		return false;
 	};
