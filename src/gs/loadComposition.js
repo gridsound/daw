@@ -28,6 +28,7 @@ gs.loadComposition = cmp => {
 		wa.mainGrid.assignChange( cmp.blocks );
 		ui.controls.currentTime( "main", 0 );
 		ui.controls.currentTime( "pattern", 0 );
+		ui.controls.loop( "main", cmp.loopA !== false, cmp.loopA, cmp.loopB );
 		ui.controls.bpm( cmp.bpm );
 		ui.mainGrid.empty();
 		ui.mainGrid.patternroll.timeSignature( cmp.beatsPerMeasure, cmp.stepsPerBeat );

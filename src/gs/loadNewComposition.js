@@ -17,6 +17,8 @@ gs.loadNewComposition = () => {
 		beatsPerMeasure: env.def_beatsPerMeasure,
 		name: "",
 		duration: 0,
+		loopA: false,
+		loopB: false,
 		patterns: {
 			[ patId ]: {
 				name: "pat",

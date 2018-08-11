@@ -20,7 +20,7 @@ class waPianoroll {
 	}
 	assignPatternChange( data ) {
 		common.assignDeep( this.scheduler.data, data );
-		if ( gs.controls.loopA.pattern == null ) {
+		if ( gs.controls.patternLoopA === false ) {
 			const beatPM = gs.currCmp.beatsPerMeasure,
 				b = Math.ceil( this._pattern.duration / beatPM );
 
@@ -36,7 +36,7 @@ class waPianoroll {
 		this.scheduler.setLoopBeat( a, b );
 	}
 	start( off ) {
-		this.setLoop( gs.controls.loopA.pattern, gs.controls.loopB.pattern );
+		this.setLoop( gs.controls.patternLoopA, gs.controls.patternLoopB );
 		if ( this._pattern ) {
 			this.scheduler.startBeat( 0, off );
 		}

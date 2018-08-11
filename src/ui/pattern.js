@@ -9,7 +9,7 @@ class uiPattern {
 		piano.setPxPerBeat( 90 );
 		piano.setFontSize( 20 );
 		piano.onchange = this._onchangeGrid.bind( this );
-		piano.onchangeLoop = gs.controls.loop.bind( null, "pattern" );
+		piano.onchangeLoop = gs.controls.patternLoop.bind( null );
 		piano.onchangeCurrentTime = gs.controls.currentTime.bind( null, "pattern" );
 		piano.rootElement.onfocus = gs.controls.askFocusOn.bind( null, "pattern" );
 		piano.uiKeys.onkeydown = wa.pianoroll.liveStartKey.bind( wa.pianoroll );

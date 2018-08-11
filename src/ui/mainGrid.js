@@ -9,7 +9,7 @@ class uiMainGrid {
 		grid.setFontSize( 32 );
 		grid.setPxPerBeat( 40 );
 		grid.onchange = this._onchangeGrid.bind( this );
-		grid.onchangeLoop = gs.controls.loop.bind( null, "main" );
+		grid.onchangeLoop = this._onchangeLoop.bind( this );
 		grid.onaddBlock = this._onaddBlock.bind( this );
 		grid.oneditBlock = this._oneditBlock.bind( this );
 		grid.onremoveBlock = this._onremoveBlock.bind( this );
@@ -44,6 +44,12 @@ class uiMainGrid {
 	}
 
 	// private:
+	_onchangeLoop( looping, a, b ) {
+		gs.undoredo.change( {
+			loopA: looping && a,
+			loopB: looping && b,
+		} );
+	}
 	_onchangeGrid( obj ) {
 		const dur = this.patternroll.__blcs.size &&
 			this.patternroll.getDuration();

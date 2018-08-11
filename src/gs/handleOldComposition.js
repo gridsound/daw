@@ -10,6 +10,16 @@ gs.handleOldComposition = cmp => {
 		};
 	let blcId = 0;
 
+	// loopA/B
+	// ..........................................
+	cmp.loopA = Number.isFinite( cmp.loopA ) ? Math.max( 0, cmp.loopA ) : false;
+	cmp.loopB = Number.isFinite( cmp.loopB ) ? Math.max( 0, cmp.loopB ) : false;
+	if ( cmp.loopA === cmp.loopB ) {
+		cmp.loopA =
+		cmp.loopB = false;
+	}
+
+	// ..........................................
 	if ( !cmp.synths ) {
 		const synthId = common.smallId();
 

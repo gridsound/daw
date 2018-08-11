@@ -6,18 +6,17 @@ class uiNameAction {
 			r = act.redo,
 			u = act.undo;
 
+		if ( "bpm" in r ) { return { i: "clock", t: `BPM: ${ r.bpm }` }; }
+		if ( "name" in r ) { return { i: "name", t: `Name: "${ r.name }"` }; }
+		if ( "loopA" in r ) { return { i: "loop", t: `Loop: ${ r.loopA } -> ${ r.loopB }` }; }
+		if ( r.beatsPerMeasure || r.stepsPerBeat ) { return { i: "clock", t: `Time signature: ${ cmp.beatsPerMeasure }/${ cmp.stepsPerBeat }` }; }
 		return (
 			uiNameAction.__synth( cmp, r, u ) ||
 			uiNameAction.__pattern( cmp, r, u ) ||
 			uiNameAction.__tracks( cmp, r, u ) ||
 			uiNameAction.__blocks( cmp, r, u ) ||
 			uiNameAction.__keys( cmp, r, u ) ||
-			(
-				r.name != null ? { i: "name", t: `Name: "${ r.name }"` } :
-				r.bpm          ? { i: "clock", t: `BPM: ${ r.bpm }` } :
-				r.beatsPerMeasure || r.stepsPerBeat ? { i: "clock", t: `Time signature: ${ cmp.beatsPerMeasure }/${ cmp.stepsPerBeat }` } :
-				{ i: "", t: "" }
-			)
+			{ i: "", t: "" }
 		);
 	}
 

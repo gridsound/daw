@@ -38,6 +38,7 @@
 .ico-name::before { content: "\f040"; }
 .ico-paint::before { content: "\f1fc"; }
 .ico-clock::before { content: "\f017"; }
+.ico-loop::before { content: "\f364"; }
 .ico-move::before { content: "\f0b2"; }
 .ico-crop::before { content: "\f125"; }
 .ico-history::before { content: "\f1da"; }

@@ -20,7 +20,7 @@ class waMainGrid {
 	}
 	assignChange( data ) {
 		common.assignDeep( this.scheduler.data, data );
-		if ( gs.controls.loopA.main == null ) {
+		if ( gs.currCmp.loopA === false ) {
 			this.scheduler.setLoopBeat( 0, gs.currCmp.duration || gs.currCmp.beatsPerMeasure );
 		}
 	}
@@ -46,7 +46,7 @@ class waMainGrid {
 			sch.enableStreaming( false );
 			sch.startBeat( 0 );
 		} else {
-			this.setLoop( gs.controls.loopA.main, gs.controls.loopB.main );
+			this.setLoop( gs.currCmp.loopA, gs.currCmp.loopB );
 			sch.enableStreaming( true );
 			sch.startBeat( 0, offset );
 		}

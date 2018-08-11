@@ -39,8 +39,7 @@ gs._unloadCmp = ( b, res, rej ) => {
 		ui.synths.empty();
 		gs.controls.currentTime( "main", 0 );
 		gs.controls.currentTime( "pattern", 0 );
-		gs.controls.loop( "main", false );
-		gs.controls.loop( "pattern", false );
+		gs.controls.patternLoop( false );
 		ui.cmps.unload();
 		ui.mainGrid.empty();
 		ui.patterns.empty();

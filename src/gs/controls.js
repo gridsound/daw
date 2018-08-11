@@ -7,8 +7,8 @@ gs.controls = {
 			main: 0,
 			pattern: 0
 		};
-		gs.controls.loopA = {};
-		gs.controls.loopB = {};
+		gs.controls.patternLoopA =
+		gs.controls.patternLoopB = false;
 		gs.controls._grid = "main";
 		gs.controls._loopOn();
 	},
@@ -20,10 +20,10 @@ gs.controls = {
 		ui.controls.currentTime( grid, beat );
 		wa.controls.setCurrentTime( beat );
 	},
-	loop( grid, isLoop, loopA, loopB ) {
-		gs.controls.loopA[ grid ] = isLoop ? loopA : null;
-		gs.controls.loopB[ grid ] = isLoop ? loopB : null;
-		ui.controls.loop( grid, isLoop, loopA, loopB );
+	patternLoop( isLoop, loopA, loopB ) {
+		gs.controls.patternLoopA = isLoop ? loopA : null;
+		gs.controls.patternLoopB = isLoop ? loopB : null;
+		ui.controls.loop( "pattern", isLoop, loopA, loopB );
 		wa.controls.setLoop( isLoop ? loopA : false, loopB );
 	},
 	play() {
@@ -49,7 +49,9 @@ gs.controls = {
 			wa.controls.stop();
 			ui.controls.stop();
 			gs.controls.currentTime( gs.controls._grid,
-				gs.controls.loopA[ gs.controls._grid ] || 0 );
+				( gs.controls._grid === "main"
+					? gs.currCmp.loopA
+					: gs.controls.patternLoopA ) || 0 );
 			switch ( document.activeElement ) {
 				case ui.mainGrid.patternroll.rootElement: gs.controls.focusOn( "main" ); break;
 				case ui.pattern.pianoroll.rootElement: gs.controls.focusOn( "pattern" ); break;
