@@ -2,7 +2,7 @@
 
 if ( navigator.serviceWorker ) {
 	navigator.serviceWorker.register( "serviceWorker.js", { scope: "/daw/" } )
-		.then( function( reg ) {
+		.then( reg => {
 			console.log( "Service worker " + (
 				reg.installing ? "installing" :
 				reg.waiting ? "installed" :

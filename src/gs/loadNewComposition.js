@@ -39,7 +39,7 @@ gs.loadNewComposition = () => {
 		keys: {
 			[ keysId ]: {}
 		}
-	} ).then( function() {
+	} ).then( () => {
 		gs.openPattern( patId );
 		gs.openSynth( synthId );
 		ui.synths.show( synthId, true );

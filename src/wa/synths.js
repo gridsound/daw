@@ -22,7 +22,7 @@ class waSynths {
 		this.current = this._synths[ id ];
 	}
 	create( id, obj ) {
-		var syn = new gswaSynth();
+		const syn = new gswaSynth();
 
 		syn.setContext( wa.ctx );
 		syn.connect( wa.destination.get() );

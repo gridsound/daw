@@ -14,26 +14,27 @@ function uiWindowEvents() {
 	const keyPressed = {};
 
 	window.onkeydown = e => {
-		var prev, key = e.key;
+		const key = e.key;
+		let prevent;
 
 		if ( key === " " ) {
-			prev = true;
+			prevent = true;
 			gs.controls.status === "playing"
 				? gs.controls.stop()
 				: gs.controls.play();
 		} else if ( e.ctrlKey || e.altKey ) {
-			prev = true;
+			prevent = true;
 			     if ( key === "o" ) { ui.openPopup.show(); }
 			else if ( key === "s" ) { gs.saveCurrentComposition(); }
 			else if ( key === "z" ) { gs.undoredo.undo(); }
 			else if ( key === "Z" ) { gs.undoredo.redo(); }
 			else if ( key === "n" && e.altKey ) { gs.loadNewComposition(); }
-			else { prev = false; }
+			else { prevent = false; }
 			keyPressed[ key ] = true;
 		} else {
 			ui.pattern.keyboardEvent( true, e );
 		}
-		prev && e.preventDefault();
+		prevent && e.preventDefault();
 	};
 	window.onkeyup = e => {
 		if ( !keyPressed[ e.key ] ) {

@@ -1,10 +1,10 @@
 "use strict";
 
-gs.saveCurrentComposition = function() {
-	return gs.currCmpSaved
+gs.saveCurrentComposition = () => (
+	gs.currCmpSaved
 		? Promise.resolve()
-		: new Promise( function( res, rej ) {
-			var cmp = gs.currCmp;
+		: new Promise( res => {
+			const cmp = gs.currCmp;
 
 			cmp.savedAt = ~~( Date.now() / 1000 );
 			gs.localStorage.put( cmp.id, cmp );
@@ -12,5 +12,5 @@ gs.saveCurrentComposition = function() {
 			gs.currCmpSaved = true;
 			ui.cmps.saved( true );
 			res();
-		} );
-};
+		} )
+);

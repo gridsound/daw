@@ -1,10 +1,12 @@
 "use strict";
 
-gs.loadCompositionByBlob = function( blob ) {
-	return new Promise( function( res, rej ) {
-		var cmp, reader = new FileReader();
+gs.loadCompositionByBlob = blob => (
+	new Promise( ( res, rej ) => {
+		const reader = new FileReader();
 
-		reader.onload = function() {
+		reader.onload = () => {
+			let cmp;
+
 			try {
 				cmp = JSON.parse( reader.result );
 			} catch( e ) {
@@ -14,5 +16,5 @@ gs.loadCompositionByBlob = function( blob ) {
 			gs.loadComposition( cmp ).then( res, rej );
 		};
 		reader.readAsText( blob );
-	} );
-};
+	} )
+);

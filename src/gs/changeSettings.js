@@ -1,6 +1,6 @@
 "use strict";
 
-gs.changeSettings = function( obj ) {
+gs.changeSettings = obj => {
 	if ( "clockSteps" in obj ) {
 		env.clockSteps = obj.clockSteps;
 		ui.controls.updateClock();

@@ -9,7 +9,7 @@ gs.localStorage = {
 	},
 	get( id ) {
 		try {
-			var cmp = JSON.parse( localStorage[ id ] );
+			const cmp = JSON.parse( localStorage[ id ] );
 
 			return id === cmp.id && cmp.stepsPerBeat ? cmp : null;
 		} catch ( e ) {
@@ -17,16 +17,14 @@ gs.localStorage = {
 		}
 	},
 	getAll() {
-		var id, cmp, cmps = [];
+		const cmps = [];
 
-		for ( id in localStorage ) {
-			if ( cmp = gs.localStorage.get( id ) ) {
-				cmps.push( cmp );
-			}
+		for ( let id in localStorage ) {
+			const cmp = gs.localStorage.get( id );
+
+			cmp && cmps.push( cmp );
 		}
-		cmps.sort( function( a, b ) {
-			return a.savedAt < b.savedAt;
-		} );
+		cmps.sort( ( a, b ) => a.savedAt < b.savedAt );
 		return cmps;
 	}
 };

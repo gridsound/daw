@@ -14,10 +14,10 @@ Undoredo.prototype = {
 		this._store = obj || {};
 	},
 	change( obj ) {
-		var act,
+		const act = {},
 			stack = this._stack,
-			stackInd = this._stackInd,
-			stackLen = stack.length;
+			stackInd = this._stackInd;
+		let stackLen = stack.length;
 
 		if ( stackInd < stackLen ) {
 			if ( this.onremoveAction ) {
@@ -27,16 +27,14 @@ Undoredo.prototype = {
 			}
 			stack.length = stackInd;
 		}
-		++this._stackInd
-		act = {
-			redo: obj,
-			undo: this._composeUndo( this._store, obj )
-		};
+		++this._stackInd;
+		act.redo = obj;
+		act.undo = this._composeUndo( this._store, obj );
 		act.index = stack.push( act );
 		this._change( act, "redo", this.onnewAction );
 	},
 	goToAction( act ) {
-		var n = act.index - this._stackInd;
+		let n = act.index - this._stackInd;
 
 		if ( n < 0 ) {
 			while ( n++ < 0 ) { this.undo(); }
@@ -60,7 +58,7 @@ Undoredo.prototype = {
 
 	// private:
 	_change( act, dir, fn ) {
-		var obj = act[ dir ];
+		const obj = act[ dir ];
 
 		fn && fn( act );
 		this._assign( this._store, obj );
@@ -69,9 +67,9 @@ Undoredo.prototype = {
 	},
 	_composeUndo( data, obj ) {
 		if ( data && obj && typeof data === "object" && typeof obj === "object" ) {
-			var k, undo = {};
+			const undo = {};
 
-			for ( k in obj ) {
+			for ( let k in obj ) {
 				if ( data[ k ] !== obj[ k ] ) {
 					undo[ k ] = this._composeUndo( data[ k ], obj[ k ] );
 				}
