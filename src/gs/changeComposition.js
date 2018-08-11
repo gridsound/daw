@@ -74,10 +74,10 @@ gs.changeComposition = obj => {
 		ui.controls.updateClock();
 		wa.controls.setBPM( obj.bpm );
 	}
-	if ( "loopA" in obj && "loopB" in obj ) {
-		ui.controls.loop( "main", obj.loopA !== false, obj.loopA, obj.loopB );
+	if ( "loopA" in obj || "loopB" in obj ) {
+		ui.controls.loop( "main", cmp.loopA !== false, cmp.loopA, cmp.loopB );
 		if ( gs.controls._grid === "main" ) {
-			wa.controls.setLoop( obj.loopA, obj.loopB );
+			wa.controls.setLoop( cmp.loopA, cmp.loopB );
 		}
 	}
 	if ( obj.beatsPerMeasure || obj.stepsPerBeat ) {
