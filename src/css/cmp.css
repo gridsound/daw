@@ -25,10 +25,10 @@
 	justify-content: center;
 	background-color: var( --col2-middle );
 	transition: .2s;
-	transition-property: color, background-color;
+	transition-property: width, color, background-color;
 }
 .cmp-notSaved .cmp-save {
-	min-width: 30px;
+	width: 30px;
 }
 .cmp-save::before {
 	content: "\f0a0";
