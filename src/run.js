@@ -2,8 +2,7 @@
 
 ( function() {
 
-const ctx = new AudioContext(),
-	cookies = document.cookie,
+const DAW = new DAWCore(),
 	hash = location.hash.substr( 1 ).split( "&" )
 		.reduce( ( obj, kv ) => {
 			const arr = kv.split( "=" );
@@ -12,60 +11,65 @@ const ctx = new AudioContext(),
 			return obj;
 		}, {} );
 
-gs.undoredo = new Undoredo();
-gs.undoredo.onchange = ( obj, path, val, previousVal ) => {
-	gs.changeComposition( obj );
-};
+gswaPeriodicWaves.forEach( ( w, name ) => (
+	gsuiPeriodicWave.addWave( name, w.real, w.imag )
+) );
 
-window.wa = {
-	ctx,
-	render: new waRender(),
-	synths: new waSynths(),
-	controls: new waControls(),
-	mainGrid: new waMainGrid(),
-	pianoroll: new waPianoroll(),
-	destination: new waDestination( ctx ),
-};
+window.DAW = DAW;
+window.VERSION = "0.18.0";
 
-uiInit();
-window.ui = {
-	cmps: new uiCmps(),
-	history: new uiHistory(),
-	synths: new uiSynths(),
-	patterns: new uiPatterns(),
-	controls: new uiControls(),
-	mainGrid: new uiMainGrid(),
-	synth: new uiSynth(),
-	pattern: new uiPattern(),
-	openPopup: new uiOpenPopup(),
-	aboutPopup: new uiAboutPopup(),
-	renderPopup: new uiRenderPopup(),
-	settingsPopup: new uiSettingsPopup(),
-	shortcutsPopup: new uiShortcutsPopup(),
-};
-uiWindowEvents();
+UIdomInit();
+UIsynthInit();
+UIsynthsInit();
+UIcookieInit();
+UIhistoryInit();
+UIpatternsInit();
+UIcontrolsInit();
+UIpianorollInit();
+UIaboutPopupInit();
+UIpatternrollInit();
+UIrenderPopupInit();
+UIcompositionsInit();
+UIsettingsPopupInit();
+UImasterAnalyserInit();
+UIshortcutsPopupInit();
+DAW.initPianoroll();
+
+window.onkeyup = UIkeyboardUp;
+window.onkeydown = UIkeyboardDown;
+window.onbeforeunload = UIcompositionBeforeUnload;
+document.body.ondrop = UIdrop;
+document.body.ondragover = () => false;
+
+DAW.cb.focusOn = UIcontrolsFocusOn;
+DAW.cb.currentTime = UIcontrolsCurrentTime;
+DAW.cb.clockUpdate = UIcontrolsClockUpdate;
+DAW.cb.compositionOpened = UIcompositionOpened;
+DAW.cb.compositionClosed = UIcompositionClosed;
+DAW.cb.compositionChanged = UIcompositionChanged;
+DAW.cb.compositionDeleted = UIcompositionDeleted;
+DAW.cb.compositionAdded = UIcompositionAdded;
+DAW.cb.compositionSaved = UIcompositionSaved.bind( null, true );
+DAW.cb.compositionNeedSave = UIcompositionSaved.bind( null, false );
+DAW.cb.analyserFilled = data => UImasterAnalyser.draw( data );
+DAW.cb.pause =
+DAW.cb.stop = () => { DOM.play.classList.remove( "ico-pause" ); };
+DAW.cb.play = () => { DOM.play.classList.add( "ico-pause" ); };
+
 window.onresize();
 
-// Delete all the cookies if it's not only accepted.
-if ( cookies && cookies !== "cookieAccepted" ) {
-	cookies.split( ";" ).forEach( c => {
-		const eq = c.indexOf( "=" );
+UIlocalStorage.getAll().forEach( cmp => DAW.addComposition( cmp ) );
 
-		document.cookie = ( eq < 0 ? c : c.substr( 0, eq ) )
-			+ "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-	} );
-}
-
-gs.init();
-
-if ( hash.cmp ) {
-	location.hash = "";
-	gs.loadCompositionByURL( hash.cmp ).catch( e => {
-		console.warn( e );
-		gs.loadNewComposition();
-	} );
+if ( !hash.cmp ) {
+	UIcompositionClickNew();
 } else {
-	gs.loadNewComposition();
+	DAW.addCompositionByURL( hash.cmp )
+		.catch( e => {
+			console.error( e );
+			return DAW.addNewComposition();
+		} )
+		.then( cmp => DAW.openComposition( cmp.id ) );
+	location.hash = "";
 }
 
 } )();

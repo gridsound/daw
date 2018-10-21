@@ -57,6 +57,9 @@
 	padding-left: 1em;
 	opacity: 1;
 }
+.cmp-info > div {
+	pointer-events: none;
+}
 
 /* -------------------------------------------------------------------------- */
 .cmp-name {

@@ -1,12 +1,12 @@
-<div class="cmp" id="cmp">
-	<div class="cmp-save"></div>
-	<div class="cmp-info">
+<div class="cmp" id="cmp" data-remove-id>
+	<div data-action="save" class="cmp-save"></div>
+	<div data-action="open" class="cmp-info">
 		<div class="cmp-name"></div>
 		<div>
 			<span class="cmp-bpm"></span>
 			<span class="cmp-duration"></span>
 		</div>
 	</div>
-	<a class="cmp-btn cmp-jsonExport" title="Export to JSON file"></a>
-	<a class="cmp-btn cmp-delete" title="Delete"></a>
+	<a data-action="json" class="cmp-btn cmp-jsonExport" title="Export to JSON file"></a>
+	<a data-action="delete" class="cmp-btn cmp-delete" title="Delete"></a>
 </div>

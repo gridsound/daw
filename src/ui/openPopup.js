@@ -1,34 +1,22 @@
 "use strict";
 
-class uiOpenPopup {
-	constructor() {
-		const inp = dom.openPopupContent.querySelectorAll( "input" );
+function UIopenPopupShow() {
+	DOM.inputOpenFile.value =
+	DOM.inputOpenURL.value = "";
+	gsuiPopup.custom( {
+		title: "Open",
+		submit: UIopenPopupSubmit,
+		element: DOM.openPopupContent,
+	} );
+	return false;
+}
 
-		dom.openPopupContent.remove();
-		this._inputURL = inp[ 0 ];
-		this._inputFile = inp[ 1 ];
-	}
+function UIopenPopupSubmit() {
+	const url = DOM.inputOpenURL.value,
+		file = DOM.inputOpenFile.files[ 0 ],
+		prom = !url && !file ? null : url
+			? DAW.addCompositionByURL( url )
+			: DAW.addCompositionByBlob( file );
 
-	show() {
-		this._inputFile.value =
-		this._inputURL.value = "";
-		gsuiPopup.custom( {
-			title: "Open",
-			submit: this._onsubmit.bind( this ),
-			element: dom.openPopupContent,
-		} );
-		return false;
-	}
-
-	// private:
-	_onsubmit() {
-		const url = this._inputURL.value,
-			file = this._inputFile.files[ 0 ];
-
-		if ( url ) {
-			gs.loadCompositionByURL( url );
-		} else if ( file ) {
-			gs.loadCompositionByBlob( file );
-		}
-	}
+	prom && prom.then( cmp => DAW.openComposition( cmp.id ) );
 }

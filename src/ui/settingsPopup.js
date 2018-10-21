@@ -1,74 +1,77 @@
 "use strict";
 
-class uiSettingsPopup {
-	constructor() {
-		dom.settingsPopupContent.remove();
-		dom.settings.onclick = this.show.bind( this );
-		this.inputs = dom.settingsPopupContent.querySelectorAll( "input" );
-	}
+function UIsettingsPopupInit() {
+	DOM.settings.onclick = UIsettingsPopupShow;
+	DOM.settingsBPMTap.onclick = UIsettingsPopupBPMTap;
+}
 
-	show() {
-		const cmp = gs.currCmp,
-			inp = this.inputs,
-			bpmTap = dom.bpmTap;
+function UIsettingsPopupShow() {
+	const cmp = DAW.get.composition(),
+		bpmTap = DOM.settingsBPMTap;
 
-		inp[ +env.clockSteps ].checked = true;
-		inp[ 2 ].value = cmp.name;
-		inp[ 3 ].value = cmp.bpm;
-		inp[ 4 ].value = cmp.beatsPerMeasure;
-		inp[ 5 ].value = cmp.stepsPerBeat;
-		bpmTap.timeBefore = 0;
-		bpmTap.bpmStack = [];
-		bpmTap.nbBpmToAverage = 10;
-		bpmTap.onclick = this._bpmTap.bind( null, inp[ 3 ], bpmTap );
-		gsuiPopup.custom( {
-			title: "Settings",
-			submit: this._onsubmit.bind( this ),
-			element: dom.settingsPopupContent,
-		} );
-		return false;
-	}
+	DOM[ DAW.env.clockSteps
+		? "settingsInputClockSec"
+		: "settingsInputClockBeat" ].checked = true;
+	DOM.settingsInputName.value = cmp.name;
+	DOM.settingsInputBPM.value = cmp.bpm;
+	DOM.settingsInputBeatsPM.value = cmp.beatsPerMeasure;
+	DOM.settingsInputStepsPB.value = cmp.stepsPerBeat;
+	bpmTap.timeBefore = 0;
+	bpmTap.bpmStack = [];
+	bpmTap.nbBpmToAverage = 10;
+	gsuiPopup.custom( {
+		title: "Settings",
+		submit: UIsettingsPopupSubmit,
+		element: DOM.settingsPopupContent,
+	} );
+	return false;
+}
 
-	// private:
-	_onsubmit() {
-		const cmp = gs.currCmp,
-			inp = this.inputs,
-			dawChange = {},
-			cmpChange = {};
-		let x;
+function UIsettingsPopupSubmit() {
+	const cmp = DAW.get.composition(),
+		envChange = {},
+		cmpChange = {},
+		bpm = +DOM.settingsInputBPM.value,
+		name = DOM.settingsInputName.value,
+		beatsPM = +DOM.settingsInputBeatsPM.value,
+		stepsPB = +DOM.settingsInputStepsPB.value,
+		clockDisplay = DOM[ DAW.env.clockSteps
+			? "settingsInputClockSec"
+			: "settingsInputClockBeat" ];
 
-		inp[ +env.clockSteps ].checked || ( dawChange.clockSteps = !env.clockSteps );
-		( x =  inp[ 2 ].value ) !== cmp.name && ( cmpChange.name = x );
-		( x = +inp[ 3 ].value ) !== cmp.bpm && ( cmpChange.bpm = x );
-		( x = +inp[ 4 ].value ) !== cmp.beatsPerMeasure && ( cmpChange.beatsPerMeasure = x );
-		( x = +inp[ 5 ].value ) !== cmp.stepsPerBeat && ( cmpChange.stepsPerBeat = x );
-		for ( x in dawChange ) { gs.changeSettings( dawChange ); break; }
-		for ( x in cmpChange ) { gs.undoredo.change( cmpChange ); break; }
-	}
-	_bpmTap( inputBpm, bpmTap ) {
-		const time = Date.now();
+	if ( !clockDisplay.checked ) { envChange.clockSteps = !DAW.env.clockSteps; }
+	if ( bpm !== cmp.bpm ) { cmpChange.bpm = bpm; }
+	if ( name !== cmp.name ) { cmpChange.name = name; }
+	if ( stepsPB !== cmp.stepsPerBeat ) { cmpChange.stepsPerBeat = stepsPB; }
+	if ( beatsPM !== cmp.beatsPerMeasure ) { cmpChange.beatsPerMeasure = beatsPM; }
+	if ( !DAWCore.objectIsEmpty( envChange ) ) { DAW.envChange( envChange ); }
+	if ( !DAWCore.objectIsEmpty( cmpChange ) ) { DAW.compositionChange( cmpChange ); }
+}
 
-		if ( bpmTap.timeBefore ) {
-			const bpm = 60000 / ( time - bpmTap.timeBefore ),
-				lastBpm = bpmTap.bpmStack.length
-					? bpmTap.bpmStack[ bpmTap.bpmStack.length - 1 ]
-					: 0;
+function UIsettingsPopupBPMTap() {
+	const time = Date.now(),
+		bpmTap = DOM.settingsBPMTap;
 
-			if ( lastBpm && ( bpm < lastBpm / 1.5 || bpm > lastBpm * 1.5 ) ) {
-				bpmTap.timeBefore = bpmTap.bpmStack.length = 0;
-				inputBpm.value = "0";
-			} else {
-				let i = 0,
-					sum = 0;
+	if ( bpmTap.timeBefore ) {
+		const bpm = 60000 / ( time - bpmTap.timeBefore ),
+			lastBpm = bpmTap.bpmStack.length
+				? bpmTap.bpmStack[ bpmTap.bpmStack.length - 1 ]
+				: 0;
 
-				bpmTap.bpmStack.push( bpm );
-				for ( ; i < bpmTap.bpmStack.length && i < bpmTap.nbBpmToAverage; ++i ) {
-					sum += bpmTap.bpmStack[ bpmTap.bpmStack.length - 1 - i ];
-				}
-				inputBpm.value = Math.floor( sum / i );
+		if ( lastBpm && ( bpm < lastBpm / 1.5 || bpm > lastBpm * 1.5 ) ) {
+			bpmTap.timeBefore = bpmTap.bpmStack.length = 0;
+			DOM.settingsInputBPM.value = "0";
+		} else {
+			let i = 0,
+				sum = 0;
+
+			bpmTap.bpmStack.push( bpm );
+			for ( ; i < bpmTap.bpmStack.length && i < bpmTap.nbBpmToAverage; ++i ) {
+				sum += bpmTap.bpmStack[ bpmTap.bpmStack.length - 1 - i ];
 			}
+			DOM.settingsInputBPM.value = Math.floor( sum / i );
 		}
-		bpmTap.timeBefore = time;
-		return false;
 	}
+	bpmTap.timeBefore = time;
+	return false;
 }

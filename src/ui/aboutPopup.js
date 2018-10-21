@@ -1,31 +1,28 @@
 "use strict";
 
-class uiAboutPopup {
-	constructor() {
-		dom.aboutPopupContent.remove();
-		dom.about.onclick = this.show.bind( this );
-		dom.versionCheck.onclick = this._check.bind( this );
-	}
+function UIaboutPopupInit() {
+	DOM.about.onclick = UIaboutPopupShow;
+	DOM.versionCheck.onclick = UIaboutPopupVersionCheck;
+}
 
-	show() {
-		gsuiPopup.custom( {
-			title: "About",
-			element: dom.aboutPopupContent,
-		} );
-		return false;
-	}
+function UIaboutPopupShow() {
+	gsuiPopup.custom( {
+		title: "About",
+		element: DOM.aboutPopupContent,
+	} );
+	return false;
+}
 
-	// private:
-	_check() {
-		const cl = dom.version.classList;
+function UIaboutPopupVersionCheck() {
+	const cl = DOM.version.classList;
 
-		cl.remove( "ok", "ko" );
-		cl.add( "searching" );
-		fetch( "https://gridsound.github.io/daw/VERSION?" + Math.random() )
-			.then( res => res.text() )
-			.then( res => {
-				cl.remove( "searching" );
-				cl.add( res === env.version ? "ok" : "ko" );
-			}, () => cl.remove( "searching" ) );
-	}
+	cl.remove( "ok", "ko" );
+	cl.add( "searching" );
+	fetch( "https://gridsound.github.io/daw/VERSION?" + Math.random() )
+		.then( res => res.text() )
+		.then( res => {
+			cl.remove( "searching" );
+			cl.add( res === VERSION ? "ok" : "ko" );
+		}, () => cl.remove( "searching" ) );
+	return false;
 }

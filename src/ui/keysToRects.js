@@ -1,11 +1,13 @@
 "use strict";
 
+// the duration shoulb be took from the pattern
+
 function uiKeysToRects( keys ) {
 	let nbRows,
 		minrow = Infinity,
 		maxrow = -Infinity,
 		dur = 0;
-	const cmp = gs.currCmp,
+	const bPM = DAW.get.beatsPerMeasure(),
 		samples = Object.values( keys ).map( ( { key, when, duration } ) => {
 			minrow = Math.min( minrow, key );
 			maxrow = Math.max( maxrow, key );
@@ -18,7 +20,7 @@ function uiKeysToRects( keys ) {
 	nbRows = maxrow - minrow;
 	samples.forEach( smp => smp.row = nbRows - ( smp.row - minrow ) );
 	++nbRows;
-	dur /= cmp.beatsPerMeasure;
+	dur /= bPM;
 	dur = Math.max( 1, Math.ceil( dur ) );
-	return { nbRows, samples, duration: dur * cmp.beatsPerMeasure };
+	return { nbRows, samples, duration: dur * bPM };
 }

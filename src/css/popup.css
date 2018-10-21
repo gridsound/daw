@@ -117,15 +117,15 @@
 }
 
 /* #renderPopupContent ------------------------------------------------------- */
-#render-wrap {
+#renderWrap {
 	display: flex;
 	padding: 10px 0;
 }
-#render-progress {
+#renderProgress {
 	flex: 1;
 	height: 28px;
 }
-#render-btn {
+#renderBtn {
 	padding: 0 .8em;
 	border-radius: 2px;
 	margin-right: 10px;
@@ -135,17 +135,17 @@
 	font-weight: bold;
 	background-color: #ff9;
 }
-#render-btn span { display: none; }
-#render-btn[data-status="0"] #render-btn0 { display: inline; }
-#render-btn[data-status="1"] #render-btn1 { display: inline; }
-#render-btn[data-status="2"] #render-btn2 { display: inline; }
-#render-btn span::before {
+#renderBtn span { display: none; }
+#renderBtn[data-status="0"] #renderBtn0 { display: inline; }
+#renderBtn[data-status="1"] #renderBtn1 { display: inline; }
+#renderBtn[data-status="2"] #renderBtn2 { display: inline; }
+#renderBtn span::before {
 	font-family: "FontAwesome";
 	margin-right: .3em;
 }
-#render-btn0::before { content: "\f0e7"; }
-#render-btn2::before { content: "\f019"; }
-#render-btn1::before {
+#renderBtn0::before { content: "\f0e7"; }
+#renderBtn2::before { content: "\f019"; }
+#renderBtn1::before {
 	display: inline-block;
 	content: "\f3f4";
 	animation: 1s linear keyframes-spin infinite;

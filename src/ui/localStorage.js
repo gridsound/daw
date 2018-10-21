@@ -1,6 +1,6 @@
 "use strict";
 
-gs.localStorage = {
+const UIlocalStorage = {
 	put( id, cmp ) {
 		localStorage[ id ] = JSON.stringify( cmp );
 	},
@@ -20,7 +20,7 @@ gs.localStorage = {
 		const cmps = [];
 
 		for ( let id in localStorage ) {
-			const cmp = gs.localStorage.get( id );
+			const cmp = UIlocalStorage.get( id );
 
 			cmp && cmps.push( cmp );
 		}

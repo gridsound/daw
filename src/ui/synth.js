@@ -1,60 +1,48 @@
 "use strict";
 
-class uiSynth {
-	constructor() {
-		const uisyn = new gsuiSynthesizer();
+const UIsynth = new gsuiSynthesizer();
 
-		this._uisyn = uisyn;
-		uisyn.oninput = this._oninputSynth.bind( this );
-		uisyn.onchange = this._onchangeSynth.bind( this );
-		uisyn.setWaveList( Array.from( gswaPeriodicWaves.keys() ) );
-		dom.synthName.onclick = this._onclickName.bind( this );
-		dom.synthWrapper2.append( uisyn.rootElement );
-		uisyn.attached();
-	}
+function UIsynthOpen( id ) {
+	UIsynth.empty();
+	if ( !id ) {
+		DOM.synthName.textContent = "";
+	} else {
+		const syn = DAW.get.synth( id );
 
-	empty() {
-		this._uisyn.empty();
+		DOM.synthName.textContent = syn.name;
+		UIsynthChange( syn );
 	}
-	open( synth ) {
-		this.empty();
-		this.name( synth.name );
-		this.change( synth );
-	}
-	name( name ) {
-		dom.synthName.textContent = name;
-	}
-	change( obj ) {
-		if ( "name" in obj ) {
-			this.name( obj.name );
-		}
-		this._uisyn.change( obj );
-	}
+}
 
-	// events:
-	_onclickName() {
-		const id = gs.currCmp.synthOpened,
-			oldName = gs.currCmp.synths[ id ].name;
-
-		gsuiPopup.prompt( "Rename synthesizer", "", oldName, "Rename" )
-			.then( n => {
-				if ( n !== null ) {
-					const name = n.trim();
-
-					if ( name !== oldName ) {
-						gs.undoredo.change( { synths: {
-							[ id ]: { name }
-						} } );
-					}
-				}
-			} );
+function UIsynthChange( obj ) {
+	if ( "name" in obj ) {
+		DOM.synthName.textContent = obj.name;
 	}
-	_oninputSynth( id, attr, val ) {
-		wa.synths.update( gs.currCmp.synthOpened, {
+	UIsynth.change( obj );
+}
+
+function UIsynthInit() {
+	UIsynth.oninput = ( id, attr, val ) => {
+		DAW.composition.change( {
 			oscillators: { [ id ]: { [ attr ]: val } }
 		} );
-	}
-	_onchangeSynth( obj ) {
-		gs.undoredo.change( { synths: { [ gs.currCmp.synthOpened ]: obj } } );
-	}
+		// wa.synths.update( DAW.get.synthOpened(), {
+		// 	oscillators: { [ id ]: { [ attr ]: val } }
+		// } );
+	};
+	UIsynth.onchange = obj => {
+		DAW.compositionChange( { synths: {
+			[ DAW.get.synthOpened() ]: obj
+		} } );
+	};
+	UIsynth.setWaveList( Array.from( gswaPeriodicWaves.keys() ) );
+	DOM.synthName.onclick = () => {
+		const id = DAW.get.synthOpened(),
+			name = DOM.synthName.textContent;
+
+		gsuiPopup.prompt( "Rename synthesizer", "", name, "Rename" )
+			.then( name => DAW.nameSynth( id, name ) );
+	};
+	DOM.synthWrapper2.append( UIsynth.rootElement );
+	UIsynth.attached();
 }

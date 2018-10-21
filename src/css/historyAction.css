@@ -1,4 +1,4 @@
-.action {
+.historyAction {
 	display: flex;
 	box-sizing: border-box;
 	align-items: center;
@@ -11,15 +11,15 @@
 	background-color: #333;
 	transition: background-color .2s;
 }
-.action + .action {
+.historyAction + .historyAction {
 	border-top: 1px solid #222;
 }
-.action:hover {
+.historyAction:hover {
 	background-color: #444;
 }
 
 /* -------------------------------------------------------------------------- */
-.action::before {
+.historyAction::before {
 	content: "";
 	display: block;
 	width: 4px;
@@ -27,15 +27,15 @@
 	background-color: var( --col1-middle );
 	transition: inherit;
 }
-.action-undone::before {
+.historyAction-undone::before {
 	background-color: #000;
 }
 
 /* -------------------------------------------------------------------------- */
-.action-icon {
+.historyAction-icon {
 	margin: 0 .4em;
 }
-.action-text {
+.historyAction-text {
 	flex: 1;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -43,7 +43,7 @@
 	transition-duration: inherit;
 	transition-property: opacity;
 }
-.action-undone:not(:hover) .action-icon,
-.action-undone:not(:hover) .action-text {
+.historyAction-undone:not(:hover) .historyAction-icon,
+.historyAction-undone:not(:hover) .historyAction-text {
 	opacity: .5;
 }
