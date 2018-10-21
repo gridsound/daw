@@ -8,3 +8,7 @@
 	url = https://github.com/gridsound/gs-webaudio-library
 	branch = master
 	ignore = all
+[submodule "daw-core"]
+	path = daw-core
+	url = https://github.com/gridsound/daw-core
+	branch = master
