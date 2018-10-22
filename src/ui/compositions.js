@@ -76,22 +76,15 @@ function UIcompositionAdded( cmp ) {
 function UIcompositionClosed( cmp ) {
 	UIcompositions.get( cmp.id ).root.classList.remove( "cmp-loaded" );
 
-	// maingrid
 	UIpatternroll.empty();
 	UIpatternroll.loop( false );
 	UIpatternroll.setFontSize( 32 );
 	UIpatternroll.setPxPerBeat( 40 );
-
-	// synth
-	UIsynthesizer.empty();
-
-	// pianoroll
+	UIsynth.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollBlock.classList.remove( "show" );
-
-	// UIpatterns.forEach( pat => pat.remove() );
 	UIsynths.forEach( syn => syn.remove() );
 	UIpatterns.clear();
 	UIsynths.clear();
