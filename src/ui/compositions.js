@@ -38,13 +38,9 @@ function UIcompositionOpened( { id, synthOpened } ) {
 	UItitle();
 }
 
-function UIcompositionSaved( saved, { id } ) {
-	const clRoot = UIcompositions.get( id ).root.classList;
-
-	if ( clRoot.contains( "cmp-notSaved" ) !== !saved ) {
-		clRoot.toggle( "cmp-notSaved", !saved );
-		UItitle();
-	}
+function UIcompositionSaved( { id }, saved ) {
+	UIcompositions.get( id ).root.classList.toggle( "cmp-notSaved", !saved );
+	UItitle();
 }
 
 function UIcompositionDeleted( { id } ) {

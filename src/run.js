@@ -49,8 +49,7 @@ DAW.cb.compositionClosed = UIcompositionClosed;
 DAW.cb.compositionChanged = UIcompositionChanged;
 DAW.cb.compositionDeleted = UIcompositionDeleted;
 DAW.cb.compositionAdded = UIcompositionAdded;
-DAW.cb.compositionSaved = UIcompositionSaved.bind( null, true );
-DAW.cb.compositionNeedSave = UIcompositionSaved.bind( null, false );
+DAW.cb.compositionSaved = UIcompositionSaved;
 DAW.cb.analyserFilled = data => UImasterAnalyser.draw( data );
 DAW.cb.pause =
 DAW.cb.stop = () => { DOM.play.classList.remove( "ico-pause" ); };
