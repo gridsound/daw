@@ -2,12 +2,10 @@
 	path = gs-ui-components
 	url = https://github.com/gridsound/gs-ui-components
 	branch = master
-	ignore = all
 [submodule "gs-webaudio-library"]
 	path = gs-webaudio-library
 	url = https://github.com/gridsound/gs-webaudio-library
 	branch = master
-	ignore = all
 [submodule "daw-core"]
 	path = daw-core
 	url = https://github.com/gridsound/daw-core
