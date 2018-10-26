@@ -57,7 +57,7 @@ DAW.cb.play = () => { DOM.play.classList.add( "ico-pause" ); };
 
 window.onresize();
 
-UIlocalStorage.getAll().forEach( cmp => DAW.addComposition( cmp ) );
+DAW.addCompositionsFromLocalStorage();
 
 if ( !hash.cmp ) {
 	UIcompositionClickNew();

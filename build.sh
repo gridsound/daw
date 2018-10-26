@@ -75,6 +75,7 @@ declare -a JSfilesProd=(
 declare -a JSfiles=(
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/DAWCore.prototype.get.js"
+	"daw-core/src/LocalStorage.js"
 	"daw-core/src/Destination.js"
 	"daw-core/src/History.js"
 	"daw-core/src/History.prototype.nameAction.js"
@@ -95,6 +96,7 @@ declare -a JSfiles=(
 	"daw-core/src/utils/objectDeepCopy.js"
 	"daw-core/src/utils/objectDeepAssign.js"
 	"daw-core/src/utils/objectDeepFreeze.js"
+	"daw-core/src/actions/addCompositionsFromLocalStorage.js"
 	"daw-core/src/actions/addNewComposition.js"
 	"daw-core/src/actions/addComposition.js"
 	"daw-core/src/actions/addCompositionByJSON.js"
@@ -143,7 +145,6 @@ declare -a JSfiles=(
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"
 	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"
 
-	"src/ui/localStorage.js"
 	"src/ui/dom.js"
 	"src/ui/drop.js"
 	"src/ui/title.js"
