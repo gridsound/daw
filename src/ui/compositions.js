@@ -71,7 +71,6 @@ function UIcompositionAdded( cmp ) {
 
 function UIcompositionClosed( cmp ) {
 	UIcompositions.get( cmp.id ).root.classList.remove( "cmp-loaded" );
-
 	UIpatternroll.empty();
 	UIpatternroll.loop( false );
 	UIpatternroll.setFontSize( 32 );
@@ -82,17 +81,16 @@ function UIcompositionClosed( cmp ) {
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollBlock.classList.remove( "show" );
 	UIsynths.forEach( syn => syn.remove() );
-	UIpatterns.clear();
 	UIsynths.clear();
-
-	// gs.controls.currentTime( "main", 0 );
-	// gs.controls.currentTime( "pattern", 0 );
-	// gs.controls.patternLoop( false );
+	UIpatterns.clear();
 }
 
 function UIcompositionClickNew() {
-	DAW.addNewComposition()
-		.then( cmp => DAW.openComposition( cmp.id ) );
+	( !DAW.compositionNeedSave()
+		? DAW.addNewComposition()
+		: gsuiPopup.confirm( "Warning", "Are you sure you want to discard unsaved works" )
+			.then( b => b && DAW.addNewComposition() )
+	).then( cmp => cmp && DAW.openComposition( cmp.id ) );
 	return false;
 }
 
@@ -102,20 +100,30 @@ function UIcompositionClickDelete( id ) {
 	gsuiPopup.confirm( "Warning",
 		`Are you sure you want to delete "${ cmp.name }" ? (no undo possible)`,
 		"Delete"
-	).then( b => b && DAW.deleteComposition( id ) );
+	).then( b => {
+		if ( b ) {
+			if ( id === DAW.get.id() ) {
+				const next = Array.from( UIcompositions.keys() )[ 1 ];
+
+				if ( next ) {
+					DAW.openComposition( next );
+				}
+			}
+			DAW.deleteComposition( id );
+		}
+	} );
 }
 
 function UIcompositionClickJSONExport( id, e ) {
 	const json = DAW.exportCompositionToJSON( id );
 
-	e.target.download = json.name;
 	e.target.href = json.url;
+	e.target.download = json.name;
 }
 
 function UIcompositionClickOpen( id ) {
 	if ( DAW.compositionNeedSave() ) {
-		gsuiPopup.confirm(
-			"Warning",
+		gsuiPopup.confirm( "Warning",
 			"Are you sure you want to discard unsaved works"
 		).then( ok => ok && UIcompositionClickOpen_then( id ) );
 	} else {
@@ -131,11 +139,10 @@ function UIcompositionClickOpen_then( id ) {
 }
 
 function UIcompositionClickSave() {
-	if ( document.cookie.indexOf( "cookieAccepted" ) < 0 ) {
+	if ( document.cookie.indexOf( "cookieAccepted" ) > -1 ) {
+		DAW.saveComposition();
+	} else {
 		gsuiPopup.alert( "Error",
 			"You have to accept our cookies before saving locally your composition." );
-	} else if ( DAW.compositionNeedSave() ) {
-		DAW.saveComposition();
-		UIlocalStorage.put( DAW.get.id(), DAW.get.composition() );
 	}
 }
