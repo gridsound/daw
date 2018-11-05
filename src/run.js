@@ -3,13 +3,11 @@
 ( function() {
 
 const DAW = new DAWCore(),
-	hash = location.hash.substr( 1 ).split( "&" )
-		.reduce( ( obj, kv ) => {
-			const arr = kv.split( "=" );
-
-			obj[ arr[ 0 ] ] = arr[ 1 ];
-			return obj;
-		}, {} );
+	hash = new Map( location.hash
+		.substr( 1 )
+		.split( "&" )
+		.map( kv => kv.split( "=" ) )
+	);
 
 gswaPeriodicWaves.forEach( ( w, name ) => (
 	gsuiPeriodicWave.addWave( name, w.real, w.imag )
@@ -59,10 +57,10 @@ window.onresize();
 
 DAW.addCompositionsFromLocalStorage();
 
-if ( !hash.cmp ) {
+if ( !hash.has( "cmp" ) ) {
 	UIcompositionClickNew();
 } else {
-	DAW.addCompositionByURL( hash.cmp )
+	DAW.addCompositionByURL( hash.get( "cmp" ) )
 		.catch( e => {
 			console.error( e );
 			return DAW.addNewComposition();
