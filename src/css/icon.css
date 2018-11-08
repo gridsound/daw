@@ -28,6 +28,7 @@
 .ico-caret-left::before { content: "\f0d9"; }
 .ico-caret-right::before { content: "\f0da"; }
 .ico-3dots::before { content: "\f142"; }
+.ico-help::before { content: "\f1cd"; }
 .ico-play::before { content: "\f04b"; }
 .ico-pause::before { content: "\f04c"; }
 .ico-stop::before { content: "\f04d"; }
