@@ -23,12 +23,9 @@ function UIsynthChange( obj ) {
 
 function UIsynthInit() {
 	UIsynth.oninput = ( id, attr, val ) => {
-		DAW.composition.change( {
+		DAW.liveChangeSynth( DAW.get.synthOpened(), {
 			oscillators: { [ id ]: { [ attr ]: val } }
 		} );
-		// wa.synths.update( DAW.get.synthOpened(), {
-		// 	oscillators: { [ id ]: { [ attr ]: val } }
-		// } );
 	};
 	UIsynth.onchange = obj => {
 		DAW.compositionChange( { synths: {

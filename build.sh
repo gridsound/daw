@@ -103,6 +103,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/addCompositionByBlob.js"
 	"daw-core/src/actions/addCompositionByURL.js"
 	"daw-core/src/actions/abortWAVExport.js"
+	"daw-core/src/actions/liveChangeSynth.js"
 	"daw-core/src/actions/exportCompositionToWAV.js"
 	"daw-core/src/actions/exportCompositionToJSON.js"
 	"daw-core/src/actions/changePatternSynth.js"
