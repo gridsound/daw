@@ -1,0 +1,32 @@
+:root {
+	--app-bg: #555;
+	--gsuiPanels-bd: 2px solid #222;
+	--gsuiPanels-extendSize: 4px;
+	--monospace: "Inconsolata", "consolas", monospace;
+
+	--cmp-bg: #67a;
+	--cmp-text: #fff;
+	--cmp-save-bg: #f44d4d;
+
+	--history-action-bg: #333;
+	--history-action-text: #bbb;
+	--history-actionlight-bg: #67a;
+	--history-actionlightoff-bg: #1a1a1a;
+
+	--pianoroll-patname-bg: #67a;
+
+	--ctrl-rad: 2px;
+	--ctrl-height: 44px;
+	--ctrl-padding: 4px;
+	--ctrl-play-bg: #67a;
+	--ctrl-play-text: #ddd;
+	--ctrl-stop-bg: #888;
+	--ctrl-about-bg: #ff9;
+	--ctrl-clock-bg: #222;
+	--ctrl-clock-text: #ddd;
+	--ctrl-clock-unit-opacity: .5;
+	--ctrl-settings-bg: #f44d4d;
+	--ctrl-eatcookie-bg: #ff9;
+	--ctrl-toggleplay-bg: #333;
+	--ctrl-lightbtn-bg: rgba( 255, 255, 255, .1 );
+}

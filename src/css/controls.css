@@ -15,9 +15,9 @@
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	color: #ddd;
+	color: var( --ctrl-play-text );
 	height: 100%;
-	border-radius: var( --small-bd-radius );
+	border-radius: var( --ctrl-rad );
 	cursor: default;
 	transition: filter .1s;
 }
@@ -31,8 +31,8 @@
 /* .ctrl-btn */
 /* -------------------------------------------------------------------------- */
 .ctrl-btn {
+	border: 0;
 	font-size: 14px;
-	border: 1px solid rgba( 0, 0, 0, .7 );
 	min-width: calc( var( --ctrl-height ) - 2 * var( --ctrl-padding ) );
 }
 .ctrl-btn:active {
@@ -40,7 +40,7 @@
 	box-shadow: inset 0 3px 0px rgba( 0, 0, 0, .25 );
 }
 
-/* #togglePlay */
+/* #togglePlay, #play, #stop */
 /* -------------------------------------------------------------------------- */
 #togglePlay {
 	flex-direction: column;
@@ -54,66 +54,64 @@
 	content: "";
 	width: 100%;
 	height: 40%;
-	border: 1px solid rgba( 0, 0, 0, .7 );
 	border-radius: 2px;
-	background-color: var( --col1-low );
+	background-color: var( --ctrl-toggleplay-bg );
 }
-#togglePlay:not( .after )::before,
-#togglePlay.after::after {
-	background-color: var( --col1-middle );
+#play,
+#togglePlay.after::after,
+#togglePlay:not( .after )::before {
+	background-color: var( --ctrl-play-bg );
 }
-
-/* #play, #stop */
-/* -------------------------------------------------------------------------- */
-#play { background-color: var( --col1-middle ); }
-#stop { background-color: #888; }
+#stop {
+	background-color: var( --ctrl-stop-bg );
+}
 
 /* #bpm, #clock, #analyser */
 /* -------------------------------------------------------------------------- */
 #bpm,
-#clock,
-#analyser {
-	font-size: 30px;
-	font-family: var( --monospace );
-	padding: 0 .3em;
-	border: 3px solid rgba( 0, 0, 0, .3 );
-	background-color: #222;
-	filter: none;
-}
-#bpmText:before {
-	content: "bpm";
-	font-size: calc( 9px + .1em );
-	margin-left: .5em;
-	opacity: .5;
-}
 #clock {
+	padding: 0 .3em;
 	align-items: baseline;
-	line-height: 1em;
+	padding-top: 1px;
+	font-family: var( --monospace );
+	font-size: 30px;
+	filter: none;
+	color: var( --ctrl-clock-text );
+	background-color: var( --ctrl-clock-bg );
 }
-#clockSec:before { content: ":"; }
-#clockMs:before { content: "."; }
-#clockMs {
+#clockSec::before { content: ":"; }
+#clockMs::before { content: "."; }
+#clockMs,
+#bpmText::before {
 	font-size: .5em;
+	opacity: var( --ctrl-clock-unit-opacity );
+}
+#bpmText::before {
+	content: "bpm";
+	margin-left: .5em;
 }
 #analyser {
 	width: 144px;
-	padding: 0;
+	filter: none;
+	background-color: var( --ctrl-clock-bg );
 }
 #analyser .gsuiSpectrum {
 	width: 100%;
 	height: 100%;
+	border-radius: var( --ctrl-rad );
 }
 
 /* #settings */
 /* -------------------------------------------------------------------------- */
 #settings {
-	min-width: 46px;
 	margin-right: auto;
 	font-family: "FontAwesome";
-	background-color: var( --col2-middle );
+	background-color: var( --ctrl-settings-bg );
 }
-#settings:before { content: "\f001"; margin-right: .4em; }
-#settings:after { content: "\f013"; }
+#settings::before {
+	font-size: 1.2em;
+	content: "\f0ad";
+}
 
 /* #eatCookies */
 /* -------------------------------------------------------------------------- */
@@ -122,7 +120,7 @@
 	border: 0;
 	padding-left: 6px;
 	padding-right: 6px;
-	background-color: #f0c67e;
+	background-color: var( --ctrl-eatcookie-bg );
 }
 #eatCookies .icon {
 	width: auto;
@@ -146,17 +144,16 @@
 #help,
 #about,
 #shortcuts {
-	border: 0;
 	font-size: 21px;
-	background-color: rgba( 255, 255, 255, .1 );
+	background-color: var( --ctrl-lightbtn-bg );
 }
 
 /* #about */
 /* -------------------------------------------------------------------------- */
 #about {
-	color: #ff9;
+	color: var( --ctrl-about-bg );
 }
 #about:hover {
-	color: #505050;
-	background-color: #ff9;
+	color: #444;
+	background-color: var( --ctrl-about-bg );
 }

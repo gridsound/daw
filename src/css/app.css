@@ -24,18 +24,6 @@ a {
 }
 
 #app {
-	--app-bg: #555;
-	--gsuiPanels-bd: 2px solid #222;
-	--gsuiPanels-extendSize: 4px;
-	--small-bd-radius: 2px;
-	--ctrl-height: 44px;
-	--ctrl-padding: 4px;
-	--col1-low: #345;
-	--col1-middle: #67a;
-	--col1-high: #bbf;
-	--col2-middle: #d44;
-	--monospace: "Inconsolata", "consolas", monospace;
-
 	width: 100%;
 	height: 100%;
 	overflow: hidden;

@@ -4,9 +4,9 @@
 	height: 42px;
 	line-height: 42px;
 	font-size: 18px;
-	color: #fff;
+	color: var( --cmp-text );
 	cursor: pointer;
-	background-color: var( --col1-middle );
+	background-color: var( --cmp-bg );
 	filter: brightness( .9 );
 }
 .cmp:nth-child( odd ) {
@@ -23,7 +23,7 @@
 	overflow: hidden;
 	align-items: center;
 	justify-content: center;
-	background-color: var( --col2-middle );
+	background-color: var( --cmp-save-bg );
 	transition: .2s;
 	transition-property: width, color, background-color;
 }
@@ -35,8 +35,8 @@
 	font-family: "FontAwesome";
 }
 .cmp-save:hover {
-	color: var( --col2-middle );
-	background-color: #fff;
+	color: var( --cmp-save-bg );
+	background-color: var( --cmp-text );
 }
 
 /* -------------------------------------------------------------------------- */

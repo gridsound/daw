@@ -5,17 +5,14 @@
 	cursor: default;
 	height: 28px;
 	padding-right: .4em;
-	color: #bbb;
+	color: var( --history-action-text );
 	font-size: 13px;
 	font-family: var( --monospace );
-	background-color: #333;
-	transition: background-color .2s;
-}
-.historyAction + .historyAction {
-	border-top: 1px solid #222;
+	background-color: var( --history-action-bg );
+	transition: filter .2s;
 }
 .historyAction:hover {
-	background-color: #444;
+	filter: brightness( 1.3 );
 }
 
 /* -------------------------------------------------------------------------- */
@@ -23,12 +20,12 @@
 	content: "";
 	display: block;
 	width: 4px;
-	height: 100%;
-	background-color: var( --col1-middle );
+	height: calc( 100% - 1px );
 	transition: inherit;
+	background-color: var( --history-actionlight-bg );
 }
 .historyAction-undone::before {
-	background-color: #000;
+	background-color: var( --history-actionlightoff-bg );
 }
 
 /* -------------------------------------------------------------------------- */
