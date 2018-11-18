@@ -4,11 +4,11 @@
 	flex-direction: column;
 	box-sizing: border-box;
 	position: relative;
-	height: 64px;
-	color: #5ac;
-	margin-top: -64px;
+	height: var( --pattern-height );
+	color: var( --pattern-text );
+	margin-top: calc( var( --pattern-height ) * -1 );
 	border-radius: 4px 0 0 4px;
-	background-color: #334;
+	background-color: var( --pattern-bg );
 	transition: .3s;
 	transition-property: margin-top, margin-bottom;
 }
@@ -16,8 +16,9 @@
 	margin: 4px 0;
 }
 .pattern.selected {
-	color: #223;
-	background-color: #5ac;
+	--pattern-bg: var( --pattern-selected-bg );
+	--pattern-text: var( --pattern-selected-text );
+	--pattern-head-bg: var( --pattern-head-selected-bg );
 }
 
 /* .......................................................................... */
@@ -26,11 +27,8 @@
 	display: flex;
 	padding: 2px 4px;
 	font-size: 12px;
-	background-color: rgba( 0, 0, 0, .2 );
 	transition: inherit;
-}
-.pattern.selected .pattern-head {
-	background-color: rgba( 255, 255, 255, .2 );
+	background-color: var( --pattern-head-bg );
 }
 .pattern-name {
 	font-weight: bold;
@@ -59,7 +57,7 @@
 	width: 100%;
 	height: 100%;
 	fill: currentColor;
-	/*opacity: .8;*/
+	opacity: .8;
 }
 
 /* .......................................................................... */

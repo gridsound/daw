@@ -3,7 +3,7 @@
 }
 
 #pianorollName {
-	background-color: var( --pianoroll-patname-bg );
+	background-color: var( --pattern-namebtn-bg );
 }
 
 #pianorollBlock {

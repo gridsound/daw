@@ -24,6 +24,9 @@
 .gsuiPatternroll {
 	height: 100%;
 }
+.gsuiBlocksManager-sidePanelMenu {
+	border-top: var( --nav-border );
+}
 
 .gsuiBeatlines {
 	transition: background-color .2s;

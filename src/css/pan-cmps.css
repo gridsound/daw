@@ -11,11 +11,15 @@
 	height: var( --ctrl-height );
 	padding-top: 0;
 	padding-bottom: 0;
+	border-bottom: 0;
 	color: #fff;
 	font-size: 28px;
 	font-weight: normal;
 	cursor: default;
 	background-color: #444;
+}
+#pan-cmps .panel-menu {
+	border-top: var( --nav-border );
 }
 
 #title::before {

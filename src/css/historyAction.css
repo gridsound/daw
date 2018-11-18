@@ -19,6 +19,7 @@
 .historyAction::before {
 	content: "";
 	display: block;
+	align-self: flex-start;
 	width: 4px;
 	height: calc( 100% - 1px );
 	transition: inherit;

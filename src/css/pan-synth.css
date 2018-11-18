@@ -2,7 +2,7 @@
 	min-width: 280px;
 	max-width: 400px;
 	width: 350px;
-	flex: none;	
+	flex: none;
 }
 
 #pan-synth .pan-menu::before {
@@ -10,7 +10,7 @@
 }
 
 #synthName {
-	background-color: #696;
+	background-color: var( --synth-namebtn-bg );
 }
 
 #synthWrapper {

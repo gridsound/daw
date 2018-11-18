@@ -1,24 +1,24 @@
 .synth {
 	display: flex;
 	flex-direction: column;
-	color: #333;
-	border-bottom: 1px solid rgba( 0, 0, 0, .3 );
-	background-color: #777;
-	opacity: .9;
+	color: var( --synth-text );
+	border-bottom: 0 solid var( --synth-bg );
+	background-color: var( --synth-bg );
 	transition: .2s;
 	transition-property:
 		border-bottom-color,
 		background-color,
-		opacity;
+		filter;
+}
+.synth:not( .synth-selected ):nth-child( odd ) {
+	filter: brightness( 1.03 );
 }
 .synth-show {
-	opacity: 1;
+	filter: brightness( 1.1 );
 	border-bottom-width: 2px;
-	border-bottom-color: rgba( 255, 255, 255, .1 );
 }
 .synth-selected {
-	color: #333;
-	background-color: #696;
+	--synth-bg: var( --synth-selected-bg );
 }
 
 .synth-head {
@@ -36,8 +36,8 @@
 .synth-head a:hover {
 	opacity: 1;
 }
-.synth:not(.synth-selected) .synth-head a:hover {
-	color: #7b7;
+.synth:not( .synth-selected ) .synth-head a:hover {
+	color: var( --synth-namehover-text );
 }
 
 a.synth-name {
@@ -63,7 +63,7 @@ a.synth-name {
 }
 
 .synth-showBtn {
-	background-color: rgba( 0, 0, 0, .1 );
+	background-color: var( --synth-showbtn-bg );
 }
 .synth-show .synth-showBtn {
 	opacity: 1;
@@ -81,8 +81,8 @@ a.synth-name {
 	flex: 1;
 	overflow: hidden;
 	padding-left: 10px;
-	max-height: 250px;
-	background-color: rgba( 0, 0, 0, .4 );
+	max-height: var( --synth-patterns-maxHeight );
+	background-color: var( --synth-patterns-bg );
 }
 .synth-show .synth-patterns {
 	overflow-y: auto;
