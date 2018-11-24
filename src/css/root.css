@@ -1,20 +1,63 @@
 :root {
 	--app-bg: #555;
 	--monospace: "Inconsolata", "consolas", monospace;
-	--nav-border: 1px solid #333;
 	--gsuiPanels-bd: 2px solid #222;
 	--gsuiPanels-extendSize: 4px;
-	--gsuiBlocksManager-borderColor: #333;
+	--gsuiPanels-extendColor: #222;
 
+	/* gsuiTrack */
+	/* ..................................................................... */
+	--gsuiTrack-bg: #444;
+	--gsuiTrack-bg-mute: #393939;
+	--gsuiTrack-color: #fff;
+	--gsuiTrack-toggle-bg: #ffa;
+	--gsuiTrack-toggleOff-bg: rgba( 255, 255, 255, .1 );
+	--gsuiTrack-row-bg-mute: rgba( 0, 0, 0, .25 );
+	--gsuiTrack-borderTop-color: rgba( 255, 255, 255, .07 );
+	--gsuiTrack-borderBottom-color: rgba( 0, 0, 0, .25 );
+
+	/* gsuiBlocksManager */
+	/* ..................................................................... */
+	--nav-border: 1px solid #333;
+	--gsuiBlocksManager-grid-bg: #456168;
+	--gsuiBlocksManager-side-bgColor: #555;
+	--gsuiBlocksManager-selection-bgColor: rgba( 189, 38, 38, .4 );
+	--gsuiBlocksManager-selection-borderColor: #f44;
+	--gsuiBlocksManager-blockColor: rgba( 85, 170, 204, .8 );
+	--gsuiBlocksManager-blockSelectedColor: rgba( 255, 136, 136, .8 );
+
+	/* gsuiTimeline */
+	/* ..................................................................... */
+	--gsuiTimeline-bg: #222;
+	--gsuiTimeline-color: #fff;
+	--gsuiTimeline-loop-bg: #656586;
+	--gsuiTimeline-cursor-fill: #fdfd70;
+	--gsuiTimeline-loopBorder-bg: #fff;
+
+	/* gsuiSliderGroup */
+	/* ..................................................................... */
+	--gsuiSliderGroup-bg: #456168;
+	--gsuiSliderGroup-currentTime-color: #ff9;
+	--gsuiSliderGroup-slider-width: 6px;
+	--gsuiSliderGroup-slider-bg: rgba( 0, 0, 0, .1 );
+	--gsuiSliderGroup-slider-color: var( --gsuiBlocksManager-blockColor );
+	--gsuiSliderGroup-slider-color-selected: var( --gsuiBlocksManager-blockSelectedColor );
+	--gsuiSliderGroup-loop-color: rgba( 0, 0, 0, .3 );
+
+	/* cmp */
+	/* ..................................................................... */
 	--cmp-bg: #67a;
 	--cmp-text: #fff;
 	--cmp-save-bg: #f44d4d;
 
+	/* history */
+	/* ..................................................................... */
 	--history-action-bg: #454750;
 	--history-action-text: #bbb;
 	--history-actionlight-bg: #67a;
 	--history-actionlightoff-bg: #1a1a1a;
 
+	/* ..................................................................... */
 	--synth-bg: #777;
 	--synth-text: #333;
 	--synth-namebtn-bg: #696;
@@ -24,6 +67,7 @@
 	--synth-patterns-bg: rgba( 0, 0, 0, .4 );
 	--synth-patterns-maxHeight: 250px;
 
+	/* ..................................................................... */
 	--pattern-bg: #334;
 	--pattern-text: #5ac;
 	--pattern-height: 64px;
@@ -33,6 +77,7 @@
 	--pattern-selected-text: #223;
 	--pattern-head-selected-bg: rgba( 255, 255, 255, .2 );
 
+	/* ..................................................................... */
 	--ctrl-bg: #444;
 	--ctrl-rad: 2px;
 	--ctrl-height: 44px;

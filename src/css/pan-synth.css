@@ -1,8 +1,8 @@
 #pan-synth {
-	min-width: 280px;
-	max-width: 400px;
-	width: 350px;
 	flex: none;
+	width: 300px;
+	min-width: 280px;
+	max-width: 340px;
 }
 
 #pan-synth .pan-menu::before {

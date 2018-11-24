@@ -1,8 +1,8 @@
 #pan-leftside {
-	min-width: 250px;
-	max-width: 400px;
-	width: 300px;
 	flex: none;
+	width: 220px;
+	min-width: 160px;
+	max-width: 300px;
 }
 
 .panel-left {
@@ -32,6 +32,7 @@
 }
 
 .panel-menu {
+	display: flex;
 	color: #ddd;
 	background-color: #505050;
 }

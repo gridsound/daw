@@ -85,7 +85,7 @@
 	font-family: "FontAwesome";
 	margin-right: .4em;
 }
-.cmp-bpm::before { content: "\f001"; }
+.cmp-bpm::before { content: "\f3fd"; }
 .cmp-duration::before { content: "\f017"; }
 
 /* -------------------------------------------------------------------------- */

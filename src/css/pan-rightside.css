@@ -31,6 +31,7 @@
 .gsuiBeatlines {
 	transition: background-color .2s;
 }
-.focus .gsuiBeatlines {
-	background-color: #456168;
+#mainGridWrap:not( .focus ) .gsuiBeatlines,
+#keysGridWrap:not( .focus ) .gsuiBeatlines {
+	filter: brightness( .9 );
 }

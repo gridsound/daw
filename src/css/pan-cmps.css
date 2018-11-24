@@ -27,6 +27,9 @@
 	content: "GridSound";
 	font-family: "Oswald";
 }
+#pan-leftside.tiny #title::before {
+	content: "GS";
+}
 
 #signup {
 	margin-left: 10px;
@@ -57,7 +60,8 @@
 	margin-left: 5px;
 }
 
-#pan-cmps .panel-btn {
+/* ......................................................................... */
+.cmps-btn {
 	display: inline-flex;
 	box-sizing: border-box;
 	align-items: center;
@@ -70,21 +74,24 @@
 	transition: .5s;
 	transition-property: background-color;
 }
-
-#pan-cmps .panel-btn::before {
-	margin-right: 4px;
-	font-family: "FontAwesome";
+.cmps-btn + .cmps-btn {
+	margin-left: 10px;
 }
-
-#pan-cmps .panel-btn:hover {
+.cmps-btn:hover {
 	color: #505050;
 	background-color: #ff9;
 }
-
-#pan-cmps #newComposition {
-	border-style: dashed;
+.cmps-btn::before {
+	font-family: "FontAwesome";
 }
-
+#newComposition { border-style: dashed; }
 #newComposition::before { content: "\f067"; }
 #openComposition::before { content: "\f07c"; }
-#renderComposition::before { content: "\f028"; }
+#renderComposition::before { content: "\f019"; }
+.cmps-btn::after {
+	content: attr( data-text );
+	margin-left: .4em;
+}
+#pan-leftside.small .cmps-btn::after {
+	display: none;
+}
