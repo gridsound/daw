@@ -1,6 +1,7 @@
 #!/bin/bash
 
 declare -a CSSfiles=(
+	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"
@@ -29,6 +30,7 @@ declare -a CSSfiles=(
 	"src/css/pan-synth-pianoroll.css"
 	"src/css/pan-synth.css"
 	"src/css/pan-pianoroll.css"
+	"src/css/pan-mixer.css"
 	"src/css/cmp.css"
 	"src/css/synth.css"
 	"src/css/pattern.css"
@@ -43,6 +45,7 @@ declare -a HTMLfiles=(
 	"src/html/pan-history.html"
 	"src/html/pan-patterns.html"
 	"src/html/pan-maingrid.html"
+	"src/html/pan-mixer.html"
 	"src/html/pan-synth.html"
 	"src/html/pan-pianoroll.html"
 	"src/html/popup-open.html"
@@ -54,6 +57,7 @@ declare -a HTMLfiles=(
 	"src/html/synth.html"
 	"src/html/pattern.html"
 	"src/html/historyAction.html"
+	"gs-ui-components/gsuiMixer/gsuiMixer.html"
 	"gs-ui-components/gsuiDragline/gsuiDragline.html"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
@@ -123,6 +127,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/nameSynth.js"
 	"daw-core/src/actions/newSynth.js"
 
+	"gs-ui-components/gsuiMixer/gsuiMixer.js"
 	"gs-ui-components/gsuiDragline/gsuiDragline.js"
 	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"
@@ -152,6 +157,7 @@ declare -a JSfiles=(
 	"src/ui/drop.js"
 	"src/ui/title.js"
 	"src/ui/synth.js"
+	"src/ui/mixer.js"
 	"src/ui/cookie.js"
 	"src/ui/synths.js"
 	"src/ui/history.js"

@@ -6,6 +6,19 @@
 	--gsuiPanels-extendSize: 4px;
 	--gsuiPanels-extendColor: #222;
 
+	/* gsuiMixer */
+	/* ..................................................................... */
+	--gsuiMixerChannel-bg: #555;
+	--gsuiMixerChannel-muted-bg: #444;
+	--gsuiMixerChannel-width: 42px;
+	--gsuiMixerChannel-toggle-bg: #ffa;
+	--gsuiMixerChannel-toggleOff-bg: rgba( 255, 255, 255, .1 );
+	--gsuiMixerChannel-toggle-size: 6px;
+	--gsuiMixerChannel-darkBorder: rgba( 0, 0, 0, .1 );
+	--gsuiMixerChannel-lightBorder: rgba( 255, 255, 255, .05 );
+	--gsuiMixerChannel-name-text: #fff;
+	--gsuiMixerChannel-analyser-bg: #222;
+
 	/* gsuiTrack */
 	/* ..................................................................... */
 	--gsuiTrack-bg: #444;

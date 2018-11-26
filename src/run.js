@@ -17,6 +17,7 @@ window.DAW = DAW;
 window.VERSION = "0.18.2";
 
 UIdomInit();
+// UImixerInit();
 UIsynthInit();
 UIsynthsInit();
 UIcookieInit();
