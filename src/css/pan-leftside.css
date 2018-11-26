@@ -15,7 +15,7 @@
 	box-sizing: border-box;
 	padding: 3px 10px;
 	font-size: 13px;
-	border-bottom: var( --nav-border );
+	border-bottom: var( --pan-border );
 }
 
 .panel-title {

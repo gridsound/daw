@@ -19,7 +19,7 @@
 	background-color: #444;
 }
 #pan-cmps .panel-menu {
-	border-top: var( --nav-border );
+	border-top: var( --pan-border );
 }
 
 #title::before {

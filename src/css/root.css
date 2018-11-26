@@ -1,6 +1,7 @@
 :root {
 	--app-bg: #555;
 	--monospace: "Inconsolata", "consolas", monospace;
+	--pan-border: 1px solid #333;
 	--gsuiPanels-bd: 2px solid #222;
 	--gsuiPanels-extendSize: 4px;
 	--gsuiPanels-extendColor: #222;
@@ -18,8 +19,8 @@
 
 	/* gsuiBlocksManager */
 	/* ..................................................................... */
-	--nav-border: 1px solid #333;
 	--gsuiBlocksManager-grid-bg: #456168;
+	--gsuiBlocksManager-borderColor: #333;
 	--gsuiBlocksManager-side-bgColor: #555;
 	--gsuiBlocksManager-selection-bgColor: rgba( 189, 38, 38, .4 );
 	--gsuiBlocksManager-selection-borderColor: #f44;
@@ -43,6 +44,15 @@
 	--gsuiSliderGroup-slider-color: var( --gsuiBlocksManager-blockColor );
 	--gsuiSliderGroup-slider-color-selected: var( --gsuiBlocksManager-blockSelectedColor );
 	--gsuiSliderGroup-loop-color: rgba( 0, 0, 0, .3 );
+
+	/* gsuiKeys */
+	/* ..................................................................... */
+	--gsuiKeys-blackKey-colorA: #111;
+	--gsuiKeys-blackKey-colorB: #444;
+	--gsuiKeys-whiteKey-colorA: #888;
+	--gsuiKeys-whiteKey-colorB: #eee;
+	--gsuiKeys-activeKey-colorA: #353b52;
+	--gsuiKeys-activeKey-colorB: #7886bd;
 
 	/* cmp */
 	/* ..................................................................... */
