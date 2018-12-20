@@ -1,5 +1,31 @@
 #!/bin/bash
 
+declare -a HEADER=(
+	'<!DOCTYPE html>'
+	'<html lang="en">'
+	'<head>'
+	'<title>GridSound</title>'
+	'<meta charset="UTF-8"/>'
+	'<meta name="viewport" content="width=device-width, user-scalable=no"/>'
+	'<meta name="description" content="A free and Open-Source DAW (digital audio workstation)"/>'
+	'<meta name="google" content="notranslate"/>'
+	'<meta property="og:type" content="website"/>'
+	'<meta property="og:title" content="GridSound (an open-source digital audio workstation)"/>'
+	'<meta property="og:url" content="https://gridsound.github.io/"/>'
+	'<meta property="og:image" content="https://gridsound.github.io/assets/og-image.jpg"/>'
+	'<meta property="og:image:width" content="800"/>'
+	'<meta property="og:image:height" content="400"/>'
+	'<meta name="theme-color" content="#3a5158"/>'
+	'<link rel="manifest" href="manifest.json"/>'
+	'<link rel="shortcut icon" href="assets/favicon.png"/>'
+)
+
+declare -a HEADEREND=(
+	'</head>'
+	'<body>'
+	'<noscript>GridSound needs JavaScript to run</noscript>'
+)
+
 declare -a CSSfiles=(
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
@@ -178,66 +204,35 @@ declare -a JSfiles=(
 	"src/run.js"
 )
 
-HTMLheader() {
-	echo -en \
-"<!DOCTYPE html>\
-<html lang='en'><head>\
-<title>GridSound</title>\
-<meta charset='UTF-8'/>\
-<meta name='viewport' content='width=device-width, user-scalable=no'/>\
-<meta name='description' content='A free and Open-Source DAW (digital audio workstation)'/>\
-<meta name='google' content='notranslate'/>\
-<meta property='og:type' content='website'/>\
-<meta property='og:title' content='GridSound (an open-source digital audio workstation)'/>\
-<meta property='og:url' content='https://gridsound.github.io/'/>\
-<meta property='og:image' content='https://gridsound.github.io/assets/og-image.jpg'/>\
-<meta property='og:image:width' content='800'/>\
-<meta property='og:image:height' content='400'/>\
-<meta name='theme-color' content='#3a5158'/>\
-<link rel='manifest' href='manifest.json'/>\
-<link rel='shortcut icon' href='assets/favicon.png'/>" > $filename
-}
-
-HTMLbody() {
-	echo -en \
-"</head><body>\
-<noscript>GridSound needs JavaScript to run</noscript>" >> $filename
-	for i in "${HTMLfiles[@]}"
-	do
-		cat $i | tr -d '\t\n\r' >> $filename
-	done
-}
-
 buildDev() {
-	filename="index.html"
+	filename='index.html'
 	echo "Build $filename"
-	HTMLheader
-	for i in "${CSSfiles[@]}"
-	do
-		echo -n "<link rel='stylesheet' href='$i'/>" >> $filename
-	done
-	HTMLbody
-	echo -n "<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>" >> $filename
-	for i in "${JSfiles[@]}"
-	do
-		echo -n "<script src='$i'></script>" >> $filename
-	done
-	echo "</body></html>" >> $filename
+	printf '%s\n' "${HEADER[@]}" > $filename;
+	printf '<link rel="stylesheet" href="%s"/>\n' "${CSSfiles[@]}" >> $filename;
+	printf '%s\n' "${HEADEREND[@]}" >> $filename;
+	cat "${HTMLfiles[@]}" >> $filename
+	echo '<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>' >> $filename
+	printf '<script src="%s"></script>\n' "${JSfiles[@]}" >> $filename;
+	echo '</body>' >> $filename
+	echo '</html>' >> $filename
 }
 
 buildMaster() {
-	filename="index-gh-pages.html"
+	filename='index-gh-pages.html'
 	echo "Build $filename"
-	HTMLheader
-	echo -n "<style>" >> $filename
-	cat `for i in ${CSSfiles[@]}; do echo -n $i ""; done` | csso --restructure-off | sed "s/..\/..\/assets/assets/g" >> $filename
-	echo -n "</style>" >> $filename
-	HTMLbody
-	echo -n "<script>" >> $filename
-	# TODO: use the `--mangle-props` option
-	jsProdFiles=( "${JSfiles[@]}" "${JSfilesProd[@]}" )
-	uglifyjs `for i in ${jsProdFiles[@]}; do echo -n $i ""; done` --compress --mangle >> $filename
-	echo "</script></body></html>" >> $filename
+	printf '%s\n' "${HEADER[@]}" > $filename;
+	echo '<style>' >> $filename
+	cat "${CSSfiles[@]}" | sed "s/..\/..\/assets/assets/g" >> $filename
+	echo '</style>' >> $filename
+	printf '%s\n' "${HEADEREND[@]}" >> $filename;
+	cat "${HTMLfiles[@]}" >> $filename
+	echo '<script>' >> $filename
+	echo '"use strict";' >> $filename
+	echo 'function lg( a ) { return console.log.apply( console, arguments ), a; }' >> $filename
+	cat "${JSfiles[@]}" | grep -v '"use strict";' >> $filename
+	echo '</script>' >> $filename
+	echo '</body>' >> $filename
+	echo '</html>' >> $filename
 }
 
 if [ $# -gt 0 ] && [ $1 = "gh-pages" ]
