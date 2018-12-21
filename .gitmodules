@@ -1,3 +1,7 @@
+[submodule "daw-core"]
+	path = daw-core
+	url = https://github.com/gridsound/daw-core
+	branch = master
 [submodule "gs-ui-components"]
 	path = gs-ui-components
 	url = https://github.com/gridsound/gs-ui-components
@@ -6,7 +10,7 @@
 	path = gs-webaudio-library
 	url = https://github.com/gridsound/gs-webaudio-library
 	branch = master
-[submodule "daw-core"]
-	path = daw-core
-	url = https://github.com/gridsound/daw-core
+[submodule "gs-api-client"]
+	path = gs-api-client
+	url = https://github.com/gridsound/gs-api-client
 	branch = master
