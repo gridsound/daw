@@ -31,19 +31,19 @@
 	content: "GS";
 }
 
-#signup {
+#userlink {
 	margin-left: 10px;
 	font-size: 24px;
 	font-family: "FontAwesome";
-}
-#signup::before {
-	content: "\f2bd";
+	cursor: pointer;
 	opacity: .5;
 	transition: .2s opacity;
 }
-#signup:hover::before {
-	content: "\f4ff";
+#userlink:hover {
 	opacity: .8;
+}
+#userlink::before {
+	content: "\f2bd";
 }
 
 #appGainWrap {

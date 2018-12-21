@@ -24,6 +24,13 @@ function UIcontrolsClockUpdate( a, b, c ) {
 function UIcontrolsInit() {
 	const slider = new gsuiSlider();
 
+	DOM.userlink.onclick = () => {
+		gsuiPopup.custom( {
+			ok: "Sign in",
+			title: "Authentication",
+			element: DOM.authPopupContent,
+		} );
+	};
 	DOM.play.onclick = () => ( DAW.togglePlay(), false );
 	DOM.stop.onclick = () => {
 		DAW.stop();

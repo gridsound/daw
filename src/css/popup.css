@@ -10,9 +10,14 @@
 }
 
 .popup legend {
-	font-size: 11px;
+	font-size: 14px;
 	font-weight: bold;
 	opacity: .5;
+}
+
+.popup a {
+	color: #bbf;
+	font-size: 12px;
 }
 
 .popup .param {
@@ -48,12 +53,13 @@
 	font-style: italic;
 }
 
+.popup input[type="password"],
 .popup input[type="number"],
 .popup input[type="text"],
 .popup input[type="url"],
 .popup input[type="file"] {
 	width: 150px;
-	padding: .2em .5em;
+	padding: .6em .8em;
 	font-family: inherit;
 	background: rgba( 255, 255, 255, .1 );
 }
@@ -61,6 +67,12 @@
 .popup input[type="file"] {
 	width: 200px;
 }
+
+/* #authPopupContent -------------------------------------------------------- */
+#authPopupContent {
+	width: 340px;
+}
+
 
 /* #settingsPopupContent ---------------------------------------------------- */
 #settingsPopupContent fieldset:nth-child( 2 ) .param-values {

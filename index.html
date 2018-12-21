@@ -72,8 +72,7 @@
 <div data-panel="pan-cmps">
 	<div class="panel-title">
 		<div id="title"></div>
-		<a id="signup" target="_blank" rel="noopener" title="A sign-up Google form"
-			href="https://docs.google.com/forms/d/17cMQtfQ8QmP2Cj1qAxXsUpuo3Rr1fF8hmFPZroSDvq0"></a>
+		<a id="userlink" title="Login / logout"></a>
 		<div id="appGainWrap" title="Main app volume (this parameter will not affect the rendering)"></div>
 	</div>
 	<div class="panel-menu">
@@ -146,6 +145,30 @@
 	</div>
 	<div id="keysGridWrap"></div>
 	<div id="pianorollBlock" class="no-select"></div>
+</div>
+<div class="popup" id="authPopupContent" data-remove>
+	<fieldset>
+		<legend>Sign in</legend>
+		<div class="param">
+			<div class="param-title">
+				<span>Email</span>
+				<small>or username</small>
+			</div>
+			<div class="param-values">
+				<input type="text" name="username"/>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">
+				Password
+				<a href="https://gridsound.github.io/#/forgotPassword" target="_blank" rel="noopener">Forgot&nbsp;?</a>
+			</div>
+			<div class="param-values">
+				<input type="password" name="password"/>
+			</div>
+		</div>
+	</fieldset>
+	<a href="https://gridsound.github.io/#/auth" target="_blank" rel="noopener">Create a new account</a>
 </div>
 <div class="popup" id="openPopupContent" data-remove>
 	<fieldset>

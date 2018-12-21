@@ -74,6 +74,7 @@ declare -a HTMLfiles=(
 	"src/html/pan-mixer.html"
 	"src/html/pan-synth.html"
 	"src/html/pan-pianoroll.html"
+	"src/html/popup-auth.html"
 	"src/html/popup-open.html"
 	"src/html/popup-about.html"
 	"src/html/popup-render.html"
