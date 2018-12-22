@@ -31,7 +31,7 @@
 	width: 30px;
 }
 .cmp-save::before {
-	content: "\f0a0";
+	content: "\f0c7";
 	font-family: "FontAwesome";
 }
 .cmp-save:hover {
@@ -82,8 +82,11 @@
 }
 .cmp-bpm::before,
 .cmp-duration::before {
-	font-family: "FontAwesome";
+	display: inline-block;
+	width: 1.25em;
 	margin-right: .4em;
+	font-family: "FontAwesome";
+	text-align: center;
 }
 .cmp-bpm::before { content: "\f3fd"; }
 .cmp-duration::before { content: "\f017"; }

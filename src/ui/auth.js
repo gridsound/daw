@@ -25,7 +25,7 @@ function UIauthGetMe() {
 			if ( res.code !== 401 ) {
 				throw( res );
 			}
-		} )
+		} );
 }
 
 function UIauthLogin() {
