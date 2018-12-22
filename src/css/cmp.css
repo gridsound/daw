@@ -59,14 +59,14 @@
 }
 .cmp-info > div {
 	pointer-events: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 /* -------------------------------------------------------------------------- */
 .cmp-name {
-	overflow: hidden;
 	font-weight: bold;
-	white-space: nowrap;
-	text-overflow: ellipsis;
 }
 .cmp-notSaved .cmp-name::before {
 	content: "*";
