@@ -180,7 +180,10 @@ declare -a JSfiles=(
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"
 	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"
 
+	"gs-api-client/gsapiClient.js"
+
 	"src/ui/dom.js"
+	"src/ui/auth.js"
 	"src/ui/drop.js"
 	"src/ui/title.js"
 	"src/ui/synth.js"

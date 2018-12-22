@@ -27,25 +27,59 @@
 	content: "GridSound";
 	font-family: "Oswald";
 }
-#pan-leftside.tiny #title::before {
+#pan-leftside.small #title::before {
 	content: "GS";
 }
 
+/* ......................................................................... */
 #userlink {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	background: no-repeat center;
+	background-size: cover;
+}
+#userlink,
+#logout {
 	margin-left: 10px;
+	cursor: pointer;
 	font-size: 24px;
 	font-family: "FontAwesome";
-	cursor: pointer;
 	opacity: .5;
 	transition: .2s opacity;
 }
-#userlink:hover {
+#userlink.loading,
+#userlink:hover,
+#logout:hover {
 	opacity: .8;
 }
 #userlink::before {
 	content: "\f2bd";
 }
+#userlink.loaded {
+	opacity: 1;
+	border: 2px solid #222;
+}
+#userlink.loaded::before {
+	content: "";
+}
+#userlink.loading::before {
+	content: "\f3f4";
+	display: inline-block;
+	animation: .7s infinite linear rotate360;
+}
+#userlink:not( .loaded ) + #logout {
+	display: none;
+}
+#logout::before {
+	content: "\f08b";
+}
 
+/* ......................................................................... */
 #appGainWrap {
 	width: 4px;
 	height: 35px;

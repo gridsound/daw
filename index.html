@@ -55,7 +55,7 @@
 <body>
 <noscript>GridSound needs JavaScript to run</noscript>
 <div id="app" class="gsuiPanels-x">
-	<div class="gsuiPanels-y no-select" id="pan-leftside" data-width-class="<215:small <180:tiny">
+	<div class="gsuiPanels-y no-select" id="pan-leftside" data-width-class="<240:small">
 		<div class="panel-left" id="pan-cmps"></div>
 		<div class="panel-left" id="pan-history"></div>
 		<div class="panel-left" id="pan-patterns"></div>
@@ -72,7 +72,8 @@
 <div data-panel="pan-cmps">
 	<div class="panel-title">
 		<div id="title"></div>
-		<a id="userlink" title="Login / logout"></a>
+		<a id="userlink" title="Sign in" target="_blank" rel="noopener"></a>
+		<a id="logout" title="Logout"></a>
 		<div id="appGainWrap" title="Main app volume (this parameter will not affect the rendering)"></div>
 	</div>
 	<div class="panel-menu">
@@ -155,20 +156,20 @@
 				<small>or username</small>
 			</div>
 			<div class="param-values">
-				<input type="text" name="username"/>
+				<input type="text" name="email"/>
 			</div>
 		</div>
 		<div class="param">
 			<div class="param-title">
-				Password
-				<a href="https://gridsound.github.io/#/forgotPassword" target="_blank" rel="noopener">Forgot&nbsp;?</a>
+				<span>Password</span>
 			</div>
 			<div class="param-values">
 				<input type="password" name="password"/>
 			</div>
 		</div>
 	</fieldset>
-	<a href="https://gridsound.github.io/#/auth" target="_blank" rel="noopener">Create a new account</a>
+	<a target="_blank" rel="noopener" href="https://gridsound.github.io/#/forgotPassword">Forgot password&nbsp;?</a><br/>
+	<a target="_blank" rel="noopener" href="https://gridsound.github.io/#/auth">Create a new account</a>
 </div>
 <div class="popup" id="openPopupContent" data-remove>
 	<fieldset>
@@ -176,7 +177,7 @@
 		<div class="param">
 			<div class="param-title">With an URL</div>
 			<div class="param-values">
-				<input id="inputOpenURL" type="url" placeholder="http://"/>
+				<input id="inputOpenURL" name="url" type="url" placeholder="http://"/>
 			</div>
 		</div>
 		<div class="param">
@@ -185,7 +186,7 @@
 				<small>(Please notice that you can also drop a file into the app)</small>
 			</div>
 			<div class="param-values">
-				<input id="inputOpenFile" type="file"/>
+				<input id="inputOpenFile" name="file" type="file"/>
 			</div>
 		</div>
 	</fieldset>
@@ -690,7 +691,9 @@
 <script src="gs-webaudio-library/gswaScheduler/gswaScheduler.js"></script>
 <script src="gs-webaudio-library/gswaSynth/gswaSynth.js"></script>
 <script src="gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"></script>
+<script src="gs-api-client/gsapiClient.js"></script>
 <script src="src/ui/dom.js"></script>
+<script src="src/ui/auth.js"></script>
 <script src="src/ui/drop.js"></script>
 <script src="src/ui/title.js"></script>
 <script src="src/ui/synth.js"></script>

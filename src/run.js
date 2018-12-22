@@ -17,6 +17,7 @@ window.DAW = DAW;
 window.VERSION = "0.18.3";
 
 UIdomInit();
+UIauthInit();
 // UImixerInit();
 UIsynthInit();
 UIsynthsInit();
@@ -69,5 +70,7 @@ if ( !hash.has( "cmp" ) ) {
 		.then( cmp => DAW.openComposition( cmp.id ) );
 	location.hash = "";
 }
+
+UIauthGetMe();
 
 } )();
