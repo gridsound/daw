@@ -121,7 +121,6 @@
 #newComposition { border-style: dashed; }
 #newComposition::before { content: "\f067"; }
 #openComposition::before { content: "\f07c"; }
-#renderComposition::before { content: "\f019"; }
 .cmps-btn::after {
 	content: attr( data-text );
 	margin-left: .4em;

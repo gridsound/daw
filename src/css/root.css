@@ -110,6 +110,8 @@
 	--ctrl-about-bg: #ff9;
 	--ctrl-clock-bg: #222;
 	--ctrl-play-text: #ddd;
+	--ctrl-render-bg: #ff9;
+	--ctrl-render-text: #444;
 	--ctrl-clock-text: #ddd;
 	--ctrl-settings-bg: #f44d4d;
 	--ctrl-lightbtn-bg: rgba( 255, 255, 255, .1 );

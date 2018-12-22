@@ -5,7 +5,6 @@ const UIcompositions = new Map();
 function UIcompositionsInit() {
 	DOM.newComposition.onclick = UIcompositionClickNew;
 	DOM.openComposition.onclick = UIopenPopupShow;
-	DOM.renderComposition.onclick = UIrenderPopupShow;
 	DOM.cmps.onclick = e => {
 		const cmp = e.target.closest( ".cmp" );
 
