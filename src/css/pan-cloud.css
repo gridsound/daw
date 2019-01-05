@@ -1,16 +1,15 @@
-#pan-cmps {
+#pan-cloud,
+#pan-local {
 	min-height: 118px;
 	height: 200px;
-	flex: none;
-	position: relative;
 }
 
-#pan-cmps .panel-title {
+/* ......................................................................... */
+#header {
 	display: flex;
 	align-items: center;
 	height: var( --ctrl-height );
-	padding-top: 0;
-	padding-bottom: 0;
+	padding: 0 10px;
 	border-bottom: 0;
 	color: #fff;
 	font-size: 28px;
@@ -18,16 +17,12 @@
 	cursor: default;
 	background-color: #444;
 }
-#pan-cmps .panel-menu {
-	border-top: var( --pan-border );
-}
-
-#title::before {
+#headerTitle::before {
 	display: block;
 	content: "GridSound";
 	font-family: "Oswald";
 }
-#pan-leftside.small #title::before {
+#pan-leftside.small #headerTitle::before {
 	content: "GS";
 }
 
@@ -60,19 +55,19 @@
 #userlink::before {
 	content: "\f2bd";
 }
-#userlink.loaded {
+#app.logged #userlink {
 	opacity: 1;
 	border: 2px solid #222;
 }
-#userlink.loaded::before {
+#app.logged #userlink::before {
 	content: "";
 }
-#userlink.loading::before {
+#app #userlink.loading::before {
 	content: "\f3f4";
 	display: inline-block;
 	animation: .7s infinite linear rotate360;
 }
-#userlink:not( .loaded ) + #logout {
+#app:not( .logged ) #logout {
 	display: none;
 }
 #logout::before {
@@ -89,27 +84,44 @@
 	--gsuiSlider-lineBgColor: #222;
 }
 
-#cmpMenu {
-	left: 100%;
-	margin-left: 5px;
+/* ......................................................................... */
+.cmps-menu {
+	display: flex;
+	align-items: center;
+	height: 24px;
+	padding: 0 10px;
+	font-size: 12px;
+	font-weight: bold;
+	border: var( --pan-border );
+	border-width: 1px 0;
+	color: #fff;
+	background-color: #444;
+}
+#pan-local .cmps-menu {
+	border-top: 0;
+}
+.cmps-menu span::before {
+	margin-right: .4em;
+	font-weight: normal;
+	font-family: "FontAwesome";
+}
+#pan-cloud .cmps-menu span::before { content: "\f0c2"; }
+#pan-local .cmps-menu span::before { content: "\f109"; }
+
+#app:not( .logged ) #cloudCmps .panel-placeholder span:first-child,
+#app.logged         #cloudCmps .panel-placeholder span:last-child {
+	display: none;
 }
 
-/* ......................................................................... */
 .cmps-btn {
 	display: inline-flex;
-	box-sizing: border-box;
 	align-items: center;
+	height: 100%;
 	padding: 0 6px;
-	border: 1px solid rgba( 255, 255, 153, .2 );
-	border-radius: 8px;
-	font-size: 11px;
+	margin-left: 6px;
 	color: #ff9;
-	height: 24px;
 	transition: .5s;
 	transition-property: background-color;
-}
-.cmps-btn + .cmps-btn {
-	margin-left: 10px;
 }
 .cmps-btn:hover {
 	color: #505050;
@@ -118,9 +130,9 @@
 .cmps-btn::before {
 	font-family: "FontAwesome";
 }
-#newComposition { border-style: dashed; }
-#newComposition::before { content: "\f067"; }
-#openComposition::before { content: "\f07c"; }
+#newCloudComposition::before { content: "\f067"; }
+#newLocalComposition::before { content: "\f067"; }
+#openLocalComposition::before { content: "\f07c"; }
 .cmps-btn::after {
 	content: attr( data-text );
 	margin-left: .4em;

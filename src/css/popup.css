@@ -20,6 +20,15 @@
 	font-size: 12px;
 }
 
+.popup-error-msg {
+	margin-top: 12px;
+	font-size: 12px;
+	color: #ed9a8b;
+}
+.popup-error-msg:empty {
+	display: none;
+}
+
 .popup .param {
 	display: flex;
 	align-items: center;

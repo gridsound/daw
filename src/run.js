@@ -60,7 +60,7 @@ window.onresize();
 DAW.addCompositionsFromLocalStorage();
 
 if ( !hash.has( "cmp" ) ) {
-	UIcompositionClickNew();
+	UIcompositionClickNewLocal();
 } else {
 	DAW.addCompositionByURL( hash.get( "cmp" ) )
 		.catch( e => {

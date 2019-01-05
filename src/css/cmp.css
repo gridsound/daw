@@ -55,6 +55,9 @@
 }
 .cmp-info:hover {
 	padding-left: 1em;
+}
+.cmp-info:hover,
+.cmp-loaded .cmp-info {
 	opacity: 1;
 }
 .cmp-info > div {
@@ -77,7 +80,7 @@
 }
 
 /* -------------------------------------------------------------------------- */
-.cmp-bpm {
+.cmp-duration {
 	margin-right: 1em;
 }
 .cmp-bpm::before,

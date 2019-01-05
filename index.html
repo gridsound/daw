@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="src/css/popup.css"/>
 <link rel="stylesheet" href="src/css/pan-leftside.css"/>
 <link rel="stylesheet" href="src/css/pan-rightside.css"/>
-<link rel="stylesheet" href="src/css/pan-cmps.css"/>
+<link rel="stylesheet" href="src/css/pan-cloud.css"/>
 <link rel="stylesheet" href="src/css/pan-history.css"/>
 <link rel="stylesheet" href="src/css/pan-patterns.css"/>
 <link rel="stylesheet" href="src/css/pan-synth-pianoroll.css"/>
@@ -55,8 +55,9 @@
 <body>
 <noscript>GridSound needs JavaScript to run</noscript>
 <div id="app" class="gsuiPanels-x">
-	<div class="gsuiPanels-y no-select" id="pan-leftside" data-width-class="<240:small">
-		<div class="panel-left" id="pan-cmps"></div>
+	<div class="gsuiPanels-y no-select" id="pan-leftside" data-width-class="<220:small">
+		<div class="panel-left" id="pan-cloud"></div>
+		<div class="panel-left" id="pan-local"></div>
 		<div class="panel-left" id="pan-history"></div>
 		<div class="panel-left" id="pan-patterns"></div>
 	</div>
@@ -69,18 +70,31 @@
 		</div>
 	</div>
 </div>
-<div data-panel="pan-cmps">
-	<div class="panel-title">
-		<div id="title"></div>
+<div data-panel="pan-cloud">
+	<div id="header">
+		<div id="headerTitle"></div>
 		<a id="userlink" title="Sign in" target="_blank" rel="noopener"></a>
 		<a id="logout" title="Logout"></a>
 		<div id="appGainWrap" title="Main app volume (this parameter will not affect the rendering)"></div>
 	</div>
-	<div class="panel-menu">
-		<a href id="newComposition" class="cmps-btn" data-text="New" title="Create a new composition (Alt + N)"></a>
-		<a href id="openComposition" class="cmps-btn" data-text="Open" title="Open a composition (Ctrl + O)"></a>
+	<div class="cmps-menu">
+		<span>cloud</span>
+		<a href id="newCloudComposition" class="cmps-btn" data-text="New" title="Create a new composition on your cloud profile"></a>
 	</div>
-	<div id="cmps" class="panel-body nice-scrollbar"></div>
+	<div id="cloudCmps" class="panel-body nice-scrollbar">
+		<div class="panel-placeholder">
+			<span>you don't have any cloud composition yet</span>
+			<span>you are not connected</span>
+		</div>
+	</div>
+</div>
+<div data-panel="pan-local">
+	<div class="cmps-menu">
+		<span>local</span>
+		<a href id="newLocalComposition" class="cmps-btn" data-text="New" title="Create a new composition on this computer"></a>
+		<a href id="openLocalComposition" class="cmps-btn" data-text="Open" title="Open a composition on this computer"></a>
+	</div>
+	<div id="localCmps" class="panel-body nice-scrollbar"></div>
 </div>
 <div data-panel="pan-history">
 	<div class="panel-title">
@@ -167,6 +181,7 @@
 				<input type="password" name="password"/>
 			</div>
 		</div>
+		<div id="authPopupError" class="popup-error-msg"></div>
 	</fieldset>
 	<a target="_blank" rel="noopener" href="https://gridsound.github.io/#/forgotPassword">Forgot password&nbsp;?</a><br/>
 	<a target="_blank" rel="noopener" href="https://gridsound.github.io/#/auth">Create a new account</a>
@@ -365,8 +380,8 @@
 	<div data-action="open" class="cmp-info">
 		<div class="cmp-name"></div>
 		<div>
-			<span class="cmp-bpm"></span>
 			<span class="cmp-duration"></span>
+			<span class="cmp-bpm"></span>
 		</div>
 	</div>
 	<a data-action="json" class="cmp-btn cmp-jsonExport" title="Export to JSON file"></a>

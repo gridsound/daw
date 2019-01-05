@@ -50,7 +50,7 @@ declare -a CSSfiles=(
 	"src/css/popup.css"
 	"src/css/pan-leftside.css"
 	"src/css/pan-rightside.css"
-	"src/css/pan-cmps.css"
+	"src/css/pan-cloud.css"
 	"src/css/pan-history.css"
 	"src/css/pan-patterns.css"
 	"src/css/pan-synth-pianoroll.css"
@@ -67,7 +67,8 @@ declare -a CSSfiles=(
 
 declare -a HTMLfiles=(
 	"src/html/_panels.html"
-	"src/html/pan-cmps.html"
+	"src/html/pan-cloud.html"
+	"src/html/pan-local.html"
 	"src/html/pan-history.html"
 	"src/html/pan-patterns.html"
 	"src/html/pan-maingrid.html"

@@ -5,11 +5,13 @@
 	max-width: 300px;
 }
 
+/* ......................................................................... */
 .panel-left {
 	display: flex;
 	flex-direction: column;
 }
 
+/* ......................................................................... */
 .panel-title,
 .panel-menu {
 	box-sizing: border-box;
@@ -17,7 +19,6 @@
 	font-size: 13px;
 	border-bottom: var( --pan-border );
 }
-
 .panel-title {
 	display: flex;
 	align-items: center;
@@ -26,17 +27,18 @@
 	font-weight: bold;
 	background-color: #666;
 }
-
 .panel-title .icon {
 	margin-right: 4px;
 }
 
+/* ......................................................................... */
 .panel-menu {
 	display: flex;
 	color: #ddd;
 	background-color: #505050;
 }
 
+/* ......................................................................... */
 .panel-btn {
 	padding: 4px;
 	font-size: 14px;
@@ -50,8 +52,22 @@
 	background-color: rgba( 0, 0, 0, .2 );
 }
 
+/* ......................................................................... */
 .panel-body {
 	flex: 1;
 	overflow: auto;
 	background-color: #555;
+}
+
+/* ......................................................................... */
+.panel-placeholder {
+	display: none;
+	padding: 16px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+	opacity: .4;
+}
+.panel-placeholder:only-child {
+	display: block;
 }

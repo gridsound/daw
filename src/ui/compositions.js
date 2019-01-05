@@ -3,9 +3,10 @@
 const UIcompositions = new Map();
 
 function UIcompositionsInit() {
-	DOM.newComposition.onclick = UIcompositionClickNew;
-	DOM.openComposition.onclick = UIopenPopupShow;
-	DOM.cmps.onclick = e => {
+	DOM.newCloudComposition.onclick = UIcompositionClickNewCloud;
+	DOM.newLocalComposition.onclick = UIcompositionClickNewLocal;
+	DOM.openLocalComposition.onclick = UIopenPopupShow;
+	DOM.localCmps.onclick = e => {
 		const cmp = e.target.closest( ".cmp" );
 
 		if ( cmp ) {
@@ -31,8 +32,8 @@ function UIcompositionOpened( { id, synthOpened } ) {
 	const html = UIcompositions.get( id );
 
 	html.root.classList.add( "cmp-loaded" );
-	DOM.cmps.prepend( html.root );
-	DOM.cmps.scrollTop = 0;
+	DOM.localCmps.prepend( html.root );
+	DOM.localCmps.scrollTop = 0;
 	UIsynthsExpandSynth( synthOpened, true );
 	UItitle();
 }
@@ -65,7 +66,7 @@ function UIcompositionAdded( cmp ) {
 	html.name.textContent = cmp.name;
 	html.duration.textContent = DAWCore.time.beatToMinSec( cmp.duration, cmp.bpm );
 	UIcompositions.set( cmp.id, html );
-	DOM.cmps.append( root );
+	DOM.localCmps.append( root );
 }
 
 function UIcompositionClosed( cmp ) {
@@ -84,12 +85,22 @@ function UIcompositionClosed( cmp ) {
 	UIpatterns.clear();
 }
 
-function UIcompositionClickNew() {
+function UIcompositionClickNewLocal() {
 	( !DAW.compositionNeedSave()
 		? DAW.addNewComposition()
 		: gsuiPopup.confirm( "Warning", "Are you sure you want to discard unsaved works" )
 			.then( b => b && DAW.addNewComposition() )
 	).then( cmp => cmp && DAW.openComposition( cmp.id ) );
+	return false;
+}
+
+function UIcompositionClickNewCloud() {
+	if ( !gsapiClient.user.id ) {
+		gsuiPopup.alert( "Error",
+			"You can not create a new composition in the <b>cloud</b><br/>without being connected" );
+	} else {
+		// ...
+	}
 	return false;
 }
 
@@ -133,7 +144,7 @@ function UIcompositionClickOpen( id ) {
 
 function UIcompositionClickOpen_then( id ) {
 	DAW.openComposition( id ).then( () => {
-		DOM.cmps.scrollTop = 0;
+		DOM.localCmps.scrollTop = 0;
 	} );
 }
 

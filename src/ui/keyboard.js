@@ -24,7 +24,7 @@ function UIkeyboardDown( e ) {
 		else if ( key === "s" ) { UIcompositionClickSave(); }
 		else if ( key === "z" ) { DOM.undo.onclick(); }
 		else if ( key === "Z" ) { DOM.redo.onclick(); }
-		else if ( key === "n" && e.altKey ) { UIcompositionClickNew(); }
+		else if ( key === "n" && e.altKey ) { UIcompositionClickNewLocal(); }
 		else { prevent = false; }
 		UIkeyPressed[ key ] = true;
 	} else {
