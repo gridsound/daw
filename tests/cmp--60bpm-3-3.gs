@@ -1,1 +1,0 @@
-{"id":"071a90fa-5ff1-44e4-bb12-681ee0270cc8","bpm":60,"stepsPerBeat":3,"beatsPerMeasure":3,"name":"A test composition (60bpm, 3/3)","duration":0,"nbTracks":42,"tracks":{},"data":{},"blocks":{},"savedAt":1499126680}
