@@ -6,6 +6,7 @@ function UIcompositionsInit() {
 	DOM.newCloudComposition.onclick = UIcompositionClickNewCloud;
 	DOM.newLocalComposition.onclick = UIcompositionClickNewLocal;
 	DOM.openLocalComposition.onclick = UIopenPopupShow;
+	DOM.cloudCmps.onclick =
 	DOM.localCmps.onclick = e => {
 		const cmp = e.target.closest( ".cmp" );
 
@@ -29,11 +30,12 @@ function UIcompositionBeforeUnload() {
 }
 
 function UIcompositionOpened( { id, synthOpened } ) {
-	const html = UIcompositions.get( id );
+	const html = UIcompositions.get( id ),
+		par = html.root.parentNode;
 
 	html.root.classList.add( "cmp-loaded" );
-	DOM.localCmps.prepend( html.root );
-	DOM.localCmps.scrollTop = 0;
+	par.prepend( html.root );
+	par.scrollTop = 0;
 	UIsynthsExpandSynth( synthOpened, true );
 	UItitle();
 }
@@ -52,7 +54,7 @@ function UIcompositionDeleted( { id } ) {
 	}
 }
 
-function UIcompositionAdded( cmp ) {
+function UIcompositionAdded( cmp, opt ) {
 	const root = DOM.cmp.cloneNode( true ),
 		html = {
 			root,
@@ -66,7 +68,9 @@ function UIcompositionAdded( cmp ) {
 	html.name.textContent = cmp.name;
 	html.duration.textContent = DAWCore.time.beatToMinSec( cmp.duration, cmp.bpm );
 	UIcompositions.set( cmp.id, html );
-	DOM.localCmps.append( root );
+	( opt.localSaving
+		? DOM.localCmps
+		: DOM.cloudCmps ).append( root );
 }
 
 function UIcompositionClosed( cmp ) {
@@ -135,17 +139,11 @@ function UIcompositionClickOpen( id ) {
 	if ( DAW.compositionNeedSave() ) {
 		gsuiPopup.confirm( "Warning",
 			"Are you sure you want to discard unsaved works"
-		).then( ok => ok && UIcompositionClickOpen_then( id ) );
+		).then( ok => ok && DAW.openComposition( id ) );
 	} else {
-		UIcompositionClickOpen_then( id );
+		DAW.openComposition( id );
 	}
 	return false;
-}
-
-function UIcompositionClickOpen_then( id ) {
-	DAW.openComposition( id ).then( () => {
-		DOM.localCmps.scrollTop = 0;
-	} );
 }
 
 function UIcompositionClickSave() {

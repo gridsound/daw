@@ -57,6 +57,7 @@ DAW.cb.play = () => DOM.play.classList.add( "ico-pause" );
 
 window.onresize();
 
+UIauthGetMe();
 DAW.addCompositionsFromLocalStorage();
 
 if ( !hash.has( "cmp" ) ) {
@@ -70,7 +71,5 @@ if ( !hash.has( "cmp" ) ) {
 		.then( cmp => DAW.openComposition( cmp.id ) );
 	location.hash = "";
 }
-
-UIauthGetMe();
 
 } )();

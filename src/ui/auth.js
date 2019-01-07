@@ -59,9 +59,12 @@ function UIauthLoginSubmit( obj ) {
 }
 
 function UIauthLoginThen( me ) {
+	const opt = { localSaving: false };
+
 	DOM.app.classList.add( "logged" );
 	DOM.userlink.href = `https://gridsound.github.io/#/u/${ me.user.username }`;
 	DOM.userlink.style.backgroundImage = `url("${ me.user.avatar }")`;
+	me.compositions.forEach( cmp => DAW.addCompositionByJSON( cmp.data, opt ) );
 	return me;
 }
 
@@ -69,4 +72,9 @@ function UIauthLogoutThen() {
 	DOM.app.classList.remove( "logged" );
 	DOM.userlink.removeAttribute( "href" );
 	DOM.userlink.style.backgroundImage = "";
+	Array.from( DOM.cloudCmps.children )
+		.forEach( el => DAW.deleteComposition( el.dataset.id ) );
+	if ( !DAW.get.id() ) {
+		UIcompositionClickNewLocal();
+	}
 }

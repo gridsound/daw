@@ -69,8 +69,11 @@
 
 	/* cmp */
 	/* ..................................................................... */
-	--cmp-bg: #67a;
+	--cmp-cloud-bg: #4c71af;
+	--cmp-local-bg: #67a;
 	--cmp-text: #fff;
+	--cmp-height: 42px;
+	--cmp-text-size: 18px;
 	--cmp-save-bg: #f44d4d;
 
 	/* history */

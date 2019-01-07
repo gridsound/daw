@@ -1,13 +1,16 @@
 .cmp {
 	box-sizing: border-box;
 	display: flex;
-	height: 42px;
-	line-height: 42px;
-	font-size: 18px;
+	height: var( --cmp-height );
+	line-height: var( --cmp-height );
+	font-size: var( --cmp-text-size );
 	color: var( --cmp-text );
 	cursor: pointer;
-	background-color: var( --cmp-bg );
+	background-color: var( --cmp-local-bg );
 	filter: brightness( .9 );
+}
+#pan-cloud .cmp {
+	background-color: var( --cmp-cloud-bg );
 }
 .cmp:nth-child( odd ) {
 	filter: brightness( .85 );
@@ -33,6 +36,9 @@
 .cmp-save::before {
 	content: "\f0c7";
 	font-family: "FontAwesome";
+}
+#pan-cloud .cmp-save::before {
+	content: "\f382";
 }
 .cmp-save:hover {
 	color: var( --cmp-save-bg );

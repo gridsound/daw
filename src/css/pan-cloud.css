@@ -1,7 +1,10 @@
-#pan-cloud,
+#pan-cloud {
+	height: 160px;
+	min-height: calc( 69px + var( --cmp-height ) );
+}
 #pan-local {
-	min-height: 118px;
-	height: 200px;
+	height: 120px;
+	min-height: calc( 26px + var( --cmp-height ) );
 }
 
 /* ......................................................................... */
@@ -87,6 +90,7 @@
 /* ......................................................................... */
 .cmps-menu {
 	display: flex;
+	box-sizing: border-box;
 	align-items: center;
 	height: 24px;
 	padding: 0 10px;
