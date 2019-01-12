@@ -18,6 +18,9 @@
 .cmp.cmp-loaded {
 	filter: none;
 }
+.cmp-loading {
+	pointer-events: none;
+}
 
 /* -------------------------------------------------------------------------- */
 .cmp-save {
@@ -39,6 +42,10 @@
 }
 #pan-cloud .cmp-save::before {
 	content: "\f382";
+}
+#pan-cloud .cmp-loading .cmp-save::before {
+	content: "\f3f4";
+	animation: .5s infinite linear rotate360;
 }
 .cmp-save:hover {
 	color: var( --cmp-save-bg );

@@ -38,7 +38,6 @@ function UIauthLogin() {
 			submit: UIauthLoginSubmit,
 			element: DOM.authPopupContent,
 		} ).then( () => {
-			DOM.authPopupError.textContent = "";
 			DOM.authPopupContent.querySelectorAll( "input" )
 				.forEach( inp => inp.value = "" );
 		} );
@@ -48,6 +47,7 @@ function UIauthLogin() {
 
 function UIauthLoginSubmit( obj ) {
 	UIauthLoading( true );
+	DOM.authPopupError.textContent = "";
 	return gsapiClient.login( obj.email, obj.password )
 		.finally( () => UIauthLoading( false ) )
 		.then(
@@ -77,4 +77,15 @@ function UIauthLogoutThen() {
 	if ( !DAW.get.id() ) {
 		UIcompositionClickNewLocal();
 	}
+}
+
+function UIauthSaveComposition( cmp ) {
+	return gsapiClient.saveComposition( cmp )
+		.catch( err => {
+			gsuiPopup.alert( `Error ${ err.code }`,
+				"An error happened while saving " +
+				"your composition&nbsp;:<br/>" +
+				`<code>${ err.msg || err }</code>`
+			);
+		} );
 }

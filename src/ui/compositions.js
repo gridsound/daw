@@ -40,8 +40,12 @@ function UIcompositionOpened( { id, synthOpened } ) {
 	UItitle();
 }
 
-function UIcompositionSaved( { id }, saved ) {
-	UIcompositions.get( id ).root.classList.toggle( "cmp-notSaved", !saved );
+function UIcompositionLoading( cmp, loading ) {
+	UIcompositions.get( cmp.id ).root.classList.toggle( "cmp-loading", loading );
+}
+
+function UIcompositionSavedStatus( cmp, saved ) {
+	UIcompositions.get( cmp.id ).root.classList.toggle( "cmp-notSaved", !saved );
 	UItitle();
 }
 
