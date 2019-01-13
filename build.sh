@@ -46,6 +46,7 @@ declare -a CSSfiles=(
 	"src/css/root.css"
 	"src/css/fonts.css"
 	"src/css/icon.css"
+	"src/css/loading.css"
 	"src/css/app.css"
 	"src/css/popup.css"
 	"src/css/pan-leftside.css"
@@ -66,6 +67,7 @@ declare -a CSSfiles=(
 )
 
 declare -a HTMLfiles=(
+	"src/html/_loading.html"
 	"src/html/_panels.html"
 	"src/html/pan-cloud.html"
 	"src/html/pan-local.html"
@@ -184,6 +186,7 @@ declare -a JSfiles=(
 	"gs-api-client/gsapiClient.js"
 
 	"src/ui/dom.js"
+	"src/ui/loading.js"
 	"src/ui/auth.js"
 	"src/ui/drop.js"
 	"src/ui/title.js"

@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="src/css/root.css"/>
 <link rel="stylesheet" href="src/css/fonts.css"/>
 <link rel="stylesheet" href="src/css/icon.css"/>
+<link rel="stylesheet" href="src/css/loading.css"/>
 <link rel="stylesheet" href="src/css/app.css"/>
 <link rel="stylesheet" href="src/css/popup.css"/>
 <link rel="stylesheet" href="src/css/pan-leftside.css"/>
@@ -54,6 +55,17 @@
 </head>
 <body>
 <noscript>GridSound needs JavaScript to run</noscript>
+<div id="loading">
+	<div id="loadingContent">
+		<div id="loadingTitle">
+			<div id="loadingTitleLight">GridSound</div>
+			<div id="loadingTitleDark">GridSound</div>
+		</div>
+		<span id="loadingLoading">loading...</span>
+		<span id="loadingLoaded">click to start</span>
+		<span id="loadingStarting">starting...</span>
+	</div>
+</div>
 <div id="app" class="gsuiPanels-x">
 	<div class="gsuiPanels-y no-select" id="pan-leftside" data-width-class="<220:small">
 		<div class="panel-left" id="pan-cloud"></div>
@@ -712,6 +724,7 @@
 <script src="gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"></script>
 <script src="gs-api-client/gsapiClient.js"></script>
 <script src="src/ui/dom.js"></script>
+<script src="src/ui/loading.js"></script>
 <script src="src/ui/auth.js"></script>
 <script src="src/ui/drop.js"></script>
 <script src="src/ui/title.js"></script>

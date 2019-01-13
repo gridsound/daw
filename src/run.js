@@ -1,6 +1,6 @@
 "use strict";
 
-( function() {
+UIloading().then( () => {
 
 const DAW = new DAWCore(),
 	hash = new Map( location.hash
@@ -74,4 +74,4 @@ if ( !hash.has( "cmp" ) ) {
 	location.hash = "";
 }
 
-} )();
+} ).then( UIloaded );
