@@ -70,7 +70,7 @@ if ( !hash.has( "cmp" ) ) {
 			console.error( e );
 			return DAW.addNewComposition();
 		} )
-		.then( cmp => DAW.openComposition( cmp.id ) );
+		.then( cmp => DAW.openComposition( "local", cmp.id ) );
 	location.hash = "";
 }
 

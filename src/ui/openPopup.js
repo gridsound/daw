@@ -18,5 +18,5 @@ function UIopenPopupSubmit( res ) {
 			? DAW.addCompositionByURL( url )
 			: DAW.addCompositionByBlob( file );
 
-	return prom && prom.then( cmp => DAW.openComposition( cmp.id ) );
+	return prom && prom.then( cmp => DAW.openComposition( "local", cmp.id ) );
 }

@@ -68,14 +68,14 @@ UIcompositionChanged.fn = new Map( [
 	} ],
 	[ "bpm", function( { bpm } ) {
 		DOM.bpmNumber.textContent =
-		UIcompositions.get( DAW.get.id() ).bpm.textContent = bpm;
+		UIcompositions.get( DAW.get.composition() ).bpm.textContent = bpm;
 	} ],
 	[ "name", function( { name } ) {
 		UItitle();
-		UIcompositions.get( DAW.get.id() ).name.textContent = name;
+		UIcompositions.get( DAW.get.composition() ).name.textContent = name;
 	} ],
 	[ "duration", function( { duration } ) {
-		UIcompositions.get( DAW.get.id() ).duration.textContent =
+		UIcompositions.get( DAW.get.composition() ).duration.textContent =
 			DAWCore.time.beatToMinSec( duration, DAW.get.bpm() );
 	} ],
 	[ "keys", function( { keys } ) {

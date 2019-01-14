@@ -14,7 +14,7 @@ function UIdrop( e ) {
 
 	if ( cmpFile ) {
 		DAW.addCompositionByBlob( cmpFile )
-			.then( cmp => DAW.openComposition( cmp.id ) );
+			.then( cmp => DAW.openComposition( "local", cmp.id ) );
 	}
 	return false;
 }
