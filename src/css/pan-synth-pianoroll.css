@@ -2,25 +2,25 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	padding: 4px 6px;
-	font-size: 12px;
-	color: #ddd;
+	padding: 0 6px;
+	height: 28px;
 	background-color: #444;
 }
-.pan-synth-pianoroll .pan-menu::before {
-	font-style: italic;
+.pan-synth-pianoroll .pan-label {
+	font-size: 12px;
 	font-weight: bold;
-	font-size: 11px;
-	text-shadow: 1px 1px 0 #000;
-	opacity: .35;
+	color: rgba( 255, 255, 255, .2 );
 }
 
 .pan-synth-pianoroll .pan-name {
 	margin-left: .75em;
-	padding: 4px 8px;
-	border-radius: 4px;
-	font-family: var( --monospace );
-	cursor: default;
+	padding: 2px 8px;
+	border: 0;
+	color: #ddd;
+	cursor: pointer;
+	border-radius: 3px;
+	font-size: 13px;
+	font-weight: bold;
 	transition: filter .2s;
 }
 .pan-synth-pianoroll .pan-name:empty:before {

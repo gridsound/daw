@@ -6,8 +6,6 @@ self.addEventListener( "install", e => {
 			"/daw/index.html",
 			"/daw/assets/fa-solid-900.woff",
 			"/daw/assets/fa-brands-400.woff",
-			"/daw/assets/oswald-regular.ttf",
-			"/daw/assets/inconsolata-regular.ttf",
 		] )
 	) ) );
 } );

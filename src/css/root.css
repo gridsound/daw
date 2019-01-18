@@ -1,6 +1,12 @@
+@font-face { font-family: "FontAwesome";       src: url( "../../assets/fa-solid-900.woff" ); }
+@font-face { font-family: "FontAwesomeBrands"; src: url( "../../assets/fa-brands-400.woff" ); }
+
 :root {
 	--app-bg: #555;
-	--monospace: "Inconsolata", "consolas", monospace;
+	--font-default: "Noto Sans", sans-serif;
+	--font-monospace: "Inconsolata", "consolas", monospace;
+	--font-number: "Unica One", var( --font-monospace );
+	--font-oswald: "Oswald", sans-serif;
 	--pan-border: 1px solid #333;
 	--gsuiPanels-bd: 2px solid #222;
 	--gsuiPanels-extendSize: 4px;
@@ -35,6 +41,8 @@
 	--gsuiBlocksManager-grid-bg: #456168;
 	--gsuiBlocksManager-borderColor: #333;
 	--gsuiBlocksManager-side-bgColor: #555;
+	--gsuiBlocksManager-font: 12px var( --font-default );
+	--gsuiBlocksManager-number-font: 16px var( --font-number );
 	--gsuiBlocksManager-selection-bgColor: rgba( 189, 38, 38, .4 );
 	--gsuiBlocksManager-selection-borderColor: #f44;
 	--gsuiBlocksManager-blockColor: rgba( 85, 170, 204, .8 );
@@ -44,9 +52,15 @@
 	/* ..................................................................... */
 	--gsuiTimeline-bg: #222;
 	--gsuiTimeline-color: #fff;
+	--gsuiTimeline-number-font: 15px var( --font-number );
 	--gsuiTimeline-loop-bg: #656586;
 	--gsuiTimeline-cursor-fill: #fdfd70;
 	--gsuiTimeline-loopBorder-bg: #fff;
+
+	/* gsuiOscillator */
+	/* ..................................................................... */
+	--gsuiOscillator-font: 12px var( --font-default );
+	--gsuiOscillator-number-font: 14px var( --font-number );
 
 	/* gsuiSliderGroup */
 	/* ..................................................................... */

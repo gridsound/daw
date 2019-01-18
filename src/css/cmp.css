@@ -45,7 +45,7 @@
 }
 #pan-cloud .cmp-loading .cmp-save::before {
 	content: "\f3f4";
-	animation: .5s infinite linear rotate360;
+	animation: .7s infinite linear rotate360;
 }
 .cmp-save:hover {
 	color: var( --cmp-save-bg );
@@ -58,7 +58,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: .5em;
+	padding: 6px 6px 4px;
 	overflow: hidden;
 	font-size: 13px;
 	line-height: 1em;
@@ -94,13 +94,17 @@
 
 /* -------------------------------------------------------------------------- */
 .cmp-duration {
-	margin-right: 1em;
+	margin-right: 10px;
+}
+.cmp-bpm,
+.cmp-duration {
+	font: 14px var( --font-number );
 }
 .cmp-bpm::before,
 .cmp-duration::before {
 	display: inline-block;
 	width: 1.25em;
-	margin-right: .4em;
+	margin-right: 4px;
 	font-family: "FontAwesome";
 	text-align: center;
 }

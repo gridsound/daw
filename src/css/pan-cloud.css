@@ -23,7 +23,7 @@
 #headerTitle::before {
 	display: block;
 	content: "GridSound";
-	font-family: "Oswald";
+	font-family: var( --font-oswald );
 }
 #pan-leftside.small #headerTitle::before {
 	content: "GS";

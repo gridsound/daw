@@ -5,10 +5,6 @@
 	max-width: 340px;
 }
 
-#pan-synth .pan-menu::before {
-	content: "Synthesizer\A0:";
-}
-
 #synthName {
 	background-color: var( --synth-namebtn-bg );
 }

@@ -1,7 +1,3 @@
-#pan-pianoroll .pan-menu::before {
-	content: "Pattern\A0:";
-}
-
 #pianorollName {
 	background-color: var( --pattern-namebtn-bg );
 }

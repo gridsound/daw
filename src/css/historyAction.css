@@ -7,7 +7,7 @@
 	padding-right: .4em;
 	color: var( --history-action-text );
 	font-size: 13px;
-	font-family: var( --monospace );
+	font-family: var( --font-monospace );
 	background-color: var( --history-action-bg );
 	transition: filter .2s;
 }

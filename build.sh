@@ -18,6 +18,7 @@ declare -a HEADER=(
 	'<meta name="theme-color" content="#3a5158"/>'
 	'<link rel="manifest" href="manifest.json"/>'
 	'<link rel="shortcut icon" href="assets/favicon.png"/>'
+	'<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700|Oswald|Inconsolata|Unica+One">'
 )
 
 declare -a HEADEREND=(
@@ -44,7 +45,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"gs-ui-components/gsuiTrack/gsuiTrack.css"
 	"src/css/root.css"
-	"src/css/fonts.css"
 	"src/css/icon.css"
 	"src/css/loading.css"
 	"src/css/app.css"

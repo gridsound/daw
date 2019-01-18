@@ -69,25 +69,25 @@
 /* -------------------------------------------------------------------------- */
 #bpm,
 #clock {
-	padding: 0 .3em;
+	padding: 0 8px;
 	align-items: baseline;
 	padding-top: 1px;
-	font-family: var( --monospace );
-	font-size: 30px;
+	font-family: var( --font-number );
+	font-size: 28px;
 	filter: none;
 	color: var( --ctrl-clock-text );
 	background-color: var( --ctrl-clock-bg );
 }
-#clockSec::before { content: ":"; }
-#clockMs::before { content: "."; }
+#clockSec::before { content: ":"; margin: 0 2px; }
+#clockMs::before { content: "."; margin: 0 3px; }
 #clockMs,
 #bpmText::before {
-	font-size: .5em;
+	font-size: 14px;
 	opacity: var( --ctrl-clock-unit-opacity );
 }
 #bpmText::before {
 	content: "bpm";
-	margin-left: .5em;
+	margin-left: 4px;
 }
 #analyser {
 	width: 144px;

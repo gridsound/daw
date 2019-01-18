@@ -15,6 +15,7 @@
 <meta name="theme-color" content="#3a5158"/>
 <link rel="manifest" href="manifest.json"/>
 <link rel="shortcut icon" href="assets/favicon.png"/>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700|Oswald|Inconsolata|Unica+One">
 <link rel="stylesheet" href="gs-ui-components/gsuiMixer/gsuiMixer.css"/>
 <link rel="stylesheet" href="gs-ui-components/gsuiDragline/gsuiDragline.css"/>
 <link rel="stylesheet" href="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"/>
@@ -32,7 +33,6 @@
 <link rel="stylesheet" href="gs-ui-components/gsuiTimeline/gsuiTimeline.css"/>
 <link rel="stylesheet" href="gs-ui-components/gsuiTrack/gsuiTrack.css"/>
 <link rel="stylesheet" href="src/css/root.css"/>
-<link rel="stylesheet" href="src/css/fonts.css"/>
 <link rel="stylesheet" href="src/css/icon.css"/>
 <link rel="stylesheet" href="src/css/loading.css"/>
 <link rel="stylesheet" href="src/css/app.css"/>
@@ -115,7 +115,7 @@
 <div data-panel="pan-history">
 	<div class="panel-title">
 		<span class="icon ico-history"></span>
-		<span>History</span>
+		<span>history</span>
 	</div>
 	<div class="panel-menu">
 		<a id="undo" class="icon ico-undo panel-btn" title="Undo the previous action (Ctrl + Z)"></a
@@ -126,7 +126,7 @@
 <div data-panel="pan-patterns">
 	<div class="panel-title">
 		<span class="icon ico-synth"></span>
-		<span>Synthesizers</span>
+		<span>synthesizers</span>
 	</div>
 	<div class="panel-menu">
 		<a id="synthNew" class="icon ico-new panel-btn" title="Create a new synthesizer"></a>
@@ -164,7 +164,8 @@
 <div data-panel="pan-mixer"></div>
 <div data-panel="pan-synth">
 	<div class="pan-menu">
-		<div class="pan-name" id="synthName"></div>
+		<div class="pan-label">synthesizer</div>
+		<button class="pan-name" id="synthName"></button>
 	</div>
 	<div id="synthWrapper">
 		<div id="synthWrapper2"></div>
@@ -172,7 +173,8 @@
 </div>
 <div data-panel="pan-pianoroll">
 	<div class="pan-menu no-select">
-		<div class="pan-name" id="pianorollName"></div>
+		<div class="pan-label">pattern</div>
+		<button class="pan-name" id="pianorollName"></button>
 	</div>
 	<div id="keysGridWrap"></div>
 	<div id="pianorollBlock" class="no-select"></div>
@@ -568,7 +570,7 @@
 	<a class="gsuiOscillator-remove" title="Remove the oscillator"></a>
 </div>
 <div id="gsuiSynthesizer-template" class="gsuiSynthesizer">
-	<span class="gsuiSynthesizer-title">Oscillators</span>
+	<span class="gsuiSynthesizer-title">oscillators</span>
 	<div class="gsuiSynthesizer-head">
 		<div>#</div>
 		<div>wave</div>

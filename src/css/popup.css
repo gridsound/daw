@@ -17,7 +17,6 @@
 
 .popup a {
 	color: #bbf;
-	font-size: 12px;
 }
 
 .popup-error-msg {
@@ -44,7 +43,7 @@
 
 .popup .param-values {
 	flex: 1;
-	font-family: var( --monospace );
+	font-family: var( --font-monospace );
 }
 
 .popup [type="radio"]:checked + label {
@@ -81,7 +80,9 @@
 #authPopupContent {
 	width: 340px;
 }
-
+#authPopupContent a {
+	font-size: 12px;
+}
 
 /* #settingsPopupContent ---------------------------------------------------- */
 #settingsPopupContent fieldset:nth-child( 2 ) .param-values {
@@ -186,8 +187,13 @@
 }
 
 #aboutPopupContent .title {
-	font-family: "Oswald";
-	font-size: 32px;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+}
+#aboutPopupContent .title > span:first-child {
+	margin-right: 4px;
+	font: 32px var( --font-oswald );
 }
 
 #aboutPopupContent a {

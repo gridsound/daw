@@ -10,7 +10,6 @@
 	right: 0;
 	bottom: 0;
 	color: rgba( 0, 0, 0, .7 );
-	font-family: "Oswald", sans-serif;
 	background-color: #333;
 	transition: .5s opacity;
 }
@@ -27,7 +26,7 @@
 
 #loadingTitle {
 	position: relative;
-	font-size: 52px;
+	font: 52px var( --font-oswald );
 }
 #loadingTitleLight {
 	width: 0%;
