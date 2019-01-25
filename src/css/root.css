@@ -1,9 +1,9 @@
-@font-face { font-family: "FontAwesome";       src: url( "../../assets/fa-solid-900.woff" ); }
-@font-face { font-family: "FontAwesomeBrands"; src: url( "../../assets/fa-brands-400.woff" ); }
+@font-face { font-family: "FontAwesome";       src: url( "../../../assets/fa-solid-900.woff" ); }
+@font-face { font-family: "FontAwesomeBrands"; src: url( "../../../assets/fa-brands-400.woff" ); }
 
 :root {
 	--app-bg: #555;
-	--font-default: "Noto Sans", sans-serif;
+	--font-default: "Montserrat", sans-serif;
 	--font-monospace: "Inconsolata", "consolas", monospace;
 	--font-number: "Unica One", var( --font-monospace );
 	--font-oswald: "Oswald", sans-serif;

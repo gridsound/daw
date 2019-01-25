@@ -11,14 +11,13 @@ declare -a HEADER=(
 	'<meta name="google" content="notranslate"/>'
 	'<meta property="og:type" content="website"/>'
 	'<meta property="og:title" content="GridSound (an open-source digital audio workstation)"/>'
-	'<meta property="og:url" content="https://gridsound.github.io/"/>'
-	'<meta property="og:image" content="https://gridsound.github.io/assets/og-image.jpg"/>'
+	'<meta property="og:url" content="https://gridsound.com/"/>'
+	'<meta property="og:image" content="https://gridsound.com/assets/og-image.jpg"/>'
 	'<meta property="og:image:width" content="800"/>'
 	'<meta property="og:image:height" content="400"/>'
 	'<meta name="theme-color" content="#3a5158"/>'
 	'<link rel="manifest" href="manifest.json"/>'
-	'<link rel="shortcut icon" href="assets/favicon.png"/>'
-	'<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700|Oswald|Inconsolata|Unica+One">'
+	'<link rel="shortcut icon" href="../assets/favicon.png"/>'
 )
 
 declare -a HEADEREND=(
@@ -44,6 +43,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"gs-ui-components/gsuiTrack/gsuiTrack.css"
+	"../assets/fonts/fonts.css"
 	"src/css/root.css"
 	"src/css/icon.css"
 	"src/css/loading.css"
@@ -225,12 +225,12 @@ buildDev() {
 	echo '</html>' >> $filename
 }
 
-buildMaster() {
-	filename='index-gh-pages.html'
+buildProd() {
+	filename='index-prod.html'
 	echo "Build $filename"
 	printf '%s\n' "${HEADER[@]}" > $filename;
 	echo '<style>' >> $filename
-	cat "${CSSfiles[@]}" | sed "s/..\/..\/assets/assets/g" >> $filename
+	cat "${CSSfiles[@]}" >> $filename
 	echo '</style>' >> $filename
 	printf '%s\n' "${HEADEREND[@]}" >> $filename;
 	cat "${HTMLfiles[@]}" >> $filename
@@ -243,9 +243,9 @@ buildMaster() {
 	echo '</html>' >> $filename
 }
 
-if [ $# -gt 0 ] && [ $1 = "gh-pages" ]
+if [ $# -gt 0 ] && [ $1 = "prod" ]
 then
-	buildMaster
+	buildProd
 else
 	buildDev
 fi
