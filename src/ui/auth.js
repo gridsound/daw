@@ -87,5 +87,6 @@ function UIauthSaveComposition( cmp ) {
 				"your composition&nbsp;:<br/>" +
 				`<code>${ err.msg || err }</code>`
 			);
+			throw err;
 		} );
 }
