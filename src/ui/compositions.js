@@ -91,6 +91,11 @@ function UIcompositionAdded( cmp ) {
 }
 
 function UIcompositionClosed( cmp ) {
+	UIcompositionChanged( {
+		bpm: cmp.bpm,
+		name: cmp.name,
+		duration: cmp.duration,
+	}, {} );
 	UIcompositions.get( cmp ).root.classList.remove( "cmp-loaded" );
 	UIpatternroll.empty();
 	UIpatternroll.loop( false );
@@ -99,6 +104,7 @@ function UIcompositionClosed( cmp ) {
 	UIsynth.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );
+	DOM.synthName.textContent = "";
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollBlock.classList.remove( "show" );
 	UIsynths.forEach( syn => syn.remove() );
@@ -157,6 +163,11 @@ function UIcompositionClickDelete( saveMode, id ) {
 						}
 					}
 					DAW.deleteComposition( saveMode, id );
+				}, err => {
+					gsuiPopup.alert( `Error ${ err.code }`,
+						"An error happened while deleting " +
+						"your composition&nbsp;:<br/>" +
+						`<code>${ err.msg || err }</code>` );
 				} );
 		}
 	} );

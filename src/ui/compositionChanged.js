@@ -1,8 +1,6 @@
 "use strict";
 
 function UIcompositionChanged( obj, prevObj ) {
-	const cmp = DAW.get.composition();
-
 	console.log( "UIcompositionChanged", obj );
 	UIcompositionChanged.fn.forEach( ( fn, attr ) => {
 		if ( typeof attr === "string" ) {
