@@ -40,9 +40,7 @@
 .popup .param-title {
 	flex: 1;
 }
-
 .popup .param-values {
-	flex: 1;
 	font-family: var( --font-monospace );
 }
 
@@ -113,10 +111,6 @@
 }
 #shortcutsPopupContent .param:nth-child( even ) {
 	background-color: rgba( 255, 255, 255, .05 );
-}
-
-#shortcutsPopupContent .param-values {
-	max-width: 190px;
 }
 
 #shortcutsPopupContent .param-title {
