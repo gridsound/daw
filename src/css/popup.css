@@ -41,6 +41,7 @@
 	flex: 1;
 }
 .popup .param-values {
+	display: flex;
 	font-family: var( --font-monospace );
 }
 
@@ -119,7 +120,7 @@
 
 #shortcutsPopupContent .shortcuts {
 	display: inline-block;
-	margin: 0 6px;
+	position: relative;
 	border-radius: 4px;
 	border-bottom: 3px solid #333;
 	padding: .3em .5em;
@@ -127,6 +128,15 @@
 	white-space: nowrap;
 	color: #fff;
 	background-color: #444;
+}
+#shortcutsPopupContent .shortcuts + .shortcuts {
+	margin-left: 3ch;
+}
+#shortcutsPopupContent .shortcuts + .shortcuts::before {
+	content: "+";
+	position: absolute;
+	right: 100%;
+	margin-right: 1ch;
 }
 #shortcutsPopupContent .shortcuts .icon {
 	width: auto;
