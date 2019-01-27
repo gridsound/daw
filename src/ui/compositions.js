@@ -150,6 +150,15 @@ function UIcompositionClickDelete( saveMode, id ) {
 			( saveMode === "cloud"
 			? gsapiClient.deleteComposition( id )
 			: Promise.resolve() )
+				.catch( err => {
+					if ( err.code !== 404 ) {
+						gsuiPopup.alert( `Error ${ err.code }`,
+							"An error happened while deleting " +
+							"your composition&nbsp;:<br/>" +
+							`<code>${ err.msg || err }</code>` );
+						throw err;
+					}
+				} )
 				.then( () => {
 					if ( id === DAW.get.id() ) {
 						for ( let next = html.root.nextElementSibling;
@@ -163,11 +172,6 @@ function UIcompositionClickDelete( saveMode, id ) {
 						}
 					}
 					DAW.deleteComposition( saveMode, id );
-				}, err => {
-					gsuiPopup.alert( `Error ${ err.code }`,
-						"An error happened while deleting " +
-						"your composition&nbsp;:<br/>" +
-						`<code>${ err.msg || err }</code>` );
 				} );
 		}
 	} );
