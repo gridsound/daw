@@ -10,8 +10,8 @@ function UIsettingsPopupShow() {
 		bpmTap = DOM.settingsBPMTap;
 
 	DOM[ DAW.env.clockSteps
-		? "settingsInputClockSec"
-		: "settingsInputClockBeat" ].checked = true;
+		? "settingsInputClockBeat"
+		: "settingsInputClockSec" ].checked = true;
 	DOM.settingsInputName.value = cmp.name;
 	DOM.settingsInputBPM.value = cmp.bpm;
 	DOM.settingsInputBeatsPM.value = cmp.beatsPerMeasure;
@@ -36,8 +36,8 @@ function UIsettingsPopupSubmit() {
 		beatsPM = +DOM.settingsInputBeatsPM.value,
 		stepsPB = +DOM.settingsInputStepsPB.value,
 		clockDisplay = DOM[ DAW.env.clockSteps
-			? "settingsInputClockSec"
-			: "settingsInputClockBeat" ];
+			? "settingsInputClockBeat"
+			: "settingsInputClockSec" ];
 
 	if ( !clockDisplay.checked ) { envChange.clockSteps = !DAW.env.clockSteps; }
 	if ( bpm !== cmp.bpm ) { cmpChange.bpm = bpm; }

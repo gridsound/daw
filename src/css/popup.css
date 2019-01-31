@@ -34,7 +34,7 @@
 	font-size: 14px;
 }
 .popup .param + .param {
-	margin-top: 5px;
+	margin-top: 6px;
 }
 
 .popup .param-title {
@@ -44,12 +44,16 @@
 	display: flex;
 	font-family: var( --font-monospace );
 }
+.popup .param-column {
+	flex-direction: column;
+}
 
 .popup [type="radio"]:checked + label {
 	font-weight: bold;
 }
 
-.popup input {
+.popup input,
+.popup button {
 	border-radius: 2px;
 	border: 0;
 	color: inherit;
@@ -65,14 +69,18 @@
 .popup input[type="text"],
 .popup input[type="url"],
 .popup input[type="file"] {
-	width: 150px;
-	padding: .6em .8em;
+	width: 180px;
+	height: 32px;
+	padding: 0 8px;
+	box-sizing: border-box;
 	font-family: inherit;
-	background: rgba( 255, 255, 255, .1 );
+	background-color: rgba( 255, 255, 255, .1 );
 }
-
 .popup input[type="file"] {
 	width: 200px;
+	height: auto;
+	padding-top: 6px;
+	padding-bottom: 6px;
 }
 
 /* #authPopupContent -------------------------------------------------------- */
@@ -84,29 +92,29 @@
 }
 
 /* #settingsPopupContent ---------------------------------------------------- */
+#settingsPopupContent {
+	width: 400px;
+}
 #settingsPopupContent fieldset:nth-child( 2 ) .param-values {
 	display: flex;
-	align-items: center;
 }
-
-#settingsPopupContent .btn {
-	padding: .2em;
-	margin-left: 10px;
-	border: 0;
-	border-radius: 2px;
-	font-size: inherit;
+#settingsInputBPM {
+	width: calc( 180px - 6px - 32px );
+}
+#settingsBPMTap {
+	width: 32px;
+	margin-left: 6px;
 	background-color: rgba( 255, 255, 255, .1 )
 }
-
-#settingsPopupContent .btn:hover {
+#settingsBPMTap::before {
+	content: "\f043";
+	font-family: "FontAwesome";
+}
+#settingsBPMTap:hover {
 	background-color: rgba( 255, 255, 255, .2 )
 }
 
 /* #shortcutsPopupContent --------------------------------------------------- */
-#shortcutsPopupContent {
-	width: 540px;
-}
-
 #shortcutsPopupContent .param {
 	padding: 4px;
 }
