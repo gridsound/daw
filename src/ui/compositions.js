@@ -15,25 +15,62 @@ const UIcompositions = Object.seal( {
 } );
 
 function UIcompositionsInit() {
+	DOM.cloudCmps.onclick =
+	DOM.localCmps.onclick = UIcompositionClick;
 	DOM.newCloudComposition.onclick = UIcompositionClickNewCloud;
 	DOM.newLocalComposition.onclick = UIcompositionClickNewLocal;
 	DOM.openLocalComposition.onclick = UIopenPopupShow;
-	DOM.cloudCmps.onclick =
-	DOM.localCmps.onclick = e => {
-		const cmp = e.target.closest( ".cmp" );
+	DOM.cloudCmps.ondragstart = UIcompositionDragstart.bind( null, "cloud" );
+	DOM.localCmps.ondragstart = UIcompositionDragstart.bind( null, "local" );
+	DOM.cloudCmps.ondrop = UIcompositionCloudDrop;
+	DOM.localCmps.ondrop = UIcompositionLocalDrop;
+}
 
-		if ( cmp ) {
-			const id = cmp.dataset.id,
-				saveMode = DOM.localCmps.contains( cmp ) ? "local" : "cloud";
+function UIcompositionDragstart( from, e ) {
+	e.dataTransfer.setData( "text/plain", `${ from }:${ e.target.dataset.id }` );
+}
 
-			switch ( e.target.dataset.action ) {
-				case "save": UIcompositionClickSave(); break;
-				case "open": UIcompositionClickOpen( saveMode, id ); break;
-				case "json": UIcompositionClickJSONExport( saveMode, id, e ); break;
-				case "delete": UIcompositionClickDelete( saveMode, id ); break;
-			}
+function UIcompositionDrop( from, e ) {
+	const [ saveMode, id ] = e.dataTransfer.getData( "text/plain" ).split( ":" );
+
+	return saveMode === from
+		? DAW.get.composition( from, id )
+		: null;
+}
+
+function UIcompositionLocalDrop( e ) {
+	const cmp = UIcompositionDrop( "cloud", e );
+
+	cmp && DAW.addComposition( cmp, { saveMode: "local" } )
+		.then( cmp => cmp && DAWCore.LocalStorage.put( cmp.id, cmp ) );
+}
+
+function UIcompositionCloudDrop( e ) {
+	if ( gsapiClient.user.id ) {
+		const cmp = UIcompositionDrop( "local", e );
+
+		cmp && UIauthSaveComposition( cmp )
+			.then( () => DAW.addComposition( cmp, { saveMode: "cloud" } ) );
+	} else {
+		gsuiPopup.alert( "Error",
+			"You need to be connected before uploading your composition" );
+	}
+}
+
+function UIcompositionClick( e ) {
+	const cmp = e.target.closest( ".cmp" );
+
+	if ( cmp ) {
+		const id = cmp.dataset.id,
+			saveMode = DOM.localCmps.contains( cmp ) ? "local" : "cloud";
+
+		switch ( e.target.dataset.action ) {
+			case "save": UIcompositionClickSave(); break;
+			case "open": UIcompositionClickOpen( saveMode, id ); break;
+			case "json": UIcompositionClickJSONExport( saveMode, id, e ); break;
+			case "delete": UIcompositionClickDelete( saveMode, id ); break;
 		}
-	};
+	}
 }
 
 function UIcompositionBeforeUnload() {
