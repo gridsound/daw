@@ -81,7 +81,7 @@ function UIauthLogoutThen() {
 
 function UIauthSaveComposition( cmp ) {
 	return gsapiClient.saveComposition( cmp )
-		.catch( err => {
+		.then( () => cmp, err => {
 			gsuiPopup.alert( `Error ${ err.code }`,
 				"An error happened while saving " +
 				"your composition&nbsp;:<br/>" +

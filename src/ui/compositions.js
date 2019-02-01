@@ -30,30 +30,42 @@ function UIcompositionDragstart( from, e ) {
 	e.dataTransfer.setData( "text/plain", `${ from }:${ e.target.dataset.id }` );
 }
 
-function UIcompositionDrop( from, e ) {
+function UIcompositionDrop( from, to, e ) {
 	const [ saveMode, id ] = e.dataTransfer.getData( "text/plain" ).split( ":" );
 
-	return saveMode === from
-		? DAW.get.composition( from, id )
-		: null;
+	if ( saveMode === from ) {
+		const cmpFrom = DAW.get.composition( from, id ),
+			cmpTo = DAW.get.composition( to, id );
+
+		return !cmpTo
+			? Promise.resolve( cmpFrom )
+			: gsuiPopup.confirm( "Warning",
+				"Are you sure you want to overwrite " +
+				`the <b>${ to }</b> composition <i>${ cmpTo.name || "Untitled" }</i>&nbsp;?` )
+			.then( b => {
+				if ( b ) {
+					return cmpFrom;
+				}
+				throw undefined;
+			} );
+	}
+	return Promise.reject();
 }
 
 function UIcompositionLocalDrop( e ) {
-	const cmp = UIcompositionDrop( "cloud", e );
-
-	cmp && DAW.addComposition( cmp, { saveMode: "local" } )
-		.then( cmp => cmp && DAWCore.LocalStorage.put( cmp.id, cmp ) );
+	UIcompositionDrop( "cloud", "local", e )
+		.then( cmp => DAW.addComposition( cmp, { saveMode: "local" } ) )
+		.then( cmp => DAWCore.LocalStorage.put( cmp.id, cmp ), () => {} );
 }
 
 function UIcompositionCloudDrop( e ) {
 	if ( gsapiClient.user.id ) {
-		const cmp = UIcompositionDrop( "local", e );
-
-		cmp && UIauthSaveComposition( cmp )
-			.then( () => DAW.addComposition( cmp, { saveMode: "cloud" } ) );
+		UIcompositionDrop( "local", "cloud", e )
+			.then( cmp => UIauthSaveComposition( cmp ) )
+			.then( cmp => DAW.addComposition( cmp, { saveMode: "cloud" } ), () => {} );
 	} else {
 		gsuiPopup.alert( "Error",
-			"You need to be connected before uploading your composition" );
+			"You need to be connected to your account before uploading your composition" );
 	}
 }
 
@@ -109,22 +121,32 @@ function UIcompositionDeleted( cmp ) {
 }
 
 function UIcompositionAdded( cmp ) {
-	const root = DOM.cmp.cloneNode( true ),
-		html = {
-			root,
-			bpm: root.querySelector( ".cmp-bpm" ),
-			name: root.querySelector( ".cmp-name" ),
-			duration: root.querySelector( ".cmp-duration" ),
-		};
+	const html = UIcompositions.get( cmp );
 
-	root.dataset.id = cmp.id;
+	if ( html ) {
+		UIcompositionSetInfo( html, cmp );
+	} else {
+		const root = DOM.cmp.cloneNode( true ),
+			html = {
+				root,
+				bpm: root.querySelector( ".cmp-bpm" ),
+				name: root.querySelector( ".cmp-name" ),
+				duration: root.querySelector( ".cmp-duration" ),
+			};
+
+		root.dataset.id = cmp.id;
+		UIcompositionSetInfo( html, cmp );
+		UIcompositions.set( cmp, html );
+		( cmp.options.saveMode === "local"
+			? DOM.localCmps
+			: DOM.cloudCmps ).append( root );
+	}
+}
+
+function UIcompositionSetInfo( html, cmp ) {
 	html.bpm.textContent = cmp.bpm;
 	html.name.textContent = cmp.name;
 	html.duration.textContent = DAWCore.time.beatToMinSec( cmp.duration, cmp.bpm );
-	UIcompositions.set( cmp, html );
-	( cmp.options.saveMode === "local"
-		? DOM.localCmps
-		: DOM.cloudCmps ).append( root );
 }
 
 function UIcompositionClosed( cmp ) {
