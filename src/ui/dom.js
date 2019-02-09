@@ -9,6 +9,7 @@ function UIdomInit() {
 		const div = document.getElementById( pan.dataset.panel );
 
 		div && div.append.apply( div, pan.children );
+		pan.remove();
 	} );
 	document.querySelectorAll( "[id]" ).forEach( el => {
 		DOM[ el.id ] = el;

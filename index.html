@@ -394,7 +394,7 @@
 		</div>
 	</fieldset>
 </div>
-<div class="cmp" id="cmp" draggable="true" data-remove-id>
+<div class="cmp" id="cmp" draggable="true" data-remove data-remove-id>
 	<div data-action="save" class="cmp-save"></div>
 	<div data-action="open" class="cmp-info">
 		<div class="cmp-name"></div>
@@ -415,7 +415,7 @@
 	</div>
 	<div class="synth-patterns nice-scrollbar"></div>
 </div>
-<div id="pattern" class="pattern" draggable="true">
+<div class="pattern" id="pattern" draggable="true" data-remove data-remove-id>
 	<div class="pattern-head">
 		<div class="pattern-name"></div>
 		<a data-action="clone" class="pattern-clone icon ico-clone" title="Clone this pattern"></a>
@@ -423,7 +423,7 @@
 	</div>
 	<div class="pattern-content"></div>
 </div>
-<div class="historyAction" id="historyAction">
+<div class="historyAction" id="historyAction" data-remove data-remove-id>
 	<span class="historyAction-icon icon"></span>
 	<span class="historyAction-text"></span>
 </div>
@@ -522,10 +522,6 @@
 <div class="gsuiBlocksManager-block" id="gsuiPianoroll-block-template">
 	<div class="gsuiDragline-drop"></div>
 	<div class="gsuiBlocksManager-block-crop gsuiBlocksManager-block-cropB"></div>
-</div>
-
-<div class="gsuiPianoroll-slider" id="gsuiPianoroll-slider-template">
-	<div class="gsuiPianoroll-sliderInner"></div>
 </div>
 <div id="gsuiKeys-octave-template">
 	<div data-key="11" class="gsuiKey"><div data-key="11" class="gsui-row gsuiKey-row"><div></div></div></div>

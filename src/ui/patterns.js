@@ -58,8 +58,6 @@ function UIpatternsInit() {
 			[ "clone", id => DAW.clonePattern( id ) ],
 		] );
 
-	DOM.pattern.remove();
-	DOM.pattern.removeAttribute( "id" );
 	DOM.patterns.addEventListener( "click", e => {
 		const pat = e.target.closest( ".pattern" );
 
