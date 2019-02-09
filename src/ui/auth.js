@@ -64,7 +64,7 @@ function UIauthLoginThen( me ) {
 	DOM.app.classList.add( "logged" );
 	DOM.userlink.href = `https://gridsound.com/#/u/${ me.user.username }`;
 	DOM.userlink.style.backgroundImage = `url("${ me.user.avatar }")`;
-	me.compositions.forEach( cmp => DAW.addCompositionByJSON( cmp.data, opt ) );
+	me.compositions.forEach( cmp => DAW.addComposition( cmp.data, opt ) );
 	return me;
 }
 
