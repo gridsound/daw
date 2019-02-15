@@ -14,6 +14,9 @@ function UIcompositionChanged( obj, prevObj ) {
 }
 
 UIcompositionChanged.fn = new Map( [
+	[ "mixer", function( { mixer } ) {
+		DAWCore.objectDeepAssign( UImixer.data, mixer );
+	} ],
 	[ [ "tracks", "blocks" ], function( obj ) {
 		DAWCore.objectDeepAssign( UIpatternroll.data, obj );
 	} ],

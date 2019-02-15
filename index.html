@@ -76,7 +76,7 @@
 	</div>
 	<div class="gsuiPanels-y" id="pan-rightside">
 		<div id="pan-maingrid"></div>
-		<!-- <div id="pan-mixer"></div> -->
+		<div id="pan-mixer"></div>
 		<div class="gsuiPanels-x">
 			<div class="pan-synth-pianoroll no-select" id="pan-synth"></div>
 			<div class="pan-synth-pianoroll" id="pan-pianoroll"></div>
@@ -428,23 +428,22 @@
 	<span class="historyAction-text"></span>
 </div>
 <div class="gsuiMixer" id="gsuiMixer-template">
-	<div class="gsuiMixer-panMaster"></div>
+	<div class="gsuiMixer-panMain"></div>
 	<div class="gsuiMixer-panChannels"></div>
-	<div class="gsuiMixer-panEffects">
-
-	</div>
+	<div class="gsuiMixer-panEffects"></div>
 </div>
 
 <div class="gsuiMixerChannel" id="gsuiMixerChannel-template">
-	<div class="gsuiMixerChannel-ctrl gsuiMixerChannel-nameWrap">
+	<button class="gsuiMixerChannel-nameWrap">
 		<span class="gsuiMixerChannel-name"></span>
-	</div>
+	</button>
 	<div class="gsuiMixerChannel-analyserWrap">
 		<canvas class="gsuiMixerChannel-analyser"></canvas>
 	</div>
-	<button class="gsuiMixerChannel-ctrl gsuiMixerChannel-toggle"></button>
-	<div class="gsuiMixerChannel-ctrl gsuiMixerChannel-pan"></div>
-	<div class="gsuiMixerChannel-ctrl gsuiMixerChannel-gain"></div>
+	<button class="gsuiMixerChannel-toggle"></button>
+	<div class="gsuiMixerChannel-pan"></div>
+	<div class="gsuiMixerChannel-gain"></div>
+	<button class="gsuiMixerChannel-connect"></button>
 </div>
 <div class="gsuiDragline" id="gsuiDragline-template">
 	<div class="gsuiDragline-main">
@@ -660,6 +659,7 @@
 <script src="daw-core/src/Composition.format.js"></script>
 <script src="daw-core/src/Composition.prototype.change.js"></script>
 <script src="daw-core/src/json/composition.js"></script>
+<script src="daw-core/src/json/channel.js"></script>
 <script src="daw-core/src/json/synth.js"></script>
 <script src="daw-core/src/utils/uuid.js"></script>
 <script src="daw-core/src/utils/time.js"></script>

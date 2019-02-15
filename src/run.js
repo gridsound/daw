@@ -18,7 +18,7 @@ window.VERSION = "0.19.2";
 
 UIdomInit();
 UIauthInit();
-// UImixerInit();
+UImixerInit();
 UIsynthInit();
 UIsynthsInit();
 UIcookieInit();

@@ -15,11 +15,15 @@
 	/* gsuiMixer */
 	/* ..................................................................... */
 	--gsuiMixerChannel-bg: #555;
-	--gsuiMixerChannel-muted-bg: #444;
-	--gsuiMixerChannel-width: 42px;
+	--gsuiMixerChannel-bg2: #5b5b5b;
+	--gsuiMixerChannel-selected-bg: #666;
+	--gsuiMixerChannel-width: 52px;
+	--gsuiMixerChannel-pan-color: #d9f;
+	--gsuiMixerChannel-gain-color: #ff9;
+	--gsuiMixerChannel-connect-input-color: #b77;
+	--gsuiMixerChannel-connect-output-color: #ff9;
 	--gsuiMixerChannel-toggle-bg: #ffa;
 	--gsuiMixerChannel-toggleOff-bg: rgba( 255, 255, 255, .1 );
-	--gsuiMixerChannel-toggle-size: 6px;
 	--gsuiMixerChannel-darkBorder: rgba( 0, 0, 0, .1 );
 	--gsuiMixerChannel-lightBorder: rgba( 255, 255, 255, .05 );
 	--gsuiMixerChannel-name-text: #fff;
@@ -61,6 +65,10 @@
 	/* ..................................................................... */
 	--gsuiOscillator-font: 12px var( --font-default );
 	--gsuiOscillator-number-font: 14px var( --font-number );
+
+	/* gsuiSlider */
+	/* ..................................................................... */
+	--gsuiSlider-lineRadius: 2px;
 
 	/* gsuiSliderGroup */
 	/* ..................................................................... */
