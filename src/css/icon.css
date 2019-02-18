@@ -50,6 +50,7 @@
 .ico-remove::before { content: "\f1f8"; } /* f1f8 f2ed */
 .ico-erase::before { content: "\f12d"; }
 .ico-param::before { content: "\f3f1"; }
+.ico-redirect::before { content: "\f5eb"; }
 .ico-envelope::before { content: "\f5b7"; }
 .ico-toggle-off::before { content: "\f204"; }
 .ico-toggle-on::before { content: "\f205"; }

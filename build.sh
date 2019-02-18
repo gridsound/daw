@@ -120,6 +120,7 @@ declare -a JSfiles=(
 	"daw-core/src/Composition.format.js"
 	"daw-core/src/Composition.prototype.change.js"
 	"daw-core/src/json/composition.js"
+	"daw-core/src/json/mixer.js"
 	"daw-core/src/json/channel.js"
 	"daw-core/src/json/synth.js"
 	"daw-core/src/utils/uuid.js"
