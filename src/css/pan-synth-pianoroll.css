@@ -1,6 +1,7 @@
 #synthMenu,
 #pianorollMenu {
 	position: relative;
+	z-index: 1;
 	display: flex;
 	align-items: center;
 	padding: 0 6px;
@@ -16,28 +17,85 @@
 
 /* ......................................................................... */
 #synthName,
-#pianorollName {
+#pianorollName,
+#synthChanName,
+#synthChanSelectLabel {
 	margin: 0 6px;
 	padding: 2px 8px;
+	max-width: 110px;
 	border: 0;
 	color: #ddd;
 	cursor: pointer;
+	overflow: hidden;
 	border-radius: 3px;
 	font-size: 13px;
 	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	transition: filter .2s;
 }
 #synthName { background-color: var( --synth-namebtn-bg ); }
 #pianorollName { background-color: var( --pattern-namebtn-bg ); }
+#synthChanName {
+	margin: 0;
+	padding-right: 4px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	background-color: var( --synth-chanNamebtn-bg );
+}
 #synthName:empty::before,
-#pianorollName:empty::before {
+#pianorollName:empty::before,
+#synthChanName:empty::before {
 	content: "Untitled";
 	font-style: italic;
 }
 #synthName:hover,
-#pianorollName:hover {
+#pianorollName:hover,
+#synthChanName:hover,
+#synthChanSelectLabel:hover {
 	color: #fff;
 	filter: brightness( 1.1 );
+}
+
+/* ......................................................................... */
+#synthDestArrow::before {
+	font-family: "FontAwesome";
+	content: "\f356";
+}
+#synthChanNameWrap {
+	position: relative;
+	display: flex;
+	margin: 0 6px;
+}
+#synthChanSelectLabel {
+	width: 20px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	background-color: var( --synth-chanNamebtn-bg );
+}
+#synthChanSelectLabel::before {
+	content: "\f0d7";
+	font-size: 16px;
+	font-family: "FontAwesome";
+}
+#synthChanSelect {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: .2s;
+	transition-property: visibility, opacity;
+}
+#synthChanSelectLabel:focus + #synthChanSelect,
+#synthChanSelect:focus {
+	opacity: 1;
+	visibility: visible;
 }
 
 /* ......................................................................... */
