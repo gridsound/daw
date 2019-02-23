@@ -42,10 +42,7 @@
 <link rel="stylesheet" href="src/css/pan-rightside.css"/>
 <link rel="stylesheet" href="src/css/pan-cloud.css"/>
 <link rel="stylesheet" href="src/css/pan-history.css"/>
-<link rel="stylesheet" href="src/css/pan-patterns.css"/>
 <link rel="stylesheet" href="src/css/pan-synth-pianoroll.css"/>
-<link rel="stylesheet" href="src/css/pan-synth.css"/>
-<link rel="stylesheet" href="src/css/pan-pianoroll.css"/>
 <link rel="stylesheet" href="src/css/pan-mixer.css"/>
 <link rel="stylesheet" href="src/css/cmp.css"/>
 <link rel="stylesheet" href="src/css/synth.css"/>
@@ -53,6 +50,7 @@
 <link rel="stylesheet" href="src/css/version.css"/>
 <link rel="stylesheet" href="src/css/controls.css"/>
 <link rel="stylesheet" href="src/css/historyAction.css"/>
+<link rel="stylesheet" href="src/css/pianorollForbidden.css"/>
 </head>
 <body>
 <noscript>GridSound needs JavaScript to run</noscript>
@@ -164,21 +162,21 @@
 </div>
 <div data-panel="pan-mixer"></div>
 <div data-panel="pan-synth">
-	<div class="pan-menu">
-		<div class="pan-label">synthesizer</div>
-		<button class="pan-name" id="synthName"></button>
+	<div id="synthMenu">
+		<span id="synthLabel">synthesizer</span>
+		<button id="synthName"></button>
 	</div>
 	<div id="synthWrapper">
 		<div id="synthWrapper2"></div>
 	</div>
 </div>
 <div data-panel="pan-pianoroll">
-	<div class="pan-menu no-select">
-		<div class="pan-label">pattern</div>
-		<button class="pan-name" id="pianorollName"></button>
+	<div id="pianorollMenu">
+		<span id="pianorollLabel">pattern</span>
+		<button id="pianorollName"></button>
 	</div>
 	<div id="keysGridWrap"></div>
-	<div id="pianorollBlock" class="no-select"></div>
+	<div id="pianorollForbidden" class="no-select"></div>
 </div>
 <div class="popup" id="authPopupContent" data-remove>
 	<fieldset>

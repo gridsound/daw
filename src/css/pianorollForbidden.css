@@ -1,8 +1,4 @@
-#pianorollName {
-	background-color: var( --pattern-namebtn-bg );
-}
-
-#pianorollBlock {
+#pianorollForbidden {
 	display: flex;
 	overflow: hidden;
 	align-items: center;
@@ -17,24 +13,20 @@
 	transition: .2s;
 	transition-property: opacity, visibility;
 }
-#pianorollBlock.show {
+#pianorollForbidden.show {
 	opacity: 1;
 	visibility: visible;
 }
-#pianorollBlock::before {
+#pianorollForbidden::before {
 	content: "No pattern selected...";
 	display: block;
 	padding: 18px;
-	border-radius: 4px;
-	font-size: 12px;
-	font-weight: bold;
-	font-style: italic;
-	background-color: rgba( 255, 255, 255, .1 );
 	color: #ddd;
-}
-
-.gsuiPianoroll {
-	height: 100%;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: bold;
+	border-radius: 4px;
+	background-color: rgba( 255, 255, 255, .1 );
 }
 
 /*

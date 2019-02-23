@@ -54,10 +54,7 @@ declare -a CSSfiles=(
 	"src/css/pan-rightside.css"
 	"src/css/pan-cloud.css"
 	"src/css/pan-history.css"
-	"src/css/pan-patterns.css"
 	"src/css/pan-synth-pianoroll.css"
-	"src/css/pan-synth.css"
-	"src/css/pan-pianoroll.css"
 	"src/css/pan-mixer.css"
 	"src/css/cmp.css"
 	"src/css/synth.css"
@@ -65,6 +62,7 @@ declare -a CSSfiles=(
 	"src/css/version.css"
 	"src/css/controls.css"
 	"src/css/historyAction.css"
+	"src/css/pianorollForbidden.css"
 )
 
 declare -a HTMLfiles=(

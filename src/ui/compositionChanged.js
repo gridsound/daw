@@ -110,7 +110,7 @@ UIcompositionChanged.fn = new Map( [
 
 		UIpianoroll.empty();
 		DOM.pianorollName.textContent = pat ? pat.name : "";
-		DOM.pianorollBlock.classList.toggle( "show", !pat );
+		DOM.pianorollForbidden.classList.toggle( "show", !pat );
 		if ( pat ) {
 			el.classList.add( "selected" );
 			DAWCore.objectDeepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );

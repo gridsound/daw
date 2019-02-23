@@ -23,7 +23,7 @@ function UIpianorollInit() {
 		gsuiPopup.prompt( "Rename pattern", "", name, "Rename" )
 			.then( name => DAW.namePattern( id, name ) );
 	};
-	DOM.pianorollBlock.classList.add( "show" );
+	DOM.pianorollForbidden.classList.add( "show" );
 	DOM.keysGridWrap.append( pia.rootElement );
 	pia.attached();
 }

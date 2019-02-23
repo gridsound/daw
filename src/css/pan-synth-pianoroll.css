@@ -1,19 +1,23 @@
-.pan-synth-pianoroll .pan-menu {
+#synthMenu,
+#pianorollMenu {
 	position: relative;
 	display: flex;
 	align-items: center;
 	padding: 0 6px;
 	height: 28px;
+	color: rgba( 255, 255, 255, .2 );
+	font-size: 12px;
 	background-color: #444;
 }
-.pan-synth-pianoroll .pan-label {
-	font-size: 12px;
+#synthLabel,
+#pianorollLabel {
 	font-weight: bold;
-	color: rgba( 255, 255, 255, .2 );
 }
 
-.pan-synth-pianoroll .pan-name {
-	margin-left: .75em;
+/* ......................................................................... */
+#synthName,
+#pianorollName {
+	margin: 0 6px;
 	padding: 2px 8px;
 	border: 0;
 	color: #ddd;
@@ -23,11 +27,41 @@
 	font-weight: bold;
 	transition: filter .2s;
 }
-.pan-synth-pianoroll .pan-name:empty:before {
+#synthName { background-color: var( --synth-namebtn-bg ); }
+#pianorollName { background-color: var( --pattern-namebtn-bg ); }
+#synthName:empty::before,
+#pianorollName:empty::before {
 	content: "Untitled";
 	font-style: italic;
 }
-.pan-synth-pianoroll .pan-name:hover {
+#synthName:hover,
+#pianorollName:hover {
 	color: #fff;
 	filter: brightness( 1.1 );
+}
+
+/* ......................................................................... */
+#pan-synth {
+	flex: none;
+	width: 300px;
+	min-width: 280px;
+	max-width: 340px;
+}
+#synthWrapper {
+	flex: 1;
+	position: relative;
+}
+#synthWrapper2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/* ......................................................................... */
+.gsuiSynthesizer {
+	height: 400px;
+	max-height: 100%;
+}
+.gsuiPianoroll {
+	height: 100%;
 }
