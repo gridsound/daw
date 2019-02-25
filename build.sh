@@ -118,7 +118,7 @@ declare -a JSfiles=(
 	"daw-core/src/Composition.format.js"
 	"daw-core/src/Composition.prototype.change.js"
 	"daw-core/src/json/composition.js"
-	"daw-core/src/json/mixer.js"
+	"daw-core/src/json/channels.js"
 	"daw-core/src/json/channel.js"
 	"daw-core/src/json/synth.js"
 	"daw-core/src/utils/uuid.js"
@@ -181,6 +181,7 @@ declare -a JSfiles=(
 
 	"gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"
 	"gs-webaudio-library/gswaScheduler/gswaScheduler.js"
+	"gs-webaudio-library/gswaMixer/gswaMixer.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"
 	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"
 
