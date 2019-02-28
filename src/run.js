@@ -29,9 +29,9 @@ UIpianorollInit();
 UIaboutPopupInit();
 UIpatternrollInit();
 UIrenderPopupInit();
+UImainAnalyserInit();
 UIcompositionsInit();
 UIsettingsPopupInit();
-UImasterAnalyserInit();
 UIshortcutsPopupInit();
 DAW.initPianoroll();
 
@@ -52,7 +52,7 @@ DAW.cb.compositionAdded = UIcompositionAdded;
 DAW.cb.compositionLoading = UIcompositionLoading;
 DAW.cb.compositionSavedStatus = UIcompositionSavedStatus;
 DAW.cb.compositionSavingPromise = UIauthSaveComposition;
-DAW.cb.analyserFilled = data => UImasterAnalyser.draw( data );
+DAW.cb.analyserFilled = data => UImainAnalyser.draw( data );
 DAW.cb.pause =
 DAW.cb.stop = () => DOM.play.classList.remove( "ico-pause" );
 DAW.cb.play = () => DOM.play.classList.add( "ico-pause" );

@@ -206,11 +206,11 @@ declare -a JSfiles=(
 	"src/ui/keysToRects.js"
 	"src/ui/patternroll.js"
 	"src/ui/renderPopup.js"
+	"src/ui/mainAnalyser.js"
 	"src/ui/compositions.js"
 	"src/ui/settingsPopup.js"
 	"src/ui/shortcutsPopup.js"
 	"src/ui/compositionChanged.js"
-	"src/ui/masterAnalyserInit.js"
 	"src/run.js"
 )
 
