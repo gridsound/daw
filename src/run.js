@@ -52,7 +52,8 @@ DAW.cb.compositionAdded = UIcompositionAdded;
 DAW.cb.compositionLoading = UIcompositionLoading;
 DAW.cb.compositionSavedStatus = UIcompositionSavedStatus;
 DAW.cb.compositionSavingPromise = UIauthSaveComposition;
-DAW.cb.analyserFilled = data => UImainAnalyser.draw( data );
+DAW.cb.analyserFilled = UImainAnalyser.draw.bind( UImainAnalyser );
+DAW.cb.channelAnalyserFilled = UImixer.updateAudioData.bind( UImixer );
 DAW.cb.pause =
 DAW.cb.stop = () => DOM.play.classList.remove( "ico-pause" );
 DAW.cb.play = () => DOM.play.classList.add( "ico-pause" );

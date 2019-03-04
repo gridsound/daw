@@ -50,6 +50,7 @@ function UIsynthChange( obj ) {
 }
 
 function UIsynthChanSelectOnChange( e ) {
+	DOM.synthChanName.focus();
 	DAW.compositionChange( { synths: {
 		[ DAW.get.synthOpened() ]: { dest: e.currentTarget.value }
 	} } );

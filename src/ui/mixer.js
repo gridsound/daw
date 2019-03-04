@@ -9,6 +9,7 @@ function UImixerInit() {
 	UImixer.onselectChan = UImixerSelectChan;
 	DOM[ "pan-mixer" ].append( UImixer.rootElement );
 	UImixer.attached();
+	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
 	UImixer.onchange = obj => {
 		DAW.compositionChange( { channels: obj } );
 	};
@@ -21,9 +22,11 @@ function UImixerAddChan( id, obj ) {
 	opt.textContent = obj.name;
 	DOM.synthChanSelect.append( opt );
 }
+
 function UImixerDeleteChan( id ) {
 	DOM.synthChanSelect.querySelector( `option[value="${ chanId }"]` ).remove();
 }
+
 function UImixerUpdateChan( id, prop, val ) {
 	if ( prop === "name" ) {
 		DOM.synthChanSelect.querySelector( `option[value="${ id }"]` ).textContent = val;
@@ -32,6 +35,7 @@ function UImixerUpdateChan( id, prop, val ) {
 		}
 	}
 }
+
 function UImixerSelectChan( id ) {
 	lg( "UImixerSelectChan", id );
 }
