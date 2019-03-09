@@ -30,6 +30,9 @@ function UIdomInit() {
 	DOM[ "pan-pianoroll" ].onresizing = () => {
 		UIpianoroll.resized();
 	};
+	DOM[ "pan-mixer" ].onresizing = () => {
+		UImixer.resized();
+	};
 	window.onresize = () => {
 		DOM[ "pan-rightside" ].onresizing();
 	};
