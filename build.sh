@@ -117,6 +117,7 @@ declare -a JSfiles=(
 	"daw-core/src/Composition.epure.js"
 	"daw-core/src/Composition.format.js"
 	"daw-core/src/Composition.prototype.change.js"
+	"daw-core/src/Composition.prototype.beforeChange.js"
 	"daw-core/src/json/composition.js"
 	"daw-core/src/json/channels.js"
 	"daw-core/src/json/channel.js"

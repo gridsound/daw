@@ -435,10 +435,13 @@
 </div>
 <div class="gsuiMixer" id="gsuiMixer-template">
 	<div class="gsuiMixer-panMain"></div>
-	<div class="gsuiMixer-panChannels"></div>
+	<div class="gsuiMixer-panChannels">
+		<button class="gsuiMixer-panAdd"></button>
+	</div>
 </div>
 
 <div class="gsuiMixerChannel" id="gsuiMixerChannel-template">
+	<button class="gsuiMixerChannel-delete"></button>
 	<button class="gsuiMixerChannel-nameWrap">
 		<span class="gsuiMixerChannel-name"></span>
 	</button>
@@ -663,6 +666,7 @@
 <script src="daw-core/src/Composition.epure.js"></script>
 <script src="daw-core/src/Composition.format.js"></script>
 <script src="daw-core/src/Composition.prototype.change.js"></script>
+<script src="daw-core/src/Composition.prototype.beforeChange.js"></script>
 <script src="daw-core/src/json/composition.js"></script>
 <script src="daw-core/src/json/channels.js"></script>
 <script src="daw-core/src/json/channel.js"></script>

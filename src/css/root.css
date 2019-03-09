@@ -16,6 +16,7 @@
 	/* ..................................................................... */
 	--gsuiMixerChannel-bg: #555;
 	--gsuiMixerChannel-bg2: #5b5b5b;
+	--gsuiMixerChannel-color: #fff;
 	--gsuiMixerChannel-selected-bg: #666;
 	--gsuiMixerChannel-width: 52px;
 	--gsuiMixerChannel-pan-color: #d9f;
@@ -26,7 +27,6 @@
 	--gsuiMixerChannel-toggleOff-bg: rgba( 255, 255, 255, .1 );
 	--gsuiMixerChannel-darkBorder: rgba( 0, 0, 0, .1 );
 	--gsuiMixerChannel-lightBorder: rgba( 255, 255, 255, .05 );
-	--gsuiMixerChannel-name-text: #fff;
 	--gsuiMixerChannel-analyser-bg: #222;
 
 	/* gsuiTrack */

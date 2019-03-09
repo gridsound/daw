@@ -24,7 +24,7 @@ function UImixerAddChan( id, obj ) {
 }
 
 function UImixerDeleteChan( id ) {
-	DOM.synthChanSelect.querySelector( `option[value="${ chanId }"]` ).remove();
+	DOM.synthChanSelect.querySelector( `option[value="${ id }"]` ).remove();
 }
 
 function UImixerUpdateChan( id, prop, val ) {
