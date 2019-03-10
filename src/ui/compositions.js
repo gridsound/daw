@@ -160,6 +160,7 @@ function UIcompositionClosed( cmp ) {
 	UIpatternroll.loop( false );
 	UIpatternroll.setFontSize( 32 );
 	UIpatternroll.setPxPerBeat( 40 );
+	UImixer.empty();
 	UIsynth.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );
