@@ -16,4 +16,4 @@ _<a href="https://gridsound.com/daw/#cmp=https://raw.githubusercontent.com/grids
 <a href="https://github.com/gridsound/daw/wiki/changelog">**Changelog**</a>
 
 ###### screenshot :
-<img src="https://gridsound.com/assets/screenshots/daw.jpg"/>
+<img src="https://gridsound.com/daw/screenshot/current.jpg"/>
