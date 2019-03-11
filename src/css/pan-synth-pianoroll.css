@@ -1,21 +1,3 @@
-#synthMenu,
-#pianorollMenu {
-	position: relative;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-	padding: 0 6px;
-	height: 28px;
-	color: rgba( 255, 255, 255, .2 );
-	font-size: 12px;
-	background-color: #444;
-}
-#synthLabel,
-#pianorollLabel {
-	font-weight: bold;
-}
-
-/* ......................................................................... */
 #synthName,
 #pianorollName,
 #synthChanName,
@@ -57,7 +39,7 @@
 	filter: brightness( 1.1 );
 }
 
-/* ......................................................................... */
+/* .......................................................................... */
 #synthDestArrow::before {
 	font-family: "FontAwesome";
 	content: "\f356";
@@ -85,6 +67,7 @@
 }
 #synthChanSelect {
 	position: absolute;
+	z-index: 1;
 	top: 100%;
 	left: 0;
 	opacity: 0;
@@ -96,30 +79,4 @@
 #synthChanSelect:focus {
 	opacity: 1;
 	visibility: visible;
-}
-
-/* ......................................................................... */
-#pan-synth {
-	flex: none;
-	width: 300px;
-	min-width: 280px;
-	max-width: 340px;
-}
-#synthWrapper {
-	flex: 1;
-	position: relative;
-}
-#synthWrapper2 {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
-
-/* ......................................................................... */
-.gsuiSynthesizer {
-	height: 400px;
-	max-height: 100%;
-}
-.gsuiPianoroll {
-	height: 100%;
 }

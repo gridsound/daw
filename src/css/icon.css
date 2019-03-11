@@ -29,11 +29,6 @@
 .ico-caret-right::before { content: "\f0da"; }
 .ico-3dots::before { content: "\f142"; }
 .ico-help::before { content: "\f1cd"; }
-.ico-play::before { content: "\f04b"; }
-.ico-pause::before { content: "\f04c"; }
-.ico-stop::before { content: "\f04d"; }
-.ico-undo::before { content: "\f2ea"; } /* f0e2 f2ea */
-.ico-redo::before { content: "\f2f9"; } /* f01e f2f9 */
 .ico-mute::before { content: "\f026"; }
 .ico-unmute::before { content: "\f028"; }
 .ico-name::before { content: "\f040"; }
@@ -42,12 +37,11 @@
 .ico-loop::before { content: "\f364"; }
 .ico-move::before { content: "\f0b2"; }
 .ico-crop::before { content: "\f125"; }
-.ico-history::before { content: "\f1da"; }
-.ico-synth::before { content: "\f3f1"; }
+.ico-synth::before { content: "\f001"; }
 .ico-pattern::before { content: "\f38a"; }
 .ico-new::before { content: "\f067"; }
 .ico-clone::before { content: "\f24d"; }
-.ico-remove::before { content: "\f1f8"; } /* f1f8 f2ed */
+.ico-remove::before { content: "\f1f8"; }
 .ico-erase::before { content: "\f12d"; }
 .ico-param::before { content: "\f3f1"; }
 .ico-redirect::before { content: "\f5eb"; }
@@ -56,11 +50,9 @@
 .ico-toggle-on::before { content: "\f205"; }
 .ico-add::before { content: "\f067"; }
 .ico-selection::before { content: "\f245"; }
-.ico-keyboard::before { content: "\f11c"; }
 .ico-arrows-v::before { content: "\f338"; }
 .ico-tint::before { content:"\f043"; }
 .ico-cmd::before { content: "⌘"; font-family: sans-serif; }
-.ico-rocket::before { content: "\f135"; }
 
 .ico-chrome::before { content: "\f268"; }
 .ico-edge::before { content: "\f282"; }
@@ -69,11 +61,10 @@
 .ico-opera::before { content: "\f26a"; }
 .ico-safari::before { content: "\f267"; }
 
-/* .ico-gratipay::before { content: "\f184"; } RIP */
 .ico-patreon::before { content: "\f3d9"; }
 .ico-facebook::before { content: "\f09a"; }
-.ico-github::before { content: "\f09b"; } /* f113 */
-.ico-github-alt::before { content: "\f113"; } /* f113 */
+.ico-github::before { content: "\f09b"; }
+.ico-github-alt::before { content: "\f113"; }
 .ico-twitter::before { content: "\f099"; }
 .ico-youtube::before { content: "\f167"; }
 .ico-codepen::before { content: "\f1cb"; }

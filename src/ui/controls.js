@@ -24,21 +24,20 @@ function UIcontrolsClockUpdate( a, b, c ) {
 function UIcontrolsInit() {
 	const slider = new gsuiSlider();
 
-	DOM.play.onclick = () => ( DAW.togglePlay(), false );
+	DOM.play.onclick = () => DAW.togglePlay();
 	DOM.stop.onclick = () => {
 		DAW.stop();
 		switch ( document.activeElement ) {
 			case UIpatternroll.rootElement: DAW.compositionFocus( "-f" ); break;
 			case UIpianoroll.rootElement: DAW.pianorollFocus( "-f" ); break;
 		}
-		return false;
 	};
-	DOM.togglePlay.onclick = () => (
+	DOM.togglePlay.onclick = () => {
 		DAW.compositionFocused
 			? DAW.pianorollFocus( "-f" )
-			: DAW.compositionFocus( "-f" ),
-		false
-	);
+			: DAW.compositionFocus( "-f" );
+		return false;
+	};
 	slider.oninput = v => DAW.destination.gain( v );
 	slider.options( {
 		type: "linear-y",

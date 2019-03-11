@@ -38,12 +38,10 @@
 <link rel="stylesheet" href="src/css/loading.css"/>
 <link rel="stylesheet" href="src/css/app.css"/>
 <link rel="stylesheet" href="src/css/popup.css"/>
-<link rel="stylesheet" href="src/css/pan-leftside.css"/>
-<link rel="stylesheet" href="src/css/pan-rightside.css"/>
+<link rel="stylesheet" href="src/css/panel.css"/>
+<link rel="stylesheet" href="src/css/panels.css"/>
 <link rel="stylesheet" href="src/css/pan-cloud.css"/>
-<link rel="stylesheet" href="src/css/pan-history.css"/>
 <link rel="stylesheet" href="src/css/pan-synth-pianoroll.css"/>
-<link rel="stylesheet" href="src/css/pan-mixer.css"/>
 <link rel="stylesheet" href="src/css/cmp.css"/>
 <link rel="stylesheet" href="src/css/synth.css"/>
 <link rel="stylesheet" href="src/css/pattern.css"/>
@@ -67,17 +65,17 @@
 </div>
 <div id="app" class="gsuiPanels-x">
 	<div class="gsuiPanels-y no-select" id="pan-leftside" data-width-class="<220:small">
-		<div class="panel-left" id="pan-cloud"></div>
-		<div class="panel-left" id="pan-local"></div>
-		<div class="panel-left" id="pan-history"></div>
-		<div class="panel-left" id="pan-patterns"></div>
+		<div class="panel" id="pan-cloud"></div>
+		<div class="panel" id="pan-local"></div>
+		<div class="panel" id="pan-history"></div>
+		<div class="panel" id="pan-patterns"></div>
 	</div>
 	<div class="gsuiPanels-y" id="pan-rightside">
-		<div id="pan-maingrid"></div>
-		<div id="pan-mixer"></div>
+		<div class="panel" id="pan-maingrid"></div>
+		<div class="panel" id="pan-mixer"></div>
 		<div class="gsuiPanels-x">
-			<div class="pan-synth-pianoroll no-select" id="pan-synth"></div>
-			<div class="pan-synth-pianoroll" id="pan-pianoroll"></div>
+			<div class="panel no-select" id="pan-synth"></div>
+			<div class="panel" id="pan-pianoroll"></div>
 		</div>
 	</div>
 </div>
@@ -88,55 +86,49 @@
 		<a id="logout" title="Logout"></a>
 		<div id="appGainWrap" title="Main app volume (this parameter will not affect the rendering)"></div>
 	</div>
-	<div class="cmps-menu">
-		<span>cloud</span>
-		<a href id="newCloudComposition" class="cmps-btn" data-text="New" title="Create a new composition on your cloud profile"></a>
+	<div class="panelMenu">
+		<span class="panelTitle">cloud</span>
+		<a href id="newCloudComposition" class="panelBtn" data-text="new" title="Create a new composition on your cloud profile"></a>
 	</div>
-	<div id="cloudCmps" class="panel-body nice-scrollbar">
-		<div class="panel-placeholder">
+	<div id="cloudCmps" class="panelBody nice-scrollbar">
+		<div class="panelPlaceholder">
 			<span>you don't have any cloud composition yet</span>
 			<span>you are not connected</span>
 		</div>
 	</div>
 </div>
 <div data-panel="pan-local">
-	<div class="cmps-menu">
-		<span>local</span>
-		<a href id="newLocalComposition" class="cmps-btn" data-text="New" title="Create a new composition on this computer"></a>
-		<a href id="openLocalComposition" class="cmps-btn" data-text="Open" title="Open a composition on this computer"></a>
+	<div class="panelMenu">
+		<span class="panelTitle">local</span>
+		<a href id="newLocalComposition" class="panelBtn" data-text="new" title="Create a new composition on this computer"></a>
+		<a href id="openLocalComposition" class="panelBtn" data-text="open" title="Open a composition on this computer"></a>
 	</div>
-	<div id="localCmps" class="panel-body nice-scrollbar">
-		<div class="panel-placeholder">
+	<div id="localCmps" class="panelBody nice-scrollbar">
+		<div class="panelPlaceholder">
 			<span>there is no local composition here</span>
 		</div>
 	</div>
 </div>
 <div data-panel="pan-history">
-	<div class="panel-title">
-		<span class="icon ico-history"></span>
-		<span>history</span>
+	<div class="panelMenu">
+		<span class="panelTitle">history</span>
+		<a id="undo" class="panelBtn" data-text="undo" title="Undo the previous action (Ctrl + Z)"></a>
+		<a id="redo" class="panelBtn" data-text="redo" title="Redo the next action (Ctrl + Shift + Z)"></a>
 	</div>
-	<div class="panel-menu">
-		<a id="undo" class="icon ico-undo panel-btn" title="Undo the previous action (Ctrl + Z)"></a
-		><a id="redo" class="icon ico-redo panel-btn" title="Redo the next action (Ctrl + Shift + Z)"></a>
-	</div>
-	<div id="history" class="panel-body nice-scrollbar"></div>
+	<div id="history" class="panelBody nice-scrollbar"></div>
 </div>
 <div data-panel="pan-patterns">
-	<div class="panel-title">
-		<span class="icon ico-synth"></span>
-		<span>synthesizers</span>
+	<div class="panelMenu">
+		<span class="panelTitle">synthesizers</span>
+		<a id="synthNew" class="panelBtn" data-text="new" title="Create a new synthesizer"></a>
 	</div>
-	<div class="panel-menu">
-		<a id="synthNew" class="icon ico-new panel-btn" title="Create a new synthesizer"></a>
-	</div>
-	<div id="patterns" class="panel-body nice-scrollbar"></div>
+	<div id="patterns" class="panelBody nice-scrollbar"></div>
 </div>
 <div data-panel="pan-maingrid">
 	<div id="controls" class="no-select">
 		<a tabindex="2" id="togglePlay" title="Switch grid focus" class="ctrl-item" href></a>
-		<button tabindex="3" id="play" class="ctrl-item ctrl-btn icon ico-play"></button>
-		<button tabindex="4" id="stop" class="ctrl-item ctrl-btn icon ico-stop"></button>
+		<button tabindex="3" id="play" class="ctrl-item ctrl-btn"></button>
+		<button tabindex="4" id="stop" class="ctrl-item ctrl-btn"></button>
 		<div id="clock" class="ctrl-item">
 			<div id="clockMin"></div>
 			<div id="clockSec"></div>
@@ -151,21 +143,18 @@
 		</div>
 		<button tabindex="5" id="render" class="ctrl-item ctrl-btn"></button>
 		<button tabindex="6" id="settings" class="ctrl-item ctrl-btn"></button>
-		<button tabindex="7" id="eatCookies" class="ctrl-item ctrl-btn">
-			<i class="icon"></i>
-			<span>accept our<br/>cookies</span>
-		</button>
-		<button tabindex="8" id="shortcuts" title="Shortcuts" class="ctrl-item ctrl-btn icon ico-keyboard"></button>
-		<a tabindex="9" id="help" title="Help" class="ctrl-item ctrl-btn icon ico-help"
+		<button tabindex="7" id="cookies" class="ctrl-item ctrl-btn">accept our<br/>cookies</button>
+		<button tabindex="8" id="shortcuts" title="Shortcuts" class="ctrl-item ctrl-btn"></button>
+		<a tabindex="9" id="help" title="Help" class="ctrl-item ctrl-btn"
 			target="_blank" rel="noopener" href="https://github.com/gridsound/daw/wiki/help"></a>
-		<button tabindex="10" id="about" title="About" class="ctrl-item ctrl-btn icon ico-rocket"></button>
+		<button tabindex="10" id="about" title="About" class="ctrl-item ctrl-btn"></button>
 	</div>
 	<div id="mainGridWrap"></div>
 </div>
 <div data-panel="pan-mixer"></div>
 <div data-panel="pan-synth">
-	<div id="synthMenu">
-		<span id="synthLabel">synthesizer</span>
+	<div class="panelMenu">
+		<span>synthesizer</span>
 		<button id="synthName"></button>
 		<span id="synthDestArrow"></span>
 		<span id="synthChanNameWrap">
@@ -179,8 +168,8 @@
 	</div>
 </div>
 <div data-panel="pan-pianoroll">
-	<div id="pianorollMenu">
-		<span id="pianorollLabel">pattern</span>
+	<div class="panelMenu">
+		<span>pattern</span>
 		<button id="pianorollName"></button>
 	</div>
 	<div id="keysGridWrap"></div>

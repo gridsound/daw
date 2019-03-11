@@ -1,11 +1,8 @@
 <div data-panel="pan-history">
-	<div class="panel-title">
-		<span class="icon ico-history"></span>
-		<span>history</span>
+	<div class="panelMenu">
+		<span class="panelTitle">history</span>
+		<a id="undo" class="panelBtn" data-text="undo" title="Undo the previous action (Ctrl + Z)"></a>
+		<a id="redo" class="panelBtn" data-text="redo" title="Redo the next action (Ctrl + Shift + Z)"></a>
 	</div>
-	<div class="panel-menu">
-		<a id="undo" class="icon ico-undo panel-btn" title="Undo the previous action (Ctrl + Z)"></a
-		><a id="redo" class="icon ico-redo panel-btn" title="Redo the next action (Ctrl + Shift + Z)"></a>
-	</div>
-	<div id="history" class="panel-body nice-scrollbar"></div>
+	<div id="history" class="panelBody nice-scrollbar"></div>
 </div>

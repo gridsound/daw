@@ -1,0 +1,109 @@
+#pan-leftside {
+	flex: none;
+	width: 220px;
+	min-width: 160px;
+	max-width: 300px;
+}
+#pan-cloud {
+	height: 160px;
+	min-height: calc( 69px + var( --cmp-height ) );
+}
+#pan-local {
+	height: 120px;
+	min-height: calc( 26px + var( --cmp-height ) );
+}
+#pan-history {
+	flex: none;
+	height: 24px;
+	min-height: 24px;
+}
+#pan-maingrid {
+	flex: none;
+	height: 215px;
+	min-height: 150px;
+}
+#pan-mixer {
+	height: 210px;
+	min-height: 20px;
+	max-height: 400px;
+}
+#pan-synth {
+	flex: none;
+	width: 300px;
+	min-width: 280px;
+	max-width: 340px;
+}
+
+/* ......................................................................... */
+#synthWrapper {
+	flex: 1;
+	position: relative;
+}
+#synthWrapper2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/* .......................................................................... */
+#pan-cloud .panelMenu,
+#pan-local .panelMenu {
+	--btn-color: #ff9;
+	color: #fff;
+	border: var( --pan-border );
+	border-width: 1px 0;
+	background-color: #444;
+}
+#pan-local .panelMenu {
+	border-top: 0;
+}
+#pan-synth .panelMenu,
+#pan-pianoroll .panelMenu {
+	position: relative;
+	padding: 0 6px;
+	height: 28px;
+	color: rgba( 255, 255, 255, .2 );
+	border-bottom: 0;
+	background-color: #444;
+}
+
+/* .......................................................................... */
+#pan-cloud .panelTitle::before { content: "\f0c2"; }
+#pan-local .panelTitle::before { content: "\f109"; }
+#pan-history .panelTitle::before { content: "\f1da"; }
+#pan-patterns .panelTitle::before { content: "\f001"; }
+
+#undo::before { content: "\f0e2"; }
+#redo::before { content: "\f01e"; }
+#synthNew::before { content: "\f067"; }
+#newCloudComposition::before { content: "\f067"; }
+#newLocalComposition::before { content: "\f067"; }
+#openLocalComposition::before { content: "\f07c"; }
+
+/* .......................................................................... */
+#mainGridWrap,
+#keysGridWrap,
+#synthOscs {
+	flex: 1;
+}
+
+.gsuiPianoroll,
+.gsuiPatternroll {
+	height: 100%;
+}
+.gsuiSynthesizer {
+	height: 400px;
+	max-height: 100%;
+}
+
+#mainGridWrap .gsuiTrack-row > div {
+	top: -1px;
+}
+
+.gsuiBeatlines {
+	transition: background-color .2s;
+}
+#mainGridWrap:not( .focus ) .gsuiBeatlines,
+#keysGridWrap:not( .focus ) .gsuiBeatlines {
+	filter: brightness( .9 );
+}

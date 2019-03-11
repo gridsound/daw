@@ -4,9 +4,9 @@ function UIcookieInit() {
 	const cookies = document.cookie;
 
 	if ( cookies.indexOf( "cookieAccepted" ) > -1 ) {
-		DOM.eatCookies.remove();
+		DOM.cookies.remove();
 	} else {
-		DOM.eatCookies.onclick = UIcookieClick;
+		DOM.cookies.onclick = UIcookieClick;
 	}
 
 	// Delete all the cookies if it's not only accepted.
@@ -34,7 +34,7 @@ function UIcookieClick() {
 	).then( b => {
 		if ( b ) {
 			document.cookie = "cookieAccepted";
-			DOM.eatCookies.remove();
+			DOM.cookies.remove();
 		}
 	} );
 	return false;

@@ -8,7 +8,7 @@
 }
 
 /* .ctrl-item */
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 .ctrl-item {
 	display: flex;
 	align-items: center;
@@ -28,7 +28,7 @@
 }
 
 /* .ctrl-btn */
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 .ctrl-btn {
 	border: 0;
 	font-size: 14px;
@@ -40,7 +40,7 @@
 }
 
 /* #togglePlay, #play, #stop */
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 #togglePlay {
 	flex-direction: column;
 	justify-content: space-between;
@@ -64,9 +64,13 @@
 #stop {
 	background-color: var( --ctrl-stop-bg );
 }
+#play::before,
+#stop::before {
+	font-family: "FontAwesome";
+}
 
 /* #bpm, #clock, #analyser */
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 #bpm,
 #clock {
 	padding: 0 8px;
@@ -100,67 +104,42 @@
 	border-radius: var( --ctrl-rad );
 }
 
-/* #render */
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 #render {
+	color: var( --ctrl-render-text );
+	font-size: 1.2em;
 	font-family: "FontAwesome";
 	background-color: var( --ctrl-render-bg );
 }
-#render::before {
-	content: "\f019";
-	font-size: 1.2em;
-	color: var( --ctrl-render-text );
-}
-
-/* #settings */
-/* -------------------------------------------------------------------------- */
 #settings {
 	margin-right: auto;
+	font-size: 1.2em;
 	font-family: "FontAwesome";
 	background-color: var( --ctrl-settings-bg );
 }
-#settings::before {
-	font-size: 1.2em;
-	content: "\f0ad";
-}
-
-/* #eatCookies */
-/* -------------------------------------------------------------------------- */
-#eatCookies {
+#cookies {
 	color: #444;
 	border: 0;
 	padding-left: 6px;
 	padding-right: 6px;
-	background-color: var( --ctrl-eatcookie-bg );
-}
-#eatCookies .icon {
-	width: auto;
-	margin-right: 6px;
-	font-size: 20px;
-}
-#eatCookies .icon::before {
-	content: "\f563";
-	font-family: "FontAwesome";
-}
-#eatCookies:hover .icon::before {
-	content: "\f564";
-}
-#eatCookies span {
 	font-size: 11px;
 	font-weight: bold;
+	background-color: var( --ctrl-eatcookie-bg );
 }
-
-/* #shortcuts */
-/* -------------------------------------------------------------------------- */
+#cookies::before {
+	content: "\f563";
+	font-size: 20px;
+	font-weight: normal;
+	font-family: "FontAwesome";
+	margin-right: 6px;
+}
 #help,
 #about,
 #shortcuts {
 	font-size: 21px;
+	font-family: "FontAwesome";
 	background-color: var( --ctrl-lightbtn-bg );
 }
-
-/* #about */
-/* -------------------------------------------------------------------------- */
 #about {
 	color: var( --ctrl-about-bg );
 }
@@ -168,3 +147,14 @@
 	color: #444;
 	background-color: var( --ctrl-about-bg );
 }
+
+/* .......................................................................... */
+#stop::before { content: "\f04d"; }
+#play::before { content: "\f04b"; }
+#help::before { content: "\f1cd"; }
+#about::before { content: "\f135"; }
+#render::before { content: "\f019"; }
+#settings::before { content: "\f0ad"; }
+#shortcuts::before { content: "\f11c"; }
+#play.playing::before { content: "\f04c"; }
+#cookies:hover::before { content: "\f564"; }

@@ -96,7 +96,7 @@
 	--cmp-text: #fff;
 	--cmp-height: 42px;
 	--cmp-text-size: 18px;
-	--cmp-save-bg: #f44d4d;
+	--cmp-save-bg: #ba5d5d;
 
 	/* history */
 	/* ..................................................................... */
@@ -139,7 +139,7 @@
 	--ctrl-render-bg: #ff9;
 	--ctrl-render-text: #444;
 	--ctrl-clock-text: #ddd;
-	--ctrl-settings-bg: #f44d4d;
+	--ctrl-settings-bg: #ba5d5d;
 	--ctrl-lightbtn-bg: rgba( 255, 255, 255, .1 );
 	--ctrl-eatcookie-bg: #ff9;
 	--ctrl-toggleplay-bg: #333;

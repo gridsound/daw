@@ -35,6 +35,7 @@ function UIdomInit() {
 	};
 	window.onresize = () => {
 		DOM[ "pan-rightside" ].onresizing();
+		DOM[ "pan-mixer" ].onresizing();
 	};
 	window.DOM = DOM;
 }

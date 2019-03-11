@@ -1,0 +1,80 @@
+.panel {
+	display: flex;
+	flex-direction: column;
+}
+
+/* .......................................................................... */
+.panelBody {
+	flex: 1;
+	overflow: auto;
+	position: relative;
+	background-color: #555;
+}
+
+/* .......................................................................... */
+.panelPlaceholder {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+	opacity: .4;
+}
+.panelPlaceholder:only-child {
+	display: flex;
+}
+
+/* .......................................................................... */
+.panelMenu {
+	--btn-color: #bbb;
+	display: flex;
+	box-sizing: border-box;
+	align-items: center;
+	min-height: 24px;
+	padding: 0 10px;
+	color: #222;
+	font-size: 12px;
+	font-weight: bold;
+	border-bottom: var( --pan-border );
+	background-color: #666;
+}
+
+/* .......................................................................... */
+.panelTitle {
+	padding-right: 6px;
+}
+.panelTitle::before {
+	margin-right: .4em;
+	font-weight: normal;
+	font-family: "FontAwesome";
+}
+
+/* .......................................................................... */
+.panelBtn {
+	display: inline-flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 6px;
+	color: var( --btn-color );
+	cursor: pointer;
+	transition: .5s;
+	transition-property: background-color;
+}
+.panelBtn:hover {
+	color: #505050;
+	background-color: var( --btn-color );
+}
+.panelBtn::after {
+	content: attr( data-text );
+	margin-left: .4em;
+}
+#pan-leftside.small .panelBtn::after {
+	display: none;
+}
+.panelBtn::before {
+	font-family: "FontAwesome";
+}

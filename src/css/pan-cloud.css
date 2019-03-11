@@ -1,13 +1,3 @@
-#pan-cloud {
-	height: 160px;
-	min-height: calc( 69px + var( --cmp-height ) );
-}
-#pan-local {
-	height: 120px;
-	min-height: calc( 26px + var( --cmp-height ) );
-}
-
-/* ......................................................................... */
 #header {
 	display: flex;
 	align-items: center;
@@ -88,59 +78,7 @@
 }
 
 /* ......................................................................... */
-.cmps-menu {
-	display: flex;
-	box-sizing: border-box;
-	align-items: center;
-	height: 24px;
-	padding: 0 10px;
-	font-size: 12px;
-	font-weight: bold;
-	border: var( --pan-border );
-	border-width: 1px 0;
-	color: #fff;
-	background-color: #444;
-}
-#pan-local .cmps-menu {
-	border-top: 0;
-}
-.cmps-menu span::before {
-	margin-right: .4em;
-	font-weight: normal;
-	font-family: "FontAwesome";
-}
-#pan-cloud .cmps-menu span::before { content: "\f0c2"; }
-#pan-local .cmps-menu span::before { content: "\f109"; }
-
-#app:not( .logged ) #cloudCmps .panel-placeholder span:first-child,
-#app.logged         #cloudCmps .panel-placeholder span:last-child {
-	display: none;
-}
-
-.cmps-btn {
-	display: inline-flex;
-	align-items: center;
-	height: 100%;
-	padding: 0 6px;
-	margin-left: 6px;
-	color: #ff9;
-	transition: .5s;
-	transition-property: background-color;
-}
-.cmps-btn:hover {
-	color: #505050;
-	background-color: #ff9;
-}
-.cmps-btn::before {
-	font-family: "FontAwesome";
-}
-#newCloudComposition::before { content: "\f067"; }
-#newLocalComposition::before { content: "\f067"; }
-#openLocalComposition::before { content: "\f07c"; }
-.cmps-btn::after {
-	content: attr( data-text );
-	margin-left: .4em;
-}
-#pan-leftside.small .cmps-btn::after {
+#app:not( .logged ) #cloudCmps .panelPlaceholder span:first-child,
+#app.logged         #cloudCmps .panelPlaceholder span:last-child {
 	display: none;
 }
