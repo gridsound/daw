@@ -38,14 +38,14 @@ function UIcontrolsInit() {
 			: DAW.compositionFocus( "-f" );
 		return false;
 	};
-	slider.oninput = v => DAW.destination.gain( v );
+	slider.oninput = v => DAW.destination.setGain( v );
 	slider.options( {
 		type: "linear-y",
 		min: 0,
 		max: 1.5,
 		step: .01,
 		scrollStep: .1,
-		value: DAW.env.def_appGain,
+		value: DAW.destination.getGain(),
 		startFrom: 0,
 	} );
 	DOM.appGainWrap.append( slider.rootElement );
