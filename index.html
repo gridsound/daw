@@ -425,7 +425,7 @@
 <div class="gsuiMixer" id="gsuiMixer-template">
 	<div class="gsuiMixer-panMain"></div>
 	<div class="gsuiMixer-panChannels">
-		<button class="gsuiMixer-panAdd"></button>
+		<button class="gsuiMixer-addChan"></button>
 	</div>
 </div>
 
@@ -563,16 +563,19 @@
 	<a class="gsuiOscillator-remove" title="Remove the oscillator"></a>
 </div>
 <div id="gsuiSynthesizer-template" class="gsuiSynthesizer">
-	<span class="gsuiSynthesizer-title">oscillators</span>
 	<div class="gsuiSynthesizer-head">
-		<div>#</div>
-		<div>wave</div>
-		<div>detune</div>
-		<div>pan</div>
-		<div>gain</div>
+		<span class="gsuiSynthesizer-title">oscillators</span>
+		<div class="gsuiSynthesizer-labels">
+			<div class="gsuiSynthesizer-label-no">#</div>
+			<div class="gsuiSynthesizer-label-wave">wave</div>
+			<div class="gsuiSynthesizer-label-attr">detune</div>
+			<div class="gsuiSynthesizer-label-attr">pan</div>
+			<div class="gsuiSynthesizer-label-attr">gain</div>
+		</div>
 	</div>
-	<div class="gsuiSynthesizer-oscList"></div>
-	<a class="gsuiSynthesizer-newOsc"></a>
+	<div class="gsuiSynthesizer-oscList">
+		<button class="gsuiSynthesizer-newOsc"></button>
+	</div>
 </div>
 <div id="gsuiPopup">
 	<div id="gsuiPopupWindow" tabindex="0">

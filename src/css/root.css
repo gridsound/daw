@@ -13,7 +13,8 @@
 	--gsuiPanels-extendColor: #222;
 
 	/* gsuiMixer */
-	/* ..................................................................... */
+	/* ...................................................................... */
+	--gsuiMixer-bg: #444;
 	--gsuiMixerChannel-bg: #555;
 	--gsuiMixerChannel-bg2: #5b5b5b;
 	--gsuiMixerChannel-color: #fff;
@@ -30,7 +31,7 @@
 	--gsuiMixerChannel-analyser-bg: #222;
 
 	/* gsuiTrack */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--gsuiTrack-bg: #444;
 	--gsuiTrack-bg-mute: #393939;
 	--gsuiTrack-color: #fff;
@@ -41,7 +42,7 @@
 	--gsuiTrack-borderBottom-color: rgba( 0, 0, 0, .25 );
 
 	/* gsuiBlocksManager */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--gsuiBlocksManager-grid-bg: #456168;
 	--gsuiBlocksManager-borderColor: #333;
 	--gsuiBlocksManager-side-bgColor: #555;
@@ -53,7 +54,7 @@
 	--gsuiBlocksManager-blockSelectedColor: rgba( 255, 136, 136, .8 );
 
 	/* gsuiTimeline */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--gsuiTimeline-bg: #222;
 	--gsuiTimeline-color: #fff;
 	--gsuiTimeline-number-font: 15px var( --font-number );
@@ -61,17 +62,32 @@
 	--gsuiTimeline-cursor-fill: #fdfd70;
 	--gsuiTimeline-loopBorder-bg: #fff;
 
+	/* gsuiSynthesizer */
+	/* ...................................................................... */
+	--gsuiSynthesizer-bg: #444;
+	--gsuiSynthesizer-color: #fff;
+	--gsuiSynthesizer-head-bg: #555;
+	--gsuiSynthesizer-head-height: 30px;
+
 	/* gsuiOscillator */
-	/* ..................................................................... */
+	/* ...................................................................... */
+	--gsuiOscillator-bg: #666;
 	--gsuiOscillator-font: 12px var( --font-default );
+	--gsuiOscillator-color: #fff;
+	--gsuiOscillator-slider-bg: #555;
 	--gsuiOscillator-number-font: 14px var( --font-number );
+	--gsuiOscillator-pan: #d9f;
+	--gsuiOscillator-gain: #ff9;
+	--gsuiOscillator-pan-a: #faa;
+	--gsuiOscillator-pan-b: #aaf;
+	--gsuiOscillator-detune: #fff;
 
 	/* gsuiSlider */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--gsuiSlider-lineRadius: 2px;
 
 	/* gsuiSliderGroup */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--gsuiSliderGroup-bg: #456168;
 	--gsuiSliderGroup-currentTime-color: #ff9;
 	--gsuiSliderGroup-slider-width: 6px;
@@ -81,7 +97,7 @@
 	--gsuiSliderGroup-loop-color: rgba( 0, 0, 0, .3 );
 
 	/* gsuiKeys */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--gsuiKeys-blackKey-colorA: #111;
 	--gsuiKeys-blackKey-colorB: #444;
 	--gsuiKeys-whiteKey-colorA: #888;
@@ -90,7 +106,7 @@
 	--gsuiKeys-activeKey-colorB: #7886bd;
 
 	/* cmp */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--cmp-cloud-bg: #4c71af;
 	--cmp-local-bg: #67a;
 	--cmp-text: #fff;
@@ -99,13 +115,13 @@
 	--cmp-save-bg: #ba5d5d;
 
 	/* history */
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--history-action-bg: #454750;
 	--history-action-text: #bbb;
 	--history-actionlight-bg: #67a;
 	--history-actionlightoff-bg: #1a1a1a;
 
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--synth-bg: #777;
 	--synth-text: #333;
 	--synth-namebtn-bg: #696;
@@ -116,7 +132,7 @@
 	--synth-patterns-bg: rgba( 0, 0, 0, .4 );
 	--synth-patterns-maxHeight: 250px;
 
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--pattern-bg: #334;
 	--pattern-text: #5ac;
 	--pattern-height: 64px;
@@ -126,7 +142,7 @@
 	--pattern-selected-text: #223;
 	--pattern-head-selected-bg: rgba( 255, 255, 255, .2 );
 
-	/* ..................................................................... */
+	/* ...................................................................... */
 	--ctrl-bg: #444;
 	--ctrl-rad: 2px;
 	--ctrl-height: 44px;
