@@ -7,7 +7,7 @@ function UImixerInit() {
 	UImixer.ondeleteChan = UImixerDeleteChan;
 	UImixer.onupdateChan = UImixerUpdateChan;
 	UImixer.onselectChan = UImixerSelectChan;
-	DOM[ "pan-mixer" ].append( UImixer.rootElement );
+	DOM[ "pan-channels" ].append( UImixer.rootElement );
 	UImixer.attached();
 	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
 	UImixer.onchange = obj => {

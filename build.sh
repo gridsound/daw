@@ -71,7 +71,7 @@ declare -a HTMLfiles=(
 	"src/html/pan-history.html"
 	"src/html/pan-patterns.html"
 	"src/html/pan-maingrid.html"
-	"src/html/pan-mixer.html"
+	# "src/html/pan-effects.html"
 	"src/html/pan-synth.html"
 	"src/html/pan-pianoroll.html"
 	"src/html/popup-auth.html"

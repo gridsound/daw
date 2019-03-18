@@ -27,6 +27,11 @@
 	min-height: 20px;
 	max-height: 400px;
 }
+#pan-channels {
+	width: 400px;
+	min-width: 100px;
+	/*max-width: 650px;*/
+}
 #pan-synth {
 	flex: none;
 	width: 300px;
