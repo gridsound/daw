@@ -243,6 +243,7 @@ buildProd() {
 	echo '<script>' >> $filename
 	echo '"use strict";' >> $filename
 	echo 'function lg( a ) { return console.log.apply( console, arguments ), a; }' >> $filename
+	cat "${JSfilesProd[@]}" | grep -v '"use strict";' >> $filename
 	cat "${JSfiles[@]}" | grep -v '"use strict";' >> $filename
 	echo '</script>' >> $filename
 	echo '</body>' >> $filename

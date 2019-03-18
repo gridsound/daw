@@ -3,7 +3,7 @@
 if ( navigator.serviceWorker &&
 	document.cookie.indexOf( "cookieAccepted" ) > -1
 ) {
-	navigator.serviceWorker.register( "serviceWorker.js", { scope: "/daw/" } )
+	navigator.serviceWorker.register( "serviceWorker.js" )
 		.then( reg => {
 			console.log( "Service worker " + (
 				reg.installing ? "installing" :
