@@ -21,48 +21,40 @@
 	--synth-bg: var( --synth-selected-bg );
 }
 
+/* .......................................................................... */
 .synth-head {
 	display: flex;
 	height: 20px;
 	line-height: 20px;
 	font-size: 12px;
 }
-.synth-head a {
+
+/* .......................................................................... */
+.synth-btn {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
 	overflow: hidden;
+	background: none;
 	opacity: .5;
 	transition: .1s;
 	transition-property: width, color, opacity;
 }
-.synth-head a:hover {
+.synth-btn:hover {
 	opacity: 1;
 }
-.synth:not( .synth-selected ) .synth-head a:hover {
+.synth:not( .synth-selected ) .synth-btn:hover {
 	color: var( --synth-namehover-text );
 }
-
-a.synth-name {
-	flex: 1;
-	opacity: 1;
-	overflow: hidden;
-	padding-left: 8px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	font-weight: bold;
-}
-.synth-name:empty::after {
-	content: "Untitled";
-	font-style: italic;
-	opacity: .8;
+.synth-btn::before {
+	font-size: 14px;
+	font-family: "FontAwesome";
 }
 
-.synth-hoverBtn {
-	width: 0;
-}
-.synth:hover .synth-hoverBtn {
-	width: 20px;
-}
-
+/* .......................................................................... */
 .synth-showBtn {
+	width: 16px;
 	background-color: var( --synth-showbtn-bg );
 }
 .synth-show .synth-showBtn {
@@ -70,13 +62,50 @@ a.synth-name {
 }
 .synth-showBtn::before {
 	display: block;
-	transition: .2s;
-	transition-property: transform;
+	content: "\f0da";
+	transition: .2s transform;
 }
 .synth-show .synth-showBtn::before {
 	transform: rotate( 90deg );
 }
 
+/* .......................................................................... */
+.synth-info {
+	flex: 1;
+	display: flex;
+	overflow: hidden;
+	padding-left: 8px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+.synth-name:empty::before {
+	content: "Untitled";
+	font-style: italic;
+	opacity: .8;
+}
+.synth-dest {
+	opacity: .7;
+}
+.synth-dest::before {
+	content: "\f356";
+	margin: 0 .4em;
+	font-family: "FontAwesome";
+}
+
+/* .......................................................................... */
+.synth-newPatternBtn,
+.synth-deleteBtn {
+	width: 0;
+}
+.synth:hover .synth-newPatternBtn,
+.synth:hover .synth-deleteBtn {
+	width: 20px;
+}
+.synth-newPatternBtn::before { content: "\f067"; }
+.synth-deleteBtn::before { content: "\f1f8"; }
+
+/* .......................................................................... */
 .synth-patterns {
 	flex: 1;
 	overflow: hidden;

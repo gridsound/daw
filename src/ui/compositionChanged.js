@@ -34,8 +34,8 @@ UIcompositionChanged.fn = new Map( [
 				UIsynths.delete( id );
 			} else if ( !prevObj.synths[ id ] ) {
 				UIsynthsAddSynth( id, obj );
-			} else if ( "name" in obj ) {
-				UIsynthsNameSynth( id, obj.name );
+			} else {
+				UIsynthsUpdateSynth( id, obj );
 			}
 		} );
 		if ( synOpened in synths ) {

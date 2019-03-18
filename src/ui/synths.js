@@ -7,7 +7,7 @@ function UIsynthsAddSynth( id, obj ) {
 
 	syn.dataset.id = id;
 	UIsynths.set( id, syn );
-	UIsynthsNameSynth( id, obj.name );
+	UIsynthsUpdateSynth( id, obj );
 	DOM.patterns.prepend( syn );
 }
 
@@ -15,8 +15,15 @@ function UIsynthsExpandSynth( id, b ) {
 	UIsynths.get( id ).classList.toggle( "synth-show", b );
 }
 
-function UIsynthsNameSynth( id, name ) {
-	UIsynths.get( id ).querySelector( ".synth-name" ).textContent = name;
+function UIsynthsUpdateSynth( id, obj ) {
+	const root = UIsynths.get( id );
+
+	if ( "name" in obj ) {
+		root.querySelector( ".synth-name" ).textContent = obj.name;
+	}
+	if ( "dest" in obj ) {
+		root.querySelector( ".synth-dest" ).textContent = DAW.get.channel( obj.dest ).name;
+	}
 }
 
 function UIsynthsInit() {
