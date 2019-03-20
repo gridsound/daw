@@ -40,8 +40,7 @@
 <link rel="stylesheet" href="src/css/popup.css"/>
 <link rel="stylesheet" href="src/css/panel.css"/>
 <link rel="stylesheet" href="src/css/panels.css"/>
-<link rel="stylesheet" href="src/css/pan-cloud.css"/>
-<link rel="stylesheet" href="src/css/pan-synth-pianoroll.css"/>
+<link rel="stylesheet" href="src/css/header.css"/>
 <link rel="stylesheet" href="src/css/cmp.css"/>
 <link rel="stylesheet" href="src/css/synth.css"/>
 <link rel="stylesheet" href="src/css/pattern.css"/>
@@ -157,11 +156,11 @@
 <div data-panel="pan-synth">
 	<div class="panelMenu">
 		<span>synthesizer</span>
-		<button id="synthName"></button>
+		<button id="synthName" class="panelDataBtn"></button>
 		<span id="synthDestArrow"></span>
 		<span id="synthChanNameWrap">
-			<button id="synthChanName"></button>
-			<label id="synthChanSelectLabel" for="synthChanSelect" tabindex="0"></label>
+			<button id="synthChanName" class="panelDataBtn"></button>
+			<label id="synthChanSelectLabel" class="panelDataBtn" for="synthChanSelect" tabindex="0"></label>
 			<select id="synthChanSelect" size="6" tabindex="0"></select>
 		</span>
 	</div>
@@ -172,7 +171,7 @@
 <div data-panel="pan-pianoroll">
 	<div class="panelMenu">
 		<span>pattern</span>
-		<button id="pianorollName"></button>
+		<button id="pianorollName" class="panelDataBtn"></button>
 	</div>
 	<div id="keysGridWrap"></div>
 	<div id="pianorollForbidden" class="no-select"></div>

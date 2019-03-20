@@ -54,6 +54,31 @@
 }
 
 /* .......................................................................... */
+.panelDataBtn {
+	margin: 0 6px;
+	padding: 2px 8px;
+	max-width: 110px;
+	border: 0;
+	color: #ddd;
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 3px;
+	font-size: 13px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	transition: filter .2s;
+}
+.panelDataBtn:empty::before {
+	content: "Untitled";
+	font-style: italic;
+}
+.panelDataBtn:hover {
+	color: #fff;
+	filter: brightness( 1.1 );
+}
+
+/* .......................................................................... */
 .panelBtn {
 	display: inline-flex;
 	align-items: center;
