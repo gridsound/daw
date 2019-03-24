@@ -21,50 +21,53 @@
 
 /* .......................................................................... */
 #userlink {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	width: 32px;
 	height: 32px;
+	margin-left: 10px;
+	border: 2px solid #222;
 	box-sizing: border-box;
 	border-radius: 4px;
-	background: no-repeat center;
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 }
-#userlink,
+#login,
 #logout {
+	overflow: hidden;
 	margin-left: 10px;
 	cursor: pointer;
+	color: inherit;
+	border: 0;
+	padding: 0;
 	font-size: 24px;
 	font-family: "FontAwesome";
 	opacity: .5;
+	background-color: transparent;
 	transition: .2s opacity;
 }
-#userlink.loading,
-#userlink:hover,
+#login.loading,
+#login:focus,
+#login:hover,
+#logout:focus,
 #logout:hover {
 	opacity: .8;
 }
-#userlink::before {
-	content: "\f2bd";
-}
-#app.logged #userlink {
-	opacity: 1;
-	border: 2px solid #222;
-}
-#app.logged #userlink::before {
-	content: "";
-}
-#app #userlink.loading::before {
-	content: "\f3f4";
-	display: inline-block;
-	animation: .7s infinite linear rotate360;
-}
-#app:not( .logged ) #logout {
+#app.logged #login,
+#app:not( .logged ) #logout,
+#app:not( .logged ) #userlink {
 	display: none;
 }
+#login::before,
 #logout::before {
-	content: "\f08b";
+	width: 1em;
+	display: inline-block;
+}
+#login::before { content: "\f2bd"; }
+#logout::before { content: "\f08b"; }
+#app.logging #login::before,
+#app.logging #logout::before {
+	content: "\f3f4";
+	animation: .7s infinite linear rotate360;
 }
 
 /* .......................................................................... */

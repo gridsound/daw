@@ -1,12 +1,12 @@
 "use strict";
 
 function UIauthInit() {
+	DOM.login.onclick = UIauthLogin;
 	DOM.logout.onclick = UIauthLogout;
-	DOM.userlink.onclick = UIauthLogin;
 }
 
 function UIauthLoading( b ) {
-	DOM.userlink.classList.toggle( "loading", b );
+	DOM.app.classList.toggle( "logging", b );
 }
 
 function UIauthLogout() {

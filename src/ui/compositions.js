@@ -78,7 +78,7 @@ function UIcompositionClick( e ) {
 
 		switch ( e.target.dataset.action ) {
 			case "save": UIcompositionClickSave(); break;
-			case "open": UIcompositionClickOpen( saveMode, id ); break;
+			case "open": UIcompositionClickOpen( saveMode, id ); e.preventDefault(); break;
 			case "json": UIcompositionClickJSONExport( saveMode, id, e ); break;
 			case "delete": UIcompositionClickDelete( saveMode, id ); break;
 		}
@@ -107,7 +107,7 @@ function UIcompositionLoading( cmp, loading ) {
 }
 
 function UIcompositionSavedStatus( cmp, saved ) {
-	UIcompositions.get( cmp ).root.classList.toggle( "cmp-notSaved", !saved );
+	UIcompositions.get( cmp ).root.classList.toggle( "cmp-saved", !!saved );
 	UItitle();
 }
 

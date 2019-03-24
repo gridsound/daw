@@ -83,12 +83,16 @@
 	display: inline-flex;
 	align-items: center;
 	height: 100%;
+	border: 0;
 	padding: 0 6px;
+	font: inherit;
 	color: var( --btn-color );
 	cursor: pointer;
+	background-color: transparent;
 	transition: .5s;
 	transition-property: background-color;
 }
+.panelBtn:focus,
 .panelBtn:hover {
 	color: #505050;
 	background-color: var( --btn-color );

@@ -1,11 +1,10 @@
 .cmp {
 	box-sizing: border-box;
 	display: flex;
-	height: var( --cmp-height );
-	line-height: var( --cmp-height );
-	font-size: var( --cmp-text-size );
 	color: var( --cmp-text );
-	cursor: pointer;
+	height: var( --cmp-height );
+	font-size: var( --cmp-text-size );
+	line-height: var( --cmp-height );
 	background-color: var( --cmp-local-bg );
 	filter: brightness( .9 );
 }
@@ -22,37 +21,50 @@
 	pointer-events: none;
 }
 
-/* -------------------------------------------------------------------------- */
-.cmp-save {
-	width: 0;
-	display: flex;
-	overflow: hidden;
-	align-items: center;
-	justify-content: center;
-	background-color: var( --cmp-save-bg );
-	transition: .2s;
-	transition-property: width, color, background-color;
+/* .......................................................................... */
+.cmp-btn {
+	border: 0;
+	padding: 0 8px;
+	color: inherit;
+	cursor: pointer;
+	font-size: 16px;
+	background: none;
 }
-.cmp-notSaved .cmp-save {
-	width: 30px;
-}
-.cmp-save::before {
-	content: "\f0c7";
+.cmp-btn::before {
 	font-family: "FontAwesome";
 }
-#pan-cloud .cmp-save::before {
-	content: "\f382";
+.cmp-btn-light {
+	opacity: .3;
+	transition: .2s opacity;
 }
-#pan-cloud .cmp-loading .cmp-save::before {
+.cmp-btn-light:focus,
+.cmp-btn-light:hover {
+	opacity: .8;
+}
+
+/* .......................................................................... */
+.cmp-save {
+	width: 32px;
+	background-color: var( --cmp-save-bg );
+	transition: .2s;
+	transition-property: margin-left, color, background-color, visibility;
+}
+.cmp-saved .cmp-save {
+	visibility: hidden;
+	margin-left: -32px;
+}
+.cmp-loading .cmp-save::before {
 	content: "\f3f4";
+	display: block;
 	animation: .7s infinite linear rotate360;
 }
+.cmp-save:focus,
 .cmp-save:hover {
 	color: var( --cmp-save-bg );
 	background-color: var( --cmp-text );
 }
 
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 .cmp-info {
 	flex: 1;
 	display: flex;
@@ -66,9 +78,11 @@
 	transition-property: padding-left, opacity;
 	opacity: .7;
 }
+.cmp-info:focus,
 .cmp-info:hover {
 	padding-left: 1em;
 }
+.cmp-info:focus,
 .cmp-info:hover,
 .cmp-loaded .cmp-info {
 	opacity: 1;
@@ -80,11 +94,11 @@
 	overflow: hidden;
 }
 
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 .cmp-name {
 	font-weight: bold;
 }
-.cmp-notSaved .cmp-name::before {
+.cmp:not( .cmp-saved ) .cmp-name::before {
 	content: "*";
 }
 .cmp-name:empty::after {
@@ -92,7 +106,7 @@
 	content: "Untitled";
 }
 
-/* -------------------------------------------------------------------------- */
+/* .......................................................................... */
 .cmp-duration {
 	margin-right: 10px;
 }
@@ -108,24 +122,11 @@
 	font-family: "FontAwesome";
 	text-align: center;
 }
-.cmp-bpm::before { content: "\f3fd"; }
-.cmp-duration::before { content: "\f017"; }
 
-/* -------------------------------------------------------------------------- */
-.cmp-btn {
-	padding: 0 8px;
-	opacity: .3;
-	font-size: 16px;
-	transition: .2s;
-	transition-property: opacity;
-}
-.cmp-btn:hover {
-	opacity: .8;
-}
-.cmp-btn::before {
-	content: "\f56e";
-	font-family: "FontAwesome";
-}
-.cmp-delete::before {
-	content: "\f308";
-}
+/* .......................................................................... */
+.cmp-bpm::before { content: "\f3fd"; }
+.cmp-save::before { content: "\f0c7"; }
+.cmp-duration::before { content: "\f017"; }
+#pan-cloud .cmp-save::before { content: "\f382"; }
+.cmp-btn[data-action="json"]::before { content: "\f56e"; }
+.cmp-btn[data-action="delete"]::before { content: "\f308"; }

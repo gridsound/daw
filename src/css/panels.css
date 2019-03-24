@@ -30,7 +30,7 @@
 #pan-channels {
 	width: 400px;
 	min-width: 100px;
-	/*max-width: 650px;*/
+	max-width: 650px;
 }
 #pan-synth {
 	flex: none;
