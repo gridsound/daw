@@ -3,6 +3,7 @@
 const UIsynth = new gsuiSynthesizer();
 
 function UIsynthInit() {
+	DOM.synthChanName.onclick = UIsynthChanNameOnClick;
 	DOM.synthChanSelect.onchange = UIsynthChanSelectOnChange;
 	UIsynth.oninput = ( id, attr, val ) => {
 		DAW.liveChangeSynth( DAW.get.synthOpened(), {
@@ -47,6 +48,10 @@ function UIsynthChange( obj ) {
 		DOM.synthChanName.textContent = DAW.get.channel( obj.dest ).name;
 	}
 	UIsynth.change( obj );
+}
+
+function UIsynthChanNameOnClick() {
+	UImixer.selectChan( DAW.get.synth( DAW.get.synthOpened() ).dest );
 }
 
 function UIsynthChanSelectOnChange( e ) {

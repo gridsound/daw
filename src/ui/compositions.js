@@ -99,6 +99,7 @@ function UIcompositionOpened( cmp ) {
 	par.prepend( html.root );
 	par.scrollTop = 0;
 	UIsynthsExpandSynth( cmp.synthOpened, true );
+	UIeffectsSelectChan( "main" );
 	UItitle();
 }
 

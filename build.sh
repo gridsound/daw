@@ -199,6 +199,7 @@ declare -a JSfiles=(
 	"src/ui/mixer.js"
 	"src/ui/cookie.js"
 	"src/ui/synths.js"
+	"src/ui/effects.js"
 	"src/ui/history.js"
 	"src/ui/patterns.js"
 	"src/ui/controls.js"

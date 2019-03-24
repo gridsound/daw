@@ -10,9 +10,7 @@ function UImixerInit() {
 	DOM[ "pan-channels" ].append( UImixer.rootElement );
 	UImixer.attached();
 	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
-	UImixer.onchange = obj => {
-		DAW.compositionChange( { channels: obj } );
-	};
+	UImixer.onchange = obj => DAW.compositionChange( { channels: obj } );
 }
 
 function UImixerAddChan( id, obj ) {
@@ -37,5 +35,5 @@ function UImixerUpdateChan( id, prop, val ) {
 }
 
 function UImixerSelectChan( id ) {
-	lg( "UImixerSelectChan", id );
+	UIeffectsSelectChan( id );
 }
