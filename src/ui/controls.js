@@ -1,5 +1,7 @@
 "use strict";
 
+const UIclock = new gsuiClock();
+
 function UIcontrolsCurrentTime( beat, focused ) {
 	( focused === "composition" ? UIpatternroll : UIpianoroll ).currentTime( beat );
 }
@@ -13,12 +15,6 @@ function UIcontrolsFocusOn( subject, b ) {
 		DOM.keysGridWrap.classList.toggle( "focus", !onCmp );
 		( onCmp ? UIpatternroll : UIpianoroll ).rootElement.focus();
 	}
-}
-
-function UIcontrolsClockUpdate( a, b, c ) {
-	DOM.clockMin.textContent = a;
-	DOM.clockSec.textContent = b;
-	DOM.clockMs.textContent  = c;
 }
 
 function UIcontrolsInit() {
@@ -49,5 +45,10 @@ function UIcontrolsInit() {
 		startFrom: 0,
 	} );
 	DOM.appGainWrap.append( slider.rootElement );
+	UIclock.rootElement.classList.add( "ctrl-item" );
+	DOM.stop.after( UIclock.rootElement );
+	UIclock.onchangeDisplay = mode => localStorage.setItem( "gsuiClock.display", mode );
+	UIclock.setDisplay( localStorage.getItem( "gsuiClock.display" ) || "second" );
+	UIclock.attached();
 	slider.attached();
 }

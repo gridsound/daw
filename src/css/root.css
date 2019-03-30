@@ -141,6 +141,10 @@
 	--pattern-head-selected-bg: rgba( 255, 255, 255, .2 );
 
 	/* ...................................................................... */
+	--gsuiClock-mili-fontSize: 14px;
+	--gsuiClock-mili-opacity: .5;
+
+	/* ...................................................................... */
 	--ctrl-bg: #444;
 	--ctrl-rad: 2px;
 	--ctrl-height: 44px;
@@ -157,5 +161,4 @@
 	--ctrl-lightbtn-bg: rgba( 255, 255, 255, .1 );
 	--ctrl-eatcookie-bg: #ff9;
 	--ctrl-toggleplay-bg: #333;
-	--ctrl-clock-unit-opacity: .5;
 }

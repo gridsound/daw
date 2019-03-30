@@ -14,7 +14,7 @@ gswaPeriodicWaves.forEach( ( w, name ) => (
 ) );
 
 window.DAW = DAW;
-window.VERSION = "0.20.1";
+window.VERSION = "0.20.2";
 
 UIdomInit();
 UIauthInit();
@@ -44,7 +44,7 @@ document.body.ondragover = () => false;
 
 DAW.cb.focusOn = UIcontrolsFocusOn;
 DAW.cb.currentTime = UIcontrolsCurrentTime;
-DAW.cb.clockUpdate = UIcontrolsClockUpdate;
+DAW.cb.clockUpdate = UIclock.setTime.bind( UIclock, "beat" );
 DAW.cb.compositionAdded = UIcompositionAdded;
 DAW.cb.compositionOpened = UIcompositionOpened;
 DAW.cb.compositionClosed = UIcompositionClosed;

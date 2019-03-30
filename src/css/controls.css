@@ -1,6 +1,5 @@
 #controls {
 	display: flex;
-	align-items: center;
 	box-sizing: border-box;
 	height: var( --ctrl-height );
 	padding: var( --ctrl-padding );
@@ -10,14 +9,8 @@
 /* .ctrl-item */
 /* .......................................................................... */
 .ctrl-item {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
 	color: var( --ctrl-play-text );
-	height: 100%;
 	border-radius: var( --ctrl-rad );
-	cursor: default;
 	transition: filter .1s;
 }
 .ctrl-item + .ctrl-item {
@@ -31,8 +24,14 @@
 /* .......................................................................... */
 .ctrl-btn {
 	border: 0;
+	cursor: pointer;
 	font-size: 14px;
 	min-width: calc( var( --ctrl-height ) - 2 * var( --ctrl-padding ) );
+}
+a.ctrl-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .ctrl-btn:active {
 	padding-top: 4px;
@@ -42,6 +41,7 @@
 /* #togglePlay, #play, #stop */
 /* .......................................................................... */
 #togglePlay {
+	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	min-width: 8px;
@@ -69,12 +69,11 @@
 	font-family: "FontAwesome";
 }
 
-/* #bpm, #clock, #analyser */
+/* .gsuiClock, #bpm, #analyser */
 /* .......................................................................... */
 #bpm,
-#clock {
+.gsuiClock {
 	padding: 0 8px;
-	align-items: baseline;
 	padding-top: 1px;
 	font-family: var( --font-number );
 	font-size: 28px;
@@ -82,12 +81,13 @@
 	color: var( --ctrl-clock-text );
 	background-color: var( --ctrl-clock-bg );
 }
-#clockSec::before { content: ":"; margin: 0 2px; }
-#clockMs::before { content: "."; margin: 0 3px; }
-#clockMs,
+#bpm {
+	display: flex;
+	align-items: baseline;
+}
 #bpmText::before {
-	font-size: 14px;
-	opacity: var( --ctrl-clock-unit-opacity );
+	font-size: var( --gsuiClock-mili-fontSize );
+	opacity: var( --gsuiClock-mili-opacity );
 }
 #bpmText::before {
 	content: "bpm";

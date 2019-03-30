@@ -28,6 +28,7 @@ declare -a HEADEREND=(
 )
 
 declare -a CSSfiles=(
+	"gs-ui-components/gsuiClock/gsuiClock.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
@@ -83,6 +84,7 @@ declare -a HTMLfiles=(
 	"src/html/synth.html"
 	"src/html/pattern.html"
 	"src/html/historyAction.html"
+	"gs-ui-components/gsuiClock/gsuiClock.html"
 	"gs-ui-components/gsuiMixer/gsuiMixer.html"
 	"gs-ui-components/gsuiDragline/gsuiDragline.html"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
@@ -157,6 +159,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/nameSynth.js"
 	"daw-core/src/actions/newSynth.js"
 
+	"gs-ui-components/gsuiClock/gsuiClock.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
 	"gs-ui-components/gsuiDragline/gsuiDragline.js"
 	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"

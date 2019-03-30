@@ -63,11 +63,13 @@ UIcompositionChanged.fn = new Map( [
 		const bPM = DAW.get.beatsPerMeasure(),
 			sPB = DAW.get.stepsPerBeat();
 
+		UIclock.setStepsPerBeat( sPB );
 		UIpatternroll.timeSignature( bPM, sPB );
 		UIpianoroll.timeSignature( bPM, sPB );
 		Object.keys( DAW.get.patterns() ).forEach( UIupdatePatternContent );
 	} ],
 	[ "bpm", function( { bpm } ) {
+		UIclock.setBPM( bpm );
 		DOM.bpmNumber.textContent =
 		UIcompositions.get( DAW.get.composition() ).bpm.textContent = bpm;
 	} ],

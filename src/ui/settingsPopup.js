@@ -9,9 +9,6 @@ function UIsettingsPopupShow() {
 	const cmp = DAW.get.composition(),
 		bpmTap = DOM.settingsBPMTap;
 
-	DOM[ DAW.env.clockSteps
-		? "settingsInputClockBeat"
-		: "settingsInputClockSec" ].checked = true;
 	DOM.settingsInputName.value = cmp.name;
 	DOM.settingsInputBPM.value = cmp.bpm;
 	DOM.settingsInputBeatsPM.value = cmp.beatsPerMeasure;
@@ -29,22 +26,16 @@ function UIsettingsPopupShow() {
 
 function UIsettingsPopupSubmit() {
 	const cmp = DAW.get.composition(),
-		envChange = {},
 		cmpChange = {},
 		bpm = +DOM.settingsInputBPM.value,
 		name = DOM.settingsInputName.value,
 		beatsPM = +DOM.settingsInputBeatsPM.value,
-		stepsPB = +DOM.settingsInputStepsPB.value,
-		clockDisplay = DOM[ DAW.env.clockSteps
-			? "settingsInputClockBeat"
-			: "settingsInputClockSec" ];
+		stepsPB = +DOM.settingsInputStepsPB.value;
 
-	if ( !clockDisplay.checked ) { envChange.clockSteps = !DAW.env.clockSteps; }
 	if ( bpm !== cmp.bpm ) { cmpChange.bpm = bpm; }
 	if ( name !== cmp.name ) { cmpChange.name = name; }
 	if ( stepsPB !== cmp.stepsPerBeat ) { cmpChange.stepsPerBeat = stepsPB; }
 	if ( beatsPM !== cmp.beatsPerMeasure ) { cmpChange.beatsPerMeasure = beatsPM; }
-	if ( !DAWCore.objectIsEmpty( envChange ) ) { DAW.envChange( envChange ); }
 	if ( !DAWCore.objectIsEmpty( cmpChange ) ) { DAW.compositionChange( cmpChange ); }
 }
 

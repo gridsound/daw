@@ -16,6 +16,7 @@
 <meta name="theme-color" content="#3a5158"/>
 <link rel="manifest" href="manifest.json"/>
 <link rel="shortcut icon" href="../assets/favicon.png"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiClock/gsuiClock.css"/>
 <link rel="stylesheet" href="gs-ui-components/gsuiMixer/gsuiMixer.css"/>
 <link rel="stylesheet" href="gs-ui-components/gsuiDragline/gsuiDragline.css"/>
 <link rel="stylesheet" href="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"/>
@@ -129,14 +130,9 @@
 </div>
 <div data-panel="pan-maingrid">
 	<div id="controls" class="no-select">
-		<a tabindex="2" id="togglePlay" title="Switch grid focus" class="ctrl-item" href></a>
-		<button tabindex="3" id="play" class="ctrl-item ctrl-btn"></button>
-		<button tabindex="4" id="stop" class="ctrl-item ctrl-btn"></button>
-		<div id="clock" class="ctrl-item">
-			<div id="clockMin"></div>
-			<div id="clockSec"></div>
-			<div id="clockMs"></div>
-		</div>
+		<a id="togglePlay" title="Switch grid focus" class="ctrl-item" href></a>
+		<button id="play" class="ctrl-item ctrl-btn"></button>
+		<button id="stop" class="ctrl-item ctrl-btn"></button>
 		<div id="bpm" class="ctrl-item">
 			<span id="bpmNumber"></span>
 			<span id="bpmText"></span>
@@ -144,13 +140,13 @@
 		<div id="analyser" class="ctrl-item">
 			<canvas id="analyserCanvas"></canvas>
 		</div>
-		<button tabindex="5" id="render" class="ctrl-item ctrl-btn"></button>
-		<button tabindex="6" id="settings" class="ctrl-item ctrl-btn"></button>
-		<button tabindex="7" id="cookies" class="ctrl-item ctrl-btn">accept our<br/>cookies</button>
-		<button tabindex="8" id="shortcuts" title="Shortcuts" class="ctrl-item ctrl-btn"></button>
-		<a tabindex="9" id="help" title="Help" class="ctrl-item ctrl-btn"
+		<button id="render" class="ctrl-item ctrl-btn"></button>
+		<button id="settings" class="ctrl-item ctrl-btn"></button>
+		<button id="cookies" class="ctrl-item ctrl-btn">accept our<br/>cookies</button>
+		<button id="shortcuts" title="Shortcuts" class="ctrl-item ctrl-btn"></button>
+		<a id="help" title="Help" class="ctrl-item ctrl-btn"
 			target="_blank" rel="noopener" href="https://github.com/gridsound/daw/wiki/help"></a>
-		<button tabindex="10" id="about" title="About" class="ctrl-item ctrl-btn"></button>
+		<button id="about" title="About" class="ctrl-item ctrl-btn"></button>
 	</div>
 	<div id="mainGridWrap"></div>
 </div>
@@ -264,16 +260,6 @@
 	</fieldset>
 </div>
 <div class="popup" id="settingsPopupContent" data-remove>
-	<fieldset>
-		<legend>GridSound's DAW settings</legend>
-		<div class="param">
-			<div class="param-title">Clock display</div>
-			<div class="param-values param-column">
-				<label><input id="settingsInputClockSec" name="clock" type="radio"/> min:sec.ms</label>
-				<label><input id="settingsInputClockBeat" name="clock" type="radio"/> beats:steps.milisteps</label>
-			</div>
-		</div>
-	</fieldset>
 	<fieldset>
 		<legend>Composition settings</legend>
 		<div class="param">
@@ -426,6 +412,19 @@
 <div class="historyAction" id="historyAction" data-remove data-remove-id>
 	<span class="historyAction-icon icon"></span>
 	<span class="historyAction-text"></span>
+</div>
+<div class="gsuiClock" id="gsuiClock-template">
+	<div class="gsuiClock-relative">
+		<div class="gsuiClock-absolute">
+			<div class="gsuiClock-a">0</div>
+			<div class="gsuiClock-b">00</div>
+			<div class="gsuiClock-c">000</div>
+		</div>
+	</div>
+	<button class="gsuiClock-modes">
+		<div class="gsuiClock-mode gsuiClock-beat"></div>
+		<div class="gsuiClock-mode gsuiClock-second"></div>
+	</button>
 </div>
 <div class="gsuiMixer" id="gsuiMixer-template">
 	<div class="gsuiMixer-panMain"></div>
@@ -705,6 +704,7 @@
 <script src="daw-core/src/actions/openSynth.js"></script>
 <script src="daw-core/src/actions/nameSynth.js"></script>
 <script src="daw-core/src/actions/newSynth.js"></script>
+<script src="gs-ui-components/gsuiClock/gsuiClock.js"></script>
 <script src="gs-ui-components/gsuiMixer/gsuiMixer.js"></script>
 <script src="gs-ui-components/gsuiDragline/gsuiDragline.js"></script>
 <script src="gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"></script>
