@@ -164,6 +164,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.js"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.js"
+	"gs-ui-components/gsuiKeys/gsuiKeys.keyboardToKey.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.js"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.js"
@@ -179,7 +180,6 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.draw.js"
-	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.calcFreqSizes.js"
 
 	"gs-webaudio-library/gswaMixer/gswaMixer.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"

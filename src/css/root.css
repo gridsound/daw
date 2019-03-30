@@ -32,14 +32,12 @@
 
 	/* gsuiTrack */
 	/* ...................................................................... */
-	--gsuiTrack-bg: #444;
-	--gsuiTrack-bg-mute: #393939;
+	--gsuiTrack-hsl-h: 0;
+	--gsuiTrack-hsl-s: 0%;
+	--gsuiTrack-hsl-l: 27%;
 	--gsuiTrack-color: #fff;
 	--gsuiTrack-toggle-bg: #ffa;
 	--gsuiTrack-toggleOff-bg: rgba( 255, 255, 255, .1 );
-	--gsuiTrack-row-bg-mute: rgba( 0, 0, 0, .25 );
-	--gsuiTrack-borderTop-color: rgba( 255, 255, 255, .07 );
-	--gsuiTrack-borderBottom-color: rgba( 0, 0, 0, .25 );
 
 	/* gsuiBlocksManager */
 	/* ...................................................................... */
@@ -98,12 +96,12 @@
 
 	/* gsuiKeys */
 	/* ...................................................................... */
-	--gsuiKeys-blackKey-colorA: #111;
-	--gsuiKeys-blackKey-colorB: #444;
-	--gsuiKeys-whiteKey-colorA: #888;
-	--gsuiKeys-whiteKey-colorB: #eee;
-	--gsuiKeys-activeKey-colorA: #353b52;
-	--gsuiKeys-activeKey-colorB: #7886bd;
+	--gsuiKeys-blackKey-gradA: #111;
+	--gsuiKeys-blackKey-gradB: #444;
+	--gsuiKeys-whiteKey-gradA: #888;
+	--gsuiKeys-whiteKey-gradB: #eee;
+	--gsuiKeys-activeKey-gradA: #353b52;
+	--gsuiKeys-activeKey-gradB: #7886bd;
 
 	/* cmp */
 	/* ...................................................................... */
