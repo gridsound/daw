@@ -35,7 +35,7 @@
 	box-sizing: border-box;
 	align-items: center;
 	min-height: 24px;
-	padding: 0 10px;
+	padding: 0 6px;
 	color: #222;
 	font-size: 12px;
 	font-weight: bold;
@@ -48,7 +48,9 @@
 	padding-right: 6px;
 }
 .panelTitle::before {
-	margin-right: .4em;
+	display: inline-block;
+	width: 14px;
+	margin-right: 6px;
 	font-weight: normal;
 	font-family: "FontAwesome";
 }

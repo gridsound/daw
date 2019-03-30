@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	height: var( --ctrl-height );
-	padding: 0 10px;
+	padding: 0 8px 0 6px;
 	border-bottom: 0;
 	color: #fff;
 	font-size: 28px;

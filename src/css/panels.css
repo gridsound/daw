@@ -94,7 +94,7 @@
 #pan-cloud .panelTitle::before { content: "\f0c2"; }
 #pan-local .panelTitle::before { content: "\f109"; }
 #pan-history .panelTitle::before { content: "\f1da"; }
-#pan-patterns .panelTitle::before { content: "\f001"; }
+#pan-patterns .panelTitle::before { content: "\f83e"; }
 
 #undo::before { content: "\f0e2"; }
 #redo::before { content: "\f01e"; }

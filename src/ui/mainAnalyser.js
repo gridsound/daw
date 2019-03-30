@@ -4,5 +4,5 @@ const UImainAnalyser = new gsuiSpectrum();
 
 function UImainAnalyserInit() {
 	UImainAnalyser.setCanvas( DOM.analyserCanvas );
-	UImainAnalyser.setResolution( 256 );
+	UImainAnalyser.setResolution( DAW.env.analyserFFTsize / 2 );
 }

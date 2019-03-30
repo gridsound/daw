@@ -54,7 +54,7 @@
 
 /* .......................................................................... */
 .synth-showBtn {
-	width: 16px;
+	width: 20px;
 	background-color: var( --synth-showbtn-bg );
 }
 .synth-show .synth-showBtn {
@@ -74,7 +74,7 @@
 	flex: 1;
 	display: flex;
 	overflow: hidden;
-	padding-left: 8px;
+	padding-left: 6px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-weight: bold;
