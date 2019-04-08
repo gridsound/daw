@@ -84,12 +84,10 @@
 	font-style: italic;
 	opacity: .8;
 }
-.synth-dest {
-	opacity: .7;
-}
 .synth-dest::before {
 	content: "\f356";
 	margin: 0 .4em;
+	font-weight: normal;
 	font-family: "FontAwesome";
 }
 

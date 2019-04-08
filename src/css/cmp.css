@@ -5,12 +5,11 @@
 	height: var( --cmp-height );
 	font-size: var( --cmp-text-size );
 	line-height: var( --cmp-height );
-	background-color: var( --cmp-local-bg );
+	background-color: var( --cmp-bg );
 	filter: brightness( .9 );
 }
-#pan-cloud .cmp {
-	background-color: var( --cmp-cloud-bg );
-}
+#pan-local .cmp { --cmp-bg: var( --cmp-local-bg ); }
+#pan-cloud .cmp { --cmp-bg: var( --cmp-cloud-bg ); }
 .cmp:nth-child( odd ) {
 	filter: brightness( .85 );
 }
@@ -36,6 +35,10 @@
 .cmp-btn-light {
 	opacity: .3;
 	transition: .2s opacity;
+}
+.cmp-btn:focus,
+.cmp-btn:hover {
+	font-weight: bold;
 }
 .cmp-btn-light:focus,
 .cmp-btn-light:hover {
@@ -68,6 +71,7 @@
 .cmp-info {
 	flex: 1;
 	display: flex;
+	align-items: flex-start;
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 6px 6px 4px;
@@ -77,10 +81,6 @@
 	transition: .2s;
 	transition-property: padding-left, opacity;
 	opacity: .7;
-}
-.cmp-info:focus,
-.cmp-info:hover {
-	padding-left: 1em;
 }
 .cmp-info:focus,
 .cmp-info:hover,
@@ -96,7 +96,17 @@
 
 /* .......................................................................... */
 .cmp-name {
+	max-width: 100%;
 	font-weight: bold;
+	border-radius: 2px;
+	transition: .2s;
+	transition-property: box-shadow, color, background-color;
+}
+.cmp-info:focus .cmp-name,
+.cmp-info:hover .cmp-name {
+	color: var( --cmp-bg );
+	box-shadow: 0 0 0 2px var( --cmp-text );
+	background-color: var( --cmp-text );
 }
 .cmp:not( .cmp-saved ) .cmp-name::before {
 	content: "*";

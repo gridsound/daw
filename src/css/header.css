@@ -50,6 +50,7 @@
 #login:hover,
 #logout:focus,
 #logout:hover {
+	font-weight: bold;
 	opacity: .8;
 }
 #app.logged #login,

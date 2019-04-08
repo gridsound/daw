@@ -11,11 +11,13 @@
 .ctrl-item {
 	color: var( --ctrl-play-text );
 	border-radius: var( --ctrl-rad );
-	transition: filter .1s;
+	transition: .1s;
+	transition-property: filter, background-color;
 }
 .ctrl-item + .ctrl-item {
 	margin-left: 6px;
 }
+.ctrl-item:focus,
 .ctrl-item:hover {
 	filter: brightness( 1.2 );
 }
@@ -32,6 +34,10 @@ a.ctrl-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.ctrl-btn:focus,
+.ctrl-btn:hover {
+	font-weight: bold;
 }
 .ctrl-btn:active {
 	padding-top: 4px;

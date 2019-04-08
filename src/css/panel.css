@@ -38,13 +38,13 @@
 	padding: 0 6px;
 	color: #222;
 	font-size: 12px;
-	font-weight: bold;
 	border-bottom: var( --pan-border );
 	background-color: #666;
 }
 
 /* .......................................................................... */
 .panelTitle {
+	font-weight: bold;
 	padding-right: 6px;
 }
 .panelTitle::before {
@@ -94,18 +94,21 @@
 	transition: .5s;
 	transition-property: background-color;
 }
+.panelBtn::before {
+	width: 1ch;
+	font-family: "FontAwesome";
+}
 .panelBtn:focus,
 .panelBtn:hover {
 	color: #505050;
+	font-weight: bold;
 	background-color: var( --btn-color );
 }
 .panelBtn::after {
 	content: attr( data-text );
+	font-weight: bold;
 	margin-left: .4em;
 }
 #pan-leftside.small .panelBtn::after {
 	display: none;
-}
-.panelBtn::before {
-	font-family: "FontAwesome";
 }

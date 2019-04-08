@@ -434,10 +434,10 @@
 </div>
 
 <div class="gsuiMixerChannel" id="gsuiMixerChannel-template">
-	<button class="gsuiMixerChannel-delete"></button>
 	<button class="gsuiMixerChannel-nameWrap">
 		<span class="gsuiMixerChannel-name"></span>
 	</button>
+	<button class="gsuiMixerChannel-delete" title="Remove the channel"></button>
 	<div class="gsuiMixerChannel-analyserWrap">
 		<canvas class="gsuiMixerChannel-analyser"></canvas>
 	</div>
@@ -542,8 +542,8 @@
 	<div class="gsuiOscillator-attr gsuiOscillator-type">
 		<div class="gsuiOscillator-typeWaves"></div>
 		<div class="gsuiOscillator-typeCtrl">
-			<a class="gsuiOscillator-typeLink gsuiOscillator-typePrev" title="Previous wave"></a>
-			<a class="gsuiOscillator-typeLink gsuiOscillator-typeNext" title="Next wave"></a>
+			<button class="gsuiOscillator-typeLink gsuiOscillator-typePrev" title="Previous wave"></button>
+			<button class="gsuiOscillator-typeLink gsuiOscillator-typeNext" title="Next wave"></button>
 			<select>
 				<option value="sine" class="gsuiOscillator-nativeWave">sine</option>
 				<option value="triangle" class="gsuiOscillator-nativeWave">triangle</option>
@@ -564,7 +564,7 @@
 		<div class="gsuiOscillator-sliderValue"></div>
 		<div class="gsuiOscillator-sliderWrap"></div>
 	</div>
-	<a class="gsuiOscillator-remove" title="Remove the oscillator"></a>
+	<button class="gsuiOscillator-remove" title="Remove the oscillator"></button>
 </div>
 <div id="gsuiSynthesizer-template" class="gsuiSynthesizer">
 	<div class="gsuiSynthesizer-head">
