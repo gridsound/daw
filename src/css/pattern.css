@@ -25,24 +25,21 @@
 .pattern-head {
 	box-sizing: border-box;
 	display: flex;
-	padding: 2px 4px;
-	font-size: 12px;
+	padding: 0 4px;
+	height: 22px;
+	line-height: 22px;
 	transition: inherit;
 	background-color: var( --pattern-head-bg );
 }
 .pattern-name {
+	font-size: 12px;
 	font-weight: bold;
+	margin-right: auto;
 }
 .pattern-name:empty::after {
 	content: "Untitled";
 	font-style: italic;
 	opacity: .5;
-}
-.pattern.selected .pattern-name::before {
-	content: "\f07c";
-	font-family: "FontAwesome";
-	font-weight: normal;
-	margin-right: .4em;
 }
 
 /* .......................................................................... */
@@ -61,19 +58,23 @@
 }
 
 /* .......................................................................... */
-.pattern a {
-	width: 0;
-	opacity: .5;
-	overflow: hidden;
-	transition: .1s;
-	transition-property: width, opacity;
-}
-.pattern-clone {
-	margin-left: auto;
-}
-.pattern:hover a {
+.pattern-btn {
 	width: 20px;
+	border: 0;
+	padding: 0;
+	opacity: .8;
+	color: inherit;
+	font-size: 14px;
+	cursor: pointer;
+	background: none;
+	transition: .1s opacity;
 }
-.pattern a:hover {
+.pattern-btn:hover {
 	opacity: 1;
+	font-weight: bold;
 }
+.pattern-btn::before {
+	font-family: "FontAwesome";
+}
+.pattern-btn[ data-action="clone" ]::before { content: "\f24d"; }
+.pattern-btn[ data-action="remove" ]::before { content: "\f00d"; }
