@@ -14,7 +14,7 @@ gswaPeriodicWaves.forEach( ( w, name ) => (
 ) );
 
 window.DAW = DAW;
-window.VERSION = "0.20.2";
+window.VERSION = "0.20.3";
 
 UIdomInit();
 UIauthInit();

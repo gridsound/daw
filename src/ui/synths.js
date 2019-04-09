@@ -60,7 +60,7 @@ function UIsynthsInit() {
 		}
 	};
 	DOM.patterns.addEventListener( "dblclick", e => {
-		if ( e.target.classList.contains( "synth-name" ) ) {
+		if ( e.target.classList.contains( "synth-info" ) ) {
 			UIsynthsExpandSynth( e.target.closest( ".synth" ).dataset.id );
 		}
 	} );

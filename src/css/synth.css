@@ -24,37 +24,37 @@
 /* .......................................................................... */
 .synth-head {
 	display: flex;
-	height: 20px;
-	line-height: 20px;
+	height: 24px;
+	line-height: 24px;
 	font-size: 12px;
 }
 
 /* .......................................................................... */
 .synth-btn {
+	width: 20px;
 	border: 0;
 	margin: 0;
 	padding: 0;
+	opacity: .6;
 	cursor: pointer;
-	overflow: hidden;
 	background: none;
-	opacity: .5;
+	font-size: 14px;
+	font-family: "FontAwesome";
 	transition: .1s;
-	transition-property: width, color, opacity;
+	transition-property: background-color, opacity;
 }
 .synth-btn:hover {
 	opacity: 1;
+	font-weight: bold;
 }
 .synth:not( .synth-selected ) .synth-btn:hover {
 	color: var( --synth-namehover-text );
 }
-.synth-btn::before {
-	font-size: 14px;
-	font-family: "FontAwesome";
-}
+.synth-btn[ data-action="newPattern" ]::before { content: "\f067"; }
+.synth-btn[ data-action="delete" ]::before { content: "\f00d"; }
 
 /* .......................................................................... */
 .synth-showBtn {
-	width: 20px;
 	background-color: var( --synth-showbtn-bg );
 }
 .synth-show .synth-showBtn {
@@ -79,6 +79,10 @@
 	text-overflow: ellipsis;
 	font-weight: bold;
 }
+.synth-name,
+.synth-dest {
+	pointer-events: none;
+}
 .synth-name:empty::before {
 	content: "Untitled";
 	font-style: italic;
@@ -90,18 +94,6 @@
 	font-weight: normal;
 	font-family: "FontAwesome";
 }
-
-/* .......................................................................... */
-.synth-newPatternBtn,
-.synth-deleteBtn {
-	width: 0;
-}
-.synth:hover .synth-newPatternBtn,
-.synth:hover .synth-deleteBtn {
-	width: 20px;
-}
-.synth-newPatternBtn::before { content: "\f067"; }
-.synth-deleteBtn::before { content: "\f1f8"; }
 
 /* .......................................................................... */
 .synth-patterns {

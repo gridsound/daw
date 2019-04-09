@@ -25,13 +25,13 @@
 .pattern-head {
 	box-sizing: border-box;
 	display: flex;
-	padding: 0 4px;
 	height: 22px;
 	line-height: 22px;
 	transition: inherit;
 	background-color: var( --pattern-head-bg );
 }
 .pattern-name {
+	padding: 0 8px;
 	font-size: 12px;
 	font-weight: bold;
 	margin-right: auto;
@@ -64,17 +64,15 @@
 	padding: 0;
 	opacity: .8;
 	color: inherit;
-	font-size: 14px;
 	cursor: pointer;
+	font-size: 14px;
+	font-family: "FontAwesome";
 	background: none;
 	transition: .1s opacity;
 }
 .pattern-btn:hover {
 	opacity: 1;
 	font-weight: bold;
-}
-.pattern-btn::before {
-	font-family: "FontAwesome";
 }
 .pattern-btn[ data-action="clone" ]::before { content: "\f24d"; }
 .pattern-btn[ data-action="remove" ]::before { content: "\f00d"; }
