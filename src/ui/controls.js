@@ -21,18 +21,11 @@ function UIcontrolsInit() {
 		type: "linear-y", min: 0, max: 1, step: .01, scrollStep: .1,
 		value: DAW.destination.getGain(),
 	} );
-	sliderTime.oninput = beat => {
-		UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( beat );
-	};
-	sliderTime.onchange = () => {
-		const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
-
-		( DAW.compositionFocused ? DAW.composition : DAW.pianoroll ).setCurrentTime( beat );
-	};
-	sliderTime.options( {
-		type: "linear-x", min: 0, max: 1, step: .01, scrollStep: .1,
-		value: 0,
-	} );
+	sliderTime.options( { type: "linear-x", step: .01 } );
+	sliderTime.oninput = UIcontrolsSliderTime_oninput;
+	sliderTime.onchange = UIcontrolsSliderTime_onchange;
+	sliderTime.oninputend = UIcontrolsSliderTime_oninputend;
+	sliderTime.oninputstart = UIcontrolsSliderTime_inputstart;
 	DOM.headGain.append( sliderGain.rootElement );
 	DOM.headCurrentTime.append( sliderTime.rootElement );
 	UIclock.rootElement.classList.add( "btnGroup", "btnMarge" );
@@ -44,8 +37,30 @@ function UIcontrolsInit() {
 	sliderTime.attached();
 }
 
+function UIcontrolsSliderTime_inputstart( beat ) {
+	DAW.cb.clockUpdate = null;
+	UIclock.setTime( "beat", beat );
+}
+function UIcontrolsSliderTime_oninputend( beat ) {
+	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
+}
+function UIcontrolsSliderTime_oninput( beat ) {
+	const beatRound = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( beat );
+
+	UIclock.setTime( "beat", beatRound );
+}
+function UIcontrolsSliderTime_onchange() {
+	const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
+
+	( DAW.compositionFocused ? DAW.composition : DAW.pianoroll ).setCurrentTime( beat );
+}
+
 function UIcontrolsBPMTap() {
 	DOM.tempoBPM.value = Math.floor( gswaBPMTap.tap() );
+}
+
+function UIcontrolsClockUpdate( beat ) {
+	UIclock.setTime( "beat", beat );
 }
 
 function UIcontrolsCurrentTime( beat, focused ) {

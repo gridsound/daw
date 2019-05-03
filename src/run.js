@@ -45,7 +45,7 @@ document.body.ondragover = () => false;
 
 DAW.cb.focusOn = UIcontrolsFocusOn;
 DAW.cb.currentTime = UIcontrolsCurrentTime;
-DAW.cb.clockUpdate = UIclock.setTime.bind( UIclock, "beat" );
+DAW.cb.clockUpdate = UIcontrolsClockUpdate;
 DAW.cb.compositionAdded = UIcompositionAdded;
 DAW.cb.compositionOpened = UIcompositionOpened;
 DAW.cb.compositionClosed = UIcompositionClosed;
