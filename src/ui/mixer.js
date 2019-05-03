@@ -3,14 +3,18 @@
 const UImixer = new gsuiMixer();
 
 function UImixerInit() {
+	const win = UIwindows.window( "mixer" );
+
 	UImixer.onaddChan = UImixerAddChan;
 	UImixer.ondeleteChan = UImixerDeleteChan;
 	UImixer.onupdateChan = UImixerUpdateChan;
 	UImixer.onselectChan = UImixerSelectChan;
-	DOM[ "pan-channels" ].append( UImixer.rootElement );
-	UImixer.attached();
 	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
 	UImixer.onchange = obj => DAW.compositionChange( { channels: obj } );
+	win.onresize =
+	win.onresizing = () => UImixer.resized();
+	win.append( UImixer.rootElement );
+	UImixer.attached();
 }
 
 function UImixerAddChan( id, obj ) {

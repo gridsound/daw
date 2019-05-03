@@ -43,6 +43,8 @@ UIcompositionChanged.fn = new Map( [
 		}
 	} ],
 	[ "patterns", function( { patterns }, prevObj ) {
+		const opened = DAW.get.patternOpened();
+
 		Object.entries( patterns ).forEach( ( [ id, obj ] ) => {
 			if ( !obj ) {
 				UIpatterns.get( id ).remove();
@@ -56,6 +58,9 @@ UIcompositionChanged.fn = new Map( [
 				if ( "name" in obj ) {
 					UInamePattern( id, obj.name );
 				}
+				if ( id === opened && "duration" in obj && !DAW.compositionFocused ) {
+					DOM.sliderTime.options( { max: obj.duration } );
+				}
 			}
 		} );
 	} ],
@@ -66,20 +71,28 @@ UIcompositionChanged.fn = new Map( [
 		UIclock.setStepsPerBeat( sPB );
 		UIpatternroll.timeSignature( bPM, sPB );
 		UIpianoroll.timeSignature( bPM, sPB );
+		DOM.beatsPerMeasure.textContent = bPM;
+		DOM.stepsPerBeat.textContent = sPB;
 		Object.keys( DAW.get.patterns() ).forEach( UIupdatePatternContent );
 	} ],
 	[ "bpm", function( { bpm } ) {
 		UIclock.setBPM( bpm );
-		DOM.bpmNumber.textContent =
+		DOM.bpm.textContent =
 		UIcompositions.get( DAW.get.composition() ).bpm.textContent = bpm;
 	} ],
 	[ "name", function( { name } ) {
 		UItitle();
+		DOM.headCmpName.textContent =
 		UIcompositions.get( DAW.get.composition() ).name.textContent = name;
 	} ],
 	[ "duration", function( { duration } ) {
-		UIcompositions.get( DAW.get.composition() ).duration.textContent =
-			DAWCore.time.beatToMinSec( duration, DAW.get.bpm() );
+		const dur = DAWCore.time.beatToMinSec( duration, DAW.get.bpm() );
+
+		if ( DAW.compositionFocused ) {
+			DOM.sliderTime.options( { max: duration } );
+		}
+		DOM.headCmpDur.textContent =
+		UIcompositions.get( DAW.get.composition() ).duration.textContent = dur;
 	} ],
 	[ "keys", function( { keys } ) {
 		const pats = Object.entries( DAW.get.patterns() ),
@@ -112,12 +125,13 @@ UIcompositionChanged.fn = new Map( [
 
 		UIpianoroll.empty();
 		DOM.pianorollName.textContent = pat ? pat.name : "";
-		DOM.pianorollForbidden.classList.toggle( "show", !pat );
+		DOM.pianorollForbidden.classList.toggle( "hidden", pat );
 		if ( pat ) {
 			el.classList.add( "selected" );
 			DAWCore.objectDeepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
 			UIpianoroll.resetKey();
 			UIpianoroll.scrollToKeys();
+			DOM.sliderTime.options( { max: pat.duration } );
 		} else {
 			UIpianoroll.setPxPerBeat( 90 );
 		}

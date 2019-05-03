@@ -1,0 +1,83 @@
+#channelName,
+#synthChanName,
+#synthChanSelectLabel { color: var( --windowBtn-chan-color ); }
+#pianorollName { color: var( --windowBtn-pattern-color ); }
+#synthName { color: var( --windowBtn-synth-color ); }
+#synthNew { color: var( --windowBtn-synth-color ); }
+#synthChanName {
+	margin: 0;
+	padding-right: 4px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+/* .......................................................................... */
+#synthNew::before { content: "\f067"; }
+#newCloudComposition::before { content: "\f067"; }
+#newLocalComposition::before { content: "\f067"; }
+#openLocalComposition::before { content: "\f07c"; }
+
+/* .......................................................................... */
+#synthDestArrow {
+	margin: 0 6px;
+	font-family: "FontAwesome";
+	pointer-events: none;
+}
+#synthDestArrow::before {
+	content: "\f356";
+}
+#synthChanNameWrap {
+	position: relative;
+	display: flex;
+}
+#synthChanSelectLabel {
+	width: 20px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+#synthChanSelectLabel::before {
+	content: "\f0d7";
+	font-size: 16px;
+	font-style: normal;
+	font-family: "FontAwesome";
+}
+#synthChanSelect {
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: .2s;
+	transition-property: visibility, opacity;
+}
+#synthChanSelectLabel:focus + #synthChanSelect,
+#synthChanSelect:focus {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* .......................................................................... */
+.gsuiPianoroll,
+.gsuiPatternroll,
+.gsuiSynthesizer {
+	height: 100%;
+}
+#patterns {
+	overflow: auto;
+	position: relative;
+	background-color: #555;
+}
+
+/* .......................................................................... */
+.gsuiBeatlines {
+	transition: filter .2s;
+}
+.gsuiBlocksManager:not( .selected ) .gsuiBeatlines {
+	filter: brightness( .9 );
+}

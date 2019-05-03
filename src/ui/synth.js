@@ -23,7 +23,7 @@ function UIsynthInit() {
 		gsuiPopup.prompt( "Rename synthesizer", "", name, "Rename" )
 			.then( name => DAW.nameSynth( id, name ) );
 	};
-	DOM.synthWrapper2.append( UIsynth.rootElement );
+	UIwindows.window( "synth" ).append( UIsynth.rootElement );
 	UIsynth.attached();
 }
 

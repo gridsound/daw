@@ -1,16 +1,32 @@
 "use strict";
 
 function UIdomInit() {
-	const DOM = {},
-		uipanels = new gsuiPanels( document.querySelector( "#app" ) );
-
-	uipanels.attached();
-	document.querySelectorAll( "div[data-panel]" ).forEach( pan => {
-		const div = document.getElementById( pan.dataset.panel );
-
-		div.append.apply( div, pan.children );
-		pan.remove();
+	window.DOM = UIdomFill();
+	// UIdomUnfocusButtons();
+	UIdomGetComments().forEach( com => {
+		com.replaceWith( DOM[ com.textContent.substr( 1 ) ] );
 	} );
+}
+
+function UIdomUnfocusButtons() {
+	document.body.addEventListener( "click", e => {
+		const foc = document.activeElement;
+
+		if ( foc && ( foc.nodeName === "BUTTON" || foc.nodeName === "A" ) ) {
+			const par = foc.closest( "[tabindex]" );
+
+			if ( par ) {
+				par.focus();
+			} else {
+				foc.blur();
+			}
+		}
+	}, false );
+}
+
+function UIdomFill() {
+	const DOM = {};
+
 	document.querySelectorAll( "[id]" ).forEach( el => {
 		DOM[ el.id ] = el;
 		if ( "remove" in el.dataset ) {
@@ -22,20 +38,28 @@ function UIdomInit() {
 			el.removeAttribute( "data-remove-id" );
 		}
 	} );
-	DOM.versionNumber.textContent = window.VERSION;
-	DOM[ "pan-rightside" ].onresizing = () => {
-		UIpatternroll.resized();
-		UIpianoroll.resized();
-	};
-	DOM[ "pan-pianoroll" ].onresizing = () => {
-		UIpianoroll.resized();
-	};
-	DOM[ "pan-mixer" ].onresizing = () => {
-		UImixer.resized();
-	};
-	window.onresize = () => {
-		DOM[ "pan-rightside" ].onresizing();
-		DOM[ "pan-mixer" ].onresizing();
-	};
-	window.DOM = DOM;
+	DOM.winBtnsMap = Array.from( DOM.winBtns.children )
+		.reduce( ( map, btn ) => {
+			map.set( btn.dataset.win, btn );
+			return map;
+		}, new Map() );
+	return DOM;
+}
+
+function UIdomGetComments() {
+	const list = [],
+		treeWalker = document.createTreeWalker(
+			document.body,
+			NodeFilter.SHOW_COMMENT,
+			{ acceptNode: com => com.textContent[ 0 ] === "#"
+				? NodeFilter.FILTER_ACCEPT
+				: NodeFilter.FILTER_REJECT
+			},
+			false
+		);
+
+	while ( treeWalker.nextNode() ) {
+		list.push( treeWalker.currentNode );
+	}
+	return list;
 }

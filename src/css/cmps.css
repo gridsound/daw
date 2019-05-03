@@ -1,0 +1,25 @@
+#cmps {
+	left: var( --head-gap );
+	width: 480px;
+	grid-template-columns: 1fr 1fr;
+	box-shadow: var( --head-cmps-boxShadow );
+}
+
+#cmpsLocalTitle::before { content: "\f109"; }
+#cmpsCloudTitle::before { content: "\f0c2"; }
+#cmps .windowBtn {
+	color: var( --windowBtn-newCmp-color );
+	margin-left: 8px;
+}
+
+#cmpsCloudList {
+	border-left: 1px solid var( --gsuiWindow-border-color );
+}
+
+#app:not( .logged ) #cmpsCloudList .placeholder span:first-child,
+#app.logged         #cmpsCloudList .placeholder span:last-child {
+	display: none;
+}
+#app:not( .logged ) #cloudNewCmp {
+	color: var( --gsuiWindow-head-bg );
+}

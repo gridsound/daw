@@ -4,5 +4,5 @@ function UIeffectsInit() {
 }
 
 function UIeffectsSelectChan( id ) {
-	lg(DAW.get.channel( id ).name)
+	// lg(DAW.get.channel( id ).name)
 }

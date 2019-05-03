@@ -15,15 +15,15 @@ const UIcompositions = Object.seal( {
 } );
 
 function UIcompositionsInit() {
-	DOM.cloudCmps.onclick =
-	DOM.localCmps.onclick = UIcompositionClick;
-	DOM.newCloudComposition.onclick = UIcompositionClickNewCloud;
-	DOM.newLocalComposition.onclick = UIcompositionClickNewLocal;
-	DOM.openLocalComposition.onclick = UIopenPopupShow;
-	DOM.cloudCmps.ondragstart = UIcompositionDragstart.bind( null, "cloud" );
-	DOM.localCmps.ondragstart = UIcompositionDragstart.bind( null, "local" );
-	DOM.cloudCmps.ondrop = UIcompositionCloudDrop;
-	DOM.localCmps.ondrop = UIcompositionLocalDrop;
+	DOM.cmpsCloudList.onclick =
+	DOM.cmpsLocalList.onclick = UIcompositionClick;
+	DOM.cloudNewCmp.onclick = UIcompositionClickNewCloud;
+	DOM.localNewCmp.onclick = UIcompositionClickNewLocal;
+	DOM.localOpenCmp.onclick = UIopenPopupShow;
+	DOM.cmpsCloudList.ondragstart = UIcompositionDragstart.bind( null, "cloud" );
+	DOM.cmpsLocalList.ondragstart = UIcompositionDragstart.bind( null, "local" );
+	DOM.cmpsCloudList.ondrop = UIcompositionCloudDrop;
+	DOM.cmpsLocalList.ondrop = UIcompositionLocalDrop;
 }
 
 function UIcompositionDragstart( from, e ) {
@@ -74,7 +74,7 @@ function UIcompositionClick( e ) {
 
 	if ( cmp ) {
 		const id = cmp.dataset.id,
-			saveMode = DOM.localCmps.contains( cmp ) ? "local" : "cloud";
+			saveMode = DOM.cmpsLocalList.contains( cmp ) ? "local" : "cloud";
 
 		switch ( e.target.dataset.action ) {
 			case "save": UIcompositionClickSave(); break;
@@ -98,16 +98,19 @@ function UIcompositionOpened( cmp ) {
 	html.root.classList.add( "cmp-loaded" );
 	par.prepend( html.root );
 	par.scrollTop = 0;
+	DOM.headCmp.dataset.saveMode = cmp.options.saveMode;
 	UIsynthsExpandSynth( cmp.synthOpened, true );
 	UIeffectsSelectChan( "main" );
 	UItitle();
 }
 
 function UIcompositionLoading( cmp, loading ) {
+	DOM.headCmp.classList.toggle( "cmp-loading", loading );
 	UIcompositions.get( cmp ).root.classList.toggle( "cmp-loading", loading );
 }
 
 function UIcompositionSavedStatus( cmp, saved ) {
+	DOM.headCmp.classList.toggle( "cmp-saved", !!saved );
 	UIcompositions.get( cmp ).root.classList.toggle( "cmp-saved", !!saved );
 	UItitle();
 }
@@ -139,8 +142,8 @@ function UIcompositionAdded( cmp ) {
 		UIcompositionSetInfo( html, cmp );
 		UIcompositions.set( cmp, html );
 		( cmp.options.saveMode === "local"
-			? DOM.localCmps
-			: DOM.cloudCmps ).append( root );
+			? DOM.cmpsLocalList
+			: DOM.cmpsCloudList ).append( root );
 	}
 }
 
@@ -167,7 +170,7 @@ function UIcompositionClosed( cmp ) {
 	UIpianoroll.loop( false );
 	DOM.synthName.textContent = "";
 	DOM.pianorollName.textContent = "";
-	DOM.pianorollForbidden.classList.remove( "show" );
+	DOM.pianorollForbidden.classList.add( "hidden" );
 	UIsynths.forEach( syn => syn.remove() );
 	UIsynths.clear();
 	UIpatterns.clear();

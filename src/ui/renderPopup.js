@@ -1,7 +1,7 @@
 "use strict";
 
 function UIrenderPopupInit() {
-	DOM.render.onclick = UIrenderPopupShow;
+	DOM.headExport.onclick = UIrenderPopupShow;
 	DOM.renderBtn.onclick = UIrenderPopupRender;
 }
 

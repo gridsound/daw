@@ -19,13 +19,14 @@
 }
 .synth-selected {
 	--synth-bg: var( --synth-selected-bg );
+	--synth-text: var( --synth-selected-text );
 }
 
 /* .......................................................................... */
 .synth-head {
 	display: flex;
-	height: 24px;
-	line-height: 24px;
+	height: var( --synth-head-height );
+	line-height: var( --synth-head-height );
 	font-size: 12px;
 }
 
@@ -36,6 +37,7 @@
 	margin: 0;
 	padding: 0;
 	opacity: .6;
+	color: inherit;
 	cursor: pointer;
 	background: none;
 	font-size: 14px;

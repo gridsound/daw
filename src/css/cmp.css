@@ -8,8 +8,8 @@
 	background-color: var( --cmp-bg );
 	filter: brightness( .9 );
 }
-#pan-local .cmp { --cmp-bg: var( --cmp-local-bg ); }
-#pan-cloud .cmp { --cmp-bg: var( --cmp-cloud-bg ); }
+#cmpsLocalList .cmp { --cmp-bg: var( --cmp-local-bg ); }
+#cmpsCloudList .cmp { --cmp-bg: var( --cmp-cloud-bg ); }
 .cmp:nth-child( odd ) {
 	filter: brightness( .85 );
 }
@@ -135,8 +135,9 @@
 
 /* .......................................................................... */
 .cmp-bpm::before { content: "\f3fd"; }
-.cmp-save::before { content: "\f0c7"; }
+.cmp-save::before { content: "\f0c7"; font-weight: bold; }
 .cmp-duration::before { content: "\f017"; }
-#pan-cloud .cmp-save::before { content: "\f382"; }
+#headCmp[data-save-mode="cloud"] .cmp-save::before,
+#cmpsCloudList .cmp-save::before { content: "\f382"; }
 .cmp-btn[data-action="json"]::before { content: "\f56e"; }
 .cmp-btn[data-action="delete"]::before { content: "\f308"; }

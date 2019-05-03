@@ -1,7 +1,7 @@
 "use strict";
 
 function UIaboutPopupInit() {
-	DOM.about.onclick = UIaboutPopupShow;
+	DOM.helpAbout.onclick = UIaboutPopupShow;
 	DOM.versionCheck.onclick = UIaboutPopupVersionCheck;
 }
 

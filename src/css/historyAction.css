@@ -2,11 +2,11 @@
 	display: flex;
 	box-sizing: border-box;
 	align-items: center;
-	cursor: default;
-	height: 28px;
-	padding-right: .4em;
+	cursor: pointer;
+	height: 30px;
+	padding: 0 6px;
 	color: var( --history-action-text );
-	font-size: 13px;
+	font-size: 14px;
 	font-family: var( --font-monospace );
 	background-color: var( --history-action-bg );
 	transition: filter .2s;
@@ -19,19 +19,22 @@
 .historyAction::before {
 	content: "";
 	display: block;
-	align-self: flex-start;
-	width: 4px;
-	height: calc( 100% - 1px );
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
 	transition: inherit;
 	background-color: var( --history-actionlight-bg );
 }
-.historyAction-undone::before {
+.historyAction-undone:not( :hover )::before {
 	background-color: var( --history-actionlightoff-bg );
 }
 
 /* -------------------------------------------------------------------------- */
 .historyAction-icon {
-	margin: 0 .4em;
+	margin: 0 6px;
+}
+.historyAction:hover .historyAction-icon::before {
+	font-weight: bold;
 }
 .historyAction-text {
 	flex: 1;
@@ -41,7 +44,7 @@
 	transition-duration: inherit;
 	transition-property: opacity;
 }
-.historyAction-undone:not(:hover) .historyAction-icon,
-.historyAction-undone:not(:hover) .historyAction-text {
-	opacity: .5;
+.historyAction-undone .historyAction-icon,
+.historyAction-undone .historyAction-text {
+	opacity: .6;
 }

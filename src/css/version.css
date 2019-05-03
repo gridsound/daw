@@ -2,7 +2,7 @@
 	font-size: 18px;
 }
 
-#versionNumber {
+#versionNum {
 	opacity: .8;
 	font-family: var( --font-number );
 }
@@ -29,10 +29,10 @@
 }
 
 /* -------------------------------------------------------------------------- */
-#version.searching #versionNumber::after { content: "\f3f4"; animation: .7s linear infinite rotate360; }
-#version.ko #versionNumber::after { content: "\f071"; }
-#version.ok #versionNumber::after { content: "\f00c"; }
-#version #versionNumber::after {
+#version.searching #versionNum::after { content: "\f3f4"; animation: .7s linear infinite rotate360; }
+#version.ko #versionNum::after { content: "\f071"; }
+#version.ok #versionNum::after { content: "\f00c"; }
+#version #versionNum::after {
 	display: inline-block;
 	font-size: 16px;
 	font-weight: normal;

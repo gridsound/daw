@@ -9,8 +9,10 @@
 	margin-top: calc( var( --pattern-height ) * -1 );
 	border-radius: 4px 0 0 4px;
 	background-color: var( --pattern-bg );
-	transition: .3s;
-	transition-property: margin-top, margin-bottom;
+	transition:
+		margin-top .3s,
+		margin-bottom .3s,
+		background-color .1s;
 }
 .synth-show .pattern {
 	margin: 4px 0;

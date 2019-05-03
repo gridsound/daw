@@ -62,17 +62,17 @@ function UIauthLoginThen( me ) {
 	const opt = { saveMode: "cloud" };
 
 	DOM.app.classList.add( "logged" );
-	DOM.userlink.href = `https://gridsound.com/#/u/${ me.user.username }`;
-	DOM.userlink.style.backgroundImage = `url("${ me.user.avatar }")`;
+	DOM.headUser.href = `https://gridsound.com/#/u/${ me.user.username }`;
+	DOM.headUser.style.backgroundImage = `url("${ me.user.avatar }")`;
 	me.compositions.forEach( cmp => DAW.addComposition( cmp.data, opt ) );
 	return me;
 }
 
 function UIauthLogoutThen() {
 	DOM.app.classList.remove( "logged" );
-	DOM.userlink.removeAttribute( "href" );
-	DOM.userlink.style.backgroundImage = "";
-	Array.from( DOM.cloudCmps.children )
+	DOM.headUser.removeAttribute( "href" );
+	DOM.headUser.style.backgroundImage = "";
+	Array.from( DOM.cmpsCloudList.children )
 		.forEach( el => DAW.deleteComposition( "cloud", el.dataset.id ) );
 	if ( !DAW.get.id() ) {
 		UIcompositionClickNewLocal();

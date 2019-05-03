@@ -1,0 +1,41 @@
+.headDropdown {
+	position: absolute;
+	overflow: hidden;
+	display: grid;
+	height: 320px;
+	grid-template-rows: 32px 1fr;
+	box-sizing: border-box;
+	top: calc( 100% + var( --head-gap ) );
+	z-index: 1;
+	border: 2px solid var( --gsuiWindow-border-color );
+	border-radius: 4px;
+	transition: .2s;
+	transition-property: opacity, visibility;
+}
+.headDropdown:focus-within {
+	z-index: 2;
+}
+.headDropdown-btn:not( :focus ) + .headDropdown:not( :focus-within ) {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.headDropdown-head {
+	display: flex;
+	align-items: center;
+	color: #222;
+	font-size: 14px;
+	background-color: var( --gsuiWindow-head-bg );
+}
+.headDropdown-head::before {
+	margin: 0 .5em;
+	font-family: "FontAwesome";
+}
+.headDropdown-title {
+	font-weight: bold;
+}
+
+.headDropdown-list {
+	overflow: auto;
+	background-color: #444;
+}

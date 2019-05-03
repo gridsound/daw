@@ -1,0 +1,62 @@
+<div id="head">
+	<div id="header">
+		<span id="title" data-text="GridSound" data-text-s="GS"></span>
+		<a class="btn btnLarge headBtn" href id="headUser" title="Cloud profile" target="_blank" rel="noopener"></a>
+		<button class="btn btnLarge headBtn btnIcon btnIconLarge" id="login" title="Login to GridSound"></button>
+		<button class="btn btnLarge headBtn btnIcon btnIconLarge" id="logout" title="Logout"></button>
+		<div id="headCmps">
+			<button class="btn btnLarge headBtn btnIcon headDropdown-btn" id="cmpsBtn" title="Create cloud/local compositions"></button>
+			<!--#cmps-->
+		</div>
+	</div>
+	<div id="headCmp">
+		<button id="headCmpSave" class="btn cmp-save" title="Save composition"></button>
+		<button id="headCmpInfo" class="btn" title="Edit composition's title">
+			<span id="headCmpName"></span>
+			<span id="headCmpHover"></span>
+			<span id="headCmpDur"></span>
+		</button>
+	</div>
+	<div id="ctrlA">
+		<div id="headGain" class="btnMarge" title="Main app volume (this will not affect the rendering)"></div>
+		<div id="headPlay" class="btnGroup btnMarge">
+			<button class="playBtn btn" id="playToggle" data-dir="up" title="Toggle focus between the composition and piano windows"><span></span><span></span></button>
+			<button class="playBtn btn btnIcon btnLarge" id="play"></button>
+			<button class="playBtn btn btnIcon btnLarge" id="stop"></button>
+		</div>
+		<button id="headTempo" class="btn btnMarge" title="Edit the time signature and BPM">
+			<div id="timeSignature">
+				<span id="beatsPerMeasure"></span>
+				<span id="stepsPerBeat"></span>
+			</div>
+			<div id="bpm"></div>
+		</button>
+	</div>
+	<div id="ctrlB">
+		<div id="headHist" class="btnGroup btnMarge">
+			<button class="histBtn btn btnIcon btnLarge" id="undo" title="Undo the previous action"></button>
+			<button class="histBtn btn btnIcon btnLarge" id="redo" title="Redo the last action"></button>
+			<button class="histBtn btn btnIcon headDropdown-btn" id="undoMore" title="Show the actions list"></button>
+			<!--#history-->
+		</div>
+		<canvas id="headAnalyser" class="btnMarge"></canvas>
+		<button id="headExport" class="btn btnMarge btnIcon btnLarge btnBg" title="Export the composition"></button>
+	</div>
+	<div id="headCurrentTime"></div>
+	<div id="winBtns">
+		<button class="btn btnMarge winBtn" data-win="blocks" data-text="blocks" title="Open/close the blocks window"></button>
+		<button class="btn btnMarge winBtn" data-win="mixer" data-text="mixer" title="Open/close the mixer window"></button>
+		<button class="btn btnMarge winBtn" data-win="synth" data-text="synth" title="Open/close the synthesizer window"></button>
+		<button class="btn btnMarge winBtn" data-win="main" data-text="composition" title="Open/close the composition window"></button>
+		<button class="btn btnMarge winBtn" data-win="piano" data-text="pianoroll" title="Open/close the piano window"></button>
+	</div>
+	<div id="headHelp">
+		<button class="btn btnMarge btnLarge btnBg btnIcon" id="cookies" title="Cookies ?"></button>
+		<button class="btn btnMarge btnLarge btnBg btnIcon" id="helpKeyboardShortcuts" title="List of keyboard shortcuts"></button>
+		<a      class="btn btnMarge btnLarge btnBg btnIcon" id="help" title="Open the Help page" href="https://github.com/gridsound/daw/wiki/help" target="_blank" rel="noopener"></a>
+		<button class="btn btnMarge btnLarge btnBg btnIcon" id="helpAbout" title="About GridSound"></button>
+	</div>
+	<div id="headVersion">
+		<a id="headVersionNum" title="Read the changelog (what is new?)" href="https://github.com/gridsound/daw/wiki/changelog" target="_blank" rel="noopener"></a>
+	</div>
+</div>

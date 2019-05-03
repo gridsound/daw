@@ -1,0 +1,422 @@
+#head {
+	position: relative;
+	display: grid;
+	z-index: 1000; /* 1. */
+	color: #ddd;
+	font-size: 16px;
+	padding: var( --head-gap );
+	grid-gap: var( --head-gap );
+	grid-template:
+		"header ctrlA       ctrlB       .   headHelp  " var( --head-heightA )
+		"cmp    currentTime winBtns     .   headVersion" var( --head-heightB )
+		/260px  min-content min-content 1fr min-content;
+	background-color: var( --head-bg );
+	border-bottom: var( --head-border );
+}
+
+/* .......................................................................... */
+a.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.btn {
+	border: 0;
+	padding: 0;
+	color: inherit;
+	cursor: pointer;
+	font-size: inherit;
+	font-family: inherit;
+	border-radius: 4px;
+	background: none;
+	transition: var( --head-hover-dur );
+	transition-property: color, opacity, background-color;
+}
+.btnMarge + .btnMarge {
+	margin-left: var( --head-gap );
+}
+.btnIcon {
+	font-family: "FontAwesome";
+}
+.btn:focus {
+	z-index: 1;
+	position: relative;
+}
+.btnIcon:focus,
+.btnIcon:hover {
+	font-weight: bold;
+	opacity: 1;
+}
+.btnBg {
+	background-color: rgba( 255, 255, 255, .1 );
+}
+.btnBg:focus,
+.btnBg:hover {
+	background-color: rgba( 255, 255, 255, .2 );
+}
+.btnLarge {
+	width: var( --head-heightA );
+	min-width: var( --head-heightA );
+}
+.btnIconLarge {
+	font-size: calc( var( --head-heightA ) - 8px );
+}
+
+/* .......................................................................... */
+.btnGroup {
+	overflow: hidden;
+	border-radius: 4px;
+}
+.btnGroup .btn {
+	margin-left: 0;
+	border-radius: 0;
+	transition: opacity var( --head-hover-dur );
+	transition: color var( --head-hover-dur );
+}
+.btnGroup .btn:hover {
+	color: #fff;
+}
+
+/* .......................................................................... */
+#header {
+	grid-area: header;
+	display: flex;
+}
+#title {
+	align-self: center;
+	font-size: 28px;
+	font-family: var( --font-oswald );
+	margin-right: 4px;
+}
+#title::before {
+	content: attr( data-text );
+}
+#headUser {
+	border: 2px solid #222;
+	box-sizing: border-box;
+	margin-left: var( --head-gap );
+	background-size: cover;
+}
+#app.logged #login,
+#app:not( .logged ) #logout,
+#app:not( .logged ) #headUser {
+	display: none;
+}
+#login,
+#logout {
+	margin-left: 4px;
+	opacity: .7;
+}
+#login::before,
+#logout::before {
+	width: 1em;
+	display: inline-block;
+}
+#login::before { content: "\f2bd"; }
+#logout::before { content: "\f08b"; }
+#app.logging #login::before,
+#app.logging #logout::before {
+	content: "\f3f4";
+	animation: .7s infinite linear rotate360;
+}
+
+/* .......................................................................... */
+#cmpsBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	min-width: 38px;
+	margin-left: 4px;
+	color: var( --head-cmps-btn );
+}
+#cmpsBtn::before {
+	content: "\f001";
+}
+#cmpsBtn::after {
+	margin-left: 4px;
+	content: "\f301";
+	font-size: 12px;
+	font-weight: bold;
+}
+#cmpsBtn:focus,
+#cmpsBtn:hover {
+	color: var( --head-bg );
+	background-color: var( --head-cmps-btn );
+}
+
+/* .......................................................................... */
+#headCmp {
+	grid-area: cmp;
+	display: flex;
+	overflow: hidden;
+	border-radius: 4px;
+	line-height: var( --head-heightB );
+	background-color: var( --cmp-local-bg );
+}
+#headCmpSave {
+	border-radius: 0;
+	font-family: "FontAwesome";
+}
+#headCmpInfo {
+	flex: 1;
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	padding: 0 4px;
+	font-size: 14px;
+}
+#headCmpName {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+#headCmpName::before {
+	display: none;
+	margin-right: .3em;
+	font-family: "FontAwesome";
+}
+#headCmp.cmp-saved #headCmpName::before {
+	display: inline-block;
+}
+#headCmp[data-save-mode="local"] #headCmpName::before { content: "\f109"; }
+#headCmp[data-save-mode="cloud"] #headCmpName::before { content: "\f0c2"; }
+#headCmpName:empty::after {
+	content: "Untitled";
+	font-style: italic;
+	padding-right: 1px;
+	opacity: .8;
+}
+#headCmpHover {
+	display: inline-block;
+	overflow: hidden;
+	width: 0;
+	font-weight: bold;
+	font-family: "FontAwesome";
+	transition: .1s;
+	transition-property: width, margin-left;
+}
+#headCmpHover::before {
+	content: "\f040";
+}
+#headCmpInfo:focus #headCmpHover,
+#headCmpInfo:hover #headCmpHover {
+	width: 1.4ch;
+	margin-left: 4px;
+}
+#headCmpDur::before {
+	content: "·";
+	margin: 4px;
+}
+
+/* .......................................................................... */
+#headGain {
+	width: 6px;
+	--gsuiSlider-lineRadius: 4px;
+	--gsuiSlider-lineColor: var( --ctrl-play-bg );
+	--gsuiSlider-lineBgColor: #222;
+}
+
+/* .......................................................................... */
+#headCurrentTime {
+	grid-area: currentTime;
+	padding: 10px;
+	border-radius: 4px;
+	background-color: var( --ctrl-currentTime-bg );
+	--gsuiSlider-lineColor: var( --ctrl-currentTime-color );
+	--gsuiSlider-lineBgColor: #222;
+}
+
+/* .......................................................................... */
+#ctrlA {
+	grid-area: ctrlA;
+	display: flex;
+}
+
+/* .......................................................................... */
+#headPlay {
+	display: flex;
+}
+.playBtn {
+	background-color: var( --ctrl-play-bg );
+}
+#playToggle {
+	padding: 6px 5px 6px 7px;
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#playToggle span {
+	width: 8px;
+	height: 8px;
+	box-sizing: border-box;
+	border: 2px solid;
+	border-radius: 2px;
+}
+#playToggle[ data-dir="up" ] span:first-child,
+#playToggle[ data-dir="down" ] span:last-child {
+	background-color: currentColor;
+}
+#stop {
+	margin-left: -3px;
+}
+#stop::before { content: "\f04d"; }
+#play::before { content: "\f04b"; }
+#play.playing::before { content: "\f04c"; }
+
+/* .......................................................................... */
+.gsuiClock {
+	padding-left: 8px;
+	font-size: var( --bpm-fontSize );
+	font-family: var( --font-number );
+	filter: none;
+	color: var( --ctrl-clock-text );
+	background-color: var( --ctrl-clock-bg );
+}
+.gsuiClock-absolute {
+	padding-top: 3px;
+}
+.gsuiClock-modes {
+	padding: 6px 8px;
+	margin-left: 0;
+}
+
+/* .......................................................................... */
+#headTempo {
+	display: flex;
+	align-items: normal;
+	white-space: nowrap;
+	background-color: #222;
+}
+#timeSignature {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 8px 6px 8px 8px;
+	font-size: 14px;
+	line-height: 0;
+	font-family: var( --font-number );
+}
+#bpm {
+	display: flex;
+	align-items: baseline;
+	padding-right: 7px;
+	font-size: var( --bpm-fontSize );
+	font-family: var( --font-number );
+}
+#bpm::after {
+	content: "bpm";
+	margin-left: 2px;
+	font-size: var( --gsuiClock-mili-fontSize );
+	opacity: var( --gsuiClock-mili-opacity );
+}
+
+/* .......................................................................... */
+#ctrlB {
+	grid-area: ctrlB;
+	display: flex;
+}
+
+/* .......................................................................... */
+#headHist {
+	display: inline-flex;
+}
+#headHist .btn {
+	background-color: #777;
+}
+#redo {
+	margin-left: -4px;
+}
+#undoMore {
+	padding: 0 6px 0 3px;
+}
+#undo::before { content: "\f0e2"; }
+#redo::before { content: "\f01e"; }
+#undoMore::before { content: "\f0d7"; }
+
+/* .......................................................................... */
+#headAnalyser {
+	width: 140px;
+	border-radius: 4px;
+	background-color: #000;
+	filter: saturate( .5 ) contrast( .76 );
+}
+
+/* .......................................................................... */
+#headExport::before {
+	color: var( --ctrl-render-color );
+	content: "\f019";
+}
+
+/* .......................................................................... */
+#winBtns {
+	grid-area: winBtns;
+	display: flex;
+	white-space: nowrap;
+}
+.winBtn {
+	padding: 2px 6px;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 4px;
+	background-color: var( --head-winBtn-bg );
+	transition: var( --head-hover-dur );
+	transition-property: color, background-color, box-shadow;
+}
+.winBtn-open {
+	color: var( --head-bg );
+	background-color: var( --head-winBtn-open-bg );
+}
+.winBtn::before {
+	content: attr( data-text );
+}
+
+/* .......................................................................... */
+#headHelp {
+	grid-area: headHelp;
+	display: flex;
+	font-size: 20px;
+}
+#help::before { content: "\f1cd"; }
+#cookies::before { content: "\f564"; }
+#cookies:hover::before { content: "\f564"; }
+#helpAbout::before { content: "\f135"; color: var( --ctrl-about-color ); }
+#helpKeyboardShortcuts::before { content: "\f11c"; }
+#cookies {
+	animation: infinite cookie-anim 5s;
+}
+@keyframes cookie-anim {
+	30% { box-shadow: none; }
+	35% { box-shadow: 0 0 0 3px var( --ctrl-eatcookie-color ); }
+	100% { box-shadow: 0 0 0 3px transparent; }
+}
+
+/* .......................................................................... */
+#headVersion {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	grid-area: headVersion;
+}
+#headVersionNum {
+	opacity: .3;
+	font-size: 20px;
+	font-family: var( --font-number );
+	transition: opacity var( --head-hover-dur );
+}
+#headVersionNum:focus,
+#headVersionNum:hover {
+	opacity: 1;
+}
+#headVersionNum::before {
+	content: "v ";
+	font-size: .8em;
+}
+
+/*
+	1. z-index: 1000 to be on top on all the windows possible.
+*/

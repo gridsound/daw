@@ -10,8 +10,7 @@
 }
 
 .popup legend {
-	font-size: 14px;
-	font-weight: bold;
+	font-size: 12px;
 	opacity: .5;
 }
 
@@ -91,26 +90,29 @@
 	font-size: 12px;
 }
 
-/* #settingsPopupContent ---------------------------------------------------- */
-#settingsPopupContent {
+/* #tempoPopupContent ---------------------------------------------------- */
+#tempoPopupContent {
 	width: 400px;
 }
-#settingsPopupContent fieldset:nth-child( 2 ) .param-values {
-	display: flex;
-}
-#settingsInputBPM {
+#tempoBPM {
 	width: calc( 180px - 6px - 32px );
 }
-#settingsBPMTap {
+#tempoBPMTap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: inherit;
 	width: 32px;
 	margin-left: 6px;
+	border-radius: 2px;
 	background-color: rgba( 255, 255, 255, .1 )
 }
-#settingsBPMTap::before {
+#tempoBPMTap::before {
 	content: "\f043";
 	font-family: "FontAwesome";
 }
-#settingsBPMTap:hover {
+#tempoBPMTap:hover {
 	background-color: rgba( 255, 255, 255, .2 )
 }
 
@@ -132,7 +134,6 @@
 	border-radius: 4px;
 	border-bottom: 3px solid #333;
 	padding: .3em .5em;
-	font-weight: bold;
 	white-space: nowrap;
 	color: #fff;
 	background-color: #444;

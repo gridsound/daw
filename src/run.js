@@ -14,9 +14,11 @@ gswaPeriodicWaves.forEach( ( w, name ) => (
 ) );
 
 window.DAW = DAW;
-window.VERSION = "0.20.3";
+window.VERSION = "0.21.0";
 
 UIdomInit();
+UIwindowsInit();
+
 UIauthInit();
 UImixerInit();
 UIsynthInit();
@@ -32,7 +34,6 @@ UIpatternrollInit();
 UIrenderPopupInit();
 UImainAnalyserInit();
 UIcompositionsInit();
-UIsettingsPopupInit();
 UIshortcutsPopupInit();
 DAW.initPianoroll();
 
@@ -59,7 +60,10 @@ DAW.cb.pause =
 DAW.cb.stop = () => DOM.play.classList.remove( "playing" );
 DAW.cb.play = () => DOM.play.classList.add( "playing" );
 
-window.onresize();
+DOM.versionNum.textContent =
+DOM.headVersionNum.textContent = window.VERSION;
+
+DOM.winBtnsMap.forEach( btn => btn.click() );
 
 UIauthGetMe();
 DAW.addCompositionsFromLocalStorage();
