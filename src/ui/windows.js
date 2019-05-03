@@ -4,6 +4,7 @@ const UIwindows = new gsuiWindows();
 
 function UIwindowsInit() {
 	UIwindows.setRootElement( DOM.body );
+	UIwindows.lowGraphics( true );
 	UIwindowsAppendContent( UIwindows );
 	UIwindows.onopen = win => UIwindowsBtn( win.id, true );
 	UIwindows.onclose = win => UIwindowsBtn( win.id, false );
