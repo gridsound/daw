@@ -1,8 +1,9 @@
 "use strict";
 
 function UIeffectsInit() {
+  /* empty */
 }
 
-function UIeffectsSelectChan( id ) {
+function UIeffectsSelectChan( _id ) {
 	// lg(DAW.get.channel( id ).name)
 }

@@ -18,7 +18,7 @@ function UIaboutPopupVersionCheck() {
 
 	cl.remove( "ok", "ko" );
 	cl.add( "searching" );
-	fetch( "https://gridsound.com/daw/VERSION?" + Math.random() )
+	fetch( `https://gridsound.com/daw/VERSION?${ Math.random() }` )
 		.then( res => res.text() )
 		.then( res => {
 			cl.remove( "searching" );

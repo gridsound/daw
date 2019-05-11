@@ -13,7 +13,7 @@ function UIhistoryAddAction( act ) {
 	const div = DOM.historyAction.cloneNode( true );
 
 	act._html = div;
-	div.children[ 0 ].className += " ico-" + act.icon; // 1.
+	div.children[ 0 ].className += ` ico-${ act.icon }`; // 1.
 	div.children[ 1 ].textContent = act.desc;
 	div.onclick = () => DAW.history.goToAction( act );
 	DOM.historyList.append( div );

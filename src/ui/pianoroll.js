@@ -1,7 +1,7 @@
 "use strict";
 
-const UIpianoroll = new gsuiPianoroll();
-const UIkeys = UIpianoroll.uiKeys;
+const UIpianoroll = new gsuiPianoroll(),
+	UIkeys = UIpianoroll.uiKeys;
 
 function UIpianorollInit() {
 	const win = UIwindows.window( "piano" );

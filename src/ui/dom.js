@@ -8,8 +8,9 @@ function UIdomInit() {
 	} );
 }
 
+/*
 function UIdomUnfocusButtons() {
-	document.body.addEventListener( "click", e => {
+	document.body.addEventListener( "click", () => {
 		const foc = document.activeElement;
 
 		if ( foc && ( foc.nodeName === "BUTTON" || foc.nodeName === "A" ) ) {
@@ -23,6 +24,7 @@ function UIdomUnfocusButtons() {
 		}
 	}, false );
 }
+*/
 
 function UIdomFill() {
 	const DOM = {};

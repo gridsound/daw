@@ -24,7 +24,7 @@ function UIauthGetMe() {
 			UIauthLoginThen,
 			res => {
 				if ( res.code !== 401 ) {
-					throw( res );
+					throw res;
 				}
 			}
 		);
@@ -54,7 +54,7 @@ function UIauthLoginSubmit( obj ) {
 			UIauthLoginThen,
 			res => {
 				DOM.authPopupError.textContent = res.msg;
-				throw( res );
+				throw res;
 			} );
 }
 

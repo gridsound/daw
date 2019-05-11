@@ -41,7 +41,7 @@ function UIcontrolsSliderTime_inputstart( beat ) {
 	DAW.cb.clockUpdate = null;
 	UIclock.setTime( "beat", beat );
 }
-function UIcontrolsSliderTime_oninputend( beat ) {
+function UIcontrolsSliderTime_oninputend( _beat ) {
 	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
 }
 function UIcontrolsSliderTime_oninput( beat ) {

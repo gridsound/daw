@@ -8,9 +8,7 @@ const UIdropCmpExt = {
 
 function UIdrop( e ) {
 	const files = Array.from( e.dataTransfer.files ),
-		cmpFile = files.find( f => (
-			f.name.split( "." ).pop().toLowerCase() in UIdropCmpExt
-		) );
+		cmpFile = files.find( f => f.name.split( "." ).pop().toLowerCase() in UIdropCmpExt );
 
 	if ( cmpFile ) {
 		DAW.addCompositionByBlob( cmpFile )
