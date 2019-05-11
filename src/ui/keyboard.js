@@ -1,36 +1,42 @@
 "use strict";
 
-const UIkeyPressed = new Map();
+const UIkeyboardFns = [];
+
+function UIkeyboardInit() {
+	UIkeyboardFns.push(
+		// ctrlOrAlt, alt, key, fn
+		[ true,  false, "o", UIopenPopupShow ],
+		[ true,  false, "s", UIcompositionClickSave ],
+		[ true,  true,  "n", UIcompositionClickNewLocal ],
+		[ true,  false, "z", DOM.undo.onclick ],
+		[ true,  false, "Z", DOM.redo.onclick ],
+		[ false, false, " ", () => {
+			DAW.isPlaying()
+				? DOM.stop.onclick()
+				: DOM.play.onclick();
+		} ],
+	);
+}
 
 function UIkeyboardUp( e ) {
-	if ( !UIkeyPressed[ e.key ] ) {
-		UIpianorollKeyboardEvent( false, e );
-	}
-	delete UIkeyPressed[ e.key ];
+	UIpianorollKeyboardEvent( false, e );
 }
 
 function UIkeyboardDown( e ) {
-	const key = e.key;
-	let prevent;
-
-	if ( key === " " ) {
-		prevent = true;
-		DAW.isPlaying()
-			? DOM.stop.onclick()
-			: DOM.play.onclick();
-	} else if ( e.ctrlKey || e.altKey ) {
-		prevent = true;
-		     if ( key === "o" ) { UIopenPopupShow(); }
-		else if ( key === "s" ) { UIcompositionClickSave(); }
-		else if ( key === "z" ) { DOM.undo.onclick(); }
-		else if ( key === "Z" ) { DOM.redo.onclick(); }
-		else if ( key === "n" && e.altKey ) { UIcompositionClickNewLocal(); }
-		else { prevent = false; }
-		UIkeyPressed[ key ] = true;
-	} else {
+	if ( !UIkeyboardShortcuts( e ) && !e.ctrlKey && !e.altKey && !e.shiftKey ) {
 		UIpianorollKeyboardEvent( true, e );
 	}
-	if ( prevent ) {
-		e.preventDefault();
-	}
+}
+
+function UIkeyboardShortcuts( e ) {
+	return UIkeyboardFns.some( ( [ ctrlOrAlt, alt, key, fn ] ) => {
+		if ( ( key === e.key ) &&
+			( !alt || e.altKey ) &&
+			( ctrlOrAlt === ( e.ctrlKey || e.altKey ) )
+		) {
+			fn();
+			e.preventDefault();
+			return true;
+		}
+	} );
 }
