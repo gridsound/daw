@@ -239,6 +239,12 @@ declare -a JSfiles=(
 	"src/run.js"
 )
 
+jsMainFile() {
+	echo '"use strict";'
+	cat "${JSfilesProd[@]}" | grep -v '"use strict";'
+	cat "${JSfiles[@]}" | grep -v '"use strict";'
+}
+
 buildDev() {
 	filename='index.html'
 	echo "Build $filename"
@@ -262,18 +268,21 @@ buildProd() {
 	printf '%s\n' "${HEADEREND[@]}" >> $filename;
 	cat "${HTMLfiles[@]}" >> $filename
 	echo '<script>' >> $filename
-	echo '"use strict";' >> $filename
-	echo 'function lg( a ) { return console.log.apply( console, arguments ), a; }' >> $filename
-	cat "${JSfilesProd[@]}" | grep -v '"use strict";' >> $filename
-	cat "${JSfiles[@]}" | grep -v '"use strict";' >> $filename
+	jsMainFile >> $filename
 	echo '</script>' >> $filename
 	echo '</body>' >> $filename
 	echo '</html>' >> $filename
 }
 
-if [ $# -gt 0 ] && [ $1 = "prod" ]
-then
-	buildProd
-else
+lint() {
+	jsMainFile > __lintMain.js
+	eslint __lintMain.js && rm __lintMain.js
+}
+
+if [ $# = 0 ]; then
 	buildDev
+elif [ $1 = "prod" ]; then
+	buildProd
+elif [ $1 = "lint" ]; then
+	lint
 fi
