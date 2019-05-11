@@ -47,7 +47,7 @@ function UIpianorollNameClick() {
 function UIpianorollKeyboardEvent( status, e ) {
 	const midi = UIkeys.getMidiKeyFromKeyboard( e );
 
-	if ( midi ) {
+	if ( midi !== false ) {
 		if ( status ) {
 			UIkeys.midiKeyDown( midi );
 			UIkeys.onkeydown( midi );
