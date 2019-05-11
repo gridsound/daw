@@ -11,12 +11,11 @@ function UIopenPopupShow() {
 	return false;
 }
 
-function UIopenPopupSubmit( res ) {
-	const url = DOM.inputOpenURL.value,
-		file = DOM.inputOpenFile.files[ 0 ],
-		prom = !url && !file ? null : url
+function UIopenPopupSubmit( { url, file } ) {
+	if ( url || file[ 0 ] ) {
+		return ( url
 			? DAW.addCompositionByURL( url )
-			: DAW.addCompositionByBlob( file );
-
-	return prom && prom.then( cmp => DAW.openComposition( "local", cmp.id ) );
+			: DAW.addCompositionByBlob( file[ 0 ] )
+		).then( cmp => DAW.openComposition( "local", cmp.id ) );
+	}
 }
