@@ -203,6 +203,7 @@ declare -a JSfiles=(
 
 	"gs-webaudio-library/gswaMixer/gswaMixer.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"
+	"gs-webaudio-library/gswaSynth/gswaSynth.midiKeyToHz.js"
 	"gs-webaudio-library/gswaBPMTap/gswaBPMTap.js"
 	"gs-webaudio-library/gswaScheduler/gswaScheduler.js"
 	"gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"

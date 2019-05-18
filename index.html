@@ -575,6 +575,8 @@
 			<select class="gsuiPianoroll-slidersSelect gsui-opacityHover">
 				<option value="gain">gain</option>
 				<option value="pan">pan</option>
+				<option value="lowpass">lowpass</option>
+				<option value="highpass">highpass</option>
 			</select>
 		</div>
 	</div>
@@ -661,11 +663,6 @@
 	<div class="gsuiPatternroll-block-content"></div>
 </div>
 <div id="gsuiSliderGroup-template" class="gsuiSliderGroup">
-	<div class="gsuiSliderGroup-scale">
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
 	<div class="gsuiSliderGroup-slidersWrap">
 		<div class="gsuiSliderGroup-sliders gsuiBeatlines">
 			<div class="gsuiSliderGroup-currentTime"></div>
@@ -776,6 +773,7 @@
 <script src="gs-ui-components/gsuiSpectrum/gsuiSpectrum.draw.js"></script>
 <script src="gs-webaudio-library/gswaMixer/gswaMixer.js"></script>
 <script src="gs-webaudio-library/gswaSynth/gswaSynth.js"></script>
+<script src="gs-webaudio-library/gswaSynth/gswaSynth.midiKeyToHz.js"></script>
 <script src="gs-webaudio-library/gswaBPMTap/gswaBPMTap.js"></script>
 <script src="gs-webaudio-library/gswaScheduler/gswaScheduler.js"></script>
 <script src="gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"></script>
