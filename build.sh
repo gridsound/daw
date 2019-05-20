@@ -280,10 +280,17 @@ lint() {
 	eslint __lintMain.js && rm __lintMain.js
 }
 
+updateDep() {
+	git submodule init
+	git submodule update --remote
+}
+
 if [ $# = 0 ]; then
 	buildDev
 elif [ $1 = "prod" ]; then
 	buildProd
 elif [ $1 = "lint" ]; then
 	lint
+elif [ $1 = "dep" ]; then
+	updateDep
 fi
