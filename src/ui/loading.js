@@ -8,6 +8,7 @@ function UIloading() {
 		UItitleGlitch.init();
 		UItitleGlitch.on();
 		el.onclick = () => {
+			UItitleGlitch.off();
 			el.classList.add( "starting" );
 			setTimeout( resolve, 100 );
 		};
@@ -40,7 +41,8 @@ const UItitleGlitch = {
 		}
 	},
 	off() {
-		cancelAnimationFrame( this._frameId );
+		clearTimeout( this._frameId );
+		this._textContent( this._text );
 		delete this._frameId;
 	},
 	setTexts( [ text, ...alt ] ) {
@@ -70,7 +72,7 @@ const UItitleGlitch = {
 		setTimeout( () => {
 			this._textContent( this._text );
 			this._root.classList.remove( "gsTitle-glitched" );
-		}, 50 + Math.random() * 250 );
-		this._frameId = setTimeout( this._frame, 250 + Math.random() * 500 );
+		}, 50 + Math.random() * 200 );
+		this._frameId = setTimeout( this._frame, 250 + Math.random() * 1500 );
 	}
 };
