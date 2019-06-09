@@ -39,5 +39,6 @@ function UImixerUpdateChan( id, prop, val ) {
 }
 
 function UImixerSelectChan( id ) {
+	UIwindows.window( "mixer" ).focus();
 	UIeffectsSelectChan( id );
 }
