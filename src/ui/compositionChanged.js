@@ -131,7 +131,9 @@ UIcompositionChanged.fn = new Map( [
 			DAWCore.objectDeepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
 			UIpianoroll.resetKey();
 			UIpianoroll.scrollToKeys();
-			DOM.sliderTime.options( { max: pat.duration } );
+			if ( !DAW.compositionFocused ) {
+				DOM.sliderTime.options( { max: pat.duration } );
+			}
 		} else {
 			UIpianoroll.setPxPerBeat( 90 );
 		}
