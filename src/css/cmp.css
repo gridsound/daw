@@ -137,7 +137,7 @@
 .cmp-bpm::before { content: "\f3fd"; }
 .cmp-save::before { content: "\f0c7"; font-weight: bold; }
 .cmp-duration::before { content: "\f017"; }
-#headCmp[data-save-mode="cloud"] .cmp-save::before,
+#headCmp[ data-save-mode="cloud" ] .cmp-save::before,
 #cmpsCloudList .cmp-save::before { content: "\f382"; }
-.cmp-btn[data-action="json"]::before { content: "\f56e"; }
-.cmp-btn[data-action="delete"]::before { content: "\f308"; }
+.cmp-btn[ data-action="json" ]::before { content: "\f56e"; }
+.cmp-btn[ data-action="delete" ]::before { content: "\f308"; }

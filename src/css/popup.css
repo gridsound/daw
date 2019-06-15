@@ -47,7 +47,7 @@
 	flex-direction: column;
 }
 
-.popup [type="radio"]:checked + label {
+.popup input[ type="radio" ]:checked + label {
 	font-weight: bold;
 }
 
@@ -63,11 +63,11 @@
 	font-style: italic;
 }
 
-.popup input[type="password"],
-.popup input[type="number"],
-.popup input[type="text"],
-.popup input[type="url"],
-.popup input[type="file"] {
+.popup input[ type="password" ],
+.popup input[ type="number" ],
+.popup input[ type="text" ],
+.popup input[ type="url" ],
+.popup input[ type="file" ] {
 	width: 180px;
 	height: 32px;
 	padding: 0 8px;
@@ -75,7 +75,7 @@
 	font-family: inherit;
 	background-color: rgba( 255, 255, 255, .1 );
 }
-.popup input[type="file"] {
+.popup input[ type="file" ] {
 	width: 200px;
 	height: auto;
 	padding-top: 6px;
@@ -106,14 +106,14 @@
 	width: 32px;
 	margin-left: 6px;
 	border-radius: 2px;
-	background-color: rgba( 255, 255, 255, .1 )
+	background-color: rgba( 255, 255, 255, .1 );
 }
 #tempoBPMTap::before {
 	content: "\f043";
 	font-family: "FontAwesome";
 }
 #tempoBPMTap:hover {
-	background-color: rgba( 255, 255, 255, .2 )
+	background-color: rgba( 255, 255, 255, .2 );
 }
 
 /* #shortcutsPopupContent --------------------------------------------------- */
@@ -171,9 +171,9 @@
 	background-color: #ff9;
 }
 #renderBtn span { display: none; }
-#renderBtn[data-status="0"] #renderBtn0 { display: inline; }
-#renderBtn[data-status="1"] #renderBtn1 { display: inline; }
-#renderBtn[data-status="2"] #renderBtn2 { display: inline; }
+#renderBtn[ data-status="0" ] #renderBtn0 { display: inline; }
+#renderBtn[ data-status="1" ] #renderBtn1 { display: inline; }
+#renderBtn[ data-status="2" ] #renderBtn2 { display: inline; }
 #renderBtn span::before {
 	font-family: "FontAwesome";
 	margin-right: .3em;
@@ -185,9 +185,10 @@
 	content: "\f3f4";
 	animation: 1s linear keyframes-spin infinite;
 }
+
 @keyframes keyframes-spin {
-	from { transform: rotate( 0deg ) }
-	to { transform: rotate( 360deg ) }
+	from { transform: rotate( 0deg ); }
+	to { transform: rotate( 360deg ); }
 }
 
 /* #aboutPopupContent ------------------------------------------------------- */
@@ -246,11 +247,11 @@
 }
 #aboutPopupContent .social-network a::before {
 	position: relative;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	transition: .2s;
 	transition-property: top, left, text-shadow;
 }
-#aboutPopupContent .social-network:hover a:not(:hover) {
+#aboutPopupContent .social-network:hover a:not( :hover ) {
 	opacity: .3;
 }
