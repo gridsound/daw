@@ -81,14 +81,14 @@
 	top: 0;
 	opacity: 0;
 	margin: -.03em 0 0 .03em;
-	color: dodgerblue;
+	color: #2af;
 	mix-blend-mode: darken;
 	transition: .1s;
 	transition-property: opacity, margin;
 }
 .gsTitle-b {
 	margin: .03em 0 0 -.03em;
-	color: tomato;
+	color: #f64;
 	mix-blend-mode: color-burn;
 }
 .gsTitle-glitched .gsTitle-color {

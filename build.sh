@@ -282,6 +282,7 @@ buildProd() {
 }
 
 lint() {
+	stylelint "${CSSfiles[@]}"
 	jsMainFile > __lintMain.js
 	eslint __lintMain.js && rm __lintMain.js
 }

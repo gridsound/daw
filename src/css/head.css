@@ -70,7 +70,6 @@ a.btn {
 .btnGroup .btn {
 	margin-left: 0;
 	border-radius: 0;
-	transition: opacity var( --head-hover-dur );
 	transition: color var( --head-hover-dur );
 }
 .btnGroup .btn:hover {
@@ -180,8 +179,8 @@ a.btn {
 #headCmp.cmp-saved #headCmpName::before {
 	display: inline-block;
 }
-#headCmp[data-save-mode="local"] #headCmpName::before { content: "\f109"; }
-#headCmp[data-save-mode="cloud"] #headCmpName::before { content: "\f0c2"; }
+#headCmp[ data-save-mode="local" ] #headCmpName::before { content: "\f109"; }
+#headCmp[ data-save-mode="cloud" ] #headCmpName::before { content: "\f0c2"; }
 #headCmpName:empty::after {
 	content: "Untitled";
 	font-style: italic;
@@ -389,6 +388,7 @@ a.btn {
 #cookies {
 	animation: infinite cookie-anim 5s;
 }
+
 @keyframes cookie-anim {
 	30% { box-shadow: none; }
 	35% { box-shadow: 0 0 0 3px var( --ctrl-eatcookie-color ); }
