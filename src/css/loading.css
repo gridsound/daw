@@ -59,38 +59,11 @@
 #loading.starting #loadingStarting {
 	opacity: 1;
 }
+#gsTitle {
+	margin-bottom: 16px;
+}
 
 @keyframes loadingTextAnim {
 	from { opacity: 0; }
 	to { opacity: 1; }
-}
-
-/* .......................................................................... */
-#gsTitle {
-	position: relative;
-	color: #ccc;
-	font-size: 68px;
-	font-family: "oswald", sans-serif;
-}
-.gsTitle-title {
-	margin: 0;
-	white-space: nowrap;
-}
-.gsTitle-color {
-	position: absolute;
-	top: 0;
-	opacity: 0;
-	margin: -.03em 0 0 .03em;
-	color: #2af;
-	mix-blend-mode: darken;
-	transition: .1s;
-	transition-property: opacity, margin;
-}
-.gsTitle-b {
-	margin: .03em 0 0 -.03em;
-	color: #f64;
-	mix-blend-mode: color-burn;
-}
-.gsTitle-glitched .gsTitle-color {
-	opacity: .4;
 }

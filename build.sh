@@ -53,6 +53,7 @@ declare -a CSSfiles=(
 	"../assets/fonts/fonts.css"
 
 	"src/css/reset.css"
+	"src/css/textGlitch.css"
 	"src/css/loading.css"
 	"src/css/root.css"
 	"src/css/icon.css"
@@ -219,6 +220,7 @@ declare -a JSfiles=(
 	"gs-api-client/gsapiClient.js"
 
 	"src/ui/dom.js"
+	"src/ui/textGlitch.js"
 	"src/ui/loading.js"
 	"src/ui/auth.js"
 	"src/ui/drop.js"

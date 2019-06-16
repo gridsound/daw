@@ -1,0 +1,47 @@
+.TextGlitch {
+	position: relative;
+	color: #ccc;
+	line-height: 1em;
+	font-size: 68px;
+	font-family: "oswald", monospace;
+}
+.TextGlitch-blended {
+	color: #fff;
+}
+
+.TextGlitch-clip {
+	position: relative;
+}
+.TextGlitch-clip + .TextGlitch-clip {
+	position: absolute;
+	top: 0;
+}
+.TextGlitch:not( .TextGlitch-blended ) .TextGlitch-clip + .TextGlitch-clip {
+	display: none;
+}
+
+.TextGlitch-word {
+	margin: 0;
+	white-space: nowrap;
+}
+
+.TextGlitch-blend {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	transition: .1s;
+	transition-property: opacity;
+}
+.TextGlitch-blendA {
+	color: #2af;
+	margin: -.03em 0 0 .03em;
+	mix-blend-mode: darken;
+}
+.TextGlitch-blendB {
+	color: #f64;
+	margin: .03em 0 0 -.03em;
+	mix-blend-mode: color-burn;
+}
+.TextGlitch-blended .TextGlitch-blend {
+	opacity: .4;
+}
