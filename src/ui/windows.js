@@ -39,19 +39,21 @@ function UIwindowsBtn( winId, b ) {
 }
 
 function UIwindowsAppendContent( UIwindows ) {
-	document.querySelectorAll( "div[data-window]" ).forEach( win => {
-		const uiWin = UIwindows.createWindow( win.dataset.window ),
-			child = Array.from( win.children );
+	document.querySelectorAll( "div[data-window]" ).forEach( winCnt => {
+		const win = UIwindows.createWindow( winCnt.dataset.window ),
+			elWinCnt = win.rootElement.querySelector( ".gsuiWindow-content" ),
+			child = Array.from( winCnt.children );
 
-		win.remove();
+		winCnt.remove();
+		winCnt.classList.forEach( c => elWinCnt.classList.add( c ) );
 		if ( child.length ) {
 			const child0 = child[ 0 ];
 
 			if ( child0.classList.contains( "windowMenu" ) ) {
 				child.shift();
-				uiWin.headAppend.apply( uiWin, child0.children );
+				win.headAppend.apply( win, child0.children );
 			}
-			uiWin.append.apply( uiWin, child );
+			win.append.apply( win, child );
 		}
 	} );
 }
