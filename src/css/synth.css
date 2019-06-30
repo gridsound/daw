@@ -131,3 +131,10 @@
 .synth-show .synth-patterns:empty::before {
 	margin: 4px auto;
 }
+.synth .pattern {
+	border-radius: 4px 0 0 4px;
+	margin-top: calc( var( --pattern-height ) * -1 );
+}
+.synth-show .pattern {
+	margin: 4px 0;
+}
