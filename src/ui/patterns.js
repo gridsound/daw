@@ -58,14 +58,14 @@ function UIpatternsInit() {
 			[ "clone", id => DAW.clonePattern( id ) ],
 		] );
 
-	DOM.patterns.addEventListener( "click", e => {
+	DOM.keysPatterns.addEventListener( "click", e => {
 		const pat = e.target.closest( ".pattern" );
 
 		if ( pat ) {
 			fnClick.get( e.target.dataset.action )( pat.dataset.id );
 		}
 	} );
-	DOM.patterns.ondragstart = e => {
+	DOM.keysPatterns.ondragstart = e => {
 		const pat = e.target.closest( ".pattern" );
 
 		if ( pat ) {

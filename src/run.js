@@ -15,7 +15,7 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.23.0";
+	window.VERSION = "0.23.1";
 
 	UIdomInit();
 	UIwindowsInit();
@@ -23,6 +23,7 @@ function UIrun() {
 	UIauthInit();
 	UImixerInit();
 	UIsynthInit();
+	UIblocksInit();
 	UIsynthsInit();
 	UIcookieInit();
 	UIeffectsInit();

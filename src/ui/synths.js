@@ -8,7 +8,7 @@ function UIsynthsAddSynth( id, obj ) {
 	syn.dataset.id = id;
 	UIsynths.set( id, syn );
 	UIsynthsUpdateSynth( id, obj );
-	DOM.patterns.prepend( syn );
+	DOM.keysPatterns.prepend( syn );
 }
 
 function UIsynthsExpandSynth( id, b ) {
@@ -48,7 +48,7 @@ function UIsynthsInit() {
 		] );
 
 	DOM.synthNew.onclick = () => ( DAW.newSynth(), false );
-	DOM.patterns.ondrop = e => {
+	DOM.keysPatterns.ondrop = e => {
 		const syn = e.target.closest( ".synth" );
 
 		if ( syn ) {
@@ -59,12 +59,12 @@ function UIsynthsInit() {
 			}
 		}
 	};
-	DOM.patterns.addEventListener( "dblclick", e => {
+	DOM.keysPatterns.addEventListener( "dblclick", e => {
 		if ( e.target.classList.contains( "synth-info" ) ) {
 			UIsynthsExpandSynth( e.target.closest( ".synth" ).dataset.id );
 		}
 	} );
-	DOM.patterns.addEventListener( "click", e => {
+	DOM.keysPatterns.addEventListener( "click", e => {
 		const tar = e.target,
 			pat = tar.closest( ".pattern" ),
 			syn = !pat && tar.closest( ".synth" );

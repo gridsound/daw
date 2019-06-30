@@ -1,6 +1,18 @@
-<div data-window="blocks">
-	<div class="windowMenu">
-		<button id="synthNew" class="windowBtn windowActionBtn" data-text="new" title="Create a new synthesizer"></button>
+<div data-window="blocks" class="gsuiPanels-y">
+	<div class="blocksPanel" id="blocksSamples">
+		<div class="blocksPanelMenu">
+			<span class="blocksPanelTitle">samples</span>
+		</div>
+		<div id="buffPatterns"></div>
+		<div id="buffPatternsPlaceholder">
+			<span>Drag and drop raw files here (mp3, ogg, wav)</span>
+		</div>
 	</div>
-	<div id="patterns"></div>
+	<div class="blocksPanel" id="blocksPatterns">
+		<div class="blocksPanelMenu">
+			<span class="blocksPanelTitle">synths &amp; patterns</span>
+			<button id="synthNew" class="windowBtn windowActionBtn" data-text="new synth" title="Create a new synthesizer"></button>
+		</div>
+		<div id="keysPatterns"></div>
+	</div>
 </div>

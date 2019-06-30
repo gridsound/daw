@@ -1,0 +1,54 @@
+.blocksPanel {
+	--gsuiPanels-bd: 0;
+
+	display: flex;
+	flex-direction: column;
+}
+#blocksSamples {
+	min-height: 150px;
+	max-height: 450px;
+}
+
+.blocksPanelMenu {
+	display: flex;
+	align-items: center;
+	height: 28px;
+	min-height: 28px;
+	padding: 0 6px;
+	background-color: #666;
+}
+.blocksPanelTitle {
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	opacity: .5;
+}
+.blocksPanelMenu .windowBtn {
+	margin-left: 8px;
+}
+
+#buffPatterns,
+#keysPatterns {
+	flex: 1;
+	overflow: auto;
+	position: relative;
+}
+
+#buffPatterns:empty {
+	display: none;
+}
+#buffPatterns:empty + #buffPatternsPlaceholder {
+	display: flex;
+}
+#buffPatternsPlaceholder {
+	flex: 1;
+	padding: 10px;
+	display: none;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	opacity: .5;
+}
