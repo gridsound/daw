@@ -53,6 +53,23 @@
 	fill: currentColor;
 	opacity: .8;
 }
+.pattern-content:empty {
+	display: flex;
+	align-items: center;
+	opacity: .6;
+}
+.pattern-content:empty::before {
+	content: "\f877";
+	margin: 0 6px;
+	font-size: 18px;
+	font-family: "FontAwesome";
+}
+.pattern-content:empty::after {
+	content: "data not found";
+	font-size: 12px;
+	font-style: italic;
+	font-weight: bold;
+}
 
 /* .......................................................................... */
 .pattern-btn {
