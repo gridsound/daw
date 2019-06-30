@@ -14,7 +14,8 @@
 
 /* .......................................................................... */
 .windowBtn {
-	padding: 2px 8px;
+	height: 20px;
+	padding: 0 8px;
 	max-width: 110px;
 	border: 0;
 	cursor: pointer;
