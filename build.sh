@@ -285,6 +285,28 @@ buildProd() {
 	echo '</html>' >> $filename
 }
 
+buildTests() {
+	filename='tests.html'
+	echo "Build $filename"
+	printf '%s\n' "${HEADER[@]}" > $filename
+	echo '<link rel="stylesheet" href="assets/qunit/qunit-2.9.2.css"/>' >> $filename
+	echo '<link rel="stylesheet" href="tests/tests.css"/>' >> $filename
+	echo '<style>' >> $filename
+	cat "${CSSfiles[@]}" >> $filename
+	echo '</style>' >> $filename
+	printf '%s\n' "${HEADEREND[@]}" >> $filename
+	echo '<div id="qunit"></div>' >> $filename
+	echo '<div id="qunit-fixture"></div>' >> $filename
+	cat "${HTMLfiles[@]}" >> $filename
+	echo '<script>' >> $filename
+	jsMainFile >> $filename
+	echo '</script>' >> $filename
+	echo '<script src="assets/qunit/qunit-2.9.2.js"></script>' >> $filename
+	echo '<script src="tests/tests.js"></script>' >> $filename
+	echo '</body>' >> $filename
+	echo '</html>' >> $filename
+}
+
 lint() {
 	stylelint "${CSSfiles[@]}"
 	jsMainFile > __lintMain.js
@@ -300,6 +322,8 @@ if [ $# = 0 ]; then
 	buildDev
 elif [ $1 = "prod" ]; then
 	buildProd
+elif [ $1 = "tests" ]; then
+	buildTests
 elif [ $1 = "lint" ]; then
 	lint
 elif [ $1 = "dep" ]; then
