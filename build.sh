@@ -319,6 +319,18 @@ updateDep() {
 }
 
 if [ $# = 0 ]; then
+	echo '          -------------------------------'
+	echo '        .:: GridSound build shellscript ::.'
+	echo '        -----------------------------------'
+	echo ''
+	echo './build.sh dev ---> create "index.html" for development'
+	echo './build.sh prod --> create "index-prod.html" for production'
+	echo './build.sh tests -> create "tests.html" for testing'
+	echo './build.sh lint --> launch the JS/CSS linters (ESLint and Stylelint)'
+	echo './build.sh dep ---> update all the submodules'
+elif [ $1 = "dep" ]; then
+	updateDep
+elif [ $1 = "dev" ]; then
 	buildDev
 elif [ $1 = "prod" ]; then
 	buildProd
@@ -326,6 +338,4 @@ elif [ $1 = "tests" ]; then
 	buildTests
 elif [ $1 = "lint" ]; then
 	lint
-elif [ $1 = "dep" ]; then
-	updateDep
 fi
