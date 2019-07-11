@@ -13,3 +13,6 @@
 [submodule "gs-api-client"]
 	path = gs-api-client
 	url = https://github.com/gridsound/gs-api-client
+[submodule "assets"]
+	path = assets
+	url = https://github.com/gridsound/assets.git

@@ -18,7 +18,7 @@ declare -a HEADER=(
 	'<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
 	'<meta name="theme-color" content="#3a5158"/>'
 	'<link rel="manifest" href="manifest.json"/>'
-	'<link rel="shortcut icon" href="../assets/favicon.png"/>'
+	'<link rel="shortcut icon" href="assets/favicon.png"/>'
 )
 
 declare -a HEADEREND=(
@@ -50,7 +50,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"gs-ui-components/gsuiTrack/gsuiTrack.css"
 
-	"../assets/fonts/fonts.css"
+	"assets/fonts/fonts.css"
 
 	"src/css/reset.css"
 	"src/css/textGlitch.css"
