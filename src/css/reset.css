@@ -1,27 +1,3 @@
-@font-face {
-	font-family: "FontAwesome";
-	font-style: normal;
-	font-weight: normal;
-	src: url( "../../../assets/fa-regular-400-filtered.woff" );
-	src: url( "../../../assets/fa-regular-400.woff" );
-}
-
-@font-face {
-	font-family: "FontAwesome";
-	font-style: normal;
-	font-weight: bold;
-	src: url( "../../../assets/fa-solid-900-filtered.woff" );
-	src: url( "../../../assets/fa-solid-900.woff" );
-}
-
-@font-face {
-	font-family: "FontAwesomeBrands";
-	font-style: normal;
-	font-weight: normal;
-	src: url( "../../../assets/fa-brands-400-filtered.woff" );
-	src: url( "../../../assets/fa-brands-400.woff" );
-}
-
 @keyframes rotate360 {
 	from { transform: rotate( 0deg ); }
 	to { transform: rotate( 360deg ); }
