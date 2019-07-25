@@ -9,7 +9,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	color: rgba( 0, 0, 0, .7 );
+	color: rgba( 255, 255, 255, .5 );
 	background-color: #333;
 	transition: .5s opacity;
 }
@@ -28,17 +28,6 @@
 	position: relative;
 	font: 52px var( --font-oswald );
 }
-#loadingTitleLight {
-	width: 0%;
-	position: absolute;
-	overflow: hidden;
-	color: rgba( 255, 255, 255, .5 );
-	transition: .5s width;
-}
-#loading.loaded #loadingTitleLight {
-	animation: none;
-	width: 100%;
-}
 
 #loadingLoading,
 #loadingLoaded,
@@ -47,10 +36,6 @@
 	left: 0;
 	width: 100%;
 	opacity: 0;
-	color: rgba( 255, 255, 255, .5 );
-}
-#loadingLoading {
-	color: inherit;
 }
 #loading.loaded:not( .starting ) #loadingLoaded {
 	animation: 1s loadingTextAnim linear infinite alternate;
