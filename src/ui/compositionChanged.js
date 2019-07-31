@@ -1,7 +1,7 @@
 "use strict";
 
 function UIcompositionChanged( obj, prevObj ) {
-	console.log( "UIcompositionChanged", obj );
+	console.log( "change", obj );
 	UIcompositionChanged.fn.forEach( ( fn, attr ) => {
 		if ( typeof attr === "string" ) {
 			if ( attr in obj ) {
@@ -43,7 +43,7 @@ UIcompositionChanged.fn = new Map( [
 		}
 	} ],
 	[ "patterns", function( { patterns }, prevObj ) {
-		const opened = DAW.get.patternOpened();
+		const opened = DAW.get.patternKeysOpened();
 
 		Object.entries( patterns ).forEach( ( [ id, obj ] ) => {
 			if ( !obj ) {
@@ -79,6 +79,7 @@ UIcompositionChanged.fn = new Map( [
 		UIclock.setBPM( bpm );
 		DOM.bpm.textContent =
 		UIcompositions.get( DAW.get.composition() ).bpm.textContent = bpm;
+		UIupdatePatternsBPM( bpm );
 	} ],
 	[ "name", function( { name } ) {
 		UItitle();
@@ -96,7 +97,7 @@ UIcompositionChanged.fn = new Map( [
 	} ],
 	[ "keys", function( { keys } ) {
 		const pats = Object.entries( DAW.get.patterns() ),
-			patOpened = DAW.get.patternOpened();
+			patOpened = DAW.get.patternKeysOpened();
 
 		Object.entries( keys ).forEach( ( [ keysId, keysObj ] ) => {
 			pats.some( ( [ patId, patObj ] ) => {
@@ -118,10 +119,10 @@ UIcompositionChanged.fn = new Map( [
 		elPrev && elPrev.classList.remove( "synth-selected" );
 		UIsynthOpen( synthOpened );
 	} ],
-	[ "patternOpened", function( { patternOpened }, prevObj ) {
-		const pat = DAW.get.pattern( patternOpened ),
-			el = pat && UIpatterns.get( patternOpened ),
-			elPrev = UIpatterns.get( prevObj.patternOpened );
+	[ "patternKeysOpened", function( { patternKeysOpened }, prevObj ) {
+		const pat = DAW.get.pattern( patternKeysOpened ),
+			el = pat && UIpatterns.get( patternKeysOpened ),
+			elPrev = UIpatterns.get( prevObj.patternKeysOpened );
 
 		UIpianoroll.empty();
 		DOM.pianorollName.textContent = pat ? pat.name : "";

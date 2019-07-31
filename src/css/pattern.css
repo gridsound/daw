@@ -1,3 +1,5 @@
+#buffPatterns .pattern-btn[ data-action="clone" ] { display: none; } /* temporary */
+
 .pattern {
 	display: flex;
 	overflow: hidden;
@@ -53,19 +55,23 @@
 	fill: currentColor;
 	opacity: .8;
 }
+.gsuiPatternroll-block-content:empty,
 .pattern-content:empty {
 	display: flex;
+	overflow: hidden;
 	align-items: center;
 	opacity: .6;
 }
+.gsuiPatternroll-block-content:empty::before,
 .pattern-content:empty::before {
 	content: "\f877";
 	margin: 0 6px;
 	font-size: 18px;
 	font-family: "FontAwesome";
 }
+.gsuiPatternroll-block-content:empty::after,
 .pattern-content:empty::after {
-	content: "data not found";
+	content: "missing data";
 	font-size: 12px;
 	font-style: italic;
 	font-weight: bold;

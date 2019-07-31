@@ -168,12 +168,15 @@ function UIcompositionClosed( cmp ) {
 	UIsynth.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );
-	DOM.synthName.textContent = "";
+	DOM.synthName.textContent =
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollForbidden.classList.add( "hidden" );
+	UIpatterns.forEach( pat => pat.remove() );
 	UIsynths.forEach( syn => syn.remove() );
 	UIsynths.clear();
 	UIpatterns.clear();
+	UIbuffers.clear();
+	UIwaveforms.empty();
 }
 
 function UIcompositionClickNewLocal() {

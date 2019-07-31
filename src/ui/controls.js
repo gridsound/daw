@@ -132,27 +132,9 @@ function UIcontrolsClickTempo() {
 	gswaBPMTap.reset();
 	gsuiPopup.custom( {
 		title: "Tempo",
-		submit: UIcontrolsTempoSubmit,
 		element: DOM.tempoPopupContent,
+		submit( d ) {
+			DAW.changeTempo( d.bpm, d.beatsPerMeasure, d.stepsPerBeat );
+		},
 	} );
-}
-
-function UIcontrolsTempoSubmit( data ) {
-	const bpm = DAW.get.bpm(),
-		bPM = DAW.get.beatsPerMeasure(),
-		sPB = DAW.get.stepsPerBeat(),
-		timeSignChanged = data.beatsPerMeasure !== bPM || data.stepsPerBeat !== sPB;
-
-	if ( timeSignChanged || data.bpm !== bpm ) {
-		const obj = {};
-
-		if ( timeSignChanged ) {
-			obj.beatsPerMeasure = data.beatsPerMeasure;
-			obj.stepsPerBeat = data.stepsPerBeat;
-		}
-		if ( data.bpm !== bpm ) {
-			obj.bpm = data.bpm;
-		}
-		DAW.compositionChange( obj );
-	}
 }

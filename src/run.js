@@ -49,6 +49,7 @@ function UIrun() {
 	DAW.cb.focusOn = UIcontrolsFocusOn;
 	DAW.cb.currentTime = UIcontrolsCurrentTime;
 	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
+	DAW.cb.buffersLoaded = UIpatternsBuffersLoaded;
 	DAW.cb.compositionAdded = UIcompositionAdded;
 	DAW.cb.compositionOpened = UIcompositionOpened;
 	DAW.cb.compositionClosed = UIcompositionClosed;

@@ -123,6 +123,7 @@ declare -a JSfilesProd=(
 declare -a JSfiles=(
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/DAWCore.prototype.get.js"
+	"daw-core/src/Buffers.js"
 	"daw-core/src/LocalStorage.js"
 	"daw-core/src/Destination.js"
 	"daw-core/src/History.js"
@@ -154,6 +155,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/addCompositionByBlob.js"
 	"daw-core/src/actions/addCompositionByURL.js"
 	"daw-core/src/actions/abortWAVExport.js"
+	"daw-core/src/actions/dropAudioFiles.js"
 	"daw-core/src/actions/liveChangeSynth.js"
 	"daw-core/src/actions/liveChangeChannel.js"
 	"daw-core/src/actions/exportCompositionToWAV.js"
@@ -168,6 +170,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/newComposition.js"
 	"daw-core/src/actions/removePattern.js"
 	"daw-core/src/actions/clonePattern.js"
+	"daw-core/src/actions/changeTempo.js"
 	"daw-core/src/actions/removeSynth.js"
 	"daw-core/src/actions/openPattern.js"
 	"daw-core/src/actions/namePattern.js"
@@ -208,6 +211,9 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.draw.js"
+	"gs-ui-components/gsuiWaveform/gsuiWaveform.js"
+	"gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"
+	"gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"
 
 	"gs-webaudio-library/gswaMixer/gswaMixer.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"

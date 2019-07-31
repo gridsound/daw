@@ -9,7 +9,7 @@ function UIpianorollInit() {
 	UIpianoroll.octaves( 1, 7 );
 	UIpianoroll.setPxPerBeat( 90 );
 	UIpianoroll.setFontSize( 20 );
-	UIpianoroll.onchange = obj => DAW.changePatternKeys( DAW.get.patternOpened(), obj );
+	UIpianoroll.onchange = obj => DAW.changePatternKeys( DAW.get.patternKeysOpened(), obj );
 	UIpianoroll.onchangeLoop = UIpianorollOnChangeLoop;
 	UIpianoroll.onchangeCurrentTime = t => DAW.pianoroll.setCurrentTime( t );
 	UIpianoroll.rootElement.onfocus = () => DAW.pianorollFocus();
@@ -37,7 +37,7 @@ function UIpianorollWindowFocusin( e ) {
 }
 
 function UIpianorollNameClick() {
-	const id = DAW.get.patternOpened(),
+	const id = DAW.get.patternKeysOpened(),
 		name = DOM.pianorollName.textContent;
 
 	gsuiPopup.prompt( "Rename pattern", "", name, "Rename" )

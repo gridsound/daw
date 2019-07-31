@@ -1,11 +1,10 @@
 .blocksPanel {
 	--gsuiPanels-bd: 0;
-
 	display: flex;
 	flex-direction: column;
 }
 #blocksSamples {
-	min-height: 150px;
+	min-height: 180px;
 	max-height: 450px;
 }
 
