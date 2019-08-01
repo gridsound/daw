@@ -42,8 +42,41 @@ QUnit.module( "DAW", () => {
 		assert.strictEqual( DAW.get.keys( 0 )[ 1 ].when, 1, "DAW.get.keys( 0 )[ 1 ].when" );
 		assert.strictEqual( qSA( ".historyAction" ).length, nbActions + 1, '$( ".historyAction" ).length' );
 	} );
-} );
 
-/*
-1. // 90 -> current pianoroll's pxPerBeat
-*/
+	// .............................................................................................
+	// .............................................................................................
+	QUnit.test( "Controls: clock", assert => {
+		const el = qS( ".gsuiPianoroll .gsuiTimeline-currentTime" );
+		const clientX = el.getBoundingClientRect().x;
+		const pxPerBeat = 90;
+
+		if ( UIclock._display === "second" ) {
+			__changeClockMode();
+		}
+		clickX( el, "mousedown", clientX + pxPerBeat );
+		clickX( el, "mouseup", clientX + pxPerBeat );
+		DAW.pianorollFocus();
+		assert.expect( 6 );
+		assert.strictEqual( __getClockContent(), "2:01:000", "beat:2 focus:pianoroll display:beat" );
+		__changeClockMode();
+		assert.strictEqual( __getClockContent(), "0:00:500", "beat:2 focus:pianoroll display:second" );
+		DAW.compositionFocus();
+		assert.strictEqual( __getClockContent(), "0:00:000", "beat:1 focus:composition display:second" );
+		__changeClockMode();
+		assert.strictEqual( __getClockContent(), "1:01:000", "beat:1 focus:composition display:beat" );
+		clickX( el, "mousedown", clientX + 2 * pxPerBeat );
+		clickX( el, "mouseup", clientX + 2 * pxPerBeat );
+		assert.strictEqual( __getClockContent(), "1:01:000", "beat:1 focus:composition display:beat" );
+		DAW.pianorollFocus();
+		assert.strictEqual( __getClockContent(), "3:01:000", "beat:3 focus:pianoroll display:beat" );
+	} );
+
+	// .............................................................................................
+	// .............................................................................................
+	function __changeClockMode() {
+		qS( ".gsuiClock-modes" ).click();
+	}
+	function __getClockContent() {
+		return qS( ".gsuiClock-absolute" ).textContent.trim().replace( /\s+/g, ":" );
+	}
+} );
