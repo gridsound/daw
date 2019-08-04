@@ -14,6 +14,9 @@
 		margin-bottom .3s,
 		background-color .1s;
 }
+#buffPatterns .pattern {
+	border-bottom: 1px solid rgba( 0, 0, 0, .4 );
+}
 .pattern.selected {
 	--pattern-bg: var( --pattern-selected-bg );
 	--pattern-text: var( --pattern-selected-text );
@@ -24,8 +27,8 @@
 .pattern-head {
 	box-sizing: border-box;
 	display: flex;
-	height: 22px;
-	line-height: 22px;
+	height: 26px;
+	line-height: 26px;
 	transition: inherit;
 	background-color: var( --pattern-head-bg );
 }
@@ -56,11 +59,13 @@
 }
 .pattern-dest-arrow {
 	margin: 0 4px;
+	font-size: 12px;
+	opacity: .5;
 }
 .pattern-dest-btn {
 	overflow: initial;
 	text-overflow: initial;
-	background-color: rgba( 0, 0, 0, .1 );
+	background-color: rgba( 255, 255, 255, .06 );
 }
 .pattern-dest-btn:hover,
 .pattern-dest-btn:focus {
