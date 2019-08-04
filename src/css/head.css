@@ -115,7 +115,7 @@ a.btn {
 	margin-left: 4px;
 	color: var( --head-cmps-btn );
 }
-#cmpsBtn .gsuiIcon[data-icon="plus"] {
+#cmpsBtn .gsuiIcon[ data-icon="plus" ] {
 	margin-left: 4px;
 	font-size: 14px;
 }
