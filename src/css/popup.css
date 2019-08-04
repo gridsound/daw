@@ -41,6 +41,7 @@
 }
 .popup .param-values {
 	display: flex;
+	align-items: center;
 	font-family: var( --font-monospace );
 }
 .popup .param-column {
@@ -99,18 +100,16 @@
 }
 #tempoBPMTap {
 	display: flex;
+	align-self: normal;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
 	color: inherit;
 	width: 32px;
+	font-size: 18px;
 	margin-left: 6px;
 	border-radius: 2px;
 	background-color: rgba( 255, 255, 255, .1 );
-}
-#tempoBPMTap::before {
-	content: "\f043";
-	font-family: "FontAwesome";
 }
 #tempoBPMTap:hover {
 	background-color: rgba( 255, 255, 255, .2 );
@@ -133,19 +132,14 @@
 	position: relative;
 	border-radius: 4px;
 	border-bottom: 3px solid #333;
-	padding: .3em .5em;
-	white-space: nowrap;
+	padding: 4px 6px;
 	color: #fff;
+	white-space: nowrap;
 	background-color: #444;
 }
-#shortcutsPopupContent .shortcuts + .shortcuts {
-	margin-left: 3ch;
-}
-#shortcutsPopupContent .shortcuts + .shortcuts::before {
-	content: "+";
-	position: absolute;
-	right: 100%;
-	margin-right: 1ch;
+#shortcutsPopupContent .shortcuts-sep {
+	margin: 0 8px;
+	font-size: 10px;
 }
 #shortcutsPopupContent .shortcuts .icon {
 	width: auto;
@@ -170,25 +164,12 @@
 	font-weight: bold;
 	background-color: #ff9;
 }
-#renderBtn span { display: none; }
+#renderBtn > span { display: none; }
 #renderBtn[ data-status="0" ] #renderBtn0 { display: inline; }
 #renderBtn[ data-status="1" ] #renderBtn1 { display: inline; }
 #renderBtn[ data-status="2" ] #renderBtn2 { display: inline; }
-#renderBtn span::before {
-	font-family: "FontAwesome";
-	margin-right: .3em;
-}
-#renderBtn0::before { content: "\f0e7"; }
-#renderBtn2::before { content: "\f019"; }
-#renderBtn1::before {
-	display: inline-block;
-	content: "\f3f4";
-	animation: 1s linear keyframes-spin infinite;
-}
-
-@keyframes keyframes-spin {
-	from { transform: rotate( 0deg ); }
-	to { transform: rotate( 360deg ); }
+#renderBtn .gsuiIcon {
+	margin-left: .3em;
 }
 
 /* #aboutPopupContent ------------------------------------------------------- */
@@ -213,14 +194,6 @@
 #aboutPopupContent a {
 	color: #ccf;
 	font-weight: bold;
-}
-#aboutPopupContent .info::after { content: "\f113"; }
-#aboutPopupContent .patreon::after { content: "\f3d9"; }
-#aboutPopupContent .info::after,
-#aboutPopupContent .patreon::after {
-	font-family: "FontAwesomeBrands";
-	font-weight: normal;
-	margin-left: 4px;
 }
 
 #aboutPopupContent .social-network {

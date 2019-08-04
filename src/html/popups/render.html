@@ -3,9 +3,18 @@
 		<legend>Render the current composition</legend>
 		<div id="renderWrap">
 			<a href id="renderBtn">
-				<span id="renderBtn0">Render</span>
-				<span id="renderBtn1">Rendering...</span>
-				<span id="renderBtn2">Download WAV file</span>
+				<span id="renderBtn0">
+					<span>Render</span>
+					<i class="gsuiIcon" data-icon="render"></i>
+				</span>
+				<span id="renderBtn1">
+					<span>Rendering...</span>
+					<i class="gsuiIcon" data-spin="on"></i>
+				</span>
+				<span id="renderBtn2">
+					<span>Download WAV file</span>
+					<i class="gsuiIcon" data-icon="export"></i>
+				</span>
 			</a>
 			<progress id="renderProgress" value="" max="1"></progress>
 		</div>

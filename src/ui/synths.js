@@ -12,7 +12,10 @@ function UIsynthsAddSynth( id, obj ) {
 }
 
 function UIsynthsExpandSynth( id, b ) {
-	UIsynths.get( id ).classList.toggle( "synth-show", b );
+	const root = UIsynths.get( id ),
+		show = root.classList.toggle( "synth-show", b );
+
+	root.querySelector( ".synth-showBtn" ).dataset.icon = `caret-${ show ? "down" : "right" }`;
 }
 
 function UIsynthsUpdateSynth( id, obj ) {

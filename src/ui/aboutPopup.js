@@ -14,15 +14,15 @@ function UIaboutPopupShow() {
 }
 
 function UIaboutPopupVersionCheck() {
-	const cl = DOM.version.classList;
+	const dt = DOM.versionIcon.dataset;
 
-	cl.remove( "ok", "ko" );
-	cl.add( "searching" );
+	dt.icon = "none";
+	dt.spin = "on";
 	fetch( `https://gridsound.com/daw/VERSION?${ Math.random() }` )
-		.then( res => res.text() )
+		.then( res => res.text(), () => {} )
 		.then( res => {
-			cl.remove( "searching" );
-			cl.add( res === VERSION ? "ok" : "ko" );
-		}, () => cl.remove( "searching" ) );
+			dt.spin = "";
+			dt.icon = res === VERSION ? "check" : "warning";
+		} );
 	return false;
 }

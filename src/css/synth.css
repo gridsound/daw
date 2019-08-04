@@ -36,24 +36,21 @@
 	border: 0;
 	margin: 0;
 	padding: 0;
-	opacity: .6;
+	opacity: .7;
 	color: inherit;
 	cursor: pointer;
 	background: none;
 	font-size: 14px;
-	font-family: "FontAwesome";
 	transition: .1s;
 	transition-property: background-color, opacity;
 }
+.synth-btn:focus,
 .synth-btn:hover {
 	opacity: 1;
-	font-weight: bold;
 }
 .synth:not( .synth-selected ) .synth-btn:hover {
 	color: var( --synth-namehover-text );
 }
-.synth-btn[ data-action="newPattern" ]::before { content: "\f067"; }
-.synth-btn[ data-action="delete" ]::before { content: "\f00d"; }
 
 /* .......................................................................... */
 .synth-showBtn {
@@ -62,20 +59,13 @@
 .synth-show .synth-showBtn {
 	opacity: 1;
 }
-.synth-showBtn::before {
-	display: block;
-	content: "\f0da";
-	transition: .2s transform;
-}
-.synth-show .synth-showBtn::before {
-	transform: rotate( 90deg );
-}
 
 /* .......................................................................... */
 .synth-info {
 	flex: 1;
 	display: flex;
 	overflow: hidden;
+	align-items: center;
 	padding-left: 6px;
 	white-space: nowrap;
 	text-overflow: ellipsis;

@@ -3,5 +3,3 @@
 	width: 360px;
 	box-shadow: var( --head-history-boxShadow );
 }
-
-#historyTitle::before { content: "\f1da"; }

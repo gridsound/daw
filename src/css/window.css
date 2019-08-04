@@ -1,13 +1,3 @@
-.gsuiWindow[ data-window-id="mixer" ] {
-	--gsuiWindow-icon: "\f3f1";
-}
-.gsuiWindow[ data-window-id="synth" ] {
-	--gsuiWindow-icon: "\f83e";
-}
-.gsuiWindow[ data-window-id="blocks" ] {
-	--gsuiWindow-icon: "\f802";
-}
-
 .gsuiWindow[ data-window-id="mixer" ] .gsuiWindow-content {
 	overflow-y: hidden;
 }
@@ -21,6 +11,7 @@
 	cursor: pointer;
 	overflow: hidden;
 	border-radius: 3px;
+	line-height: 1;
 	font-size: 12px;
 	font-weight: bold;
 	font-family: inherit;
@@ -34,24 +25,11 @@
 	filter: brightness( 1.1 );
 }
 
-/* .......................................................................... */
+.windowBtnIcon + .windowBtnText {
+	margin-left: 4px;
+}
+
 .windowDataBtn:empty::before {
 	content: "Untitled";
 	font-style: italic;
-}
-
-/* .......................................................................... */
-.windowActionBtn::before {
-	display: inline-block;
-	width: .8ch;
-	margin-right: .4em;
-	font-weight: normal;
-	font-family: "FontAwesome";
-}
-.windowActionBtn:focus::before,
-.windowActionBtn:hover::before {
-	font-weight: bold;
-}
-.windowActionBtn::after {
-	content: attr( data-text );
 }

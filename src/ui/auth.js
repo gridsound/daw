@@ -6,7 +6,8 @@ function UIauthInit() {
 }
 
 function UIauthLoading( b ) {
-	DOM.app.classList.toggle( "logging", b );
+	DOM.login.dataset.spin =
+	DOM.logout.dataset.spin = b ? "on" : "";
 }
 
 function UIauthLogout() {

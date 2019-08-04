@@ -23,26 +23,19 @@
 /* .......................................................................... */
 .cmp-btn {
 	border: 0;
-	padding: 0 8px;
 	color: inherit;
 	cursor: pointer;
 	font-size: 16px;
 	background: none;
 }
-.cmp-btn::before {
-	font-family: "FontAwesome";
-}
 .cmp-btn-light {
-	opacity: .3;
+	opacity: .7;
+	padding: 0 8px;
 	transition: .2s opacity;
-}
-.cmp-btn:focus,
-.cmp-btn:hover {
-	font-weight: bold;
 }
 .cmp-btn-light:focus,
 .cmp-btn-light:hover {
-	opacity: .8;
+	opacity: 1;
 }
 
 /* .......................................................................... */
@@ -56,13 +49,8 @@
 	visibility: hidden;
 	margin-left: -32px;
 }
-.cmp-loading .cmp-save::before {
-	content: "\f3f4";
-	display: block;
-	animation: .7s infinite linear rotate360;
-}
-.cmp-save:focus,
-.cmp-save:hover {
+.cmp-save.cmp-save:focus,
+.cmp-save.cmp-save:hover {
 	color: var( --cmp-save-bg );
 	background-color: var( --cmp-text );
 }
@@ -99,6 +87,7 @@
 	max-width: 100%;
 	font-weight: bold;
 	border-radius: 2px;
+	padding-right: .4ch;
 	transition: .2s;
 	transition-property: box-shadow, color, background-color;
 }
@@ -117,27 +106,16 @@
 }
 
 /* .......................................................................... */
-.cmp-duration {
-	margin-right: 10px;
-}
-.cmp-bpm,
-.cmp-duration {
+.cmp-bpm-wrap,
+.cmp-duration-wrap {
+	display: inline-flex;
+	align-items: center;
 	font: 14px var( --font-number );
 }
-.cmp-bpm::before,
-.cmp-duration::before {
-	display: inline-block;
-	width: 1.25em;
-	margin-right: 4px;
-	font-family: "FontAwesome";
-	text-align: center;
+.cmp-duration-wrap {
+	margin-right: 10px;
 }
-
-/* .......................................................................... */
-.cmp-bpm::before { content: "\f3fd"; }
-.cmp-save::before { content: "\f0c7"; font-weight: bold; }
-.cmp-duration::before { content: "\f017"; }
-#headCmp[ data-save-mode="cloud" ] .cmp-save::before,
-#cmpsCloudList .cmp-save::before { content: "\f382"; }
-.cmp-btn[ data-action="json" ]::before { content: "\f56e"; }
-.cmp-btn[ data-action="delete" ]::before { content: "\f308"; }
+.cmp-info .gsuiIcon {
+	margin-right: 4px;
+	opacity: .4;
+}

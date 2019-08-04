@@ -26,26 +26,24 @@ a.btn {
 	color: inherit;
 	cursor: pointer;
 	font-size: inherit;
-	font-family: inherit;
 	border-radius: 4px;
 	background: none;
 	transition: var( --head-hover-dur );
 	transition-property: color, opacity, background-color;
 }
+.btn:not( .gsuiIcon ) {
+	font-family: inherit;
+}
 .btnMarge + .btnMarge {
 	margin-left: var( --head-gap );
-}
-.btnIcon {
-	font-family: "FontAwesome";
 }
 .btn:focus {
 	z-index: 1;
 	position: relative;
 }
-.btnIcon:focus,
-.btnIcon:hover {
-	font-weight: bold;
-	opacity: 1;
+.btn.gsuiIcon:focus,
+.btn.gsuiIcon:hover {
+	color: #fff;
 }
 .btnBg {
 	background-color: rgba( 255, 255, 255, .1 );
@@ -106,18 +104,6 @@ a.btn {
 	margin-left: 4px;
 	opacity: .7;
 }
-#login::before,
-#logout::before {
-	width: 1em;
-	display: inline-block;
-}
-#login::before { content: "\f2bd"; }
-#logout::before { content: "\f08b"; }
-#app.logging #login::before,
-#app.logging #logout::before {
-	content: "\f3f4";
-	animation: .7s infinite linear rotate360;
-}
 
 /* .......................................................................... */
 #cmpsBtn {
@@ -129,14 +115,9 @@ a.btn {
 	margin-left: 4px;
 	color: var( --head-cmps-btn );
 }
-#cmpsBtn::before {
-	content: "\f001";
-}
-#cmpsBtn::after {
+#cmpsBtn .gsuiIcon[data-icon="plus"] {
 	margin-left: 4px;
-	content: "\f301";
-	font-size: 12px;
-	font-weight: bold;
+	font-size: 14px;
 }
 #cmpsBtn:focus,
 #cmpsBtn:hover {
@@ -155,7 +136,6 @@ a.btn {
 }
 #headCmpSave {
 	border-radius: 0;
-	font-family: "FontAwesome";
 }
 #headCmpInfo {
 	flex: 1;
@@ -170,17 +150,18 @@ a.btn {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	text-align: left;
+	padding-right: .4ch;
 }
-#headCmpName::before {
+#headCmpIcon {
 	display: none;
 	margin-right: .3em;
-	font-family: "FontAwesome";
 }
-#headCmp.cmp-saved #headCmpName::before {
+#headCmp.cmp-saved #headCmpIcon {
 	display: inline-block;
 }
-#headCmp[ data-save-mode="local" ] #headCmpName::before { content: "\f109"; }
-#headCmp[ data-save-mode="cloud" ] #headCmpName::before { content: "\f0c2"; }
+#headCmp:not( .cmp-saved ) #headCmpName::before {
+	content: "*";
+}
 #headCmpName:empty::after {
 	content: "Untitled";
 	font-style: italic;
@@ -188,16 +169,12 @@ a.btn {
 	opacity: .8;
 }
 #headCmpHover {
+	width: 0;
 	display: inline-block;
 	overflow: hidden;
-	width: 0;
-	font-weight: bold;
-	font-family: "FontAwesome";
+	position: relative;
 	transition: .1s;
 	transition-property: width, margin-left;
-}
-#headCmpHover::before {
-	content: "\f040";
 }
 #headCmpInfo:focus #headCmpHover,
 #headCmpInfo:hover #headCmpHover {
@@ -262,9 +239,6 @@ a.btn {
 #stop {
 	margin-left: -3px;
 }
-#stop::before { content: "\f04d"; }
-#play::before { content: "\f04b"; }
-#play.playing::before { content: "\f04c"; }
 
 /* .......................................................................... */
 .gsuiClock {
@@ -333,9 +307,6 @@ a.btn {
 #undoMore {
 	padding: 0 6px 0 3px;
 }
-#undo::before { content: "\f0e2"; }
-#redo::before { content: "\f01e"; }
-#undoMore::before { content: "\f0d7"; }
 
 /* .......................................................................... */
 #headAnalyser {
@@ -346,9 +317,8 @@ a.btn {
 }
 
 /* .......................................................................... */
-#headExport::before {
+#headExport {
 	color: var( --ctrl-render-color );
-	content: "\f019";
 }
 
 /* .......................................................................... */
@@ -380,13 +350,11 @@ a.btn {
 	display: flex;
 	font-size: 20px;
 }
-#help::before { content: "\f1cd"; }
-#cookies::before { content: "\f564"; }
-#cookies:hover::before { content: "\f564"; }
-#helpAbout::before { content: "\f135"; color: var( --ctrl-about-color ); }
-#helpKeyboardShortcuts::before { content: "\f11c"; }
 #cookies {
 	animation: infinite cookie-anim 5s;
+}
+#helpAbout {
+	color: var( --ctrl-about-color );
 }
 
 @keyframes cookie-anim {

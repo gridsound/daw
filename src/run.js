@@ -61,8 +61,8 @@ function UIrun() {
 	DAW.cb.analyserFilled = UImainAnalyser.draw.bind( UImainAnalyser );
 	DAW.cb.channelAnalyserFilled = UImixer.updateAudioData.bind( UImixer );
 	DAW.cb.pause =
-	DAW.cb.stop = () => DOM.play.classList.remove( "playing" );
-	DAW.cb.play = () => DOM.play.classList.add( "playing" );
+	DAW.cb.stop = () => DOM.play.dataset.icon = "play";
+	DAW.cb.play = () => DOM.play.dataset.icon = "pause";
 
 	DOM.versionNum.textContent =
 	DOM.headVersionNum.textContent = window.VERSION;

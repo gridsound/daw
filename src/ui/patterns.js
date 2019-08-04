@@ -77,7 +77,7 @@ function UInamePattern( id, name ) {
 	UIpatterns.get( id ).querySelector( ".pattern-name" ).textContent = name;
 	UIpatternroll.getBlocks().forEach( blc => {
 		if ( blc.dataset.pattern === id ) {
-			blc.children[ 2 ].textContent = name;
+			blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = name;
 		}
 	} );
 	if ( id === DAW.get.patternKeysOpened() ) {
@@ -119,7 +119,7 @@ function UIupdatePatternContent( id ) {
 
 						wave.setResolution( 260, 48 );
 						wave.drawBuffer( buf.buffer, buf.offset, buf.duration );
-						elPat.querySelector( ".pattern-content" ).append( wave.rootElement );
+						elPat.children[ 1 ].append( wave.rootElement );
 						elPat._gsuiWaveform = wave;
 					}
 				}
@@ -143,7 +143,7 @@ function UIupdatePatternContent( id ) {
 					const mat = new gsuiRectMatrix();
 
 					mat.setResolution( 200, 32 );
-					elPat.querySelector( ".pattern-content" ).append( mat.rootElement );
+					elPat.children[ 1 ].append( mat.rootElement );
 					elPat._gsuiRectMatrix = mat;
 				}
 				elPat._gsuiRectMatrix.render( uiKeysToRects( get.keys( pat.keys ) ) );

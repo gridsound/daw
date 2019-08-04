@@ -98,20 +98,22 @@ function UIcompositionOpened( cmp ) {
 	html.root.classList.add( "cmp-loaded" );
 	par.prepend( html.root );
 	par.scrollTop = 0;
-	DOM.headCmp.dataset.saveMode = cmp.options.saveMode;
+	DOM.headCmp.dataset.saveMode =
+	DOM.headCmpIcon.dataset.icon = cmp.options.saveMode;
+	DOM.headCmpSave.dataset.icon = cmp.options.saveMode === "local" ? "save" : "upload";
 	UIsynthsExpandSynth( cmp.synthOpened, true );
 	UIeffectsSelectChan( "main" );
 	UItitle();
 }
 
 function UIcompositionLoading( cmp, loading ) {
-	DOM.headCmp.classList.toggle( "cmp-loading", loading );
-	UIcompositions.get( cmp ).root.classList.toggle( "cmp-loading", loading );
+	DOM.headCmpSave.dataset.spin =
+	UIcompositions.get( cmp ).save.dataset.spin = loading ? "on" : "";
 }
 
 function UIcompositionSavedStatus( cmp, saved ) {
-	DOM.headCmp.classList.toggle( "cmp-saved", !!saved );
-	UIcompositions.get( cmp ).root.classList.toggle( "cmp-saved", !!saved );
+	DOM.headCmp.classList.toggle( "cmp-saved", saved );
+	UIcompositions.get( cmp ).root.classList.toggle( "cmp-saved", saved );
 	UItitle();
 }
 
@@ -131,17 +133,20 @@ function UIcompositionAdded( cmp ) {
 		UIcompositionSetInfo( html, cmp );
 	} else {
 		const root = DOM.cmp.cloneNode( true ),
+			local = cmp.options.saveMode === "local",
 			html = {
 				root,
 				bpm: root.querySelector( ".cmp-bpm" ),
 				name: root.querySelector( ".cmp-name" ),
+				save: root.querySelector( ".cmp-save" ),
 				duration: root.querySelector( ".cmp-duration" ),
 			};
 
 		root.dataset.id = cmp.id;
 		UIcompositionSetInfo( html, cmp );
 		UIcompositions.set( cmp, html );
-		( cmp.options.saveMode === "local"
+		html.save.dataset.icon = local ? "save" : "upload";
+		( local
 			? DOM.cmpsLocalList
 			: DOM.cmpsCloudList ).append( root );
 	}

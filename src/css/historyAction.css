@@ -31,10 +31,9 @@
 
 /* -------------------------------------------------------------------------- */
 .historyAction-icon {
+	width: 1.4ch;
 	margin: 0 6px;
-}
-.historyAction:hover .historyAction-icon::before {
-	font-weight: bold;
+	text-align: center;
 }
 .historyAction-text {
 	flex: 1;

@@ -27,9 +27,8 @@
 	font-size: 14px;
 	background-color: var( --gsuiWindow-head-bg );
 }
-.headDropdown-head::before {
+.headDropdown-icon {
 	margin: 0 .5em;
-	font-family: "FontAwesome";
 }
 .headDropdown-title {
 	font-weight: bold;

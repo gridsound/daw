@@ -87,5 +87,5 @@ function UIpatternrollOnAddBlock( id, obj, blc ) {
 		} break;
 	}
 	blc.ondblclick = () => { DAW.openPattern( obj.pattern ); };
-	blc.children[ 2 ].textContent = pat.name;
+	blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = pat.name;
 }

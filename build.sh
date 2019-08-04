@@ -31,6 +31,7 @@ declare -a CSSfiles=(
 	"gs-ui-windows/src/gsuiWindows.css"
 	"gs-ui-windows/src/gsuiWindow.css"
 
+	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiClock/gsuiClock.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
@@ -56,7 +57,6 @@ declare -a CSSfiles=(
 	"src/css/textGlitch.css"
 	"src/css/loading.css"
 	"src/css/root.css"
-	"src/css/icon.css"
 	"src/css/app.css"
 	"src/css/head.css"
 	"src/css/cmps.css"
