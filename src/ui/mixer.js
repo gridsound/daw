@@ -10,7 +10,7 @@ function UImixerInit() {
 	UImixer.onupdateChan = UImixerUpdateChan;
 	UImixer.onselectChan = UImixerSelectChan;
 	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
-	UImixer.onchange = obj => DAW.compositionChange( { channels: obj } );
+	UImixer.onchange = DAW.changeChannels.bind( DAW );
 	win.onresize =
 	win.onresizing = () => UImixer.resized();
 	win.append( UImixer.rootElement );
