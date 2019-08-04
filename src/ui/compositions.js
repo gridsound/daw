@@ -27,7 +27,9 @@ function UIcompositionsInit() {
 }
 
 function UIcompositionDragstart( from, e ) {
-	e.dataTransfer.setData( "text/plain", `${ from }:${ e.target.dataset.id }` );
+	const elCmp = e.target.closest( ".cmp" );
+
+	e.dataTransfer.setData( "text/plain", `${ from }:${ elCmp.dataset.id }` );
 }
 
 function UIcompositionDrop( from, to, e ) {
