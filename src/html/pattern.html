@@ -1,6 +1,13 @@
-<div class="pattern" id="pattern" draggable="true" data-remove data-remove-id>
+<div class="pattern" id="pattern" draggable="true" tabindex="0" data-remove data-remove-id>
 	<div class="pattern-head">
-		<div class="pattern-name"></div>
+		<div class="pattern-info">
+			<div class="pattern-name"></div>
+			<i class="pattern-dest-arrow gsuiIcon" data-icon="arrow-right"></i>
+			<button class="windowBtn pattern-dest-btn" data-action="changeDest">
+				<i class="windowBtnIcon gsuiIcon" data-icon="mixer"></i>
+				<span class="windowBtnText pattern-dest">main</span>
+			</button>
+		</div>
 		<button class="pattern-btn gsuiIcon" data-action="clone" data-icon="clone" title="Clone this pattern"></button>
 		<button class="pattern-btn gsuiIcon" data-action="remove" data-icon="close" title="Delete this pattern"></button>
 	</div>

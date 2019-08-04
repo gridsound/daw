@@ -7,6 +7,7 @@ window.UIpatternsClickFns = new Map( [
 	[ undefined, id => DAW.openPattern( id ) ],
 	[ "remove", id => DAW.removePattern( id ) ],
 	[ "clone", id => DAW.clonePattern( id ) ],
+	[ "changeDest", id => UImixerOpenChanPopup( "patterns", id ) ],
 ] );
 
 function UIpatternsInit() {
@@ -71,6 +72,22 @@ function UIaddPattern( id, obj ) {
 			break;
 	}
 	UIupdatePatternContent( id );
+}
+
+function UIupdatePattern( id, obj ) {
+	if ( obj.synth ) {
+		UIchangePatternSynth( id, obj.synth );
+	}
+	if ( "name" in obj ) {
+		UInamePattern( id, obj.name );
+	}
+	if ( "dest" in obj ) {
+		UIpatterns.get( id ).querySelector( ".pattern-dest" )
+			.textContent = DAW.get.channel( obj.dest ).name;
+	}
+	if ( "duration" in obj && !DAW.compositionFocused && id === DAW.get.patternKeysOpened() ) {
+		DOM.sliderTime.options( { max: obj.duration } );
+	}
 }
 
 function UInamePattern( id, name ) {

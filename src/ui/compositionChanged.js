@@ -43,8 +43,6 @@ UIcompositionChanged.fn = new Map( [
 		}
 	} ],
 	[ "patterns", function( { patterns }, prevObj ) {
-		const opened = DAW.get.patternKeysOpened();
-
 		Object.entries( patterns ).forEach( ( [ id, obj ] ) => {
 			if ( !obj ) {
 				UIpatterns.get( id ).remove();
@@ -52,15 +50,7 @@ UIcompositionChanged.fn = new Map( [
 			} else if ( !prevObj.patterns[ id ] ) {
 				UIaddPattern( id, obj );
 			} else {
-				if ( obj.synth ) {
-					UIchangePatternSynth( id, obj.synth );
-				}
-				if ( "name" in obj ) {
-					UInamePattern( id, obj.name );
-				}
-				if ( id === opened && "duration" in obj && !DAW.compositionFocused ) {
-					DOM.sliderTime.options( { max: obj.duration } );
-				}
+				UIupdatePattern( id, obj );
 			}
 		} );
 	} ],

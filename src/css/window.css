@@ -12,6 +12,7 @@
 	overflow: hidden;
 	border-radius: 3px;
 	line-height: 1;
+	color: inherit;
 	font-size: 12px;
 	font-weight: bold;
 	font-family: inherit;
@@ -23,6 +24,11 @@
 .windowBtn:focus,
 .windowBtn:hover {
 	filter: brightness( 1.1 );
+}
+
+.windowBtnIcon,
+.windowBtnText {
+	pointer-events: none;
 }
 
 .windowBtnIcon + .windowBtnText {

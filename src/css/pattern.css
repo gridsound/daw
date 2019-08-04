@@ -29,16 +29,43 @@
 	transition: inherit;
 	background-color: var( --pattern-head-bg );
 }
-.pattern-name {
+.pattern-info {
+	flex: 1;
+	display: flex;
 	padding: 0 8px;
+	overflow: hidden;
+	align-items: center;
+}
+.pattern-name {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	font-size: 12px;
 	font-weight: bold;
-	margin-right: auto;
 }
 .pattern-name:empty::after {
 	content: "Untitled";
 	font-style: italic;
 	opacity: .5;
+}
+
+/* .......................................................................... */
+#keysPatterns .pattern-dest-arrow,
+#keysPatterns .pattern-dest-btn {
+	display: none;
+}
+.pattern-dest-arrow {
+	margin: 0 4px;
+}
+.pattern-dest-btn {
+	overflow: initial;
+	text-overflow: initial;
+	background-color: rgba( 0, 0, 0, .1 );
+}
+.pattern-dest-btn:hover,
+.pattern-dest-btn:focus {
+	color: var( --pattern-bg );
+	background-color: var( --pattern-text );
 }
 
 /* .......................................................................... */
