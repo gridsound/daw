@@ -97,6 +97,7 @@ declare -a HTMLfiles=(
 	"src/html/popups/tempo.html"
 	"src/html/popups/render.html"
 	"src/html/popups/shortcuts.html"
+	"src/html/popups/selectChan.html"
 
 	"gs-ui-windows/src/gsuiWindow.html"
 

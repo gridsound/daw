@@ -37,6 +37,9 @@ function UIsynthsInit() {
 			[ "expand", id => {
 				UIsynthsExpandSynth( id );
 			} ],
+			[ "changeDest", id => {
+				UImixerOpenChanPopup( "synths", id );
+			} ],
 			[ "delete", id => {
 				if ( Object.keys( DAW.get.synths() ).length > 1 ) {
 					DAW.removeSynth( id );

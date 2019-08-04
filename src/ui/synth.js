@@ -3,8 +3,6 @@
 const UIsynth = new gsuiSynthesizer();
 
 function UIsynthInit() {
-	DOM.synthChanName.onclick = UIsynthChanNameOnClick;
-	DOM.synthChanSelect.onchange = UIsynthChanSelectOnChange;
 	UIsynth.oninput = ( id, attr, val ) => {
 		DAW.liveChangeSynth( DAW.get.synthOpened(), {
 			oscillators: { [ id ]: { [ attr ]: val } }
@@ -31,10 +29,12 @@ function UIsynthOpen( id ) {
 	UIsynth.empty();
 	if ( !id ) {
 		DOM.synthName.textContent = "";
+		DOM.synthChannelBtn.onclick = null;
 	} else {
 		const syn = DAW.get.synth( id );
 
 		DOM.synthName.textContent = syn.name;
+		DOM.synthChannelBtn.onclick = UImixerOpenChanPopup.bind( null, "synths", id );
 		UIsynthChange( syn );
 	}
 }
@@ -44,19 +44,7 @@ function UIsynthChange( obj ) {
 		DOM.synthName.textContent = obj.name;
 	}
 	if ( "dest" in obj ) {
-		DOM.synthChanSelect.value = obj.dest;
-		DOM.synthChanName.textContent = DAW.get.channel( obj.dest ).name;
+		DOM.synthChannelBtnText.textContent = DAW.get.channel( obj.dest ).name;
 	}
 	UIsynth.change( obj );
-}
-
-function UIsynthChanNameOnClick() {
-	UImixer.selectChan( DAW.get.synth( DAW.get.synthOpened() ).dest );
-}
-
-function UIsynthChanSelectOnChange( e ) {
-	DOM.synthChanName.focus();
-	DAW.compositionChange( { synths: {
-		[ DAW.get.synthOpened() ]: { dest: e.currentTarget.value }
-	} } );
 }

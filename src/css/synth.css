@@ -80,11 +80,16 @@
 	font-style: italic;
 	opacity: .8;
 }
-.synth-dest::before {
-	content: "\f356";
-	margin: 0 .4em;
-	font-weight: normal;
-	font-family: "FontAwesome";
+.synth-dest-arrow {
+	margin: 0 4px;
+}
+.synth-dest-btn {
+	background-color: rgba( 0, 0, 0, .1 );
+}
+.synth-dest-btn:hover,
+.synth-dest-btn:focus {
+	color: var( --synth-bg );
+	background-color: var( --windowBtn-bg );
 }
 
 /* .......................................................................... */

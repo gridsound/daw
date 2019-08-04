@@ -91,6 +91,19 @@
 	font-size: 12px;
 }
 
+/* #selectChanPopupContent ---------------------------------------------------- */
+#selectChanPopupContent {
+	width: auto;
+}
+#selectChanPopupSelect {
+	width: 100%;
+	color: inherit;
+	background-color: transparent;
+}
+#selectChanPopupSelect option {
+	padding: 4px;
+}
+
 /* #tempoPopupContent ---------------------------------------------------- */
 #tempoPopupContent {
 	width: 400px;
