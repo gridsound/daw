@@ -62,16 +62,11 @@ function UIaddPattern( id, obj ) {
 
 	pat.dataset.id = id;
 	UIpatterns.set( id, pat );
-	UInamePattern( id, obj.name );
-	switch ( obj.type ) {
-		case "keys":
-			UIchangePatternSynth( id, obj.synth );
-			break;
-		case "buffer":
-			DOM.buffPatterns.prepend( pat );
-			break;
-	}
+	UIupdatePattern( id, obj );
 	UIupdatePatternContent( id );
+	if ( obj.type === "buffer" ) {
+		DOM.buffPatterns.prepend( pat );
+	}
 }
 
 function UIupdatePattern( id, obj ) {
