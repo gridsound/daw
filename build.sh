@@ -34,6 +34,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiClock/gsuiClock.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
+	"gs-ui-components/gsuiReorder/gsuiReorder.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"
@@ -185,6 +186,9 @@ declare -a JSfiles=(
 
 	"gs-ui-components/gsuiClock/gsuiClock.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
+	"gs-ui-components/gsuiReorder/gsuiReorder.js"
+	"gs-ui-components/gsuiReorder/gsuiReorder.listReorder.js"
+	"gs-ui-components/gsuiReorder/gsuiReorder.listComputeOrderChange.js"
 	"gs-ui-components/gsuiDragline/gsuiDragline.js"
 	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"
