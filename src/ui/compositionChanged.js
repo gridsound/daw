@@ -30,8 +30,7 @@ UIcompositionChanged.fn = new Map( [
 
 		Object.entries( synths ).forEach( ( [ id, obj ] ) => {
 			if ( !obj ) {
-				UIsynths.get( id ).remove();
-				UIsynths.delete( id );
+				UIsynthsRemoveSynth( id );
 			} else if ( !prevObj.synths[ id ] ) {
 				UIsynthsAddSynth( id, obj );
 			} else {
@@ -105,8 +104,8 @@ UIcompositionChanged.fn = new Map( [
 		const el = UIsynths.get( synthOpened ),
 			elPrev = UIsynths.get( prevObj.synthOpened );
 
-		el && el.classList.add( "synth-selected" );
-		elPrev && elPrev.classList.remove( "synth-selected" );
+		el && el.root.classList.add( "synth-selected" );
+		elPrev && elPrev.root.classList.remove( "synth-selected" );
 		UIsynthOpen( synthOpened );
 	} ],
 	[ "patternKeysOpened", function( { patternKeysOpened }, prevObj ) {

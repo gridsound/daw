@@ -179,7 +179,7 @@ function UIcompositionClosed( cmp ) {
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollForbidden.classList.add( "hidden" );
 	UIpatterns.forEach( pat => pat.remove() );
-	UIsynths.forEach( syn => syn.remove() );
+	UIsynths.forEach( syn => syn.root.remove() );
 	UIsynths.clear();
 	UIpatterns.clear();
 	UIbuffers.clear();

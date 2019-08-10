@@ -98,7 +98,7 @@ function UInamePattern( id, name ) {
 }
 
 function UIchangePatternSynth( patId, synthId ) {
-	UIsynths.get( synthId ).querySelector( ".synth-patterns" )
+	UIsynths.get( synthId ).root.querySelector( ".synth-patterns" )
 		.prepend( UIpatterns.get( patId ) );
 }
 

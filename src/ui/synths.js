@@ -3,23 +3,31 @@
 const UIsynths = new Map();
 
 function UIsynthsAddSynth( id, obj ) {
-	const syn = DOM.synth.cloneNode( true );
+	const root = DOM.synth.cloneNode( true ),
+		UIobj = { root };
 
-	syn.dataset.id = id;
-	UIsynths.set( id, syn );
+	root.dataset.id = id;
+	UIsynths.set( id, UIobj );
 	UIsynthsUpdateSynth( id, obj );
-	DOM.keysPatterns.prepend( syn );
+	DOM.keysPatterns.prepend( root );
+}
+
+function UIsynthsRemoveSynth( id ) {
+	const UIobj = UIsynths.get( id );
+
+	UIobj.root.remove();
+	UIsynths.delete( id );
 }
 
 function UIsynthsExpandSynth( id, b ) {
-	const root = UIsynths.get( id ),
+	const root = UIsynths.get( id ).root,
 		show = root.classList.toggle( "synth-show", b );
 
 	root.querySelector( ".synth-showBtn" ).dataset.icon = `caret-${ show ? "down" : "right" }`;
 }
 
 function UIsynthsUpdateSynth( id, obj ) {
-	const root = UIsynths.get( id );
+	const root = UIsynths.get( id ).root;
 
 	if ( "name" in obj ) {
 		root.querySelector( ".synth-name" ).textContent = obj.name;
