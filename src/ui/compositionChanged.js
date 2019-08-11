@@ -52,6 +52,7 @@ UIcompositionChanged.fn = new Map( [
 				UIupdatePattern( id, obj );
 			}
 		} );
+		gsuiReorder.listReorder( DOM.buffPatterns, patterns );
 	} ],
 	[ [ "beatsPerMeasure", "stepsPerBeat" ], function() {
 		const bPM = DAW.get.beatsPerMeasure(),

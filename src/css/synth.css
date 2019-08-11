@@ -96,7 +96,6 @@
 .synth-patterns {
 	flex: 1;
 	overflow: hidden;
-	padding-left: 10px;
 	max-height: var( --synth-patterns-maxHeight );
 	background-color: var( --synth-patterns-bg );
 }
@@ -127,9 +126,8 @@
 	margin: 4px auto;
 }
 .synth .pattern {
-	border-radius: 4px 0 0 4px;
-	margin-top: calc( var( --pattern-height ) * -1 );
+	margin-top: calc( var( --pattern-h ) * -1 );
 }
 .synth-show .pattern {
-	margin: 4px 0;
+	margin: 0;
 }

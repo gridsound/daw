@@ -1,12 +1,18 @@
 #buffPatterns .pattern-btn[ data-action="clone" ] { display: none; } /* temporary */
+#keysPatterns .pattern { --pattern-grip-w: 0; } /* temporary */
+#keysPatterns .pattern-grip { display: none; } /* temporary */
 
 .pattern {
+	--pattern-h: 64px;
+	--pattern-head-h: 26px;
+	--pattern-grip-w: 20px;
+
 	display: flex;
 	overflow: hidden;
-	flex-direction: column;
-	box-sizing: border-box;
 	position: relative;
-	height: var( --pattern-height );
+	box-sizing: border-box;
+	flex-direction: column;
+	height: var( --pattern-h );
 	color: var( --pattern-text );
 	background-color: var( --pattern-bg );
 	transition:
@@ -15,7 +21,7 @@
 		background-color .1s;
 }
 #buffPatterns .pattern {
-	border-bottom: 1px solid rgba( 0, 0, 0, .4 );
+	border-bottom: 2px solid transparent;
 }
 .pattern.selected {
 	--pattern-bg: var( --pattern-selected-bg );
@@ -24,13 +30,41 @@
 }
 
 /* .......................................................................... */
-.pattern-head {
-	box-sizing: border-box;
-	display: flex;
-	height: 26px;
-	line-height: 26px;
-	transition: inherit;
+.pattern-grip {
+	position: absolute;
+	width: calc( var( --pattern-grip-w ) - 2px );
+	top: 0;
+	left: 0;
+	bottom: 0;
+	cursor: grab;
+	text-align: center;
+	line-height: var( --pattern-h );
 	background-color: var( --pattern-head-bg );
+}
+
+/* .......................................................................... */
+.pattern-head,
+.gsuiPatternroll-block-content,
+.gsuiPatternroll-block-placeholder {
+	position: absolute;
+	left: var( --pattern-grip-w );
+	right: 0;
+}
+.gsuiPatternroll-block-content,
+.gsuiPatternroll-block-placeholder {
+	height: calc( var( --pattern-h ) - var( --pattern-head-h ) );
+	bottom: 0;
+}
+
+/* .......................................................................... */
+.pattern-head {
+	top: 0;
+	display: flex;
+	box-sizing: border-box;
+	height: var( --pattern-head-h );
+	line-height: var( --pattern-head-h );
+	background-color: var( --pattern-head-bg );
+	transition: inherit;
 }
 .pattern-info {
 	flex: 1;

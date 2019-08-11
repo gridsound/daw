@@ -11,6 +11,8 @@ window.UIpatternsClickFns = new Map( [
 ] );
 
 function UIpatternsInit() {
+	const reorderPatBuffers = new gsuiReorder();
+
 	UIwaveforms.setPxHeight( 48 );
 	UIwaveforms.setPxPerSecond( 48 );
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
@@ -20,6 +22,19 @@ function UIpatternsInit() {
 	document.addEventListener( "drop", e => {
 		DAW.dropAudioFiles( e.dataTransfer.files );
 	} );
+	reorderPatBuffers.setRootElement( DOM.buffPatterns );
+	reorderPatBuffers.setSelectors( {
+		item: "#buffPatterns .pattern",
+		handle: "#buffPatterns .pattern-grip",
+		parent: "#buffPatterns"
+	} );
+	reorderPatBuffers.onchange = UIpatternsOrderChange;
+}
+
+function UIpatternsOrderChange() {
+	const patterns = gsuiReorder.listComputeOrderChange( DOM.buffPatterns, {} );
+
+	DAW.compositionChange( { patterns } );
 }
 
 function UIpatternsBuffersLoaded( buffers ) {
@@ -72,6 +87,9 @@ function UIaddPattern( id, obj ) {
 function UIupdatePattern( id, obj ) {
 	if ( obj.synth ) {
 		UIchangePatternSynth( id, obj.synth );
+	}
+	if ( "order" in obj ) {
+		UIpatterns.get( id ).dataset.order = obj.order;
 	}
 	if ( "name" in obj ) {
 		UInamePattern( id, obj.name );
@@ -131,7 +149,7 @@ function UIupdatePatternContent( id ) {
 
 						wave.setResolution( 260, 48 );
 						wave.drawBuffer( buf.buffer, buf.offset, buf.duration );
-						elPat.children[ 1 ].append( wave.rootElement );
+						elPat.querySelector( ".gsuiPatternroll-block-content" ).append( wave.rootElement );
 						elPat._gsuiWaveform = wave;
 					}
 				}
@@ -155,7 +173,7 @@ function UIupdatePatternContent( id ) {
 					const mat = new gsuiRectMatrix();
 
 					mat.setResolution( 200, 32 );
-					elPat.children[ 1 ].append( mat.rootElement );
+					elPat.querySelector( ".gsuiPatternroll-block-content" ).append( mat.rootElement );
 					elPat._gsuiRectMatrix = mat;
 				}
 				elPat._gsuiRectMatrix.render( uiKeysToRects( get.keys( pat.keys ) ) );
