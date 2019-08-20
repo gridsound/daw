@@ -5,7 +5,7 @@
 .pattern {
 	--pattern-h: 64px;
 	--pattern-head-h: 26px;
-	--pattern-grip-w: 20px;
+	--pattern-grip-w: 16px;
 
 	display: flex;
 	overflow: hidden;
@@ -37,6 +37,7 @@
 	left: 0;
 	bottom: 0;
 	cursor: grab;
+	font-size: 14px;
 	text-align: center;
 	line-height: var( --pattern-h );
 	background-color: var( --pattern-head-bg );
@@ -44,14 +45,14 @@
 
 /* .......................................................................... */
 .pattern-head,
-.gsuiPatternroll-block-content,
-.gsuiPatternroll-block-placeholder {
+.pattern .gsuiPatternroll-block-content,
+.pattern .gsuiPatternroll-block-placeholder {
 	position: absolute;
 	left: var( --pattern-grip-w );
 	right: 0;
 }
-.gsuiPatternroll-block-content,
-.gsuiPatternroll-block-placeholder {
+.pattern .gsuiPatternroll-block-content,
+.pattern .gsuiPatternroll-block-placeholder {
 	height: calc( var( --pattern-h ) - var( --pattern-head-h ) );
 	bottom: 0;
 }
