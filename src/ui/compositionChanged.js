@@ -53,6 +53,11 @@ UIcompositionChanged.fn = new Map( [
 			}
 		} );
 		gsuiReorder.listReorder( DOM.buffPatterns, patterns );
+		UIsynths.forEach( syn => {
+			const list = syn.root.querySelector( ".synth-patterns" );
+
+			gsuiReorder.listReorder( list, patterns );
+		} );
 	} ],
 	[ [ "beatsPerMeasure", "stepsPerBeat" ], function() {
 		const bPM = DAW.get.beatsPerMeasure(),

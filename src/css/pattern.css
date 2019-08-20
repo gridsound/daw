@@ -1,6 +1,4 @@
 #buffPatterns .pattern-btn[ data-action="clone" ] { display: none; } /* temporary */
-#keysPatterns .pattern { --pattern-grip-w: 0; } /* temporary */
-#keysPatterns .pattern-grip { display: none; } /* temporary */
 
 .pattern {
 	--pattern-h: 64px;

@@ -11,30 +11,64 @@ window.UIpatternsClickFns = new Map( [
 ] );
 
 function UIpatternsInit() {
-	const reorderPatBuffers = new gsuiReorder();
+	const orderBuff = new gsuiReorder(),
+		orderKeys = new gsuiReorder();
 
 	UIwaveforms.setPxHeight( 48 );
 	UIwaveforms.setPxPerSecond( 48 );
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
 	DOM.keysPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "keys" ) );
-	DOM.buffPatterns.addEventListener( "dragstart", UIpatternsOndragstart );
-	DOM.keysPatterns.addEventListener( "dragstart", UIpatternsOndragstart );
 	document.addEventListener( "drop", e => {
 		DAW.dropAudioFiles( e.dataTransfer.files );
 	} );
-	reorderPatBuffers.setRootElement( DOM.buffPatterns );
-	reorderPatBuffers.setSelectors( {
+	orderBuff.setRootElement( DOM.buffPatterns );
+	orderKeys.setRootElement( DOM.keysPatterns );
+	orderBuff.setSelectors( {
 		item: "#buffPatterns .pattern",
 		handle: "#buffPatterns .pattern-grip",
 		parent: "#buffPatterns"
 	} );
-	reorderPatBuffers.onchange = UIpatternsOrderChange;
+	orderKeys.setSelectors( {
+		item: "#keysPatterns .pattern",
+		handle: "#keysPatterns .pattern-grip",
+		parent: ".synth-patterns"
+	} );
+	orderBuff.onchange = UIpatternsBuffReorderChange;
+	orderKeys.onchange = UIpatternsKeysReorderChange;
+	orderBuff.setDataTransfert =
+	orderKeys.setDataTransfert = UIpatternsDataTransfert;
 }
 
-function UIpatternsOrderChange() {
+function UIpatternsDataTransfert( elPat ) {
+	const id = elPat.dataset.id;
+
+	return `${ id }:${ DAW.get.pattern( id ).duration }`;
+}
+
+function UIpatternsBuffReorderChange() {
 	const patterns = gsuiReorder.listComputeOrderChange( DOM.buffPatterns, {} );
 
 	DAW.compositionChange( { patterns } );
+}
+
+function UIpatternsKeysReorderChange( el, indA, indB, parA, parB ) {
+	if ( parA === parB ) {
+		const patterns = gsuiReorder.listComputeOrderChange( parA, {} );
+
+		DAW.compositionChange( { patterns } );
+	} else {
+		const synth = parB.parentNode.dataset.id,
+			patId = el.dataset.id,
+			patterns = { [ patId ]: { synth } },
+			obj = { patterns };
+
+		gsuiReorder.listComputeOrderChange( parA, patterns );
+		gsuiReorder.listComputeOrderChange( parB, patterns );
+		if ( patId === DAW.get.patternKeysOpened() ) {
+			obj.synthOpened = synth;
+		}
+		DAW.compositionChange( obj );
+	}
 }
 
 function UIpatternsBuffersLoaded( buffers ) {
@@ -58,17 +92,6 @@ function UIpatternsOnclick( type, e ) {
 		if ( type === "keys" || e.target.dataset.action ) { // tmp
 			UIpatternsClickFns.get( e.target.dataset.action )( pat.dataset.id );
 		}
-	}
-}
-
-function UIpatternsOndragstart( e ) {
-	const pat = e.target.closest( ".pattern" );
-
-	if ( pat ) {
-		const id = pat.dataset.id,
-			dur = DAW.get.pattern( id ).duration;
-
-		e.dataTransfer.setData( "text", `${ id }:${ dur }` );
 	}
 }
 
@@ -117,7 +140,7 @@ function UInamePattern( id, name ) {
 
 function UIchangePatternSynth( patId, synthId ) {
 	UIsynths.get( synthId ).root.querySelector( ".synth-patterns" )
-		.prepend( UIpatterns.get( patId ) );
+		.append( UIpatterns.get( patId ) );
 }
 
 function UIupdatePatternsBPM( bpm ) {

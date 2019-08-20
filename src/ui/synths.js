@@ -62,15 +62,11 @@ function UIsynthsInit() {
 		] );
 
 	DOM.synthNew.onclick = () => ( DAW.newSynth(), false );
-	DOM.keysPatterns.ondrop = e => {
+	DOM.keysPatterns.ondragover = e => {
 		const syn = e.target.closest( ".synth" );
 
 		if ( syn ) {
-			const arr = e.dataTransfer.getData( "text" ).split( ":" );
-
-			if ( arr.length === 2 ) {
-				DAW.changePatternSynth( arr[ 0 ], syn.dataset.id );
-			}
+			UIsynthsExpandSynth( syn.dataset.id, true );
 		}
 	};
 	DOM.keysPatterns.addEventListener( "dblclick", e => {
