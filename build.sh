@@ -28,9 +28,6 @@ declare -a HEADEREND=(
 )
 
 declare -a CSSfiles=(
-	"gs-ui-windows/src/gsuiWindows.css"
-	"gs-ui-windows/src/gsuiWindow.css"
-
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiClock/gsuiClock.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
@@ -51,6 +48,8 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"gs-ui-components/gsuiTrack/gsuiTrack.css"
+	"gs-ui-components/gsuiWindows/gsuiWindows.css"
+	"gs-ui-components/gsuiWindows/gsuiWindow.css"
 
 	"assets/fonts/fonts.css"
 
@@ -100,14 +99,13 @@ declare -a HTMLfiles=(
 	"src/html/popups/shortcuts.html"
 	"src/html/popups/selectChan.html"
 
-	"gs-ui-windows/src/gsuiWindow.html"
-
 	"gs-ui-components/gsuiKeys/gsuiKeys.html"
 	"gs-ui-components/gsuiClock/gsuiClock.html"
 	"gs-ui-components/gsuiMixer/gsuiMixer.html"
 	"gs-ui-components/gsuiPopup/gsuiPopup.html"
 	"gs-ui-components/gsuiTrack/gsuiTrack.html"
 	"gs-ui-components/gsuiSlider/gsuiSlider.html"
+	"gs-ui-components/gsuiWindows/gsuiWindow.html"
 	"gs-ui-components/gsuiDragline/gsuiDragline.html"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.html"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
@@ -185,9 +183,6 @@ declare -a JSfiles=(
 	"daw-core/src/actions/nameSynth.js"
 	"daw-core/src/actions/newSynth.js"
 
-	"gs-ui-windows/src/gsuiWindows.js"
-	"gs-ui-windows/src/gsuiWindow.js"
-
 	"gs-ui-components/gsuiClock/gsuiClock.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
 	"gs-ui-components/gsuiReorder/gsuiReorder.js"
@@ -223,6 +218,8 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.js"
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"
 	"gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"
+	"gs-ui-components/gsuiWindows/gsuiWindows.js"
+	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
 	"gs-webaudio-library/gswaMixer/gswaMixer.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"
