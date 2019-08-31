@@ -123,6 +123,10 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
+	"gs-data/gsdata/gsdata.js"
+	"gs-data/gsdataMixer/gsdataMixer.js"
+	"gs-data/gsdataMixer/gsdataMixer.actions.js"
+
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/DAWCore.prototype.get.js"
 	"daw-core/src/Buffers.js"
