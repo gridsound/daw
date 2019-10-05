@@ -39,7 +39,7 @@ function UIcontrolsInit() {
 
 function UIcontrolsSliderTime_inputstart( beat ) {
 	DAW.cb.clockUpdate = null;
-	UIclock.setTime( "beat", beat );
+	UIclock.setTime( beat );
 }
 function UIcontrolsSliderTime_oninputend( _beat ) {
 	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
@@ -47,7 +47,7 @@ function UIcontrolsSliderTime_oninputend( _beat ) {
 function UIcontrolsSliderTime_oninput( beat ) {
 	const beatRound = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( beat );
 
-	UIclock.setTime( "beat", beatRound );
+	UIclock.setTime( beatRound );
 }
 function UIcontrolsSliderTime_onchange() {
 	const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
@@ -60,7 +60,7 @@ function UIcontrolsBPMTap() {
 }
 
 function UIcontrolsClockUpdate( beat ) {
-	UIclock.setTime( "beat", beat );
+	UIclock.setTime( beat );
 }
 
 function UIcontrolsCurrentTime( beat, focused ) {
