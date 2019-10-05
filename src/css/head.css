@@ -325,16 +325,22 @@ a.btn {
 #winBtns {
 	grid-area: winBtns;
 	display: flex;
+	overflow: hidden;
+	border-radius: 4px;
 	white-space: nowrap;
 }
 .winBtn {
 	padding: 2px 6px;
 	font-size: 12px;
 	font-weight: bold;
-	border-radius: 4px;
+	border-radius: 0;
 	background-color: var( --head-winBtn-bg );
 	transition: var( --head-hover-dur );
 	transition-property: color, background-color, box-shadow;
+}
+.winBtn + .winBtn {
+	margin-left: 0;
+	border-left: 1px dashed rgba( 0, 0, 0, .2 );
 }
 .winBtn-open {
 	color: var( --head-bg );
