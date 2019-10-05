@@ -193,6 +193,10 @@ a.btn {
 	--gsuiSlider-lineColor: var( --ctrl-play-bg );
 	--gsuiSlider-lineBgColor: #222;
 }
+#headGain .gsuiSlider-eventCatcher {
+	left: -12px;
+	right: -4px;
+}
 
 /* .......................................................................... */
 #headCurrentTime {
