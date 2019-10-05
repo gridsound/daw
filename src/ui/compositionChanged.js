@@ -17,8 +17,12 @@ UIcompositionChanged.fn = new Map( [
 	[ "channels", function( obj ) {
 		UImixer.change( obj.channels );
 	} ],
+	[ "effects", function( obj ) {
+		UIeffects.change( obj.effects );
+	} ],
 	[ [ "tracks", "blocks" ], function( obj ) {
-		DAWCore.objectDeepAssign( UIpatternroll.data, obj );
+		GSData.deepAssign( UIpatternroll.data.tracks, obj.tracks );
+		GSData.deepAssign( UIpatternroll.data.blocks, obj.blocks );
 	} ],
 	[ [ "loopA", "loopB" ], function() {
 		UIpatternroll.loop(
@@ -99,7 +103,7 @@ UIcompositionChanged.fn = new Map( [
 				if ( patObj.keys === keysId ) {
 					UIupdatePatternContent( patId );
 					if ( patId === patOpened ) {
-						DAWCore.objectDeepAssign( UIpianoroll.data, keysObj );
+						GSData.deepAssign( UIpianoroll.data, keysObj );
 					}
 					return true;
 				}
@@ -124,7 +128,7 @@ UIcompositionChanged.fn = new Map( [
 		DOM.pianorollForbidden.classList.toggle( "hidden", pat );
 		if ( pat ) {
 			el.classList.add( "selected" );
-			DAWCore.objectDeepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
+			GSData.deepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
 			UIpianoroll.resetKey();
 			UIpianoroll.scrollToKeys();
 			if ( !DAW.compositionFocused ) {

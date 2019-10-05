@@ -32,6 +32,9 @@ function UImixerDeleteChan( id ) {
 function UImixerUpdateChan( id, prop, val ) {
 	if ( prop === "name" ) {
 		DOM.selectChanPopupSelect.querySelector( `option[value="${ id }"]` ).textContent = val;
+		if ( id === UImixer.getCurrentChannelId() ) {
+			UIeffectsRenameChan( val );
+		}
 	}
 }
 

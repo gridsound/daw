@@ -20,11 +20,12 @@ function UIwindowsInit() {
 				!btn.classList.contains( "winBtn-open" ) );
 		}
 	};
-	UIwindowsSetPos( "blocks", "winBlocks",  20,  20, 320, 780, "folder-tree" );
-	UIwindowsSetPos( "mixer",  "winMixer",  360,  20, 400, 360, "mixer" );
-	UIwindowsSetPos( "main",   "winMain",   780,  20, 600, 360, "music" );
-	UIwindowsSetPos( "synth",  "winSynth",  360, 400, 400, 400, "oscillator" );
-	UIwindowsSetPos( "piano",  "winPiano",  780, 400, 600, 400, "music" );
+	UIwindowsSetPos( "blocks",  "winBlocks",   20,  20, 320, 780, "folder-tree" );
+	UIwindowsSetPos( "mixer",   "winMixer",   360,  20, 400, 360, "mixer" );
+	UIwindowsSetPos( "effects", "winEffects", 480, 120, 400, 360, "effects" );
+	UIwindowsSetPos( "main",    "winMain",    780,  20, 600, 360, "music" );
+	UIwindowsSetPos( "synth",   "winSynth",   360, 400, 400, 400, "oscillator" );
+	UIwindowsSetPos( "piano",   "winPiano",   780, 400, 600, 400, "keys" );
 }
 
 function UIwindowsSetPos( winId, attrId, x, y, w, h, icon ) {
