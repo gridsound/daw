@@ -2,35 +2,27 @@
 
 function UIdomInit() {
 	window.DOM = UIdomFill();
-	// UIdomUnfocusButtons();
 	UIdomGetComments().forEach( com => {
 		com.replaceWith( DOM[ com.textContent.substr( 1 ) ] );
 	} );
 }
 
-/*
-function UIdomUnfocusButtons() {
-	document.body.addEventListener( "click", () => {
-		const foc = document.activeElement;
-
-		if ( foc && ( foc.nodeName === "BUTTON" || foc.nodeName === "A" ) ) {
-			const par = foc.closest( "[tabindex]" );
-
-			if ( par ) {
-				par.focus();
-			} else {
-				foc.blur();
-			}
-		}
-	}, false );
-}
-*/
-
 function UIdomFill() {
-	const DOM = {};
+	const DOM = UIdomFillIds(),
+		winBtns = DOM.winBtns.querySelectorAll( ".winBtn" );
 
-	document.querySelectorAll( "[id]" ).forEach( el => {
-		DOM[ el.id ] = el;
+	DOM.winBtnsMap = Array.prototype.reduce.call( winBtns, ( map, btn ) => {
+		map.set( btn.dataset.win, btn );
+		return map;
+	}, new Map() );
+	return DOM;
+}
+
+function UIdomFillIds() {
+	const ids = document.querySelectorAll( "[id]" );
+
+	return Array.prototype.reduce.call( ids, ( obj, el ) => {
+		obj[ el.id ] = el;
 		if ( "remove" in el.dataset ) {
 			el.remove();
 			el.removeAttribute( "data-remove" );
@@ -39,13 +31,8 @@ function UIdomFill() {
 			el.removeAttribute( "id" );
 			el.removeAttribute( "data-remove-id" );
 		}
-	} );
-	DOM.winBtnsMap = Array.from( DOM.winBtns.children )
-		.reduce( ( map, btn ) => {
-			map.set( btn.dataset.win, btn );
-			return map;
-		}, new Map() );
-	return DOM;
+		return obj;
+	}, {} );
 }
 
 function UIdomGetComments() {
