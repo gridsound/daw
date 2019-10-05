@@ -28,7 +28,8 @@
 	background-color: var( --gsuiWindow-head-bg );
 }
 .headDropdown-icon {
-	margin: 0 .5em;
+	margin: 0 6px;
+	font-size: 16px;
 }
 .headDropdown-title {
 	font-weight: bold;

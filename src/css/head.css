@@ -93,6 +93,7 @@ a.btn {
 	box-sizing: border-box;
 	margin-left: var( --head-gap );
 	background-size: cover;
+	background-color: rgba( 255, 255, 255, .3 );
 }
 #app.logged #login,
 #app:not( .logged ) #logout,
@@ -111,7 +112,6 @@ a.btn {
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	min-width: 38px;
 	margin-left: 4px;
 	color: var( --head-cmps-btn );
 }

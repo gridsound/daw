@@ -215,7 +215,7 @@
 
 #aboutPopupContent .social-network a {
 	flex: 1;
-	padding: 20px;
+	padding: 20px 0;
 	color: #fff;
 	font-size: 36px;
 	font-weight: normal;

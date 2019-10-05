@@ -1,10 +1,6 @@
 #buffPatterns .pattern-btn[ data-action="clone" ] { display: none; } /* temporary */
 
 .pattern {
-	--pattern-h: 64px;
-	--pattern-head-h: 26px;
-	--pattern-grip-w: 16px;
-
 	display: flex;
 	overflow: hidden;
 	position: relative;
@@ -17,6 +13,9 @@
 		margin-top .3s,
 		margin-bottom .3s,
 		background-color .1s;
+	--pattern-h: 64px;
+	--pattern-head-h: 26px;
+	--pattern-grip-w: 16px;
 }
 #buffPatterns .pattern {
 	border-bottom: 2px solid transparent;

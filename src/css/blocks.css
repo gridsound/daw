@@ -16,12 +16,19 @@
 	padding: 0 6px;
 	background-color: #666;
 }
+.blocksPanelIcon,
 .blocksPanelTitle {
 	color: #fff;
 	font-size: 12px;
-	font-weight: bold;
 	line-height: 1;
 	opacity: .5;
+}
+.blocksPanelIcon {
+	margin-right: 4px;
+}
+.blocksPanelTitle {
+	font-size: 12px;
+	font-weight: bold;
 }
 .blocksPanelMenu .windowBtn {
 	margin-left: 8px;
