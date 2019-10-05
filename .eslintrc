@@ -3,6 +3,7 @@
 		"ecmaVersion": 2019,
 		"sourceType": "script"
 	},
+	"noInlineConfig": true,
 	"rules": {
 
 		// main
