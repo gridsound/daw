@@ -207,6 +207,12 @@ a.btn {
 	--gsuiSlider-lineColor: var( --ctrl-currentTime-color );
 	--gsuiSlider-lineBgColor: #222;
 }
+#headCurrentTime .gsuiSlider-eventCatcher {
+	top: -10px;
+	left: -10px;
+	right: -10px;
+	bottom: -10px;
+}
 
 /* .......................................................................... */
 #ctrlA {
