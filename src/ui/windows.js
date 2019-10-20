@@ -8,9 +8,6 @@ function UIwindowsInit() {
 	UIwindowsAppendContent( UIwindows );
 	UIwindows.onopen = win => UIwindowsBtn( win.id, true );
 	UIwindows.onclose = win => UIwindowsBtn( win.id, false );
-	DOM.winBtnsMap.forEach( btn => {
-		UIwindows.window( btn.dataset.win ).setTitle( btn.dataset.text );
-	} );
 	DOM.winBtns.onclick = e => {
 		const btn = e.target,
 			winId = btn.dataset.win;
@@ -20,18 +17,19 @@ function UIwindowsInit() {
 				!btn.classList.contains( "winBtn-open" ) );
 		}
 	};
-	UIwindowsSetPos( "blocks",  "winBlocks",   20,  20, 320, 780, "folder-tree" );
-	UIwindowsSetPos( "mixer",   "winMixer",   360,  20, 400, 360, "mixer" );
-	UIwindowsSetPos( "effects", "winEffects", 480, 120, 400, 360, "effects" );
-	UIwindowsSetPos( "main",    "winMain",    780,  20, 600, 360, "music" );
-	UIwindowsSetPos( "synth",   "winSynth",   360, 400, 400, 400, "oscillator" );
-	UIwindowsSetPos( "piano",   "winPiano",   780, 400, 600, 400, "keys" );
+	UIwindowsSetPos( "blocks",  "winBlocks",   20,  20, 320, 780, "folder-tree", "blocks" );
+	UIwindowsSetPos( "mixer",   "winMixer",   360,  20, 400, 360, "mixer",       "mixer" );
+	UIwindowsSetPos( "main",    "winMain",    780,  20, 600, 360, "music",       "composition" );
+	UIwindowsSetPos( "synth",   "winSynth",   360, 400, 400, 400, "oscillator",  "synth" );
+	UIwindowsSetPos( "piano",   "winPiano",   780, 400, 600, 400, "keys",        "pianoroll" );
+	UIwindowsSetPos( "effects", "winEffects", 480, 120, 400, 360, "effects",     "effects" );
 }
 
-function UIwindowsSetPos( winId, attrId, x, y, w, h, icon ) {
+function UIwindowsSetPos( winId, attrId, x, y, w, h, icon, title ) {
 	const win = UIwindows.window( winId );
 
 	win.setSize( w, h );
+	win.setTitle( title );
 	win.setIdAttr( attrId );
 	win.setPosition( x, y );
 	win.setTitleIcon( icon );
