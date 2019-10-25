@@ -10,6 +10,14 @@ function UIeffectsInit() {
 	win.onresize =
 	win.onresizing = () => UIeffects.resized();
 	UIeffects.attached();
+	UIeffects.askData = ( fxId, fxType, dataType, ...args ) => {
+		if ( fxType === "filter" && dataType === "curve" ) {
+			const wafx = DAW.get.waeffect( fxId );
+
+			return wafx && wafx.updateResponse( args[ 0 ] );
+		}
+	};
+	UIeffects.oninput = DAW.liveChangeEffect.bind( DAW );
 	UIeffects.onchange = DAW.changeEffects.bind( DAW );
 }
 
