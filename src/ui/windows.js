@@ -22,7 +22,7 @@ function UIwindowsInit() {
 	UIwindowsSetPos( "main",    "winMain",    780,  20, 600, 360, "music",       "composition" );
 	UIwindowsSetPos( "synth",   "winSynth",   360, 400, 400, 400, "oscillator",  "synth" );
 	UIwindowsSetPos( "piano",   "winPiano",   780, 400, 600, 400, "keys",        "pianoroll" );
-	UIwindowsSetPos( "effects", "winEffects", 480, 120, 400, 360, "effects",     "effects" );
+	UIwindowsSetPos( "effects", "winEffects", 480, 120, 420, 360, "effects",     "effects" );
 }
 
 function UIwindowsSetPos( winId, attrId, x, y, w, h, icon, title ) {

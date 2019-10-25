@@ -4,10 +4,8 @@
 
 /* .......................................................................... */
 .windowBetaMsg {
-	height: 28px;
-	line-height: 28px;
-	padding: 0 6px;
 	color: #fff;
+	padding: 8px;
 	font-size: 11px;
 	font-weight: bold;
 	background-color: #ba5d5d;
