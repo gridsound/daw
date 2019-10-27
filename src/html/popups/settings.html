@@ -1,0 +1,36 @@
+<div class="popup" id="settingsPopupContent" data-remove>
+	<fieldset>
+		<legend>UI refresh rate</legend>
+		<div class="param">
+			<div class="param-title">Auto</div>
+			<div class="param-values">
+				<label>
+					<input id="settingsUIRateModeAuto" name="UIRateMode" type="radio" value="auto"/>
+					<span class="settingsPopupFps">60</span>
+				</label>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Manual</div>
+			<div class="param-values">
+				<label>
+					<input id="settingsUIRateModeManual" name="UIRateMode" type="radio" value="manual"/>
+					<span id="settingsUIRateManualFps" class="settingsPopupFps"></span>
+				</label>
+				<input id="settingsUIRateManual" name="UIRateManual" type="range" step="1" min="5" max="40"/>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Windows</legend>
+		<div class="param">
+			<div class="param-title">Move/resize mode</div>
+			<div class="param-values">
+				<label>
+					<input id="settingsWindowsMode" name="windowsDirectMode" type="checkbox"/>
+					<span>direct</span>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</div>
