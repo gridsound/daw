@@ -100,6 +100,7 @@ declare -a HTMLfiles=(
 	"src/html/popups/about.html"
 	"src/html/popups/tempo.html"
 	"src/html/popups/render.html"
+	"src/html/popups/settings.html"
 	"src/html/popups/shortcuts.html"
 	"src/html/popups/selectChan.html"
 
@@ -277,6 +278,7 @@ declare -a JSfiles=(
 	"src/ui/renderPopup.js"
 	"src/ui/mainAnalyser.js"
 	"src/ui/compositions.js"
+	"src/ui/settingsPopup.js"
 	"src/ui/shortcutsPopup.js"
 	"src/ui/compositionChanged.js"
 	"src/run.js"

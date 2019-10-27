@@ -15,7 +15,7 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.25.0";
+	window.VERSION = "0.25.1";
 
 	UIdomInit();
 	UIwindowsInit();
@@ -37,6 +37,7 @@ function UIrun() {
 	UIrenderPopupInit();
 	UImainAnalyserInit();
 	UIcompositionsInit();
+	UIsettingsPopupInit();
 	UIshortcutsPopupInit();
 	DAW.initPianoroll();
 

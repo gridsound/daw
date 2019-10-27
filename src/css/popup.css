@@ -48,6 +48,10 @@
 	flex-direction: column;
 }
 
+.popup label {
+	display: flex;
+	align-items: center;
+}
 .popup input[ type="radio" ]:checked + label {
 	font-weight: bold;
 }
@@ -62,6 +66,14 @@
 .popup input::placeholder {
 	color: #aaa;
 	font-style: italic;
+}
+.popup input[ type="radio" ],
+.popup input[ type="checkbox" ] {
+	margin-right: 8px;
+	transform: scale( 1.5 );
+}
+.popup input[ type="range" ] {
+	min-width: 0;
 }
 
 .popup input[ type="password" ],
@@ -183,6 +195,27 @@
 #renderBtn[ data-status="2" ] #renderBtn2 { display: inline; }
 #renderBtn .gsuiIcon {
 	margin-left: .3em;
+}
+
+/* #settingsPopupContent ---------------------------------------------------- */
+#settingsPopupContent {
+	width: 400px;
+}
+#settingsPopupContent .param-values {
+	width: 200px;
+}
+.settingsPopupFps {
+	font-size: 16px;
+}
+.settingsPopupFps::after {
+	content: " fps";
+	font-family: var( --font-default );
+	font-size: 12px;
+	opacity: .6;
+}
+#settingsUIRateManual {
+	flex: 1;
+	margin-left: 8px;
 }
 
 /* #aboutPopupContent ------------------------------------------------------- */
