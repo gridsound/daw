@@ -117,7 +117,16 @@
 	--gsuiSynthesizer-bg: initial;
 	--gsuiSynthesizer-color: #fff;
 	--gsuiSynthesizer-head-bg: #555;
-	--gsuiSynthesizer-head-height: 38px;
+
+	/* gsuiLFO */
+	/* ...................................................................... */
+	--gsuiLFO-h: 118px;
+	--gsuiLFO-bg: #666;
+	--gsuiLFO-font: var( --font-default );
+	--gsuiLFO-number-font: var( --font-number );
+	--gsuiLFO-color: #fff;
+	--gsuiLFO-ctrls-color: #ff9;
+	--gsuiLFO-sliders-bg: #555;
 
 	/* gsuiOscillator */
 	/* ...................................................................... */

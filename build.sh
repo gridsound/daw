@@ -29,6 +29,7 @@ declare -a HEADEREND=(
 
 declare -a CSSfiles=(
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
+	"gs-ui-components/gsuiLFO/gsuiLFO.css"
 	"gs-ui-components/gsuiClock/gsuiClock.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiCurves/gsuiCurves.css"
@@ -104,6 +105,7 @@ declare -a HTMLfiles=(
 	"src/html/popups/shortcuts.html"
 	"src/html/popups/selectChan.html"
 
+	"gs-ui-components/gsuiLFO/gsuiLFO.html"
 	"gs-ui-components/gsuiKeys/gsuiKeys.html"
 	"gs-ui-components/gsuiClock/gsuiClock.html"
 	"gs-ui-components/gsuiMixer/gsuiMixer.html"
@@ -132,6 +134,12 @@ declare -a JSfilesProd=(
 declare -a JSfiles=(
 	"gs-data/gsdata/gsdata.js"
 	"gs-data/gsdataClock/gsdataClock.js"
+	"gs-data/gsdataSynth/gsdataSynth.js"
+	"gs-data/gsdataSynth/gsdataSynth.actions.js"
+	"gs-data/gsdataLFO/gsdataLFO.js"
+	"gs-data/gsdataLFO/gsdataLFO.actions.js"
+	"gs-data/gsdataOscillator/gsdataOscillator.js"
+	"gs-data/gsdataOscillator/gsdataOscillator.actions.js"
 	"gs-data/gsdataMixer/gsdataMixer.js"
 	"gs-data/gsdataMixer/gsdataMixer.actions.js"
 	"gs-data/gsdataEffects/gsdataEffects.js"
@@ -157,6 +165,7 @@ declare -a JSfiles=(
 	"daw-core/src/json/channels.js"
 	"daw-core/src/json/channel.js"
 	"daw-core/src/json/synth.js"
+	"daw-core/src/json/lfo.js"
 	"daw-core/src/utils/uuid.js"
 	"daw-core/src/utils/time.js"
 	"daw-core/src/utils/trim2.js"
@@ -188,6 +197,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeEffects.js"
 	"daw-core/src/actions/removePattern.js"
 	"daw-core/src/actions/clonePattern.js"
+	"daw-core/src/actions/changeSynth.js"
 	"daw-core/src/actions/changeTempo.js"
 	"daw-core/src/actions/removeSynth.js"
 	"daw-core/src/actions/openPattern.js"
@@ -197,6 +207,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/nameSynth.js"
 	"daw-core/src/actions/newSynth.js"
 
+	"gs-ui-components/gsuiLFO/gsuiLFO.js"
 	"gs-ui-components/gsuiClock/gsuiClock.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
 	"gs-ui-components/gsuiCurves/gsuiCurves.js"
@@ -239,6 +250,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindows.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
+	"gs-webaudio-library/gswaLFO/gswaLFO.js"
 	"gs-webaudio-library/gswaMixer/gswaMixer.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.js"
 	"gs-webaudio-library/gswaSynth/gswaSynth.midiKeyToHz.js"

@@ -3,16 +3,8 @@
 const UIsynth = new gsuiSynthesizer();
 
 function UIsynthInit() {
-	UIsynth.oninput = ( id, attr, val ) => {
-		DAW.liveChangeSynth( DAW.get.synthOpened(), {
-			oscillators: { [ id ]: { [ attr ]: val } }
-		} );
-	};
-	UIsynth.onchange = obj => {
-		DAW.compositionChange( { synths: {
-			[ DAW.get.synthOpened() ]: obj
-		} } );
-	};
+	UIsynth.oninput = obj => DAW.liveChangeSynth( DAW.get.synthOpened(), obj );
+	UIsynth.onchange = ( obj, msg ) => DAW.changeSynth( DAW.get.synthOpened(), obj, msg );
 	UIsynth.setWaveList( Array.from( gswaPeriodicWaves.keys() ) );
 	DOM.synthName.onclick = () => {
 		const id = DAW.get.synthOpened(),
@@ -22,6 +14,8 @@ function UIsynthInit() {
 			.then( name => DAW.nameSynth( id, name ) );
 	};
 	UIwindows.window( "synth" ).append( UIsynth.rootElement );
+	UIwindows.window( "synth" ).onresizing = UIsynth.resizing.bind( UIsynth );
+	UIwindows.window( "synth" ).onresize = UIsynth.resize.bind( UIsynth );
 	UIsynth.attached();
 }
 
