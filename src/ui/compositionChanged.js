@@ -14,8 +14,19 @@ function UIcompositionChanged( obj, prevObj ) {
 }
 
 UIcompositionChanged.fn = new Map( [
-	[ "channels", function( obj ) {
-		UImixer.change( obj.channels );
+	[ "channels", function( { channels } ) {
+		const synOpenedDest = DAW.get.synth( DAW.get.synthOpened() ).dest,
+			synOpenedChan = channels[ synOpenedDest ];
+
+		UImixer.change( channels );
+		Object.entries( channels ).forEach( ( [ id, obj ] ) => {
+			if ( "name" in obj ) {
+				UIsynthsUpdateChanName( id, obj.name );
+			}
+		} );
+		if ( synOpenedChan && "name" in synOpenedChan ) {
+			DOM.synthChannelBtnText.textContent = synOpenedChan.name;
+		}
 	} ],
 	[ "effects", function( obj ) {
 		UIeffects.change( obj.effects );

@@ -4,19 +4,35 @@ const UIsynths = new Map();
 
 function UIsynthsAddSynth( id, obj ) {
 	const root = DOM.synth.cloneNode( true ),
-		UIobj = { root };
+		html = Object.seal( {
+			root,
+			name: root.querySelector( ".synth-name" ),
+			dest: root.querySelector( ".synth-dest" ),
+		} );
 
 	root.dataset.id = id;
-	UIsynths.set( id, UIobj );
-	UIsynthsUpdateSynth( id, obj );
+	html.name.textContent = obj.name;
+	html.dest.textContent = DAW.get.channel( obj.dest ).name;
+	UIsynths.set( id, html );
 	DOM.keysPatterns.prepend( root );
 }
 
 function UIsynthsRemoveSynth( id ) {
-	const UIobj = UIsynths.get( id );
-
-	UIobj.root.remove();
+	UIsynths.get( id ).root.remove();
 	UIsynths.delete( id );
+}
+
+function UIsynthsUpdateSynth( id, obj ) {
+	if ( "name" in obj ) { UIsynths.get( id ).name.textContent = obj.name; }
+	if ( "dest" in obj ) { UIsynths.get( id ).dest.textContent = DAW.get.channel( obj.dest ).name; }
+}
+
+function UIsynthsUpdateChanName( chanId, name ) {
+	UIsynths.forEach( ( html, id ) => {
+		if ( DAW.get.synth( id ).dest === chanId ) {
+			html.dest.textContent = name;
+		}
+	} );
 }
 
 function UIsynthsExpandSynth( id, b ) {
@@ -24,17 +40,6 @@ function UIsynthsExpandSynth( id, b ) {
 		show = root.classList.toggle( "synth-show", b );
 
 	root.querySelector( ".synth-showBtn" ).dataset.icon = `caret-${ show ? "down" : "right" }`;
-}
-
-function UIsynthsUpdateSynth( id, obj ) {
-	const root = UIsynths.get( id ).root;
-
-	if ( "name" in obj ) {
-		root.querySelector( ".synth-name" ).textContent = obj.name;
-	}
-	if ( "dest" in obj ) {
-		root.querySelector( ".synth-dest" ).textContent = DAW.get.channel( obj.dest ).name;
-	}
 }
 
 function UIsynthsInit() {
