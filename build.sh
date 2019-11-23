@@ -262,6 +262,7 @@ declare -a JSfiles=(
 	"gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"
 	"gs-webaudio-library/gswaStereoPanner/gswaStereoPanner.js"
 	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"
+	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.list.js"
 
 	"gs-api-client/gsapiClient.js"
 

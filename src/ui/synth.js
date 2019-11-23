@@ -5,7 +5,7 @@ const UIsynth = new gsuiSynthesizer();
 function UIsynthInit() {
 	UIsynth.oninput = obj => DAW.liveChangeSynth( DAW.get.synthOpened(), obj );
 	UIsynth.onchange = ( obj, msg ) => DAW.changeSynth( DAW.get.synthOpened(), obj, msg );
-	UIsynth.setWaveList( Array.from( gswaPeriodicWaves.keys() ) );
+	UIsynth.setWaveList( Array.from( gswaPeriodicWaves.list.keys() ) );
 	DOM.synthName.onclick = () => {
 		const id = DAW.get.synthOpened(),
 			name = DOM.synthName.textContent;

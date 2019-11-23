@@ -10,7 +10,7 @@ function UIrun() {
 			.map( kv => kv.split( "=" ) )
 		);
 
-	gswaPeriodicWaves.forEach( ( w, name ) => {
+	gswaPeriodicWaves.list.forEach( ( w, name ) => {
 		gsuiPeriodicWave.addWave( name, w.real, w.imag );
 	} );
 
