@@ -173,6 +173,7 @@ function UIcompositionClosed( cmp ) {
 	UIpatternroll.setPxPerBeat( 40 );
 	UImixer.empty();
 	UIsynth.empty();
+	UIeffects.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );
 	DOM.synthName.textContent =

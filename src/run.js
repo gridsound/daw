@@ -15,7 +15,7 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.26.1";
+	window.VERSION = "0.26.3";
 
 	UIdomInit();
 	UIwindowsInit();
