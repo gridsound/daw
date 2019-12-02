@@ -8,6 +8,10 @@
 	--bpm-fontSize: 22px;
 
 	/* ...................................................................... */
+	--gsui-font: var( --font-default );
+	--gsui-font-number: var( --font-number );
+
+	/* ...................................................................... */
 	--head-bg: #444;
 	--head-gap: 4px;
 	--head-border: 0;
@@ -78,10 +82,9 @@
 	--gsuiMixerChannel-connect-input-color: #f99;
 	--gsuiMixerChannel-connect-output-color: #ff9;
 	--gsuiMixerChannel-toggle-bg: #ffa;
-	--gsuiMixerChannel-toggleOff-bg: rgba( 255, 255, 255, .1 );
-	--gsuiMixerChannel-darkBorder: rgba( 0, 0, 0, .1 );
-	--gsuiMixerChannel-lightBorder: rgba( 255, 255, 255, .05 );
+	--gsuiMixerChannel-toggleOff-bg: #fff2;
 	--gsuiMixerChannel-analyser-bg: #222;
+	--gsuiMixerChannel-name-font: var( --font-default );
 
 	/* gsuiTrack */
 	/* ...................................................................... */
@@ -90,7 +93,7 @@
 	--gsuiTrack-hsl-l: 33%;
 	--gsuiTrack-color: #fff;
 	--gsuiTrack-toggle-bg: #ffa;
-	--gsuiTrack-toggleOff-bg: rgba( 255, 255, 255, .1 );
+	--gsuiTrack-toggleOff-bg: rgba( 255, 255, 255, .2 );
 
 	/* gsuiBlocksManager */
 	/* ...................................................................... */
@@ -111,35 +114,6 @@
 	--gsuiTimeline-loop-bg: #656586;
 	--gsuiTimeline-cursor-fill: #fdfd70;
 	--gsuiTimeline-loopBorder-bg: #fff;
-
-	/* gsuiSynthesizer */
-	/* ...................................................................... */
-	--gsuiSynthesizer-bg: initial;
-	--gsuiSynthesizer-color: #fff;
-	--gsuiSynthesizer-head-bg: #555;
-
-	/* gsuiLFO */
-	/* ...................................................................... */
-	--gsuiLFO-h: 118px;
-	--gsuiLFO-bg: #666;
-	--gsuiLFO-font: var( --font-default );
-	--gsuiLFO-number-font: var( --font-number );
-	--gsuiLFO-color: #fff;
-	--gsuiLFO-ctrls-color: #ff9;
-	--gsuiLFO-sliders-bg: #555;
-
-	/* gsuiOscillator */
-	/* ...................................................................... */
-	--gsuiOscillator-bg: #666;
-	--gsuiOscillator-font: 12px var( --font-default );
-	--gsuiOscillator-color: #fff;
-	--gsuiOscillator-slider-bg: #555;
-	--gsuiOscillator-number-font: 14px var( --font-number );
-	--gsuiOscillator-pan: #d9f;
-	--gsuiOscillator-gain: #ff9;
-	--gsuiOscillator-pan-a: #faa;
-	--gsuiOscillator-pan-b: #aaf;
-	--gsuiOscillator-detune: #fff;
 
 	/* gsuiSlider */
 	/* ...................................................................... */
@@ -198,4 +172,8 @@
 	--pattern-selected-bg: #5ac;
 	--pattern-selected-text: #223;
 	--pattern-head-selected-bg: rgba( 255, 255, 255, .2 );
+}
+
+#app .gsuiSynthesizer {
+	--gsuiSynthesizer-bg: initial;
 }

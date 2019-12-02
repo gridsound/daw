@@ -30,6 +30,7 @@ declare -a HEADEREND=(
 declare -a CSSfiles=(
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiLFO/gsuiLFO.css"
+	"gs-ui-components/gsuiLFO/gsuiLFO.colors.default.css"
 	"gs-ui-components/gsuiClock/gsuiClock.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiCurves/gsuiCurves.css"
@@ -44,8 +45,10 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll-block.css"
 	"gs-ui-components/gsuiKeys/gsuiKeys.css"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.css"
+	"gs-ui-components/gsuiOscillator/gsuiOscillator.colors.default.css"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"
+	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.colors.default.css"
 	"gs-ui-components/gsuiDotline/gsuiDotline.css"
 	"gs-ui-components/gsuiPanels/gsuiPanels.css"
 	"gs-ui-components/gsuiPopup/gsuiPopup.css"
