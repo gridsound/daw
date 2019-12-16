@@ -8,7 +8,8 @@ You can test the application at [**gridsound.com/daw 🎹**](https://gridsound.c
 **Click to load some compositions :**
 <a href="https://gridsound.com/daw/#cmp=https://raw.githubusercontent.com/gridsound/demo-examples/master/Isvara's%20test.gs">**Isvara's test**</a> •
 <a href="https://gridsound.com/daw/#cmp=https://raw.githubusercontent.com/gridsound/demo-examples/master/Still%20D.R.E..gs">**Still D.R.E.**</a> •
-<a href="https://gridsound.com/daw/#cmp=https://raw.githubusercontent.com/gridsound/demo-examples/master/key.gain_pan%20(test).gs">**key.gain/pan**</a>_
+<a href="https://gridsound.com/daw/#cmp=https://raw.githubusercontent.com/gridsound/demo-examples/master/key.gain_pan%20(test).gs">**key.gain/pan**</a> •
+<a href="https://gridsound.com/daw/#cmp=https://raw.githubusercontent.com/gridsound/demo-examples/master/FireStone.gs">**FireStone**</a>
 
 **Some links :**
 <a href="https://github.com/gridsound/daw/wiki/help">**Help**</a> •
