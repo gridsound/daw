@@ -20,15 +20,21 @@ function UIauthLogout() {
 function UIauthGetMe() {
 	UIauthLoading( true );
 	return gsapiClient.getMe()
-		.finally( () => UIauthLoading( false ) )
-		.then(
-			UIauthLoginThen,
-			res => {
-				if ( res.code !== 401 ) {
-					throw res;
-				}
+		.then( me => {
+			UIauthLoginThen( me );
+			return gsapiClient.getUserCompositions( me.id );
+		} )
+		.then( cmps => {
+			const opt = { saveMode: "cloud" };
+
+			cmps.forEach( cmp => DAW.addComposition( cmp.data, opt ) );
+		} )
+		.catch( res => {
+			if ( res.code !== 401 ) {
+				throw res;
 			}
-		);
+		} )
+		.finally( () => UIauthLoading( false ) );
 }
 
 function UIauthLogin() {
@@ -50,22 +56,26 @@ function UIauthLoginSubmit( obj ) {
 	UIauthLoading( true );
 	DOM.authPopupError.textContent = "";
 	return gsapiClient.login( obj.email, obj.password )
-		.finally( () => UIauthLoading( false ) )
-		.then(
-			UIauthLoginThen,
-			res => {
-				DOM.authPopupError.textContent = res.msg;
-				throw res;
-			} );
+		.then( me => {
+			UIauthLoginThen( me );
+			return gsapiClient.getUserCompositions( me.id );
+		} )
+		.then( cmps => {
+			const opt = { saveMode: "cloud" };
+
+			cmps.forEach( cmp => DAW.addComposition( cmp.data, opt ) );
+		} )
+		.catch( res => {
+			DOM.authPopupError.textContent = res.msg;
+			throw res;
+		} )
+		.finally( () => UIauthLoading( false ) );
 }
 
 function UIauthLoginThen( me ) {
-	const opt = { saveMode: "cloud" };
-
 	DOM.app.classList.add( "logged" );
-	DOM.headUser.href = `https://gridsound.com/#/u/${ me.user.username }`;
-	DOM.headUser.style.backgroundImage = `url("${ me.user.avatar }")`;
-	me.compositions.forEach( cmp => DAW.addComposition( cmp.data, opt ) );
+	DOM.headUser.href = `https://gridsound.com/#/u/${ me.username }`;
+	DOM.headUser.style.backgroundImage = `url("${ me.avatar }")`;
 	return me;
 }
 
