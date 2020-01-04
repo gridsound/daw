@@ -9,7 +9,7 @@ function UIpianorollInit() {
 	UIpianoroll.octaves( 1, 7 );
 	UIpianoroll.setPxPerBeat( 90 );
 	UIpianoroll.setFontSize( 20 );
-	UIpianoroll.onchange = obj => DAW.changePatternKeys( DAW.get.patternKeysOpened(), obj );
+	UIpianoroll.onchange = obj => DAW.changePatternKeys( DAW.get.patternKeysOpened(), obj, UIpianoroll.getDuration() );
 	UIpianoroll.onchangeLoop = UIpianorollOnChangeLoop;
 	UIpianoroll.onchangeCurrentTime = t => DAW.pianoroll.setCurrentTime( t );
 	UIpianoroll.rootElement.onfocus = () => DAW.pianorollFocus();
