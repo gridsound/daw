@@ -14,8 +14,6 @@ function UIpatternsInit() {
 	const orderBuff = new gsuiReorder(),
 		orderKeys = new gsuiReorder();
 
-	UIwaveforms.setPxHeight( 48 );
-	UIwaveforms.setPxPerSecond( 48 );
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
 	DOM.keysPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "keys" ) );
 	document.addEventListener( "drop", e => {

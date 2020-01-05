@@ -247,6 +247,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.draw.js"
+	"gs-ui-components/gsuiSVGDefs/gsuiSVGDefs.js"
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.js"
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"
 	"gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"
