@@ -238,7 +238,6 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiDotline/gsuiDotline.js"
 	"gs-ui-components/gsuiPanels/gsuiPanels.js"
 	"gs-ui-components/gsuiPopup/gsuiPopup.js"
-	"gs-ui-components/gsuiRectMatrix/gsuiRectMatrix.js"
 	"gs-ui-components/gsuiSlider/gsuiSlider.js"
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.js"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.js"
@@ -251,6 +250,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.js"
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"
 	"gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"
+	"gs-ui-components/gsuiKeysforms/gsuiKeysforms.js"
 	"gs-ui-components/gsuiWindows/gsuiWindows.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
@@ -291,7 +291,6 @@ declare -a JSfiles=(
 	"src/ui/openPopup.js"
 	"src/ui/pianoroll.js"
 	"src/ui/aboutPopup.js"
-	"src/ui/keysToRects.js"
 	"src/ui/patternroll.js"
 	"src/ui/renderPopup.js"
 	"src/ui/mainAnalyser.js"

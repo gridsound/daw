@@ -31,15 +31,6 @@ UIcompositionChanged.fn = new Map( [
 	[ "effects", function( obj ) {
 		UIeffects.change( obj.effects );
 	} ],
-	[ [ "tracks", "blocks" ], function( obj ) {
-		GSData.deepAssign( UIpatternroll.data.tracks, obj.tracks );
-		GSData.deepAssign( UIpatternroll.data.blocks, obj.blocks );
-	} ],
-	[ [ "loopA", "loopB" ], function() {
-		UIpatternroll.loop(
-			DAW.get.loopA(),
-			DAW.get.loopB() );
-	} ],
 	[ "synths", function( { synths }, prevObj ) {
 		const synOpened = DAW.get.synthOpened();
 
@@ -73,6 +64,15 @@ UIcompositionChanged.fn = new Map( [
 
 			gsuiReorder.listReorder( list, patterns );
 		} );
+	} ],
+	[ [ "tracks", "blocks" ], function( obj ) {
+		GSData.deepAssign( UIpatternroll.data.tracks, obj.tracks );
+		GSData.deepAssign( UIpatternroll.data.blocks, obj.blocks );
+	} ],
+	[ [ "loopA", "loopB" ], function() {
+		UIpatternroll.loop(
+			DAW.get.loopA(),
+			DAW.get.loopB() );
 	} ],
 	[ [ "beatsPerMeasure", "stepsPerBeat" ], function() {
 		const bPM = DAW.get.beatsPerMeasure(),
