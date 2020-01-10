@@ -251,6 +251,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"
 	"gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"
 	"gs-ui-components/gsuiKeysforms/gsuiKeysforms.js"
+	"gs-ui-components/gsuiDrumsforms/gsuiDrumsforms.js"
 	"gs-ui-components/gsuiWindows/gsuiWindows.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 

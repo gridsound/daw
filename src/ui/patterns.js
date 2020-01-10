@@ -4,6 +4,7 @@ window.UIbuffers = new Map();
 window.UIpatterns = new Map();
 window.UIsvgForms = Object.freeze( {
 	keys: new gsuiKeysforms(),
+	drums: new gsuiDrumsforms(),
 	buffer: new gsuiWaveforms(),
 } );
 window.UIpatternsClickFns = new Map( [
@@ -15,29 +16,39 @@ window.UIpatternsClickFns = new Map( [
 
 function UIpatternsInit() {
 	const orderBuff = new gsuiReorder(),
+		orderDrums = new gsuiReorder(),
 		orderKeys = new gsuiReorder();
 
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
 	DOM.keysPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "keys" ) );
+	DOM.drumsPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "drums" ) );
 	document.addEventListener( "drop", e => {
 		DAW.dropAudioFiles( e.dataTransfer.files );
 	} );
 	orderBuff.setRootElement( DOM.buffPatterns );
 	orderKeys.setRootElement( DOM.keysPatterns );
+	orderDrums.setRootElement( DOM.drumsPatterns );
 	orderBuff.setSelectors( {
 		item: "#buffPatterns .pattern",
 		handle: "#buffPatterns .pattern-grip",
 		parent: "#buffPatterns"
+	} );
+	orderDrums.setSelectors( {
+		item: "#drumsPatterns .pattern",
+		handle: "#drumsPatterns .pattern-grip",
+		parent: "#drumsPatterns"
 	} );
 	orderKeys.setSelectors( {
 		item: "#keysPatterns .pattern",
 		handle: "#keysPatterns .pattern-grip",
 		parent: ".synth-patterns"
 	} );
-	orderBuff.onchange = UIpatternsBuffReorderChange;
+	orderBuff.onchange = UIpatternsReorderChange.bind( null, DOM.buffPatterns );
+	orderDrums.onchange = UIpatternsReorderChange.bind( null, DOM.drumsPatterns );
 	orderKeys.onchange = UIpatternsKeysReorderChange;
 	orderBuff.setDataTransfert =
-	orderKeys.setDataTransfert = UIpatternsDataTransfert;
+	orderKeys.setDataTransfert =
+	orderDrums.setDataTransfert = UIpatternsDataTransfert;
 }
 
 function UIpatternsDataTransfert( elPat ) {
@@ -46,8 +57,8 @@ function UIpatternsDataTransfert( elPat ) {
 	return `${ id }:${ DAW.get.pattern( id ).duration }`;
 }
 
-function UIpatternsBuffReorderChange() {
-	const patterns = gsuiReorder.listComputeOrderChange( DOM.buffPatterns, {} );
+function UIpatternsReorderChange( el ) {
+	const patterns = gsuiReorder.listComputeOrderChange( el, {} );
 
 	DAW.compositionChange( { patterns } );
 }
@@ -104,7 +115,12 @@ function UIaddPattern( id, obj ) {
 	UIupdatePattern( id, obj );
 	switch ( obj.type ) {
 		case "buffer": DOM.buffPatterns.prepend( pat ); break;
-		case "drums": DOM.drumPatterns.prepend( pat ); break;
+		case "drums":
+			UIsvgForms.drums.add( obj.drums );
+			pat._gsuiSVGform = UIsvgForms.drums.createSVG( obj.drums );
+			pat.querySelector( ".gsuiPatternroll-block-content" ).append( pat._gsuiSVGform );
+			DOM.drumsPatterns.prepend( pat );
+			break;
 		case "keys": // 1.
 			UIsvgForms.keys.add( obj.keys );
 			pat._gsuiSVGform = UIsvgForms.keys.createSVG( obj.keys );
@@ -198,16 +214,21 @@ function UIupdatePatternContent( id ) {
 					}
 				} );
 				break;
-			case "keys": {
-				const keys = get.keys( pat.keys );
+			case "keys":
+			case "drums": {
+				const SVGs = UIsvgForms[ pat.type ],
+					id = pat[ pat.type ],
+					dur = pat.duration;
 
-				UIsvgForms.keys.update( pat.keys, keys, pat.duration );
-				UIsvgForms.keys.setSVGViewbox( elPat._gsuiSVGform, 0, 200 );
+				pat.type === "keys"
+					? SVGs.update( id, get.keys( id ), dur )
+					: SVGs.update( id, get.drums( id ), get.drumrows(), dur, get.stepsPerBeat() );
+				SVGs.setSVGViewbox( elPat._gsuiSVGform, 0, 200 );
 				UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
 					const blc = get.block( blcId );
 
 					if ( blc.pattern === id ) {
-						UIsvgForms.keys.setSVGViewbox( elPat._gsuiSVGform, blc.offset, blc.duration );
+						SVGs.setSVGViewbox( elPat._gsuiSVGform, blc.offset, blc.duration );
 					}
 				} );
 			} break;
