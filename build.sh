@@ -139,6 +139,7 @@ declare -a JSfiles=(
 	"gs-data/gsdataClock/gsdataClock.js"
 	"gs-data/gsdataSynth/gsdataSynth.js"
 	"gs-data/gsdataSynth/gsdataSynth.actions.js"
+	"gs-data/GSDataDrums/GSDataDrums.js"
 	"gs-data/gsdataLFO/gsdataLFO.js"
 	"gs-data/gsdataLFO/gsdataLFO.actions.js"
 	"gs-data/gsdataOscillator/gsdataOscillator.js"
