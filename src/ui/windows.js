@@ -7,7 +7,12 @@ function UIwindowsInit() {
 	UIwindows.lowGraphics( true );
 	UIwindowsAppendContent( UIwindows );
 	UIwindows.onopen = win => UIwindowsBtn( win.id, true );
-	UIwindows.onclose = win => UIwindowsBtn( win.id, false );
+	UIwindows.onclose = win => {
+		UIwindowsBtn( win.id, false );
+		if ( win.id === "piano" ) {
+			DAW.closePattern( "keys" );
+		}
+	};
 	DOM.winBtns.onclick = e => {
 		const btn = e.target,
 			winId = btn.dataset.win;

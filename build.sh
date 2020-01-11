@@ -200,6 +200,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeEffects.js"
 	"daw-core/src/actions/removePattern.js"
 	"daw-core/src/actions/clonePattern.js"
+	"daw-core/src/actions/closePattern.js"
 	"daw-core/src/actions/changeSynth.js"
 	"daw-core/src/actions/changeTempo.js"
 	"daw-core/src/actions/removeSynth.js"

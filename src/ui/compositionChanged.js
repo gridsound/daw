@@ -146,6 +146,7 @@ UIcompositionChanged.fn = new Map( [
 			if ( !DAW.compositionFocused ) {
 				DOM.sliderTime.options( { max: pat.duration } );
 			}
+			UIwindows.window( "piano" ).open();
 		} else {
 			UIpianoroll.setPxPerBeat( 90 );
 		}
