@@ -2,7 +2,11 @@
 
 window.UIbuffers = new Map();
 window.UIpatterns = new Map();
-window.UIwaveforms = new gsuiWaveforms();
+window.UIsvgForms = Object.freeze( {
+	keys: new gsuiKeysforms(),
+	drums: new gsuiDrumsforms(),
+	buffer: new gsuiWaveforms(),
+} );
 window.UIpatternsClickFns = new Map( [
 	[ undefined, id => DAW.openPattern( id ) ],
 	[ "remove", id => DAW.removePattern( id ) ],
@@ -12,31 +16,39 @@ window.UIpatternsClickFns = new Map( [
 
 function UIpatternsInit() {
 	const orderBuff = new gsuiReorder(),
+		orderDrums = new gsuiReorder(),
 		orderKeys = new gsuiReorder();
 
-	UIwaveforms.setPxHeight( 48 );
-	UIwaveforms.setPxPerSecond( 48 );
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
 	DOM.keysPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "keys" ) );
+	DOM.drumsPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "drums" ) );
 	document.addEventListener( "drop", e => {
 		DAW.dropAudioFiles( e.dataTransfer.files );
 	} );
 	orderBuff.setRootElement( DOM.buffPatterns );
 	orderKeys.setRootElement( DOM.keysPatterns );
+	orderDrums.setRootElement( DOM.drumsPatterns );
 	orderBuff.setSelectors( {
 		item: "#buffPatterns .pattern",
 		handle: "#buffPatterns .pattern-grip",
 		parent: "#buffPatterns"
+	} );
+	orderDrums.setSelectors( {
+		item: "#drumsPatterns .pattern",
+		handle: "#drumsPatterns .pattern-grip",
+		parent: "#drumsPatterns"
 	} );
 	orderKeys.setSelectors( {
 		item: "#keysPatterns .pattern",
 		handle: "#keysPatterns .pattern-grip",
 		parent: ".synth-patterns"
 	} );
-	orderBuff.onchange = UIpatternsBuffReorderChange;
+	orderBuff.onchange = UIpatternsReorderChange.bind( null, DOM.buffPatterns );
+	orderDrums.onchange = UIpatternsReorderChange.bind( null, DOM.drumsPatterns );
 	orderKeys.onchange = UIpatternsKeysReorderChange;
 	orderBuff.setDataTransfert =
-	orderKeys.setDataTransfert = UIpatternsDataTransfert;
+	orderKeys.setDataTransfert =
+	orderDrums.setDataTransfert = UIpatternsDataTransfert;
 }
 
 function UIpatternsDataTransfert( elPat ) {
@@ -45,8 +57,8 @@ function UIpatternsDataTransfert( elPat ) {
 	return `${ id }:${ DAW.get.pattern( id ).duration }`;
 }
 
-function UIpatternsBuffReorderChange() {
-	const patterns = gsuiReorder.listComputeOrderChange( DOM.buffPatterns, {} );
+function UIpatternsReorderChange( el ) {
+	const patterns = gsuiReorder.listComputeOrderChange( el, {} );
 
 	DAW.compositionChange( { patterns } );
 }
@@ -76,7 +88,7 @@ function UIpatternsBuffersLoaded( buffers ) {
 
 	Object.entries( buffers ).forEach( ( [ idBuf, buf ] ) => {
 		UIbuffers.set( idBuf, buf );
-		UIwaveforms.add( idBuf, buf.buffer );
+		UIsvgForms.buffer.add( idBuf, buf.buffer );
 		UIpatterns.forEach( ( _elPat, idPat ) => {
 			if ( pats[ idPat ].buffer === idBuf ) {
 				UIupdatePatternContent( idPat );
@@ -101,10 +113,21 @@ function UIaddPattern( id, obj ) {
 	pat.dataset.id = id;
 	UIpatterns.set( id, pat );
 	UIupdatePattern( id, obj );
-	UIupdatePatternContent( id );
-	if ( obj.type === "buffer" ) {
-		DOM.buffPatterns.prepend( pat );
+	switch ( obj.type ) {
+		case "buffer": DOM.buffPatterns.prepend( pat ); break;
+		case "drums":
+			UIsvgForms.drums.add( obj.drums );
+			pat._gsuiSVGform = UIsvgForms.drums.createSVG( obj.drums );
+			pat.querySelector( ".gsuiPatternroll-block-content" ).append( pat._gsuiSVGform );
+			DOM.drumsPatterns.prepend( pat );
+			break;
+		case "keys": // 1.
+			UIsvgForms.keys.add( obj.keys );
+			pat._gsuiSVGform = UIsvgForms.keys.createSVG( obj.keys );
+			pat.querySelector( ".gsuiPatternroll-block-content" ).append( pat._gsuiSVGform );
+			break;
 	}
+	UIupdatePatternContent( id );
 }
 
 function UIupdatePattern( id, obj ) {
@@ -148,10 +171,11 @@ function UIupdatePatternsBPM( bpm ) {
 
 	UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
 		const blc = DAW.get.block( blcId ),
-			svg = elBlc._gsuiWaveform;
+			pat = DAW.get.pattern( blc.pattern ),
+			svg = elBlc._gsuiSVGform;
 
-		if ( svg ) {
-			UIwaveforms.setSVGViewbox( svg, blc.offset / bps, blc.duration / bps );
+		if ( svg && pat.type === "buffer" ) {
+			UIsvgForms.buffer.setSVGViewbox( svg, blc.offset, blc.duration, bps );
 		}
 	} );
 }
@@ -164,7 +188,7 @@ function UIupdatePatternContent( id ) {
 	if ( elPat ) {
 		switch ( pat.type ) {
 			case "buffer":
-				if ( !elPat._gsuiWaveform ) {
+				if ( !elPat._gsuiSVGform ) {
 					const buf = UIbuffers.get( pat.buffer );
 
 					if ( buf ) {
@@ -173,43 +197,45 @@ function UIupdatePatternContent( id ) {
 						wave.setResolution( 260, 48 );
 						wave.drawBuffer( buf.buffer, buf.offset, buf.duration );
 						elPat.querySelector( ".gsuiPatternroll-block-content" ).append( wave.rootElement );
-						elPat._gsuiWaveform = wave;
+						elPat._gsuiSVGform = wave;
 					}
 				}
 				UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
 					const blc = get.block( blcId );
 
-					if ( blc.pattern === id && !elBlc._gsuiWaveform ) {
-						const svg = UIwaveforms.createSVG( pat.buffer ),
-							bps = get.bpm() / 60;
+					if ( blc.pattern === id && !elBlc._gsuiSVGform ) {
+						const svg = UIsvgForms.buffer.createSVG( pat.buffer );
 
 						if ( svg ) {
-							elBlc._gsuiWaveform = svg;
+							elBlc._gsuiSVGform = svg;
 							elBlc.children[ 3 ].append( svg );
-							UIwaveforms.setSVGViewbox( svg, blc.offset / bps, blc.duration / bps );
+							UIsvgForms.buffer.setSVGViewbox( svg, blc.offset, blc.duration, get.bpm() / 60 );
 						}
 					}
 				} );
-			break;
+				break;
 			case "keys":
-				if ( !elPat._gsuiRectMatrix ) {
-					const mat = new gsuiRectMatrix();
+			case "drums": {
+				const SVGs = UIsvgForms[ pat.type ],
+					id = pat[ pat.type ],
+					dur = pat.duration;
 
-					mat.setResolution( 200, 32 );
-					elPat.querySelector( ".gsuiPatternroll-block-content" ).append( mat.rootElement );
-					elPat._gsuiRectMatrix = mat;
-				}
-				elPat._gsuiRectMatrix.render( uiKeysToRects( get.keys( pat.keys ) ) );
+				pat.type === "keys"
+					? SVGs.update( id, get.keys( id ), dur )
+					: SVGs.update( id, get.drums( id ), get.drumrows(), dur, get.stepsPerBeat() );
+				SVGs.setSVGViewbox( elPat._gsuiSVGform, 0, 200 );
 				UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
 					const blc = get.block( blcId );
 
 					if ( blc.pattern === id ) {
-						const keys = get.keys( get.pattern( blc.pattern ).keys );
-
-						elBlc._gsuiRectMatrix.render( uiKeysToRects( keys ), blc.offset, blc.duration );
+						SVGs.setSVGViewbox( elPat._gsuiSVGform, blc.offset, blc.duration );
 					}
 				} );
-				break;
+			} break;
 		}
 	}
 }
+
+/*
+1. The keys pattern are append with the `synth` attribute.
+*/

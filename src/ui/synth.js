@@ -30,6 +30,7 @@ function UIsynthOpen( id ) {
 		DOM.synthName.textContent = syn.name;
 		DOM.synthChannelBtn.onclick = UImixerOpenChanPopup.bind( null, "synths", id );
 		UIsynthChange( syn );
+		UIwindows.window( "synth" ).open();
 	}
 }
 

@@ -42,49 +42,23 @@ function UIpatternrollOnChangeLoop( looping, a, b ) {
 	} );
 }
 
-function UIpatternrollOnEditBlock( id, obj, blc ) {
-	const pat = DAW.get.pattern( obj.pattern );
+function UIpatternrollOnEditBlock( _id, obj, blc ) {
+	if ( blc._gsuiSVGform ) {
+		const pat = DAW.get.pattern( obj.pattern );
 
-	switch ( pat.type ) {
-		case "keys": {
-			const keys = DAW.get.keys( pat.keys );
-
-			blc._gsuiRectMatrix.render( uiKeysToRects( keys ), obj.offset, obj.duration );
-		} break;
-		case "buffer": {
-			const svg = blc._gsuiWaveform,
-				bps = DAW.get.bpm() / 60;
-
-			if ( svg ) {
-				UIwaveforms.setSVGViewbox( svg, obj.offset / bps, obj.duration / bps );
-			}
-		} break;
+		UIsvgForms[ pat.type ].setSVGViewbox( blc._gsuiSVGform, obj.offset, obj.duration, DAW.get.bpm() / 60 );
 	}
 }
 
-function UIpatternrollOnAddBlock( id, obj, blc ) {
-	const pat = DAW.get.pattern( obj.pattern );
+function UIpatternrollOnAddBlock( _id, obj, blc ) {
+	const pat = DAW.get.pattern( obj.pattern ),
+		SVGs = UIsvgForms[ pat.type ],
+		svg = SVGs.createSVG( pat[ pat.type ] );
 
-	switch ( pat.type ) {
-		case "keys": {
-			const keys = DAW.get.keys( pat.keys ),
-				mat = new gsuiRectMatrix();
-
-			blc._gsuiRectMatrix = mat;
-			mat.setResolution( 200, 32 );
-			mat.render( uiKeysToRects( keys ), obj.offset, obj.duration );
-			blc.children[ 3 ].append( mat.rootElement );
-		} break;
-		case "buffer": {
-			const svg = UIwaveforms.createSVG( pat.buffer ),
-				bps = DAW.get.bpm() / 60;
-
-			if ( svg ) {
-				blc._gsuiWaveform = svg;
-				blc.children[ 3 ].append( svg );
-				UIwaveforms.setSVGViewbox( svg, obj.offset / bps, obj.duration / bps );
-			}
-		} break;
+	if ( svg ) {
+		blc._gsuiSVGform = svg;
+		blc.children[ 3 ].append( svg );
+		SVGs.setSVGViewbox( svg, obj.offset, obj.duration, DAW.get.bpm() / 60 );
 	}
 	blc.ondblclick = () => { DAW.openPattern( obj.pattern ); };
 	blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = pat.name;
