@@ -47,6 +47,11 @@ function UIrun() {
 	window.onbeforeunload = UIcompositionBeforeUnload;
 	document.body.ondrop = UIdrop;
 	document.body.ondragover = () => false;
+	document.addEventListener( "wheel", e => {
+		if ( e.ctrlKey ) {
+			e.preventDefault();
+		}
+	}, { passive: false } );
 
 	DAW.cb.focusOn = UIcontrolsFocusOn;
 	DAW.cb.currentTime = UIcontrolsCurrentTime;
