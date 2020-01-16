@@ -51,6 +51,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.colors.default.css"
 	"gs-ui-components/gsuiDotline/gsuiDotline.css"
 	"gs-ui-components/gsuiPanels/gsuiPanels.css"
+	"gs-ui-components/gsuiPanels/gsuiPanels.colors.default.css"
 	"gs-ui-components/gsuiPopup/gsuiPopup.css"
 	"gs-ui-components/gsuiSlider/gsuiSlider.css"
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"

@@ -49,11 +49,6 @@
 	--gsuiWindow-focused-border-color: #1e90ff;
 
 	/* ...................................................................... */
-	--gsuiPanels-bd: 2px solid #222;
-	--gsuiPanels-extendSize: 4px;
-	--gsuiPanels-extendColor: #222;
-
-	/* ...................................................................... */
 	--ctrl-play-bg: #67a;
 	--ctrl-stop-bg: #888;
 	--ctrl-clock-bg: #222;
@@ -93,7 +88,7 @@
 	--gsuiTrack-hsl-l: 33%;
 	--gsuiTrack-color: #fff;
 	--gsuiTrack-toggle-bg: #ffa;
-	--gsuiTrack-toggleOff-bg: rgba( 255, 255, 255, .2 );
+	--gsuiTrack-toggleOff-bg: #fff3;
 
 	/* gsuiBlocksManager */
 	/* ...................................................................... */
