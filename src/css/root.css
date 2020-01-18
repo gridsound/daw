@@ -58,7 +58,7 @@
 	--ctrl-render-color: #ff9;
 	--ctrl-eatcookie-color: #ff9;
 	--ctrl-currentTime-color: #abd;
-	--ctrl-currentTime-bg: rgba( 0, 0, 0, .2 );
+	--ctrl-currentTime-bg: #0003;
 
 	/* ...................................................................... */
 	--gsuiClock-mili-fontSize: 14px;
@@ -96,10 +96,10 @@
 	--gsuiBlocksManager-side-bgColor: #555;
 	--gsuiBlocksManager-font: 12px var( --font-default );
 	--gsuiBlocksManager-number-font: 16px var( --font-number );
-	--gsuiBlocksManager-selection-bgColor: rgba( 189, 38, 38, .4 );
+	--gsuiBlocksManager-selection-bgColor: #b226;
 	--gsuiBlocksManager-selection-borderColor: #f44;
-	--gsuiBlocksManager-blockColor: rgba( 85, 170, 204, .8 );
-	--gsuiBlocksManager-blockSelectedColor: rgba( 255, 136, 136, .8 );
+	--gsuiBlocksManager-blockColor: #5acc;
+	--gsuiBlocksManager-blockSelectedColor: #f88c;
 
 	/* gsuiTimeline */
 	/* ...................................................................... */
@@ -119,10 +119,10 @@
 	--gsuiSliderGroup-bg: #456168;
 	--gsuiSliderGroup-currentTime-color: #ff9;
 	--gsuiSliderGroup-slider-width: 6px;
-	--gsuiSliderGroup-slider-bg: rgba( 0, 0, 0, .1 );
+	--gsuiSliderGroup-slider-bg: #0002;
 	--gsuiSliderGroup-slider-color: var( --gsuiBlocksManager-blockColor );
 	--gsuiSliderGroup-slider-color-selected: var( --gsuiBlocksManager-blockSelectedColor );
-	--gsuiSliderGroup-loop-color: rgba( 0, 0, 0, .3 );
+	--gsuiSliderGroup-loop-color: #0004;
 
 	/* gsuiKeys */
 	/* ...................................................................... */

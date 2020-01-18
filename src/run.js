@@ -21,6 +21,7 @@ function UIrun() {
 	UIwindowsInit();
 
 	UIauthInit();
+	UIdrumsInit();
 	UImixerInit();
 	UIsynthInit();
 	UIblocksInit();

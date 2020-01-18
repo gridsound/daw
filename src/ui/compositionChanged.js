@@ -80,6 +80,7 @@ UIcompositionChanged.fn = new Map( [
 
 		UIclock.setStepsPerBeat( sPB );
 		UIsynth.timeSignature( bPM, sPB );
+		UIdrums.timeSignature( bPM, sPB );
 		UIpatternroll.timeSignature( bPM, sPB );
 		UIpianoroll.timeSignature( bPM, sPB );
 		DOM.beatsPerMeasure.textContent = bPM;

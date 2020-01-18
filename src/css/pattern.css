@@ -85,7 +85,9 @@
 }
 
 /* .......................................................................... */
+#drumsPatterns .pattern-dest-arrow,
 #keysPatterns .pattern-dest-arrow,
+#drumsPatterns .pattern-dest-btn,
 #keysPatterns .pattern-dest-btn {
 	display: none;
 }
@@ -97,7 +99,7 @@
 .pattern-dest-btn {
 	overflow: initial;
 	text-overflow: initial;
-	background-color: rgba( 255, 255, 255, .06 );
+	background-color: #fff1;
 }
 .pattern-dest-btn:hover,
 .pattern-dest-btn:focus {

@@ -1,5 +1,7 @@
 #channelName,
 #synthChannelBtn { color: var( --windowBtn-chan-color ); }
+#drumsNew,
+#drumsName,
 #pianorollName { color: var( --windowBtn-pattern-color ); }
 #synthName { color: var( --windowBtn-synth-color ); }
 #synthNew { color: var( --windowBtn-synth-color ); }
@@ -17,6 +19,7 @@
 }
 
 /* .......................................................................... */
+.gsuiDrums,
 .gsuiPianoroll,
 .gsuiPatternroll,
 .gsuiSynthesizer {
