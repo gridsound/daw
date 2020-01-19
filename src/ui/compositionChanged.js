@@ -101,7 +101,7 @@ UIcompositionChanged.fn = new Map( [
 	[ "duration", function( { duration } ) {
 		const dur = DAWCore.time.beatToMinSec( duration, DAW.get.bpm() );
 
-		if ( DAW.compositionFocused ) {
+		if ( DAW.getFocusedName() === "composition" ) {
 			DOM.sliderTime.options( { max: duration } );
 		}
 		DOM.headCmpDur.textContent =
@@ -144,7 +144,7 @@ UIcompositionChanged.fn = new Map( [
 			GSData.deepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
 			UIpianoroll.resetKey();
 			UIpianoroll.scrollToKeys();
-			if ( !DAW.compositionFocused ) {
+			if ( DAW.getFocusedName() === "pianoroll" ) {
 				DOM.sliderTime.options( { max: pat.duration } );
 			}
 			UIwindows.window( "piano" ).open();

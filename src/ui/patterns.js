@@ -144,7 +144,7 @@ function UIupdatePattern( id, obj ) {
 		UIpatterns.get( id ).querySelector( ".pattern-dest" )
 			.textContent = DAW.get.channel( obj.dest ).name;
 	}
-	if ( "duration" in obj && !DAW.compositionFocused && id === DAW.get.patternKeysOpened() ) {
+	if ( "duration" in obj && DAW.getFocusedName() === "pianoroll" && id === DAW.get.patternKeysOpened() ) {
 		DOM.sliderTime.options( { max: obj.duration } );
 	}
 }

@@ -52,7 +52,7 @@ function UIcontrolsSliderTime_oninput( beat ) {
 function UIcontrolsSliderTime_onchange() {
 	const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
 
-	( DAW.compositionFocused ? DAW.composition : DAW.pianoroll ).setCurrentTime( beat );
+	DAW.getFocusedObject().setCurrentTime( beat );
 }
 
 function UIcontrolsBPMTap() {
@@ -78,7 +78,7 @@ function UIcontrolsClickPlay() {
 }
 
 function UIcontrolsClickPlayToggle() {
-	DAW.compositionFocused
+	DAW.getFocusedName() === "composition"
 		? DAW.pianorollFocus( "-f" )
 		: DAW.compositionFocus( "-f" );
 }
@@ -91,10 +91,8 @@ function UIcontrolsClickStop() {
 	}
 }
 
-function UIcontrolsGetFocusedGrid( focused ) {
-	const cmpFoc = focused
-			? focused === "composition"
-			: DAW.compositionFocused;
+function UIcontrolsGetFocusedGrid( focusedStr ) {
+	const cmpFoc = ( focusedStr || DAW.getFocusedName() ) === "composition";
 
 	return cmpFoc ? UIpatternroll : UIpianoroll;
 }
@@ -102,8 +100,9 @@ function UIcontrolsGetFocusedGrid( focused ) {
 function UIcontrolsFocusOn( subject, b ) {
 	if ( b ) {
 		const onCmp = subject === "composition",
-			beat = ( DAW.compositionFocused ? DAW.composition : DAW.pianoroll ).getCurrentTime(),
-			duration = ( DAW.compositionFocused ? DAW.composition.cmp : DAW.pianoroll ).duration,
+			focObj = DAW.getFocusedObject(),
+			beat = focObj.getCurrentTime(),
+			duration = ( focObj === DAW.composition ? focObj.cmp : focObj ).duration,
 			grid = UIcontrolsGetFocusedGrid( subject );
 
 		DOM.playToggle.dataset.dir = onCmp ? "up" : "down";
