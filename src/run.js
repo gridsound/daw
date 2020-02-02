@@ -15,7 +15,7 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.27.1";
+	window.VERSION = "0.28.0";
 
 	UIdomInit();
 	UIwindowsInit();
@@ -40,7 +40,6 @@ function UIrun() {
 	UIcompositionsInit();
 	UIsettingsPopupInit();
 	UIshortcutsPopupInit();
-	DAW.initPianoroll();
 
 	window.onblur = () => UIkeys.midiReleaseAllKeys();
 	window.onkeyup = UIkeyboardUp;

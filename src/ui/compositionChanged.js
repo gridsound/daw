@@ -2,6 +2,7 @@
 
 function UIcompositionChanged( obj, prevObj ) {
 	console.log( "change", obj );
+	UIdrums.change( obj );
 	UIcompositionChanged.fn.forEach( ( fn, attr ) => {
 		if ( typeof attr === "string" ) {
 			if ( attr in obj ) {
@@ -16,12 +17,23 @@ function UIcompositionChanged( obj, prevObj ) {
 UIcompositionChanged.fn = new Map( [
 	[ "channels", function( { channels } ) {
 		const synOpenedDest = DAW.get.synth( DAW.get.synthOpened() ).dest,
-			synOpenedChan = channels[ synOpenedDest ];
+			synOpenedChan = channels[ synOpenedDest ],
+			chanMap = Object.entries( channels ).reduce( ( map, [ id, obj ] ) => {
+				if ( obj && "name" in obj ) {
+					map.set( id );
+				}
+				return map;
+			}, new Map() );
 
 		UImixer.change( channels );
-		Object.entries( channels ).forEach( ( [ id, obj ] ) => {
-			if ( "name" in obj ) {
-				UIsynthsUpdateChanName( id, obj.name );
+		Object.entries( DAW.get.synths() ).forEach( ( [ id, syn ] ) => {
+			if ( chanMap.has( syn.dest ) ) {
+				UIsynthsRedirectSynth( id, syn.dest );
+			}
+		} );
+		Object.entries( DAW.get.patterns() ).forEach( ( [ id, pat ] ) => {
+			if ( chanMap.has( pat.dest ) ) {
+				UIredirectPattern( id, pat.dest );
 			}
 		} );
 		if ( synOpenedChan && "name" in synOpenedChan ) {
@@ -50,8 +62,7 @@ UIcompositionChanged.fn = new Map( [
 	[ "patterns", function( { patterns }, prevObj ) {
 		Object.entries( patterns ).forEach( ( [ id, obj ] ) => {
 			if ( !obj ) {
-				UIpatterns.get( id ).remove();
-				UIpatterns.delete( id );
+				UIremovePattern( id, prevObj.patterns[ id ] );
 			} else if ( !prevObj.patterns[ id ] ) {
 				UIaddPattern( id, obj );
 			} else {
@@ -107,21 +118,51 @@ UIcompositionChanged.fn = new Map( [
 		DOM.headCmpDur.textContent =
 		UIcompositions.get( DAW.get.composition() ).duration.textContent = dur;
 	} ],
-	[ "keys", function( { keys } ) {
-		const pats = Object.entries( DAW.get.patterns() ),
-			patOpened = DAW.get.patternKeysOpened();
+	[ "drumrows", function( { drumrows } ) {
+		const pats = DAW.get.patterns();
 
-		Object.entries( keys ).forEach( ( [ keysId, keysObj ] ) => {
-			pats.some( ( [ patId, patObj ] ) => {
-				if ( patObj.keys === keysId ) {
-					UIupdatePatternContent( patId );
-					if ( patId === patOpened ) {
-						GSData.deepAssign( UIpianoroll.data, keysObj );
-					}
-					return true;
-				}
-			} );
+		Object.entries( pats ).forEach( ( [ id, pat ] ) => {
+			if ( pat.type === "drums" ) {
+				UIupdatePatternContent( id );
+			}
 		} );
+	} ],
+	[ "drums", function( { drums } ) {
+		const pats = DAW.get.patterns(),
+			patOpened = pats[ DAW.get.patternDrumsOpened() ];
+
+		Object.entries( pats )
+			.filter( kv => kv[ 1 ].type === "drums" && kv[ 1 ].drums in drums )
+			.forEach( kv => UIupdatePatternContent( kv[ 0 ] ) );
+	} ],
+	[ "keys", function( { keys } ) {
+		const pats = DAW.get.patterns(),
+			patOpened = pats[ DAW.get.patternKeysOpened() ];
+
+		Object.entries( pats )
+			.filter( kv => kv[ 1 ].type === "keys" && kv[ 1 ].keys in keys )
+			.forEach( kv => UIupdatePatternContent( kv[ 0 ] ) );
+		if ( patOpened && patOpened.keys in keys ) {
+			GSData.deepAssign( UIpianoroll.data, keys[ patOpened.keys ] );
+		}
+	} ],
+	[ "patternDrumsOpened", function( { patternDrumsOpened }, prevObj ) {
+		const pat = DAW.get.pattern( patternDrumsOpened ),
+			el = pat && UIpatterns.get( patternDrumsOpened ),
+			elPrev = UIpatterns.get( prevObj.patternDrumsOpened );
+
+		DOM.drumsName.textContent = pat ? pat.name : "";
+		UIdrums.selectPattern( patternDrumsOpened );
+		if ( pat ) {
+			el.classList.add( "selected" );
+			if ( DAW.getFocusedName() === "drums" ) {
+				DOM.sliderTime.options( { max: pat.duration } );
+			}
+			UIwindows.window( "drums" ).open();
+		}
+		if ( elPrev ) {
+			elPrev.classList.remove( "selected" );
+		}
 	} ],
 	[ "synthOpened", function( { synthOpened }, prevObj ) {
 		const el = UIsynths.get( synthOpened ),

@@ -10,7 +10,7 @@ function UImixerInit() {
 	UImixer.onupdateChan = UImixerUpdateChan;
 	UImixer.onselectChan = UImixerSelectChan;
 	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
-	UImixer.onchange = DAW.changeChannels.bind( DAW );
+	UImixer.onchange = ( obj, msg ) => DAW.callAction( "changeChannels", obj, msg );
 	win.onresize =
 	win.onresizing = () => UImixer.resized();
 	win.append( UImixer.rootElement );
@@ -45,7 +45,7 @@ function UImixerSelectChan( id ) {
 }
 
 function UImixerOpenChanPopup( objFamily, objId ) {
-	const currChanId = DAW.get[ objFamily ]()[ objId ].dest;
+	const currChanId = DAW.get[ objFamily ]( objId ).dest;
 
 	DOM.selectChanPopupSelect.value = currChanId;
 	gsuiPopup.custom( {
@@ -55,11 +55,7 @@ function UImixerOpenChanPopup( objFamily, objId ) {
 			const dest = data.channel;
 
 			if ( dest !== currChanId ) {
-				DAW.compositionChange( {
-					[ objFamily ]: {
-						[ objId ]: { dest }
-					}
-				} );
+				DAW.callAction( "redirectToChannel", objFamily, objId, dest );
 				UImixer.selectChan( dest );
 			}
 		}

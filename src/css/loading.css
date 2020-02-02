@@ -9,7 +9,9 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	color: rgba( 255, 255, 255, .5 );
+	color: #fff8;
+	user-select: none;
+	-webkit-user-select: none;
 	background-color: #333;
 	transition: .5s opacity;
 }

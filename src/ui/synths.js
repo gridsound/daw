@@ -24,7 +24,15 @@ function UIsynthsRemoveSynth( id ) {
 
 function UIsynthsUpdateSynth( id, obj ) {
 	if ( "name" in obj ) { UIsynths.get( id ).name.textContent = obj.name; }
-	if ( "dest" in obj ) { UIsynths.get( id ).dest.textContent = DAW.get.channel( obj.dest ).name; }
+	if ( "dest" in obj ) { UIsynthsRedirectSynth( id, obj.dest ); }
+}
+
+function UIsynthsRedirectSynth( id, dest ) {
+	const html = UIsynths.get( id );
+
+	if ( html ) {
+		html.dest.textContent = DAW.get.channel( dest ).name;
+	}
 }
 
 function UIsynthsUpdateChanName( chanId, name ) {
@@ -51,22 +59,22 @@ function UIsynthsInit() {
 				UIsynthsExpandSynth( id );
 			} ],
 			[ "changeDest", id => {
-				UImixerOpenChanPopup( "synths", id );
+				UImixerOpenChanPopup( "synth", id );
 			} ],
 			[ "delete", id => {
 				if ( Object.keys( DAW.get.synths() ).length > 1 ) {
-					DAW.removeSynth( id );
+					DAW.callAction( "removeSynth", id );
 				} else {
 					gsuiPopup.alert( "Error", "You can not delete the last synthesizer" );
 				}
 			} ],
 			[ "newPattern", id => {
-				DAW.newPattern( id );
+				DAW.callAction( "addPatternKeys", id );
 				UIsynthsExpandSynth( id, true );
 			} ],
 		] );
 
-	DOM.synthNew.onclick = () => ( DAW.newSynth(), false );
+	DOM.synthNew.onclick = () => DAW.callAction( "addSynth" );
 	DOM.keysPatterns.ondragover = e => {
 		const syn = e.target.closest( ".synth" );
 

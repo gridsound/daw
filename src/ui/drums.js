@@ -1,21 +1,19 @@
 "use strict";
 
-const UIdrums = new gsuiDrums();
-	// UIkeys = UIdrums.uiKeys;
+const UIdrums = new GSDrums();
 
 function UIdrumsInit() {
 	const win = UIwindows.window( "drums" );
 
+	UIdrums.setDAWCore( DAW );
 	UIdrums.setFontSize( 42 );
 	UIdrums.setPxPerBeat( 120 );
-	// UIdrums.onchange = obj => DAW.changePatternKeys( DAW.get.patternKeysOpened(), obj );
+	// UIdrums.onchange = obj => DAW.xxxcompositionChange( DAW.get.patternKeysOpened(), obj );
 	// UIdrums.onchangeLoop = UIdrumsOnChangeLoop;
-	// UIdrums.onchangeCurrentTime = t => DAW.drum.setCurrentTime( t );
-	// UIdrums.rootElement.onfocus = () => DAW.drumFocus();
-	// UIkeys.onkeydown = midi => DAW.drum.liveKeydown( midi );
-	// UIkeys.onkeyup = midi => DAW.drum.liveKeyup( midi );
+	// UIdrums.onchangeDrumrows = ( ...args ) => DAW.changeDrumrows( ...args );
+	// UIdrums.onchangeCurrentTime = t => DAW.drums.setCurrentTime( t );
+	UIdrums.rootElement.onfocus = () => DAW.drumsFocus();
 	DOM.drumsName.onclick = UIdrumsNameClick;
-	DOM.drumsForbidden.classList.remove( "hidden" );
 	win.onresize =
 	win.onresizing = ( w, h ) => UIdrums.resize( w, h );
 	win.onfocusin = UIdrumsWindowFocusin;
@@ -25,8 +23,8 @@ function UIdrumsInit() {
 
 function UIdrumsOnChangeLoop( looping, a, b ) {
 	looping
-		? DAW.drum.setLoop( a, b )
-		: DAW.drum.clearLoop();
+		? DAW.drums.setLoop( a, b )
+		: DAW.drums.clearLoop();
 }
 
 function UIdrumsWindowFocusin( e ) {
@@ -36,20 +34,9 @@ function UIdrumsWindowFocusin( e ) {
 }
 
 function UIdrumsNameClick() {
-	const id = DAW.get.patternKeysOpened(),
+	const id = DAW.get.patternDrumsOpened(),
 		name = DOM.drumsName.textContent;
 
 	gsuiPopup.prompt( "Rename pattern", "", name, "Rename" )
-		.then( name => DAW.namePattern( id, name ) );
-}
-
-function UIdrumsKeyboardEvent( status, e ) {
-	const midi = UIkeys.getMidiKeyFromKeyboard( e );
-
-	if ( midi !== false ) {
-		status
-			? UIkeys.midiKeyDown( midi )
-			: UIkeys.midiKeyUp( midi );
-		return true;
-	}
+		.then( name => DAW.callAction( "renamePattern", id, name ) );
 }

@@ -18,7 +18,9 @@ function UIeffectsInit() {
 		}
 	};
 	UIeffects.oninput = DAW.liveChangeEffect.bind( DAW );
-	UIeffects.onchange = DAW.changeEffects.bind( DAW );
+	UIeffects.onchange = ( effects, msg ) => {
+		DAW.compositionChange( { effects }, msg );
+	};
 }
 
 function UIeffectsRenameChan( name ) {

@@ -9,9 +9,9 @@ window.UIsvgForms = Object.freeze( {
 } );
 window.UIpatternsClickFns = new Map( [
 	[ undefined, id => DAW.openPattern( id ) ],
-	[ "remove", id => DAW.removePattern( id ) ],
-	[ "clone", id => DAW.clonePattern( id ) ],
-	[ "changeDest", id => UImixerOpenChanPopup( "patterns", id ) ],
+	[ "remove", id => DAW.callAction( "removePattern", id ) ],
+	[ "clone", id => DAW.callAction( "clonePattern", id ) ],
+	[ "changeDest", id => UImixerOpenChanPopup( "pattern", id ) ],
 ] );
 
 function UIpatternsInit() {
@@ -19,6 +19,7 @@ function UIpatternsInit() {
 		orderDrums = new gsuiReorder(),
 		orderKeys = new gsuiReorder();
 
+	DOM.drumsNew.onclick = () => DAW.callAction( "addPatternDrums" );
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
 	DOM.keysPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "keys" ) );
 	DOM.drumsPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "drums" ) );
@@ -64,13 +65,19 @@ function UIpatternsReorderChange( el ) {
 }
 
 function UIpatternsKeysReorderChange( el, indA, indB, parA, parB ) {
+	const patId = el.dataset.id,
+		pat = DAW.get.pattern( patId );
+
 	if ( parA === parB ) {
 		const patterns = gsuiReorder.listComputeOrderChange( parA, {} );
 
-		DAW.compositionChange( { patterns } );
+		DAW.compositionChange(
+			{ patterns },
+			[ "patterns", "reorderPattern", pat.type, pat.name ]
+		);
 	} else {
 		const synth = parB.parentNode.dataset.id,
-			patId = el.dataset.id,
+			synName = DAW.get.synth( synth ).name,
 			patterns = { [ patId ]: { synth } },
 			obj = { patterns };
 
@@ -79,7 +86,10 @@ function UIpatternsKeysReorderChange( el, indA, indB, parA, parB ) {
 		if ( patId === DAW.get.patternKeysOpened() ) {
 			obj.synthOpened = synth;
 		}
-		DAW.compositionChange( obj );
+		DAW.compositionChange(
+			obj,
+			[ "patterns", "redirectPatternKeys", pat.name, synName ]
+		);
 	}
 }
 
@@ -101,9 +111,7 @@ function UIpatternsOnclick( type, e ) {
 	const pat = e.target.closest( ".pattern" );
 
 	if ( pat ) {
-		if ( type === "keys" || e.target.dataset.action ) { // tmp
-			UIpatternsClickFns.get( e.target.dataset.action )( pat.dataset.id );
-		}
+		UIpatternsClickFns.get( e.target.dataset.action )( pat.dataset.id );
 	}
 }
 
@@ -130,6 +138,16 @@ function UIaddPattern( id, obj ) {
 	UIupdatePatternContent( id );
 }
 
+function UIremovePattern( id, pat ) {
+	const type = pat.type;
+
+	if ( type === "keys" || type === "drums" ) {
+		UIsvgForms[ type ].delete( pat[ type ] );
+	}
+	UIpatterns.get( id ).remove();
+	UIpatterns.delete( id );
+}
+
 function UIupdatePattern( id, obj ) {
 	if ( obj.synth ) {
 		UIchangePatternSynth( id, obj.synth );
@@ -141,11 +159,18 @@ function UIupdatePattern( id, obj ) {
 		UInamePattern( id, obj.name );
 	}
 	if ( "dest" in obj ) {
-		UIpatterns.get( id ).querySelector( ".pattern-dest" )
-			.textContent = DAW.get.channel( obj.dest ).name;
+		UIredirectPattern( id, obj.dest );
 	}
 	if ( "duration" in obj && DAW.getFocusedName() === "pianoroll" && id === DAW.get.patternKeysOpened() ) {
 		DOM.sliderTime.options( { max: obj.duration } );
+	}
+}
+
+function UIredirectPattern( id, dest ) {
+	const elPat = UIpatterns.get( id );
+
+	if ( elPat ) {
+		elPat.querySelector( ".pattern-dest" ).textContent = DAW.get.channel( dest ).name;
 	}
 }
 
@@ -158,6 +183,9 @@ function UInamePattern( id, name ) {
 	} );
 	if ( id === DAW.get.patternKeysOpened() ) {
 		DOM.pianorollName.textContent = name;
+	}
+	if ( id === DAW.get.patternDrumsOpened() ) {
+		DOM.drumsName.textContent = name;
 	}
 }
 
@@ -223,14 +251,7 @@ function UIupdatePatternContent( id ) {
 				pat.type === "keys"
 					? SVGs.update( id, get.keys( id ), dur )
 					: SVGs.update( id, get.drums( id ), get.drumrows(), dur, get.stepsPerBeat() );
-				SVGs.setSVGViewbox( elPat._gsuiSVGform, 0, 200 );
-				UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
-					const blc = get.block( blcId );
-
-					if ( blc.pattern === id ) {
-						SVGs.setSVGViewbox( elPat._gsuiSVGform, blc.offset, blc.duration );
-					}
-				} );
+				SVGs.setSVGViewbox( elPat._gsuiSVGform, 0, pat.duration );
 			} break;
 		}
 	}

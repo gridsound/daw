@@ -9,8 +9,9 @@ function UIwindowsInit() {
 	UIwindows.onopen = win => UIwindowsBtn( win.id, true );
 	UIwindows.onclose = win => {
 		UIwindowsBtn( win.id, false );
-		if ( win.id === "piano" ) {
-			DAW.closePattern( "keys" );
+		switch ( win.id ) {
+			case "piano": DAW.closePattern( "keys" ); break;
+			case "drums": DAW.closePattern( "drums" ); break;
 		}
 	};
 	DOM.winBtns.onclick = e => {

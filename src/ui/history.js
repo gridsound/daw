@@ -16,7 +16,7 @@ function UIhistoryAddAction( act ) {
 
 	UIhistoryActions.set( act.index, div );
 	div.children[ 0 ].dataset.icon = act.icon;
-	div.children[ 1 ].textContent = act.desc;
+	div.children[ 1 ].innerHTML = act.desc;
 	div.onclick = () => DAW.history.goToAction( act );
 	DOM.historyList.append( div );
 	DOM.historyList.scrollTop = 10000000;

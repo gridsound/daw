@@ -70,7 +70,7 @@ function UIcontrolsCurrentTime( beat, focused ) {
 
 function UIcontrolsClickCmp() {
 	gsuiPopup.prompt( "Composition's title", "", DAW.get.name(), "Rename" )
-		.then( name => DAW.nameComposition( name ) );
+		.then( name => DAW.callAction( "renameComposition", name ) );
 }
 
 function UIcontrolsClickPlay() {
@@ -86,29 +86,33 @@ function UIcontrolsClickPlayToggle() {
 function UIcontrolsClickStop() {
 	DAW.stop();
 	switch ( document.activeElement ) {
-		case UIpatternroll.rootElement: DAW.compositionFocus( "-f" ); break;
+		case UIdrums.rootElement: DAW.drumsFocus( "-f" ); break;
 		case UIpianoroll.rootElement: DAW.pianorollFocus( "-f" ); break;
+		case UIpatternroll.rootElement: DAW.compositionFocus( "-f" ); break;
 	}
 }
 
-function UIcontrolsGetFocusedGrid( focusedStr ) {
-	const cmpFoc = ( focusedStr || DAW.getFocusedName() ) === "composition";
-
-	return cmpFoc ? UIpatternroll : UIpianoroll;
+function UIcontrolsGetFocusedGrid( focStr = DAW.getFocusedName() ) {
+	return focStr === "composition"
+		? UIpatternroll
+		: focStr === "drums"
+			? UIdrums
+			: UIpianoroll;
 }
 
-function UIcontrolsFocusOn( subject, b ) {
+function UIcontrolsFocusOn( focStr, b ) {
 	if ( b ) {
-		const onCmp = subject === "composition",
-			focObj = DAW.getFocusedObject(),
+		const focObj = DAW.getFocusedObject(),
 			beat = focObj.getCurrentTime(),
 			duration = ( focObj === DAW.composition ? focObj.cmp : focObj ).duration,
-			grid = UIcontrolsGetFocusedGrid( subject );
+			grid = UIcontrolsGetFocusedGrid( focStr ),
+			onCmp = focStr === "composition";
 
 		DOM.playToggle.dataset.dir = onCmp ? "up" : "down";
 		DOM.sliderTime.options( { max: duration || DAW.get.beatsPerMeasure() } );
 		DOM.sliderTime.setValue( beat );
-		UIpianoroll.rootElement.classList.toggle( "selected", !onCmp );
+		UIdrums.rootElement.classList.toggle( "selected", focStr === "drums" );
+		UIpianoroll.rootElement.classList.toggle( "selected", focStr === "pianoroll" );
 		UIpatternroll.rootElement.classList.toggle( "selected", onCmp );
 		grid.rootElement.focus();
 	}
@@ -133,7 +137,7 @@ function UIcontrolsClickTempo() {
 		title: "Tempo",
 		element: DOM.tempoPopupContent,
 		submit( d ) {
-			DAW.changeTempo( d.bpm, d.beatsPerMeasure, d.stepsPerBeat );
+			DAW.callAction( "changeTempo", d.bpm, d.beatsPerMeasure, d.stepsPerBeat );
 		},
 	} );
 }

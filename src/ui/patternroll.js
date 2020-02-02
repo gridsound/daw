@@ -36,10 +36,7 @@ function UIpatternrollOnChange( obj ) {
 }
 
 function UIpatternrollOnChangeLoop( looping, a, b ) {
-	DAW.compositionChange( {
-		loopA: looping && a,
-		loopB: looping && b,
-	} );
+	DAW.callAction( "changeLoop", looping && a, looping && b );
 }
 
 function UIpatternrollOnEditBlock( _id, obj, blc ) {

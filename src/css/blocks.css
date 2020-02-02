@@ -37,7 +37,8 @@
 }
 
 #buffPatterns,
-#keysPatterns {
+#keysPatterns,
+#drumsPatterns {
 	flex: 1;
 	overflow: auto;
 	position: relative;
