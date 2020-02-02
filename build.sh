@@ -141,6 +141,8 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
+	"gs-api-client/gsapiClient.js"
+
 	"gs-data/gsdata/gsdata.js"
 	"gs-data/gsdataClock/gsdataClock.js"
 	"gs-data/gsdataSynth/gsdataSynth.js"
@@ -234,6 +236,20 @@ declare -a JSfiles=(
 
 	"gs-components/gsDrums/gsDrums.js"
 
+	"gs-wa-components/gswaLFO/gswaLFO.js"
+	"gs-wa-components/gswaMixer/gswaMixer.js"
+	"gs-wa-components/gswaSynth/gswaSynth.js"
+	"gs-wa-components/gswaSynth/gswaSynth.midiKeyToHz.js"
+	"gs-wa-components/gswaKeysScheduler/gswaKeysScheduler.js"
+	"gs-wa-components/gswaBPMTap/gswaBPMTap.js"
+	"gs-wa-components/gswaEffects/gswaEffects.js"
+	"gs-wa-components/gswaFxFilter/gswaFxFilter.js"
+	"gs-wa-components/gswaScheduler/gswaScheduler.js"
+	"gs-wa-components/gswaEncodeWAV/gswaEncodeWAV.js"
+	"gs-wa-components/gswaStereoPanner/gswaStereoPanner.js"
+	"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js"
+	"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.list.js"
+
 	"gs-ui-components/gsuiLFO/gsuiLFO.js"
 	"gs-ui-components/gsuiClock/gsuiClock.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
@@ -279,22 +295,6 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiDrumsforms/gsuiDrumsforms.js"
 	"gs-ui-components/gsuiWindows/gsuiWindows.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
-
-	"gs-webaudio-library/gswaLFO/gswaLFO.js"
-	"gs-webaudio-library/gswaMixer/gswaMixer.js"
-	"gs-webaudio-library/gswaSynth/gswaSynth.js"
-	"gs-webaudio-library/gswaSynth/gswaSynth.midiKeyToHz.js"
-	"gs-webaudio-library/gswaKeysScheduler/gswaKeysScheduler.js"
-	"gs-webaudio-library/gswaBPMTap/gswaBPMTap.js"
-	"gs-webaudio-library/gswaEffects/gswaEffects.js"
-	"gs-webaudio-library/gswaFxFilter/gswaFxFilter.js"
-	"gs-webaudio-library/gswaScheduler/gswaScheduler.js"
-	"gs-webaudio-library/gswaEncodeWAV/gswaEncodeWAV.js"
-	"gs-webaudio-library/gswaStereoPanner/gswaStereoPanner.js"
-	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.js"
-	"gs-webaudio-library/gswaPeriodicWaves/gswaPeriodicWaves.list.js"
-
-	"gs-api-client/gsapiClient.js"
 
 	"src/ui/dom.js"
 	"src/ui/textGlitch.js"
