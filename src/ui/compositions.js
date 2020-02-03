@@ -189,6 +189,7 @@ function UIcompositionClosed( cmp ) {
 	UIpatterns.clear();
 	UIbuffers.clear();
 	UIsvgForms.keys.empty();
+	UIsvgForms.drums.empty();
 	UIsvgForms.buffer.empty();
 }
 
