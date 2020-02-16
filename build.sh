@@ -18,7 +18,7 @@ declare -a HEADER=(
 	'<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
 	'<meta name="theme-color" content="#3a5158"/>'
 	'<link rel="manifest" href="manifest.json"/>'
-	'<link rel="shortcut icon" href="assets/favicon.png"/>'
+	'<link rel="shortcut icon" href="../assets/favicon.png"/>'
 )
 
 declare -a HEADEREND=(
