@@ -2,6 +2,7 @@
 
 function UIcompositionChanged( obj, prevObj ) {
 	console.log( "change", obj );
+	UIsynth.change( obj );
 	UIdrums.change( obj );
 	UIcompositionChanged.fn.forEach( ( fn, attr ) => {
 		if ( typeof attr === "string" ) {
@@ -90,8 +91,6 @@ UIcompositionChanged.fn = new Map( [
 			sPB = DAW.get.stepsPerBeat();
 
 		UIclock.setStepsPerBeat( sPB );
-		UIsynth.timeSignature( bPM, sPB );
-		UIdrums.timeSignature( bPM, sPB );
 		UIpatternroll.timeSignature( bPM, sPB );
 		UIpianoroll.timeSignature( bPM, sPB );
 		DOM.beatsPerMeasure.textContent = bPM;
@@ -105,12 +104,14 @@ UIcompositionChanged.fn = new Map( [
 		UIupdatePatternsBPM( bpm );
 	} ],
 	[ "name", function( { name } ) {
-		UItitle();
+		const cmp = DAW.get.composition();
+
+		UItitle( cmp.name );
 		DOM.headCmpName.textContent =
-		UIcompositions.get( DAW.get.composition() ).name.textContent = name;
+		UIcompositions.get( cmp ).name.textContent = name;
 	} ],
 	[ "duration", function( { duration } ) {
-		const dur = DAWCore.time.beatToMinSec( duration, DAW.get.bpm() );
+		const dur = DAWCore.utils.time.beatToMinSec( duration, DAW.get.bpm() );
 
 		if ( DAW.getFocusedName() === "composition" ) {
 			DOM.sliderTime.options( { max: duration } );

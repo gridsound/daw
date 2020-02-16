@@ -1,7 +1,7 @@
 "use strict";
 
-function UItitle() {
-	const name = DAW.get.name() || "GridSound";
+function UItitle( cmpName ) {
+	const name = cmpName || "GridSound";
 
 	document.title = DAW.compositionNeedSave() ? `*${ name }` : name;
 }

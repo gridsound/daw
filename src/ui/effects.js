@@ -12,7 +12,7 @@ function UIeffectsInit() {
 	UIeffects.attached();
 	UIeffects.askData = ( fxId, fxType, dataType, ...args ) => {
 		if ( fxType === "filter" && dataType === "curve" ) {
-			const wafx = DAW.get.waeffect( fxId );
+			const wafx = DAW.get.audioEffect( fxId );
 
 			return wafx && wafx.updateResponse( args[ 0 ] );
 		}

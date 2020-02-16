@@ -57,14 +57,14 @@ function UIcompositionDrop( from, to, e ) {
 function UIcompositionLocalDrop( e ) {
 	UIcompositionDrop( "cloud", "local", e )
 		.then( cmp => DAW.addComposition( cmp, { saveMode: "local" } ) )
-		.then( cmp => DAWCore.LocalStorage.put( cmp.id, cmp ), () => {} );
+		.then( cmp => DAWCore.LocalStorage.put( cmp.id, cmp ) );
 }
 
 function UIcompositionCloudDrop( e ) {
 	if ( gsapiClient.user.id ) {
 		UIcompositionDrop( "local", "cloud", e )
 			.then( cmp => UIauthSaveComposition( cmp ) )
-			.then( cmp => DAW.addComposition( cmp, { saveMode: "cloud" } ), () => {} );
+			.then( cmp => DAW.addComposition( cmp, { saveMode: "cloud" } ) );
 	} else {
 		gsuiPopup.alert( "Error",
 			"You need to be connected to your account before uploading your composition" );
@@ -105,7 +105,7 @@ function UIcompositionOpened( cmp ) {
 	DOM.headCmpSave.dataset.icon = cmp.options.saveMode === "local" ? "save" : "upload";
 	UIsynthsExpandSynth( cmp.synthOpened, true );
 	UIeffectsSelectChan( "main" );
-	UItitle();
+	UItitle( cmp.name );
 }
 
 function UIcompositionLoading( cmp, loading ) {
@@ -116,7 +116,7 @@ function UIcompositionLoading( cmp, loading ) {
 function UIcompositionSavedStatus( cmp, saved ) {
 	DOM.headCmp.classList.toggle( "cmp-saved", saved );
 	UIcompositions.get( cmp ).root.classList.toggle( "cmp-saved", saved );
-	UItitle();
+	UItitle( cmp.name );
 }
 
 function UIcompositionDeleted( cmp ) {
@@ -157,7 +157,7 @@ function UIcompositionAdded( cmp ) {
 function UIcompositionSetInfo( html, cmp ) {
 	html.bpm.textContent = cmp.bpm;
 	html.name.textContent = cmp.name;
-	html.duration.textContent = DAWCore.time.beatToMinSec( cmp.duration, cmp.bpm );
+	html.duration.textContent = DAWCore.utils.time.beatToMinSec( cmp.duration, cmp.bpm );
 }
 
 function UIcompositionClosed( cmp ) {
@@ -167,6 +167,7 @@ function UIcompositionClosed( cmp ) {
 		duration: cmp.duration,
 	}, {} );
 	UIcompositions.get( cmp ).root.classList.remove( "cmp-loaded" );
+	UIsynth.clear();
 	UIdrums.clear();
 	UIdrums.loop( false );
 	// UIdrums.setFontSize( 32 );
@@ -176,7 +177,6 @@ function UIcompositionClosed( cmp ) {
 	UIpatternroll.setFontSize( 32 );
 	UIpatternroll.setPxPerBeat( 40 );
 	UImixer.empty();
-	UIsynth.empty();
 	UIeffects.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );

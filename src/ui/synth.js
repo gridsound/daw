@@ -1,14 +1,9 @@
 "use strict";
 
-const UIsynth = new gsuiSynthesizer();
+const UIsynth = new GSSynth();
 
 function UIsynthInit() {
-	UIsynth.oninput = obj => DAW.liveChangeSynth( DAW.get.synthOpened(), obj );
-	UIsynth.onchange = ( obj, msg ) => {
-		DAW.compositionChange( {
-			synths: { [ DAW.get.synthOpened() ]: obj }
-		}, msg );
-	};
+	UIsynth.setDAWCore( DAW );
 	UIsynth.setWaveList( Array.from( gswaPeriodicWaves.list.keys() ) );
 	DOM.synthName.onclick = () => {
 		const id = DAW.get.synthOpened(),
@@ -24,7 +19,7 @@ function UIsynthInit() {
 }
 
 function UIsynthOpen( id ) {
-	UIsynth.empty();
+	UIsynth.selectSynth( id );
 	if ( !id ) {
 		DOM.synthName.textContent = "";
 		DOM.synthChannelBtn.onclick = null;
@@ -33,7 +28,6 @@ function UIsynthOpen( id ) {
 
 		DOM.synthName.textContent = syn.name;
 		DOM.synthChannelBtn.onclick = UImixerOpenChanPopup.bind( null, "synth", id );
-		UIsynthChange( syn );
 		UIwindows.window( "synth" ).open();
 	}
 }
@@ -45,5 +39,4 @@ function UIsynthChange( obj ) {
 	if ( "dest" in obj ) {
 		DOM.synthChannelBtnText.textContent = DAW.get.channel( obj.dest ).name;
 	}
-	UIsynth.change( obj );
 }

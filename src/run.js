@@ -74,7 +74,7 @@ function UIrun() {
 	DOM.versionNum.textContent =
 	DOM.headVersionNum.textContent = window.VERSION;
 
-	DOM.winBtnsMap.forEach( ( btn, id ) => id !== "effects" && btn.click() );
+	DOM.winBtnsMap.forEach( ( btn, id ) => id !== "effects" && id !== "drums" && btn.click() );
 
 	UIauthGetMe();
 	DAW.addCompositionsFromLocalStorage();
