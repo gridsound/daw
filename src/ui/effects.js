@@ -1,6 +1,6 @@
 "use strict";
 
-const UIeffects = new gsuiEffects();
+const UIeffects = new GSEffects();
 
 function UIeffectsInit() {
 	const win = UIwindows.window( "effects" );
@@ -9,17 +9,14 @@ function UIeffectsInit() {
 	win.append( UIeffects.rootElement );
 	win.onresize =
 	win.onresizing = () => UIeffects.resized();
+	UIeffects.setDAWCore( DAW );
 	UIeffects.attached();
-	UIeffects.askData = ( fxId, fxType, dataType, ...args ) => {
+	UIeffects._uiEffects.askData = ( fxId, fxType, dataType, ...args ) => {
 		if ( fxType === "filter" && dataType === "curve" ) {
 			const wafx = DAW.get.audioEffect( fxId );
 
 			return wafx && wafx.updateResponse( args[ 0 ] );
 		}
-	};
-	UIeffects.oninput = DAW.liveChangeEffect.bind( DAW );
-	UIeffects.onchange = ( effects, msg ) => {
-		DAW.compositionChange( { effects }, msg );
 	};
 }
 

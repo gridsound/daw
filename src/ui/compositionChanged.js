@@ -4,6 +4,7 @@ function UIcompositionChanged( obj, prevObj ) {
 	console.log( "change", obj );
 	UIsynth.change( obj );
 	UIdrums.change( obj );
+	UIeffects.change( obj );
 	UIcompositionChanged.fn.forEach( ( fn, attr ) => {
 		if ( typeof attr === "string" ) {
 			if ( attr in obj ) {
@@ -40,9 +41,6 @@ UIcompositionChanged.fn = new Map( [
 		if ( synOpenedChan && "name" in synOpenedChan ) {
 			DOM.synthChannelBtnText.textContent = synOpenedChan.name;
 		}
-	} ],
-	[ "effects", function( obj ) {
-		UIeffects.change( obj.effects );
 	} ],
 	[ "synths", function( { synths }, prevObj ) {
 		const synOpened = DAW.get.synthOpened();

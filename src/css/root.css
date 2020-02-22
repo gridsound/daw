@@ -101,15 +101,6 @@
 	--gsuiBlocksManager-blockColor: #5acc;
 	--gsuiBlocksManager-blockSelectedColor: #f88c;
 
-	/* gsuiTimeline */
-	/* ...................................................................... */
-	--gsuiTimeline-bg: #222;
-	--gsuiTimeline-color: #fff;
-	--gsuiTimeline-number-font: 15px var( --font-number );
-	--gsuiTimeline-loop-bg: #656586;
-	--gsuiTimeline-cursor-fill: #fdfd70;
-	--gsuiTimeline-loopBorder-bg: #fff;
-
 	/* gsuiSlider */
 	/* ...................................................................... */
 	--gsuiSlider-lineRadius: 2px;
@@ -123,15 +114,6 @@
 	--gsuiSliderGroup-slider-color: var( --gsuiBlocksManager-blockColor );
 	--gsuiSliderGroup-slider-color-selected: var( --gsuiBlocksManager-blockSelectedColor );
 	--gsuiSliderGroup-loop-color: #0004;
-
-	/* gsuiKeys */
-	/* ...................................................................... */
-	--gsuiKeys-blackKey-gradA: #111;
-	--gsuiKeys-blackKey-gradB: #444;
-	--gsuiKeys-whiteKey-gradA: #888;
-	--gsuiKeys-whiteKey-gradB: #eee;
-	--gsuiKeys-activeKey-gradA: #353b52;
-	--gsuiKeys-activeKey-gradB: #7886bd;
 
 	/* cmp */
 	/* ...................................................................... */
