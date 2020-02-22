@@ -167,9 +167,10 @@ function UIcompositionClosed( cmp ) {
 		duration: cmp.duration,
 	}, {} );
 	UIcompositions.get( cmp ).root.classList.remove( "cmp-loaded" );
-	UIsynth.clear();
 	UIdrums.clear();
 	UIdrums.loop( false );
+	UIeffects.clear();
+	UIsynth.clear();
 	// UIdrums.setFontSize( 32 );
 	// UIdrums.setPxPerBeat( 40 );
 	UIpatternroll.empty();
@@ -177,7 +178,6 @@ function UIcompositionClosed( cmp ) {
 	UIpatternroll.setFontSize( 32 );
 	UIpatternroll.setPxPerBeat( 40 );
 	UImixer.empty();
-	UIeffects.empty();
 	UIpianoroll.empty();
 	UIpianoroll.loop( false );
 	DOM.drumsName.textContent =
