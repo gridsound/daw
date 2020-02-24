@@ -143,10 +143,11 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
+	"gs-utils/GSUtils.js"
+
 	"gs-api-client/gsapiClient.js"
 
 	"gs-data/gsdata/gsdata.js"
-	"gs-data/gsdataClock/gsdataClock.js"
 	"gs-data/gsdataSynth/gsdataSynth.js"
 	"gs-data/gsdataDrums/gsdataDrums.js"
 	"gs-data/gsdataMixer/gsdataMixer.js"
@@ -174,22 +175,6 @@ declare -a JSfiles=(
 	"daw-core/src/json/channel.js"
 	"daw-core/src/json/channels.js"
 	"daw-core/src/json/effects.filter.js"
-
-	"daw-core/src/utils/addIfNotEmpty.js"
-	"daw-core/src/utils/capitalize.js"
-	"daw-core/src/utils/castToNumber.js"
-	"daw-core/src/utils/composeUndo.js"
-	"daw-core/src/utils/deepAssign.js"
-	"daw-core/src/utils/deepCopy.js"
-	"daw-core/src/utils/deepFreeze.js"
-	"daw-core/src/utils/diffAssign.js"
-	"daw-core/src/utils/isntEmpty.js"
-	"daw-core/src/utils/isObject.js"
-	"daw-core/src/utils/jsonCopy.js"
-	"daw-core/src/utils/time.js"
-	"daw-core/src/utils/trim2.js"
-	"daw-core/src/utils/uniqueName.js"
-	"daw-core/src/utils/uuid.js"
 
 	"daw-core/src/cmpActions/common/calcNewDuration.js"
 	"daw-core/src/cmpActions/common/createUniqueName.js"
@@ -416,6 +401,9 @@ lint() {
 updateDep() {
 	git submodule init
 	git submodule update --remote
+	cd gs-utils
+	./build.sh
+	cd ..
 }
 
 if [ $# = 0 ]; then

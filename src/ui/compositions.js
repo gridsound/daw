@@ -155,9 +155,11 @@ function UIcompositionAdded( cmp ) {
 }
 
 function UIcompositionSetInfo( html, cmp ) {
+	const [ min, sec ] = GSUtils.parseBeatsToSeconds( cmp.duration, cmp.bpm );
+
 	html.bpm.textContent = cmp.bpm;
 	html.name.textContent = cmp.name;
-	html.duration.textContent = DAWCore.utils.time.beatToMinSec( cmp.duration, cmp.bpm );
+	html.duration.textContent = `${ min }:${ sec }`;
 }
 
 function UIcompositionClosed( cmp ) {

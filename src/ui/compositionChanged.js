@@ -76,8 +76,8 @@ UIcompositionChanged.fn = new Map( [
 		} );
 	} ],
 	[ [ "tracks", "blocks" ], function( obj ) {
-		GSData.deepAssign( UIpatternroll.data.tracks, obj.tracks );
-		GSData.deepAssign( UIpatternroll.data.blocks, obj.blocks );
+		GSUtils.diffAssign( UIpatternroll.data.tracks, obj.tracks );
+		GSUtils.diffAssign( UIpatternroll.data.blocks, obj.blocks );
 	} ],
 	[ [ "loopA", "loopB" ], function() {
 		UIpatternroll.loop(
@@ -109,13 +109,13 @@ UIcompositionChanged.fn = new Map( [
 		UIcompositions.get( cmp ).name.textContent = name;
 	} ],
 	[ "duration", function( { duration } ) {
-		const dur = DAWCore.utils.time.beatToMinSec( duration, DAW.get.bpm() );
+		const [ min, sec ] = GSUtils.parseBeatsToSeconds( duration, DAW.get.bpm() );
 
 		if ( DAW.getFocusedName() === "composition" ) {
 			DOM.sliderTime.options( { max: duration } );
 		}
 		DOM.headCmpDur.textContent =
-		UIcompositions.get( DAW.get.composition() ).duration.textContent = dur;
+		UIcompositions.get( DAW.get.composition() ).duration.textContent = `${ min }:${ sec }`;
 	} ],
 	[ "drumrows", function( { drumrows } ) {
 		const pats = DAW.get.patterns();
@@ -142,7 +142,7 @@ UIcompositionChanged.fn = new Map( [
 			.filter( kv => kv[ 1 ].type === "keys" && kv[ 1 ].keys in keys )
 			.forEach( kv => UIupdatePatternContent( kv[ 0 ] ) );
 		if ( patOpened && patOpened.keys in keys ) {
-			GSData.deepAssign( UIpianoroll.data, keys[ patOpened.keys ] );
+			GSUtils.diffAssign( UIpianoroll.data, keys[ patOpened.keys ] );
 		}
 	} ],
 	[ "patternDrumsOpened", function( { patternDrumsOpened }, prevObj ) {
@@ -181,7 +181,7 @@ UIcompositionChanged.fn = new Map( [
 		DOM.pianorollForbidden.classList.toggle( "hidden", pat );
 		if ( pat ) {
 			el.classList.add( "selected" );
-			GSData.deepAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
+			GSUtils.diffAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
 			UIpianoroll.resetKey();
 			UIpianoroll.scrollToKeys();
 			if ( DAW.getFocusedName() === "pianoroll" ) {
