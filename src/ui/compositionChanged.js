@@ -17,17 +17,17 @@ function UIcompositionChanged( obj, prevObj ) {
 }
 
 UIcompositionChanged.fn = new Map( [
-	[ "channels", function( { channels } ) {
+	[ "channels", function( obj ) {
 		const synOpenedDest = DAW.get.synth( DAW.get.synthOpened() ).dest,
-			synOpenedChan = channels[ synOpenedDest ],
-			chanMap = Object.entries( channels ).reduce( ( map, [ id, obj ] ) => {
+			synOpenedChan = obj.channels[ synOpenedDest ],
+			chanMap = Object.entries( obj.channels ).reduce( ( map, [ id, obj ] ) => {
 				if ( obj && "name" in obj ) {
 					map.set( id );
 				}
 				return map;
 			}, new Map() );
 
-		UImixer.change( channels );
+		UImixer.change( obj );
 		Object.entries( DAW.get.synths() ).forEach( ( [ id, syn ] ) => {
 			if ( chanMap.has( syn.dest ) ) {
 				UIsynthsRedirectSynth( id, syn.dest );

@@ -6,6 +6,7 @@ window.UIsvgForms = Object.freeze( {
 	keys: new gsuiKeysforms(),
 	drums: new gsuiDrumsforms(),
 	buffer: new gsuiWaveforms(),
+	bufferHD: new gsuiWaveforms(),
 } );
 window.UIpatternsClickFns = new Map( [
 	[ undefined, id => DAW.openPattern( id ) ],
@@ -19,6 +20,8 @@ function UIpatternsInit() {
 		orderDrums = new gsuiReorder(),
 		orderKeys = new gsuiReorder();
 
+	window.UIsvgForms.bufferHD.hdMode( true );
+	window.UIsvgForms.bufferHD.setDefaultViewbox( 260, 48 );
 	DOM.drumsNew.onclick = () => DAW.callAction( "addPatternDrums" );
 	DOM.buffPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "buffer" ) );
 	DOM.keysPatterns.addEventListener( "click", UIpatternsOnclick.bind( null, "keys" ) );
@@ -98,12 +101,21 @@ function UIpatternsBuffersLoaded( buffers ) {
 
 	Object.entries( buffers ).forEach( ( [ idBuf, buf ] ) => {
 		UIbuffers.set( idBuf, buf );
-		UIsvgForms.buffer.add( idBuf, buf.buffer );
+		UIsvgForms.buffer.update( idBuf, buf.buffer );
+		UIsvgForms.bufferHD.update( idBuf, buf.buffer );
 		UIpatterns.forEach( ( _elPat, idPat ) => {
 			if ( pats[ idPat ].buffer === idBuf ) {
 				UIupdatePatternContent( idPat );
 			}
 		} );
+	} );
+	UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
+		const blc = DAW.get.block( blcId ),
+			pat = DAW.get.pattern( blc.pattern );
+
+		if ( pat.type === "buffer" && pat.buffer in buffers ) {
+			UIsvgForms.buffer.setSVGViewbox( elBlc._gsuiSVGform, blc.offset, blc.duration, DAW.get.bpm() / 60 );
+		}
 	} );
 }
 
@@ -122,7 +134,13 @@ function UIaddPattern( id, obj ) {
 	UIpatterns.set( id, pat );
 	UIupdatePattern( id, obj );
 	switch ( obj.type ) {
-		case "buffer": DOM.buffPatterns.prepend( pat ); break;
+		case "buffer":
+			UIsvgForms.buffer.add( obj.buffer );
+			UIsvgForms.bufferHD.add( obj.buffer );
+			pat._gsuiSVGform = window.UIsvgForms.bufferHD.createSVG( obj.buffer );
+			pat.querySelector( ".gsuiPatternroll-block-content" ).append( pat._gsuiSVGform );
+			DOM.buffPatterns.prepend( pat );
+			break;
 		case "drums":
 			UIsvgForms.drums.add( obj.drums );
 			pat._gsuiSVGform = UIsvgForms.drums.createSVG( obj.drums );
@@ -208,51 +226,29 @@ function UIupdatePatternsBPM( bpm ) {
 	} );
 }
 
-function UIupdatePatternContent( id ) {
+function UIupdatePatternContent( patId ) {
 	const get = DAW.get,
-		pat = get.pattern( id ),
-		elPat = UIpatterns.get( id );
+		pat = get.pattern( patId ),
+		elPat = UIpatterns.get( patId );
 
 	if ( elPat ) {
-		switch ( pat.type ) {
-			case "buffer":
-				if ( !elPat._gsuiSVGform ) {
-					const buf = UIbuffers.get( pat.buffer );
+		const type = pat.type,
+			id = pat[ type ];
 
-					if ( buf ) {
-						const wave = new gsuiWaveform();
+		if ( type === "keys" ) {
+			UIsvgForms.keys.update( id, get.keys( id ), pat.duration );
+		} else if ( type === "drums" ) {
+			UIsvgForms.drums.update( id, get.drums( id ), get.drumrows(), pat.duration, get.stepsPerBeat() );
+		} else if ( type === "buffer" ) {
+			const buf = UIbuffers.get( pat.buffer );
 
-						wave.setResolution( 260, 48 );
-						wave.drawBuffer( buf.buffer, buf.offset, buf.duration );
-						elPat.querySelector( ".gsuiPatternroll-block-content" ).append( wave.rootElement );
-						elPat._gsuiSVGform = wave;
-					}
-				}
-				UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
-					const blc = get.block( blcId );
-
-					if ( blc.pattern === id && !elBlc._gsuiSVGform ) {
-						const svg = UIsvgForms.buffer.createSVG( pat.buffer );
-
-						if ( svg ) {
-							elBlc._gsuiSVGform = svg;
-							elBlc.children[ 3 ].append( svg );
-							UIsvgForms.buffer.setSVGViewbox( svg, blc.offset, blc.duration, get.bpm() / 60 );
-						}
-					}
-				} );
-				break;
-			case "keys":
-			case "drums": {
-				const SVGs = UIsvgForms[ pat.type ],
-					id = pat[ pat.type ],
-					dur = pat.duration;
-
-				pat.type === "keys"
-					? SVGs.update( id, get.keys( id ), dur )
-					: SVGs.update( id, get.drums( id ), get.drumrows(), dur, get.stepsPerBeat() );
-				SVGs.setSVGViewbox( elPat._gsuiSVGform, 0, pat.duration );
-			} break;
+			if ( buf ) {
+				UIsvgForms.buffer.update( id, buf.buffer );
+				UIsvgForms.bufferHD.update( id, buf.buffer );
+			}
+		}
+		if ( type !== "buffer" ) {
+			UIsvgForms[ type ].setSVGViewbox( elPat._gsuiSVGform, 0, pat.duration );
 		}
 	}
 }

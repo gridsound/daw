@@ -8,6 +8,7 @@ function UIdrumsInit() {
 	UIdrums.setDAWCore( DAW );
 	UIdrums.setFontSize( 42 );
 	UIdrums.setPxPerBeat( 120 );
+	UIdrums.setWaveforms( window.UIsvgForms.bufferHD );
 	UIdrums.rootElement.onfocus = () => DAW.drumsFocus();
 	DOM.drumsName.onclick = UIdrumsNameClick;
 	win.onresize =
