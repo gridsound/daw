@@ -65,6 +65,8 @@ function UIrun() {
 	DAW.cb.compositionLoading = UIcompositionLoading;
 	DAW.cb.compositionSavedStatus = UIcompositionSavedStatus;
 	DAW.cb.compositionSavingPromise = UIauthSaveComposition;
+	DAW.cb.onstartdrum = rowId => UIdrums.onstartdrum( rowId );
+	DAW.cb.onstopdrumrow = rowId => UIdrums.onstopdrumrow( rowId );
 	DAW.cb.analyserFilled = UImainAnalyser.draw.bind( UImainAnalyser );
 	DAW.cb.channelAnalyserFilled = UImixer.updateAudioData.bind( UImixer );
 	DAW.cb.pause =
