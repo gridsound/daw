@@ -161,6 +161,9 @@ function UIremovePattern( id, pat ) {
 
 	if ( type === "keys" || type === "drums" ) {
 		UIsvgForms[ type ].delete( pat[ type ] );
+	} else if ( type === "buffer" ) {
+		UIsvgForms.buffer.delete( pat.buffer );
+		UIsvgForms.bufferHD.delete( pat.buffer );
 	}
 	UIpatterns.get( id ).remove();
 	UIpatterns.delete( id );

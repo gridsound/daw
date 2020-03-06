@@ -194,6 +194,7 @@ function UIcompositionClosed( cmp ) {
 	UIsvgForms.keys.empty();
 	UIsvgForms.drums.empty();
 	UIsvgForms.buffer.empty();
+	UIsvgForms.bufferHD.empty();
 }
 
 function UIcompositionClickNewLocal() {
