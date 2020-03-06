@@ -85,7 +85,7 @@ function UIauthLogoutThen() {
 	DOM.headUser.style.backgroundImage = "";
 	Array.from( DOM.cmpsCloudList.children )
 		.forEach( el => DAW.deleteComposition( "cloud", el.dataset.id ) );
-	if ( !DAW.get.id() ) {
+	if ( !DAW.get.composition() ) {
 		UIcompositionClickNewLocal();
 	}
 }
