@@ -64,6 +64,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiTrack/gsuiTrack.css"
 	"gs-ui-components/gsuiWindows/gsuiWindows.css"
 	"gs-ui-components/gsuiWindows/gsuiWindow.css"
+	"gs-ui-components/gsuiWindows/gsuiWindow.colors.default.css"
 
 	"assets/fonts/fonts.css"
 

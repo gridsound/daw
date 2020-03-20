@@ -34,21 +34,6 @@
 	--windowBtn-pattern-color: #81d4fa;
 
 	/* ...................................................................... */
-	--gsuiWindows-overflow: hidden;
-	--gsuiWindow-bg: #444;
-	--gsuiWindow-bgImg: url( "data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E" );
-	--gsuiWindow-color: #222;
-	--gsuiWindow-radius: 2px;
-	--gsuiWindow-head-bg: #888;
-	--gsuiWindow-fadein-dur: .2s;
-	--gsuiWindow-head-height: 32px;
-	--gsuiWindow-border-width: 2px;
-	--gsuiWindow-border-color: #888;
-	--gsuiWindow-handler-width: 4px;
-	--gsuiWindow-btn-close-color: #ba5d5d88;
-	--gsuiWindow-focused-border-color: #1e90ff;
-
-	/* ...................................................................... */
 	--ctrl-play-bg: #67a;
 	--ctrl-stop-bg: #888;
 	--ctrl-clock-bg: #222;
