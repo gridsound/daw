@@ -386,19 +386,25 @@ a.btn {
 	justify-content: flex-end;
 	grid-area: headVersion;
 }
-#headVersionNum {
+#headVersionBtn {
+	display: flex;
+	align-items: center;
+	border: 0;
+	padding: 0;
+	color: inherit;
+	font-size: 18px;
+	cursor: pointer;
 	opacity: .3;
-	font-size: 20px;
-	font-family: var( --font-number );
+	background: none;
 	transition: opacity var( --head-hover-dur );
 }
-#headVersionNum:focus,
-#headVersionNum:hover {
+#headVersionBtn:focus,
+#headVersionBtn:hover {
 	opacity: 1;
 }
-#headVersionNum::before {
-	content: "v ";
-	font-size: .8em;
+#headVersionNum {
+	margin-left: 6px;
+	font-family: var( --font-number );
 }
 
 /*

@@ -1,5 +1,5 @@
 #history {
 	left: 420px;
 	width: 360px;
-	box-shadow: var( --head-history-boxShadow );
+	box-shadow: 2px var( --head-dropdown-shadow );
 }

@@ -15,7 +15,7 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.28.2";
+	window.VERSION = "0.28.3";
 
 	UIdomInit();
 	UIwindowsInit();
@@ -29,6 +29,7 @@ function UIrun() {
 	UIcookieInit();
 	UIeffectsInit();
 	UIhistoryInit();
+	UIversionsInit();
 	UIcontrolsInit();
 	UIkeyboardInit();
 	UIpatternsInit();

@@ -2,7 +2,7 @@
 	left: var( --head-gap );
 	width: 480px;
 	grid-template-columns: 1fr 1fr;
-	box-shadow: var( --head-cmps-boxShadow );
+	box-shadow: 12px var( --head-dropdown-shadow );
 }
 
 #cmps .windowBtn {
