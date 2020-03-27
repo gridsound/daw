@@ -17,6 +17,8 @@ function UIversionsInit() {
 
 		a.classList.add( "versions-link" );
 		a.setAttribute( "href", `old/${ v }.html` );
+		a.setAttribute( "target", "_blank" );
+		a.setAttribute( "rel", "noopener" );
 		a.textContent = v;
 		return a;
 	} ) );

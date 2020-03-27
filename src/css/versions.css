@@ -10,9 +10,9 @@
 	font-family: var( --gsui-font-number );
 	cursor: pointer;
 }
-.versions-link:nth-child( odd ) {
-	background-color: #0001;
-}
 .versions-linkCurrent {
 	font-size: 20px;
+}
+.versions-link:hover {
+	background-color: #fff1;
 }
