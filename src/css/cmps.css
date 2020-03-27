@@ -11,7 +11,7 @@
 }
 
 #cmpsCloudList {
-	border-left: 1px solid var( --gsuiWindow-border-color );
+	border-left: 1px solid #444;
 }
 
 #app:not( .logged ) #cmpsCloudList .placeholder span:first-child,
@@ -19,5 +19,5 @@
 	display: none;
 }
 #app:not( .logged ) #cloudNewCmp {
-	color: var( --gsuiWindow-head-bg );
+	color: #888;
 }

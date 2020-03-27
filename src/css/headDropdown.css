@@ -7,7 +7,7 @@
 	box-sizing: border-box;
 	top: calc( 100% + var( --head-gap ) );
 	z-index: 1;
-	border: 2px solid var( --gsuiWindow-border-color );
+	border: 2px solid #444;
 	border-radius: 4px;
 	transition: .2s;
 	transition-property: opacity, visibility;
@@ -25,7 +25,7 @@
 	align-items: center;
 	color: #222;
 	font-size: 14px;
-	background-color: var( --gsuiWindow-head-bg );
+	background-color: #888;
 }
 .headDropdown-icon {
 	margin: 0 6px;
