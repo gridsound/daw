@@ -116,6 +116,20 @@
 	padding: 4px;
 }
 
+/* #midiPopupContent -------------------------------------------------------- */
+#midiPopupContent {
+	width: 400px;
+}
+#midiPopupSelect {
+	width: 100%;
+	color: inherit;
+	background-color: transparent;
+}
+#midiChanPopupSelect option {
+	padding: 4px;
+}
+
+
 /* #tempoPopupContent ---------------------------------------------------- */
 #tempoPopupContent {
 	width: 400px;

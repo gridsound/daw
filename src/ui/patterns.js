@@ -16,9 +16,24 @@ window.UIpatternsClickFns = new Map( [
 ] );
 
 function UIpatternsInit() {
-	const orderBuff = new gsuiReorder(),
-		orderDrums = new gsuiReorder(),
-		orderKeys = new gsuiReorder();
+	const orderBuff = new gsuiReorder({
+		rootElement: DOM.buffPatterns,
+		itemSelector: "#buffPatterns .pattern",
+		handleSelector: "#buffPatterns .pattern-grip",
+		parentSelector: "#buffPatterns"
+	}),
+		orderDrums = new gsuiReorder({
+			rootElement: DOM.keysPatterns,
+			itemSelector: "#drumsPatterns .pattern",
+			handleSelector: "#drumsPatterns .pattern-grip",
+			parentSelector: "#drumsPatterns"
+		}),
+		orderKeys = new gsuiReorder({
+			rootElement: DOM.drumsPatterns,
+			itemSelector: "#keysPatterns .pattern",
+			handleSelector: "#keysPatterns .pattern-grip",
+			parentSelector: ".synth-patterns"
+		});
 
 	window.UIsvgForms.bufferHD.hdMode( true );
 	window.UIsvgForms.bufferHD.setDefaultViewbox( 260, 48 );
@@ -29,30 +44,12 @@ function UIpatternsInit() {
 	document.addEventListener( "drop", e => {
 		DAW.dropAudioFiles( e.dataTransfer.files );
 	} );
-	orderBuff.setRootElement( DOM.buffPatterns );
-	orderKeys.setRootElement( DOM.keysPatterns );
-	orderDrums.setRootElement( DOM.drumsPatterns );
-	orderBuff.setSelectors( {
-		item: "#buffPatterns .pattern",
-		handle: "#buffPatterns .pattern-grip",
-		parent: "#buffPatterns"
-	} );
-	orderDrums.setSelectors( {
-		item: "#drumsPatterns .pattern",
-		handle: "#drumsPatterns .pattern-grip",
-		parent: "#drumsPatterns"
-	} );
-	orderKeys.setSelectors( {
-		item: "#keysPatterns .pattern",
-		handle: "#keysPatterns .pattern-grip",
-		parent: ".synth-patterns"
-	} );
-	orderBuff.onchange = UIpatternsReorderChange.bind( null, DOM.buffPatterns );
-	orderDrums.onchange = UIpatternsReorderChange.bind( null, DOM.drumsPatterns );
-	orderKeys.onchange = UIpatternsKeysReorderChange;
-	orderBuff.setDataTransfert =
-	orderKeys.setDataTransfert =
-	orderDrums.setDataTransfert = UIpatternsDataTransfert;
+	// orderBuff.onchange = UIpatternsReorderChange.bind( null, DOM.buffPatterns );
+	// orderDrums.onchange = UIpatternsReorderChange.bind( null, DOM.drumsPatterns );
+	// orderKeys.onchange = UIpatternsKeysReorderChange;
+	// orderBuff.setDataTransfert =
+	// orderKeys.setDataTransfert =
+	// orderDrums.setDataTransfert = UIpatternsDataTransfert;
 }
 
 function UIpatternsDataTransfert( elPat ) {
