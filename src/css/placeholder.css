@@ -8,6 +8,7 @@
 	text-align: center;
 	font-size: 12px;
 	opacity: .5;
+	user-select: none;
 }
 .placeholder:only-child {
 	display: flex;

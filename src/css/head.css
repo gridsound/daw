@@ -30,6 +30,7 @@ a.btn {
 	background: none;
 	transition: var( --head-hover-dur );
 	transition-property: color, opacity, background-color;
+	user-select: none;
 }
 .btn:not( .gsuiIcon ) {
 	font-family: inherit;
@@ -307,6 +308,7 @@ a.btn {
 /* .......................................................................... */
 #headHist {
 	display: inline-flex;
+	user-select: none;
 }
 #headHist .btn {
 	background-color: #777;
@@ -385,6 +387,7 @@ a.btn {
 	align-items: center;
 	justify-content: flex-end;
 	grid-area: headVersion;
+	user-select: none;
 }
 #headVersionBtn {
 	display: flex;

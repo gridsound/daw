@@ -26,6 +26,7 @@
 	color: #222;
 	font-size: 14px;
 	background-color: #888;
+	user-select: none;
 }
 .headDropdown-icon {
 	margin: 0 6px;
