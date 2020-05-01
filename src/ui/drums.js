@@ -1,14 +1,12 @@
 "use strict";
 
-const UIdrums = new GSDrums();
-
 function UIdrumsInit() {
 	const win = UIwindows.window( "drums" );
 
 	UIdrums.setDAWCore( DAW );
 	UIdrums.setFontSize( 42 );
 	UIdrums.setPxPerBeat( 120 );
-	UIdrums.setWaveforms( window.UIsvgForms.bufferHD );
+	UIdrums.setWaveforms( UIpatterns.svgForms.bufferHD );
 	UIdrums.rootElement.onfocus = () => DAW.drumsFocus();
 	DOM.drumsName.onclick = UIdrumsNameClick;
 	win.onresize =

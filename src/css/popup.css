@@ -104,15 +104,18 @@
 }
 
 /* #selectChanPopupContent ---------------------------------------------------- */
-#selectChanPopupContent {
+#selectChanPopupContent,
+#gsuiPatterns-selectChanPopupContent {
 	width: auto;
 }
-#selectChanPopupSelect {
+#selectChanPopupSelect,
+#gsuiPatterns-selectChanPopupSelect {
 	width: 100%;
 	color: inherit;
 	background-color: transparent;
 }
-#selectChanPopupSelect option {
+#selectChanPopupSelect option,
+#gsuiPatterns-selectChanPopupSelect option {
 	padding: 4px;
 }
 

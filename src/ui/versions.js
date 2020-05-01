@@ -2,11 +2,11 @@
 
 function UIversionsInit() {
 	const nums = [
-			"0.28.2", "0.28.1", "0.28.0", "0.27.1",
-			"0.26.3", "0.26.0", "0.25.4", "0.25.3",
-			"0.24.1", "0.24.0", "0.23.1", "0.23.0",
-			"0.22.0", "0.21.0", "0.20.3", "0.20.2",
-			"0.20.1", "0.19.2",
+			"0.28.3", "0.28.2", "0.28.1", "0.28.0",
+			"0.27.1", "0.26.3", "0.26.0", "0.25.4",
+			"0.25.3", "0.24.1", "0.24.0", "0.23.1",
+			"0.23.0", "0.22.0", "0.21.0", "0.20.3",
+			"0.20.2", "0.20.1", "0.19.2",
 		],
 		curr = document.createElement( "span" );
 
@@ -16,7 +16,7 @@ function UIversionsInit() {
 		const a = document.createElement( "a" );
 
 		a.classList.add( "versions-link" );
-		a.setAttribute( "href", `old/${ v }.html` );
+		a.setAttribute( "href", `old/${ v }` );
 		a.setAttribute( "target", "_blank" );
 		a.setAttribute( "rel", "noopener" );
 		a.textContent = v;

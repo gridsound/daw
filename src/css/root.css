@@ -114,25 +114,6 @@
 	--history-action-text: #ddd;
 	--history-actionlight-bg: #67a;
 	--history-actionlightoff-bg: #1a1a1a;
-
-	/* ...................................................................... */
-	--synth-bg: #528754;
-	--synth-text: #222;
-	--synth-selected-text: #444;
-	--synth-head-height: 32px;
-	--synth-showbtn-bg: rgba( 0, 0, 0, .1 );
-	--synth-selected-bg: #66bb6a;
-	--synth-namehover-text: #7b7;
-	--synth-patterns-bg: rgba( 0, 0, 0, .4 );
-	--synth-patterns-maxHeight: 250px;
-
-	/* ...................................................................... */
-	--pattern-bg: #334;
-	--pattern-text: #5ac;
-	--pattern-head-bg: rgba( 0, 0, 0, .2 );
-	--pattern-selected-bg: #5ac;
-	--pattern-selected-text: #223;
-	--pattern-head-selected-bg: rgba( 255, 255, 255, .2 );
 }
 
 #app .gsuiSynthesizer {

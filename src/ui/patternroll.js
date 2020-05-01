@@ -43,14 +43,14 @@ function UIpatternrollOnEditBlock( _id, obj, blc ) {
 	if ( blc._gsuiSVGform ) {
 		const pat = DAW.get.pattern( obj.pattern );
 
-		UIsvgForms[ pat.type ].setSVGViewbox( blc._gsuiSVGform, obj.offset, obj.duration, DAW.get.bpm() / 60 );
+		UIpatterns.svgForms[ pat.type ].setSVGViewbox( blc._gsuiSVGform, obj.offset, obj.duration, DAW.get.bpm() / 60 );
 	}
 }
 
-function UIpatternrollOnAddBlock( _id, obj, blc ) {
+function UIpatternrollOnAddBlock( id, obj, blc ) {
 	const pat = DAW.get.pattern( obj.pattern ),
-		SVGs = UIsvgForms[ pat.type ],
-		svg = SVGs.createSVG( pat[ pat.type ] );
+		SVGs = UIpatterns.svgForms[ pat.type ],
+		svg = SVGs.createSVG( obj.pattern );
 
 	blc._gsuiSVGform = svg;
 	blc.children[ 3 ].append( svg );

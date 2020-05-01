@@ -4,7 +4,6 @@
 #drumsName,
 #pianorollName { color: var( --windowBtn-pattern-color ); }
 #synthName { color: var( --windowBtn-synth-color ); }
-#synthNew { color: var( --windowBtn-synth-color ); }
 #synthChanName {
 	margin: 0;
 	padding-right: 4px;

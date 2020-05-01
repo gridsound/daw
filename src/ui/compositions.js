@@ -103,7 +103,7 @@ function UIcompositionOpened( cmp ) {
 	DOM.headCmp.dataset.saveMode =
 	DOM.headCmpIcon.dataset.icon = cmp.options.saveMode;
 	DOM.headCmpSave.dataset.icon = cmp.options.saveMode === "local" ? "save" : "upload";
-	UIsynthsExpandSynth( cmp.synthOpened, true );
+	UIpatterns._uiPatterns.expandSynth( cmp.synthOpened, true );
 	UIeffectsSelectChan( "main" );
 	UItitle( cmp.name );
 }
@@ -186,15 +186,7 @@ function UIcompositionClosed( cmp ) {
 	DOM.synthName.textContent =
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollForbidden.classList.add( "hidden" );
-	UIpatterns.forEach( pat => pat.remove() );
-	UIsynths.forEach( syn => syn.root.remove() );
-	UIsynths.clear();
 	UIpatterns.clear();
-	UIbuffers.clear();
-	UIsvgForms.keys.empty();
-	UIsvgForms.drums.empty();
-	UIsvgForms.buffer.empty();
-	UIsvgForms.bufferHD.empty();
 }
 
 function UIcompositionClickNewLocal() {

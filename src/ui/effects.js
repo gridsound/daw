@@ -1,7 +1,5 @@
 "use strict";
 
-const UIeffects = new GSEffects();
-
 function UIeffectsInit() {
 	const win = UIwindows.window( "effects" );
 

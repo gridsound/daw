@@ -15,7 +15,12 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.28.3";
+	window.VERSION = "0.28.4";
+
+	window.UIdrums = new GSDrums();
+	window.UIeffects = new GSEffects();
+	window.UIpatterns = new GSPatterns();
+	window.UIsynth = new GSSynth();
 
 	UIdomInit();
 	UIwindowsInit();
@@ -24,8 +29,6 @@ function UIrun() {
 	UIdrumsInit();
 	UImixerInit();
 	UIsynthInit();
-	UIblocksInit();
-	UIsynthsInit();
 	UIcookieInit();
 	UIeffectsInit();
 	UIhistoryInit();
@@ -53,6 +56,9 @@ function UIrun() {
 			e.preventDefault();
 		}
 	}, { passive: false } );
+	document.addEventListener( "drop", e => {
+		DAW.dropAudioFiles( e.dataTransfer.files );
+	} );
 
 	DAW.cb.focusOn = UIcontrolsFocusOn;
 	DAW.cb.currentTime = UIcontrolsCurrentTime;
