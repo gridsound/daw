@@ -51,18 +51,18 @@ function UIwindowsAppendContent( UIwindows ) {
 	document.querySelectorAll( "div[data-window]" ).forEach( winCnt => {
 		const win = UIwindows.createWindow( winCnt.dataset.window ),
 			elWinCnt = win.rootElement.querySelector( ".gsuiWindow-content" ),
-			child = Array.from( winCnt.children );
+			children = Array.from( winCnt.children );
 
 		winCnt.remove();
 		winCnt.classList.forEach( c => elWinCnt.classList.add( c ) );
-		if ( child.length ) {
-			const child0 = child[ 0 ];
+		if ( children.length ) {
+			const child0 = children[ 0 ];
 
 			if ( child0.classList.contains( "windowMenu" ) ) {
-				child.shift();
-				win.headAppend.apply( win, child0.children );
+				children.shift();
+				win.headAppend( ...child0.children );
 			}
-			win.append.apply( win, child );
+			win.append( ...children );
 		}
 	} );
 }
