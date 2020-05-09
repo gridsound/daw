@@ -55,6 +55,6 @@ function UIpatternrollOnAddBlock( id, obj, blc ) {
 	blc._gsuiSVGform = svg;
 	blc.children[ 3 ].append( svg );
 	SVGs.setSVGViewbox( svg, obj.offset, obj.duration, DAW.get.bpm() / 60 );
-	blc.ondblclick = () => { DAW.openPattern( obj.pattern ); };
+	blc.ondblclick = () => DAW.callAction( "openPattern", obj.pattern );
 	blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = pat.name;
 }
