@@ -55,15 +55,13 @@ UIcompositionChanged.fn = new Map( [
 	[ [ "bpm" ], function( { bpm } ) {
 		UIclock.setBPM( bpm );
 		DOM.bpm.textContent =
-		UIcompositions.get( DAW.get.composition() ).bpm.textContent = bpm;
+		UIcompositions.get( DAW.get.cmp() ).bpm.textContent = bpm;
 		UIupdatePatternsBPM( bpm );
 	} ],
 	[ [ "name" ], function( { name } ) {
-		const cmp = DAW.get.composition();
-
-		UItitle( cmp.name );
+		UItitle( name );
 		DOM.headCmpName.textContent =
-		UIcompositions.get( cmp ).name.textContent = name;
+		UIcompositions.get( DAW.get.cmp() ).name.textContent = name;
 	} ],
 	[ [ "duration" ], function( { duration } ) {
 		const [ min, sec ] = GSUtils.parseBeatsToSeconds( duration, DAW.get.bpm() );
@@ -72,7 +70,7 @@ UIcompositionChanged.fn = new Map( [
 			DOM.sliderTime.options( { max: duration } );
 		}
 		DOM.headCmpDur.textContent =
-		UIcompositions.get( DAW.get.composition() ).duration.textContent = `${ min }:${ sec }`;
+		UIcompositions.get( DAW.get.cmp() ).duration.textContent = `${ min }:${ sec }`;
 	} ],
 	[ [ "keys" ], function( { keys } ) {
 		const patOpened = DAW.get.pattern( DAW.get.patternKeysOpened() );
