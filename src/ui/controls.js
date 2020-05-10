@@ -18,7 +18,7 @@ function UIcontrolsInit() {
 	DOM.undoMore.onmousedown = UIcontrolsDropdownBtnClick;
 	sliderGain.oninput = v => DAW.destination.setGain( v );
 	sliderGain.options( {
-		type: "linear-y", min: 0, max: 1, step: .01, scrollStep: .1,
+		type: "linear-y", min: 0, max: 1, step: .01, scrollStep: .1, mousemoveSize: 150,
 		value: DAW.destination.getGain(),
 	} );
 	sliderTime.options( { type: "linear-x", step: .01 } );
