@@ -271,7 +271,7 @@ a.btn {
 /* .......................................................................... */
 #headTempo {
 	display: flex;
-	align-items: normal;
+	align-items: center;
 	white-space: nowrap;
 	background-color: #222;
 }
@@ -280,7 +280,8 @@ a.btn {
 	align-items: center;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 8px 6px 8px 8px;
+	height: 40%;
+	padding: 0 6px 0 8px;
 	font-size: 14px;
 	line-height: 0;
 	font-family: var( --font-number );
