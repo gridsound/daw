@@ -1,62 +1,27 @@
 "use strict";
 
-const UImixer = new gsuiMixer();
-
 function UImixerInit() {
 	const win = UIwindows.window( "mixer" );
 
-	UImixer.onaddChan = UImixerAddChan;
-	UImixer.ondeleteChan = UImixerDeleteChan;
-	UImixer.onupdateChan = UImixerUpdateChan;
-	UImixer.onselectChan = UImixerSelectChan;
-	UImixer.oninput = DAW.liveChangeChannel.bind( DAW );
-	UImixer.onchange = ( obj, msg ) => DAW.callAction( "changeChannels", obj, msg );
-	win.onresize =
-	win.onresizing = () => UImixer.resized();
 	win.append( UImixer.rootElement );
+	win.onresize = () => UImixer.resize();
+	win.onresizing = () => UImixer.resizing();
 	UImixer.attached();
-}
-
-function UImixerAddChan( id, obj ) {
-	const opt = document.createElement( "option" );
-
-	opt.value = id;
-	opt.textContent = obj.name;
-	DOM.selectChanPopupSelect.append( opt );
-}
-
-function UImixerDeleteChan( id ) {
-	DOM.selectChanPopupSelect.querySelector( `option[value="${ id }"]` ).remove();
-}
-
-function UImixerUpdateChan( id, prop, val ) {
-	if ( prop === "name" ) {
-		DOM.selectChanPopupSelect.querySelector( `option[value="${ id }"]` ).textContent = val;
-		if ( id === UImixer.getCurrentChannelId() ) {
-			UIeffectsRenameChan( val );
-		}
-	}
-}
-
-function UImixerSelectChan( id ) {
-	UIwindows.window( "mixer" ).open();
-	UIwindows.window( "mixer" ).focus();
-	UIeffectsSelectChan( id );
+	UImixer.setDAWCore( DAW );
+	UImixer.onselectChan = id => UIeffectsSelectChan( id );
 }
 
 function UImixerOpenChanPopup( objFamily, objId ) {
 	const currChanId = DAW.get[ objFamily ]( objId ).dest;
 
-	DOM.selectChanPopupSelect.value = currChanId;
+	gsuiPatterns.selectChanPopupSelect.value = currChanId;
 	gsuiPopup.custom( {
 		title: "Channels",
-		element: DOM.selectChanPopupContent,
-		submit( data ) {
-			const dest = data.channel;
-
-			if ( dest !== currChanId ) {
-				DAW.callAction( "redirectToChannel", objFamily, objId, dest );
-				UImixer.selectChan( dest );
+		element: gsuiPatterns.selectChanPopupContent,
+		submit( { channel } ) {
+			if ( channel !== currChanId ) {
+				DAW.callAction( "redirectToChannel", objFamily, objId, channel );
+				UImixer.selectChannel( channel );
 			}
 		}
 	} );

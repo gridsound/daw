@@ -5,8 +5,8 @@ function UIeffectsInit() {
 
 	DOM.channelName.onclick = UIeffectsOnclickName;
 	win.append( UIeffects.rootElement );
-	win.onresize =
-	win.onresizing = () => UIeffects.resized();
+	win.onresize = () => UIeffects.resize();
+	win.onresizing = () => UIeffects.resizing();
 	UIeffects.setDAWCore( DAW );
 	UIeffects.attached();
 	UIeffects._uiEffects.askData = ( fxId, fxType, dataType, ...args ) => {
@@ -28,7 +28,7 @@ function UIeffectsSelectChan( id ) {
 }
 
 function UIeffectsOnclickName() {
-	const id = UImixer.getCurrentChannelId();
+	const id = UImixer.getSelectedChannelId();
 
 	if ( id !== "main" ) {
 		const prev = DOM.channelName.textContent;
@@ -39,7 +39,7 @@ function UIeffectsOnclickName() {
 				if ( name && name !== prev ) {
 					DAW.compositionChange(
 						{ channels: { [ id ]: { name } } },
-						[ "mixer", "renameChan", name, prev ]
+						[ "mixer", "renameChannel", name, prev ]
 					);
 				}
 			} );

@@ -152,15 +152,6 @@ declare -a JSfiles=(
 
 	"gs-api-client/gsapiClient.js"
 
-	"gs-data/gsdata/gsdata.js"
-	"gs-data/gsdataSynth/gsdataSynth.js"
-	"gs-data/gsdataDrums/gsdataDrums.js"
-	"gs-data/gsdataMixer/gsdataMixer.js"
-	"gs-data/gsdataMixer/gsdataMixer.actions.js"
-	"gs-data/gsdataEffects/gsdataEffects.js"
-	"gs-data/gsdataFxFilter/gsdataFxFilter.js"
-	"gs-data/gsdataDrumrows/gsdataDrumrows.js"
-
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/Buffers.js"
 	"daw-core/src/LocalStorage.js"
@@ -184,12 +175,20 @@ declare -a JSfiles=(
 	"daw-core/src/json/oscillator.js"
 	"daw-core/src/json/synth.js"
 
+	"daw-core/src/controllers/drumrows.js"
+	"daw-core/src/controllers/drums.js"
+	"daw-core/src/controllers/effects.js"
+	"daw-core/src/controllers/synth.js"
+	"daw-core/src/controllers/mixer.js"
+	"daw-core/src/controllersFx/filter.js"
+
 	"daw-core/src/cmpActions/common/calcNewDuration.js"
 	"daw-core/src/cmpActions/common/createUniqueName.js"
 	"daw-core/src/cmpActions/common/getDrumrowName.js"
 	"daw-core/src/cmpActions/common/getNextIdOf.js"
 	"daw-core/src/cmpActions/common/getNextOrderOf.js"
 
+	"daw-core/src/cmpActions/addChannel.js"
 	"daw-core/src/cmpActions/addDrumrow.js"
 	"daw-core/src/cmpActions/addDrums.js"
 	"daw-core/src/cmpActions/addEffect.js"
@@ -197,7 +196,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/addPatternDrums.js"
 	"daw-core/src/cmpActions/addPatternKeys.js"
 	"daw-core/src/cmpActions/addSynth.js"
-	"daw-core/src/cmpActions/changeChannels.js"
+	"daw-core/src/cmpActions/changeChannel.js"
 	"daw-core/src/cmpActions/changeDrumrow.js"
 	"daw-core/src/cmpActions/changeDrumrowPattern.js"
 	"daw-core/src/cmpActions/changeEffect.js"
@@ -212,6 +211,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/openSynth.js"
 	"daw-core/src/cmpActions/redirectPatternKeys.js"
 	"daw-core/src/cmpActions/redirectToChannel.js"
+	"daw-core/src/cmpActions/removeChannel.js"
 	"daw-core/src/cmpActions/removeDrumrow.js"
 	"daw-core/src/cmpActions/removeDrums.js"
 	"daw-core/src/cmpActions/removeEffect.js"
@@ -221,9 +221,11 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/renameComposition.js"
 	"daw-core/src/cmpActions/renamePattern.js"
 	"daw-core/src/cmpActions/renameSynth.js"
+	"daw-core/src/cmpActions/reorderChannel.js"
 	"daw-core/src/cmpActions/reorderDrumrow.js"
 	"daw-core/src/cmpActions/reorderOscillator.js"
 	"daw-core/src/cmpActions/reorderPattern.js"
+	"daw-core/src/cmpActions/toggleChannel.js"
 	"daw-core/src/cmpActions/toggleDrumrow.js"
 	"daw-core/src/cmpActions/toggleEffect.js"
 	"daw-core/src/cmpActions/toggleLFO.js"
@@ -250,6 +252,7 @@ declare -a JSfiles=(
 
 	"gs-components/gsDrums/gsDrums.js"
 	"gs-components/gsEffects/gsEffects.js"
+	"gs-components/gsMixer/gsMixer.js"
 	"gs-components/gsPatterns/gsPatterns.js"
 	"gs-components/gsSynth/gsSynth.js"
 

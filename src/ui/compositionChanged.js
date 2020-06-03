@@ -6,6 +6,7 @@ function UIcompositionChanged( obj, prevObj ) {
 	UIsynth.change( obj );
 	UIdrums.change( obj );
 	UIeffects.change( obj );
+	UImixer.change( obj );
 	UIcompositionChanged.fn.forEach( ( fn, attrs ) => {
 		if ( attrs.some( attr => attr in obj ) ) {
 			fn( obj, prevObj );
@@ -15,12 +16,14 @@ function UIcompositionChanged( obj, prevObj ) {
 
 UIcompositionChanged.fn = new Map( [
 	[ [ "channels" ], function( obj ) {
-		const synOpenedDest = DAW.get.synth( DAW.get.synthOpened() ).dest,
-			synOpenedChan = obj.channels[ synOpenedDest ];
+		const synOpenedChan = obj.channels[ DAW.get.synth( DAW.get.synthOpened() ).dest ],
+			mixerSelectedChan = obj.channels[ UIeffects.getDestFilter() ];
 
-		UImixer.change( obj );
 		if ( synOpenedChan && "name" in synOpenedChan ) {
 			DOM.synthChannelBtnText.textContent = synOpenedChan.name;
+		}
+		if ( mixerSelectedChan && "name" in mixerSelectedChan ) {
+			UIeffectsRenameChan( mixerSelectedChan.name );
 		}
 	} ],
 	[ [ "synths" ], function( obj ) {

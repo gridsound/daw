@@ -15,10 +15,11 @@ function UIrun() {
 	} );
 
 	window.DAW = DAW;
-	window.VERSION = "0.28.4";
+	window.VERSION = "0.28.6";
 
 	window.UIdrums = new GSDrums();
 	window.UIeffects = new GSEffects();
+	window.UImixer = new GSMixer();
 	window.UIpatterns = new GSPatterns();
 	window.UIsynth = new GSSynth();
 
