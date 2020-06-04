@@ -39,7 +39,7 @@ function UIeffectsOnclickName() {
 				if ( name && name !== prev ) {
 					DAW.compositionChange(
 						{ channels: { [ id ]: { name } } },
-						[ "mixer", "renameChannel", name, prev ]
+						[ "channels", "renameChannel", name, prev ]
 					);
 				}
 			} );

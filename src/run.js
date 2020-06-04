@@ -33,7 +33,6 @@ function UIrun() {
 	UIcookieInit();
 	UIeffectsInit();
 	UIhistoryInit();
-	UIversionsInit();
 	UIcontrolsInit();
 	UIkeyboardInit();
 	UIpatternsInit();

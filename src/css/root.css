@@ -35,18 +35,12 @@
 	/* ...................................................................... */
 	--ctrl-play-bg: #67a;
 	--ctrl-stop-bg: #888;
-	--ctrl-clock-bg: #222;
 	--ctrl-play-text: #ddd;
-	--ctrl-clock-text: #ddd;
 	--ctrl-about-color: #ff9;
 	--ctrl-render-color: #ff9;
 	--ctrl-eatcookie-color: #ff9;
 	--ctrl-currentTime-color: #abd;
 	--ctrl-currentTime-bg: #0003;
-
-	/* ...................................................................... */
-	--gsuiClock-mili-fontSize: 14px;
-	--gsuiClock-mili-opacity: .5;
 
 	/* gsuiMixer */
 	/* ...................................................................... */
