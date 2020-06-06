@@ -11,8 +11,8 @@ function UImixerInit() {
 	UImixer.onselectChan = id => UIeffectsSelectChan( id );
 }
 
-function UImixerOpenChanPopup( objFamily, objId ) {
-	const currChanId = DAW.get[ objFamily ]( objId ).dest;
+function UImixerOpenChanPopup( objId ) {
+	const currChanId = DAW.get.synth( objId ).dest;
 
 	gsuiPatterns.selectChanPopupSelect.value = currChanId;
 	gsuiPopup.custom( {
@@ -20,8 +20,7 @@ function UImixerOpenChanPopup( objFamily, objId ) {
 		element: gsuiPatterns.selectChanPopupContent,
 		submit( { channel } ) {
 			if ( channel !== currChanId ) {
-				DAW.callAction( "redirectToChannel", objFamily, objId, channel );
-				UImixer.selectChannel( channel );
+				DAW.callAction( "redirectSynth", objId, channel );
 			}
 		}
 	} );
