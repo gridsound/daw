@@ -169,6 +169,7 @@ declare -a JSfiles=(
 	"daw-core/src/json/channels.js"
 	"daw-core/src/json/drumrow.js"
 	"daw-core/src/json/drum.js"
+	"daw-core/src/json/drumcut.js"
 	"daw-core/src/json/effects.filter.js"
 	"daw-core/src/json/lfo.js"
 	"daw-core/src/json/oscillator.js"
@@ -188,6 +189,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/common/getNextOrderOf.js"
 
 	"daw-core/src/cmpActions/addChannel.js"
+	"daw-core/src/cmpActions/addDrumcuts.js"
 	"daw-core/src/cmpActions/addDrumrow.js"
 	"daw-core/src/cmpActions/addDrums.js"
 	"daw-core/src/cmpActions/addEffect.js"
@@ -213,6 +215,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/redirectPatternKeys.js"
 	"daw-core/src/cmpActions/redirectSynth.js"
 	"daw-core/src/cmpActions/removeChannel.js"
+	"daw-core/src/cmpActions/removeDrumcuts.js"
 	"daw-core/src/cmpActions/removeDrumrow.js"
 	"daw-core/src/cmpActions/removeDrums.js"
 	"daw-core/src/cmpActions/removeEffect.js"
