@@ -222,6 +222,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/removeOscillator.js"
 	"daw-core/src/cmpActions/removePattern.js"
 	"daw-core/src/cmpActions/removeSynth.js"
+	"daw-core/src/cmpActions/renameChannel.js"
 	"daw-core/src/cmpActions/renameComposition.js"
 	"daw-core/src/cmpActions/renamePattern.js"
 	"daw-core/src/cmpActions/renameSynth.js"

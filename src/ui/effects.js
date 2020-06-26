@@ -31,17 +31,8 @@ function UIeffectsOnclickName() {
 	const id = UImixer.getSelectedChannelId();
 
 	if ( id !== "main" ) {
-		const prev = DOM.channelName.textContent;
-
 		gsuiPopup
-			.prompt( "Rename channel", "", prev, "Rename" )
-			.then( name => {
-				if ( name && name !== prev ) {
-					DAW.compositionChange(
-						{ channels: { [ id ]: { name } } },
-						[ "channels", "renameChannel", name, prev ]
-					);
-				}
-			} );
+			.prompt( "Rename channel", "", DOM.channelName.textContent, "Rename" )
+			.then( name => DAW.callAction( "renameChannel", id, name ) );
 	}
 }
