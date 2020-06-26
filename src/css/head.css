@@ -362,7 +362,6 @@ a.btn {
 #headHelp {
 	grid-area: headHelp;
 	display: flex;
-	font-size: 20px;
 }
 #cookies {
 	animation: infinite cookie-anim 5s;
