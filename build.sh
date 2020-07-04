@@ -188,6 +188,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/common/getNextIdOf.js"
 	"daw-core/src/cmpActions/common/getNextOrderOf.js"
 
+	"daw-core/src/cmpActions/addBuffers.js"
 	"daw-core/src/cmpActions/addChannel.js"
 	"daw-core/src/cmpActions/addDrumcuts.js"
 	"daw-core/src/cmpActions/addDrumrow.js"
@@ -206,6 +207,7 @@ declare -a JSfiles=(
 	"daw-core/src/cmpActions/changeOscillator.js"
 	"daw-core/src/cmpActions/changePatternKeys.js"
 	"daw-core/src/cmpActions/changeTempo.js"
+	"daw-core/src/cmpActions/changeTracksAndBlocks.js"
 	"daw-core/src/cmpActions/clonePattern.js"
 	"daw-core/src/cmpActions/closePattern.js"
 	"daw-core/src/cmpActions/openPattern.js"

@@ -32,7 +32,7 @@ function UIpatternrollOnChange( obj ) {
 	if ( dur !== DAW.get.duration() ) {
 		obj.duration = dur;
 	}
-	DAW.compositionChange( obj );
+	DAW.callAction( "changeTracksAndBlocks", obj );
 }
 
 function UIpatternrollOnChangeLoop( looping, a, b ) {
