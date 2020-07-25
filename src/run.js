@@ -88,6 +88,12 @@ function UIrun() {
 	UIauthGetMe();
 	DAW.addCompositionsFromLocalStorage();
 
+	document.addEventListener( "gsuiEvents", e => {
+		const { component, eventName, args } = e.detail;
+
+		console.warn( `uncatched gsuiEvent: [${ component }][${ eventName }]`, args );
+	} );
+
 	if ( !hash.has( "cmp" ) ) {
 		UIcompositionClickNewLocal();
 	} else {
