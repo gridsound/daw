@@ -1,4 +1,4 @@
-# GridSound [<img height="26" src="https://camo.githubusercontent.com/ee9c2d50abd05e7b3cec8e928ed044524dab2e39/68747470733a2f2f67726964736f756e642e636f6d2f746d702f736f632d747769747465722e706e67" title="twitter"/>](https://twitter.com/gridsound) [<img height="26" src="https://camo.githubusercontent.com/3ccd38944c6fb354da865c39682e41ebe210e460/68747470733a2f2f67726964736f756e642e636f6d2f746d702f736f632d66616365626f6f6b2e706e67" title="facebook"/>](https://facebook.com/gridsound)
+# GridSound [<img height="26" src="https://gridsound.com/social-images/twitter.png" title="twitter"/>](https://twitter.com/gridsound) [<img height="26" src="https://gridsound.com/social-images/facebook.png" title="facebook"/>](https://facebook.com/gridsound)
 
 <img align="right" height="110" src="https://gridsound.com/assets/icon/black/128.png"/>
 
