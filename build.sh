@@ -201,6 +201,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeChannel.js"
 	"daw-core/src/actions/changeDrumrow.js"
 	"daw-core/src/actions/changeDrumrowPattern.js"
+	"daw-core/src/actions/changeDrumsProps.js"
 	"daw-core/src/actions/changeEffect.js"
 	"daw-core/src/actions/changeLFO.js"
 	"daw-core/src/actions/changeLoop.js"
