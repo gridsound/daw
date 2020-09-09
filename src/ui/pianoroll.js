@@ -1,6 +1,10 @@
 "use strict";
 
-const UIpianoroll = new gsuiPianoroll(),
+const UIpianoroll = new gsuiPianoroll( {
+		onchange: obj => DAW.callAction( "changePatternKeys", DAW.get.patternKeysOpened(), obj, UIpianoroll.getDuration() ),
+		onchangeLoop: UIpianorollOnChangeLoop,
+		onchangeCurrentTime: t => DAW.pianoroll.setCurrentTime( t ),
+	} ),
 	UIkeys = UIpianoroll.uiKeys;
 
 function UIpianorollInit() {
@@ -9,9 +13,6 @@ function UIpianorollInit() {
 	UIpianoroll.octaves( 1, 7 );
 	UIpianoroll.setPxPerBeat( 90 );
 	UIpianoroll.setFontSize( 20 );
-	UIpianoroll.onchange = obj => DAW.callAction( "changePatternKeys", DAW.get.patternKeysOpened(), obj, UIpianoroll.getDuration() );
-	UIpianoroll.onchangeLoop = UIpianorollOnChangeLoop;
-	UIpianoroll.onchangeCurrentTime = t => DAW.pianoroll.setCurrentTime( t );
 	UIpianoroll.rootElement.onfocus = () => DAW.pianorollFocus();
 	UIkeys.onkeydown = midi => DAW.pianoroll.liveKeydown( midi );
 	UIkeys.onkeyup = midi => DAW.pianoroll.liveKeyup( midi );

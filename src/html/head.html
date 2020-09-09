@@ -20,7 +20,9 @@
 		</button>
 	</div>
 	<div id="ctrlA">
-		<div id="headGain" class="btnMarge" title="Main app volume (this will not affect the rendering)"></div>
+		<div id="headGain" class="btnMarge" title="Main app volume (this will not affect the rendering)">
+			<gsui-slider type="linear-y" min="0" max="1" step=".01" mousemove-size="150"></gsui-slider>
+		</div>
 		<div id="headPlay" class="btnGroup btnMarge">
 			<button class="playBtn btn" id="playToggle" data-dir="up" title="Toggle focus between the composition and piano windows"><span></span><span></span></button>
 			<button class="playBtn btn btnLarge gsuiIcon" id="play" data-icon="play"></button>
@@ -46,7 +48,9 @@
 		<button id="headExport" class="btn btnMarge btnLarge btnBg gsuiIcon" data-icon="export" title="Export the composition"></button>
 		<button id="headSettings" class="btn btnMarge btnLarge btnBg gsuiIcon" data-icon="settings" title="Settings"></button>
 	</div>
-	<div id="headCurrentTime"></div>
+	<div id="headCurrentTime">
+		<gsui-slider type="linear-x" min="0" step=".01"></gsui-slider>
+	</div>
 	<div id="winBtns">
 		<button class="btn btnMarge winBtn" data-win="blocks" title="Open/close the blocks window">blocks</button>
 		<button class="btn btnMarge winBtn" data-win="mixer" title="Open/close the mixer window">mixer</button>

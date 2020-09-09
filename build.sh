@@ -28,7 +28,10 @@ declare -a HEADEREND=(
 )
 
 declare -a CSSfiles=(
+	"gs-ui-components/gsuiDragshield/gsuiDragshield.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
+	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.colors.default.css"
+	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.css"
 	"gs-ui-components/gsuiLFO/gsuiLFO.colors.default.css"
 	"gs-ui-components/gsuiLFO/gsuiLFO.css"
 	"gs-ui-components/gsuiDrumrows/gsuiDrumrows.colors.default.css"
@@ -43,6 +46,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiFxFilter/gsuiFxFilter.css"
 	"gs-ui-components/gsuiReorder/gsuiReorder.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
+	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.css"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.css"
@@ -62,6 +66,10 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.colors.default.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
+	"gs-ui-components/gsuiTimeline2/gsuiTimeline2.colors.default.css"
+	"gs-ui-components/gsuiTimeline2/gsuiTimeline2.css"
+	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.colors.default.css"
+	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.css"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.colors.default.css"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.css"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-synth.css"
@@ -116,15 +124,12 @@ declare -a HTMLfiles=(
 	"src/html/popups/shortcuts.html"
 	"src/html/popups/selectChan.html"
 
-	"gs-ui-components/gsuiLFO/gsuiLFO.html"
 	"gs-ui-components/gsuiKeys/gsuiKeys.html"
 	"gs-ui-components/gsuiClock/gsuiClock.html"
-	"gs-ui-components/gsuiDrums/gsuiDrums.html"
 	"gs-ui-components/gsuiMixer/gsuiMixer.html"
 	"gs-ui-components/gsuiPopup/gsuiPopup.html"
 	"gs-ui-components/gsuiTrack/gsuiTrack.html"
 	"gs-ui-components/gsuiCurves/gsuiCurves.html"
-	"gs-ui-components/gsuiSlider/gsuiSlider.html"
 	"gs-ui-components/gsuiWindows/gsuiWindow.html"
 	"gs-ui-components/gsuiEffects/gsuiEffects.html"
 	"gs-ui-components/gsuiDrumrows/gsuiDrumrows.html"
@@ -136,10 +141,7 @@ declare -a HTMLfiles=(
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-pattern.html"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
 	"gs-ui-components/gsuiTracklist/gsuiTracklist.html"
-	"gs-ui-components/gsuiOscillator/gsuiOscillator.html"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
-	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.html"
-	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.html"
 )
 
 declare -a JSfilesProd=(
@@ -147,7 +149,30 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
-	"gs-utils/GSUtils.js"
+	"gs-utils/src/_in.js"
+	"gs-utils/src/addIfNotEmpty.js"
+	"gs-utils/src/castToNumber.js"
+	"gs-utils/src/composeUndo.js"
+	"gs-utils/src/createUpdateDelete.js"
+	"gs-utils/src/deepAssign.js"
+	"gs-utils/src/deepCopy.js"
+	"gs-utils/src/deepFreeze.js"
+	"gs-utils/src/diffAssign.js"
+	"gs-utils/src/isEmpty.js"
+	"gs-utils/src/isntEmpty.js"
+	"gs-utils/src/isObject.js"
+	"gs-utils/src/jsonCopy.js"
+	"gs-utils/src/mapCallbacks.js"
+	"gs-utils/src/noop.js"
+	"gs-utils/src/panningMerge.js"
+	"gs-utils/src/panningMergeLR.js"
+	"gs-utils/src/panningSplitLR.js"
+	"gs-utils/src/parseBeatsToBeats.js"
+	"gs-utils/src/parseBeatsToSeconds.js"
+	"gs-utils/src/trim2.js"
+	"gs-utils/src/uniqueName.js"
+	"gs-utils/src/uuid.js"
+	"gs-utils/src/_out.js"
 
 	"gs-api-client/gsapiClient.js"
 
@@ -171,6 +196,7 @@ declare -a JSfiles=(
 	"daw-core/src/json/drum.js"
 	"daw-core/src/json/drumcut.js"
 	"daw-core/src/json/effects.filter.js"
+	"daw-core/src/json/env.js"
 	"daw-core/src/json/lfo.js"
 	"daw-core/src/json/oscillator.js"
 	"daw-core/src/json/synth.js"
@@ -203,6 +229,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeDrumrowPattern.js"
 	"daw-core/src/actions/changeDrumsProps.js"
 	"daw-core/src/actions/changeEffect.js"
+	"daw-core/src/actions/changeEnv.js"
 	"daw-core/src/actions/changeLFO.js"
 	"daw-core/src/actions/changeLoop.js"
 	"daw-core/src/actions/changeOscillator.js"
@@ -236,6 +263,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/toggleChannel.js"
 	"daw-core/src/actions/toggleDrumrow.js"
 	"daw-core/src/actions/toggleEffect.js"
+	"daw-core/src/actions/toggleEnv.js"
 	"daw-core/src/actions/toggleLFO.js"
 	"daw-core/src/actions/toggleOnlyDrumrow.js"
 
@@ -280,6 +308,11 @@ declare -a JSfiles=(
 	"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js"
 	"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.list.js"
 
+	"gs-ui-components/gsui.js"
+	"gs-ui-components/gsuiDragshield/gsuiDragshield.js"
+	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.html.js"
+	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.js"
+	"gs-ui-components/gsuiLFO/gsuiLFO.html.js"
 	"gs-ui-components/gsuiLFO/gsuiLFO.js"
 	"gs-ui-components/gsuiClock/gsuiClock.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
@@ -299,19 +332,28 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.js"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.prototype.managercall.js"
 	"gs-ui-components/gsuiDrumrows/gsuiDrumrows.js"
+	"gs-ui-components/gsuiDrums/gsuiDrums.html.js"
 	"gs-ui-components/gsuiDrums/gsuiDrums.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.keyNames.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.keyboardToKey.js"
+	"gs-ui-components/gsuiOscillator/gsuiOscillator.html.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.js"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"
+	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.html.js"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.js"
 	"gs-ui-components/gsuiDotline/gsuiDotline.js"
 	"gs-ui-components/gsuiPanels/gsuiPanels.js"
 	"gs-ui-components/gsuiPopup/gsuiPopup.js"
+	"gs-ui-components/gsuiSlider/gsuiSlider.html.js"
 	"gs-ui-components/gsuiSlider/gsuiSlider.js"
+	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.html.js"
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.js"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.js"
+	"gs-ui-components/gsuiTimeline2/gsuiTimeline2.html.js"
+	"gs-ui-components/gsuiTimeline2/gsuiTimeline2.js"
+	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.html.js"
+	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.js"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.js"
 	"gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"gs-ui-components/gsuiTracklist/gsuiTracklist.js"
@@ -422,9 +464,6 @@ lint() {
 updateDep() {
 	git submodule init
 	git submodule update --remote
-	cd gs-utils
-	./build.sh
-	cd ..
 }
 
 if [ $# = 0 ]; then

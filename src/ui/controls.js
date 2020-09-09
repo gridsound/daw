@@ -3,8 +3,8 @@
 const UIclock = new gsuiClock();
 
 function UIcontrolsInit() {
-	const sliderGain = new gsuiSlider(),
-		sliderTime = new gsuiSlider();
+	const sliderGain = DOM.headGain.querySelector( "gsui-slider" ),
+		sliderTime = DOM.headCurrentTime.querySelector( "gsui-slider" );
 
 	DOM.sliderTime = sliderTime;
 	DOM.play.onclick = UIcontrolsClickPlay;
@@ -17,24 +17,16 @@ function UIcontrolsInit() {
 	DOM.cmpsBtn.onmousedown =
 	DOM.undoMore.onmousedown = UIcontrolsDropdownBtnClick;
 	sliderGain.oninput = v => DAW.destination.setGain( v );
-	sliderGain.options( {
-		type: "linear-y", min: 0, max: 1, step: .01, scrollStep: .1, mousemoveSize: 150,
-		value: DAW.destination.getGain(),
-	} );
-	sliderTime.options( { type: "linear-x", step: .01 } );
+	sliderGain.setValue( DAW.destination.getGain() );
 	sliderTime.oninput = UIcontrolsSliderTime_oninput;
 	sliderTime.onchange = UIcontrolsSliderTime_onchange;
 	sliderTime.oninputend = UIcontrolsSliderTime_oninputend;
 	sliderTime.oninputstart = UIcontrolsSliderTime_inputstart;
-	DOM.headGain.append( sliderGain.rootElement );
-	DOM.headCurrentTime.append( sliderTime.rootElement );
 	UIclock.rootElement.classList.add( "btnGroup", "btnMarge" );
 	DOM.headPlay.after( UIclock.rootElement );
 	UIclock.onchangeDisplay = mode => localStorage.setItem( "gsuiClock.display", mode );
 	UIclock.setDisplay( localStorage.getItem( "gsuiClock.display" ) || "second" );
 	UIclock.attached();
-	sliderGain.attached();
-	sliderTime.attached();
 }
 
 function UIcontrolsSliderTime_inputstart( beat ) {
@@ -109,7 +101,7 @@ function UIcontrolsFocusOn( focStr, b ) {
 			onCmp = focStr === "composition";
 
 		DOM.playToggle.dataset.dir = onCmp ? "up" : "down";
-		DOM.sliderTime.options( { max: duration || DAW.get.beatsPerMeasure() } );
+		DOM.sliderTime.setAttribute( "max", duration || DAW.get.beatsPerMeasure() );
 		DOM.sliderTime.setValue( beat );
 		UIdrums.rootElement.classList.toggle( "selected", focStr === "drums" );
 		UIpianoroll.rootElement.classList.toggle( "selected", focStr === "pianoroll" );

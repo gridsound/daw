@@ -70,7 +70,7 @@ UIcompositionChanged.fn = new Map( [
 		const [ min, sec ] = GSUtils.parseBeatsToSeconds( duration, DAW.get.bpm() );
 
 		if ( DAW.getFocusedName() === "composition" ) {
-			DOM.sliderTime.options( { max: duration } );
+			DOM.sliderTime.setAttribute( "max", duration );
 		}
 		DOM.headCmpDur.textContent =
 		UIcompositions.get( DAW.get.cmp() ).duration.textContent = `${ min }:${ sec }`;
@@ -89,7 +89,7 @@ UIcompositionChanged.fn = new Map( [
 			DOM.drumsName.textContent = pat.name;
 			UIwindows.window( "drums" ).open();
 			if ( DAW.getFocusedName() === "drums" ) {
-				DOM.sliderTime.options( { max: pat.duration } );
+				DOM.sliderTime.setAttribute( "max", pat.duration );
 			}
 		} else {
 			DOM.drumsName.textContent = "";
@@ -118,7 +118,7 @@ UIcompositionChanged.fn = new Map( [
 			UIpianoroll.resetKey();
 			UIpianoroll.scrollToKeys();
 			if ( DAW.getFocusedName() === "pianoroll" ) {
-				DOM.sliderTime.options( { max: pat.duration } );
+				DOM.sliderTime.setAttribute( "max", pat.duration );
 			}
 			UIwindows.window( "piano" ).open();
 		} else {

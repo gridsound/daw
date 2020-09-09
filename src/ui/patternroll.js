@@ -1,18 +1,19 @@
 "use strict";
 
-const UIpatternroll = new gsuiPatternroll();
+const UIpatternroll = new gsuiPatternroll( {
+		onchange: UIpatternrollOnChange,
+		onaddBlock: UIpatternrollOnAddBlock,
+		oneditBlock: UIpatternrollOnEditBlock,
+		onchangeLoop: UIpatternrollOnChangeLoop,
+		onchangeCurrentTime: t => DAW.composition.setCurrentTime( t ),
+	} );
 
 function UIpatternrollInit() {
 	const win = UIwindows.window( "main" );
 
 	UIpatternroll.setFontSize( 32 );
 	UIpatternroll.setPxPerBeat( 40 );
-	UIpatternroll.onchangeCurrentTime = t => DAW.composition.setCurrentTime( t );
 	UIpatternroll.rootElement.onfocus = () => DAW.compositionFocus();
-	UIpatternroll.onchange = UIpatternrollOnChange;
-	UIpatternroll.onaddBlock = UIpatternrollOnAddBlock;
-	UIpatternroll.oneditBlock = UIpatternrollOnEditBlock;
-	UIpatternroll.onchangeLoop = UIpatternrollOnChangeLoop;
 	win.onresize =
 	win.onresizing = () => UIpatternroll.resized();
 	win.onfocusin = UIpatternrollWindowFocusin;

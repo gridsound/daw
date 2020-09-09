@@ -27,9 +27,9 @@
 }
 
 /* .......................................................................... */
-.gsuiBeatlines {
+.gsuiBlocksManager-rows {
 	transition: filter .2s;
 }
-.gsuiBlocksManager:not( .selected ) .gsuiBeatlines {
+.gsuiBlocksManager:not( .selected ) .gsuiBlocksManager-rows {
 	filter: brightness( .9 );
 }

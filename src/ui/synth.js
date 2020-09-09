@@ -11,9 +11,6 @@ function UIsynthInit() {
 			.then( name => DAW.callAction( "renameSynth", id, name ) );
 	};
 	UIwindows.window( "synth" ).append( UIsynth.rootElement );
-	UIwindows.window( "synth" ).onresizing = UIsynth.resizing.bind( UIsynth );
-	UIwindows.window( "synth" ).onresize = UIsynth.resize.bind( UIsynth );
-	UIsynth.attached();
 }
 
 function UIsynthChange( obj ) {
