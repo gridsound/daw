@@ -7,6 +7,7 @@ function UIcompositionChanged( obj, prevObj ) {
 	UIdrums.change( obj );
 	UIeffects.change( obj );
 	UImixer.change( obj );
+	UIpatternroll.change( obj );
 	UIcompositionChanged.fn.forEach( ( fn, attrs ) => {
 		if ( attrs.some( attr => attr in obj ) ) {
 			fn( obj, prevObj );
@@ -33,24 +34,14 @@ UIcompositionChanged.fn = new Map( [
 			UIsynthChange( synOpened );
 		}
 	} ],
-	[ [ "tracks", "blocks" ], function( obj ) {
-		GSUtils.diffAssign( UIpatternroll.data.tracks, obj.tracks );
-		GSUtils.diffAssign( UIpatternroll.data.blocks, obj.blocks );
-	} ],
 	[ [ "patterns" ], function( obj ) {
 		Object.entries( obj.patterns ).forEach( kv => UIupdatePattern( ...kv ) );
-	} ],
-	[ [ "loopA", "loopB" ], function() {
-		UIpatternroll.loop(
-			DAW.get.loopA(),
-			DAW.get.loopB() );
 	} ],
 	[ [ "beatsPerMeasure", "stepsPerBeat" ], function() {
 		const bPM = DAW.get.beatsPerMeasure(),
 			sPB = DAW.get.stepsPerBeat();
 
 		UIclock.setStepsPerBeat( sPB );
-		UIpatternroll.timeSignature( bPM, sPB );
 		UIpianoroll.timeSignature( bPM, sPB );
 		DOM.beatsPerMeasure.textContent = bPM;
 		DOM.stepsPerBeat.textContent = sPB;

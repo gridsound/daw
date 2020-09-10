@@ -20,6 +20,7 @@ function UIrun() {
 	window.UIdrums = new GSDrums();
 	window.UIeffects = new GSEffects();
 	window.UImixer = new GSMixer();
+	window.UIpatternroll = new GSPatternroll();
 	window.UIpatterns = new GSPatterns();
 	window.UIsynth = new GSSynth();
 
