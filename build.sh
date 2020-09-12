@@ -128,7 +128,6 @@ declare -a HTMLfiles=(
 	"gs-ui-components/gsuiClock/gsuiClock.html"
 	"gs-ui-components/gsuiMixer/gsuiMixer.html"
 	"gs-ui-components/gsuiPopup/gsuiPopup.html"
-	"gs-ui-components/gsuiTrack/gsuiTrack.html"
 	"gs-ui-components/gsuiCurves/gsuiCurves.html"
 	"gs-ui-components/gsuiWindows/gsuiWindow.html"
 	"gs-ui-components/gsuiEffects/gsuiEffects.html"
@@ -140,7 +139,6 @@ declare -a HTMLfiles=(
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-synth.html"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-pattern.html"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
-	"gs-ui-components/gsuiTracklist/gsuiTracklist.html"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
 )
 
@@ -190,6 +188,7 @@ declare -a JSfiles=(
 	"daw-core/src/Composition.prototype.change.js"
 
 	"daw-core/src/json/composition.js"
+	"daw-core/src/json/block.js"
 	"daw-core/src/json/channel.js"
 	"daw-core/src/json/channels.js"
 	"daw-core/src/json/drumrow.js"
@@ -207,6 +206,7 @@ declare -a JSfiles=(
 	"daw-core/src/controllers/effects.js"
 	"daw-core/src/controllers/synth.js"
 	"daw-core/src/controllers/mixer.js"
+	"daw-core/src/controllers/tracks.js"
 	"daw-core/src/controllersFx/filter.js"
 
 	"daw-core/src/actions/common/calcNewDuration.js"
@@ -214,7 +214,9 @@ declare -a JSfiles=(
 	"daw-core/src/actions/common/getDrumrowName.js"
 	"daw-core/src/actions/common/getNextIdOf.js"
 	"daw-core/src/actions/common/getNextOrderOf.js"
+	"daw-core/src/actions/common/toggleSolo.js"
 
+	"daw-core/src/actions/addBlock.js"
 	"daw-core/src/actions/addBuffers.js"
 	"daw-core/src/actions/addChannel.js"
 	"daw-core/src/actions/addDrumcuts.js"
@@ -262,6 +264,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/renameComposition.js"
 	"daw-core/src/actions/renamePattern.js"
 	"daw-core/src/actions/renameSynth.js"
+	"daw-core/src/actions/renameTrack.js"
 	"daw-core/src/actions/reorderChannel.js"
 	"daw-core/src/actions/reorderDrumrow.js"
 	"daw-core/src/actions/reorderOscillator.js"
@@ -272,7 +275,9 @@ declare -a JSfiles=(
 	"daw-core/src/actions/toggleEffect.js"
 	"daw-core/src/actions/toggleEnv.js"
 	"daw-core/src/actions/toggleLFO.js"
-	"daw-core/src/actions/toggleOnlyDrumrow.js"
+	"daw-core/src/actions/toggleSoloDrumrow.js"
+	"daw-core/src/actions/toggleSoloTrack.js"
+	"daw-core/src/actions/toggleTrack.js"
 	"daw-core/src/actions/unselectBlocks.js"
 
 	"daw-core/src/prototype/abortWAVExport.js"
@@ -364,6 +369,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.html.js"
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.js"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.js"
+	"gs-ui-components/gsuiTrack/gsuiTrack.html.js"
 	"gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"gs-ui-components/gsuiTracklist/gsuiTracklist.js"
 	"gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"
