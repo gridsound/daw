@@ -176,11 +176,11 @@ function UIcompositionClosed( cmp ) {
 	UIeffects.clear();
 	UIsynth.clear();
 	UImixer.clear();
-	UIpatternroll.empty();
+	UIpatternroll.clear();
 	UIpatternroll.loop( false );
 	UIpatternroll.setFontSize( 32 );
 	UIpatternroll.setPxPerBeat( 40 );
-	UIpianoroll.empty();
+	UIpianoroll.clear();
 	UIpianoroll.loop( false );
 	DOM.drumsName.textContent =
 	DOM.synthName.textContent =

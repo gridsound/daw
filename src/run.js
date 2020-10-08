@@ -22,6 +22,7 @@ function UIrun() {
 	window.UImixer = new GSMixer();
 	window.UIpatternroll = new GSPatternroll();
 	window.UIpatterns = new GSPatterns();
+	window.UIpianoroll = new GSPianoroll();
 	window.UIsynth = new GSSynth();
 
 	UIdomInit();
@@ -46,7 +47,7 @@ function UIrun() {
 	UIsettingsPopupInit();
 	UIshortcutsPopupInit();
 
-	window.onblur = () => UIkeys.midiReleaseAllKeys();
+	window.onblur = () => UIpianoroll.getUIKeys().midiReleaseAllKeys();
 	window.onkeyup = UIkeyboardUp;
 	window.onkeydown = UIkeyboardDown;
 	window.onbeforeunload = UIcompositionBeforeUnload;
