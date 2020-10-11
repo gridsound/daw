@@ -206,8 +206,9 @@ declare -a JSfiles=(
 	"daw-core/src/controllers/drumrows.js"
 	"daw-core/src/controllers/drums.js"
 	"daw-core/src/controllers/effects.js"
-	"daw-core/src/controllers/synth.js"
+	"daw-core/src/controllers/keys.js"
 	"daw-core/src/controllers/mixer.js"
+	"daw-core/src/controllers/synth.js"
 	"daw-core/src/controllers/tracks.js"
 	"daw-core/src/controllersFx/filter.js"
 
