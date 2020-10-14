@@ -70,10 +70,6 @@
 
 	/* gsuiBlocksManager */
 	/* ...................................................................... */
-	--gsuiBlocksManager-grid-bg: #456168;
-	--gsuiBlocksManager-side-bgColor: #555;
-	--gsuiBlocksManager-font: 12px var( --font-default );
-	--gsuiBlocksManager-number-font: 16px var( --font-number );
 	--gsuiBlocksManager-selection-bgColor: #b226;
 	--gsuiBlocksManager-selection-borderColor: #f44;
 	--gsuiBlocksManager-blockColor: #5acc;

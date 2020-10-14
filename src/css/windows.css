@@ -25,11 +25,3 @@
 	height: 100%;
 	outline: 0;
 }
-
-/* .......................................................................... */
-.gsuiBlocksManager-rows {
-	transition: filter .2s;
-}
-.gsuiBlocksManager:not( .selected ) .gsuiBlocksManager-rows {
-	filter: brightness( .9 );
-}

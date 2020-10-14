@@ -5,8 +5,6 @@ function UIpianorollInit() {
 
 	DOM.pianorollName.onclick = UIpianorollNameClick;
 	DOM.pianorollForbidden.classList.remove( "hidden" );
-	win.onresize =
-	win.onresizing = () => UIpianoroll.resized();
 	win.onfocusin = UIpianorollWindowFocusin;
 	win.append( UIpianoroll.rootElement );
 	UIpianoroll.setDAWCore( DAW );

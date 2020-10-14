@@ -5,11 +5,7 @@ function UIpatternrollInit() {
 
 	UIpatternroll.setDAWCore( DAW );
 	UIpatternroll.setSVGForms( UIpatterns.svgForms );
-	UIpatternroll.setFontSize( 32 );
-	UIpatternroll.setPxPerBeat( 40 );
 	UIpatternroll.rootElement.onfocus = () => DAW.compositionFocus();
-	win.onresize =
-	win.onresizing = () => UIpatternroll.resized();
 	win.onfocusin = UIpatternrollWindowFocusin;
 	win.append( UIpatternroll.rootElement );
 	UIpatternroll.attached();

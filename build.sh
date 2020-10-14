@@ -245,7 +245,6 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeLoop.js"
 	"daw-core/src/actions/changeOscillator.js"
 	"daw-core/src/actions/changeTempo.js"
-	"daw-core/src/actions/changeTracksAndBlocks.js"
 	"daw-core/src/actions/clonePattern.js"
 	"daw-core/src/actions/cloneSelectedKeys.js"
 	"daw-core/src/actions/closePattern.js"
