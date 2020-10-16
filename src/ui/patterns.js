@@ -5,7 +5,6 @@ function UIpatternsInit() {
 
 	UIpatterns.setDAWCore( DAW );
 	win.append( UIpatterns.rootElement );
-	UIpatterns.attached();
 	gsuiPatterns.selectChanPopupContent.classList.add( "popup" );
 }
 
