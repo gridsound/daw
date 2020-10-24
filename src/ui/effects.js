@@ -5,17 +5,7 @@ function UIeffectsInit() {
 
 	DOM.channelName.onclick = UIeffectsOnclickName;
 	win.append( UIeffects.rootElement );
-	win.onresize = () => UIeffects.resize();
-	win.onresizing = () => UIeffects.resizing();
 	UIeffects.setDAWCore( DAW );
-	UIeffects.attached();
-	UIeffects._uiEffects.askData = ( fxId, fxType, dataType, ...args ) => {
-		if ( fxType === "filter" && dataType === "curve" ) {
-			const wafx = DAW.get.audioEffect( fxId );
-
-			return wafx && wafx.updateResponse( args[ 0 ] );
-		}
-	};
 }
 
 function UIeffectsRenameChan( name ) {
