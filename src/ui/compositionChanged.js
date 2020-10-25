@@ -42,12 +42,12 @@ UIcompositionChanged.fn = new Map( [
 		const bPM = DAW.get.beatsPerMeasure(),
 			sPB = DAW.get.stepsPerBeat();
 
-		UIclock.setStepsPerBeat( sPB );
+		UIclock.setAttribute( "stepsPerBeat", sPB );
 		DOM.beatsPerMeasure.textContent = bPM;
 		DOM.stepsPerBeat.textContent = sPB;
 	} ],
 	[ [ "bpm" ], function( { bpm } ) {
-		UIclock.setBPM( bpm );
+		UIclock.setAttribute( "bpm", bpm );
 		DOM.bpm.textContent =
 		UIcompositions.get( DAW.get.cmp() ).bpm.textContent = bpm;
 		UIupdatePatternsBPM( bpm );

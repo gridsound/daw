@@ -1,6 +1,6 @@
 "use strict";
 
-const UIclock = new gsuiClock();
+const UIclock = GSUI.createElement( "gsui-clock" );
 
 function UIcontrolsInit() {
 	const sliderGain = DOM.headGain.querySelector( "gsui-slider" ),
@@ -22,11 +22,10 @@ function UIcontrolsInit() {
 	sliderTime.onchange = UIcontrolsSliderTime_onchange;
 	sliderTime.oninputend = UIcontrolsSliderTime_oninputend;
 	sliderTime.oninputstart = UIcontrolsSliderTime_inputstart;
-	UIclock.rootElement.classList.add( "btnGroup", "btnMarge" );
-	DOM.headPlay.after( UIclock.rootElement );
+	UIclock.classList.add( "btnGroup", "btnMarge" );
+	DOM.headPlay.after( UIclock );
 	UIclock.onchangeDisplay = mode => localStorage.setItem( "gsuiClock.display", mode );
-	UIclock.setDisplay( localStorage.getItem( "gsuiClock.display" ) || "second" );
-	UIclock.attached();
+	GSUI.setAttribute( UIclock, "mode", localStorage.getItem( "gsuiClock.display" ) || "second" );
 }
 
 function UIcontrolsSliderTime_inputstart( beat ) {
