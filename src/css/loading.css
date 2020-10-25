@@ -1,6 +1,6 @@
 #loading {
 	display: flex;
-	z-index: 2147483647;
+	z-index: 2147483646;
 	position: absolute;
 	flex-direction: column;
 	align-items: center;

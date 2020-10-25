@@ -24,7 +24,7 @@ declare -a HEADER=(
 declare -a HEADEREND=(
 	'</head>'
 	'<body>'
-	'<noscript>GridSound needs JavaScript to run</noscript>'
+	'<noscript id="noscript">GridSound needs JavaScript to run</noscript>'
 )
 
 declare -a CSSfiles=(
