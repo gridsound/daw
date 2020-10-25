@@ -136,6 +136,8 @@ declare -a JSfilesProd=(
 )
 
 declare -a JSfiles=(
+	"src/checkBrowser.js"
+
 	"gs-utils/src/_in.js"
 	"gs-utils/src/addIfNotEmpty.js"
 	"gs-utils/src/castToNumber.js"
