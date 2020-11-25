@@ -89,7 +89,7 @@ a.btn {
 #title {
 	align-self: center;
 	font-size: 28px;
-	font-family: var( --font-oswald );
+	font-family: var( --gsui-font-title );
 	margin-right: 4px;
 }
 #title::before {
@@ -264,7 +264,7 @@ a.btn {
 	white-space: nowrap;
 	background-color: #222;
 }
-#timeSignature {
+#timeDivision {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -273,14 +273,14 @@ a.btn {
 	padding: 0 6px 0 8px;
 	font-size: 14px;
 	line-height: 0;
-	font-family: var( --font-number );
+	font-family: var( --gsui-font-number );
 }
 #bpm {
 	display: flex;
 	align-items: baseline;
 	padding-right: 7px;
 	font-size: var( --bpm-fontSize );
-	font-family: var( --font-number );
+	font-family: var( --gsui-font-number );
 }
 #bpm::after {
 	content: "bpm";
@@ -407,7 +407,7 @@ a.btn {
 }
 #headVersionNum {
 	margin-left: 6px;
-	font-family: var( --font-number );
+	font-family: var( --gsui-font-number );
 }
 
 /*

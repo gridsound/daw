@@ -155,7 +155,7 @@ function UIcompositionAdded( cmp ) {
 }
 
 function UIcompositionSetInfo( html, cmp ) {
-	const [ min, sec ] = GSUtils.parseBeatsToSeconds( cmp.duration, cmp.bpm );
+	const [ min, sec ] = gsuiClock.parseBeatsToSeconds( cmp.duration, cmp.bpm );
 
 	html.bpm.textContent = cmp.bpm;
 	html.name.textContent = cmp.name;

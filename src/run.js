@@ -10,12 +10,8 @@ function UIrun() {
 			.map( kv => kv.split( "=" ) )
 		);
 
-	gswaPeriodicWaves.list.forEach( ( w, name ) => {
-		gsuiPeriodicWave.addWave( name, w.real, w.imag );
-	} );
-
 	window.DAW = DAW;
-	window.VERSION = "0.32.3";
+	window.VERSION = "0.32.4";
 
 	window.UIdrums = new GSDrums();
 	window.UIeffects = new GSEffects();

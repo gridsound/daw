@@ -42,7 +42,7 @@ UIcompositionChanged.fn = new Map( [
 		const bPM = DAW.get.beatsPerMeasure(),
 			sPB = DAW.get.stepsPerBeat();
 
-		UIclock.setAttribute( "stepsPerBeat", sPB );
+		UIclock.setAttribute( "timedivision", `${ bPM }/${ sPB }` );
 		DOM.beatsPerMeasure.textContent = bPM;
 		DOM.stepsPerBeat.textContent = sPB;
 	} ],
@@ -58,7 +58,7 @@ UIcompositionChanged.fn = new Map( [
 		UIcompositions.get( DAW.get.cmp() ).name.textContent = name;
 	} ],
 	[ [ "duration" ], function( { duration } ) {
-		const [ min, sec ] = GSUtils.parseBeatsToSeconds( duration, DAW.get.bpm() );
+		const [ min, sec ] = gsuiClock.parseBeatsToSeconds( duration, DAW.get.bpm() );
 
 		if ( DAW.getFocusedName() === "composition" ) {
 			DOM.sliderTime.setAttribute( "max", duration );

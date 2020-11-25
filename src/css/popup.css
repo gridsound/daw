@@ -42,7 +42,7 @@
 .popup .param-values {
 	display: flex;
 	align-items: center;
-	font-family: var( --font-monospace );
+	font-family: var( --gsui-font-monospace );
 }
 .popup .param-column {
 	flex-direction: column;
@@ -212,7 +212,7 @@
 }
 .settingsPopupFps::after {
 	content: " fps";
-	font-family: var( --font-default );
+	font-family: var( --gsui-font );
 	font-size: 12px;
 	opacity: .6;
 }
@@ -237,7 +237,7 @@
 }
 #aboutPopupContent .title > span:first-child {
 	margin-right: 4px;
-	font: 32px var( --font-oswald );
+	font: 32px var( --gsui-font-title );
 }
 
 #aboutPopupContent a {

@@ -156,8 +156,6 @@ declare -a JSfiles=(
 	"gs-utils/src/panningMerge.js"
 	"gs-utils/src/panningMergeLR.js"
 	"gs-utils/src/panningSplitLR.js"
-	"gs-utils/src/parseBeatsToBeats.js"
-	"gs-utils/src/parseBeatsToSeconds.js"
 	"gs-utils/src/plural.js"
 	"gs-utils/src/trim2.js"
 	"gs-utils/src/uniqueName.js"

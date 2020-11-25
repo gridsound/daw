@@ -7,7 +7,7 @@
 	padding: 0 6px;
 	color: var( --history-action-text );
 	font-size: 14px;
-	font-family: var( --font-monospace );
+	font-family: var( --gsui-font-monospace );
 	background-color: var( --history-action-bg );
 	transition: filter .2s;
 }

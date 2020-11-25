@@ -1,14 +1,7 @@
 :root {
 	--app-bg: #222;
-	--font-default: "Montserrat", sans-serif;
-	--font-monospace: "Inconsolata", "consolas", monospace;
-	--font-number: "Unica One", var( --font-monospace );
-	--font-oswald: "Oswald", sans-serif;
 	--pan-border: 1px solid #333;
 	--bpm-fontSize: 22px;
-
-	--gsui-font: var( --font-default );
-	--gsui-font-number: var( --font-number );
 
 	--head-bg: #444;
 	--head-gap: 4px;

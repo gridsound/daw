@@ -28,7 +28,7 @@
 
 #loadingTitle {
 	position: relative;
-	font: 52px var( --font-oswald );
+	font: 52px var( --gsui-font-title );
 }
 
 #loadingLoading,
