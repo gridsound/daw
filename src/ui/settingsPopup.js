@@ -21,11 +21,11 @@ function UIsettingsGetLowGraphicsValue() {
 }
 
 function UIsettingsGetUIRate() {
-	return +localStorage.getItem( "uiRefreshRate" ) ?? 60;
+	return +localStorage.getItem( "uiRefreshRate" ) || 60;
 }
 
 function UIsettingsGetTimelineNumbering() {
-	return `${ +localStorage.getItem( "gsuiWindows.timelineNumbering" ) ?? 1 }`;
+	return localStorage.getItem( "uiTimeNumbering" ) || "1";
 }
 
 function UIsettingsPopupShow() {
@@ -56,5 +56,5 @@ function UIsettingsPopupSubmit( form ) {
 	gsuiTimeline.numbering( timelineNumbering );
 	localStorage.setItem( "uiRefreshRate", rate );
 	localStorage.setItem( "gsuiWindows.lowGraphics", +lowGraphics );
-	localStorage.setItem( "gsuiWindows.timelineNumbering", timelineNumbering );
+	localStorage.setItem( "uiTimeNumbering", timelineNumbering );
 }
