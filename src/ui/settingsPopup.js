@@ -5,6 +5,8 @@ function UIsettingsPopupInit() {
 	DOM.settingsUIRateManual.oninput = UIsettingsPopupUIRateOninput;
 	DAW.setLoopRate( UIsettingsGetUIRate() );
 	UIwindows.lowGraphics( UIsettingsGetLowGraphicsValue() );
+	gsuiClock.numbering( UIsettingsGetTimelineNumbering() );
+	gsuiTimeline.numbering( UIsettingsGetTimelineNumbering() );
 }
 
 function UIsettingsPopupUIRateOninput( e ) {
@@ -19,7 +21,11 @@ function UIsettingsGetLowGraphicsValue() {
 }
 
 function UIsettingsGetUIRate() {
-	return +localStorage.getItem( "uiRefreshRate" ) || 60;
+	return +localStorage.getItem( "uiRefreshRate" ) ?? 60;
+}
+
+function UIsettingsGetTimelineNumbering() {
+	return `${ +localStorage.getItem( "gsuiWindows.timelineNumbering" ) ?? 1 }`;
 }
 
 function UIsettingsPopupShow() {
@@ -30,6 +36,7 @@ function UIsettingsPopupShow() {
 		: DOM.settingsUIRateModeManual ).checked = true;
 	DOM.settingsUIRateManual.value = uiRefreshRate;
 	DOM.settingsWindowsMode.checked = !UIsettingsGetLowGraphicsValue();
+	DOM.settingsTimelineNumbering.value = UIsettingsGetTimelineNumbering();
 	UIsettingsPopupUIRateOninput();
 	gsuiPopup.custom( {
 		title: "Settings",
@@ -40,10 +47,14 @@ function UIsettingsPopupShow() {
 
 function UIsettingsPopupSubmit( form ) {
 	const rate = form.UIRateMode === "auto" ? 60 : form.UIRateManual,
-		lowGraphics = !form.windowsDirectMode;
+		lowGraphics = !form.windowsDirectMode,
+		timelineNumbering = form.timelineNumbering;
 
 	DAW.setLoopRate( rate );
 	UIwindows.lowGraphics( lowGraphics );
+	gsuiClock.numbering( timelineNumbering );
+	gsuiTimeline.numbering( timelineNumbering );
 	localStorage.setItem( "uiRefreshRate", rate );
 	localStorage.setItem( "gsuiWindows.lowGraphics", +lowGraphics );
+	localStorage.setItem( "gsuiWindows.timelineNumbering", timelineNumbering );
 }
