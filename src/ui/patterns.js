@@ -1,7 +1,6 @@
 "use strict";
 
 function UIpatternsInit() {
-<<<<<<< HEAD
 	const orderBuff = new gsuiReorder({
 		rootElement: DOM.buffPatterns,
 		itemSelector: "#buffPatterns .pattern",
@@ -40,9 +39,7 @@ function UIpatternsInit() {
 
 function UIpatternsDataTransfert( elPat ) {
 	const id = elPat.dataset.id;
-=======
 	const win = UIwindows.window( "blocks" );
->>>>>>> master
 
 	UIpatterns.setDAWCore( DAW );
 	win.append( UIpatterns.rootElement );
