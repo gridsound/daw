@@ -103,7 +103,7 @@ function UIcompositionOpened( cmp ) {
 	DOM.headCmp.dataset.saveMode =
 	DOM.headCmpIcon.dataset.icon = cmp.options.saveMode;
 	DOM.headCmpSave.dataset.icon = cmp.options.saveMode === "local" ? "save" : "upload";
-	UIsynthsExpandSynth( cmp.synthOpened, true );
+	UIpatterns._uiPatterns.expandSynth( cmp.synthOpened, true );
 	UIeffectsSelectChan( "main" );
 	UItitle( cmp.name );
 }
@@ -155,7 +155,7 @@ function UIcompositionAdded( cmp ) {
 }
 
 function UIcompositionSetInfo( html, cmp ) {
-	const [ min, sec ] = GSUtils.parseBeatsToSeconds( cmp.duration, cmp.bpm );
+	const [ min, sec ] = gsuiClock.parseBeatsToSeconds( cmp.duration, cmp.bpm );
 
 	html.bpm.textContent = cmp.bpm;
 	html.name.textContent = cmp.name;
@@ -173,28 +173,16 @@ function UIcompositionClosed( cmp ) {
 	UIdrums.loop( false );
 	UIeffects.clear();
 	UIsynth.clear();
-	// UIdrums.setFontSize( 32 );
-	// UIdrums.setPxPerBeat( 40 );
-	UIpatternroll.empty();
+	UImixer.clear();
+	UIpatternroll.clear();
 	UIpatternroll.loop( false );
-	UIpatternroll.setFontSize( 32 );
-	UIpatternroll.setPxPerBeat( 40 );
-	UImixer.empty();
-	UIpianoroll.empty();
+	UIpianoroll.clear();
 	UIpianoroll.loop( false );
 	DOM.drumsName.textContent =
 	DOM.synthName.textContent =
 	DOM.pianorollName.textContent = "";
 	DOM.pianorollForbidden.classList.add( "hidden" );
-	UIpatterns.forEach( pat => pat.remove() );
-	UIsynths.forEach( syn => syn.root.remove() );
-	UIsynths.clear();
 	UIpatterns.clear();
-	UIbuffers.clear();
-	UIsvgForms.keys.empty();
-	UIsvgForms.drums.empty();
-	UIsvgForms.buffer.empty();
-	UIsvgForms.bufferHD.empty();
 }
 
 function UIcompositionClickNewLocal() {

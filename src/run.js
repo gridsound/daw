@@ -10,12 +10,16 @@ function UIrun() {
 			.map( kv => kv.split( "=" ) )
 		);
 
-	gswaPeriodicWaves.list.forEach( ( w, name ) => {
-		gsuiPeriodicWave.addWave( name, w.real, w.imag );
-	} );
-
 	window.DAW = DAW;
-	window.VERSION = "0.28.3";
+	window.VERSION = "0.32.5";
+
+	window.UIdrums = new GSDrums();
+	window.UIeffects = new GSEffects();
+	window.UImixer = new GSMixer();
+	window.UIpatternroll = new GSPatternroll();
+	window.UIpatterns = new GSPatterns();
+	window.UIpianoroll = new GSPianoroll();
+	window.UIsynth = new GSSynth();
 
 	UIdomInit();
 	UIwindowsInit();
@@ -24,12 +28,9 @@ function UIrun() {
 	UIdrumsInit();
 	UImixerInit();
 	UIsynthInit();
-	UIblocksInit();
-	UIsynthsInit();
 	UIcookieInit();
 	UIeffectsInit();
 	UIhistoryInit();
-	UIversionsInit();
 	UIcontrolsInit();
 	UIkeyboardInit();
 	UIpatternsInit();
@@ -43,7 +44,7 @@ function UIrun() {
 	UIsettingsPopupInit();
 	UIshortcutsPopupInit();
 
-	window.onblur = () => UIkeys.midiReleaseAllKeys();
+	window.onblur = () => UIpianoroll.getUIKeys().midiReleaseAllKeys();
 	window.onkeyup = UIkeyboardUp;
 	window.onkeydown = UIkeyboardDown;
 	window.onbeforeunload = UIcompositionBeforeUnload;
@@ -54,6 +55,9 @@ function UIrun() {
 			e.preventDefault();
 		}
 	}, { passive: false } );
+	document.addEventListener( "drop", e => {
+		DAW.dropAudioFiles( e.dataTransfer.files );
+	} );
 
 	DAW.cb.focusOn = UIcontrolsFocusOn;
 	DAW.cb.currentTime = UIcontrolsCurrentTime;
@@ -82,6 +86,12 @@ function UIrun() {
 
 	UIauthGetMe();
 	DAW.addCompositionsFromLocalStorage();
+
+	document.addEventListener( "gsuiEvents", e => {
+		const { component, eventName, args } = e.detail;
+
+		console.warn( `uncatched gsuiEvent: [${ component }][${ eventName }]`, args );
+	} );
 
 	if ( !hash.has( "cmp" ) ) {
 		UIcompositionClickNewLocal();

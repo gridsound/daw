@@ -1,6 +1,6 @@
 #loading {
 	display: flex;
-	z-index: 2147483647;
+	z-index: 2147483646;
 	position: absolute;
 	flex-direction: column;
 	align-items: center;
@@ -28,7 +28,7 @@
 
 #loadingTitle {
 	position: relative;
-	font: 52px var( --font-oswald );
+	font: 52px var( --gsui-font-title );
 }
 
 #loadingLoading,

@@ -2,197 +2,108 @@
 
 function UIcompositionChanged( obj, prevObj ) {
 	console.log( "change", obj );
+	UIpatterns.change( obj );
 	UIsynth.change( obj );
 	UIdrums.change( obj );
 	UIeffects.change( obj );
-	UIcompositionChanged.fn.forEach( ( fn, attr ) => {
-		if ( typeof attr === "string" ) {
-			if ( attr in obj ) {
-				fn.call( this, obj, prevObj );
-			}
-		} else if ( attr.some( attr => attr in obj ) ) {
-			fn.call( this, obj, prevObj );
+	UImixer.change( obj );
+	UIpianoroll.change( obj );
+	UIpatternroll.change( obj );
+	UIcompositionChanged.fn.forEach( ( fn, attrs ) => {
+		if ( attrs.some( attr => attr in obj ) ) {
+			fn( obj, prevObj );
 		}
 	} );
 }
 
 UIcompositionChanged.fn = new Map( [
-	[ "channels", function( obj ) {
-		const synOpenedDest = DAW.get.synth( DAW.get.synthOpened() ).dest,
-			synOpenedChan = obj.channels[ synOpenedDest ],
-			chanMap = Object.entries( obj.channels ).reduce( ( map, [ id, obj ] ) => {
-				if ( obj && "name" in obj ) {
-					map.set( id );
-				}
-				return map;
-			}, new Map() );
+	[ [ "channels" ], function( obj ) {
+		const synOpenedChan = obj.channels[ DAW.get.synth( DAW.get.synthOpened() ).dest ],
+			mixerSelectedChan = obj.channels[ UIeffects.getDestFilter() ];
 
-		UImixer.change( obj );
-		Object.entries( DAW.get.synths() ).forEach( ( [ id, syn ] ) => {
-			if ( chanMap.has( syn.dest ) ) {
-				UIsynthsRedirectSynth( id, syn.dest );
-			}
-		} );
-		Object.entries( DAW.get.patterns() ).forEach( ( [ id, pat ] ) => {
-			if ( chanMap.has( pat.dest ) ) {
-				UIredirectPattern( id, pat.dest );
-			}
-		} );
 		if ( synOpenedChan && "name" in synOpenedChan ) {
 			DOM.synthChannelBtnText.textContent = synOpenedChan.name;
 		}
-	} ],
-	[ "synths", function( { synths }, prevObj ) {
-		const synOpened = DAW.get.synthOpened();
-
-		Object.entries( synths ).forEach( ( [ id, obj ] ) => {
-			if ( !obj ) {
-				UIsynthsRemoveSynth( id );
-			} else if ( !prevObj.synths[ id ] ) {
-				UIsynthsAddSynth( id, obj );
-			} else {
-				UIsynthsUpdateSynth( id, obj );
-			}
-		} );
-		if ( synOpened in synths ) {
-			UIsynthChange( synths[ synOpened ] );
+		if ( mixerSelectedChan && "name" in mixerSelectedChan ) {
+			UIeffectsRenameChan( mixerSelectedChan.name );
 		}
 	} ],
-	[ "patterns", function( { patterns }, prevObj ) {
-		Object.entries( patterns ).forEach( ( [ id, obj ] ) => {
-			if ( !obj ) {
-				UIremovePattern( id, prevObj.patterns[ id ] );
-			} else if ( !prevObj.patterns[ id ] ) {
-				UIaddPattern( id, obj );
-			} else {
-				UIupdatePattern( id, obj );
-			}
-		} );
-		gsuiReorder.listReorder( DOM.buffPatterns, patterns );
-		UIsynths.forEach( syn => {
-			const list = syn.root.querySelector( ".synth-patterns" );
+	[ [ "synths" ], function( obj ) {
+		const synOpened = obj.synths[ DAW.get.synthOpened() ];
 
-			gsuiReorder.listReorder( list, patterns );
-		} );
+		if ( synOpened ) {
+			UIsynthChange( synOpened );
+		}
 	} ],
-	[ [ "tracks", "blocks" ], function( obj ) {
-		GSUtils.diffAssign( UIpatternroll.data.tracks, obj.tracks );
-		GSUtils.diffAssign( UIpatternroll.data.blocks, obj.blocks );
-	} ],
-	[ [ "loopA", "loopB" ], function() {
-		UIpatternroll.loop(
-			DAW.get.loopA(),
-			DAW.get.loopB() );
+	[ [ "patterns" ], function( obj ) {
+		Object.entries( obj.patterns ).forEach( kv => UIupdatePattern( ...kv ) );
 	} ],
 	[ [ "beatsPerMeasure", "stepsPerBeat" ], function() {
 		const bPM = DAW.get.beatsPerMeasure(),
 			sPB = DAW.get.stepsPerBeat();
 
-		UIclock.setStepsPerBeat( sPB );
-		UIpatternroll.timeSignature( bPM, sPB );
-		UIpianoroll.timeSignature( bPM, sPB );
+		UIclock.setAttribute( "timedivision", `${ bPM }/${ sPB }` );
 		DOM.beatsPerMeasure.textContent = bPM;
 		DOM.stepsPerBeat.textContent = sPB;
-		Object.keys( DAW.get.patterns() ).forEach( UIupdatePatternContent );
 	} ],
-	[ "bpm", function( { bpm } ) {
-		UIclock.setBPM( bpm );
+	[ [ "bpm" ], function( { bpm } ) {
+		UIclock.setAttribute( "bpm", bpm );
 		DOM.bpm.textContent =
-		UIcompositions.get( DAW.get.composition() ).bpm.textContent = bpm;
+		UIcompositions.get( DAW.get.cmp() ).bpm.textContent = bpm;
 		UIupdatePatternsBPM( bpm );
 	} ],
-	[ "name", function( { name } ) {
-		const cmp = DAW.get.composition();
-
-		UItitle( cmp.name );
+	[ [ "name" ], function( { name } ) {
+		UItitle( name );
 		DOM.headCmpName.textContent =
-		UIcompositions.get( cmp ).name.textContent = name;
+		UIcompositions.get( DAW.get.cmp() ).name.textContent = name;
 	} ],
-	[ "duration", function( { duration } ) {
-		const [ min, sec ] = GSUtils.parseBeatsToSeconds( duration, DAW.get.bpm() );
+	[ [ "duration" ], function( { duration } ) {
+		const [ min, sec ] = gsuiClock.parseBeatsToSeconds( duration, DAW.get.bpm() );
 
 		if ( DAW.getFocusedName() === "composition" ) {
-			DOM.sliderTime.options( { max: duration } );
+			DOM.sliderTime.setAttribute( "max", duration );
 		}
 		DOM.headCmpDur.textContent =
-		UIcompositions.get( DAW.get.composition() ).duration.textContent = `${ min }:${ sec }`;
+		UIcompositions.get( DAW.get.cmp() ).duration.textContent = `${ min }:${ sec }`;
 	} ],
-	[ "drumrows", function( { drumrows } ) {
-		const pats = DAW.get.patterns();
+	[ [ "patternDrumsOpened" ], function( obj ) {
+		if ( obj.patternDrumsOpened ) {
+			const pat = DAW.get.pattern( obj.patternDrumsOpened );
 
-		Object.entries( pats ).forEach( ( [ id, pat ] ) => {
-			if ( pat.type === "drums" ) {
-				UIupdatePatternContent( id );
-			}
-		} );
-	} ],
-	[ "drums", function( { drums } ) {
-		const pats = DAW.get.patterns(),
-			patOpened = pats[ DAW.get.patternDrumsOpened() ];
-
-		Object.entries( pats )
-			.filter( kv => kv[ 1 ].type === "drums" && kv[ 1 ].drums in drums )
-			.forEach( kv => UIupdatePatternContent( kv[ 0 ] ) );
-	} ],
-	[ "keys", function( { keys } ) {
-		const pats = DAW.get.patterns(),
-			patOpened = pats[ DAW.get.patternKeysOpened() ];
-
-		Object.entries( pats )
-			.filter( kv => kv[ 1 ].type === "keys" && kv[ 1 ].keys in keys )
-			.forEach( kv => UIupdatePatternContent( kv[ 0 ] ) );
-		if ( patOpened && patOpened.keys in keys ) {
-			GSUtils.diffAssign( UIpianoroll.data, keys[ patOpened.keys ] );
-		}
-	} ],
-	[ "patternDrumsOpened", function( { patternDrumsOpened }, prevObj ) {
-		const pat = DAW.get.pattern( patternDrumsOpened ),
-			el = pat && UIpatterns.get( patternDrumsOpened ),
-			elPrev = UIpatterns.get( prevObj.patternDrumsOpened );
-
-		DOM.drumsName.textContent = pat ? pat.name : "";
-		UIdrums.selectPattern( patternDrumsOpened );
-		if ( pat ) {
-			el.classList.add( "selected" );
-			if ( DAW.getFocusedName() === "drums" ) {
-				DOM.sliderTime.options( { max: pat.duration } );
-			}
+			DOM.drumsName.textContent = pat.name;
 			UIwindows.window( "drums" ).open();
-		}
-		if ( elPrev ) {
-			elPrev.classList.remove( "selected" );
+			if ( DAW.getFocusedName() === "drums" ) {
+				DOM.sliderTime.setAttribute( "max", pat.duration );
+			}
+		} else {
+			DOM.drumsName.textContent = "";
 		}
 	} ],
-	[ "synthOpened", function( { synthOpened }, prevObj ) {
-		const el = UIsynths.get( synthOpened ),
-			elPrev = UIsynths.get( prevObj.synthOpened );
+	[ [ "synthOpened" ], function( obj ) {
+		if ( obj.synthOpened ) {
+			const syn = DAW.get.synth( obj.synthOpened );
 
-		el && el.root.classList.add( "synth-selected" );
-		elPrev && elPrev.root.classList.remove( "synth-selected" );
-		UIsynthOpen( synthOpened );
+			DOM.synthName.textContent = syn.name;
+			DOM.synthChannelBtn.onclick = UImixerOpenChanPopup.bind( null, obj.synthOpened );
+			UIwindows.window( "synth" ).open();
+		} else {
+			DOM.synthName.textContent = "";
+			DOM.synthChannelBtn.onclick = null;
+		}
 	} ],
-	[ "patternKeysOpened", function( { patternKeysOpened }, prevObj ) {
-		const pat = DAW.get.pattern( patternKeysOpened ),
-			el = pat && UIpatterns.get( patternKeysOpened ),
-			elPrev = UIpatterns.get( prevObj.patternKeysOpened );
+	[ [ "patternKeysOpened" ], function( { patternKeysOpened } ) {
+		if ( patternKeysOpened ) {
+			const pat = DAW.get.pattern( patternKeysOpened );
 
-		UIpianoroll.empty();
-		DOM.pianorollName.textContent = pat ? pat.name : "";
-		DOM.pianorollForbidden.classList.toggle( "hidden", pat );
-		if ( pat ) {
-			el.classList.add( "selected" );
-			GSUtils.diffAssign( UIpianoroll.data, DAW.get.keys( pat.keys ) );
-			UIpianoroll.resetKey();
-			UIpianoroll.scrollToKeys();
+			DOM.pianorollName.textContent = pat.name;
+			DOM.pianorollForbidden.classList.add( "hidden" );
 			if ( DAW.getFocusedName() === "pianoroll" ) {
-				DOM.sliderTime.options( { max: pat.duration } );
+				DOM.sliderTime.setAttribute( "max", pat.duration );
 			}
 			UIwindows.window( "piano" ).open();
 		} else {
-			UIpianoroll.setPxPerBeat( 90 );
-		}
-		if ( elPrev ) {
-			elPrev.classList.remove( "selected" );
+			DOM.pianorollName.textContent = "";
+			DOM.pianorollForbidden.classList.remove( "hidden" );
 		}
 	} ],
 ] );

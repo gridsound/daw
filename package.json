@@ -1,0 +1,34 @@
+{
+  "name": "daw",
+  "version": "0.28.3",
+  "description": "GridSound (0.28.3) wants to be an open source online digital audio workstation following the new Web Audio api. You can use the application at https://gridsound.com/daw and create an account on https://gridsound.com 🎛🎹🎵✨",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "finalhandler": "^1.1.2",
+    "serve-static": "^1.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "./build.sh dep && ./build.sh prod",
+    "dev": "./build.sh dep && ./build.sh dev",
+    "test": "./build.sh tests",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoinebou13/daw.git"
+  },
+  "keywords": [
+    "daw"
+  ],
+  "author": "",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/antoinebou13/daw/issues"
+  },
+  "homepage": "https://github.com/antoinebou13/daw#readme"
+}

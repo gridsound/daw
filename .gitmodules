@@ -10,9 +10,6 @@
 [submodule "assets"]
 	path = assets
 	url = https://github.com/gridsound/assets
-[submodule "gs-data"]
-	path = gs-data
-	url = https://github.com/gridsound/gs-data
 [submodule "gs-components"]
 	path = gs-components
 	url = https://github.com/gridsound/gs-components

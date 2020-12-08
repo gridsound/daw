@@ -4,7 +4,7 @@
 
 #versionNum {
 	opacity: .8;
-	font-family: var( --font-number );
+	font-family: var( --gsui-font-number );
 }
 
 #versionCheck {

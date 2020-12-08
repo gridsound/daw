@@ -4,7 +4,6 @@
 #drumsName,
 #pianorollName { color: var( --windowBtn-pattern-color ); }
 #synthName { color: var( --windowBtn-synth-color ); }
-#synthNew { color: var( --windowBtn-synth-color ); }
 #synthChanName {
 	margin: 0;
 	padding-right: 4px;
@@ -25,12 +24,4 @@
 .gsuiSynthesizer {
 	height: 100%;
 	outline: 0;
-}
-
-/* .......................................................................... */
-.gsuiBeatlines {
-	transition: filter .2s;
-}
-.gsuiBlocksManager:not( .selected ) .gsuiBeatlines {
-	filter: brightness( .9 );
 }

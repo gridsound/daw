@@ -110,7 +110,7 @@
 .cmp-duration-wrap {
 	display: inline-flex;
 	align-items: center;
-	font: 14px var( --font-number );
+	font: 14px var( --gsui-font-number );
 }
 .cmp-duration-wrap {
 	margin-right: 10px;

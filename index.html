@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>GridSound</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no"/>
+<meta name="description" content="A free and Open-Source DAW (digital audio workstation)"/>
+<meta name="google" content="notranslate"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="GridSound"/>
+<meta property="og:url" content="https://gridsound.com/daw/"/>
+<meta property="og:image" content="https://gridsound.com/assets/og-image.jpg"/>
+<meta property="og:image:width" content="800"/>
+<meta property="og:image:height" content="400"/>
+<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>
+<meta name="theme-color" content="#3a5158"/>
+<link rel="manifest" href="manifest.json"/>
+<link rel="shortcut icon" href="assets/favicon.png"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiIcon/gsuiIcon.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiLFO/gsuiLFO.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiLFO/gsuiLFO.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiDrumrows/gsuiDrumrows.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiDrumrows/gsuiDrumrows.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiDrums/gsuiDrums.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiDrums/gsuiDrums.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiClock/gsuiClock.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiMixer/gsuiMixer.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiCurves/gsuiCurves.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiEffects/gsuiEffects.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiFxFilter/gsuiFxFilter.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiReorder/gsuiReorder.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiDragline/gsuiDragline.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPatternroll/gsuiPatternroll.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPianoroll/gsuiPianoroll.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPianoroll/gsuiPianoroll-block.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiKeys/gsuiKeys.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiKeys/gsuiKeys.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiOscillator/gsuiOscillator.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiOscillator/gsuiOscillator.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiDotline/gsuiDotline.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPanels/gsuiPanels.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPanels/gsuiPanels.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiPopup/gsuiPopup.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiSlider/gsuiSlider.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiTimeline/gsuiTimeline.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiTimeline/gsuiTimeline.colors.default.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiTrack/gsuiTrack.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiWindows/gsuiWindows.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiWindows/gsuiWindow.css"/>
+<link rel="stylesheet" href="gs-ui-components/gsuiWindows/gsuiWindow.colors.default.css"/>
+<link rel="stylesheet" href="assets/fonts/fonts.css"/>
+<link rel="stylesheet" href="src/css/reset.css"/>
+<link rel="stylesheet" href="src/css/textGlitch.css"/>
+<link rel="stylesheet" href="src/css/loading.css"/>
+<link rel="stylesheet" href="src/css/root.css"/>
+<link rel="stylesheet" href="src/css/app.css"/>
+<link rel="stylesheet" href="src/css/head.css"/>
+<link rel="stylesheet" href="src/css/cmps.css"/>
+<link rel="stylesheet" href="src/css/popup.css"/>
+<link rel="stylesheet" href="src/css/window.css"/>
+<link rel="stylesheet" href="src/css/windows.css"/>
+<link rel="stylesheet" href="src/css/cmp.css"/>
+<link rel="stylesheet" href="src/css/synth.css"/>
+<link rel="stylesheet" href="src/css/blocks.css"/>
+<link rel="stylesheet" href="src/css/history.css"/>
+<link rel="stylesheet" href="src/css/pattern.css"/>
+<link rel="stylesheet" href="src/css/version.css"/>
+<link rel="stylesheet" href="src/css/versions.css"/>
+<link rel="stylesheet" href="src/css/placeholder.css"/>
+<link rel="stylesheet" href="src/css/headDropdown.css"/>
+<link rel="stylesheet" href="src/css/historyAction.css"/>
+<link rel="stylesheet" href="src/css/pianorollForbidden.css"/>
+</head>
+<body>
+<noscript>GridSound needs JavaScript to run</noscript>
+<div id="loading">
+	<div id="loadingContent">
+		<div class="TextGlitch" id="gsTitle">
+			<div class="TextGlitch-clip">
+				<div class="TextGlitch-word">GridSound</div>
+				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
+				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
+			</div>
+			<div class="TextGlitch-clip">
+				<div class="TextGlitch-word"></div>
+				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
+				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
+			</div>
+			<div class="TextGlitch-clip">
+				<div class="TextGlitch-word"></div>
+				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
+				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
+			</div>
+		</div>
+		<span id="loadingLoading">loading...</span>
+		<span id="loadingLoaded">click to start</span>
+		<span id="loadingStarting">starting...</span>
+	</div>
+</div>
+<div id="app">
+	<!--#head-->
+	<div id="body"></div>
+</div>
+<div id="head">
+	<div id="header">
+		<span id="title" data-text="GridSound" data-text-s="GS"></span>
+		<a class="btn btnLarge headBtn" href id="headUser" title="Cloud profile" target="_blank" rel="noopener"></a>
+		<button class="btn btnLarge headBtn btnIconLarge gsuiIcon" id="login" data-icon="profile" title="Login to GridSound"></button>
+		<button class="btn btnLarge headBtn btnIconLarge gsuiIcon" id="logout" data-icon="logout" title="Logout"></button>
+		<div id="headCmps">
+			<button class="btn btnLarge headBtn headDropdown-btn gsuiIcon" id="cmpsBtn" data-icon="musics" title="Create cloud/local compositions"></button>
+			<!--#cmps-->
+		</div>
+	</div>
+	<div id="headCmp">
+		<button id="headCmpSave" class="btn cmp-save gsuiIcon" title="Save composition"></button>
+		<button id="headCmpInfo" class="btn" title="Edit composition's title">
+			<i id="headCmpIcon" class="gsuiIcon"></i>
+			<span id="headCmpName"></span>
+			<span id="headCmpHover" class="gsuiIcon" data-icon="pen"></span>
+			<span id="headCmpDur"></span>
+		</button>
+	</div>
+	<div id="ctrlA">
+		<div id="headGain" class="btnMarge" title="Main app volume (this will not affect the rendering)"></div>
+		<div id="headPlay" class="btnGroup btnMarge">
+			<button class="playBtn btn" id="playToggle" data-dir="up" title="Toggle focus between the composition and piano windows"><span></span><span></span></button>
+			<button class="playBtn btn btnLarge gsuiIcon" id="play" data-icon="play"></button>
+			<button class="playBtn btn btnLarge gsuiIcon" id="stop" data-icon="stop"></button>
+		</div>
+		<button id="headTempo" class="btn btnMarge" title="Edit the time signature and BPM">
+			<div id="timeSignature">
+				<span id="beatsPerMeasure"></span>
+				<span id="stepsPerBeat"></span>
+			</div>
+			<div id="bpm"></div>
+		</button>
+	</div>
+	<div id="ctrlB">
+		<div id="headHist" class="btnGroup btnMarge">
+			<button class="histBtn btn btnLarge gsuiIcon" id="undo" data-icon="undo" title="Undo the previous action"></button>
+			<button class="histBtn btn btnLarge gsuiIcon" id="redo" data-icon="redo" title="Redo the last action"></button>
+			<button class="histBtn btn headDropdown-btn gsuiIcon" id="undoMore" data-icon="caret-down" title="Show the actions list"></button>
+			<!--#history-->
+		</div>
+		<canvas id="headAnalyser" class="btnMarge"></canvas>
+		<button id="headExport" class="btn btnMarge btnLarge btnBg gsuiIcon" data-icon="export" title="Export the composition"></button>
+		<button id="headSettings" class="btn btnMarge btnLarge btnBg gsuiIcon" data-icon="settings" title="Settings"></button>
+		<button id="headMidi" class="btn btnMarge btnLarge btnBg gsuiIcon" data-icon="midi" title="Midi Devices"></button>
+	</div>
+	<div id="headCurrentTime"></div>
+	<div id="winBtns">
+		<button class="btn btnMarge winBtn" data-win="blocks" title="Open/close the blocks window">blocks</button>
+		<button class="btn btnMarge winBtn" data-win="mixer" title="Open/close the mixer window">mixer</button>
+		<button class="btn btnMarge winBtn" data-win="synth" title="Open/close the synthesizer window">synth</button>
+		<button class="btn btnMarge winBtn" data-win="main" title="Open/close the composition window">composition</button>
+		<button class="btn btnMarge winBtn" data-win="drums" title="Open/close the drums window">drums</button>
+		<button class="btn btnMarge winBtn" data-win="piano" title="Open/close the piano window">pianoroll</button>
+		<button class="btn btnMarge winBtn" data-win="effects" title="Open/close the effects window">effects</button>
+	</div>
+	<div id="headHelp">
+		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="cookies" data-icon="cookie" title="Accept our vegan cookies!"></button>
+		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="helpKeyboardShortcuts" data-icon="keyboard" title="List of keyboard shortcuts"></button>
+		<a      class="btn btnMarge btnLarge btnBg gsuiIcon" id="help" data-icon="help" title="Open the Help page" href="https://github.com/gridsound/daw/wiki/help" target="_blank" rel="noopener"></a>
+		<a      class="btn btnMarge btnLarge btnBg gsuiIcon" id="changelog" data-icon="changelog" title="Read the changelog" href="https://github.com/gridsound/daw/wiki/changelog" target="_blank" rel="noopener"></a>
+		<button class="btn btnMarge btnLarge btnBg gsuiIcon" id="helpAbout" data-icon="about" title="About GridSound"></button>
+	</div>
+	<div id="headVersion">
+		<button id="headVersionBtn" class="headDropdown-btn" title="Access older versions">
+			<i class="gsuiIcon" data-icon="caret-down"></i>
+			<span id="headVersionNum"></span>
+		</button>
+		<!--#versions-->
+	</div>
+</div>
+<div class="cmp" id="cmp" draggable="true" data-remove data-remove-id>
+	<button data-action="save" class="cmp-btn cmp-save gsuiIcon"></button>
+	<a href data-action="open" class="cmp-info">
+		<div class="cmp-name"></div>
+		<div>
+			<span class="cmp-duration-wrap">
+				<i class="gsuiIcon" data-icon="clock"></i>
+				<span class="cmp-duration"></span>
+			</span>
+			<span class="cmp-bpm-wrap">
+				<i class="gsuiIcon" data-icon="speed"></i>
+				<span class="cmp-bpm"></span>
+			</span>
+		</div>
+	</a>
+	<a href class="cmp-btn cmp-btn-light gsuiIcon" data-action="json" data-icon="file-export" title="Export to JSON file"></a>
+	<button class="cmp-btn cmp-btn-light gsuiIcon" data-action="delete" data-icon="minus-oct" title="Delete"></button>
+</div>
+<div id="cmps" class="headDropdown" tabindex="0">
+	<div class="headDropdown-head" id="cmpsLocalTitle">
+		<i class="headDropdown-icon gsuiIcon" data-icon="local"></i>
+		<span class="headDropdown-title">local</span>
+		<button class="windowBtn" id="localNewCmp" title="Create a new composition on this computer">
+			<i class="windowBtnIcon gsuiIcon" data-icon="plus"></i>
+			<span class="windowBtnText">new</span>
+		</button>
+		<button class="windowBtn" id="localOpenCmp" title="Open a composition on this computer">
+			<i class="windowBtnIcon gsuiIcon" data-icon="folder-open"></i>
+			<span class="windowBtnText">open</span>
+		</button>
+	</div>
+	<div class="headDropdown-head" id="cmpsCloudTitle">
+		<i class="headDropdown-icon gsuiIcon" data-icon="cloud"></i>
+		<span class="headDropdown-title">cloud</span>
+		<button class="windowBtn" id="cloudNewCmp" title="Create a new composition on your cloud profile">
+			<i class="windowBtnIcon gsuiIcon" data-icon="plus"></i>
+			<span class="windowBtnText">new</span>
+		</button>
+	</div>
+	<div class="headDropdown-list" id="cmpsLocalList">
+		<div class="placeholder">
+			<span>there is no local composition here</span>
+		</div>
+	</div>
+	<div class="headDropdown-list" id="cmpsCloudList">
+		<div class="placeholder">
+			<span>you don't have any cloud composition yet</span>
+			<span>you are not connected</span>
+		</div>
+	</div>
+</div>
+<div id="synth" class="synth" data-remove data-remove-id>
+	<div class="synth-head">
+		<button class="synth-btn synth-showBtn gsuiIcon" data-action="expand" data-icon="caret-right"></button>
+		<div class="synth-info">
+			<span class="synth-name"></span>
+			<i class="synth-dest-arrow gsuiIcon" data-icon="arrow-right"></i>
+			<button class="windowBtn synth-dest-btn" data-action="changeDest">
+				<i class="windowBtnIcon gsuiIcon" data-icon="mixer"></i>
+				<span class="windowBtnText synth-dest"></span>
+			</button>
+		</div>
+		<button class="synth-btn gsuiIcon" data-action="newPattern" data-icon="plus" title="Create a new pattern with this synthesizer"></button>
+		<button class="synth-btn gsuiIcon" data-action="delete" data-icon="close" title="Delete the synthesizer and its patterns"></button>
+	</div>
+	<div class="synth-patterns"></div>
+</div>
+<div class="pattern" id="pattern" draggable="true" tabindex="0" data-remove data-remove-id>
+	<div class="pattern-grip gsuiIcon" data-icon="grip-v"></div>
+	<div class="pattern-head">
+		<div class="pattern-info">
+			<div class="pattern-name"></div>
+			<i class="pattern-dest-arrow gsuiIcon" data-icon="arrow-right"></i>
+			<button class="windowBtn pattern-dest-btn" data-action="changeDest">
+				<i class="windowBtnIcon gsuiIcon" data-icon="mixer"></i>
+				<span class="windowBtnText pattern-dest"></span>
+			</button>
+		</div>
+		<button class="pattern-btn gsuiIcon" data-action="clone" data-icon="clone" title="Clone this pattern"></button>
+		<button class="pattern-btn gsuiIcon" data-action="remove" data-icon="close" title="Delete this pattern"></button>
+	</div>
+	<div class="gsuiPatternroll-block-content"></div>
+	<div class="gsuiPatternroll-block-placeholder">
+		<i class="gsuiPatternroll-block-placeholderIcon gsuiIcon" data-icon="file-corrupt"></i>
+		<span class="gsuiPatternroll-block-placeholderText">missing data</span>
+	</div>
+</div>
+<div id="history" class="headDropdown" tabindex="0">
+	<div class="headDropdown-head" id="historyTitle">
+		<i class="headDropdown-icon gsuiIcon" data-icon="history"></i>
+		<span class="headDropdown-title">history</span>
+	</div>
+	<div class="headDropdown-list" id="historyList">
+		<div class="placeholder">
+			<span>there is nothing to undo</span>
+		</div>
+	</div>
+</div>
+<div id="versions" class="headDropdown" tabindex="0">
+	<div class="headDropdown-head" id="versionsTitle">
+		<i class="headDropdown-icon gsuiIcon" data-icon="changelog"></i>
+		<span class="headDropdown-title">versions</span>
+	</div>
+	<div class="headDropdown-list" id="versionsList"></div>
+</div>
+<div class="historyAction" id="historyAction" data-remove data-remove-id>
+	<i class="historyAction-icon gsuiIcon"></i>
+	<span class="historyAction-text"></span>
+</div>
+<div data-window="mixer">
+</div>
+<div data-window="synth">
+	<div class="windowMenu">
+		<button id="synthName" class="windowBtn windowDataBtn"></button>
+		<i id="synthDestArrow" class="gsuiIcon" data-icon="arrow-right"></i>
+		<button id="synthChannelBtn" class="windowBtn">
+			<i class="windowBtnIcon gsuiIcon" data-icon="mixer"></i>
+			<span id="synthChannelBtnText" class="windowBtnText"></span>
+		</button>
+	</div>
+</div>
+<div data-window="blocks" class="gsuiPanels-y">
+	<div class="blocksPanel" id="blocksSamples">
+		<div class="blocksPanelMenu">
+			<i class="blocksPanelIcon gsuiIcon" data-icon="waveform"></i>
+			<span class="blocksPanelTitle">samples</span>
+		</div>
+		<div id="buffPatterns"></div>
+		<div id="buffPatternsPlaceholder">
+			<span>Drag and drop raw files here (mp3, ogg, wav)</span>
+		</div>
+	</div>
+	<div class="blocksPanel" id="blocksDrums">
+		<div class="blocksPanelMenu">
+			<i class="blocksPanelIcon gsuiIcon" data-icon="drums"></i>
+			<span class="blocksPanelTitle">drums</span>
+			<button id="drumsNew" class="windowBtn" title="Create a new drums pattern">
+				<i class="windowBtnIcon gsuiIcon" data-icon="plus"></i>
+				<span class="windowBtnText">new drums</span>
+			</button>
+		</div>
+		<div id="drumsPatterns"></div>
+	</div>
+	<div class="blocksPanel" id="blocksPatterns">
+		<div class="blocksPanelMenu">
+			<i class="blocksPanelIcon gsuiIcon" data-icon="oscillator"></i>
+			<span class="blocksPanelTitle">keys</span>
+			<button id="synthNew" class="windowBtn" title="Create a new synthesizer">
+				<i class="windowBtnIcon gsuiIcon" data-icon="plus"></i>
+				<span class="windowBtnText">new synth</span>
+			</button>
+		</div>
+		<div id="keysPatterns"></div>
+	</div>
+</div>
+<div data-window="piano">
+	<div class="windowMenu">
+		<button id="pianorollName" class="windowBtn windowDataBtn"></button>
+	</div>
+	<div id="pianorollForbidden" class="no-select"></div>
+</div>
+<div data-window="main"></div>
+<div data-window="effects">
+	<div class="windowMenu">
+		<button id="channelName" class="windowBtn windowDataBtn"></button>
+	</div>
+	<div class="windowBetaMsg">
+		Beta: the effects may not work as expected due to browser support
+	</div>
+</div>
+<div data-window="drums">
+	<div class="windowMenu">
+		<button id="drumsName" class="windowBtn windowDataBtn"></button>
+	</div>
+</div>
+<div class="popup" id="authPopupContent" data-remove>
+	<fieldset>
+		<legend>Sign in</legend>
+		<div class="param">
+			<div class="param-title">
+				<span>Email</span>
+				<small>or username</small>
+			</div>
+			<div class="param-values">
+				<input type="text" name="email"/>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">
+				<span>Password</span>
+			</div>
+			<div class="param-values">
+				<input type="password" name="password"/>
+			</div>
+		</div>
+		<div id="authPopupError" class="popup-error-msg"></div>
+	</fieldset>
+	<a target="_blank" rel="noopener" href="https://gridsound.com/#/forgotPassword">Forgot password&nbsp;?</a><br/>
+	<a target="_blank" rel="noopener" href="https://gridsound.com/#/auth">Create a new account</a>
+</div>
+<div class="popup" id="midiPopupContent" data-remove>
+	<fieldset>
+		<legend>Midi Devices</legend>
+		<div class="param">
+			<div class="param-title">Midi Devices support</div>
+			<div class="param-values">
+				<label>
+					<input id="midiSupport" name="midiSupportEnabled" type="checkbox"/>
+				</label>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Midi Devices</div>
+			<div class="param-values">
+				<label>
+					<select id="midiDeviceSelect" name="midiDevices" type="checkbox">
+					</select>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div class="popup" id="openPopupContent" data-remove>
+	<fieldset>
+		<legend>Open and load a new composition</legend>
+		<div class="param">
+			<div class="param-title">With an URL</div>
+			<div class="param-values">
+				<input id="inputOpenURL" name="url" type="url" placeholder="http://"/>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">
+				With a local file<br/>
+				<small>(Please notice that you can also drop a file into the app)</small>
+			</div>
+			<div class="param-values">
+				<input id="inputOpenFile" name="file" type="file"/>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div class="popup" id="aboutPopupContent" data-remove>
+	<div class="title">
+		<span>GridSound</span>
+		<span id="version">
+			<span id="versionNum"></span>
+			<i id="versionIcon" class="gsuiIcon"></i>
+			<span id="versionCheck">check the version</span>
+		</span>
+	</div>
+	<div>
+		GridSound is a <b>work-in-progress</b> free browser-based digital audio workstation following the
+		<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>.
+	</div>
+	<div>
+		You can create an account (by clicking <i class="gsuiIcon" data-icon="profile"></i>)
+		and start uploading your compositions online <i class="gsuiIcon" data-icon="cloud"></i>
+	</div>
+	<div class="social-network">
+		<a target="_blank" rel="noopener" title="GitHub"   class="gsuiIcon gsuiIconB" data-icon="github"   href="https://github.com/gridsound"></a>
+		<a target="_blank" rel="noopener" title="Twitter"  class="gsuiIcon gsuiIconB" data-icon="twitter"  href="https://twitter.com/gridsound"></a>
+		<a target="_blank" rel="noopener" title="YouTube"  class="gsuiIcon gsuiIconB" data-icon="youtube"  href="https://youtube.com/channel/UC2-jebT7TS8xJgJPymXqatA"></a>
+		<a target="_blank" rel="noopener" title="Facebook" class="gsuiIcon gsuiIconB" data-icon="facebook" href="https://facebook.com/gridsound"></a>
+		<a target="_blank" rel="noopener" title="CodePen"  class="gsuiIcon gsuiIconB" data-icon="codepen"  href="https://codepen.io/gridsound"></a>
+		<a target="_blank" rel="noopener" title="Discord"  class="gsuiIcon gsuiIconB" data-icon="discord"  href="https://discord.gg/NUYxHAg"></a>
+	</div>
+</div>
+<div class="popup" id="tempoPopupContent" data-remove>
+	<fieldset>
+		<legend>BPM / time signature</legend>
+		<div class="param">
+			<div class="param-title">Beats per measure</div>
+			<div class="param-values"><input id="tempoBeatsPM" name="beatsPerMeasure" type="number" min="1" max="16"/></div>
+		</div>
+		<div class="param">
+			<div class="param-title">Steps per beat</div>
+			<div class="param-values"><input id="tempoStepsPB" name="stepsPerBeat" type="number" min="1" max="16"/></div>
+		</div>
+		<div class="param">
+			<div class="param-title">BPM (Beats Per Minute)</div>
+			<div class="param-values">
+				<input id="tempoBPM" name="bpm" type="number" min="1" max="999"/>
+				<a id="tempoBPMTap" class="gsuiIcon" data-icon="tint"></a>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div class="popup" id="renderPopupContent" data-remove>
+	<fieldset>
+		<legend>Render the current composition</legend>
+		<div id="renderWrap">
+			<a href id="renderBtn">
+				<span id="renderBtn0">
+					<span>Render</span>
+					<i class="gsuiIcon" data-icon="render"></i>
+				</span>
+				<span id="renderBtn1">
+					<span>Rendering...</span>
+					<i class="gsuiIcon" data-spin="on"></i>
+				</span>
+				<span id="renderBtn2">
+					<span>Download WAV file</span>
+					<i class="gsuiIcon" data-icon="export"></i>
+				</span>
+			</a>
+			<progress id="renderProgress" value="" max="1"></progress>
+		</div>
+	</fieldset>
+</div>
+<div class="popup" id="settingsPopupContent" data-remove>
+	<fieldset>
+		<legend>UI refresh rate</legend>
+		<div class="param">
+			<div class="param-title">Auto</div>
+			<div class="param-values">
+				<label>
+					<input id="settingsUIRateModeAuto" name="UIRateMode" type="radio" value="auto"/>
+					<span class="settingsPopupFps">60</span>
+				</label>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Manual</div>
+			<div class="param-values">
+				<label>
+					<input id="settingsUIRateModeManual" name="UIRateMode" type="radio" value="manual"/>
+					<span id="settingsUIRateManualFps" class="settingsPopupFps"></span>
+				</label>
+				<input id="settingsUIRateManual" name="UIRateManual" type="range" step="1" min="5" max="40"/>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Windows</legend>
+		<div class="param">
+			<div class="param-title">Move/resize mode</div>
+			<div class="param-values">
+				<label>
+					<input id="settingsWindowsMode" name="windowsDirectMode" type="checkbox"/>
+					<span>direct</span>
+				</label>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div class="popup" id="shortcutsPopupContent" data-remove>
+	<fieldset>
+		<legend>Global shortcuts</legend>
+		<div class="param">
+			<div class="param-title">Save the current composition</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">S</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Open a composition</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">O</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Open a new composition</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">N</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Play / pause the selected grid</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Space</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Undo the previous action</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">Z</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Redo the next action</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">Shift</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">Z</kbd>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Grids shortcuts</legend>
+		<div class="param">
+			<div class="param-title">Select all the blocks of the focused grid</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">A</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Deselect all the blocks of the focused grid</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">D</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Duplicate (copy/paste) the selected blocks</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / Alt</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">B</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Delete all the selected blocks of the focused grid</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Delete</kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Move vertically inside the grids</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Scroll <i class="gsuiIcon" data-icon="arrows-v"></i></kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">Move horizontally inside the grids</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Shift</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">Scroll <i class="gsuiIcon" data-icon="arrows-v"></i></kbd>
+			</div>
+		</div>
+		<div class="param">
+			<div class="param-title">
+				Zoom-in / zoom-out<br/>
+				Zoom X by scrolling above the grid<br/>
+				Zoom Y by scrolling above the keys<br/>
+			</div>
+			<div class="param-values">
+				<kbd class="shortcuts">Ctrl / ⌘</kbd><i class="shortcuts-sep gsuiIcon" data-icon="plus"></i>
+				<kbd class="shortcuts">Scroll <i class="gsuiIcon" data-icon="arrows-v"></i></kbd>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div class="popup" id="selectChanPopupContent" data-remove>
+	<fieldset>
+		<legend>Select a channel</legend>
+		<select id="selectChanPopupSelect" size="8" name="channel"></select>
+	</fieldset>
+</div>
+<div class="gsuiLFO" id="gsuiLFO-template">
+	<div class="gsuiLFO-head">
+		<button class="gsuiLFO-toggle gsuiIcon" data-icon="toggle" title="Toggle LFO"></button>
+		<span class="gsuiLFO-title">LFO</span>
+	</div>
+	<div class="gsuiLFO-wave"></div>
+	<div class="gsuiLFO-prop gsuiLFO-delay" title="delay">
+		<div class="gsuiLFO-propLabel">
+			<span>delay</span>
+			<div class="gsuiLFO-propValue"></div>
+		</div>
+		<div class="gsuiLFO-propContent"></div>
+	</div>
+	<div class="gsuiLFO-prop gsuiLFO-attack" title="attack">
+		<div class="gsuiLFO-propLabel">
+			<span>attack</span>
+			<div class="gsuiLFO-propValue"></div>
+		</div>
+		<div class="gsuiLFO-propContent"></div>
+	</div>
+	<div class="gsuiLFO-prop gsuiLFO-speed" title="speed">
+		<div class="gsuiLFO-propLabel">
+			<span>speed</span>
+			<div class="gsuiLFO-propValue"></div>
+		</div>
+		<div class="gsuiLFO-propContent"></div>
+	</div>
+	<div class="gsuiLFO-prop gsuiLFO-amp" title="amplitude">
+		<div class="gsuiLFO-propLabel">
+			<span>amp</span>
+			<div class="gsuiLFO-propValue"></div>
+		</div>
+		<div class="gsuiLFO-propContent"></div>
+	</div>
+	<div class="gsuiLFO-prop gsuiLFO-type">
+		<div class="gsuiLFO-propLabel">wave</div>
+		<form class="gsuiLFO-propContent">
+			<label class="gsuiLFO-typeBtn" title="sine">
+				<input class="gsuiLFO-typeRadio" name="gsuiLFO-type" type="radio" value="sine"/>
+				<svg class="gsuiLFO-typeSVG" viewBox="0 0 14 10"><path d="M 1 5 C 1 4 1 1 4 1 C 7 1 7 4 7 5 C 7 6 7 9 10 9 C 13 9 13 6 13 5"/></svg>
+			</label>
+			<label class="gsuiLFO-typeBtn" title="triangle">
+				<input class="gsuiLFO-typeRadio" name="gsuiLFO-type" type="radio" value="triangle"/>
+				<svg class="gsuiLFO-typeSVG" viewBox="0 0 14 10"><path d="M 1 5 L 4 1 L 10 9 L 13 5"/></svg>
+			</label>
+			<label class="gsuiLFO-typeBtn" title="sawtooth">
+				<input class="gsuiLFO-typeRadio" name="gsuiLFO-type" type="radio" value="sawtooth"/>
+				<svg class="gsuiLFO-typeSVG" viewBox="0 0 14 10"><path d="M 1 5 L 7 1 L 7 9 L 13 5"/></svg>
+			</label>
+			<label class="gsuiLFO-typeBtn" title="square">
+				<input class="gsuiLFO-typeRadio" name="gsuiLFO-type" type="radio" value="square"/>
+				<svg class="gsuiLFO-typeSVG" viewBox="0 0 14 10"><path d="M 1 5 L 1 1 L 7 1 L 7 9 L 13 9 L 13 5"/></svg>
+			</label>
+		</form>
+	</div>
+</div>
+<div id="gsuiKeys-octave-template">
+	<div data-key="11" class="gsuiKey"><div data-key="11" class="gsui-row gsuiKey-row"><div></div></div></div>
+	<div data-key="10" class="gsuiKey gsuiKeyBlack"><div data-key="10" class="gsui-row gsuiKey-row gsuiKeyBlack-row"><div></div></div></div>
+	<div data-key="9" class="gsuiKey"><div data-key="9" class="gsui-row gsuiKey-row"><div></div></div></div>
+	<div data-key="8" class="gsuiKey gsuiKeyBlack"><div data-key="8" class="gsui-row gsuiKey-row gsuiKeyBlack-row"><div></div></div></div>
+	<div data-key="7" class="gsuiKey"><div data-key="7" class="gsui-row gsuiKey-row"><div></div></div></div>
+	<div data-key="6" class="gsuiKey gsuiKeyBlack"><div data-key="6" class="gsui-row gsuiKey-row gsuiKeyBlack-row"><div></div></div></div>
+	<div data-key="5" class="gsuiKey"><div data-key="5" class="gsui-row gsuiKey-row"><div></div></div></div>
+	<div data-key="4" class="gsuiKey"><div data-key="4" class="gsui-row gsuiKey-row"><div></div></div></div>
+	<div data-key="3" class="gsuiKey gsuiKeyBlack"><div data-key="3" class="gsui-row gsuiKey-row gsuiKeyBlack-row"><div></div></div></div>
+	<div data-key="2" class="gsuiKey"><div data-key="2" class="gsui-row gsuiKey-row"><div></div></div></div>
+	<div data-key="1" class="gsuiKey gsuiKeyBlack"><div data-key="1" class="gsui-row gsuiKey-row gsuiKeyBlack-row"><div></div></div></div>
+	<div data-key="0" class="gsuiKey"><div data-key="0" class="gsui-row gsuiKey-row"><div></div></div></div>
+</div>
+<div class="gsuiClock" id="gsuiClock-template">
+	<div class="gsuiClock-relative">
+		<div class="gsuiClock-absolute">
+			<div class="gsuiClock-a">0</div>
+			<div class="gsuiClock-b">00</div>
+			<div class="gsuiClock-c">000</div>
+		</div>
+	</div>
+	<button class="gsuiClock-modes">
+		<div class="gsuiClock-mode gsuiClock-beat"></div>
+		<div class="gsuiClock-mode gsuiClock-second"></div>
+	</button>
+</div>
+<div class="gsuiDrums" id="gsuiDrums-template" tabindex="-1">
+	<div class="gsuiDrums-panels gsuiPanels-x">
+		<div class="gsuiDrums-sidePanel">
+			<div class="gsuiDrums-sidePanelMenu"></div>
+		</div>
+		<div class="gsuiDrums-linesPanel">
+			<div class="gsuiDrums-timelineWrap"></div>
+			<div class="gsuiDrums-lines">
+				<div class="gsuiDrums-linesAbsolute">
+					<div class="gsuiDrums-currentTime"></div>
+					<div class="gsuiDrums-loop gsuiDrums-loopA"></div>
+					<div class="gsuiDrums-loop gsuiDrums-loopB"></div>
+				</div>
+				<div class="gsuiDrums-drumHover">
+					<div class="gsuiDrums-drumHoverIn"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="gsuiDrums-shadow"></div>
+</div>
+
+<div class="gsuiDrums-line" id="gsuiDrums-line-template">
+	<div class="gsuiDrums-lineIn"></div>
+</div>
+
+<div class="gsuiDrums-drum" id="gsuiDrums-drum-template">
+	<div class="gsuiDrums-drum-in">
+		<div class="gsuiDrums-drum-param"></div>
+	</div>
+</div>
+<div class="gsuiMixer" id="gsuiMixer-template">
+	<div class="gsuiMixer-panMain"></div>
+	<div class="gsuiMixer-panChannels">
+		<button class="gsuiMixer-addChan">
+			<i class="gsuiIcon" data-icon="plus"></i>
+		</button>
+	</div>
+</div>
+
+<div class="gsuiMixerChannel" draggable="true" id="gsuiMixerChannel-template">
+	<button class="gsuiMixerChannel-nameWrap">
+		<span class="gsuiMixerChannel-name"></span>
+	</button>
+	<button class="gsuiMixerChannel-delete gsuiIcon" data-icon="close" title="Remove the channel"></button>
+	<div class="gsuiMixerChannel-analyserWrap">
+		<canvas class="gsuiMixerChannel-analyser"></canvas>
+	</div>
+	<button class="gsuiMixerChannel-toggle gsuiIcon" data-icon="toggle"></button>
+	<div class="gsuiMixerChannel-pan"></div>
+	<div class="gsuiMixerChannel-gain"></div>
+	<button class="gsuiMixerChannel-connect">
+		<i class="gsuiMixerChannel-connectA gsuiIcon" data-icon="caret-up"></i>
+		<i class="gsuiMixerChannel-connectB gsuiIcon" data-icon="caret-up"></i>
+	</button>
+	<div class="gsuiMixerChannel-grip gsuiIcon" data-icon="grip-h"></div>
+</div>
+<div id="gsuiPopup">
+	<div id="gsuiPopupWindow" tabindex="0">
+		<div id="gsuiPopupHead"></div>
+		<form id="gsuiPopupBody">
+			<div id="gsuiPopupContent"></div>
+			<div id="gsuiPopupMessage"></div>
+			<input type="text" id="gsuiPopupInputText"/>
+			<div id="gsuiPopupBtns">
+				<input type="button" id="gsuiPopupCancel" value="Cancel"/>
+				<input type="submit" id="gsuiPopupOk" value="Ok"/>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="gsuiTrack-template" class="gsuiTrack">
+	<button class="gsuiTrack-toggle gsuiIcon" data-icon="toggle" title="toggle track"></button>
+	<div class="gsuiTrack-nameWrap">
+		<input class="gsuiTrack-name" type="text" spellcheck="false"/>
+	</div>
+	<div class="gsui-row gsuiTrack-row"><div></div></div>
+</div>
+<svg class="gsuiCurves" id="gsuiCurves-template" xmlns="http://www.w3.org/2000/svg">
+	<line class="gsuiCurves-line" shape-rendering="crispEdges"></line>
+	<g class="gsuiCurves-marks"></g>
+	<g class="gsuiCurves-curves"></g>
+</svg>
+<div id="gsuiSlider-template" class="gsuiSlider">
+	<input type="range" class="gsuiSlider-input"/>
+	<div class="gsuiSlider-line">
+		<div class="gsuiSlider-lineColor"></div>
+	</div>
+	<svg class="gsuiSlider-svg">
+		<circle class="gsuiSlider-svgLine"/>
+		<circle class="gsuiSlider-svgLineColor"/>
+	</svg>
+	<div class="gsuiSlider-eventCatcher"></div>
+</div>
+<div class="gsuiWindow" tabindex="0" id="gsuiWindow-template">
+	<div class="gsuiWindow-handlers">
+		<div class="gsuiWindow-handler" data-dir="n"></div>
+		<div class="gsuiWindow-handler" data-dir="e"></div>
+		<div class="gsuiWindow-handler" data-dir="s"></div>
+		<div class="gsuiWindow-handler" data-dir="w"></div>
+		<div class="gsuiWindow-handler" data-dir="nw"></div>
+		<div class="gsuiWindow-handler" data-dir="ne"></div>
+		<div class="gsuiWindow-handler" data-dir="sw"></div>
+		<div class="gsuiWindow-handler" data-dir="se"></div>
+	</div>
+	<div class="gsuiWindow-wrap">
+		<div class="gsuiWindow-head">
+			<button class="gsuiWindow-icon gsuiIcon" tabindex="-1"></button>
+			<div class="gsuiWindow-title"></div>
+			<div class="gsuiWindow-headContent"></div>
+			<div class="gsuiWindow-headBtns">
+				<button class="gsuiWindow-headBtn gsuiIcon" data-icon="minimize" title="Minimize"></button>
+				<button class="gsuiWindow-headBtn gsuiIcon" data-icon="restore" title="Restore"></button>
+				<button class="gsuiWindow-headBtn gsuiIcon" data-icon="maximize" title="Maximize"></button>
+				<button class="gsuiWindow-headBtn gsuiIcon" data-icon="close" title="Close"></button>
+			</div>
+		</div>
+		<div class="gsuiWindow-content"></div>
+	</div>
+</div>
+<div class="gsuiEffects" id="gsuiEffects-template">
+	<div class="gsuiEffects-list">
+		<button class="gsuiEffects-addBtn">
+			<i class="gsuiIcon" data-icon="plus"></i>
+		</button>
+		<select class="gsuiEffects-addSelect" size="4"></select>
+	</div>
+</div>
+
+<div class="gsuiEffects-fx" draggable="true" id="gsuiEffects-fx-template">
+	<div class="gsuiEffects-fx-head">
+		<div class="gsuiEffects-fx-grip gsuiIcon" data-icon="grip-v"></div>
+		<button class="gsuiEffects-fx-expand gsuiIcon" data-icon="caret-right"></button>
+		<button class="gsuiEffects-fx-toggle gsuiIcon" data-icon="toggle" title="Toggle this effect"></button>
+		<span class="gsuiEffects-fx-name"></span>
+		<button class="gsuiEffects-fx-remove gsuiIcon" data-icon="close" title="Delete this effect"></button>
+	</div>
+	<div class="gsuiEffects-fx-content"></div>
+</div>
+<div class="gsuiDrumrows" id="gsuiDrumrows-template">
+	<div class="gsuiDrumrows-drop">
+		<div class="gsuiDrumrows-dropIn">
+			<i class="gsuiIcon" data-icon="arrow-dropdown"></i>
+			<i class="gsuiIcon" data-icon="arrow-dropdown"></i>
+			<i class="gsuiIcon" data-icon="arrow-dropdown"></i>
+		</div>
+	</div>
+</div>
+
+<div class="gsuiDrumrow" id="gsuiDrumrow-template" draggable="true">
+	<div class="gsuiDrumrow-grip"><i class="gsuiIcon" data-icon="grip-v"></i></div>
+	<button class="gsuiDrumrow-toggle gsuiIcon" data-icon="toggle" title="Toggle the drumrow (right click for solo)"></button>
+	<button class="gsuiDrumrow-delete gsuiIcon" data-icon="close" title="Remove the drumrow"></button>
+	<span class="gsuiDrumrow-name"></span>
+	<div class="gsuiDrumrow-waveWrap"></div>
+	<span class="gsuiDrumrows-drop">
+		<div class="gsuiDrumrows-dropIn">
+			<i class="gsuiIcon" data-icon="arrow-dropdown"></i>
+			<i class="gsuiIcon" data-icon="arrow-dropdown"></i>
+			<i class="gsuiIcon" data-icon="arrow-dropdown"></i>
+		</div>
+	</span>
+</div>
+<div class="gsuiFxFilter" id="gsuiFxFilter">
+	<div class="gsuiFxFilter-area gsuiFxFilter-areaType">
+		<span class="gsuiFxFilter-area-label">type</span>
+		<div class="gsuiFxFilter-area-content">
+			<button class="gsuiFxFilter-areaType-btn" data-type="lowpass" title="lowpass"><svg viewBox="0 0 16 12"><path d="M 1 4 L 12 4 L 15 8"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="highpass" title="highpass"><svg viewBox="0 0 16 12"><path d="M 1 8 L 4 4 L 15 4"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="bandpass" title="bandpass"><svg viewBox="0 0 16 12"><path d="M 1 8 L 8 4 L 15 8"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="lowshelf" title="lowshelf"><svg viewBox="0 0 16 12"><path d="M 1 8 L 4 8 L 6 4 L 15 4"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="highshelf" title="highshelf"><svg viewBox="0 0 16 12"><path d="M 1 4 L 10 4 L 12 8 L 15 8"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="peaking" title="peaking"><svg viewBox="0 0 16 12"><path d="M 1 8 L 7 8 L 8 4 L 9 8 L 15 8"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="notch" title="notch"><svg viewBox="0 0 16 12"><path d="M 1 4 L 7 4 L 8 8 L 9 4 L 15 4"/></svg></button>
+			<button class="gsuiFxFilter-areaType-btn" data-type="allpass" title="allpass"><svg viewBox="0 0 16 12"><path d="M 1 6 L 15 6"/></svg></button>
+		</div>
+	</div>
+	<div class="gsuiFxFilter-area gsuiFxFilter-areaGraph">
+		<span class="gsuiFxFilter-area-label">frequency</span>
+		<div class="gsuiFxFilter-area-content"></div>
+	</div>
+	<div class="gsuiFxFilter-area gsuiFxFilter-areaFrequency">
+		<div class="gsuiFxFilter-area-content"></div>
+	</div>
+	<div class="gsuiFxFilter-area gsuiFxFilter-areaGain">
+		<span class="gsuiFxFilter-area-label">gain</span>
+		<div class="gsuiFxFilter-area-content"></div>
+	</div>
+	<div class="gsuiFxFilter-area gsuiFxFilter-areaQ">
+		<span class="gsuiFxFilter-area-label">Q</span>
+		<div class="gsuiFxFilter-area-content"></div>
+	</div>
+	<div class="gsuiFxFilter-area gsuiFxFilter-areaDetune">
+		<span class="gsuiFxFilter-area-label">detune</span>
+		<div class="gsuiFxFilter-area-content"></div>
+	</div>
+</div>
+<div class="gsuiDragline" id="gsuiDragline-template">
+	<div class="gsuiDragline-main">
+		<svg class="gsuiDragline-line" xmlns="http://www.w3.org/2000/svg">
+			<polyline/>
+		</svg>
+		<div class="gsuiDragline-to"></div>
+	</div>
+</div>
+<div class="gsuiTimeline" id="gsuiTimeline-template">
+	<div class="gsuiTimeline-loopLine">
+		<div class="gsuiTimeline-loop">
+			<div class="gsuiTimeline-loopExt gsuiTimeline-loopA"></div>
+			<div class="gsuiTimeline-loopExt gsuiTimeline-loopB"></div>
+			<div class="gsuiTimeline-loopBrd gsuiTimeline-loopBrdA"></div>
+			<div class="gsuiTimeline-loopBrd gsuiTimeline-loopBrdB"></div>
+			<div class="gsuiTimeline-loopBg"></div>
+		</div>
+	</div>
+	<svg class="gsuiTimeline-cursorPreview gsui-hidden" width="16" height="10">
+		<polygon points="2,2 8,8 14,2"/>
+	</svg>
+	<svg class="gsuiTimeline-cursor" width="16" height="10">
+		<polygon points="2,2 8,8 14,2"/>
+	</svg>
+	<div class="gsuiTimeline-currentTime"></div>
+</div>
+<div id="gsuiPianoroll-template" class="gsuiBlocksManager gsuiPianoroll gsuiPanels-x" tabindex="-1">
+	<div class="gsuiBlocksManager-sidePanel gsuiPanels-y">
+		<div class="gsuiPianoroll-sidePanelTop">
+			<div class="gsuiBlocksManager-sidePanelMenu">
+				<a href class="gsuiBlocksManager-magnet gsui-opacityHover">
+					<span class="gsuiBlocksManager-magnetValue"></span>
+					<i class="gsuiIcon" data-icon="magnet"></i>
+				</a>
+			</div>
+			<div class="gsuiBlocksManager-sidePanelContent"></div>
+		</div>
+		<div class="gsuiPianoroll-sidePanelBottom">
+			<select class="gsuiPianoroll-slidersSelect gsui-opacityHover" size="4">
+				<option value="gain" selected>gain</option>
+				<option value="pan">pan</option>
+				<option value="lowpass">lowpass</option>
+				<option value="highpass">highpass</option>
+			</select>
+		</div>
+	</div>
+	<div class="gsuiBlocksManager-gridPanel gsuiPanels-y">
+		<div class="gsuiPianoroll-gridPanelTop">
+			<div class="gsuiBlocksManager-timelineWrap"></div>
+			<div class="gsuiBlocksManager-rowsWrapout">
+				<div class="gsuiBlocksManager-rows gsuiBeatlines">
+					<div class="gsuiBlocksManager-rowsWrapin">
+						<div class="gsuiBlocksManager-selection gsuiBlocksManager-selection-hidden"></div>
+						<div class="gsuiBlocksManager-currentTime"></div>
+						<div class="gsuiBlocksManager-loop gsuiBlocksManager-loopA"></div>
+						<div class="gsuiBlocksManager-loop gsuiBlocksManager-loopB"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gsuiPianoroll-gridPanelBottom"></div>
+	</div>
+</div>
+
+<div class="gsuiBlocksManager-block gsuiPianoroll-block" id="gsuiPianoroll-block-template" data-action="move">
+	<div class="gsuiDragline-drop"></div>
+	<div class="gsuiPianoroll-block-env gsuiPianoroll-block-attack">
+		<div class="gsuiPianoroll-block-envHandle" data-action="attack"></div>
+		<div class="gsuiPianoroll-block-envBg"></div>
+	</div>
+	<div class="gsuiPianoroll-block-env gsuiPianoroll-block-release">
+		<div class="gsuiPianoroll-block-envHandle" data-action="release"></div>
+		<div class="gsuiPianoroll-block-envBg"></div>
+	</div>
+	<div class="gsuiBlocksManager-block-crop gsuiBlocksManager-block-cropB" data-action="cropB"></div>
+</div>
+<div id="gsuiTracklist-template" class="gsuiTracklist"></div>
+<div id="gsuiOscillator-template" class="gsuiOscillator" draggable="true">
+	<div class="gsuiOscillator-grip gsuiIcon" data-icon="grip-v"></div>
+	<div class="gsuiOscillator-wave"></div>
+	<button class="gsuiOscillator-waveBtn gsuiOscillator-wavePrev gsuiIcon" data-icon="caret-left" title="Previous wave"></button>
+	<button class="gsuiOscillator-waveBtn gsuiOscillator-waveNext gsuiIcon" data-icon="caret-right" title="Next wave"></button>
+	<select class="gsuiOscillator-waveSelect">
+		<option value="sine" class="gsuiOscillator-waveOptNative">sine</option>
+		<option value="triangle" class="gsuiOscillator-waveOptNative">triangle</option>
+		<option value="sawtooth" class="gsuiOscillator-waveOptNative">sawtooth</option>
+		<option value="square" class="gsuiOscillator-waveOptNative">square</option>
+	</select>
+	<div class="gsuiOscillator-prop gsuiOscillator-detune" title="pitch">
+		<div class="gsuiOscillator-sliderWrap"></div>
+		<div class="gsuiOscillator-sliderValue"></div>
+	</div>
+	<div class="gsuiOscillator-prop gsuiOscillator-pan" title="pan">
+		<div class="gsuiOscillator-sliderWrap"></div>
+		<div class="gsuiOscillator-sliderValue"></div>
+	</div>
+	<div class="gsuiOscillator-prop gsuiOscillator-gain" title="gain">
+		<div class="gsuiOscillator-sliderWrap"></div>
+		<div class="gsuiOscillator-sliderValue"></div>
+	</div>
+	<button class="gsuiOscillator-remove gsuiIcon" data-icon="close" title="Remove the oscillator"></button>
+</div>
+<div id="gsuiPatternroll-template" class="gsuiBlocksManager gsuiPatternroll gsuiPanels-x" tabindex="-1">
+	<div class="gsuiBlocksManager-sidePanel">
+		<div class="gsuiBlocksManager-sidePanelMenu">
+			<a href class="gsuiBlocksManager-magnet gsui-opacityHover">
+				<span class="gsuiBlocksManager-magnetValue"></span>
+				<i class="gsuiIcon" data-icon="magnet"></i>
+			</a>
+		</div>
+		<div class="gsuiBlocksManager-sidePanelContent"></div>
+	</div>
+	<div class="gsuiBlocksManager-gridPanel">
+		<div class="gsuiBlocksManager-timelineWrap"></div>
+		<div class="gsuiBlocksManager-rowsWrapout">
+			<div class="gsuiBlocksManager-rows gsuiBeatlines">
+				<div class="gsuiBlocksManager-rowsWrapin">
+					<div class="gsuiBlocksManager-selection gsuiBlocksManager-selection-hidden"></div>
+					<div class="gsuiBlocksManager-currentTime"></div>
+					<div class="gsuiBlocksManager-loop gsuiBlocksManager-loopA"></div>
+					<div class="gsuiBlocksManager-loop gsuiBlocksManager-loopB"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="gsuiPatternroll-block-template" class="gsuiBlocksManager-block gsuiPatternroll-block" data-action="move">
+	<div class="gsuiBlocksManager-block-crop gsuiBlocksManager-block-cropA" data-action="cropA"></div>
+	<div class="gsuiBlocksManager-block-crop gsuiBlocksManager-block-cropB" data-action="cropB"></div>
+	<div class="gsuiPatternroll-block-header">
+		<span class="gsuiPatternroll-block-name"></span>
+	</div>
+	<div class="gsuiPatternroll-block-content"></div>
+	<div class="gsuiPatternroll-block-placeholder">
+		<i class="gsuiPatternroll-block-placeholderIcon gsuiIcon" data-icon="file-corrupt"></i>
+		<span class="gsuiPatternroll-block-placeholderText">missing data</span>
+	</div>
+</div>
+<div id="gsuiSliderGroup-template" class="gsuiSliderGroup">
+	<div class="gsuiSliderGroup-slidersWrap">
+		<div class="gsuiSliderGroup-sliders gsuiBeatlines">
+			<div class="gsuiSliderGroup-currentTime"></div>
+			<div class="gsuiSliderGroup-loop gsuiSliderGroup-loopA"></div>
+			<div class="gsuiSliderGroup-loop gsuiSliderGroup-loopB"></div>
+		</div>
+	</div>
+</div>
+
+<div id="gsuiSliderGroup-slider-template" class="gsuiSliderGroup-slider">
+	<div class="gsuiSliderGroup-sliderInner"></div>
+</div>
+<div id="gsuiSynthesizer-template" class="gsuiSynthesizer">
+	<div class="gsuiSynthesizer-lfo"></div>
+	<div class="gsuiSynthesizer-head gsuiSynthesizer-headOscs">
+		<span class="gsuiSynthesizer-headTitle">oscillators</span>
+		<span class="gsuiSynthesizer-label gsuiSynthesizer-labelPitch">pitch</span>
+		<span class="gsuiSynthesizer-label gsuiSynthesizer-labelPan">pan</span>
+		<span class="gsuiSynthesizer-label gsuiSynthesizer-labelGain">gain</span>
+	</div>
+	<div class="gsuiSynthesizer-oscList">
+		<button class="gsuiSynthesizer-newOsc">
+			<i class="gsuiIcon" data-icon="plus"></i>
+		</button>
+	</div>
+</div>
+<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>
+<script src="gs-utils/GSUtils.js"></script>
+<script src="gs-api-client/gsapiClient.js"></script>
+<script src="gs-data/gsdata/gsdata.js"></script>
+<script src="gs-data/gsdataSynth/gsdataSynth.js"></script>
+<script src="gs-data/gsdataDrums/gsdataDrums.js"></script>
+<script src="gs-data/gsdataMixer/gsdataMixer.js"></script>
+<script src="gs-data/gsdataMixer/gsdataMixer.actions.js"></script>
+<script src="gs-data/gsdataEffects/gsdataEffects.js"></script>
+<script src="gs-data/gsdataFxFilter/gsdataFxFilter.js"></script>
+<script src="gs-data/gsdataDrumrows/gsdataDrumrows.js"></script>
+<script src="daw-core/src/DAWCore.js"></script>
+<script src="daw-core/src/Buffers.js"></script>
+<script src="daw-core/src/LocalStorage.js"></script>
+<script src="daw-core/src/Destination.js"></script>
+<script src="daw-core/src/History.js"></script>
+<script src="daw-core/src/History.prototype.nameAction.js"></script>
+<script src="daw-core/src/Drums.js"></script>
+<script src="daw-core/src/Pianoroll.js"></script>
+<script src="daw-core/src/Composition.js"></script>
+<script src="daw-core/src/Composition.epure.js"></script>
+<script src="daw-core/src/Composition.format.js"></script>
+<script src="daw-core/src/Composition.prototype.change.js"></script>
+<script src="daw-core/src/json/composition.js"></script>
+<script src="daw-core/src/json/channel.js"></script>
+<script src="daw-core/src/json/channels.js"></script>
+<script src="daw-core/src/json/drumrow.js"></script>
+<script src="daw-core/src/json/drum.js"></script>
+<script src="daw-core/src/json/effects.filter.js"></script>
+<script src="daw-core/src/json/lfo.js"></script>
+<script src="daw-core/src/json/oscillator.js"></script>
+<script src="daw-core/src/json/synth.js"></script>
+<script src="daw-core/src/cmpActions/common/calcNewDuration.js"></script>
+<script src="daw-core/src/cmpActions/common/createUniqueName.js"></script>
+<script src="daw-core/src/cmpActions/common/getDrumrowName.js"></script>
+<script src="daw-core/src/cmpActions/common/getNextIdOf.js"></script>
+<script src="daw-core/src/cmpActions/common/getNextOrderOf.js"></script>
+<script src="daw-core/src/cmpActions/addDrumrow.js"></script>
+<script src="daw-core/src/cmpActions/addDrums.js"></script>
+<script src="daw-core/src/cmpActions/addEffect.js"></script>
+<script src="daw-core/src/cmpActions/addOscillator.js"></script>
+<script src="daw-core/src/cmpActions/addPatternDrums.js"></script>
+<script src="daw-core/src/cmpActions/addPatternKeys.js"></script>
+<script src="daw-core/src/cmpActions/addSynth.js"></script>
+<script src="daw-core/src/cmpActions/changeChannels.js"></script>
+<script src="daw-core/src/cmpActions/changeDrumrow.js"></script>
+<script src="daw-core/src/cmpActions/changeDrumrowPattern.js"></script>
+<script src="daw-core/src/cmpActions/changeEffect.js"></script>
+<script src="daw-core/src/cmpActions/changeLFO.js"></script>
+<script src="daw-core/src/cmpActions/changeLoop.js"></script>
+<script src="daw-core/src/cmpActions/changeOscillator.js"></script>
+<script src="daw-core/src/cmpActions/changePatternKeys.js"></script>
+<script src="daw-core/src/cmpActions/changeTempo.js"></script>
+<script src="daw-core/src/cmpActions/clonePattern.js"></script>
+<script src="daw-core/src/cmpActions/redirectToChannel.js"></script>
+<script src="daw-core/src/cmpActions/removeDrumrow.js"></script>
+<script src="daw-core/src/cmpActions/removeDrums.js"></script>
+<script src="daw-core/src/cmpActions/removeEffect.js"></script>
+<script src="daw-core/src/cmpActions/removeOscillator.js"></script>
+<script src="daw-core/src/cmpActions/removePattern.js"></script>
+<script src="daw-core/src/cmpActions/removeSynth.js"></script>
+<script src="daw-core/src/cmpActions/renameComposition.js"></script>
+<script src="daw-core/src/cmpActions/renamePattern.js"></script>
+<script src="daw-core/src/cmpActions/renameSynth.js"></script>
+<script src="daw-core/src/cmpActions/reorderDrumrow.js"></script>
+<script src="daw-core/src/cmpActions/reorderOscillator.js"></script>
+<script src="daw-core/src/cmpActions/toggleDrumrow.js"></script>
+<script src="daw-core/src/cmpActions/toggleEffect.js"></script>
+<script src="daw-core/src/cmpActions/toggleLFO.js"></script>
+<script src="daw-core/src/cmpActions/toggleOnlyDrumrow.js"></script>
+<script src="daw-core/src/actions/addCompositionsFromLocalStorage.js"></script>
+<script src="daw-core/src/actions/addNewComposition.js"></script>
+<script src="daw-core/src/actions/addComposition.js"></script>
+<script src="daw-core/src/actions/addCompositionByJSON.js"></script>
+<script src="daw-core/src/actions/addCompositionByBlob.js"></script>
+<script src="daw-core/src/actions/addCompositionByURL.js"></script>
+<script src="daw-core/src/actions/abortWAVExport.js"></script>
+<script src="daw-core/src/actions/dropAudioFiles.js"></script>
+<script src="daw-core/src/actions/liveChangeSynth.js"></script>
+<script src="daw-core/src/actions/liveChangeEffect.js"></script>
+<script src="daw-core/src/actions/liveChangeChannel.js"></script>
+<script src="daw-core/src/actions/exportCompositionToWAV.js"></script>
+<script src="daw-core/src/actions/exportCompositionToJSON.js"></script>
+<script src="daw-core/src/actions/deleteComposition.js"></script>
+<script src="daw-core/src/actions/closeComposition.js"></script>
+<script src="daw-core/src/actions/openComposition.js"></script>
+<script src="daw-core/src/actions/saveComposition.js"></script>
+<script src="daw-core/src/actions/newComposition.js"></script>
+<script src="daw-core/src/actions/closePattern.js"></script>
+<script src="daw-core/src/actions/openPattern.js"></script>
+<script src="daw-core/src/actions/openSynth.js"></script>
+<script src="gs-components/gsDrums/gsDrums.js"></script>
+<script src="gs-components/gsEffects/gsEffects.js"></script>
+<script src="gs-components/gsSynth/gsSynth.js"></script>
+<script src="gs-wa-components/gswaLFO/gswaLFO.js"></script>
+<script src="gs-wa-components/gswaMixer/gswaMixer.js"></script>
+<script src="gs-wa-components/gswaSynth/gswaSynth.js"></script>
+<script src="gs-wa-components/gswaSynth/gswaSynth.midiKeyToHz.js"></script>
+<script src="gs-wa-components/gswaKeysScheduler/gswaKeysScheduler.js"></script>
+<script src="gs-wa-components/gswaDrumsScheduler/gswaDrumsScheduler.js"></script>
+<script src="gs-wa-components/gswaBPMTap/gswaBPMTap.js"></script>
+<script src="gs-wa-components/gswaEffects/gswaEffects.js"></script>
+<script src="gs-wa-components/gswaFxFilter/gswaFxFilter.js"></script>
+<script src="gs-wa-components/gswaDrumrows/gswaDrumrows.js"></script>
+<script src="gs-wa-components/gswaScheduler/gswaScheduler.js"></script>
+<script src="gs-wa-components/gswaEncodeWAV/gswaEncodeWAV.js"></script>
+<script src="gs-wa-components/gswaStereoPanner/gswaStereoPanner.js"></script>
+<script src="gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js"></script>
+<script src="gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.list.js"></script>
+<script src="gs-ui-components/gsuiLFO/gsuiLFO.js"></script>
+<script src="gs-ui-components/gsuiClock/gsuiClock.js"></script>
+<script src="gs-ui-components/gsuiMixer/gsuiMixer.js"></script>
+<script src="gs-ui-components/gsuiCurves/gsuiCurves.js"></script>
+<script src="gs-ui-components/gsuiEffects/gsuiEffects.js"></script>
+<script src="gs-ui-components/gsuiFxFilter/gsuiFxFilter.js"></script>
+<script src="gs-ui-components/gsuiReorder/gsuiReorder.js"></script>
+<script src="gs-ui-components/gsuiReorder/gsuiReorder.listReorder.js"></script>
+<script src="gs-ui-components/gsuiReorder/gsuiReorder.listComputeOrderChange.js"></script>
+<script src="gs-ui-components/gsuiDragline/gsuiDragline.js"></script>
+<script src="gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"></script>
+<script src="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"></script>
+<script src="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.prototype.__mousedown.js"></script>
+<script src="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.prototype.__mousemove.js"></script>
+<script src="gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.prototype.__mouseup.js"></script>
+<script src="gs-ui-components/gsuiPatternroll/gsuiPatternroll.js"></script>
+<script src="gs-ui-components/gsuiPianoroll/gsuiPianoroll.js"></script>
+<script src="gs-ui-components/gsuiPianoroll/gsuiPianoroll.prototype.managercall.js"></script>
+<script src="gs-ui-components/gsuiDrumrows/gsuiDrumrows.js"></script>
+<script src="gs-ui-components/gsuiDrums/gsuiDrums.js"></script>
+<script src="gs-ui-components/gsuiKeys/gsuiKeys.js"></script>
+<script src="gs-ui-components/gsuiKeys/gsuiKeys.keyNames.js"></script>
+<script src="gs-ui-components/gsuiKeys/gsuiKeys.keyboardToKey.js"></script>
+<script src="gs-ui-components/gsuiOscillator/gsuiOscillator.js"></script>
+<script src="gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"></script>
+<script src="gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.js"></script>
+<script src="gs-ui-components/gsuiDotline/gsuiDotline.js"></script>
+<script src="gs-ui-components/gsuiPanels/gsuiPanels.js"></script>
+<script src="gs-ui-components/gsuiPopup/gsuiPopup.js"></script>
+<script src="gs-ui-components/gsuiSlider/gsuiSlider.js"></script>
+<script src="gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.js"></script>
+<script src="gs-ui-components/gsuiTimeline/gsuiTimeline.js"></script>
+<script src="gs-ui-components/gsuiTrack/gsuiTrack.js"></script>
+<script src="gs-ui-components/gsuiTracklist/gsuiTracklist.js"></script>
+<script src="gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"></script>
+<script src="gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"></script>
+<script src="gs-ui-components/gsuiSpectrum/gsuiSpectrum.draw.js"></script>
+<script src="gs-ui-components/gsuiSVGDefs/gsuiSVGDefs.js"></script>
+<script src="gs-ui-components/gsuiWaveform/gsuiWaveform.js"></script>
+<script src="gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"></script>
+<script src="gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"></script>
+<script src="gs-ui-components/gsuiKeysforms/gsuiKeysforms.js"></script>
+<script src="gs-ui-components/gsuiDrumsforms/gsuiDrumsforms.js"></script>
+<script src="gs-ui-components/gsuiWindows/gsuiWindows.js"></script>
+<script src="gs-ui-components/gsuiWindows/gsuiWindow.js"></script>
+<script src="src/ui/dom.js"></script>
+<script src="src/ui/textGlitch.js"></script>
+<script src="src/ui/loading.js"></script>
+<script src="src/ui/auth.js"></script>
+<script src="src/ui/drop.js"></script>
+<script src="src/ui/drums.js"></script>
+<script src="src/ui/title.js"></script>
+<script src="src/ui/synth.js"></script>
+<script src="src/ui/mixer.js"></script>
+<script src="src/ui/cookie.js"></script>
+<script src="src/ui/blocks.js"></script>
+<script src="src/ui/synths.js"></script>
+<script src="src/ui/effects.js"></script>
+<script src="src/ui/history.js"></script>
+<script src="src/ui/windows.js"></script>
+<script src="src/ui/versions.js"></script>
+<script src="src/ui/patterns.js"></script>
+<script src="src/ui/controls.js"></script>
+<script src="src/ui/keyboard.js"></script>
+<script src="src/ui/openPopup.js"></script>
+<script src="src/ui/pianoroll.js"></script>
+<script src="src/ui/aboutPopup.js"></script>
+<script src="src/ui/patternroll.js"></script>
+<script src="src/ui/renderPopup.js"></script>
+<script src="src/ui/mainAnalyser.js"></script>
+<script src="src/ui/midiPopup.js"></script>
+<script src="src/ui/compositions.js"></script>
+<script src="src/ui/settingsPopup.js"></script>
+<script src="src/ui/shortcutsPopup.js"></script>
+<script src="src/ui/compositionChanged.js"></script>
+<script src="src/run.js"></script>
+</body>
+</html>
