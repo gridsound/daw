@@ -9,6 +9,7 @@ function UIcontrolsInit() {
 	DOM.sliderTime = sliderTime;
 	DOM.play.onclick = UIcontrolsClickPlay;
 	DOM.stop.onclick = UIcontrolsClickStop;
+	DOM.reset.onclick = UIcontrolsClickReset;
 	DOM.headTempo.onclick = UIcontrolsClickTempo;
 	DOM.playToggle.onclick = UIcontrolsClickPlayToggle;
 	DOM.tempoBPMTap.onclick = UIcontrolsBPMTap;
@@ -81,6 +82,11 @@ function UIcontrolsClickStop() {
 		case UIpianoroll.rootElement: DAW.pianorollFocus( "-f" ); break;
 		case UIpatternroll.rootElement: DAW.compositionFocus( "-f" ); break;
 	}
+}
+
+function UIcontrolsClickReset() {
+	UIcontrolsClickStop();
+	DAW.resetAudioContext();
 }
 
 function UIcontrolsGetFocusedGrid( focStr = DAW.getFocusedName() ) {
