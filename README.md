@@ -14,3 +14,36 @@ Follow us on [**Twitter**](https://twitter.com/gridsound) or [**Facebook**](http
 
 ###### screenshot of the 0.28.3 version
 ![screenshot](https://user-images.githubusercontent.com/850754/79024278-c20fc600-7b82-11ea-83b3-f2904b43967f.png)
+
+## Contributing to the DAW
+Look for issues under this Github Repository and find something you think you can start working on. We will be available to answer any questions.
+
+## Quicklinks
+* [Getting Started](#getting-started)
+    * [Fork this repository](#fork-this-repository)
+    * [Installing the DAW](#installing-the-daw)
+* [Getting Help](#getting-help)
+
+## Getting Started
+### Fork this repository
+In order to submit any code proposal to the codebase, you need to first fork the repository, and further, sending a Pull Request to this codebase.
+
+### Installing the DAW
+Follow the next steps:
+1. Clone the forked project into your local machine
+2. Run the following commands
+```sh
+# Install Git Submodules
+$ ./build.sh dep
+# Bundle the application into an `index.html` file
+$ ./build.sh dev
+```
+3. Add the following assets mentioned [here](https://github.com/gridsound/daw/issues/62#issuecomment-662190893) into the `assets/samples` folder (Otherwise the DAW will not have sounds to reproduce)
+4. Run the project with an HTTP server. As an example, you can use the python module SimpleHTTPServer
+```sh
+$ python -m SimpleHTTPServer 8000
+```
+5. Go to localhost:8000 and you should see the system up and running
+
+## Getting Help
+We have a discord server. Feel free to join us if you want to contribute and have any questions
