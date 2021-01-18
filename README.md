@@ -46,4 +46,4 @@ $ python -m SimpleHTTPServer 8000
 5. Go to localhost:8000 and you should see the system up and running
 
 ## Getting Help
-We have a discord server. Feel free to join us if you want to contribute and have any questions
+We have a [discord server](https://discord.gg/NUYxHAg). Feel free to join us if you want to contribute and have any questions
