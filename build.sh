@@ -28,6 +28,7 @@ declare -a HEADEREND=(
 )
 
 declare -a CSSfiles=(
+	"gs-ui-components/gsui.css"
 	"gs-ui-components/gsuiDragshield/gsuiDragshield.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.colors.default.css"
