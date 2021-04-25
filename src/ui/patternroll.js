@@ -8,7 +8,6 @@ function UIpatternrollInit() {
 	UIpatternroll.rootElement.onfocus = () => DAW.compositionFocus();
 	win.onfocusin = UIpatternrollWindowFocusin;
 	win.append( UIpatternroll.rootElement );
-	UIpatternroll.attached();
 }
 
 function UIpatternrollWindowFocusin( e ) {

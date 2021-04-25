@@ -4,7 +4,7 @@ function UIdrumsInit() {
 	const win = UIwindows.window( "drums" );
 
 	UIdrums.setDAWCore( DAW );
-	UIdrums.setPxPerBeat( 120 );
+	UIdrums.rootElement.setPxPerBeat( 120 );
 	UIdrums.setWaveforms( UIpatterns.svgForms.bufferHD );
 	UIdrums.rootElement.onfocus = () => DAW.drumsFocus();
 	DOM.drumsName.onclick = UIdrumsNameClick;

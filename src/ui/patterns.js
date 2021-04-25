@@ -10,7 +10,7 @@ function UIpatternsInit() {
 
 function UIpatternsBuffersLoaded( buffers ) {
 	UIpatterns.bufferLoaded( buffers );
-	UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
+	UIpatternroll.rootElement.getBlocks().forEach( ( elBlc, blcId ) => {
 		const blc = DAW.get.block( blcId ),
 			pat = DAW.get.pattern( blc.pattern );
 
@@ -34,7 +34,7 @@ function UIupdatePattern( id, obj ) {
 		if ( "name" in obj ) {
 			const name = obj.name;
 
-			UIpatternroll.getBlocks().forEach( blc => {
+			UIpatternroll.rootElement.getBlocks().forEach( blc => {
 				if ( blc.dataset.pattern === id ) {
 					blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = name;
 				}
@@ -52,7 +52,7 @@ function UIupdatePattern( id, obj ) {
 function UIupdatePatternsBPM( bpm ) {
 	const bps = bpm / 60;
 
-	UIpatternroll.getBlocks().forEach( ( elBlc, blcId ) => {
+	UIpatternroll.rootElement.getBlocks().forEach( ( elBlc, blcId ) => {
 		const blc = DAW.get.block( blcId ),
 			pat = DAW.get.pattern( blc.pattern ),
 			svg = elBlc._gsuiSVGform;

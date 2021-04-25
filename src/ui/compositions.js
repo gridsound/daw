@@ -169,15 +169,15 @@ function UIcompositionClosed( cmp ) {
 		duration: cmp.duration,
 	}, {} );
 	UIcompositions.get( cmp ).root.classList.remove( "cmp-loaded" );
-	UIdrums.clear();
-	UIdrums.loop( false );
 	UIeffects.clear();
 	UIsynth.clear();
 	UImixer.clear();
-	UIpatternroll.clear();
-	UIpatternroll.loop( false );
+	UIdrums.clear();
 	UIpianoroll.clear();
-	UIpianoroll.loop( false );
+	UIpatternroll.clear();
+	UIdrums.rootElement.loop( false );
+	UIpianoroll.rootElement.loop( false );
+	UIpatternroll.rootElement.loop( false );
 	DOM.drumsName.textContent =
 	DOM.synthName.textContent =
 	DOM.pianorollName.textContent = "";

@@ -9,7 +9,7 @@ function UIpianorollInit() {
 	win.append( UIpianoroll.rootElement );
 	UIpianoroll.setDAWCore( DAW );
 	UIpianoroll.rootElement.onfocus = () => DAW.pianorollFocus();
-	UIpianoroll.attached();
+	UIpianoroll.rootElement.octaves( 1, 7 );
 }
 
 function UIpianorollWindowFocusin( e ) {

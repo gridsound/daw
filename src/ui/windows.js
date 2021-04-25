@@ -24,9 +24,9 @@ function UIwindowsInit() {
 		}
 	};
 	UIwindowsSetPos( "blocks",  "winBlocks",   20,  20, 180, 380, 320, 780, "folder-tree", "blocks" );
-	UIwindowsSetPos( "mixer",   "winMixer",   360,  20, 266, 200, 400, 360, "mixer",       "mixer" );
+	UIwindowsSetPos( "mixer",   "winMixer",   360,  20, 266, 200, 400, 300, "mixer",       "mixer" );
 	UIwindowsSetPos( "main",    "winMain",    780,  20, 380, 180, 600, 360, "music",       "composition" );
-	UIwindowsSetPos( "synth",   "winSynth",   360, 400, 340, 220, 400, 400, "oscillator",  "synth" );
+	UIwindowsSetPos( "synth",   "winSynth",   360, 340, 340, 220, 400, 460, "oscillator",  "synth" );
 	UIwindowsSetPos( "piano",   "winPiano",   780, 400, 380, 180, 600, 400, "keys",        "pianoroll" );
 	UIwindowsSetPos( "drums",   "winDrums",   410, 450, 380, 180, 900, 400, "drums",       "drums" );
 	UIwindowsSetPos( "effects", "winEffects", 480, 120, 230, 180, 420, 360, "effects",     "effects" );

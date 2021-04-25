@@ -90,11 +90,11 @@ function UIcontrolsClickReset() {
 }
 
 function UIcontrolsGetFocusedGrid( focStr = DAW.getFocusedName() ) {
-	return focStr === "composition"
+	return ( focStr === "composition"
 		? UIpatternroll
 		: focStr === "drums"
 			? UIdrums
-			: UIpianoroll;
+			: UIpianoroll ).rootElement;
 }
 
 function UIcontrolsFocusOn( focStr, b ) {
@@ -111,7 +111,7 @@ function UIcontrolsFocusOn( focStr, b ) {
 		UIdrums.rootElement.classList.toggle( "selected", focStr === "drums" );
 		UIpianoroll.rootElement.classList.toggle( "selected", focStr === "pianoroll" );
 		UIpatternroll.rootElement.classList.toggle( "selected", onCmp );
-		grid.rootElement.focus();
+		grid.focus();
 	}
 }
 

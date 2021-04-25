@@ -31,6 +31,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsui.css"
 	"gs-ui-components/gsuiDragshield/gsuiDragshield.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
+	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.css"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.colors.default.css"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.css"
 	"gs-ui-components/gsuiLFO/gsuiLFO.colors.default.css"
@@ -127,9 +128,6 @@ declare -a HTMLfiles=(
 	"src/html/popups/settings.html"
 	"src/html/popups/shortcuts.html"
 	"src/html/popups/selectChan.html"
-
-	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html"
-	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html"
 )
 
 declare -a JSfilesProd=(
@@ -230,7 +228,6 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeDrumsProps.js"
 	"daw-core/src/actions/changeEffect.js"
 	"daw-core/src/actions/changeEnv.js"
-	"daw-core/src/actions/changeKeysEnv.js"
 	"daw-core/src/actions/changeKeysProps.js"
 	"daw-core/src/actions/changeLFO.js"
 	"daw-core/src/actions/changeLoop.js"
@@ -314,6 +311,7 @@ declare -a JSfiles=(
 	"gs-components/gsSynth/gsSynth.js"
 
 	"gs-wa-components/gswaLFO/gswaLFO.js"
+	"gs-wa-components/gswaEnvelope/gswaEnvelope.js"
 	"gs-wa-components/gswaMixer/gswaMixer.js"
 	"gs-wa-components/gswaSynth/gswaSynth.js"
 	"gs-wa-components/gswaSynth/gswaSynth.midiKeyToHz.js"
@@ -331,6 +329,7 @@ declare -a JSfiles=(
 
 	"gs-ui-components/gsui.js"
 	"gs-ui-components/gsuiDragshield/gsuiDragshield.js"
+	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.js"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.html.js"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.js"
 	"gs-ui-components/gsuiLFO/gsuiLFO.html.js"
@@ -355,7 +354,9 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.prototype.__mousedown.js"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.prototype.__mousemove.js"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.prototype.__mouseup.js"
+	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html.js"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.js"
+	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html.js"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.js"
 	"gs-ui-components/gsuiDrumrows/gsuiDrumrows.html.js"
 	"gs-ui-components/gsuiDrumrows/gsuiDrumrows.js"
