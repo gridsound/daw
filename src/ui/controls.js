@@ -85,7 +85,6 @@ function UIcontrolsClickStop() {
 }
 
 function UIcontrolsClickReset() {
-	UIcontrolsClickStop();
 	DAW.resetAudioContext();
 }
 

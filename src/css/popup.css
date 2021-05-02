@@ -207,7 +207,8 @@
 #settingsPopupContent .param-values {
 	width: 200px;
 }
-.settingsPopupFps {
+.settingsPopupNumber {
+	white-space: pre;
 	font-size: 16px;
 }
 .settingsPopupFps::after {
@@ -218,6 +219,8 @@
 }
 #settingsUIRateManual {
 	flex: 1;
+}
+#settingsPopupContent input[ type="range" ] {
 	margin-left: 8px;
 }
 
