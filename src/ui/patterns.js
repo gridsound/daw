@@ -4,7 +4,7 @@ function UIpatternsInit() {
 	const win = UIwindows.window( "blocks" );
 
 	UIpatterns.setDAWCore( DAW );
-	win.append( UIpatterns.rootElement );
+	win.contentAppend( UIpatterns.rootElement );
 	gsuiPatterns.selectChanPopupContent.classList.add( "popup" );
 }
 

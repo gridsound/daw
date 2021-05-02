@@ -4,7 +4,7 @@ function UIeffectsInit() {
 	const win = UIwindows.window( "effects" );
 
 	DOM.channelName.onclick = UIeffectsOnclickName;
-	win.append( UIeffects.rootElement );
+	win.contentAppend( UIeffects.rootElement );
 	UIeffects.setDAWCore( DAW );
 }
 

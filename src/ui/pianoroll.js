@@ -6,7 +6,7 @@ function UIpianorollInit() {
 	DOM.pianorollName.onclick = UIpianorollNameClick;
 	DOM.pianorollForbidden.classList.remove( "hidden" );
 	win.onfocusin = UIpianorollWindowFocusin;
-	win.append( UIpianoroll.rootElement );
+	win.contentAppend( UIpianoroll.rootElement );
 	UIpianoroll.setDAWCore( DAW );
 	UIpianoroll.rootElement.onfocus = () => DAW.pianorollFocus();
 	UIpianoroll.rootElement.octaves( 1, 7 );

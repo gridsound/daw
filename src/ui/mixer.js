@@ -3,7 +3,7 @@
 function UImixerInit() {
 	const win = UIwindows.window( "mixer" );
 
-	win.append( UImixer.rootElement );
+	win.contentAppend( UImixer.rootElement );
 	win.onresize = () => UImixer.resize();
 	win.onresizing = () => UImixer.resizing();
 	UImixer.attached();

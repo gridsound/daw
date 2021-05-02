@@ -1,4 +1,4 @@
-.gsuiWindow[ data-window-id="mixer" ] .gsuiWindow-content {
+.gsuiWindow[ data-id="mixer" ] .gsuiWindow-content {
 	overflow-y: hidden;
 }
 

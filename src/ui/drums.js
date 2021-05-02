@@ -9,7 +9,7 @@ function UIdrumsInit() {
 	UIdrums.rootElement.onfocus = () => DAW.drumsFocus();
 	DOM.drumsName.onclick = UIdrumsNameClick;
 	win.onfocusin = UIdrumsWindowFocusin;
-	win.append( UIdrums.rootElement );
+	win.contentAppend( UIdrums.rootElement );
 }
 
 function UIdrumsWindowFocusin( e ) {
