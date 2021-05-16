@@ -11,7 +11,7 @@ function UIrun() {
 		);
 
 	window.DAW = DAW;
-	window.VERSION = "0.33.1";
+	window.VERSION = "0.34.0";
 
 	window.UIdrums = new GSDrums();
 	window.UIeffects = new GSEffects();
