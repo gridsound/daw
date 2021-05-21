@@ -19,7 +19,7 @@ function UIaboutPopupVersionCheck() {
 	dt.icon = "none";
 	dt.spin = "on";
 	fetch( `https://gridsound.com/daw/VERSION?${ Math.random() }` )
-		.then( res => res.text(), GSUtils.noop )
+		.then( res => res.text(), DAWCore.utils.noop )
 		.then( res => {
 			dt.spin = "";
 			dt.icon = res === VERSION ? "check" : "warning";
