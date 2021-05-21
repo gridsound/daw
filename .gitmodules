@@ -16,6 +16,3 @@
 [submodule "gs-wa-components"]
 	path = gs-wa-components
 	url = https://github.com/gridsound/gs-wa-components
-[submodule "gs-utils"]
-	path = gs-utils
-	url = https://github.com/gridsound/gs-utils
