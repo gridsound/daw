@@ -106,31 +106,6 @@ declare -a CSSfiles=(
 	"src/css/pianorollForbidden.css"
 )
 
-declare -a HTMLfiles=(
-	"src/html/loading.html"
-	"src/html/app.html"
-	"src/html/head.html"
-	"src/html/cmp.html"
-	"src/html/cmps.html"
-	"src/html/history.html"
-	"src/html/historyAction.html"
-	"src/html/windows/blocks.html"
-	"src/html/windows/mixer.html"
-	"src/html/windows/synth.html"
-	"src/html/windows/pianoroll.html"
-	"src/html/windows/patternroll.html"
-	"src/html/windows/effects.html"
-	"src/html/windows/drums.html"
-	"src/html/popups/auth.html"
-	"src/html/popups/open.html"
-	"src/html/popups/about.html"
-	"src/html/popups/tempo.html"
-	"src/html/popups/render.html"
-	"src/html/popups/settings.html"
-	"src/html/popups/shortcuts.html"
-	"src/html/popups/selectChan.html"
-)
-
 declare -a JSfilesProd=(
 	"src/initServiceWorker.js"
 )
@@ -403,6 +378,28 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindow.html.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
+	"src/html/app.html.js"
+	"src/html/head.html.js"
+	"src/html/cmp.html.js"
+	"src/html/cmps.html.js"
+	"src/html/history.html.js"
+	"src/html/historyAction.html.js"
+	"src/html/windows/blocks.html.js"
+	"src/html/windows/drums.html.js"
+	"src/html/windows/effects.html.js"
+	"src/html/windows/mixer.html.js"
+	"src/html/windows/patternroll.html.js"
+	"src/html/windows/pianoroll.html.js"
+	"src/html/windows/synth.html.js"
+	"src/html/popups/auth.html.js"
+	"src/html/popups/open.html.js"
+	"src/html/popups/about.html.js"
+	"src/html/popups/tempo.html.js"
+	"src/html/popups/render.html.js"
+	"src/html/popups/settings.html.js"
+	"src/html/popups/shortcuts.html.js"
+	"src/html/popups/selectChan.html.js"
+
 	"src/ui/dom.js"
 	"src/ui/textGlitch.js"
 	"src/ui/loading.js"
@@ -443,7 +440,7 @@ buildDev() {
 	printf '%s\n' "${HEADER[@]}" > $filename;
 	printf '<link rel="stylesheet" href="%s"/>\n' "${CSSfiles[@]}" >> $filename;
 	printf '%s\n' "${HEADEREND[@]}" >> $filename;
-	cat "${HTMLfiles[@]}" >> $filename
+	cat src/html/loading.html >> $filename
 	echo '<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>' >> $filename
 	printf '<script src="%s"></script>\n' "${JSfiles[@]}" >> $filename;
 	echo '</body>' >> $filename
@@ -458,7 +455,7 @@ buildProd() {
 	cat "${CSSfiles[@]}" >> $filename
 	echo '</style>' >> $filename
 	printf '%s\n' "${HEADEREND[@]}" >> $filename;
-	cat "${HTMLfiles[@]}" >> $filename
+	cat src/html/loading.html >> $filename
 	echo '<script>' >> $filename
 	jsMainFile >> $filename
 	echo '</script>' >> $filename
@@ -478,7 +475,7 @@ buildTests() {
 	printf '%s\n' "${HEADEREND[@]}" >> $filename
 	echo '<div id="qunit"></div>' >> $filename
 	echo '<div id="qunit-fixture"></div>' >> $filename
-	cat "${HTMLfiles[@]}" >> $filename
+	cat src/html/loading.html >> $filename
 	echo '<script>' >> $filename
 	jsMainFile >> $filename
 	echo '</script>' >> $filename

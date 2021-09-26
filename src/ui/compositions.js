@@ -134,7 +134,7 @@ function UIcompositionAdded( cmp ) {
 	if ( html ) {
 		UIcompositionSetInfo( html, cmp );
 	} else {
-		const root = DOM.cmp.cloneNode( true ),
+		const root = GSUI.getTemplate( "cmp" ),
 			local = cmp.options.saveMode === "local",
 			html = {
 				root,

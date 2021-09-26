@@ -1,10 +1,33 @@
 "use strict";
 
 function UIdomInit() {
+	document.body.append(
+		GSUI.getTemplate( "app" ),
+		GSUI.getTemplate( "window-main" ),
+		GSUI.getTemplate( "window-piano" ),
+		GSUI.getTemplate( "window-drums" ),
+		GSUI.getTemplate( "window-synth" ),
+		GSUI.getTemplate( "window-mixer" ),
+		GSUI.getTemplate( "window-blocks" ),
+		GSUI.getTemplate( "window-effects" ),
+		GSUI.getTemplate( "popup-auth" ),
+		GSUI.getTemplate( "popup-open" ),
+		GSUI.getTemplate( "popup-about" ),
+		GSUI.getTemplate( "popup-tempo" ),
+		GSUI.getTemplate( "popup-render" ),
+		GSUI.getTemplate( "popup-settings" ),
+		GSUI.getTemplate( "popup-shortcuts" ),
+		GSUI.getTemplate( "popup-selectChan" ),
+	);
 	window.DOM = UIdomFill();
-	UIdomGetComments().forEach( com => {
-		com.replaceWith( DOM[ com.textContent.substr( 1 ) ] );
-	} );
+	DOM.authPopupContent.remove();
+	DOM.openPopupContent.remove();
+	DOM.aboutPopupContent.remove();
+	DOM.tempoPopupContent.remove();
+	DOM.renderPopupContent.remove();
+	DOM.settingsPopupContent.remove();
+	DOM.shortcutsPopupContent.remove();
+	DOM.selectChanPopupContent.remove();
 }
 
 function UIdomFill() {
@@ -27,28 +50,6 @@ function UIdomFillIds() {
 			el.remove();
 			el.removeAttribute( "data-remove" );
 		}
-		if ( "removeId" in el.dataset ) {
-			el.removeAttribute( "id" );
-			el.removeAttribute( "data-remove-id" );
-		}
 		return obj;
 	}, {} );
-}
-
-function UIdomGetComments() {
-	const list = [],
-		treeWalker = document.createTreeWalker(
-			document.body,
-			NodeFilter.SHOW_COMMENT,
-			{ acceptNode: com => com.textContent[ 0 ] === "#"
-				? NodeFilter.FILTER_ACCEPT
-				: NodeFilter.FILTER_REJECT
-			},
-			false
-		);
-
-	while ( treeWalker.nextNode() ) {
-		list.push( treeWalker.currentNode );
-	}
-	return list;
 }
