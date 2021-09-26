@@ -41,7 +41,7 @@ function UIcompositionDrop( from, to, e ) {
 
 		return !cmpTo
 			? Promise.resolve( cmpFrom )
-			: gsuiPopup.confirm( "Warning",
+			: GSUI.popup.confirm( "Warning",
 				"Are you sure you want to overwrite " +
 				`the <b>${ to }</b> composition <i>${ cmpTo.name || "Untitled" }</i>&nbsp;?` )
 			.then( b => {
@@ -66,7 +66,7 @@ function UIcompositionCloudDrop( e ) {
 			.then( cmp => UIauthSaveComposition( cmp ) )
 			.then( cmp => DAW.addComposition( cmp, { saveMode: "cloud" } ) );
 	} else {
-		gsuiPopup.alert( "Error",
+		GSUI.popup.alert( "Error",
 			"You need to be connected to your account before uploading your composition" );
 	}
 }
@@ -103,7 +103,7 @@ function UIcompositionOpened( cmp ) {
 	DOM.headCmp.dataset.saveMode =
 	DOM.headCmpIcon.dataset.icon = cmp.options.saveMode;
 	DOM.headCmpSave.dataset.icon = cmp.options.saveMode === "local" ? "save" : "upload";
-	UIpatterns._uiPatterns.expandSynth( cmp.synthOpened, true );
+	UIpatterns.rootElement.expandSynth( cmp.synthOpened, true );
 	UIeffectsSelectChan( "main" );
 	UItitle( cmp.name );
 }
@@ -188,7 +188,7 @@ function UIcompositionClosed( cmp ) {
 function UIcompositionClickNewLocal() {
 	( !DAW.compositionNeedSave()
 		? DAW.addNewComposition()
-		: gsuiPopup.confirm( "Warning", "Are you sure you want to discard unsaved works" )
+		: GSUI.popup.confirm( "Warning", "Are you sure you want to discard unsaved works" )
 			.then( b => b && DAW.addNewComposition() )
 	).then( cmp => cmp && DAW.openComposition( "local", cmp.id ) );
 	return false;
@@ -196,7 +196,7 @@ function UIcompositionClickNewLocal() {
 
 function UIcompositionClickNewCloud() {
 	if ( !gsapiClient.user.id ) {
-		gsuiPopup.alert( "Error",
+		GSUI.popup.alert( "Error",
 			"You can not create a new composition in the <b>cloud</b><br/>without being connected" );
 	} else {
 		const saveMode = "cloud",
@@ -204,7 +204,7 @@ function UIcompositionClickNewCloud() {
 
 		( !DAW.compositionNeedSave()
 			? DAW.addNewComposition( opt )
-			: gsuiPopup.confirm( "Warning", "Are you sure you want to discard unsaved works" )
+			: GSUI.popup.confirm( "Warning", "Are you sure you want to discard unsaved works" )
 				.then( b => b && DAW.addNewComposition( opt ) )
 		).then( cmp => cmp && DAW.openComposition( saveMode, cmp.id ) );
 	}
@@ -215,7 +215,7 @@ function UIcompositionClickDelete( saveMode, id ) {
 	const html = UIcompositions[ saveMode ].get( id ),
 		name = html.name.textContent;
 
-	gsuiPopup.confirm( "Warning",
+	GSUI.popup.confirm( "Warning",
 		`Are you sure you want to delete "${ name }" ? (no undo possible)`,
 		"Delete"
 	).then( b => {
@@ -225,7 +225,7 @@ function UIcompositionClickDelete( saveMode, id ) {
 			: Promise.resolve() )
 				.catch( err => {
 					if ( err.code !== 404 ) {
-						gsuiPopup.alert( `Error ${ err.code }`,
+						GSUI.popup.alert( `Error ${ err.code }`,
 							"An error happened while deleting " +
 							"your composition&nbsp;:<br/>" +
 							`<code>${ err.msg || err }</code>` );
@@ -259,7 +259,7 @@ function UIcompositionClickJSONExport( saveMode, id, e ) {
 
 function UIcompositionClickOpen( saveMode, id ) {
 	if ( DAW.compositionNeedSave() ) {
-		gsuiPopup.confirm( "Warning",
+		GSUI.popup.confirm( "Warning",
 			"Are you sure you want to discard unsaved works"
 		).then( ok => ok && DAW.openComposition( saveMode, id ) );
 	} else {
@@ -272,7 +272,7 @@ function UIcompositionClickSave() {
 	if ( document.cookie.indexOf( "cookieAccepted" ) > -1 ) {
 		DAW.saveComposition();
 	} else {
-		gsuiPopup.alert( "Error",
+		GSUI.popup.alert( "Error",
 			"You have to accept our cookies before saving locally your composition." );
 	}
 }

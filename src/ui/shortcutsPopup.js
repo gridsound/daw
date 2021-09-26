@@ -5,7 +5,7 @@ function UIshortcutsPopupInit() {
 }
 
 function UIshortcutsPopupShow() {
-	gsuiPopup.custom( {
+	GSUI.popup.custom( {
 		title: "Keyboard / mouse shortcuts",
 		element: DOM.shortcutsPopupContent,
 	} );

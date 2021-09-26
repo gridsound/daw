@@ -3,7 +3,7 @@
 function UIopenPopupShow() {
 	DOM.inputOpenFile.value =
 	DOM.inputOpenURL.value = "";
-	gsuiPopup.custom( {
+	GSUI.popup.custom( {
 		title: "Open",
 		submit: UIopenPopupSubmit,
 		element: DOM.openPopupContent,

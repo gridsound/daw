@@ -314,8 +314,6 @@ a.btn {
 #headAnalyser {
 	width: 140px;
 	border-radius: 4px;
-	background-color: #000;
-	filter: saturate( .5 ) contrast( .76 );
 }
 
 /* .......................................................................... */

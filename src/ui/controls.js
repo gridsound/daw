@@ -3,10 +3,8 @@
 const UIclock = GSUI.createElement( "gsui-clock" );
 
 function UIcontrolsInit() {
-	const sliderGain = DOM.headGain.querySelector( "gsui-slider" ),
-		sliderTime = DOM.headCurrentTime.querySelector( "gsui-slider" );
-
-	DOM.sliderTime = sliderTime;
+	DOM.sliderGain = DOM.headGain.querySelector( "gsui-slider" );
+	DOM.sliderTime = DOM.headCurrentTime.querySelector( "gsui-slider" );
 	DOM.play.onclick = UIcontrolsClickPlay;
 	DOM.stop.onclick = UIcontrolsClickStop;
 	DOM.reset.onclick = UIcontrolsClickReset;
@@ -17,34 +15,40 @@ function UIcontrolsInit() {
 	DOM.headCmpSave.onclick = UIcompositionClickSave;
 	DOM.cmpsBtn.onmousedown =
 	DOM.undoMore.onmousedown = UIcontrolsDropdownBtnClick;
-	sliderGain.oninput = v => DAW.destination.setGain( v );
-	sliderGain.setValue( DAW.destination.getGain() );
-	sliderTime.oninput = UIcontrolsSliderTime_oninput;
-	sliderTime.onchange = UIcontrolsSliderTime_onchange;
-	sliderTime.oninputend = UIcontrolsSliderTime_oninputend;
-	sliderTime.oninputstart = UIcontrolsSliderTime_inputstart;
+	DOM.sliderGain.setValue( DAW.destination.getGain() );
 	UIclock.classList.add( "btnGroup", "btnMarge" );
 	DOM.headPlay.after( UIclock );
 	UIclock.onchangeDisplay = mode => localStorage.setItem( "gsuiClock.display", mode );
 	GSUI.setAttribute( UIclock, "mode", localStorage.getItem( "gsuiClock.display" ) || "second" );
-}
+	GSUI.listenEvents( DOM.sliderGain, {
+		gsuiSlider: {
+			input: d => DAW.destination.setGain( d.args[ 0 ] ),
+			inputStart: GSUI.noop,
+			inputEnd: GSUI.noop,
+			change: GSUI.noop,
+		},
+	} );
+	GSUI.listenEvents( DOM.sliderTime, {
+		gsuiSlider: {
+			input: d => {
+				const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( d.args[ 0 ] );
 
-function UIcontrolsSliderTime_inputstart( beat ) {
-	DAW.cb.clockUpdate = null;
-	UIclock.setTime( beat );
-}
-function UIcontrolsSliderTime_oninputend( _beat ) {
-	DAW.cb.clockUpdate = UIcontrolsClockUpdate;
-}
-function UIcontrolsSliderTime_oninput( beat ) {
-	const beatRound = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( beat );
+				UIclock.setTime( beat );
+			},
+			change: d => {
+				const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
 
-	UIclock.setTime( beatRound );
-}
-function UIcontrolsSliderTime_onchange() {
-	const beat = UIcontrolsGetFocusedGrid().timeline.previewCurrentTime( false );
-
-	DAW.getFocusedObject().setCurrentTime( beat );
+				DAW.getFocusedObject().setCurrentTime( beat );
+			},
+			inputEnd: () => {
+				DAW.cb.clockUpdate = UIcontrolsClockUpdate;
+			},
+			inputStart: d => {
+				DAW.cb.clockUpdate = null;
+				UIclock.setTime( d.args[ 0 ] );
+			},
+		},
+	} );
 }
 
 function UIcontrolsBPMTap() {
@@ -61,7 +65,7 @@ function UIcontrolsCurrentTime( beat, focused ) {
 }
 
 function UIcontrolsClickCmp() {
-	gsuiPopup.prompt( "Composition's title", "", DAW.get.name(), "Rename" )
+	GSUI.popup.prompt( "Composition's title", "", DAW.get.name(), "Rename" )
 		.then( name => DAW.callAction( "renameComposition", name ) );
 }
 
@@ -129,7 +133,7 @@ function UIcontrolsClickTempo() {
 	DOM.tempoStepsPB.value = DAW.get.stepsPerBeat();
 	DOM.tempoBPM.value = DAW.get.bpm();
 	gswaBPMTap.reset();
-	gsuiPopup.custom( {
+	GSUI.popup.custom( {
 		title: "Tempo",
 		element: DOM.tempoPopupContent,
 		submit( d ) {

@@ -39,7 +39,7 @@ function UIsettingsPopupShow() {
 	DOM.settingsWindowsMode.checked = !UIsettingsGetLowGraphicsValue();
 	DOM.settingsTimelineNumbering.value = UIsettingsGetTimelineNumbering();
 	UIsettingsPopupUIRateOninput();
-	gsuiPopup.custom( {
+	GSUI.popup.custom( {
 		title: "Settings",
 		submit: UIsettingsPopupSubmit,
 		element: DOM.settingsPopupContent,

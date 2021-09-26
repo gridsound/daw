@@ -13,6 +13,10 @@ function UIrun() {
 	window.DAW = DAW;
 	window.VERSION = "0.34.0";
 
+	UIdomInit();
+
+	window.UIanalyser = DOM.headAnalyser;
+	window.UIwindows = document.querySelector( "gsui-windows" );
 	window.UIdrums = new GSDrums();
 	window.UIeffects = new GSEffects();
 	window.UImixer = new GSMixer();
@@ -21,7 +25,7 @@ function UIrun() {
 	window.UIpianoroll = new GSPianoroll();
 	window.UIsynth = new GSSynth();
 
-	UIdomInit();
+	UIanalyser.setResolution( 140 );
 	UIwindowsInit();
 
 	UIauthInit();
@@ -38,7 +42,6 @@ function UIrun() {
 	UIaboutPopupInit();
 	UIpatternrollInit();
 	UIrenderPopupInit();
-	UImainAnalyserInit();
 	UIcompositionsInit();
 	UIsettingsPopupInit();
 	UIshortcutsPopupInit();
@@ -72,7 +75,7 @@ function UIrun() {
 	DAW.cb.compositionSavingPromise = UIauthSaveComposition;
 	DAW.cb.onstartdrum = rowId => UIdrums.onstartdrum( rowId );
 	DAW.cb.onstopdrumrow = rowId => UIdrums.onstopdrumrow( rowId );
-	DAW.cb.analyserFilled = UImainAnalyser.draw.bind( UImainAnalyser );
+	DAW.cb.analyserFilled = data => UIanalyser.draw( data );
 	DAW.cb.channelAnalyserFilled = UImixer.updateAudioData.bind( UImixer );
 	DAW.cb.pause =
 	DAW.cb.stop = () => DOM.play.dataset.icon = "play";

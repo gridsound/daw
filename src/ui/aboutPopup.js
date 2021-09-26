@@ -6,7 +6,7 @@ function UIaboutPopupInit() {
 }
 
 function UIaboutPopupShow() {
-	gsuiPopup.custom( {
+	GSUI.popup.custom( {
 		title: "About",
 		element: DOM.aboutPopupContent,
 	} );

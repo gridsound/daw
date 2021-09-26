@@ -1,7 +1,6 @@
 "use strict";
 
 function UIwindowsInit() {
-	window.UIwindows = document.querySelector( "gsui-windows" );
 	UIwindows.lowGraphics( true );
 	UIwindowsAppendContent( UIwindows );
 	UIwindows.onopen = win => UIwindowsBtn( win.dataset.id, true );

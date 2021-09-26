@@ -29,6 +29,7 @@ declare -a HEADEREND=(
 
 declare -a CSSfiles=(
 	"gs-ui-components/gsui.css"
+	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.css"
 	"gs-ui-components/gsuiDragshield/gsuiDragshield.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.css"
@@ -177,6 +178,7 @@ declare -a JSfiles=(
 	"daw-core/src/json/composition.js"
 	"daw-core/src/json/block.js"
 	"daw-core/src/json/channel.js"
+	"daw-core/src/json/channelMain.js"
 	"daw-core/src/json/channels.js"
 	"daw-core/src/json/drum.js"
 	"daw-core/src/json/drumcut.js"
@@ -186,6 +188,7 @@ declare -a JSfiles=(
 	"daw-core/src/json/key.js"
 	"daw-core/src/json/lfo.js"
 	"daw-core/src/json/oscillator.js"
+	"daw-core/src/json/slices.js"
 	"daw-core/src/json/synth.js"
 	"daw-core/src/json/track.js"
 
@@ -219,6 +222,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/addOscillator.js"
 	"daw-core/src/actions/addPatternDrums.js"
 	"daw-core/src/actions/addPatternKeys.js"
+	"daw-core/src/actions/addPatternSlices.js"
 	"daw-core/src/actions/addSynth.js"
 	"daw-core/src/actions/changeChannel.js"
 	"daw-core/src/actions/changeDrumrow.js"
@@ -362,8 +366,6 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiDrums/gsuiDrums.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.html.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.js"
-	"gs-ui-components/gsuiKeys/gsuiKeys.keyNames.js"
-	"gs-ui-components/gsuiKeys/gsuiKeys.keyboardToKey.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.html.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.js"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"
@@ -390,13 +392,13 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiTracklist/gsuiTracklist.js"
 	"gs-ui-components/gsuiAnalyser/gsuiAnalyser.js"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.js"
-	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.draw.js"
 	"gs-ui-components/gsuiSVGDefs/gsuiSVGDefs.js"
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.js"
 	"gs-ui-components/gsuiWaveform/gsuiWaveform.draw.js"
 	"gs-ui-components/gsuiWaveforms/gsuiWaveforms.js"
 	"gs-ui-components/gsuiKeysforms/gsuiKeysforms.js"
 	"gs-ui-components/gsuiDrumsforms/gsuiDrumsforms.js"
+	"gs-ui-components/gsuiSlicesforms/gsuiSlicesforms.js"
 	"gs-ui-components/gsuiWindows/gsuiWindows.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.html.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
@@ -422,7 +424,6 @@ declare -a JSfiles=(
 	"src/ui/aboutPopup.js"
 	"src/ui/patternroll.js"
 	"src/ui/renderPopup.js"
-	"src/ui/mainAnalyser.js"
 	"src/ui/compositions.js"
 	"src/ui/settingsPopup.js"
 	"src/ui/shortcutsPopup.js"
@@ -499,9 +500,9 @@ updateDep() {
 }
 
 if [ $# = 0 ]; then
-	echo '          -------------------------------'
-	echo '        .:: GridSound build shellscript ::.'
-	echo '        -----------------------------------'
+	echo '          --------------------------------'
+	echo '        .:: GridSound build shell-script ::.'
+	echo '        ------------------------------------'
 	echo ''
 	echo './build.sh dev ---> create "index.html" for development'
 	echo './build.sh prod --> create "index-prod.html" for production'

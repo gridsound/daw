@@ -9,7 +9,7 @@ function UIrenderPopupShow() {
 	DOM.renderProgress.value = 0;
 	DOM.renderBtn.dataset.status = "0";
 	DOM.renderBtn.href = "";
-	gsuiPopup.custom( {
+	GSUI.popup.custom( {
 		ok: "Close",
 		title: "Render",
 		element: DOM.renderPopupContent,

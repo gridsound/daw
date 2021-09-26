@@ -22,7 +22,7 @@ function UIpianorollNameClick() {
 	const id = DAW.get.patternKeysOpened(),
 		name = DOM.pianorollName.textContent;
 
-	gsuiPopup.prompt( "Rename pattern", "", name, "Rename" )
+	GSUI.popup.prompt( "Rename pattern", "", name, "Rename" )
 		.then( name => DAW.callAction( "renamePattern", id, name ) );
 }
 
