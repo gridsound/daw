@@ -46,10 +46,6 @@ function UIdomFillIds() {
 
 	return Array.prototype.reduce.call( ids, ( obj, el ) => {
 		obj[ el.id ] = el;
-		if ( "remove" in el.dataset ) {
-			el.remove();
-			el.removeAttribute( "data-remove" );
-		}
 		return obj;
 	}, {} );
 }
