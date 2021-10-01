@@ -7,7 +7,7 @@
 	padding: var( --head-gap );
 	grid-gap: var( --head-gap );
 	grid-template:
-		"header ctrlA       ctrlB       .   headHelp  " var( --head-heightA )
+		"header ctrlA       ctrlB       .   headHelp   " var( --head-heightA )
 		"cmp    currentTime winBtns     .   headVersion" var( --head-heightB )
 		/260px  min-content min-content 1fr min-content;
 	background-color: var( --head-bg );
@@ -44,8 +44,8 @@ a.btn {
 	position: relative;
 	box-shadow: 0 0 1px 2px #69b;
 }
-.btn.gsuiIcon:focus,
-.btn.gsuiIcon:hover {
+.btn.gsuiIcon:not( .winBtn ):focus,
+.btn.gsuiIcon:not( .winBtn ):hover {
 	color: #fff;
 }
 .btnBg {
@@ -328,7 +328,7 @@ a.btn {
 	white-space: nowrap;
 }
 .winBtn {
-	padding: 2px 6px;
+	flex: 1;
 	font-size: 12px;
 	font-weight: bold;
 	border-radius: 0;
