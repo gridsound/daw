@@ -1,7 +1,7 @@
 "use strict";
 
 function UIshortcutsPopupInit() {
-	DOM.helpKeyboardShortcuts.onclick = UIshortcutsPopupShow;
+	DOM.helpKeyboard.onclick = UIshortcutsPopupShow;
 }
 
 function UIshortcutsPopupShow() {
