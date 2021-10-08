@@ -181,7 +181,6 @@ function UIcompositionClosed( cmp ) {
 	DOM.drumsName.textContent =
 	DOM.synthName.textContent =
 	DOM.pianorollName.textContent = "";
-	DOM.pianorollForbidden.classList.add( "hidden" );
 	UIpatterns.clear();
 }
 

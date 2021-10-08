@@ -3,6 +3,7 @@
 #drumsNew,
 #drumsName,
 #pianorollName { color: var( --windowBtn-pattern-color ); }
+#slicesName { color: var( --windowBtn-slices-color ); }
 #synthName { color: var( --windowBtn-synth-color ); }
 #synthChanName {
 	margin: 0;

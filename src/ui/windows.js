@@ -9,6 +9,7 @@ function UIwindowsInit() {
 		switch ( win.dataset.id ) {
 			case "piano": DAW.callAction( "closePattern", "keys" ); break;
 			case "drums": DAW.callAction( "closePattern", "drums" ); break;
+			case "slicer": DAW.callAction( "closePattern", "slices" ); break;
 		}
 	};
 	DOM.winBtns.onclick = e => {
@@ -25,6 +26,7 @@ function UIwindowsInit() {
 	UIwindowsSetPos( "synth",   360, 340, 340, 220, 400, 460, "oscillator",  "synth" );
 	UIwindowsSetPos( "piano",   780, 400, 380, 180, 600, 400, "keys",        "pianoroll" );
 	UIwindowsSetPos( "drums",   410, 450, 380, 180, 900, 400, "drums",       "drums" );
+	UIwindowsSetPos( "slicer",  500, 140, 306, 250, 420, 360, "slices",      "slicer" );
 	UIwindowsSetPos( "effects", 480, 120, 230, 180, 420, 360, "effects",     "effects" );
 }
 

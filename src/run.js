@@ -11,7 +11,7 @@ function UIrun() {
 		);
 
 	window.DAW = DAW;
-	window.VERSION = "0.34.0";
+	window.VERSION = "0.35.0";
 
 	UIdomInit();
 
@@ -20,6 +20,7 @@ function UIrun() {
 	window.UIdrums = new GSDrums();
 	window.UIeffects = new GSEffects();
 	window.UImixer = new GSMixer();
+	window.UIslicer = new GSSlicer();
 	window.UIpatternroll = new GSPatternroll();
 	window.UIpatterns = new GSPatterns();
 	window.UIpianoroll = new GSPianoroll();
@@ -33,6 +34,7 @@ function UIrun() {
 	UImixerInit();
 	UIsynthInit();
 	UIcookieInit();
+	UIslicerInit();
 	UIeffectsInit();
 	UIhistoryInit();
 	UIcontrolsInit();

@@ -7,6 +7,7 @@ function UIcompositionChanged( obj, prevObj ) {
 	UIdrums.change( obj );
 	UIeffects.change( obj );
 	UImixer.change( obj );
+	UIslicer.change( obj );
 	UIpianoroll.change( obj );
 	UIpatternroll.change( obj );
 	UIcompositionChanged.fn.forEach( ( fn, attrs ) => {
@@ -66,6 +67,19 @@ UIcompositionChanged.fn = new Map( [
 		DOM.headCmpDur.textContent =
 		UIcompositions.get( DAW.get.cmp() ).duration.textContent = `${ min }:${ sec }`;
 	} ],
+	[ [ "patternSlicesOpened" ], function( obj ) {
+		if ( obj.patternSlicesOpened ) {
+			const pat = DAW.get.pattern( obj.patternSlicesOpened );
+
+			DOM.slicesName.textContent = pat.name;
+			UIwindows.window( "slicer" ).open();
+			if ( DAW.getFocusedName() === "slicer" ) {
+				DOM.sliderTime.setAttribute( "max", pat.duration );
+			}
+		} else {
+			DOM.slicesName.textContent = "";
+		}
+	} ],
 	[ [ "patternDrumsOpened" ], function( obj ) {
 		if ( obj.patternDrumsOpened ) {
 			const pat = DAW.get.pattern( obj.patternDrumsOpened );
@@ -96,14 +110,12 @@ UIcompositionChanged.fn = new Map( [
 			const pat = DAW.get.pattern( patternKeysOpened );
 
 			DOM.pianorollName.textContent = pat.name;
-			DOM.pianorollForbidden.classList.add( "hidden" );
 			if ( DAW.getFocusedName() === "pianoroll" ) {
 				DOM.sliderTime.setAttribute( "max", pat.duration );
 			}
 			UIwindows.window( "piano" ).open();
 		} else {
 			DOM.pianorollName.textContent = "";
-			DOM.pianorollForbidden.classList.remove( "hidden" );
 		}
 	} ],
 ] );

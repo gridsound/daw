@@ -9,6 +9,7 @@ function UIdomInit() {
 		GSUI.getTemplate( "window-synth" ),
 		GSUI.getTemplate( "window-mixer" ),
 		GSUI.getTemplate( "window-blocks" ),
+		GSUI.getTemplate( "window-slicer" ),
 		GSUI.getTemplate( "window-effects" ),
 		GSUI.getTemplate( "popup-auth" ),
 		GSUI.getTemplate( "popup-open" ),

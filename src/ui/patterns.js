@@ -9,6 +9,12 @@ function UIpatternsInit() {
 }
 
 function UIpatternsBuffersLoaded( buffers ) {
+	const patSli = DAW.get.pattern( DAW.get.patternSlicesOpened() );
+	const sliBuf = patSli && DAW.get.pattern( patSli.source ).buffer;
+
+	if ( sliBuf in buffers ) {
+		UIslicer.rootElement.setBuffer( buffers[ sliBuf ].buffer );
+	}
 	UIpatterns.bufferLoaded( buffers );
 	UIpatternroll.rootElement.getBlocks().forEach( ( elBlc, blcId ) => {
 		const blc = DAW.get.block( blcId ),
@@ -39,6 +45,9 @@ function UIupdatePattern( id, obj ) {
 					blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = name;
 				}
 			} );
+			if ( id === DAW.get.patternSlicesOpened() ) {
+				DOM.slicesName.textContent = name;
+			}
 			if ( id === DAW.get.patternKeysOpened() ) {
 				DOM.pianorollName.textContent = name;
 			}
