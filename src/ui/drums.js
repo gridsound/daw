@@ -22,6 +22,8 @@ function UIdrumsNameClick() {
 	const id = DAW.get.patternDrumsOpened(),
 		name = DOM.drumsName.textContent;
 
-	GSUI.popup.prompt( "Rename pattern", "", name, "Rename" )
-		.then( name => DAW.callAction( "renamePattern", id, name ) );
+	if ( id ) {
+		GSUI.popup.prompt( "Rename pattern", "", name, "Rename" )
+			.then( name => DAW.callAction( "renamePattern", id, name ) );
+	}
 }
