@@ -118,6 +118,7 @@ declare -a JSfiles=(
 
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/Buffers.js"
+	"daw-core/src/Slices.js"
 	"daw-core/src/LocalStorage.js"
 	"daw-core/src/Destination.js"
 	"daw-core/src/History.js"
@@ -299,6 +300,7 @@ declare -a JSfiles=(
 	"gs-wa-components/gswaSynth/gswaSynth.midiKeyToHz.js"
 	"gs-wa-components/gswaKeysScheduler/gswaKeysScheduler.js"
 	"gs-wa-components/gswaDrumsScheduler/gswaDrumsScheduler.js"
+	"gs-wa-components/gswaSlicer/gswaSlicer.js"
 	"gs-wa-components/gswaBPMTap/gswaBPMTap.js"
 	"gs-wa-components/gswaEffects/gswaEffects.js"
 	"gs-wa-components/gswaFxFilter/gswaFxFilter.js"
