@@ -52,7 +52,7 @@ function UIcontrolsInit() {
 }
 
 function UIcontrolsBPMTap() {
-	DOM.tempoBPM.value = Math.floor( gswaBPMTap.tap() );
+	DOM.tempoBPM.value = gswaBPMTap.tap();
 }
 
 function UIcontrolsClockUpdate( beat ) {
