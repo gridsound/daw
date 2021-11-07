@@ -60,7 +60,7 @@ function UIcontrolsClockUpdate( beat ) {
 }
 
 function UIcontrolsCurrentTime( beat, focused ) {
-	UIcontrolsGetFocusedGrid( focused ).currentTime( beat );
+	GSUI.setAttribute( UIcontrolsGetFocusedGrid( focused ), "currenttime", beat );
 	DOM.sliderTime.setValue( beat );
 }
 
@@ -74,17 +74,16 @@ function UIcontrolsClickPlay() {
 }
 
 function UIcontrolsClickPlayToggle() {
-	DAW.getFocusedName() === "composition"
-		? DAW.pianorollFocus( "-f" )
-		: DAW.compositionFocus( "-f" );
+	DAW.focusSwitch();
 }
 
 function UIcontrolsClickStop() {
 	DAW.stop();
 	switch ( document.activeElement ) {
-		case UIdrums.rootElement: DAW.drumsFocus( "-f" ); break;
-		case UIpianoroll.rootElement: DAW.pianorollFocus( "-f" ); break;
-		case UIpatternroll.rootElement: DAW.compositionFocus( "-f" ); break;
+		case UIpianoroll.rootElement: DAW.focusOn( "keys", "-f" ); break;
+		case UIdrums.rootElement: DAW.focusOn( "drums", "-f" ); break;
+		case UIslicer.rootElement: DAW.focusOn( "slices", "-f" ); break;
+		case UIpatternroll.rootElement: DAW.focusOn( "composition", "-f" ); break;
 	}
 }
 
@@ -93,29 +92,30 @@ function UIcontrolsClickReset() {
 }
 
 function UIcontrolsGetFocusedGrid( focStr = DAW.getFocusedName() ) {
-	return ( focStr === "composition"
-		? UIpatternroll
-		: focStr === "drums"
-			? UIdrums
-			: UIpianoroll ).rootElement;
+	switch ( focStr ) {
+		default: return null;
+		case "keys": return UIpianoroll.rootElement;
+		case "drums": return UIdrums.rootElement;
+		case "slices": return UIslicer.rootElement;
+		case "composition": return UIpatternroll.rootElement;
+	}
 }
 
-function UIcontrolsFocusOn( focStr, b ) {
-	if ( b ) {
-		const focObj = DAW.getFocusedObject(),
-			beat = focObj.getCurrentTime(),
-			duration = ( focObj === DAW.composition ? focObj.cmp : focObj ).duration,
-			grid = UIcontrolsGetFocusedGrid( focStr ),
-			onCmp = focStr === "composition";
+function UIcontrolsFocusOn( focStr ) {
+	const focObj = DAW.getFocusedObject(),
+		beat = focObj.getCurrentTime(),
+		duration = ( focObj === DAW.composition ? focObj.cmp : focObj ).duration,
+		grid = UIcontrolsGetFocusedGrid( focStr ),
+		onCmp = focStr === "composition";
 
-		DOM.playToggle.dataset.dir = onCmp ? "up" : "down";
-		DOM.sliderTime.setAttribute( "max", duration || DAW.get.beatsPerMeasure() );
-		DOM.sliderTime.setValue( beat );
-		UIdrums.rootElement.classList.toggle( "selected", focStr === "drums" );
-		UIpianoroll.rootElement.classList.toggle( "selected", focStr === "pianoroll" );
-		UIpatternroll.rootElement.classList.toggle( "selected", onCmp );
-		grid.focus();
-	}
+	DOM.playToggle.dataset.dir = onCmp ? "up" : "down";
+	DOM.sliderTime.setAttribute( "max", duration || DAW.get.beatsPerMeasure() );
+	DOM.sliderTime.setValue( beat );
+	UIpianoroll.rootElement.classList.toggle( "selected", focStr === "keys" );
+	UIdrums.rootElement.classList.toggle( "selected", focStr === "drums" );
+	UIslicer.rootElement.classList.toggle( "selected", focStr === "slices" );
+	UIpatternroll.rootElement.classList.toggle( "selected", onCmp );
+	grid.focus();
 }
 
 function UIcontrolsDropdownBtnClick( e ) {

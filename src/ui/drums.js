@@ -6,7 +6,7 @@ function UIdrumsInit() {
 	UIdrums.setDAWCore( DAW );
 	UIdrums.rootElement.setPxPerBeat( 120 );
 	UIdrums.setWaveforms( UIpatterns.svgForms.bufferHD );
-	UIdrums.rootElement.onfocus = () => DAW.drumsFocus();
+	UIdrums.rootElement.onfocus = () => DAW.focusOn( "drums" );
 	DOM.drumsName.onclick = UIdrumsNameClick;
 	win.onfocusin = UIdrumsWindowFocusin;
 	win.contentAppend( UIdrums.rootElement );

@@ -31,9 +31,7 @@ function UIupdatePattern( id, obj ) {
 		if ( "duration" in obj ) {
 			const foc = DAW.getFocusedName();
 
-			if ( ( foc === "pianoroll" && id === DAW.get.patternKeysOpened() ) ||
-				( foc === "drums" && id === DAW.get.patternDrumsOpened() )
-			) {
+			if ( foc !== "composition" && id === DAW.get.opened( foc ) ) {
 				DOM.sliderTime.setAttribute( "max", obj.duration );
 			}
 		}

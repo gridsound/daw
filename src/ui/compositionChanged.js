@@ -73,7 +73,7 @@ UIcompositionChanged.fn = new Map( [
 
 			DOM.slicesName.textContent = pat.name;
 			UIwindows.window( "slicer" ).open();
-			if ( DAW.getFocusedName() === "slicer" ) {
+			if ( DAW.getFocusedName() === "slices" ) {
 				DOM.sliderTime.setAttribute( "max", pat.duration );
 			}
 		} else {
@@ -110,7 +110,7 @@ UIcompositionChanged.fn = new Map( [
 			const pat = DAW.get.pattern( patternKeysOpened );
 
 			DOM.pianorollName.textContent = pat.name;
-			if ( DAW.getFocusedName() === "pianoroll" ) {
+			if ( DAW.getFocusedName() === "keys" ) {
 				DOM.sliderTime.setAttribute( "max", pat.duration );
 			}
 			UIwindows.window( "piano" ).open();

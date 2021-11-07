@@ -4,7 +4,7 @@ function UIslicerInit() {
 	const win = UIwindows.window( "slicer" );
 
 	UIslicer.setDAWCore( DAW );
-	// UIslicer.rootElement.onfocus = () => DAW.slicerFocus();
+	UIslicer.rootElement.onfocus = () => DAW.focusOn( "slices" );
 	DOM.slicesName.onclick = UIslicesNameClick;
 	win.onfocusin = UIslicerWindowFocusin;
 	win.contentAppend( UIslicer.rootElement );

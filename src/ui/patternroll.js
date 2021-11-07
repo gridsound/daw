@@ -5,7 +5,7 @@ function UIpatternrollInit() {
 
 	UIpatternroll.setDAWCore( DAW );
 	UIpatternroll.setSVGForms( UIpatterns.svgForms );
-	UIpatternroll.rootElement.onfocus = () => DAW.compositionFocus();
+	UIpatternroll.rootElement.onfocus = () => DAW.focusOn( "composition" );
 	win.onfocusin = UIpatternrollWindowFocusin;
 	win.contentAppend( UIpatternroll.rootElement );
 }
