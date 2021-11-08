@@ -54,6 +54,8 @@ function UIrun() {
 	window.onbeforeunload = UIcompositionBeforeUnload;
 	document.body.ondrop = UIdrop;
 	document.body.ondragover = () => false;
+	document.body.oncontextmenu = () => location.host === 'localhost' ? undefined : false;
+
 	document.addEventListener( "wheel", e => {
 		if ( e.ctrlKey ) {
 			e.preventDefault();
