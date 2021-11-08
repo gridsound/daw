@@ -44,10 +44,6 @@ a.btn {
 	position: relative;
 	box-shadow: 0 0 1px 2px #69b;
 }
-.btn.gsuiIcon:not( .winBtn ):focus,
-.btn.gsuiIcon:not( .winBtn ):hover {
-	color: #fff;
-}
 .btnBg {
 	background-color: #ffffff1a;
 }
@@ -77,6 +73,7 @@ a.btn {
 	border-radius: 0;
 	transition: color var( --head-hover-dur );
 }
+.btnBg:hover,
 .btnGroup .btn:hover {
 	color: #fff;
 }

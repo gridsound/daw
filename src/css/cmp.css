@@ -49,8 +49,8 @@
 	visibility: hidden;
 	margin-left: -32px;
 }
-.cmp-save.cmp-save:focus,
-.cmp-save.cmp-save:hover {
+.cmp-save:focus,
+.cmp-save:hover {
 	color: var( --cmp-save-bg );
 	background-color: var( --cmp-text );
 }
