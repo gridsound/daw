@@ -505,6 +505,18 @@ updateDep() {
 	git submodule update --remote
 }
 
+count() {
+	find ../daw/src/          -name '*.js'                        -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "* daw              %4.0f JS lines\n", s}'
+	find ../daw/src/          -name '*.css'                       -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "                   %4.0f CSS lines\n", s}'
+	find ../daw/src/          -name '*.js' -not -name '*.html.js' -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "                   %4.0f HTML lines\n\n", s}'
+	find ../daw-core/         -name '*.js'                        -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "* daw-core         %4.0f JS lines\n\n", s}'
+	find ../gs-components/    -name '*.js'                        -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "* gs-component     %4.0f JS lines\n\n", s}'
+	find ../gs-wa-components/ -name '*.js'                        -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "* gs-wa-components %4.0f JS lines\n\n", s}'
+	find ../gs-ui-components/ -name '*.js' -not -name '*.html.js' -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "* gs-ui-components %4.0f JS lines\n", s}'
+	find ../gs-ui-components/ -name '*.css'                       -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "                   %4.0f CSS lines\n", s}'
+	find ../gs-ui-components/ -name '*.html.js'                   -exec wc -l {} \; | cut -d' ' -f1 | awk '{s+=$1} END {printf "                   %4.0f HTML lines\n", s}'
+}
+
 if [ $# = 0 ]; then
 	echo '          --------------------------------'
 	echo '        .:: GridSound build shell-script ::.'
@@ -525,4 +537,6 @@ elif [ $1 = "tests" ]; then
 	buildTests
 elif [ $1 = "lint" ]; then
 	lint
+elif [ $1 = "count" ]; then
+	count
 fi
