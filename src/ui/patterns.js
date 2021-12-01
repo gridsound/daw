@@ -21,7 +21,9 @@ function UIpatternsBuffersLoaded( buffers ) {
 			pat = DAW.get.pattern( blc.pattern );
 
 		if ( pat.type === "buffer" && pat.buffer in buffers ) {
-			UIpatterns.svgForms.buffer.setSVGViewbox( elBlc._gsuiSVGform, blc.offset, blc.duration, DAW.get.bpm() / 60 );
+			const bpm = pat.bufferBpm || DAW.get.bpm();
+
+			UIpatterns.svgForms.buffer.setSVGViewbox( elBlc._gsuiSVGform, blc.offset, blc.duration, bpm / 60 );
 		}
 	} );
 }
@@ -54,18 +56,4 @@ function UIupdatePattern( id, obj ) {
 			}
 		}
 	}
-}
-
-function UIupdatePatternsBPM( bpm ) {
-	const bps = bpm / 60;
-
-	UIpatternroll.rootElement.getBlocks().forEach( ( elBlc, blcId ) => {
-		const blc = DAW.get.block( blcId ),
-			pat = DAW.get.pattern( blc.pattern ),
-			svg = elBlc._gsuiSVGform;
-
-		if ( svg && pat.type === "buffer" ) {
-			UIpatterns.svgForms.buffer.setSVGViewbox( svg, blc.offset, blc.duration, bps );
-		}
-	} );
 }

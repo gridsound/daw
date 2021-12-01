@@ -51,7 +51,6 @@ UIcompositionChanged.fn = new Map( [
 		UIclock.setAttribute( "bpm", bpm );
 		DOM.bpm.textContent =
 		UIcompositions.get( DAW.get.cmp() ).bpm.textContent = bpm;
-		UIupdatePatternsBPM( bpm );
 	} ],
 	[ [ "name" ], function( { name } ) {
 		UItitle( name );
