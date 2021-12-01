@@ -4,7 +4,7 @@ function UIsynthInit() {
 	UIsynth.setDAWCore( DAW );
 	UIsynth.setWaveList( Array.from( gswaPeriodicWaves.list.keys() ) );
 	DOM.synthName.onclick = () => {
-		const id = DAW.get.synthOpened(),
+		const id = DAW.get.opened( "synth" ),
 			name = DOM.synthName.textContent;
 
 		GSUI.popup.prompt( "Rename synthesizer", "", name, "Rename" )

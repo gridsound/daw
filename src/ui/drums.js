@@ -19,7 +19,7 @@ function UIdrumsWindowFocusin( e ) {
 }
 
 function UIdrumsNameClick() {
-	const id = DAW.get.patternDrumsOpened(),
+	const id = DAW.get.opened( "drums" ),
 		name = DOM.drumsName.textContent;
 
 	if ( id ) {

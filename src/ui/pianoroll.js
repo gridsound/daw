@@ -18,7 +18,7 @@ function UIpianorollWindowFocusin( e ) {
 }
 
 function UIpianorollNameClick() {
-	const id = DAW.get.patternKeysOpened(),
+	const id = DAW.get.opened( "keys" ),
 		name = DOM.pianorollName.textContent;
 
 	if ( id ) {

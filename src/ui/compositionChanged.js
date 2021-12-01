@@ -19,7 +19,7 @@ function UIcompositionChanged( obj, prevObj ) {
 
 UIcompositionChanged.fn = new Map( [
 	[ [ "channels" ], function( obj ) {
-		const synOpenedChan = obj.channels[ DAW.get.synth( DAW.get.synthOpened() ).dest ],
+		const synOpenedChan = obj.channels[ DAW.get.synth( DAW.get.opened( "synth" ) ).dest ],
 			mixerSelectedChan = obj.channels[ UIeffects.getDestFilter() ];
 
 		if ( synOpenedChan && "name" in synOpenedChan ) {
@@ -30,7 +30,7 @@ UIcompositionChanged.fn = new Map( [
 		}
 	} ],
 	[ [ "synths" ], function( obj ) {
-		const synOpened = obj.synths[ DAW.get.synthOpened() ];
+		const synOpened = obj.synths[ DAW.get.opened( "synth" ) ];
 
 		if ( synOpened ) {
 			UIsynthChange( synOpened );

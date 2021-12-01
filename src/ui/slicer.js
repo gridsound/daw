@@ -17,7 +17,7 @@ function UIslicerWindowFocusin( e ) {
 }
 
 function UIslicesNameClick() {
-	const id = DAW.get.patternSlicesOpened(),
+	const id = DAW.get.opened( "slices" ),
 		name = DOM.slicesName.textContent;
 
 	if ( id ) {

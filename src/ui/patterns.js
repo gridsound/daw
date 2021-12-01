@@ -9,7 +9,7 @@ function UIpatternsInit() {
 }
 
 function UIpatternsBuffersLoaded( buffers ) {
-	const patSli = DAW.get.pattern( DAW.get.patternSlicesOpened() );
+	const patSli = DAW.get.pattern( DAW.get.opened( "slices" ) );
 	const sliBuf = patSli && DAW.get.pattern( patSli.source ).buffer;
 
 	if ( sliBuf in buffers ) {
@@ -43,13 +43,13 @@ function UIupdatePattern( id, obj ) {
 					blc.querySelector( ".gsuiPatternroll-block-name" ).textContent = name;
 				}
 			} );
-			if ( id === DAW.get.patternSlicesOpened() ) {
+			if ( id === DAW.get.opened( "slices" ) ) {
 				DOM.slicesName.textContent = name;
 			}
-			if ( id === DAW.get.patternKeysOpened() ) {
+			if ( id === DAW.get.opened( "keys" ) ) {
 				DOM.pianorollName.textContent = name;
 			}
-			if ( id === DAW.get.patternDrumsOpened() ) {
+			if ( id === DAW.get.opened( "drums" ) ) {
 				DOM.drumsName.textContent = name;
 			}
 		}
