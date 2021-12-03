@@ -23,6 +23,7 @@ function UIpatternsBuffersLoaded( buffers ) {
 		if ( pat.type === "buffer" && pat.buffer in buffers ) {
 			const bpm = pat.bufferBpm || DAW.get.bpm();
 
+			GSUI.setAttribute( elBlc, "data-missing", false );
 			UIpatterns.svgForms.buffer.setSVGViewbox( elBlc._gsuiSVGform, blc.offset, blc.duration, bpm / 60 );
 		}
 	} );
