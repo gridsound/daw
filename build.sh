@@ -1,31 +1,57 @@
 #!/bin/bash
 
-declare -a HEADER=(
-	'<!DOCTYPE html>'
-	'<html lang="en">'
-	'<head>'
-	'<title>GridSound</title>'
-	'<meta charset="UTF-8"/>'
-	'<meta name="viewport" content="width=device-width, user-scalable=no"/>'
-	'<meta name="description" content="A free and Open-Source DAW (digital audio workstation)"/>'
-	'<meta name="google" content="notranslate"/>'
-	'<meta property="og:type" content="website"/>'
-	'<meta property="og:title" content="GridSound"/>'
-	'<meta property="og:url" content="https://gridsound.com/daw/"/>'
-	'<meta property="og:image" content="https://gridsound.com/assets/og-image.jpg"/>'
-	'<meta property="og:image:width" content="800"/>'
-	'<meta property="og:image:height" content="400"/>'
-	'<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
-	'<meta name="theme-color" content="#3a5158"/>'
-	'<link rel="manifest" href="manifest.json"/>'
-	'<link rel="shortcut icon" href="../assets/favicon.png"/>'
-)
-
-declare -a HEADEREND=(
-	'</head>'
-	'<body>'
-	'<noscript id="noscript">GridSound needs JavaScript to run</noscript>'
-)
+writeHeader() {
+	echo '<!DOCTYPE html>'
+	echo '<html lang="en">'
+	echo '<head>'
+	echo '<title>GridSound</title>'
+	echo '<meta charset="UTF-8"/>'
+	echo '<meta name="viewport" content="width=device-width, user-scalable=no"/>'
+	echo '<meta name="description" content="A free and Open-Source DAW (digital audio workstation)"/>'
+	echo '<meta name="google" content="notranslate"/>'
+	echo '<meta property="og:type" content="website"/>'
+	echo '<meta property="og:title" content="GridSound"/>'
+	echo '<meta property="og:url" content="https://gridsound.com/daw/"/>'
+	echo '<meta property="og:image" content="https://gridsound.com/assets/og-image.jpg"/>'
+	echo '<meta property="og:image:width" content="800"/>'
+	echo '<meta property="og:image:height" content="400"/>'
+	echo '<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
+	echo '<meta name="theme-color" content="#3a5158"/>'
+	echo '<link rel="manifest" href="manifest.json"/>'
+	echo '<link rel="shortcut icon" href="../assets/favicon.png"/>'
+}
+writeBody() {
+	echo '</head>'
+	echo '<body>'
+	echo '<noscript id="noscript">GridSound needs JavaScript to run</noscript>'
+}
+writeEnd() {
+	echo '</body>'
+	echo '</html>'
+}
+writeCSS() {
+	printf '<link rel="stylesheet" href="%s"/>\n' "${CSSfiles[@]}"
+}
+writeJS() {
+	printf '<script src="%s"></script>\n' "${JSfiles[@]}"
+}
+writeCSScompress() {
+	echo -n '' > allCSS.css
+	cat "${CSSfiles[@]}" >> allCSS.css
+	echo '<style>'
+	csso allCSS.css
+	echo '</style>'
+	rm allCSS.css
+}
+writeJScompress() {
+	echo '"use strict";' > allJS.js
+	cat "${JSfilesProd[@]}" >> allJS.js
+	cat "${JSfiles[@]}" >> allJS.js
+	echo '<script>'
+	terser allJS.js --compress --mangle --toplevel
+	echo '</script>'
+	rm allJS.js
+}
 
 declare -a CSSfiles=(
 	"gs-ui-components/gsui.css"
@@ -438,66 +464,51 @@ declare -a JSfiles=(
 	"src/run.js"
 )
 
-jsMainFile() {
-	echo '"use strict";'
-	cat "${JSfilesProd[@]}" | grep -v '"use strict";'
-	cat "${JSfiles[@]}" | grep -v '"use strict";'
-}
-
 buildDev() {
 	filename='index.html'
 	echo "Build $filename"
-	printf '%s\n' "${HEADER[@]}" > $filename;
-	printf '<link rel="stylesheet" href="%s"/>\n' "${CSSfiles[@]}" >> $filename;
-	printf '%s\n' "${HEADEREND[@]}" >> $filename;
+	writeHeader > $filename
+	writeCSS >> $filename
+	writeBody >> $filename
 	cat src/html/loading.html >> $filename
 	echo '<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>' >> $filename
-	printf '<script src="%s"></script>\n' "${JSfiles[@]}" >> $filename;
-	echo '</body>' >> $filename
-	echo '</html>' >> $filename
+	writeJS >> $filename
+	writeEnd >> $filename
 }
 
 buildProd() {
 	filename='index-prod.html'
 	echo "Build $filename"
-	printf '%s\n' "${HEADER[@]}" > $filename;
-	echo '<style>' >> $filename
-	cat "${CSSfiles[@]}" >> $filename
-	echo '</style>' >> $filename
-	printf '%s\n' "${HEADEREND[@]}" >> $filename;
+	writeHeader > $filename
+	writeCSScompress >> $filename
+	writeBody >> $filename
 	cat src/html/loading.html >> $filename
-	echo '<script>' >> $filename
-	jsMainFile >> $filename
-	echo '</script>' >> $filename
-	echo '</body>' >> $filename
-	echo '</html>' >> $filename
+	writeJScompress >> $filename
+	writeEnd >> $filename
 }
 
 buildTests() {
 	filename='tests.html'
 	echo "Build $filename"
-	printf '%s\n' "${HEADER[@]}" > $filename
+	writeHeader > $filename
+	writeCSScompress >> $filename
 	echo '<link rel="stylesheet" href="assets/qunit/qunit-2.9.2.css"/>' >> $filename
 	echo '<link rel="stylesheet" href="tests/tests.css"/>' >> $filename
-	echo '<style>' >> $filename
-	cat "${CSSfiles[@]}" >> $filename
-	echo '</style>' >> $filename
-	printf '%s\n' "${HEADEREND[@]}" >> $filename
+	writeBody >> $filename
 	echo '<div id="qunit"></div>' >> $filename
 	echo '<div id="qunit-fixture"></div>' >> $filename
 	cat src/html/loading.html >> $filename
-	echo '<script>' >> $filename
-	jsMainFile >> $filename
-	echo '</script>' >> $filename
+	writeJScompress >> $filename
 	echo '<script src="assets/qunit/qunit-2.9.2.js"></script>' >> $filename
 	echo '<script src="tests/tests.js"></script>' >> $filename
-	echo '</body>' >> $filename
-	echo '</html>' >> $filename
+	writeEnd >> $filename
 }
 
 lint() {
 	stylelint "${CSSfiles[@]}"
-	jsMainFile > __lintMain.js
+	echo '"use strict";' > __lintMain.js
+	cat "${JSfilesProd[@]}" | grep -v '"use strict";' >> __lintMain.js
+	cat "${JSfiles[@]}" | grep -v '"use strict";' >> __lintMain.js
 	eslint __lintMain.js && rm __lintMain.js
 }
 
