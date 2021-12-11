@@ -10,7 +10,7 @@ function UIpatternsInit() {
 
 function UIpatternsBuffersLoaded( buffers ) {
 	const patSli = DAW.get.pattern( DAW.get.opened( "slices" ) );
-	const sliBuf = patSli && DAW.get.pattern( patSli.source ).buffer;
+	const sliBuf = patSli?.source && DAW.get.pattern( patSli.source ).buffer;
 
 	if ( sliBuf in buffers ) {
 		UIslicer.rootElement.setBuffer( buffers[ sliBuf ].buffer );

@@ -11,7 +11,7 @@ function UIrun() {
 		);
 
 	window.DAW = DAW;
-	window.VERSION = "0.35.0";
+	window.VERSION = "0.36.0";
 
 	UIdomInit();
 
@@ -88,7 +88,7 @@ function UIrun() {
 	DOM.versionNum.textContent =
 	DOM.headVersionNum.textContent = window.VERSION;
 
-	DOM.winBtnsMap.forEach( ( btn, id ) => id !== "effects" && id !== "drums" && btn.click() );
+	DOM.winBtnsMap.forEach( ( btn, id ) => id !== "effects" && id !== "slicer" && id !== "drums" && btn.click() );
 
 	UIauthGetMe();
 	DAW.addCompositionsFromLocalStorage();

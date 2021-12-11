@@ -65,7 +65,7 @@ GSUI.setTemplate( "head", () => (
 			GSUI.createElement( "button", { class: "btn btnMarge winBtn gsuiIcon", "data-icon": "oscillator",  "data-win": "synth",   title: "Open/close the synthesizer window" } ),
 			GSUI.createElement( "button", { class: "btn btnMarge winBtn gsuiIcon", "data-icon": "drums",       "data-win": "drums",   title: "Open/close the drums window" } ),
 			GSUI.createElement( "button", { class: "btn btnMarge winBtn gsuiIcon", "data-icon": "keys",        "data-win": "piano",   title: "Open/close the piano window" } ),
-			// GSUI.createElement( "button", { class: "btn btnMarge winBtn gsuiIcon", "data-icon": "slices",      "data-win": "slicer",  title: "Open/close the slices window" } ),
+			GSUI.createElement( "button", { class: "btn btnMarge winBtn gsuiIcon", "data-icon": "slices",      "data-win": "slicer",  title: "Open/close the slices window" } ),
 			GSUI.createElement( "button", { class: "btn btnMarge winBtn gsuiIcon", "data-icon": "effects",     "data-win": "effects", title: "Open/close the effects window" } ),
 		),
 		GSUI.createElement( "div", { id: "headHelp" },
