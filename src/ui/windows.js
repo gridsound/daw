@@ -1,23 +1,14 @@
 "use strict";
 
 function UIwindowsInit() {
-	UIwindows.lowGraphics( true );
 	UIwindowsAppendContent( UIwindows );
-	UIwindows.onopen = win => UIwindowsBtn( win.dataset.id, true );
+	UIwindows.onopen = win => UIdaw.toggleWindow( win.dataset.id, true );
 	UIwindows.onclose = win => {
-		UIwindowsBtn( win.dataset.id, false );
+		UIdaw.toggleWindow( win.dataset.id, false );
 		switch ( win.dataset.id ) {
 			case "piano": DAW.callAction( "closePattern", "keys" ); break;
 			case "drums": DAW.callAction( "closePattern", "drums" ); break;
 			case "slicer": DAW.callAction( "closePattern", "slices" ); break;
-		}
-	};
-	DOM.winBtns.onclick = e => {
-		const btn = e.target;
-
-		if ( btn.dataset.win ) {
-			UIwindows.window( btn.dataset.win ).openToggle(
-				!btn.classList.contains( "winBtn-open" ) );
 		}
 	};
 	UIwindowsSetPos( "blocks",   20,  20, 180, 380, 320, 780, "folder-tree", "blocks" );
@@ -38,10 +29,6 @@ function UIwindowsSetPos( winId, x, y, wmin, hmin, w, h, icon, title ) {
 	win.setTitle( title );
 	win.setPosition( x, y );
 	win.setTitleIcon( icon );
-}
-
-function UIwindowsBtn( winId, b ) {
-	DOM.winBtnsMap.get( winId ).classList.toggle( "winBtn-open", b );
 }
 
 function UIwindowsAppendContent( UIwindows ) {

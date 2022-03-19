@@ -35,7 +35,7 @@ function UIupdatePattern( id, obj ) {
 			const foc = DAW.getFocusedName();
 
 			if ( foc !== "composition" && id === DAW.get.opened( foc ) ) {
-				DOM.sliderTime.setAttribute( "max", obj.duration );
+				GSUI.setAttribute( UIdaw, "duration", obj.duration );
 			}
 		}
 		if ( "name" in obj ) {

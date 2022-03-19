@@ -40,31 +40,22 @@ UIcompositionChanged.fn = new Map( [
 		Object.entries( obj.patterns ).forEach( kv => UIupdatePattern( ...kv ) );
 	} ],
 	[ [ "beatsPerMeasure", "stepsPerBeat" ], function() {
-		const bPM = DAW.get.beatsPerMeasure(),
-			sPB = DAW.get.stepsPerBeat();
-
-		UIclock.setAttribute( "timedivision", `${ bPM }/${ sPB }` );
-		DOM.beatsPerMeasure.textContent = bPM;
-		DOM.stepsPerBeat.textContent = sPB;
+		GSUI.setAttribute( UIdaw, "timedivision", `${ DAW.get.beatsPerMeasure() }/${ DAW.get.stepsPerBeat() }` );
 	} ],
 	[ [ "bpm" ], function( { bpm } ) {
-		UIclock.setAttribute( "bpm", bpm );
-		DOM.bpm.textContent =
-		UIcompositions.get( DAW.get.cmp() ).bpm.textContent = bpm;
+		GSUI.setAttribute( UIdaw, "bpm", bpm );
+		UIdaw.updateComposition( DAW.get.cmp() );
 	} ],
 	[ [ "name" ], function( { name } ) {
 		UItitle( name );
-		DOM.headCmpName.textContent =
-		UIcompositions.get( DAW.get.cmp() ).name.textContent = name;
+		UIdaw.updateComposition( DAW.get.cmp() );
+		GSUI.setAttribute( UIdaw, "name", name );
 	} ],
 	[ [ "duration" ], function( { duration } ) {
-		const [ min, sec ] = gsuiClock.parseBeatsToSeconds( duration, DAW.get.bpm() );
-
 		if ( DAW.getFocusedName() === "composition" ) {
-			DOM.sliderTime.setAttribute( "max", duration );
+			GSUI.setAttribute( UIdaw, "duration", duration );
 		}
-		DOM.headCmpDur.textContent =
-		UIcompositions.get( DAW.get.cmp() ).duration.textContent = `${ min }:${ sec }`;
+		UIdaw.updateComposition( DAW.get.cmp() );
 	} ],
 	[ [ "patternSlicesOpened" ], function( obj ) {
 		if ( obj.patternSlicesOpened ) {
@@ -73,7 +64,7 @@ UIcompositionChanged.fn = new Map( [
 			DOM.slicesName.textContent = pat.name;
 			UIwindows.window( "slicer" ).open();
 			if ( DAW.getFocusedName() === "slices" ) {
-				DOM.sliderTime.setAttribute( "max", pat.duration );
+				GSUI.setAttribute( UIdaw, "duration", pat.duration );
 			}
 		} else {
 			DOM.slicesName.textContent = "";
@@ -86,7 +77,7 @@ UIcompositionChanged.fn = new Map( [
 			DOM.drumsName.textContent = pat.name;
 			UIwindows.window( "drums" ).open();
 			if ( DAW.getFocusedName() === "drums" ) {
-				DOM.sliderTime.setAttribute( "max", pat.duration );
+				GSUI.setAttribute( UIdaw, "duration", pat.duration );
 			}
 		} else {
 			DOM.drumsName.textContent = "";
@@ -112,7 +103,7 @@ UIcompositionChanged.fn = new Map( [
 
 			DOM.pianorollName.textContent = pat.name;
 			if ( DAW.getFocusedName() === "keys" ) {
-				DOM.sliderTime.setAttribute( "max", pat.duration );
+				GSUI.setAttribute( UIdaw, "duration", pat.duration );
 			}
 			UIwindows.window( "piano" ).open();
 		} else {

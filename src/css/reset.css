@@ -1,6 +1,24 @@
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background-color: #222; }
-::-webkit-scrollbar-thumb { background-color: #ddd; }
+:root {
+	--windowBtn-bg: #444;
+	--windowBtn-chan-color: #ce93d8;
+	--windowBtn-synth-color: #a5d6a7;
+	--windowBtn-slices-color: #e29d8a;
+	--windowBtn-pattern-color: #81d4fa;
+}
+
+#noscript {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2147483647;
+	color: #ddd;
+	background-color: #333;
+}
 
 .no-select {
 	user-select: none;
@@ -13,10 +31,5 @@ body {
 	margin: 0;
 	overflow: hidden;
 	font-family: var( --gsui-font );
-	background-color: var( --app-bg );
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
+	background-color: #222;
 }

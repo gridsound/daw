@@ -40,21 +40,21 @@ class TextGlitch {
 	_frame() {
 		this._glitch();
 		setTimeout( this._unglitch, 50 + Math.random() * 200 );
-		this._frameId = setTimeout( this._frame, 250 + Math.random() * 800 );
+		this._frameId = setTimeout( this._frame, 250 + Math.random() * 400 );
 	}
 	_glitch() {
 		const clip1 = this._randDouble( .2 ),
 			clip2 = this._randDouble( .2 );
 
 		this._elClips.forEach( el => {
-			const x = this._randDouble( .25 ),
-				y = this._randDouble( .05 );
+			const x = this._randDouble( .06 ),
+				y = this._randDouble( .0 );
 
 			el.style.transform = `translate(${ x }em, ${ y }em)`;
 		} );
 		this._elClips[ 0 ].style.clipPath = `inset( 0 0 ${ .6 + clip1 }em 0 )`;
 		this._elClips[ 1 ].style.clipPath = `inset( ${ .4 - clip1 }em 0 ${ .3 - clip2 }em 0 )`;
-		this._elClips[ 2 ].style.clipPath = `inset( ${ .7 + clip2 }em 0 0 0 )`;
+		this._elClips[ 2 ].style.clipPath = `inset( ${ .7 + clip2 }em 0 -1em 0 )`;
 		this._textContent( this._randText() );
 		this._root.classList.add( "TextGlitch-blended" );
 	}

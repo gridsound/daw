@@ -1,22 +1,13 @@
 "use strict";
 
-const UIkeyboardFns = [];
-
-function UIkeyboardInit() {
-	UIkeyboardFns.push(
-		// ctrlOrAlt, alt, key, fn
-		[ true,  false, "o", UIopenPopupShow ],
-		[ true,  false, "s", UIcompositionClickSave ],
-		[ true,  true,  "n", UIcompositionClickNewLocal ],
-		[ true,  false, "z", DOM.undo.onclick ],
-		[ true,  false, "Z", DOM.redo.onclick ],
-		[ false, false, " ", () => {
-			DAW.isPlaying()
-				? DOM.stop.onclick()
-				: DOM.play.onclick();
-		} ],
-	);
-}
+const UIkeyboardFns = [
+	[ true,  false, "o", () => UIdaw.showOpenPopup() ],
+	[ true,  false, "s", () => UIcompositionClickSave() ],
+	[ true,  true,  "n", () => UIcompositionClickNewLocal() ],
+	[ true,  false, "z", () => DAW.history.undo() ],
+	[ true,  false, "Z", () => DAW.history.redo() ],
+	[ false, false, " ", () => DAW.isPlaying() ? DAW.stop() : DAW.play() ],
+];
 
 function UIkeyboardUp( e ) {
 	UIpianorollKeyboardEvent( false, e );
