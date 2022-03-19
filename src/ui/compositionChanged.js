@@ -88,12 +88,10 @@ UIcompositionChanged.fn = new Map( [
 			const syn = DAW.get.synth( obj.synthOpened );
 
 			DOM.synthName.textContent = syn.name;
-			DOM.synthChannelBtn.onclick = UImixerOpenChanPopup.bind( null, obj.synthOpened );
 			DOM.synthChannelBtnText.textContent = DAW.get.channel( DAW.get.synth( obj.synthOpened ).dest ).name;
 			UIwindows.window( "synth" ).open();
 		} else {
 			DOM.synthName.textContent = "";
-			DOM.synthChannelBtn.onclick = null;
 			DOM.synthChannelBtnText.textContent = "";
 		}
 	} ],

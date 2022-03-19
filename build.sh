@@ -141,7 +141,6 @@ declare -a CSSfiles=(
 	"src/css/reset.css"
 	"src/css/textGlitch.css"
 	"src/css/loading.css"
-	"src/css/popup.css"
 	"src/css/window.css"
 	"src/css/windows.css"
 )
@@ -445,7 +444,6 @@ declare -a JSfiles=(
 	"src/html/windows/pianoroll.html.js"
 	"src/html/windows/slicer.html.js"
 	"src/html/windows/synth.html.js"
-	"src/html/popups/selectChan.html.js"
 
 	"src/ui/textGlitch.js"
 	"src/ui/loading.js"

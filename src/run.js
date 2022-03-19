@@ -30,7 +30,6 @@ function UIrun() {
 		GSUI.getTemplate( "window-blocks" ),
 		GSUI.getTemplate( "window-slicer" ),
 		GSUI.getTemplate( "window-effects" ),
-		GSUI.getTemplate( "popup-selectChan" ),
 	);
 
 	window.DOM = Array.prototype.reduce.call(
@@ -38,8 +37,6 @@ function UIrun() {
 			obj[ el.id ] = el;
 			return obj;
 		}, {} );
-
-	DOM.selectChanPopupContent.remove();
 
 	window.UIdaw = document.querySelector( "gsui-daw" );
 	window.UIwindows = GSUI.createElement( "gsui-windows" );

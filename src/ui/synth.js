@@ -10,6 +10,14 @@ function UIsynthInit() {
 		GSUI.popup.prompt( "Rename synthesizer", "", name, "Rename" )
 			.then( name => DAW.callAction( "renameSynth", id, name ) );
 	};
+	DOM.synthChannelBtn.onclick = e => {
+		const id = DAW.get.opened( "synth" );
+
+		if ( id ) {
+			gsuiChannels.openSelectChannelPopup( DAW.get.synth( id ).dest )
+				.then( chanId => chanId && DAW.callAction( "redirectSynth", id, chanId ) );
+		}
+	};
 	UIwindows.window( "synth" ).contentAppend( UIsynth.rootElement );
 }
 
