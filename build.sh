@@ -138,9 +138,8 @@ declare -a CSSfiles=(
 
 	"assets/fonts/fonts.css"
 
-	"src/css/loading.css"
+	"src/splashScreen.css"
 	"src/css/reset.css"
-	"src/css/textGlitch.css"
 	"src/css/window.css"
 	"src/css/windows.css"
 )
@@ -438,7 +437,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindow.html.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
-	"src/ui/textGlitch.js"
+	"src/splashScreen.js"
 	"src/run.js"
 )
 
@@ -448,7 +447,7 @@ buildDev() {
 	writeHeader > $filename
 	writeCSS >> $filename
 	writeBody >> $filename
-	cat src/html/loading.html >> $filename
+	cat src/splashScreen.html >> $filename
 	echo '<script>function lg( a ) { return console.log.apply( console, arguments ), a; }</script>' >> $filename
 	writeJS >> $filename
 	writeEnd >> $filename
@@ -460,7 +459,7 @@ buildProd() {
 	writeHeader > $filename
 	writeCSScompress >> $filename
 	writeBody >> $filename
-	cat src/html/loading.html >> $filename
+	cat src/splashScreen.html >> $filename
 	writeJScompress >> $filename
 	writeEnd >> $filename
 }
@@ -475,7 +474,7 @@ buildTests() {
 	writeBody >> $filename
 	echo '<div id="qunit"></div>' >> $filename
 	echo '<div id="qunit-fixture"></div>' >> $filename
-	cat src/html/loading.html >> $filename
+	cat src/splashScreen.html >> $filename
 	writeJScompress >> $filename
 	echo '<script src="assets/qunit/qunit-2.9.2.js"></script>' >> $filename
 	echo '<script src="tests/tests.js"></script>' >> $filename

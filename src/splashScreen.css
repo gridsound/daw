@@ -1,0 +1,100 @@
+#splashScreen {
+	display: flex;
+	z-index: 2147483646;
+	position: absolute;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #fff8;
+	user-select: none;
+	-webkit-user-select: none;
+	background-color: #333;
+	transition: .5s opacity;
+}
+#splashScreen.started {
+	pointer-events: none;
+	opacity: 0;
+}
+
+#splashScreen-content {
+	position: relative;
+	pointer-events: none;
+	text-align: center;
+}
+
+#splashScreen-loading,
+#splashScreen-loaded,
+#splashScreen-starting {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+}
+#splashScreen.loaded:not( .starting ) #splashScreen-loaded {
+	animation: 1s splashScreen-textAnim linear infinite alternate;
+}
+#splashScreen:not( .loaded ):not( .starting ) #splashScreen-loading,
+#splashScreen.starting #splashScreen-starting {
+	opacity: 1;
+}
+#splashScreen-title {
+	margin-bottom: 16px;
+}
+
+@keyframes splashScreen-textAnim {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+/* .......................................................................... */
+.TextGlitch {
+	position: relative;
+	color: #ccc;
+	line-height: 1em;
+	font-size: 68px;
+	font-family: "oswald", monospace;
+}
+.TextGlitch-blended {
+	color: #fff;
+}
+
+.TextGlitch-clip {
+	position: relative;
+}
+.TextGlitch-clip + .TextGlitch-clip {
+	position: absolute;
+	top: 0;
+}
+.TextGlitch:not( .TextGlitch-blended ) .TextGlitch-clip + .TextGlitch-clip {
+	display: none;
+}
+
+.TextGlitch-word {
+	margin: 0;
+	white-space: nowrap;
+}
+
+.TextGlitch-blend {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	transition: .1s;
+	transition-property: opacity;
+}
+.TextGlitch-blendA {
+	color: #2af;
+	margin: -.03em 0 0 .03em;
+	mix-blend-mode: darken;
+}
+.TextGlitch-blendB {
+	color: #f64;
+	margin: .03em 0 0 -.03em;
+	mix-blend-mode: color-burn;
+}
+.TextGlitch-blended .TextGlitch-blend {
+	opacity: .4;
+}

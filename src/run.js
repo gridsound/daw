@@ -4,8 +4,8 @@ UIloading().then( UIrun ).then( UIloaded );
 
 function UIloading() {
 	return new Promise( resolve => {
-		const el = document.querySelector( "#loading" ),
-			elTitle = document.querySelector( "#gsTitle" ),
+		const el = document.querySelector( "#splashScreen" ),
+			elTitle = document.querySelector( "#splashScreen-title" ),
 			glitch = new TextGlitch( elTitle );
 
 		el.classList.add( "loaded" );
@@ -21,41 +21,35 @@ function UIloading() {
 }
 
 function UIloaded() {
-	const el = document.querySelector( "#loading" );
+	const el = document.querySelector( "#splashScreen" );
 
 	el.classList.add( "started" );
 	setTimeout( () => el.remove(), 800 );
 }
 
 function UIrun() {
+	const daw = new GSDAW();
 	const hash = new Map( location.hash
-			.substr( 1 )
-			.split( "&" )
-			.map( kv => kv.split( "=" ) )
-		);
+		.substr( 1 )
+		.split( "&" )
+		.map( kv => kv.split( "=" ) )
+	);
 
-	window.daw = new GSDAW(); // ?
-	window.DAW = daw.getDAWCore(); // ?
-	window.UIdaw = daw.rootElement; // ?
-
-	// UIauthGetMe();
-	DAW.addCompositionsFromLocalStorage();
-
+	daw.getDAWCore().addCompositionsFromLocalStorage();
 	document.addEventListener( "gsuiEvents", e => {
 		const { component, eventName, args } = e.detail;
 
 		console.warn( `uncatched gsuiEvent: [${ component }][${ eventName }]`, args );
 	} );
-
 	if ( !hash.has( "cmp" ) ) {
 		daw.newComposition();
 	} else {
-		DAW.addCompositionByURL( hash.get( "cmp" ) )
+		daw.getDAWCore().addCompositionByURL( hash.get( "cmp" ) )
 			.catch( e => {
 				console.error( e );
-				return DAW.addNewComposition();
+				return daw.getDAWCore().addNewComposition();
 			} )
-			.then( cmp => DAW.openComposition( "local", cmp.id ) );
+			.then( cmp => daw.getDAWCore().openComposition( "local", cmp.id ) );
 		location.hash = "";
 	}
 }
