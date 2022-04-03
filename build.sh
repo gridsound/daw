@@ -23,7 +23,7 @@ writeHeader() {
 writeBody() {
 	echo '</head>'
 	echo '<body>'
-	echo '<noscript id="noscript">GridSound needs JavaScript to run</noscript>'
+	echo '<noscript>GridSound needs JavaScript to run</noscript>'
 }
 writeEnd() {
 	echo '</body>'
@@ -54,10 +54,15 @@ writeJScompress() {
 }
 
 declare -a CSSfiles=(
+	"assets/fonts/fonts.css"
+	"src/reset.css"
+	"src/splashScreen.css"
+
 	"gs-ui-components/gsui.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW.colors.default.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW.css"
+	"gs-ui-components/gsuiDAW/gsuiDAW-windows.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-btn.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-cmp.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-dropdown.css"
@@ -135,13 +140,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindow.colors.default.css"
 	"gs-ui-components/gsuiWindows/gsuiWindows.css"
 	"gs-ui-components/gsuiWindows/gsuiWindow.css"
-
-	"assets/fonts/fonts.css"
-
-	"src/splashScreen.css"
-	"src/css/reset.css"
-	"src/css/window.css"
-	"src/css/windows.css"
 )
 
 declare -a JSfilesProd=(
