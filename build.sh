@@ -462,23 +462,6 @@ buildProd() {
 	writeEnd >> $filename
 }
 
-buildTests() {
-	filename='tests.html'
-	echo "Build $filename"
-	writeHeader > $filename
-	writeCSScompress >> $filename
-	echo '<link rel="stylesheet" href="assets/qunit/qunit-2.9.2.css"/>' >> $filename
-	echo '<link rel="stylesheet" href="tests/tests.css"/>' >> $filename
-	writeBody >> $filename
-	echo '<div id="qunit"></div>' >> $filename
-	echo '<div id="qunit-fixture"></div>' >> $filename
-	cat src/splashScreen.html >> $filename
-	writeJScompress >> $filename
-	echo '<script src="assets/qunit/qunit-2.9.2.js"></script>' >> $filename
-	echo '<script src="tests/tests.js"></script>' >> $filename
-	writeEnd >> $filename
-}
-
 lint() {
 	stylelint "${CSSfiles[@]}"
 	echo '"use strict";' > __lintMain.js
@@ -511,7 +494,6 @@ if [ $# = 0 ]; then
 	echo ''
 	echo './build.sh dev ---> create "index.html" for development'
 	echo './build.sh prod --> create "index-prod.html" for production'
-	echo './build.sh tests -> create "tests.html" for testing'
 	echo './build.sh lint --> launch the JS/CSS linters (ESLint and Stylelint)'
 	echo './build.sh dep ---> update all the submodules'
 elif [ $1 = "dep" ]; then
@@ -520,8 +502,6 @@ elif [ $1 = "dev" ]; then
 	buildDev
 elif [ $1 = "prod" ]; then
 	buildProd
-elif [ $1 = "tests" ]; then
-	buildTests
 elif [ $1 = "lint" ]; then
 	lint
 elif [ $1 = "count" ]; then
