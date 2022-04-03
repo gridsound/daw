@@ -138,9 +138,9 @@ declare -a CSSfiles=(
 
 	"assets/fonts/fonts.css"
 
+	"src/css/loading.css"
 	"src/css/reset.css"
 	"src/css/textGlitch.css"
-	"src/css/loading.css"
 	"src/css/window.css"
 	"src/css/windows.css"
 )
@@ -324,6 +324,7 @@ declare -a JSfiles=(
 	"daw-core/src/prototype/openComposition.js"
 	"daw-core/src/prototype/saveComposition.js"
 
+	"gs-components/gsDAW/gsDAW.js"
 	"gs-components/gsDrums/gsDrums.js"
 	"gs-components/gsEffects/gsEffects.js"
 	"gs-components/gsMixer/gsMixer.js"
@@ -352,6 +353,7 @@ declare -a JSfiles=(
 
 	"gs-ui-components/gsui.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.html.js"
+	"gs-ui-components/gsuiDAW/gsuiDAW-windows.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-open.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js"
@@ -436,33 +438,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindow.html.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
-	"src/html/windows/blocks.html.js"
-	"src/html/windows/drums.html.js"
-	"src/html/windows/effects.html.js"
-	"src/html/windows/mixer.html.js"
-	"src/html/windows/patternroll.html.js"
-	"src/html/windows/pianoroll.html.js"
-	"src/html/windows/slicer.html.js"
-	"src/html/windows/synth.html.js"
-
 	"src/ui/textGlitch.js"
-	"src/ui/loading.js"
-	"src/ui/auth.js"
-	"src/ui/drop.js"
-	"src/ui/drums.js"
-	"src/ui/title.js"
-	"src/ui/synth.js"
-	"src/ui/mixer.js"
-	"src/ui/slicer.js"
-	"src/ui/effects.js"
-	"src/ui/windows.js"
-	"src/ui/patterns.js"
-	"src/ui/controls.js"
-	"src/ui/keyboard.js"
-	"src/ui/pianoroll.js"
-	"src/ui/patternroll.js"
-	"src/ui/compositions.js"
-	"src/ui/compositionChanged.js"
 	"src/run.js"
 )
 
