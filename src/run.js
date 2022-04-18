@@ -5,9 +5,9 @@ document.addEventListener( "gsuiEvents", ( { detail: d } ) => {
 } );
 
 new Promise( resolve => {
-	const el = document.querySelector( "#splashScreen" ),
-		elTitle = document.querySelector( "#splashScreen-title" ),
-		glitch = new TextGlitch( elTitle );
+	const el = document.querySelector( "#splashScreen" );
+	const elTitle = document.querySelector( "#splashScreen-title" );
+	const glitch = new TextGlitch( elTitle );
 
 	el.classList.add( "loaded" );
 	if ( window.CSS && CSS.supports( "clip-path: inset(0 1px 2px 3px)" ) ) {

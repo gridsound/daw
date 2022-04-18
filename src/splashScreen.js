@@ -43,12 +43,12 @@ class TextGlitch {
 		this._frameId = setTimeout( this._frame, 250 + Math.random() * 400 );
 	}
 	_glitch() {
-		const clip1 = this._randDouble( .2 ),
-			clip2 = this._randDouble( .2 );
+		const clip1 = this._randDouble( .2 );
+		const clip2 = this._randDouble( .2 );
 
 		this._elClips.forEach( el => {
-			const x = this._randDouble( .06 ),
-				y = this._randDouble( .0 );
+			const x = this._randDouble( .06 );
+			const y = this._randDouble( .0 );
 
 			el.style.transform = `translate(${ x }em, ${ y }em)`;
 		} );
