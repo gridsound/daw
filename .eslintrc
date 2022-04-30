@@ -7,37 +7,39 @@
 	"rules": {
 
 		// main
-		// .............................................................
-		"semi":                           [ "error", "always" ],
-		"yoda":                           [ "error", "never", { "exceptRange": true } ],
-		"strict":                         [ "error", "global" ],
-		"eqeqeq":                         [ "error", "always", { "null": "ignore" } ],
-		"quotes":                         [ "error", "double" ],
-		"indent":                         [ "error", "tab", { "SwitchCase": 1, "flatTernaryExpressions": true } ],
-		"no-var":                         [ "error" ],
-		"one-var":                        [ "error", "never" ],
-		"no-empty":                       [ "error" ],
-		"semi-style":                     [ "error", "last" ],
-		"comma-style":                    [ "error", "last" ],
-		"quote-props":                    [ "error", "as-needed" ],
-		"dot-notation":                   [ "error" ],
-		"prefer-const":                   [ "error" ],
-		"prefer-spread":                  [ "error" ],
-		"no-lonely-if":                   [ "error" ],
-		"no-else-return":                 [ "error" ],
-		"no-unused-vars":                 [ "error", { "argsIgnorePattern": "^_" } ],
-		"prefer-template":                [ "error" ],
-		"linebreak-style":                [ "error", "unix" ],
-		"no-empty-function":              [ "error", { "allow": [ "arrowFunctions", "methods" ] } ],
-		"no-param-reassign":              [ "error", { "props": false } ],
-		"prefer-rest-params":             [ "error" ],
-		"prefer-object-spread":           [ "error" ],
-		"operator-assignment":            [ "error", "always" ],
-		"prefer-arrow-callback":          [ "error" ],
-		"prefer-exponentiation-operator": [ "error" ],
+		// .....................................................................
+		"semi":                            [ "error", "always" ],
+		"yoda":                            [ "error", "never", { "exceptRange": true } ],
+		"strict":                          [ "error", "global" ],
+		"eqeqeq":                          [ "error", "always", { "null": "ignore" } ],
+		"quotes":                          [ "error", "double" ],
+		"indent":                          [ "error", "tab", { "SwitchCase": 1, "flatTernaryExpressions": true } ],
+		"no-var":                          [ "error" ],
+		"one-var":                         [ "error", "never" ],
+		"no-empty":                        [ "error" ],
+		"semi-style":                      [ "error", "last" ],
+		"comma-style":                     [ "error", "last" ],
+		"quote-props":                     [ "error", "as-needed" ],
+		"dot-notation":                    [ "error" ],
+		"prefer-const":                    [ "error" ],
+		"prefer-spread":                   [ "error" ],
+		"no-lonely-if":                    [ "error" ],
+		"no-else-return":                  [ "error" ],
+		"no-unused-vars":                  [ "error", { "argsIgnorePattern": "^_" } ],
+		"prefer-template":                 [ "error" ],
+		"linebreak-style":                 [ "error", "unix" ],
+		"no-empty-function":               [ "error", { "allow": [ "arrowFunctions", "methods" ] } ],
+		"no-param-reassign":               [ "error", { "props": false } ],
+		"prefer-rest-params":              [ "error" ],
+		"operator-assignment":             [ "error", "always" ],
+		"prefer-object-spread":            [ "error" ],
+		"prefer-arrow-callback":           [ "error" ],
+		"require-unicode-regexp":          [ "error" ],
+		"prefer-exponentiation-operator":  [ "error" ],
+		"no-unused-private-class-members": [ "error" ],
 
 		// brackets/braces/parens
-		// .............................................................
+		// .....................................................................
 		"curly":            [ "error", "all" ],
 		"new-parens":       [ "error" ],
 		"brace-style":      [ "error", "1tbs", { "allowSingleLine": true } ],
@@ -45,14 +47,15 @@
 		"no-extra-parens":  [ "error", "all", { "nestedBinaryExpressions": false, "returnAssign": false } ],
 		"object-shorthand": [ "error", "always", { "avoidExplicitReturnArrows": true } ],
 
-		// space/tabs
-		// .............................................................
+		// spacing
+		// .....................................................................
 		"no-tabs":                         [ "error", { "allowIndentationTabs": true } ],
 		"eol-last":                        [ "error", "always" ],
 		"key-spacing":                     [ "error", { "mode": "minimum" } ],
 		"arrow-spacing":                   [ "error", { "before": true, "after": true } ],
 		"comma-spacing":                   [ "error", { "before": false, "after": true } ],
 		"padded-blocks":                   [ "error", "never" ],
+		"spaced-comment":                  [ "error", "always" ],
 		"space-infix-ops":                 [ "error" ],
 		"keyword-spacing":                 [ "error", { "before": true, "after": true } ],
 		"space-in-parens":                 [ "error", "always" ],
@@ -60,6 +63,7 @@
 		"no-trailing-spaces":              [ "error" ],
 		"rest-spread-spacing":             [ "error", "never" ],
 		"object-curly-spacing":            [ "error", "always" ],
+		"switch-colon-spacing":            [ "error", { "before": false, "after": true } ],
 		"array-bracket-spacing":           [ "error", "always" ],
 		"template-curly-spacing":          [ "error", "always" ],
 		"no-mixed-spaces-and-tabs":        [ "error", "smart-tabs" ],
@@ -71,17 +75,18 @@
 		                                   ],
 
 		// checks
-		// .............................................................
+		// .....................................................................
 		"use-isnan":            [ "error" ],
 		"valid-typeof":         [ "error" ],
 		"no-const-assign":      [ "error" ],
+		"no-dupe-else-if":      [ "error" ],
 		"constructor-super":    [ "error" ],
 		"no-duplicate-case":    [ "error" ],
-		"no-this-before-super": [ "error" ],
 		"no-case-declarations": [ "error" ],
+		"no-this-before-super": [ "error" ],
 
 		// no-*
-		// .............................................................
+		// .....................................................................
 		"no-eval":                      [ "error" ],
 		"no-void":                      [ "error" ],
 		"no-with":                      [ "error" ],
@@ -119,6 +124,7 @@
 		"no-useless-return":            [ "error" ],
 		"no-unsafe-negation":           [ "error" ],
 		"no-compare-neg-zero":          [ "error" ],
+		"no-use-before-define":         [ "error", { "functions": true, "classes": false, "variables": true } ],
 		"no-constant-condition":        [ "error" ],
 		"no-dupe-class-members":        [ "error" ],
 		"no-prototype-builtins":        [ "error" ],
@@ -130,6 +136,7 @@
 		"no-irregular-whitespace":      [ "error" ],
 		"no-unexpected-multiline":      [ "error" ],
 		"no-template-curly-in-string":  [ "error" ],
+		"no-unsafe-optional-chaining":  [ "error" ],
 		"no-unmodified-loop-condition": [ "error" ]
 	}
 }

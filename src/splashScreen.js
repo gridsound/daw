@@ -1,15 +1,19 @@
 "use strict";
 
 class TextGlitch {
+	#root = null;
+	#text = "";
+	#textAlt = [];
+	#frameId = null;
+	#elClips = null;
+	#elWords = null;
+	#frameBind = this.#frame.bind( this );
+	#unglitchBind = this.#unglitch.bind( this );
+
 	constructor( root ) {
-		this._root = root;
-		this._elClips = root.querySelectorAll( ".TextGlitch-clip" );
-		this._elWords = root.querySelectorAll( ".TextGlitch-word" );
-		this._frame = this._frame.bind( this );
-		this._unglitch = this._unglitch.bind( this );
-		this._frameId = null;
-		this._text = "";
-		this._textAlt = [];
+		this.#root = root;
+		this.#elClips = root.querySelectorAll( ".TextGlitch-clip" );
+		this.#elWords = root.querySelectorAll( ".TextGlitch-word" );
 		Object.seal( this );
 
 		this.setTexts( [
@@ -22,68 +26,68 @@ class TextGlitch {
 	}
 
 	on() {
-		if ( !this._frameId ) {
-			this._frame();
+		if ( !this.#frameId ) {
+			this.#frameBind();
 		}
 	}
 	off() {
-		clearTimeout( this._frameId );
-		this._frameId = null;
-		this._unglitch();
+		clearTimeout( this.#frameId );
+		this.#frameId = null;
+		this.#unglitchBind();
 	}
 	setTexts( [ text, ...alt ] ) {
-		this._text = text;
-		this._textAlt = alt;
+		this.#text = text;
+		this.#textAlt = alt;
 	}
 
-	// private:
-	_frame() {
-		this._glitch();
-		setTimeout( this._unglitch, 50 + Math.random() * 200 );
-		this._frameId = setTimeout( this._frame, 250 + Math.random() * 400 );
+	// .........................................................................
+	#frame() {
+		this.#glitch();
+		setTimeout( this.#unglitchBind, 50 + Math.random() * 200 );
+		this.#frameId = setTimeout( this.#frameBind, 250 + Math.random() * 400 );
 	}
-	_glitch() {
-		const clip1 = this._randDouble( .2 );
-		const clip2 = this._randDouble( .2 );
+	#glitch() {
+		const clip1 = this.#randDouble( .2 );
+		const clip2 = this.#randDouble( .2 );
 
-		this._elClips.forEach( el => {
-			const x = this._randDouble( .06 );
-			const y = this._randDouble( .0 );
+		this.#elClips.forEach( el => {
+			const x = this.#randDouble( .06 );
+			const y = this.#randDouble( .0 );
 
 			el.style.transform = `translate(${ x }em, ${ y }em)`;
 		} );
-		this._elClips[ 0 ].style.clipPath = `inset( 0 0 ${ .6 + clip1 }em 0 )`;
-		this._elClips[ 1 ].style.clipPath = `inset( ${ .4 - clip1 }em 0 ${ .3 - clip2 }em 0 )`;
-		this._elClips[ 2 ].style.clipPath = `inset( ${ .7 + clip2 }em 0 -1em 0 )`;
-		this._textContent( this._randText() );
-		this._root.classList.add( "TextGlitch-blended" );
+		this.#elClips[ 0 ].style.clipPath = `inset( 0 0 ${ .6 + clip1 }em 0 )`;
+		this.#elClips[ 1 ].style.clipPath = `inset( ${ .4 - clip1 }em 0 ${ .3 - clip2 }em 0 )`;
+		this.#elClips[ 2 ].style.clipPath = `inset( ${ .7 + clip2 }em 0 -1em 0 )`;
+		this.#textContent( this.#randText() );
+		this.#root.classList.add( "TextGlitch-blended" );
 	}
-	_unglitch() {
-		this._elClips.forEach( el => {
+	#unglitch() {
+		this.#elClips.forEach( el => {
 			el.style.clipPath =
 			el.style.transform = "";
 		} );
-		this._textContent( this._text );
-		this._root.classList.remove( "TextGlitch-blended" );
+		this.#textContent( this.#text );
+		this.#root.classList.remove( "TextGlitch-blended" );
 	}
 
-	_randText() {
-		const txt = Array.from( this._text );
+	#randText() {
+		const txt = Array.from( this.#text );
 
 		for ( let i = 0; i < 5; ++i ) {
-			const ind = this._randInt( this._text.length );
+			const ind = this.#randInt( this.#text.length );
 
-			txt[ ind ] = this._textAlt[ this._randInt( this._textAlt.length ) ][ ind ];
+			txt[ ind ] = this.#textAlt[ this.#randInt( this.#textAlt.length ) ][ ind ];
 		}
 		return txt.join( "" );
 	}
-	_randDouble( d ) {
+	#randDouble( d ) {
 		return Math.random() * d - d / 2;
 	}
-	_randInt( n ) {
+	#randInt( n ) {
 		return Math.random() * n | 0;
 	}
-	_textContent( txt ) {
-		this._elWords.forEach( el => el.textContent = txt );
+	#textContent( txt ) {
+		this.#elWords.forEach( el => el.textContent = txt );
 	}
 }
