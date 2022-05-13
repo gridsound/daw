@@ -48,7 +48,7 @@ writeJScompress() {
 	cat "${JSfilesProd[@]}" >> allJS.js
 	cat "${JSfiles[@]}" >> allJS.js
 	echo '<script>'
-	terser allJS.js --compress --mangle --toplevel
+	terser allJS.js --compress --mangle --toplevel --mangle-props "regex='^[$]'"
 	echo '</script>'
 	rm allJS.js
 }
