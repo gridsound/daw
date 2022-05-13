@@ -22,7 +22,7 @@ new Promise( resolve => {
 	.then( () => {
 		const daw = new GSDAW();
 
-		daw.getDAWCore().addCompositionsFromLocalStorage();
+		daw.getDAWCore().importCompositionsFromLocalStorage();
 		daw.newComposition();
 	} )
 	.then( () => {
