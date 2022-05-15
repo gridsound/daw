@@ -327,7 +327,6 @@ declare -a JSfiles=(
 	"gs-wa-components/gswaEncodeWAV/gswaEncodeWAV.js"
 	"gs-wa-components/gswaStereoPanner/gswaStereoPanner.js"
 	"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js"
-	"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.list.js"
 
 	"gs-ui-components/gsui.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.html.js"
