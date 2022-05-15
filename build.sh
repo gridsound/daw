@@ -18,7 +18,7 @@ writeHeader() {
 	echo '<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
 	echo '<meta name="theme-color" content="#3a5158"/>'
 	echo '<link rel="manifest" href="manifest.json"/>'
-	echo '<link rel="shortcut icon" href="../assets/favicon.png"/>'
+	echo '<link rel="shortcut icon" href="/assets/favicon.png"/>'
 }
 writeBody() {
 	echo '</head>'
@@ -54,7 +54,7 @@ writeJScompress() {
 }
 
 declare -a CSSfiles=(
-	"assets/fonts/fonts.css"
+	"/assets/fonts/fonts.css"
 	"src/reset.css"
 	"src/splashScreen.css"
 
