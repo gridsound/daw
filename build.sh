@@ -54,7 +54,7 @@ writeJScompress() {
 }
 
 declare -a CSSfiles=(
-	"/assets/fonts/fonts.css"
+	"../assets/fonts/fonts.css"
 	"src/reset.css"
 	"src/splashScreen.css"
 
