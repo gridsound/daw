@@ -7,6 +7,7 @@ self.addEventListener( "install", e => {
 			"/daw/index.html",
 			"/daw/manifest.json",
 			"/assets/favicon.png",
+			"/assets/gsuiLibrarySamples-v1.js",
 			"/assets/gswaPeriodicWavesList-v1.js",
 			"/assets/fonts/fa-brands-400.woff2",
 			"/assets/fonts/fa-duotone-900.woff2",
