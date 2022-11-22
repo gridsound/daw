@@ -22,7 +22,7 @@ new Promise( resolve => {
 	.then( () => {
 		const daw = new GSDAW();
 
-		GSUI.$setAttribute( daw.rootElement, "version", "0.37.2" );
+		GSUI.$setAttribute( daw.rootElement, "version", "0.38.0" );
 		daw.getDAWCore().$importCompositionsFromLocalStorage();
 		daw.newComposition();
 	} )
