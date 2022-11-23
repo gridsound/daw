@@ -451,6 +451,7 @@ buildProd() {
 	writeCSScompress >> $filename
 	writeBody >> $filename
 	cat src/splashScreen.html >> $filename
+	echo '<script>function lg( a ) { return a; }</script>' >> $filename
 	writeJScompress >> $filename
 	writeEnd >> $filename
 }
