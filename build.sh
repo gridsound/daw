@@ -373,6 +373,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiReorder/gsuiReorder.listComputeOrderChange.js"
 	"gs-ui-components/gsuiDragline/gsuiDragline.html.js"
 	"gs-ui-components/gsuiDragline/gsuiDragline.js"
+	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.html.js"
 	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html.js"
