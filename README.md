@@ -12,5 +12,5 @@ The application can be used at [gridsound.com/daw](https://gridsound.com/daw) it
 
 Follow us on [**Twitter**](https://twitter.com/gridsound) or [**Facebook**](https://facebook.com/gridsound) to have the latest news related to the product.
 
-###### screenshot of the 0.37.0 version
-![screenshot](https://user-images.githubusercontent.com/850754/180664935-e58e0f9d-f149-466e-80f2-262d45be0b20.png)
+###### screenshot of the 0.40.0 version
+![screenshot](https://user-images.githubusercontent.com/850754/216862799-a6dde8e5-6bfb-4963-907a-e59dbbfc2483.png)
