@@ -1,6 +1,6 @@
 <div id="splashScreen">
 	<div id="splashScreen-content">
-		<div id="splashScreen-title" class="TextGlitch">
+		<div id="splashScreen-title" class="TextGlitch" inert>
 			<div class="TextGlitch-clip">
 				<div class="TextGlitch-word">GridSound</div>
 				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
@@ -17,8 +17,13 @@
 				<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
 			</div>
 		</div>
-		<span id="splashScreen-loading">loading...</span>
-		<span id="splashScreen-loaded">click to start</span>
-		<span id="splashScreen-starting">starting...</span>
+		<div id="splashScreen-version">0.40.1</div>
+		<button id="splashScreen-start" disabled></button>
+		<div id="splashScreen-form">
+			<label class="splashScreen-form-row">
+				<input type="checkbox" name="cookies" />
+				<span>I authorize GridSound to store cookies on my device.</span>
+			</label>
+		</div>
 	</div>
 </div>

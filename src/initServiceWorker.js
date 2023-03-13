@@ -1,8 +1,6 @@
 "use strict";
 
-if ( navigator.serviceWorker &&
-	document.cookie.indexOf( "cookieAccepted" ) > -1
-) {
+if ( navigator.serviceWorker ) {
 	navigator.serviceWorker.register( "serviceWorker.js" )
 		.then( reg => {
 			console.log( `Service worker ${

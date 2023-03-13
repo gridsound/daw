@@ -7,44 +7,81 @@
 	justify-content: center;
 	inset: 0;
 	color: #fff8;
-	user-select: none;
-	-webkit-user-select: none;
 	background-color: #333;
 	transition: .5s opacity;
 }
 #splashScreen.started {
-	pointer-events: none;
 	opacity: 0;
 }
 
 #splashScreen-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	position: relative;
-	pointer-events: none;
 	text-align: center;
 }
 
-#splashScreen-loading,
-#splashScreen-loaded,
-#splashScreen-starting {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	opacity: 0;
+#splashScreen-version {
+	margin-top: 10px;
+	font-size: 20px;
+	font-family: var(--gsui-font-number );
 }
-#splashScreen.loaded:not( .starting ) #splashScreen-loaded {
-	animation: 1s splashScreen-textAnim linear infinite alternate;
-}
-#splashScreen:not( .loaded ):not( .starting ) #splashScreen-loading,
-#splashScreen.starting #splashScreen-starting {
-	opacity: 1;
-}
-#splashScreen-title {
-	margin-bottom: 16px;
+#splashScreen-version::before {
+	content: "version";
+	font-size: 12px;
+	font-family: inherit;
+	margin-right: 5px;
+	margin-bottom: 200px;
+	opacity: .5;
 }
 
+#splashScreen-start {
+	margin-top: 48px;
+	padding: .5ch 1ch;
+	border: 2px solid;
+	border-radius: 8px;
+	outline: 0;
+	font: inherit;
+	font-size: 14px;
+	color: var( --gsui-col-gain );
+	cursor: pointer;
+	background-color: rgba( var( --gsui-rgb-gain ), .2 );
+	transition:
+		box-shadow .25s,
+		opacity .5s;
+}
+#splashScreen-start:disabled {
+	opacity: .25;
+	pointer-events: none;
+}
+#splashScreen.loaded #splashScreen-start:not( :disabled ):focus,
+#splashScreen.loaded #splashScreen-start:not( :disabled ):hover {
+	box-shadow: 0 0 24px rgba( var( --gsui-rgb-gain ), .3 );
+	animation: .25s splashScreen-textAnim linear infinite alternate;
+}
+#splashScreen:not( .loaded ) #splashScreen-start::before { content: "downloading..."; }
+#splashScreen.loaded #splashScreen-start::before { content: "click to start"; }
+#splashScreen.starting #splashScreen-start::before { content: "starting..."; }
+
 @keyframes splashScreen-textAnim {
-	from { opacity: 0; }
-	to { opacity: 1; }
+	from { background-color: rgba( var( --gsui-rgb-gain ), .2 ); }
+	to { background-color: transparent; }
+}
+
+#splashScreen-form {
+	order: 10;
+	margin-top: 50px;
+	font-size: 10px;
+}
+.splashScreen-form-row {
+	display: flex;
+	align-items: center;
+	gap: .5ch;
+	cursor: pointer;
+}
+#splashScreen-form input {
+	cursor: pointer;
 }
 
 /* .......................................................................... */
