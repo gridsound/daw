@@ -28,6 +28,8 @@ new Promise( resolve => {
 	};
 	elForm.onchange();
 } )
+	.then( () => GSUI.$loadJSFile( "/assets/gswaPeriodicWavesList-v1.js" ) )
+	.then( () => GSUI.$loadJSFile( "/assets/gsuiLibrarySamples-v1.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
 
