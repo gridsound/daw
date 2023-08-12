@@ -155,6 +155,12 @@ declare -a JSfilesProd=(
 declare -a JSfiles=(
 	"src/checkBrowser.js"
 
+	"gs-utils/gs-utils.js"
+	"gs-utils/gs-utils-dom.js"
+	"gs-utils/gs-utils-json.js"
+	"gs-utils/gs-utils-audio.js"
+	"gs-utils/gs-utils-files.js"
+
 	"gs-api-client/gsapiClient.js"
 
 	"daw-core/src/DAWCore.js"
@@ -172,30 +178,6 @@ declare -a JSfiles=(
 	"daw-core/src/DAWCoreSlices.js"
 	"daw-core/src/DAWCoreDrums.js"
 	"daw-core/src/DAWCoreKeys.js"
-
-	"daw-core/src/utils/addIfNotEmpty.js"
-	"daw-core/src/utils/castToNumber.js"
-	"daw-core/src/utils/composeUndo.js"
-	"daw-core/src/utils/createUpdateDelete.js"
-	"daw-core/src/utils/deepAssign.js"
-	"daw-core/src/utils/deepCopy.js"
-	"daw-core/src/utils/deepFreeze.js"
-	"daw-core/src/utils/diffAssign.js"
-	"daw-core/src/utils/getFileContent.js"
-	"daw-core/src/utils/hashBuffer.js"
-	"daw-core/src/utils/isEmpty.js"
-	"daw-core/src/utils/isntEmpty.js"
-	"daw-core/src/utils/isObject.js"
-	"daw-core/src/utils/jsonCopy.js"
-	"daw-core/src/utils/mapCallbacks.js"
-	"daw-core/src/utils/noop.js"
-	"daw-core/src/utils/panningMerge.js"
-	"daw-core/src/utils/panningMergeLR.js"
-	"daw-core/src/utils/panningSplitLR.js"
-	"daw-core/src/utils/plural.js"
-	"daw-core/src/utils/trim2.js"
-	"daw-core/src/utils/uniqueName.js"
-	"daw-core/src/utils/uuid.js"
 
 	"daw-core/src/json/composition.js"
 	"daw-core/src/json/block.js"
@@ -344,7 +326,6 @@ declare -a JSfiles=(
 	"gs-wa-components/gswaMIDIControllersManager/gswaMIDIControllerInput.js"
 	"gs-wa-components/gswaMIDIControllersManager/gswaMIDIControllerOutput.js"
 
-	"gs-ui-components/gsui.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-windows.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.html.js"

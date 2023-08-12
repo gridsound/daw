@@ -28,12 +28,12 @@ new Promise( resolve => {
 	};
 	elForm.onchange();
 } )
-	.then( () => GSUI.$loadJSFile( "/assets/gswaPeriodicWavesList-v1.js" ) )
-	.then( () => GSUI.$loadJSFile( "/assets/gsuiLibrarySamples-v1.js" ) )
+	.then( () => GSUloadJSFile( "/assets/gswaPeriodicWavesList-v1.js" ) )
+	.then( () => GSUloadJSFile( "/assets/gsuiLibrarySamples-v1.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
 
-		GSUI.$setAttribute( daw.rootElement, "version", document.querySelector( "#splashScreen-version" ).textContent );
+		GSUsetAttribute( daw.rootElement, "version", document.querySelector( "#splashScreen-version" ).textContent );
 		daw.getDAWCore().$importCompositionsFromLocalStorage();
 		daw.newComposition();
 	} )
