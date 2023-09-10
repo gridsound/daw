@@ -46,7 +46,7 @@
 	font-size: 14px;
 	color: var( --gsui-col-gain );
 	cursor: pointer;
-	background-color: rgba( var( --gsui-rgb-gain ), .2 );
+	background-color: #ff93;
 	transition:
 		box-shadow .25s,
 		opacity .5s;
@@ -57,7 +57,7 @@
 }
 #splashScreen.loaded #splashScreen-start:not( :disabled ):focus,
 #splashScreen.loaded #splashScreen-start:not( :disabled ):hover {
-	box-shadow: 0 0 24px rgba( var( --gsui-rgb-gain ), .3 );
+	box-shadow: 0 0 24px #ff95;
 	animation: .25s splashScreen-textAnim linear infinite alternate;
 }
 #splashScreen:not( .loaded ) #splashScreen-start::before { content: "downloading..."; }
@@ -65,7 +65,7 @@
 #splashScreen.starting #splashScreen-start::before { content: "starting..."; }
 
 @keyframes splashScreen-textAnim {
-	from { background-color: rgba( var( --gsui-rgb-gain ), .2 ); }
+	from { background-color: #ff93; }
 	to { background-color: transparent; }
 }
 
