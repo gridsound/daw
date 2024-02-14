@@ -5,10 +5,11 @@ writeHeader() {
 	echo '<html lang="en">'
 	echo '<head>'
 	echo '<title>GridSound</title>'
-	echo '<meta charset="UTF-8"/>'
+	echo '<meta charset="utf-8"/>'
 	echo '<meta name="viewport" content="width=device-width, user-scalable=no"/>'
 	echo '<meta name="description" content="A free and Open-Source DAW (digital audio workstation)"/>'
 	echo '<meta name="google" content="notranslate"/>'
+	echo '<meta name="theme-color" content="#3a5158"/>'
 	echo '<meta property="og:type" content="website"/>'
 	echo '<meta property="og:title" content="GridSound"/>'
 	echo '<meta property="og:url" content="https://gridsound.com/daw/"/>'
@@ -16,7 +17,6 @@ writeHeader() {
 	echo '<meta property="og:image:width" content="800"/>'
 	echo '<meta property="og:image:height" content="400"/>'
 	echo '<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
-	echo '<meta name="theme-color" content="#3a5158"/>'
 	echo '<link rel="manifest" href="manifest.json"/>'
 	echo '<link rel="shortcut icon" href="/assets/favicon.png"/>'
 }
@@ -82,9 +82,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css"
 	"gs-ui-components/gsuiDragshield/gsuiDragshield.css"
 	"gs-ui-components/gsuiPanels/gsuiPanels.css"
-	"gs-ui-components/gsuiTimeline/gsuiTimeline.colors.default.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
-	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.colors.default.css"
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.css"
 	"gs-ui-components/gsuiSpectrum/gsuiSpectrum.css"
 	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.css"
@@ -98,9 +96,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiDrum/gsuiDrum.css"
 	"gs-ui-components/gsuiDrums/gsuiDrums.colors.default.css"
 	"gs-ui-components/gsuiDrums/gsuiDrums.css"
-	"gs-ui-components/gsuiClock/gsuiClock.colors.default.css"
 	"gs-ui-components/gsuiClock/gsuiClock.css"
-	"gs-ui-components/gsuiChannel/gsuiChannel.colors.default.css"
 	"gs-ui-components/gsuiChannel/gsuiChannel.css"
 	"gs-ui-components/gsuiChannels/gsuiChannels.css"
 	"gs-ui-components/gsuiCurves/gsuiCurves.css"
@@ -109,7 +105,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiFxDelay/gsuiFxDelay.css"
 	"gs-ui-components/gsuiFxFilter/gsuiFxFilter.colors.default.css"
 	"gs-ui-components/gsuiFxFilter/gsuiFxFilter.css"
-	"gs-ui-components/gsuiMixer/gsuiMixer.colors.default.css"
 	"gs-ui-components/gsuiMixer/gsuiMixer.css"
 	"gs-ui-components/gsuiReorder/gsuiReorder.css"
 	"gs-ui-components/gsuiDragline/gsuiDragline.css"
@@ -120,7 +115,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll-block.css"
 	"gs-ui-components/gsuiKeys/gsuiKeys.colors.default.css"
 	"gs-ui-components/gsuiKeys/gsuiKeys.css"
-	"gs-ui-components/gsuiOscillator/gsuiOscillator.colors.default.css"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.css"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"
@@ -131,7 +125,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiSlicer/gsuiSlicer.colors.default.css"
 	"gs-ui-components/gsuiSlicer/gsuiSlicer.css"
 	"gs-ui-components/gsuiSlider/gsuiSlider.css"
-	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.colors.default.css"
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.css"
 	"gs-ui-components/gsuiLibraries/gsuiLibraries.css"
 	"gs-ui-components/gsuiLibrary/gsuiLibrary.colors.default.css"
@@ -204,13 +197,14 @@ declare -a JSfiles=(
 	"daw-core/src/controllers/tracks.js"
 	"daw-core/src/controllers/slicer.js"
 
-	"daw-core/src/actions/common/patternOpenedByType.js"
+	"daw-core/src/actions/common/addPatternBuffer.js"
 	"daw-core/src/actions/common/calcNewDuration.js"
 	"daw-core/src/actions/common/calcNewKeysDuration.js"
 	"daw-core/src/actions/common/createUniqueName.js"
 	"daw-core/src/actions/common/getDrumrowName.js"
 	"daw-core/src/actions/common/getNextIdOf.js"
 	"daw-core/src/actions/common/getNextOrderOf.js"
+	"daw-core/src/actions/common/patternOpenedByType.js"
 	"daw-core/src/actions/common/toggleSolo.js"
 	"daw-core/src/actions/common/updatePatternDuration.js"
 
@@ -222,6 +216,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/addEffect.js"
 	"daw-core/src/actions/addKey.js"
 	"daw-core/src/actions/addOscillator.js"
+	"daw-core/src/actions/addOscillatorSource.js"
 	"daw-core/src/actions/addPatternBuffer.js"
 	"daw-core/src/actions/addPatternDrums.js"
 	"daw-core/src/actions/addPatternKeys.js"
@@ -237,6 +232,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/changeLFO.js"
 	"daw-core/src/actions/changeLoop.js"
 	"daw-core/src/actions/changeOscillator.js"
+	"daw-core/src/actions/changeOscillatorSource.js"
 	"daw-core/src/actions/changePatternBufferInfo.js"
 	"daw-core/src/actions/changePatternSlices.js"
 	"daw-core/src/actions/changeTempo.js"
@@ -325,6 +321,7 @@ declare -a JSfiles=(
 	"gs-wa-components/gswaMIDIControllersManager/gswaMIDIControllerInput.js"
 	"gs-wa-components/gswaMIDIControllersManager/gswaMIDIControllerOutput.js"
 
+	"gs-ui-components/gsui0ne/gsui0ne.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-windows.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.html.js"
@@ -447,7 +444,7 @@ buildProd() {
 	writeCSScompress >> $filename
 	writeBody >> $filename
 	cat src/splashScreen.html >> $filename
-	echo '<script>function lg( a ) { return a; }</script>' >> $filename
+	echo '<script>function lg(a){return a}</script>' >> $filename
 	writeJScompress >> $filename
 	writeEnd >> $filename
 }
