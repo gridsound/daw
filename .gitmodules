@@ -4,6 +4,7 @@
 [submodule "gs-ui-components"]
 	path = gs-ui-components
 	url = https://github.com/gridsound/gs-ui-components
+	branch = main
 [submodule "gs-api-client"]
 	path = gs-api-client
 	url = https://github.com/gridsound/gs-api-client
