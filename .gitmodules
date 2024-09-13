@@ -17,3 +17,6 @@
 [submodule "gs-utils"]
 	path = gs-utils
 	url = https://github.com/gridsound/gs-utils.git
+[submodule "assets"]
+	path = assets
+	url = https://github.com/gridsound/assets.git
