@@ -20,3 +20,6 @@
 [submodule "assets"]
 	path = assets
 	url = https://github.com/gridsound/assets.git
+[submodule "samples"]
+	path = samples
+	url = https://github.com/gridsound/samples.git
