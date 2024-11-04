@@ -18,7 +18,7 @@ writeHeader() {
 	echo '<meta property="og:image:height" content="400"/>'
 	echo '<meta property="og:description" content="a free and open source DAW (digital audio workstation)"/>'
 	echo '<link rel="manifest" href="manifest.json"/>'
-	echo '<link rel="shortcut icon" href="/assets/favicon.png"/>'
+	echo '<link rel="shortcut icon" href="assets/favicon.png"/>'
 }
 writeBody() {
 	echo '</head>'
@@ -54,7 +54,7 @@ writeJScompress() {
 }
 
 declare -a CSSfiles=(
-	"../assets/fonts/fonts.css"
+	"assets/fonts/fonts.css"
 	"src/reset.css"
 	"src/splashScreen.css"
 
@@ -64,22 +64,17 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiDAW/gsuiDAW.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-windows.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-btn.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-cmp.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-dropdown.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-area-user.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-area-save.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-ctrl.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-time.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-area-hist.css"
+	"gs-ui-components/gsuiDAW/gsuiDAW-area-visu.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-wins.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-help.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-vers.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-popup-open.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-popup-tempo.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css"
+	"gs-ui-components/gsuiTitleUser/gsuiTitleUser.css"
 	"gs-ui-components/gsuiPanels/gsuiPanels.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.css"
@@ -135,6 +130,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.css"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-synth.css"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-pattern.css"
+	"gs-ui-components/gsuiTempo/gsuiTempo.css"
 	"gs-ui-components/gsuiToggle/gsuiToggle.css"
 	"gs-ui-components/gsuiTrack/gsuiTrack.css"
 	"gs-ui-components/gsuiWindows/gsuiWindows.css"
@@ -176,9 +172,6 @@ declare -a JSfiles=(
 
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/DAWCoreBuffers.js"
-	"daw-core/src/DAWCoreLocalStorage.js"
-	"daw-core/src/DAWCoreAddComposition.js"
-	"daw-core/src/DAWCoreCompositionExportJSON.js"
 	"daw-core/src/DAWCoreCompositionExportWAV.js"
 	"daw-core/src/DAWCoreCompositionFormat.js"
 	"daw-core/src/DAWCoreDestination.js"
@@ -330,11 +323,10 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiDAW/gsuiDAW.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-windows.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.html.js"
-	"gs-ui-components/gsuiDAW/gsuiDAW-popup-open.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js"
-	"gs-ui-components/gsuiDAW/gsuiDAW-popup-tempo.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js"
+	"gs-ui-components/gsuiTitleUser/gsuiTitleUser.html.js"
 	"gs-ui-components/gsuiAnalyserVu/gsuiAnalyserVu.html.js"
 	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.html.js"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.html.js"
@@ -374,11 +366,13 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-pattern.html.js"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns-synth.html.js"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.html.js"
+	"gs-ui-components/gsuiTempo/gsuiTempo.html.js"
 	"gs-ui-components/gsuiTrack/gsuiTrack.html.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.html.js"
 
 	"gs-ui-components/gsui0ne/gsui0ne.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.js"
+	"gs-ui-components/gsuiTitleUser/gsuiTitleUser.js"
 	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.js"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.js"
 	"gs-ui-components/gsuiLFO/gsuiLFO.js"
@@ -422,6 +416,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiLibraries/gsuiLibraries.js"
 	"gs-ui-components/gsuiLibrary/gsuiLibrary.js"
 	"gs-ui-components/gsuiPatterns/gsuiPatterns.js"
+	"gs-ui-components/gsuiTempo/gsuiTempo.js"
 	"gs-ui-components/gsuiToggle/gsuiToggle.js"
 	"gs-ui-components/gsuiTrack/gsuiTrack.js"
 	"gs-ui-components/gsuiTracklist/gsuiTracklist.js"

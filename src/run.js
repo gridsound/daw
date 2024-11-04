@@ -28,14 +28,13 @@ new Promise( resolve => {
 	};
 	elForm.onchange();
 } )
-	.then( () => GSUloadJSFile( "/assets/gswaPeriodicWavesList-v1.js" ) )
-	.then( () => GSUloadJSFile( "/assets/gsuiLibrarySamples-v1.js" ) )
+	.then( () => GSUloadJSFile( "assets/gswaPeriodicWavesList-v1.js" ) )
+	.then( () => GSUloadJSFile( "assets/gsuiLibrarySamples-v1.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
 
 		GSUsetAttribute( daw.rootElement, "version", document.querySelector( "#splashScreen-version" ).textContent );
-		daw.getDAWCore().$importCompositionsFromLocalStorage();
-		daw.newComposition();
+		// daw.getDAWCore().$newComposition(); // better commented but it would be great to know why something doesnt work with it.
 	} )
 	.then( () => {
 		const el = document.querySelector( "#splashScreen" );

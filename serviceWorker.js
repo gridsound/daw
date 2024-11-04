@@ -3,9 +3,9 @@
 self.addEventListener( "install", e => {
 	e.waitUntil( caches.open( "daw" ).then( cache => (
 		cache.addAll( [
-			"/daw/",
-			"/daw/index.html",
-			"/daw/manifest.json",
+			"/",
+			"/index.html",
+			"/manifest.json",
 			"/assets/favicon.png",
 			"/assets/gsuiLibrarySamples-v1.js",
 			"/assets/gswaPeriodicWavesList-v1.js",
