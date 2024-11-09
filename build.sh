@@ -60,6 +60,8 @@ declare -a CSSfiles=(
 
 	"gs-ui-components/gsui.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
+	"gs-ui-components/gsuiRipple/gsuiRipple.css"
+	"gs-ui-components/gsuiComButton/gsuiComButton.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW.colors.default.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-windows.css"
@@ -70,7 +72,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-wins.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-help.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-area-vers.css"
-	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.css"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css"
@@ -116,7 +117,6 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"
 	"gs-ui-components/gsuiDotline/gsuiDotline.css"
-	"gs-ui-components/gsuiPopup/gsuiPopup.colors.default.css"
 	"gs-ui-components/gsuiPopup/gsuiPopup.css"
 	"gs-ui-components/gsuiScrollShadow/gsuiScrollShadow.css"
 	"gs-ui-components/gsuiSlicer/gsuiSlicer.colors.default.css"
@@ -322,7 +322,6 @@ declare -a JSfiles=(
 
 	"gs-ui-components/gsuiDAW/gsuiDAW.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-windows.html.js"
-	"gs-ui-components/gsuiDAW/gsuiDAW-popup-auth.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js"
@@ -372,6 +371,8 @@ declare -a JSfiles=(
 
 	"gs-ui-components/gsui0ne/gsui0ne.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.js"
+	"gs-ui-components/gsuiRipple/gsuiRipple.js"
+	"gs-ui-components/gsuiComButton/gsuiComButton.js"
 	"gs-ui-components/gsuiTitleUser/gsuiTitleUser.js"
 	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.js"
 	"gs-ui-components/gsuiEnvelope/gsuiEnvelope.js"
