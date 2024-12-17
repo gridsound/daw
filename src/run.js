@@ -9,7 +9,7 @@ new Promise( resolve => {
 	const elTitle = document.querySelector( "#splashScreen-title" );
 	const elStart = document.querySelector( "#splashScreen-start" );
 	const elForm = document.querySelector( "#splashScreen-form" );
-	const elCookies = document.querySelector( "[ name='cookies' ]" );
+	const elCookies = document.querySelector( "[name='cookies']" );
 	const glitch = new TextGlitch( elTitle );
 
 	el.classList.add( "loaded" );
