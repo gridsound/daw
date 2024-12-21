@@ -59,6 +59,7 @@ declare -a CSSfiles=(
 	"src/splashScreen.css"
 
 	"gs-ui-components/gsui.css"
+	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiRipple/gsuiRipple.css"
 	"gs-ui-components/gsuiDropdown/gsuiDropdown.css"
@@ -315,6 +316,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.html.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js"
+	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.html.js"
 	"gs-ui-components/gsuiTitleUser/gsuiTitleUser.html.js"
 	"gs-ui-components/gsuiAnalyserVu/gsuiAnalyserVu.html.js"
 	"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.html.js"
@@ -361,6 +363,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindow.html.js"
 
 	"gs-ui-components/gsui0ne/gsui0ne.js"
+	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.js"
 	"gs-ui-components/gsuiRipple/gsuiRipple.js"
 	"gs-ui-components/gsuiDropdown/getAbsPos.js"
@@ -427,7 +430,6 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiWindows/gsuiWindows.js"
 	"gs-ui-components/gsuiWindows/gsuiWindow.js"
 
-	"src/splashScreen.js"
 	"src/run.js"
 )
 
