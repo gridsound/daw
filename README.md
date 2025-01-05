@@ -1,16 +1,13 @@
-# GridSound [<img height="26" src="https://gridsound.com/social-images/twitter.png" title="twitter"/>](https://twitter.com/gridsound) [<img height="26" src="https://gridsound.com/social-images/facebook.png" title="facebook"/>](https://facebook.com/gridsound)
+# GridSound
 
 <img align="right" height="110" src="https://gridsound.com/assets/icon/black/128.png"/>
 
-GridSound is a work-in-progress open-source digital audio workstation developed with HTML5 and more precisely with the new Web Audio API.
-The application can be used at [daw.gridsound.com](https://daw.gridsound.com) it's also possible to create an account on [gridsound.com](http://gridsound.com) to save your compositions online to retrieve them from anywhere at any time.
+GridSound is a work-in-progress free digital audio workstation written with HTML5 and more precisely with the new Web Audio API.
+The application can be used at [daw.gridsound.com](https://daw.gridsound.com) you are invited to create an account at [gridsound.com](http://gridsound.com) to save your compositions online to retrieve them from anywhere at any time.
 
-**Some links :**
-[**Help**](https://github.com/gridsound/daw/wiki/help) •
-[**Changelog**](https://github.com/gridsound/daw/wiki/changelog) •
-[**Previous versions**](https://github.com/gridsound/daw/wiki/versions)
+Here is the [changelog](https://github.com/gridsound/daw/wiki/changelog), and this is the [help](https://github.com/gridsound/daw/wiki/help) page.
 
-Follow us on [**Twitter**](https://twitter.com/gridsound) or [**Facebook**](https://facebook.com/gridsound) to have the latest news related to the product.
+Follow us on [Bluesky](https://gridsound.bsky.social/) or [Facebook](https://facebook.com/gridsound) to have the latest news related to the product.
 
-###### screenshot of the 0.40.0 version
-![screenshot](https://user-images.githubusercontent.com/850754/216862799-a6dde8e5-6bfb-4963-907a-e59dbbfc2483.png)
+###### screenshot of the 1.48.0 version
+![image](https://github.com/user-attachments/assets/2bc37647-7b80-4ae2-a8fe-7a860bcc1994)
