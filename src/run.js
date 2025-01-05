@@ -10,18 +10,24 @@ new Promise( resolve => {
 	const elStart = document.querySelector( "#splashScreen-start" );
 	const elForm = document.querySelector( "#splashScreen-form" );
 	const elCookies = document.querySelector( "[name='cookies']" );
-	const glitch = new TextGlitch( elTitle );
 
+	GSUsetAttribute( elTitle, "texts", [
+		"GridSound",
+		"gRIDsOUND",
+		"&<:]$+\\#)",
+		"6/1)20^?}",
+		"9-!>5θnu]",
+	].join( " " ) );
 	el.classList.add( "loaded" );
 	if ( window.CSS && CSS.supports( "clip-path: inset(0 1px 2px 3px)" ) ) {
-		glitch.on();
+		GSUsetAttribute( elTitle, "enable", true );
 	}
 	elCookies.checked = localStorage.getItem( "cookieAccepted" ) === "1";
 	elForm.onchange = () => {
 		elStart.disabled = !elCookies.checked;
 	};
 	elStart.onclick = () => {
-		glitch.off();
+		GSUsetAttribute( elTitle, "enable", false );
 		el.classList.add( "starting" );
 		localStorage.setItem( "cookieAccepted", "1" );
 		setTimeout( resolve, 100 );
