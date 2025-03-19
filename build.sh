@@ -60,6 +60,7 @@ declare -a CSSfiles=(
 
 	"gs-ui-components/gsui.css"
 	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.css"
+	"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
 	"gs-ui-components/gsuiRipple/gsuiRipple.css"
 	"gs-ui-components/gsuiDropdown/gsuiDropdown.css"
@@ -357,6 +358,7 @@ declare -a JSfiles=(
 
 	"gs-ui-components/gsui0ne/gsui0ne.js"
 	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.js"
+	"gs-ui-components/gsuiHelpLink/gsuiHelpLink.js"
 	"gs-ui-components/gsuiDAW/gsuiDAW.js"
 	"gs-ui-components/gsuiRipple/gsuiRipple.js"
 	"gs-ui-components/gsuiDropdown/getAbsPos.js"
