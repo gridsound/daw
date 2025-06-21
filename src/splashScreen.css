@@ -25,7 +25,7 @@
 #splashScreen-version {
 	margin-top: 10px;
 	font-size: 20px;
-	font-family: var(--gsui-font-number );
+	font-family: var( --gsui-font-number );
 }
 #splashScreen-version::before {
 	content: "version";

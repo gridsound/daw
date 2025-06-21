@@ -46,7 +46,7 @@ writeCSScompress() {
 writeJScompress() {
 	echo '"use strict";' > allJS.js
 	cat "${JSfilesProd[@]}" >> allJS.js
-	cat "${JSfiles[@]}" >> allJS.js
+	cat `echo "${JSfiles[@]}" | sed 's/.dev.js/.prod.js/g'` >> allJS.js
 	echo '<script>'
 	terser allJS.js --compress --mangle --toplevel --mangle-props "regex='^[$]'"
 	echo '</script>'
@@ -59,6 +59,7 @@ declare -a CSSfiles=(
 	"src/splashScreen.css"
 
 	"gs-ui-components/gsui.css"
+	# "gs-ui-components/gsuiSkins/gsuiSkins-light.css"
 	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.css"
 	"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css"
 	"gs-ui-components/gsuiIcon/gsuiIcon.css"
@@ -75,6 +76,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css"
 	"gs-ui-components/gsuiTitleUser/gsuiTitleUser.css"
 	"gs-ui-components/gsuiPanels/gsuiPanels.css"
+	"gs-ui-components/gsuiStepSelect/gsuiStepSelect.css"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.css"
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.css"
 	"gs-ui-components/gsuiAnalyserHist/gsuiAnalyserHist.css"
@@ -108,7 +110,8 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiKeys/gsuiKeys.css"
 	"gs-ui-components/gsuiNoise/gsuiNoise.css"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.css"
-	"gs-ui-components/gsuiWaveEdit/gsuiWaveEdit.css"
+	"gs-ui-components/gsuiWavetable/gsuiWavetable.css"
+	"gs-ui-components/gsuiWavetableGraph/gsuiWavetableGraph.css"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"
 	"gs-ui-components/gsuiDotline/gsuiDotline.css"
@@ -138,11 +141,16 @@ declare -a JSfiles=(
 
 	"gs-utils/gs-utils.js"
 	"gs-utils/gs-utils-dom.js"
-	"gs-utils/gs-utils-fft.js"
+	"gs-utils/gs-utils-data.js"
 	"gs-utils/gs-utils-json.js"
+	"gs-utils/gs-utils-func.js"
+	"gs-utils/gs-utils-math.js"
+	"gs-utils/gs-utils-math-fft.js"
 	"gs-utils/gs-utils-audio.js"
+	"gs-utils/gs-utils-audio-nodes.dev.js"
 	"gs-utils/gs-utils-files.js"
 	"gs-utils/gs-utils-models.js"
+	"gs-utils/gs-utils-checkType.dev.js"
 
 	"gs-api-client/gsapiClient.js"
 
@@ -174,8 +182,6 @@ declare -a JSfiles=(
 	"daw-core/src/actions/common/calcNewKeysDuration.js"
 	"daw-core/src/actions/common/createUniqueName.js"
 	"daw-core/src/actions/common/getDrumrowName.js"
-	"daw-core/src/actions/common/getNextIdOf.js"
-	"daw-core/src/actions/common/getNextOrderOf.js"
 	"daw-core/src/actions/common/patternOpenedByType.js"
 	"daw-core/src/actions/common/toggleSolo.js"
 	"daw-core/src/actions/common/updatePatternDuration.js"
@@ -218,7 +224,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/cropEndKeys.js"
 	"daw-core/src/actions/cropStartBlocks.js"
 	"daw-core/src/actions/dropMidiOnKeys.js"
-	"daw-core/src/actions/editOscillatorWave.js"
+	"daw-core/src/actions/editOscillatorWavetable.js"
 	"daw-core/src/actions/moveBlocks.js"
 	"daw-core/src/actions/moveKeys.js"
 	"daw-core/src/actions/openChannel.js"
@@ -247,6 +253,7 @@ declare -a JSfiles=(
 	"daw-core/src/actions/renameTrack.js"
 	"daw-core/src/actions/reorderChannel.js"
 	"daw-core/src/actions/reorderDrumrow.js"
+	"daw-core/src/actions/reorderEffect.js"
 	"daw-core/src/actions/reorderOscillator.js"
 	"daw-core/src/actions/reorderPattern.js"
 	"daw-core/src/actions/selectBlocks.js"
@@ -277,6 +284,7 @@ declare -a JSfiles=(
 
 	"gs-wa-components/gswaNoise/gswaNoise.js"
 	"gs-wa-components/gswaReverbIR/gswaReverbIR.js"
+	"gs-wa-components/gswaCrossfade/gswaCrossfade.js"
 	"gs-wa-components/gswaOscillator/gswaOscillator.js"
 	"gs-wa-components/gswaLFO/gswaLFO.js"
 	"gs-wa-components/gswaEnvelope/gswaEnvelope.js"
@@ -328,15 +336,13 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.html.js"
 	"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html.js"
 	"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html.js"
-	"gs-ui-components/gsuiPropSelect/gsuiPropSelect.html.js"
 	"gs-ui-components/gsuiDrumrow/gsuiDrumrow.html.js"
-	"gs-ui-components/gsuiDrumrows/gsuiDrumrows.html.js"
 	"gs-ui-components/gsuiDrum/gsuiDrum.html.js"
 	"gs-ui-components/gsuiDrums/gsuiDrums.html.js"
 	"gs-ui-components/gsuiKeys/gsuiKeys.html.js"
 	"gs-ui-components/gsuiNoise/gsuiNoise.html.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.html.js"
-	"gs-ui-components/gsuiWaveEdit/gsuiWaveEdit.html.js"
+	"gs-ui-components/gsuiWavetable/gsuiWavetable.html.js"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.html.js"
 	"gs-ui-components/gsuiDotlineSVG/gsuiDotlineSVG.html.js"
 	"gs-ui-components/gsuiDotline/gsuiDotline.html.js"
@@ -344,6 +350,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiSlicer/gsuiSlicer.html.js"
 	"gs-ui-components/gsuiSlider/gsuiSlider.html.js"
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.html.js"
+	"gs-ui-components/gsuiStepSelect/gsuiStepSelect.html.js"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.html.js"
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.html.js"
 	"gs-ui-components/gsuiLibraries/gsuiLibraries.html.js"
@@ -381,8 +388,6 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiFxWaveShaper/gsuiFxWaveShaper.js"
 	"gs-ui-components/gsuiMixer/gsuiMixer.js"
 	"gs-ui-components/gsuiReorder/gsuiReorder.js"
-	"gs-ui-components/gsuiReorder/gsuiReorder.listReorder.js"
-	"gs-ui-components/gsuiReorder/gsuiReorder.listComputeOrderChange.js"
 	"gs-ui-components/gsuiDragline/gsuiDragline.js"
 	"gs-ui-components/gsuiBeatlines/gsuiBeatlines.js"
 	"gs-ui-components/gsuiBlocksManager/gsuiBlocksManager.js"
@@ -397,7 +402,8 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiKeys/gsuiKeys.js"
 	"gs-ui-components/gsuiNoise/gsuiNoise.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.js"
-	"gs-ui-components/gsuiWaveEdit/gsuiWaveEdit.js"
+	"gs-ui-components/gsuiWavetable/gsuiWavetable.js"
+	"gs-ui-components/gsuiWavetableGraph/gsuiWavetableGraph.js"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.js"
 	"gs-ui-components/gsuiDotlineSVG/gsuiDotlineSVG.js"
@@ -408,6 +414,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiSlicer/gsuiSlicer.js"
 	"gs-ui-components/gsuiSlider/gsuiSlider.js"
 	"gs-ui-components/gsuiSliderGroup/gsuiSliderGroup.js"
+	"gs-ui-components/gsuiStepSelect/gsuiStepSelect.js"
 	"gs-ui-components/gsuiTimeline/gsuiTimeline.js"
 	"gs-ui-components/gsuiTimewindow/gsuiTimewindow.js"
 	"gs-ui-components/gsuiLibraries/gsuiLibraries.js"
@@ -466,6 +473,7 @@ lint() {
 updateDep() {
 	git submodule init
 	git submodule update --remote
+	cp gs-wa-components/gswaCrossfade/gswaCrossfadeProc.js .
 }
 
 count() {

@@ -5,13 +5,13 @@ document.addEventListener( "gsuiEvents", ( { detail: d } ) => {
 } );
 
 new Promise( resolve => {
-	const el = document.querySelector( "#splashScreen" );
-	const elTitle = document.querySelector( "#splashScreen-title" );
-	const elStart = document.querySelector( "#splashScreen-start" );
-	const elForm = document.querySelector( "#splashScreen-form" );
-	const elCookies = document.querySelector( "[name='cookies']" );
+	const el = GSUdomQS( "#splashScreen" );
+	const elTitle = GSUdomQS( "#splashScreen-title" );
+	const elStart = GSUdomQS( "#splashScreen-start" );
+	const elForm = GSUdomQS( "#splashScreen-form" );
+	const elCookies = GSUdomQS( "[name='cookies']" );
 
-	GSUsetAttribute( elTitle, "texts", [
+	GSUdomSetAttr( elTitle, "texts", [
 		"GridSound",
 		"gRIDsOUND",
 		"&<:]$+\\#)",
@@ -20,17 +20,17 @@ new Promise( resolve => {
 	].join( " " ) );
 	el.classList.add( "loaded" );
 	if ( window.CSS && CSS.supports( "clip-path: inset(0 1px 2px 3px)" ) ) {
-		GSUsetAttribute( elTitle, "enable", true );
+		GSUdomSetAttr( elTitle, "enable" );
 	}
 	elCookies.checked = localStorage.getItem( "cookieAccepted" ) === "1";
 	elForm.onchange = () => {
 		elStart.disabled = !elCookies.checked;
 	};
 	elStart.onclick = () => {
-		GSUsetAttribute( elTitle, "enable", false );
+		GSUdomRmAttr( elTitle, "enable" );
 		el.classList.add( "starting" );
 		localStorage.setItem( "cookieAccepted", "1" );
-		setTimeout( resolve, 100 );
+		GSUsetTimeout( resolve, .1 );
 	};
 	elForm.onchange();
 } )
@@ -39,12 +39,11 @@ new Promise( resolve => {
 	.then( () => {
 		const daw = new GSDAW();
 
-		GSUsetAttribute( daw.rootElement, "version", document.querySelector( "#splashScreen-version" ).textContent );
-		// daw.getDAWCore().$newComposition(); // better commented but it would be great to know why something doesnt work with it.
+		GSUdomSetAttr( daw.rootElement, "version", GSUdomQS( "#splashScreen-version" ).textContent );
 	} )
 	.then( () => {
-		const el = document.querySelector( "#splashScreen" );
+		const el = GSUdomQS( "#splashScreen" );
 
 		el.classList.add( "started" );
-		setTimeout( () => el.remove(), 800 );
+		GSUsetTimeout( () => el.remove(), .8 );
 	} );
