@@ -59,6 +59,7 @@ declare -a CSSfiles=(
 	"src/splashScreen.css"
 
 	"gs-ui-components/gsui.css"
+	"gs-ui-components/gsui-flex.css"
 	# "gs-ui-components/gsuiSkins/gsuiSkins-light.css"
 	"gs-ui-components/gsuiGlitchText/gsuiGlitchText.css"
 	"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css"
@@ -111,6 +112,7 @@ declare -a CSSfiles=(
 	"gs-ui-components/gsuiNoise/gsuiNoise.css"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.css"
 	"gs-ui-components/gsuiWavetable/gsuiWavetable.css"
+	"gs-ui-components/gsuiWaveEditor/gsuiWaveEditor.css"
 	"gs-ui-components/gsuiWavetableGraph/gsuiWavetableGraph.css"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.css"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.css"
@@ -154,6 +156,7 @@ declare -a JSfiles=(
 
 	"gs-api-client/gsapiClient.js"
 
+	"daw-core/src/GScomposition.js"
 	"daw-core/src/DAWCore.js"
 	"daw-core/src/DAWCoreBuffers.js"
 	"daw-core/src/DAWCoreCompositionExportWAV.js"
@@ -182,7 +185,6 @@ declare -a JSfiles=(
 	"daw-core/src/actions/common/calcNewKeysDuration.js"
 	"daw-core/src/actions/common/createUniqueName.js"
 	"daw-core/src/actions/common/getDrumrowName.js"
-	"daw-core/src/actions/common/patternOpenedByType.js"
 	"daw-core/src/actions/common/toggleSolo.js"
 	"daw-core/src/actions/common/updatePatternDuration.js"
 
@@ -343,6 +345,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiNoise/gsuiNoise.html.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.html.js"
 	"gs-ui-components/gsuiWavetable/gsuiWavetable.html.js"
+	"gs-ui-components/gsuiWaveEditor/gsuiWaveEditor.html.js"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.html.js"
 	"gs-ui-components/gsuiDotlineSVG/gsuiDotlineSVG.html.js"
 	"gs-ui-components/gsuiDotline/gsuiDotline.html.js"
@@ -403,6 +406,7 @@ declare -a JSfiles=(
 	"gs-ui-components/gsuiNoise/gsuiNoise.js"
 	"gs-ui-components/gsuiOscillator/gsuiOscillator.js"
 	"gs-ui-components/gsuiWavetable/gsuiWavetable.js"
+	"gs-ui-components/gsuiWaveEditor/gsuiWaveEditor.js"
 	"gs-ui-components/gsuiWavetableGraph/gsuiWavetableGraph.js"
 	"gs-ui-components/gsuiPeriodicWave/gsuiPeriodicWave.js"
 	"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.js"
