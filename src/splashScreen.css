@@ -68,18 +68,3 @@
 	from { background-color: #ff93; }
 	to { background-color: transparent; }
 }
-
-#splashScreen-form {
-	order: 10;
-	margin-top: 50px;
-	font-size: 10px;
-}
-.splashScreen-form-row {
-	display: flex;
-	align-items: center;
-	gap: .5ch;
-	cursor: pointer;
-}
-#splashScreen-form input {
-	cursor: pointer;
-}

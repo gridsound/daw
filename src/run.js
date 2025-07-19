@@ -8,8 +8,6 @@ new Promise( resolve => {
 	const el = GSUdomQS( "#splashScreen" );
 	const elTitle = GSUdomQS( "#splashScreen-title" );
 	const elStart = GSUdomQS( "#splashScreen-start" );
-	const elForm = GSUdomQS( "#splashScreen-form" );
-	const elCookies = GSUdomQS( "[name='cookies']" );
 
 	GSUdomSetAttr( elTitle, "texts", [
 		"GridSound",
@@ -18,21 +16,16 @@ new Promise( resolve => {
 		"6/1)20^?}",
 		"9-!>5θnu]",
 	].join( " " ) );
-	el.classList.add( "loaded" );
+	GSUdomAddClass( el, "loaded" );
 	if ( window.CSS && CSS.supports( "clip-path: inset(0 1px 2px 3px)" ) ) {
 		GSUdomSetAttr( elTitle, "enable" );
 	}
-	elCookies.checked = localStorage.getItem( "cookieAccepted" ) === "1";
-	elForm.onchange = () => {
-		elStart.disabled = !elCookies.checked;
-	};
 	elStart.onclick = () => {
 		GSUdomRmAttr( elTitle, "enable" );
-		el.classList.add( "starting" );
-		localStorage.setItem( "cookieAccepted", "1" );
+		GSUdomAddClass( el, "starting" );
 		GSUsetTimeout( resolve, .1 );
 	};
-	elForm.onchange();
+	localStorage.removeItem( "cookieAccepted" );
 } )
 	.then( () => GSUloadJSFile( "assets/gswaPeriodicWavesList-v1.js" ) )
 	.then( () => GSUloadJSFile( "assets/gsuiLibrarySamples-v1.js" ) )
@@ -44,6 +37,6 @@ new Promise( resolve => {
 	.then( () => {
 		const el = GSUdomQS( "#splashScreen" );
 
-		el.classList.add( "started" );
+		GSUdomAddClass( el, "started" );
 		GSUsetTimeout( () => el.remove(), .8 );
 	} );
