@@ -36,6 +36,12 @@
 	opacity: .5;
 }
 
+#splashScreen-firefox {
+	display: none;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
 #splashScreen-start {
 	margin-top: 48px;
 	padding: .5ch 1ch;

@@ -8,7 +8,11 @@ new Promise( resolve => {
 	const el = GSUdomQS( "#splashScreen" );
 	const elTitle = GSUdomQS( "#splashScreen-title" );
 	const elStart = GSUdomQS( "#splashScreen-start" );
+	const elFirefox = GSUdomQS( "#splashScreen-firefox" );
 
+	GSUonFirefox
+		? GSUsetStyle( elFirefox, "display", "block" )
+		: elFirefox.remove();
 	GSUdomSetAttr( elTitle, "texts", [
 		"GridSound",
 		"gRIDsOUND",
