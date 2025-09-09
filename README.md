@@ -1,6 +1,6 @@
-# GridSound
+# GridSound's digital audio workstation (DAW)
 
-<img align="right" height="110" src="https://gridsound.com/assets/icon/black/128.png"/>
+<img align="left" height="110" src="https://gridsound.com/assets/logo/avatar-round.png"/>
 
 GridSound is a free, work-in-progress, half open-source digital audio
 workstation written with HTML5 and more precisely with the WebAudio API.
@@ -15,5 +15,5 @@ Follow us on [Bluesky 🦋](https://bsky.app/profile/gridsound.com) or
 [Facebook](https://facebook.com/gridsound) to have the latest news related to
 the product.
 
-###### screenshot of the version 1.54.0
-![screenshot](https://daw.gridsound.com/_/screenshots/daw.1.54.0.png)
+###### screenshot of the version 1.54.4
+![screenshot](https://gridsound.com/assets/screenshots/daw-1.54.4.jpg)
