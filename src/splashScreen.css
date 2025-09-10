@@ -1,76 +1,76 @@
 #splashScreen {
-	display: flex;
-	z-index: 1;
 	position: absolute;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	inset: 0;
-	color: #fff8;
-	background-color: #333;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #1b1b31;
+	background-image: linear-gradient( 45deg, #0006, transparent );
 	transition: .5s opacity;
-}
-#splashScreen.started {
-	opacity: 0;
+
+	&[ data-started ] {
+		opacity: 0;
+	}
 }
 
+/* .......................................................................... */
 #splashScreen-content {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+}
+
+/* .......................................................................... */
+#splashScreen-logo {
 	position: relative;
-	text-align: center;
+	width: 500px;
+	height: 122px;
+	inset: 0;
+	mask: center no-repeat alpha url( "../assets/logo/gs-gridsound-logo.svg" );
+	background-color: #fff;
 }
 
+/* .......................................................................... */
 #splashScreen-version {
-	margin-top: 10px;
-	font-size: 20px;
-	font-family: var( --gsui-font-number );
-}
-#splashScreen-version::before {
-	content: "version";
-	font-size: 12px;
-	font-family: inherit;
-	margin-right: 5px;
-	margin-bottom: 200px;
-	opacity: .5;
+	align-self: end;
+	margin-right: 2px;
+	font-family: var( --gsui-font-monospace );
+
+	&::before {
+		content: "v. ";
+	}
 }
 
+/* .......................................................................... */
 #splashScreen-firefox {
 	display: none;
 	margin-top: 10px;
-	font-size: 12px;
+	font-size: 14px;
+	font-style: italic;
 }
 
+/* .......................................................................... */
 #splashScreen-start {
 	margin-top: 48px;
-	padding: .5ch 1ch;
-	border: 2px solid;
-	border-radius: 8px;
+	padding: 10px 16px;
+	border: 0;
 	outline: 0;
-	font: inherit;
-	font-size: 14px;
-	color: var( --gsui-col-gain );
+	font: 16px var( --gsui-font-monospace );
+	color: inherit;
 	cursor: pointer;
-	background-color: #ff93;
-	transition:
-		box-shadow .25s,
-		opacity .5s;
-}
-#splashScreen-start:disabled {
-	opacity: .25;
-	pointer-events: none;
-}
-#splashScreen.loaded #splashScreen-start:not( :disabled ):focus,
-#splashScreen.loaded #splashScreen-start:not( :disabled ):hover {
-	box-shadow: 0 0 24px #ff95;
-	animation: .25s splashScreen-textAnim linear infinite alternate;
-}
-#splashScreen:not( .loaded ) #splashScreen-start::before { content: "downloading..."; }
-#splashScreen.loaded #splashScreen-start::before { content: "click to start"; }
-#splashScreen.starting #splashScreen-start::before { content: "starting..."; }
+	background: none;
 
+	#splashScreen[ data-loaded ] &:not( :hover ) {
+		animation: .5s splashScreen-textAnim linear infinite alternate;
+	}
+	&::before { content: "downloading..." }
+	#splashScreen[ data-loaded ] &::before { content: "[ click to start ]" }
+	#splashScreen[ data-starting ] &::before { content: "starting..." }
+}
 @keyframes splashScreen-textAnim {
-	from { background-color: #ff93; }
-	to { background-color: transparent; }
+	 75% { opacity: 1 }
+	100% { opacity: 0 }
 }

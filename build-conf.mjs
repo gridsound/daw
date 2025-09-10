@@ -1,7 +1,7 @@
 export default {
 	title:         "GridSound",
-	desc:          "A free DAW (digital audio workstation)",
-	favicon:       "assets/favicon.png",
+	desc:          "A work-in-progress free browser-based digital audio workstation",
+	favicon:       "assets/ico.svg",
 	url:           "https://daw.gridsound.com/",
 	manifest:      "manifest.json",
 	ogImage:       "https://gridsound.com/assets/og-image.jpg",
@@ -25,7 +25,6 @@ export default {
 	cssDep: [
 		"gs-ui-components/gsui.css",
 		"gs-ui-components/gsui-flex.css",
-		"gs-ui-components/gsuiGlitchText/gsuiGlitchText.css",
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css",
 		"gs-ui-components/gsuiIcon/gsuiIcon.css",
 		"gs-ui-components/gsuiRipple/gsuiRipple.css",
@@ -99,6 +98,9 @@ export default {
 	],
 	// .........................................................................
 	jsDep: [
+		"gs-ui-components/gsui-constantes.js",
+
+		// .....................................................................
 		"gs-utils/gs-utils.js",
 		"gs-utils/gs-utils-dom.js",
 		"gs-utils/gs-utils-data.js",
@@ -187,6 +189,7 @@ export default {
 		"daw-core/src/actions/cropStartBlocks.js",
 		"daw-core/src/actions/dropMidiOnKeys.js",
 		"daw-core/src/actions/editOscillatorWavetable.js",
+		"daw-core/src/actions/editOscillatorWavetableParams.js",
 		"daw-core/src/actions/moveBlocks.js",
 		"daw-core/src/actions/moveKeys.js",
 		"daw-core/src/actions/openChannel.js",
@@ -280,7 +283,6 @@ export default {
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.html.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js",
-		"gs-ui-components/gsuiGlitchText/gsuiGlitchText.html.js",
 		"gs-ui-components/gsuiTitleUser/gsuiTitleUser.html.js",
 		"gs-ui-components/gsuiAnalyserVu/gsuiAnalyserVu.html.js",
 		"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.html.js",
@@ -298,7 +300,6 @@ export default {
 		"gs-ui-components/gsuiFxWaveShaper/gsuiFxWaveShaper.html.js",
 		"gs-ui-components/gsuiMixer/gsuiMixer.html.js",
 		"gs-ui-components/gsuiDragline/gsuiDragline.html.js",
-		"gs-ui-components/gsuiBeatlines/gsuiBeatlines.html.js",
 		"gs-ui-components/gsuiPatternroll/gsuiPatternroll.html.js",
 		"gs-ui-components/gsuiPianoroll/gsuiPianoroll.html.js",
 		"gs-ui-components/gsuiDrumrow/gsuiDrumrow.html.js",
@@ -331,7 +332,6 @@ export default {
 
 		// .....................................................................
 		"gs-ui-components/gsui0ne/gsui0ne.js",
-		"gs-ui-components/gsuiGlitchText/gsuiGlitchText.js",
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW.js",
 		"gs-ui-components/gsuiRipple/gsuiRipple.js",
