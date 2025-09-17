@@ -23,3 +23,6 @@
 [submodule "samples"]
 	path = samples
 	url = https://github.com/gridsound/samples.git
+[submodule "opus"]
+	path = opus
+	url = https://github.com/gridsound/opus.git
