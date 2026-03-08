@@ -24,8 +24,8 @@ new Promise( resolve => {
 	localStorage.removeItem( "cookieAccepted" );
 	GSUdomRmAttr( elStart, "disabled" );
 } )
-	.then( () => GSUloadJSFile( "assets/gswaPeriodicWavesList-v1.js" ) )
 	.then( () => GSUloadJSFile( "assets/gsuiLibrarySamples-v1.js" ) )
+	.then( () => GSUloadJSFile( "assets/gsuiWaveletList-v1.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
 		const el = GSUdomQS( "#splashScreen" );

@@ -1,30 +1,34 @@
-export default {
-	title:         "GridSound",
-	desc:          "A work-in-progress free browser-based digital audio workstation",
-	favicon:       "assets/ico.svg",
-	url:           "https://daw.gridsound.com/",
-	manifest:      "manifest.json",
-	ogImage:       "https://gridsound.com/assets/og-image.jpg",
-	ogImageW:      800,
-	ogImageH:      400,
-	splashScreen:  "src/splashScreen.html",
-	serviceWorker: "serviceWorker.js",
-	// .........................................................................
-	cssSrcA: [
+{
+	"version":       "1.57.0",
+	"title":         "GridSound",
+	"desc":          "A work-in-progress free browser-based digital audio workstation",
+	"favicon":       "assets/ico.svg",
+	"url":           "https://daw.gridsound.com/",
+	"manifest":      "manifest.json",
+	"ogImage":       "https://gridsound.com/assets/og-image.jpg",
+	"ogImageW":      800,
+	"ogImageH":      400,
+	"splashScreen":  "src/splashScreen.html",
+	"serviceWorker": "serviceWorker.js",
+
+	"cssSrcA": [
 		"assets/fonts/fonts.css",
 		"src/reset.css",
-		"src/splashScreen.css",
+		"src/splashScreen.css"
 	],
-	jsSrcA: [
-		"src/checkBrowser.js",
+	"jsSrcA": [
+		"src/checkBrowser.js"
 	],
-	jsSrcB: [
-		"src/run.js",
+	"jsSrcB": [
+		"src/run.js"
 	],
-	// .........................................................................
-	cssDep: [
+
+	"cssDep": [
 		"gs-ui-components/gsui.css",
 		"gs-ui-components/gsui-flex.css",
+		"gs-ui-components/gsui-form.css",
+		"gs-ui-components/gsui-gray.css",
+		"gs-ui-components/gsui-white.css",
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css",
 		"gs-ui-components/gsuiIcon/gsuiIcon.css",
 		"gs-ui-components/gsuiRipple/gsuiRipple.css",
@@ -74,6 +78,7 @@ export default {
 		"gs-ui-components/gsuiKeys/gsuiKeys.css",
 		"gs-ui-components/gsuiNoise/gsuiNoise.css",
 		"gs-ui-components/gsuiOscillator/gsuiOscillator.css",
+		"gs-ui-components/gsuiWaveletBrowser/gsuiWaveletBrowser.css",
 		"gs-ui-components/gsuiWavetable/gsuiWavetable.css",
 		"gs-ui-components/gsuiWaveEditor/gsuiWaveEditor.css",
 		"gs-ui-components/gsuiWavetableGraph/gsuiWavetableGraph.css",
@@ -91,21 +96,22 @@ export default {
 		"gs-ui-components/gsuiPatterns/gsuiPatterns-synth.css",
 		"gs-ui-components/gsuiPatterns/gsuiPatterns-pattern.css",
 		"gs-ui-components/gsuiTempo/gsuiTempo.css",
+		"gs-ui-components/gsuiTimeCursors/gsuiTimeCursors.css",
 		"gs-ui-components/gsuiToggle/gsuiToggle.css",
 		"gs-ui-components/gsuiTrack/gsuiTrack.css",
 		"gs-ui-components/gsuiWindows/gsuiWindows.css",
-		"gs-ui-components/gsuiWindows/gsuiWindow.css",
+		"gs-ui-components/gsuiWindows/gsuiWindow.css"
 	],
-	// .........................................................................
-	jsDep: [
+
+	"jsDep": [
 		"gs-ui-components/gsui-constantes.js",
 
-		// .....................................................................
 		"gs-utils/gs-utils.js",
 		"gs-utils/gs-utils-dom.js",
 		"gs-utils/gs-utils-data.js",
 		"gs-utils/gs-utils-json.js",
 		"gs-utils/gs-utils-func.js",
+		"gs-utils/gs-utils-jquery.js",
 		"gs-utils/gs-utils-math.js",
 		"gs-utils/gs-utils-math-fft.js",
 		"gs-utils/gs-utils-audio.js",
@@ -114,14 +120,12 @@ export default {
 		"gs-utils/gs-utils-models.js",
 		"gs-utils/gs-utils-checkType.dev.js",
 
-		// .....................................................................
 		"gs-api-client/gsapiClient.js",
 
-		// .....................................................................
 		"daw-core/src/GScomposition.js",
 		"daw-core/src/DAWCore.js",
+		"daw-core/src/DAWCoreRender.js",
 		"daw-core/src/DAWCoreBuffers.js",
-		"daw-core/src/DAWCoreCompositionExportWAV.js",
 		"daw-core/src/DAWCoreCompositionFormat.js",
 		"daw-core/src/DAWCoreDestination.js",
 		"daw-core/src/DAWCoreHistory.js",
@@ -179,6 +183,8 @@ export default {
 		"daw-core/src/actions/changeOscillatorSource.js",
 		"daw-core/src/actions/changePatternBufferInfo.js",
 		"daw-core/src/actions/changePatternSlices.js",
+		"daw-core/src/actions/changeSynthOctave.js",
+		"daw-core/src/actions/changeSynthPreset.js",
 		"daw-core/src/actions/changeTempo.js",
 		"daw-core/src/actions/clonePattern.js",
 		"daw-core/src/actions/cloneSelectedBlocks.js",
@@ -237,7 +243,6 @@ export default {
 		"daw-core/src/actions/unselectBlock.js",
 		"daw-core/src/actions/unselectKey.js",
 
-		// .....................................................................
 		"gs-components/gsDAW/gsDAW.js",
 		"gs-components/gsDrums/gsDrums.js",
 		"gs-components/gsMixer/gsMixer.js",
@@ -248,7 +253,6 @@ export default {
 		"gs-components/gsSynth/gsSynth.js",
 		"gs-components/gsSlicer/gsSlicer.js",
 
-		// .....................................................................
 		"gs-wa-components/gswaNoise/gswaNoise.js",
 		"gs-wa-components/gswaReverbIR/gswaReverbIR.js",
 		"gs-wa-components/gswaCrossfade/gswaCrossfade.js",
@@ -257,6 +261,7 @@ export default {
 		"gs-wa-components/gswaEnvelope/gswaEnvelope.js",
 		"gs-wa-components/gswaMixer/gswaMixer.js",
 		"gs-wa-components/gswaSynth/gswaSynth.js",
+		"gs-wa-components/gswaSynth/gswaSynth-presets.js",
 		"gs-wa-components/gswaKeysScheduler/gswaKeysScheduler.js",
 		"gs-wa-components/gswaDrumsScheduler/gswaDrumsScheduler.js",
 		"gs-wa-components/gswaSlicer/gswaSlicer.js",
@@ -264,6 +269,7 @@ export default {
 		"gs-wa-components/gswaEffects/gswaEffects.js",
 		"gs-wa-components/gswaFxDelay/gswaFxDelay.js",
 		"gs-wa-components/gswaFxFilter/gswaFxFilter.js",
+		"gs-wa-components/gswaFxFlanger/gswaFxFlanger.js",
 		"gs-wa-components/gswaFxReverb/gswaFxReverb.js",
 		"gs-wa-components/gswaFxWaveShaper/gswaFxWaveShaper.js",
 		"gs-wa-components/gswaDrumrows/gswaDrumrows.js",
@@ -271,18 +277,19 @@ export default {
 		"gs-wa-components/gswaEncodeWAV/gswaEncodeWAV.js",
 		"gs-wa-components/gswaStereoPanner/gswaStereoPanner.js",
 		"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js",
+		"gs-wa-components/gswaOpusConverter/gswaOpusConverter.js",
 		"gs-wa-components/gswaMIDIParser/gswaMIDIParser.js",
 		"gs-wa-components/gswaMIDIParser/gswaMIDIToKeys.js",
 		"gs-wa-components/gswaMIDIDevices/gswaMIDIDevices.js",
 		"gs-wa-components/gswaMIDIDevices/gswaMIDIInput.js",
 		"gs-wa-components/gswaMIDIDevices/gswaMIDIOutput.js",
 
-		// .....................................................................
 		"gs-ui-components/gsuiDAW/gsuiDAW.html.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW-windows.html.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.html.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.html.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js",
+		"gs-ui-components/gsuiTexture/gsuiTexture.js",
 		"gs-ui-components/gsuiTitleUser/gsuiTitleUser.html.js",
 		"gs-ui-components/gsuiAnalyserVu/gsuiAnalyserVu.html.js",
 		"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.html.js",
@@ -308,6 +315,7 @@ export default {
 		"gs-ui-components/gsuiKeys/gsuiKeys.html.js",
 		"gs-ui-components/gsuiNoise/gsuiNoise.html.js",
 		"gs-ui-components/gsuiOscillator/gsuiOscillator.html.js",
+		"gs-ui-components/gsuiWaveletBrowser/gsuiWaveletBrowser.html.js",
 		"gs-ui-components/gsuiWavetable/gsuiWavetable.html.js",
 		"gs-ui-components/gsuiWaveEditor/gsuiWaveEditor.html.js",
 		"gs-ui-components/gsuiSynthesizer/gsuiSynthesizer.html.js",
@@ -330,7 +338,6 @@ export default {
 		"gs-ui-components/gsuiTrack/gsuiTrack.html.js",
 		"gs-ui-components/gsuiWindows/gsuiWindow.html.js",
 
-		// .....................................................................
 		"gs-ui-components/gsui0ne/gsui0ne.js",
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW.js",
@@ -369,6 +376,7 @@ export default {
 		"gs-ui-components/gsuiKeys/gsuiKeys.js",
 		"gs-ui-components/gsuiNoise/gsuiNoise.js",
 		"gs-ui-components/gsuiOscillator/gsuiOscillator.js",
+		"gs-ui-components/gsuiWaveletBrowser/gsuiWaveletBrowser.js",
 		"gs-ui-components/gsuiWavetable/gsuiWavetable.js",
 		"gs-ui-components/gsuiWaveEditor/gsuiWaveEditor.js",
 		"gs-ui-components/gsuiWavetableGraph/gsuiWavetableGraph.js",
@@ -389,6 +397,7 @@ export default {
 		"gs-ui-components/gsuiLibrary/gsuiLibrary.js",
 		"gs-ui-components/gsuiPatterns/gsuiPatterns.js",
 		"gs-ui-components/gsuiTempo/gsuiTempo.js",
+		"gs-ui-components/gsuiTimeCursors/gsuiTimeCursors.js",
 		"gs-ui-components/gsuiToggle/gsuiToggle.js",
 		"gs-ui-components/gsuiTrack/gsuiTrack.js",
 		"gs-ui-components/gsuiTracklist/gsuiTracklist.js",
@@ -401,6 +410,6 @@ export default {
 		"gs-ui-components/gsuiSVGPatterns/gsuiSVGPatternsKeys.js",
 		"gs-ui-components/gsuiSVGPatterns/gsuiSVGPatternsSlices.js",
 		"gs-ui-components/gsuiWindows/gsuiWindows.js",
-		"gs-ui-components/gsuiWindows/gsuiWindow.js",
-	],
-};
+		"gs-ui-components/gsuiWindows/gsuiWindow.js"
+	]
+}
