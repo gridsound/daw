@@ -1,5 +1,5 @@
 {
-	"version":       "1.57.0",
+	"version":       "1.57.1",
 	"title":         "GridSound",
 	"desc":          "A work-in-progress free browser-based digital audio workstation",
 	"favicon":       "assets/ico.svg",
@@ -269,7 +269,6 @@
 		"gs-wa-components/gswaEffects/gswaEffects.js",
 		"gs-wa-components/gswaFxDelay/gswaFxDelay.js",
 		"gs-wa-components/gswaFxFilter/gswaFxFilter.js",
-		"gs-wa-components/gswaFxFlanger/gswaFxFlanger.js",
 		"gs-wa-components/gswaFxReverb/gswaFxReverb.js",
 		"gs-wa-components/gswaFxWaveShaper/gswaFxWaveShaper.js",
 		"gs-wa-components/gswaDrumrows/gswaDrumrows.js",
