@@ -16,7 +16,7 @@ new Promise( resolve => {
 	if ( window.CSS && CSS.supports( "clip-path: inset(0 1px 2px 3px)" ) ) {
 		elTitle.$addAttr( "enable" );
 	}
-	elStart.$on( "click", () => {
+	elStart.$onclick( () => {
 		elTitle.$rmAttr( "enable" );
 		el.$addAttr( "data-starting" );
 		GSUsetTimeout( resolve, .1 );
