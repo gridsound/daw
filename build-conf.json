@@ -1,5 +1,5 @@
 {
-	"version":       "1.58.0",
+	"version":       "1.58.1",
 	"title":         "GridSound",
 	"desc":          "A work-in-progress free browser-based digital audio workstation",
 	"favicon":       "assets/ico.svg",
