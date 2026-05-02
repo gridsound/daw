@@ -60,7 +60,7 @@
 	outline: 0;
 	font: 16px var( --gsui-font-monospace );
 	color: inherit;
-	cursor: pointer;
+	cursor: var( --gsuiCursor-pointer );
 	background: none;
 
 	#splashScreen[ data-loaded ] &:not( :hover ) {

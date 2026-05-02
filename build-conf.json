@@ -1,5 +1,5 @@
 {
-	"version":       "1.58.3",
+	"version":       "1.58.4",
 	"title":         "GridSound",
 	"desc":          "A work-in-progress free browser-based digital audio workstation",
 	"favicon":       "assets/ico.svg",
@@ -29,6 +29,7 @@
 		"gs-ui-components/gsui-form.css",
 		"gs-ui-components/gsui-gray.css",
 		"gs-ui-components/gsui-white.css",
+		"gs-ui-components/gsuiCursor/gsuiCursor.css",
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css",
 		"gs-ui-components/gsuiIcon/gsuiIcon.css",
 		"gs-ui-components/gsuiRipple/gsuiRipple.css",
@@ -109,7 +110,6 @@
 		"gs-ui-components/gsui-constantes.js",
 
 		"gs-utils/gs-utils.js",
-		"gs-utils/gs-utils-dom.js",
 		"gs-utils/gs-utils-data.js",
 		"gs-utils/gs-utils-json.js",
 		"gs-utils/gs-utils-func.js",
