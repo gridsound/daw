@@ -1,5 +1,5 @@
 {
-	"version":       "1.58.4",
+	"version":       "1.58.5",
 	"title":         "GridSound",
 	"desc":          "A work-in-progress free browser-based digital audio workstation",
 	"favicon":       "assets/ico.svg",
@@ -13,7 +13,6 @@
 
 	"cssSrcA": [
 		"assets/fonts/fonts.css",
-		"src/reset.css",
 		"src/splashScreen.css"
 	],
 	"jsSrcA": [
@@ -30,19 +29,11 @@
 		"gs-ui-components/gsui-gray.css",
 		"gs-ui-components/gsui-white.css",
 		"gs-ui-components/gsuiCursor/gsuiCursor.css",
+		"gs-ui-components/gsuiTooltip/gsuiTooltip.css",
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.css",
 		"gs-ui-components/gsuiIcon/gsuiIcon.css",
 		"gs-ui-components/gsuiRipple/gsuiRipple.css",
-		"gs-ui-components/gsuiDropdown/gsuiDropdown.css",
-		"gs-ui-components/gsuiActionMenu/gsuiActionMenu.css",
 		"gs-ui-components/gsuiComButton/gsuiComButton.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW-btn.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW-head.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW-windows.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.css",
-		"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css",
 		"gs-ui-components/gsuiAutomation/gsuiAutomation.css",
 		"gs-ui-components/gsuiDuration/gsuiDuration.css",
 		"gs-ui-components/gsuiTitleUser/gsuiTitleUser.css",
@@ -103,12 +94,17 @@
 		"gs-ui-components/gsuiToggle/gsuiToggle.css",
 		"gs-ui-components/gsuiTrack/gsuiTrack.css",
 		"gs-ui-components/gsuiWindows/gsuiWindows.css",
-		"gs-ui-components/gsuiWindows/gsuiWindow.css"
+		"gs-ui-components/gsuiWindows/gsuiWindow.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW-btn.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW-head.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW-windows.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW-popup-about.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW-popup-export.css",
+		"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.css"
 	],
 
 	"jsDep": [
-		"gs-ui-components/gsui-constantes.js",
-
 		"gs-utils/gs-utils.js",
 		"gs-utils/gs-utils-data.js",
 		"gs-utils/gs-utils-json.js",
@@ -120,6 +116,9 @@
 		"gs-utils/gs-utils-audio-nodes.js",
 		"gs-utils/gs-utils-files.js",
 		"gs-utils/gs-utils-models.js",
+
+		"gs-ui-components/gsui-texts.js",
+		"gs-ui-components/gsui-constantes.js",
 
 		"gs-api-client/gsapiClient.js",
 
@@ -280,7 +279,6 @@
 		"gs-wa-components/gswaScheduler/gswaScheduler.js",
 		"gs-wa-components/gswaEncodeWAV/gswaEncodeWAV.js",
 		"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js",
-		"gs-wa-components/gswaOpusConverter/gswaOpusConverter.js",
 		"gs-wa-components/gswaMIDIParser/gswaMIDIParser.js",
 		"gs-wa-components/gswaMIDIParser/gswaMIDIToKeys.js",
 		"gs-wa-components/gswaMIDIDevices/gswaMIDIDevices.js",
@@ -294,6 +292,7 @@
 		"gs-ui-components/gsuiDAW/gsuiDAW-popup-settings.html.js",
 		"gs-ui-components/gsuiAutomation/gsuiAutomation.html.js",
 		"gs-ui-components/gsuiTexture/gsuiTexture.js",
+		"gs-ui-components/gsuiTooltip/gsuiTooltip.js",
 		"gs-ui-components/gsuiTitleUser/gsuiTitleUser.html.js",
 		"gs-ui-components/gsuiAnalyserVu/gsuiAnalyserVu.html.js",
 		"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.html.js",
@@ -347,10 +346,7 @@
 		"gs-ui-components/gsuiHelpLink/gsuiHelpLink.js",
 		"gs-ui-components/gsuiDAW/gsuiDAW.js",
 		"gs-ui-components/gsuiRipple/gsuiRipple.js",
-		"gs-ui-components/gsuiDropdown/getAbsPos.js",
-		"gs-ui-components/gsuiDropdown/gsuiDropdown.js",
 		"gs-ui-components/gsuiDuration/gsuiDuration.js",
-		"gs-ui-components/gsuiActionMenu/gsuiActionMenu.js",
 		"gs-ui-components/gsuiComButton/gsuiComButton.js",
 		"gs-ui-components/gsuiTitleUser/gsuiTitleUser.js",
 		"gs-ui-components/gsuiEnvelopeGraph/gsuiEnvelopeGraph.js",

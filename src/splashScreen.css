@@ -7,70 +7,53 @@
 	flex-direction: column;
 	justify-content: center;
 	color: #fff;
-	background-color: #1b1b31;
 	background-image: linear-gradient( 45deg, #0006, transparent );
 	transition: .5s opacity;
 
 	&[ data-started ] {
 		opacity: 0;
 	}
-}
+	> div {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 10px;
 
-/* .......................................................................... */
-#splashScreen-content {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	gap: 10px;
-}
-
-/* .......................................................................... */
-#splashScreen-logo {
-	width: 500px;
-	height: 246px;
-	mask: center no-repeat alpha url( "../assets/logo/gs-gridsound-logo-animated.svg" );
-	background-color: #fff;
-}
-
-/* .......................................................................... */
-#splashScreen-version {
-	align-self: end;
-	margin-top: -68px;
-	margin-right: 1px;
-	font-family: var( --gsui-font-monospace );
-
-	&::before {
-		content: "v. ";
+		> :first-child {
+			width: 500px;
+			height: 246px;
+			mask: center no-repeat alpha url( "../assets/logo/gs-gridsound-logo-animated.svg" );
+			background-color: #fff;
+		}
 	}
-}
+	b {
+		align-self: end;
+		margin-top: -68px;
+		margin-right: 1px;
+		font-weight: normal;
+		font-family: var( --gsui-font-monospace );
 
-/* .......................................................................... */
-#splashScreen-firefox {
-	display: none;
-	margin-top: 10px;
-	font-size: 14px;
-	font-style: italic;
-}
-
-/* .......................................................................... */
-#splashScreen-start {
-	margin-top: 48px;
-	padding: 10px 16px;
-	border: 0;
-	outline: 0;
-	font: 16px var( --gsui-font-monospace );
-	color: inherit;
-	cursor: var( --gsuiCursor-pointer );
-	background: none;
-
-	#splashScreen[ data-loaded ] &:not( :hover ) {
-		animation: .5s splashScreen-textAnim linear infinite alternate;
+		&::before {
+			content: "v ";
+		}
 	}
-	&::before { content: "downloading..." }
-	#splashScreen[ data-loaded ] &::before { content: "[ click to start ]" }
-	#splashScreen[ data-starting ] &::before { content: "starting..." }
+	button {
+		margin-top: 48px;
+		padding: 10px 16px;
+		font: 16px var( --gsui-font-monospace );
+
+		[ data-loaded ] &:not( :hover ) {
+			animation: .5s splashScreen-textAnim linear infinite alternate;
+		}
+		&::before { content: "downloading..." }
+		[ data-loaded ] &::before { content: "[ click to start ]" }
+		[ data-starting ] &::before { content: "starting..." }
+	}
+	[ data-alert ] {
+		display: none;
+	}
 }
 @keyframes splashScreen-textAnim {
-	 75% { opacity: 1 }
+	075% { opacity: 1 }
 	100% { opacity: 0 }
 }
