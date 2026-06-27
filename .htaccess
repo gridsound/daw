@@ -1,0 +1,19 @@
+RewriteCond %{HTTPS} off          [OR]
+RewriteCond %{HTTP_HOST} ^www\.   [NC]
+RewriteRule ^ https://daw.gridsound.com%{REQUEST_URI} [R=301,L,NE]
+
+###################################################
+##                                               ##
+##     ↑ For production only,                    ##
+##       the URL rewriting part.                 ##
+##                                               ##
+##     ↓ For production AND local,               ##
+##       we need to be `crossOriginIsolated`     ##
+##       to use the `SharedArrayBuffer`.         ##
+##                                               ##
+###################################################
+
+<IfModule mod_headers.c>
+	Header set Cross-Origin-Opener-Policy "same-origin"
+	Header set Cross-Origin-Embedder-Policy "require-corp"
+</IfModule>
