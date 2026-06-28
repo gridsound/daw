@@ -259,8 +259,8 @@
 
 		"gs-wa-components/gswaNoise/gswaNoise.js",
 		"gs-wa-components/gswaReverbIR/gswaReverbIR.js",
-		"gs-wa-components/gswaCrossfade/gswaCrossfade.js",
 		"gs-wa-components/gswaOscillator/gswaOscillator.js",
+		"gs-wa-components/gswaSource/gswaSource.js",
 		"gs-wa-components/gswaLFO/gswaLFO.js",
 		"gs-wa-components/gswaEnvelope/gswaEnvelope.js",
 		"gs-wa-components/gswaMixer/gswaMixer.js",
@@ -278,7 +278,7 @@
 		"gs-wa-components/gswaDrumrows/gswaDrumrows.js",
 		"gs-wa-components/gswaScheduler/gswaScheduler.js",
 		"gs-wa-components/gswaEncodeWAV/gswaEncodeWAV.js",
-		"gs-wa-components/gswaPeriodicWaves/gswaPeriodicWaves.js",
+		"gs-wa-components/gswaWTbuffers/gswaWTbuffers.js",
 		"gs-wa-components/gswaMIDIParser/gswaMIDIParser.js",
 		"gs-wa-components/gswaMIDIParser/gswaMIDIToKeys.js",
 		"gs-wa-components/gswaMIDIDevices/gswaMIDIDevices.js",

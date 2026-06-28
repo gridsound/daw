@@ -5,7 +5,7 @@
 GridSound is a free, work-in-progress, half open-source digital audio
 workstation written with HTML5 and more precisely with the WebAudio API.
 The application can be used at [daw.gridsound.com](https://daw.gridsound.com)
-you are invited to create an account at [gridsound.com](http://gridsound.com) to
+you are invited to create an account at [gridsound.com](https://gridsound.com) to
 save your compositions online to retrieve them from anywhere at any time.
 
 Here is the [changelog](https://github.com/gridsound/daw/wiki/changelog), and
