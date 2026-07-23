@@ -22,9 +22,12 @@ new Promise( resolve => {
 	.then( () => GSUloadJSFile( "assets/lame.1.2.1.min.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
-		const el = $( "#splashScreen" );
 
-		// window.$daw = daw.getDAWCore();
-		el.$addAttr( "data-started" );
-		GSUsetTimeout( () => el.$remove(), .8 );
+		daw.$init().then( () => {
+			const el = $( "#splashScreen" );
+
+			// window.$daw = daw.getDAWCore();
+			el.$addAttr( "data-started" );
+			GSUsetTimeout( () => el.$remove(), .8 );
+		} );
 	} );
