@@ -19,7 +19,6 @@ new Promise( resolve => {
 } )
 	.then( () => GSUloadJSFile( "assets/gsuiLibrarySamples-v1.js" ) )
 	.then( () => GSUloadJSFile( "assets/gsuiWaveletList-v1.js" ) )
-	.then( () => GSUloadJSFile( "assets/lame.1.2.1.min.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
 
