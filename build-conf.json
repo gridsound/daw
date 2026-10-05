@@ -369,6 +369,7 @@
 		"gs-ui-components/gsuiPatternroll/gsuiPatternroll.js",
 		"gs-ui-components/gsuiPianoroll/gsuiPianoroll.js",
 		"gs-ui-components/gsuiPropSelect/gsuiPropSelect.js",
+		"gs-ui-components/gsuiDropdown/gsuiDropdown.js",
 		"gs-ui-components/gsuiDrumrow/gsuiDrumrow.js",
 		"gs-ui-components/gsuiDrumrows/gsuiDrumrows.js",
 		"gs-ui-components/gsuiDrum/gsuiDrum.js",
