@@ -17,16 +17,15 @@ new Promise( resolve => {
 		} )
 		.$disabled( false );
 } )
+	.then( () => gswaContext.$resume() )
 	.then( () => GSUloadJSFile( "assets/gsuiLibrarySamples-v1.js" ) )
 	.then( () => GSUloadJSFile( "assets/gsuiWaveletList-v1.js" ) )
 	.then( () => {
 		const daw = new GSDAW();
+		const el = $( "#splashScreen" );
 
-		daw.$init().then( () => {
-			const el = $( "#splashScreen" );
-
-			// window.$daw = daw.getDAWCore();
-			el.$addAttr( "data-started" );
-			GSUsetTimeout( () => el.$remove(), .8 );
-		} );
+		daw.$init();
+		el.$addAttr( "data-started" );
+		GSUsetTimeout( () => el.$remove(), .8 );
+		// window.$daw = daw.getDAWCore();
 	} );
